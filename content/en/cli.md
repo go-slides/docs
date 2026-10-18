@@ -6,9 +6,9 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Nothing is released yet. This page describes the command as it is being
-written; it will be checked against the first release's `slides -h`, and
-anything here may change before then.
+No version is tagged yet. This page is checked against `slides -h` built from
+`main` at `4ae5c49` (2026-10-18); anything here may change before the first
+release.
 {{< /callout >}}
 
 ```text
@@ -26,7 +26,10 @@ slides [command] [flags] deck.md
 | `themes` | lists the themes |
 | `version` | prints the version |
 
-`slides <command> -h` prints the flags of a command.
+`slides <command> -h` prints the flags of a command. **Flags go before the
+deck** (`slides -o out.html deck.md`): Go's `flag` package stops at the first
+argument that is not a flag. `-flag` and `--flag` are the same. `build`
+writes `deck.html` beside `deck.md` unless `-o` says otherwise.
 
 ## Flags
 
@@ -36,11 +39,11 @@ slides [command] [flags] deck.md
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
 | `--theme-set path` | all | a theme CSS file, or a directory of them (repeatable) |
-| `--kinds file` | all but `themes` | a YAML file of kinds (repeatable) |
-| `--data file` | all but `themes` | a YAML or JSON file of template data (repeatable) |
-| `--set key=value` | all but `themes` | one template value (repeatable) |
-| `--no-template` | all but `themes` | do not expand Go templates |
-| `--strict-yaml` | all but `themes` | parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely) |
+| `--kinds file` | `build`, `expand`, `notes`, `kinds` | a YAML file of kinds (repeatable) |
+| `--data file` | `build`, `expand`, `notes`, `kinds` | a YAML or JSON file of template data (repeatable) |
+| `--set key=value` | `build`, `expand`, `notes`, `kinds` | one template value (repeatable) |
+| `--no-template` | `build`, `expand`, `notes`, `kinds` | do not expand Go templates |
+| `--strict-yaml` | `build`, `expand`, `notes`, `kinds` | parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely) |
 | `--html` | `build` | allow all raw HTML; by default, Marp Core's allowlist |
 | `--lang code` | `build` | the page's `lang` when the deck sets none |
 | `--bare` | `build` | stack the slides, without the presenting script |
