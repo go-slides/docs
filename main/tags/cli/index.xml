@@ -2,9 +2,9 @@
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Nothing is released yet. This page describes the command as it is being
-written; it will be checked against the first release&amp;rsquo;s &lt;code&gt;slides -h&lt;/code&gt;, and
-anything here may change before then.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;No version is tagged yet. This page is checked against &lt;code&gt;slides -h&lt;/code&gt; built from
+&lt;code&gt;main&lt;/code&gt; at &lt;code&gt;4ae5c49&lt;/code&gt; (2026-10-18); anything here may change before the first
+release.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -55,7 +55,10 @@ data-copied-label="Copied!"
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;code&gt;slides &amp;lt;command&amp;gt; -h&lt;/code&gt; prints the flags of a command.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slides &amp;lt;command&amp;gt; -h&lt;/code&gt; prints the flags of a command. &lt;strong&gt;Flags go before the
+deck&lt;/strong&gt; (&lt;code&gt;slides -o out.html deck.md&lt;/code&gt;): Go&amp;rsquo;s &lt;code&gt;flag&lt;/code&gt; package stops at the first
+argument that is not a flag. &lt;code&gt;-flag&lt;/code&gt; and &lt;code&gt;--flag&lt;/code&gt; are the same. &lt;code&gt;build&lt;/code&gt;
+writes &lt;code&gt;deck.html&lt;/code&gt; beside &lt;code&gt;deck.md&lt;/code&gt; unless &lt;code&gt;-o&lt;/code&gt; says otherwise.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="flags"&gt;Flags&lt;span class="hx:absolute hx:-mt-20" id="flags"&gt;&lt;/span&gt;
 &lt;a href="#flags" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
@@ -88,27 +91,27 @@ data-copied-label="Copied!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;all but &lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;a YAML file of kinds (repeatable)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;all but &lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;a YAML or JSON file of template data (repeatable)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--set key=value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;all but &lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;one template value (repeatable)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--no-template&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;all but &lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;do not expand Go templates&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--strict-yaml&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;all but &lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
