@@ -68,6 +68,27 @@ data-copied-label="Copied!"
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;slides&lt;/code&gt; with no command is &lt;code&gt;slides build&lt;/code&gt;. Flags may come before or after the
 deck. Open the HTML in a browser; the keyboard moves between slides.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="export-images-and-pdf"&gt;Export images and PDF&lt;span class="hx:absolute hx:-mt-20" id="export-images-and-pdf"&gt;&lt;/span&gt;
+&lt;a href="#export-images-and-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md --pdf &lt;span class="c1"&gt;# one page per slide, with an outline&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md --images png &lt;span class="c1"&gt;# talk.001.png, talk.002.png, …&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md --image jpeg &lt;span class="c1"&gt;# the first slide only&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md -o out/slides.pdf &lt;span class="c1"&gt;# the extension picks the format; out/ is created&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md --images jpeg --jpeg-quality &lt;span class="m"&gt;90&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+aria-label="Copy code"
+data-copied-label="Copied!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;No browser is involved: go-webengine renders the slides and go-pdfkit writes
+the PDF. This is on &lt;code&gt;main&lt;/code&gt; with known limits (1× resolution, split
+backgrounds, local image files); see &lt;a href="https://go-slides.github.io/docs/main/cli/#images-and-pdf"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="expand-it"&gt;Expand it&lt;span class="hx:absolute hx:-mt-20" id="expand-it"&gt;&lt;/span&gt;
 &lt;a href="#expand-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides expand talk.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

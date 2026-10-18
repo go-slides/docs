@@ -70,6 +70,7 @@ templates escape it. Code blocks and code spans are left alone.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Kinds.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; and &lt;code&gt;_kind:&lt;/code&gt; are directives Marp does not have (see
 &lt;a href="https://go-slides.github.io/docs/main/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; replaces them with the
 directives they stand for, so the expanded deck is plain Marp.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Outputs.&lt;/strong&gt; HTML first. PNG, JPEG, PDF and PPTX are &lt;strong&gt;planned&lt;/strong&gt;, through
-Go libraries rather than a headless browser.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outputs.&lt;/strong&gt; HTML, PNG, JPEG and PDF, through Go libraries rather than a
+headless browser (see &lt;a href="https://go-slides.github.io/docs/main/cli/#images-and-pdf"&gt;Command line&lt;/a&gt; for
+the known limits). PPTX is &lt;strong&gt;planned&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>

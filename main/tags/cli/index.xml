@@ -3,7 +3,7 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;No version is tagged yet. This page is checked against &lt;code&gt;slides --help&lt;/code&gt; built
-from &lt;code&gt;main&lt;/code&gt; after go-slides/slides#3 (2026-10-18); anything here may change
+from &lt;code&gt;main&lt;/code&gt; after go-slides/slides#4 (2026-10-18); anything here may change
 before the first release.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -32,7 +32,7 @@ data-copied-label="Copied!"
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;writes the presentation as HTML. &lt;strong&gt;The default&lt;/strong&gt;: &lt;code&gt;slides deck.md&lt;/code&gt; is &lt;code&gt;slides build deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;writes the presentation as HTML, or as a PDF or images (see below). &lt;strong&gt;The default&lt;/strong&gt;: &lt;code&gt;slides deck.md&lt;/code&gt; is &lt;code&gt;slides build deck.md&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
@@ -134,8 +134,54 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;stack the slides, without the presenting script&lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write a PDF, one page per slide, with an outline (also chosen by &lt;code&gt;-o file.pdf&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--images png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write one image per slide: &lt;code&gt;deck.001.png&lt;/code&gt;, …&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write the first slide as an image (also chosen by &lt;code&gt;-o file.png&lt;/code&gt; or &lt;code&gt;-o file.jpg&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--jpeg-quality n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;JPEG quality, 1 to 100 (default 85)&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 data-hextra-search-id="images-and-pdf"&gt;Images and PDF&lt;span class="hx:absolute hx:-mt-20" id="images-and-pdf"&gt;&lt;/span&gt;
+&lt;a href="#images-and-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;-o&lt;/code&gt; with a &lt;code&gt;.pdf&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt; or &lt;code&gt;.jpg&lt;/code&gt; extension picks the format, as marp-cli
+does. Output directories are created. A PDF has one page per slide, at the
+slide&amp;rsquo;s size, and an outline of the slides and their headings.&lt;/p&gt;
+&lt;p&gt;Rendering is done by &lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt;
+and the PDF is written by &lt;a href="https://github.com/go-pdfkit/pdfkit" target="_blank" rel="noopener"&gt;go-pdfkit&lt;/a&gt;;
+the fonts the built-in themes ask for (Lato, Roboto Mono) come from
+&lt;a href="https://github.com/go-opentype/fonts" target="_blank" rel="noopener"&gt;go-opentype/fonts&lt;/a&gt; and are embedded, so
+no render touches the network. There is no Chrome.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;p&gt;Known limits, each tracked in the library it belongs to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Images are rendered at one device pixel per CSS pixel (1280×720 for 16:9),
+until go-webengine has a device scale factor.&lt;/li&gt;
+&lt;li&gt;Several or split backgrounds (&lt;code&gt;![bg left]&lt;/code&gt;) need percentage heights in
+go-webengine. A single background already renders.&lt;/li&gt;
+&lt;li&gt;Local image files need opt-in &lt;code&gt;file://&lt;/code&gt; loading in go-webengine. &lt;code&gt;data:&lt;/code&gt;
+URIs and &lt;code&gt;http(s)&lt;/code&gt; images render now.&lt;/li&gt;
+&lt;li&gt;Headings are lighter than with Lato Black: go-opentype/fonts carries one
+regular instance of Lato and Roboto Mono, so gaia and uncover headings are
+not as heavy.&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
 &lt;a href="#slidesyaml" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A configuration file next to the deck applies to it, so a folder of decks
 shares one:&lt;/p&gt;
@@ -162,5 +208,4 @@ data-copied-label="Copied!"
 Data: the file&amp;rsquo;s and the command line&amp;rsquo;s &lt;code&gt;data&lt;/code&gt; override the deck&amp;rsquo;s front
 matter, so one deck can be built with different data.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;Planned&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not in the first release: image (PNG/JPEG), PDF and PPTX output, math and
-code highlighting. When they arrive, they are commands or flags here.&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: PPTX output, math, code highlighting and emoji. When they arrive, they are commands or flags here.&lt;/p&gt;</description></item></channel></rss>
