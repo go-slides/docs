@@ -66,9 +66,8 @@ data-copied-label="Copied!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;code&gt;slides&lt;/code&gt; with no command is &lt;code&gt;slides build&lt;/code&gt;. &lt;strong&gt;Flags come before the deck&lt;/strong&gt;:
-&lt;code&gt;slides talk.md -o x&lt;/code&gt; is refused, as Go&amp;rsquo;s &lt;code&gt;flag&lt;/code&gt; package stops at the first
-argument. Open the HTML in a browser; the keyboard moves between slides.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slides&lt;/code&gt; with no command is &lt;code&gt;slides build&lt;/code&gt;. Flags may come before or after the
+deck. Open the HTML in a browser; the keyboard moves between slides.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="expand-it"&gt;Expand it&lt;span class="hx:absolute hx:-mt-20" id="expand-it"&gt;&lt;/span&gt;
 &lt;a href="#expand-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides expand talk.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
