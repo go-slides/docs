@@ -18,13 +18,14 @@ slides, `![bg]` backgrounds, speaker notes, the `default`, `gaia` and
   (`title`, `section`…) instead of repeating how it looks.
 
 {{< callout type="warning" >}}
-**Nothing is released yet.** [go-slides/slides](https://github.com/go-slides/slides)
-is being written, and these pages describe the branch being written: they are
-published under `/docs/main/`. They will describe the first release, under
-`/docs/0.1/`, once it is tagged — and anything here may change before then.
+**On `main`, not released yet.** The engine and the command are merged in
+[go-slides/slides](https://github.com/go-slides/slides), but no version is
+tagged. These pages describe `main` and are published under `/docs/main/`;
+they will describe the first release, under `/docs/0.1/`, once it is tagged,
+and anything here may change before then.
 {{< /callout >}}
 
-## What the first release does
+## What it does today
 
 | | |
 | --- | --- |
@@ -36,7 +37,7 @@ published under `/docs/main/`. They will describe the first release, under
 
 ## Planned
 
-Not built, and listed so nobody has to guess: **PNG/JPEG** through
+Not built yet, and listed so nobody has to guess: **PNG/JPEG** through
 [go-webengine](https://github.com/go-webengine), **PDF** through
 [go-pdfkit](https://github.com/go-pdfkit), **PPTX** through
 [go-ooxml](https://github.com/go-ooxml), **math** through

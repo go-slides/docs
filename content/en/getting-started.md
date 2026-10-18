@@ -7,10 +7,14 @@ tags: [start]
 
 ## Install
 
-**Not yet.** Nothing is released: the install line (`go install`) and the
-binaries will be given here with the first release. `slides` is one static
-Go binary with no cgo, so it will need nothing else installed — no Node, no
-Chrome.
+No version is tagged yet, so install from `main` (Go 1.27.2 or later):
+
+```sh
+go install github.com/go-slides/slides/cmd/slides@main
+```
+
+`slides` is one static Go binary with no cgo: nothing else to install, no
+Node, no Chrome. With the first release this line becomes `@latest`.
 
 ## A first deck
 
@@ -44,12 +48,13 @@ slide is of the built-in kind `title` (no header, no footer, no page number).
 ## Build it
 
 ```sh
-slides talk.md            # writes the HTML presentation
-slides talk.md -o -       # or to standard output
+slides talk.md                 # writes talk.html beside the deck
+slides -o slides.html talk.md  # or somewhere else; -o - for standard output
 ```
 
-`slides` with no command is `slides build`. Open the HTML in a browser; the
-keyboard moves between slides.
+`slides` with no command is `slides build`. **Flags come before the deck**:
+`slides talk.md -o x` is refused, as Go's `flag` package stops at the first
+argument. Open the HTML in a browser; the keyboard moves between slides.
 
 ## Expand it
 
@@ -57,9 +62,41 @@ keyboard moves between slides.
 slides expand talk.md
 ```
 
-prints the same deck as **plain Marp Markdown**: the four slides the `range`
-generated, the footer with its value, and the `title` kind replaced by the
-spot directives it stands for. Anything that reads Marp — marp-cli, the VS
+prints the same deck as **plain Marp Markdown** (output of `main` at
+`4ae5c49`, 2026-10-18):
+
+```markdown
+---
+marp: true
+theme: default
+paginate: true
+footer: "Pure Go slides"
+---
+<!--
+_class: "lead"
+_footer: ""
+_paginate: "false"
+-->
+
+
+# Pure Go slides
+
+
+---
+
+# Why
+
+---
+
+# How
+
+---
+
+# Next
+```
+
+The four slides the `range` generated, the footer with its value, and the
+`title` kind replaced by the spot directives it stands for. Anything that reads Marp — marp-cli, the VS
 Code extension — can take it from there, so nothing written with go-slides'
 additions is locked in.
 

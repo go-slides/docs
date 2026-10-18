@@ -23,11 +23,11 @@ A version of the documentation is **the minor version of
 | branch `main`, with `params.slides.version` in `hugo.yaml` | `https://go-slides.github.io/docs/<MAJOR.MINOR>/`, or `/docs/main/` while it says `main` |
 | the newest release (else `main`) | also `https://go-slides.github.io/docs/latest/` |
 
-`https://go-slides.github.io/docs/` redirects to `latest/`. Nothing is
-released yet, so the pages describe the branch being written and are
-published under `main/`. At the first release: set `params.slides.version` to
+`https://go-slides.github.io/docs/` redirects to `latest/`. No version of
+slides is tagged yet, so the pages describe `main` and are published under
+`main/`. At the first release: set `params.slides.version` to
 its tag, check every page against that release (flags from its `slides -h`),
-and remove the "nothing is released" callouts.
+and remove the "not released yet" callouts.
 
 ## Layout
 
