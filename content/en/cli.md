@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.1.0, the first release.
+This page describes v0.2.0.
 {{< /callout >}}
 
 ```text
@@ -51,13 +51,14 @@ otherwise.
 | `--pdf` | `build` | write a PDF, one page per slide, with an outline (also chosen by `-o file.pdf`) |
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
+| `--pptx` | `build` | write a PowerPoint file, one full-slide picture per slide with its speaker notes (also chosen by `-o file.pptx`); `--image-scale` defaults to 2 |
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
 | `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
 
-## Images and PDF
+## Images, PDF and PPTX
 
-`-o` with a `.pdf`, `.png` or `.jpg` extension picks the format, as marp-cli
+`-o` with a `.pdf`, `.pptx`, `.png` or `.jpg` extension picks the format, as marp-cli
 does. Output directories are created. A PDF has one page per slide, at the
 slide's size, and an outline of the slides and their headings.
 
@@ -72,10 +73,16 @@ refused unless `--allow-local-files` is given, and even then only files under
 the deck's directory are read: a deck from elsewhere cannot reach `~/.ssh`.
 Several and split backgrounds (`![bg left:40%]`) render as Marp's layers do.
 
+`--pptx` writes the deck with [go-ooxml](https://github.com/go-ooxml)'s
+`WritePresentation`: each slide is one full-slide picture, with its speaker
+notes and the deck's metadata. As in marp-cli, the slides are pictures, not
+editable text. The scale defaults to 2 and `--image-scale` overrides it;
+LibreOffice opens the result.
+
 {{< callout type="warning" >}}
 Known limit: no italic face is embedded yet, so italic text renders upright.
 The heading weight limit of v0.1.0 is gone: Lato Bold and Black and Roboto Mono
-Bold are embedded (on `main`, after v0.1.0). See
+Bold are embedded (since v0.2.0). See
 [Math and code]({{< relref "math-and-code" >}}).
 {{< /callout >}}
 
@@ -100,5 +107,5 @@ matter, so one deck can be built with different data.
 
 ## Planned
 
-Not built yet: PPTX output, emoji and fitting headings (`<!-- fit -->`). When
+Not built yet: emoji and fitting headings (`<!-- fit -->`). When
 they arrive, they are commands or flags here.
