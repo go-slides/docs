@@ -6,12 +6,13 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-No version is tagged yet. This page is checked against `slides -h` built from
-`main` at `4ae5c49` (2026-10-18); anything here may change before the first
-release.
+No version is tagged yet. This page is checked against `slides --help` built
+from `main` after go-slides/slides#3 (2026-10-18); anything here may change
+before the first release.
 {{< /callout >}}
 
 ```text
+slides [deck.md] [flags]
 slides [command] [flags] deck.md
 ```
 
@@ -24,26 +25,28 @@ slides [command] [flags] deck.md
 | `notes` | prints the speaker notes |
 | `kinds` | lists the kinds the deck can use and what they set |
 | `themes` | lists the themes |
-| `version` | prints the version |
+| `version` | prints the version (so does `slides --version`) |
+| `completion` | prints a shell completion script: `bash`, `zsh`, `fish` or `powershell` |
 
-`slides <command> -h` prints the flags of a command. **Flags go before the
-deck** (`slides -o out.html deck.md`): Go's `flag` package stops at the first
-argument that is not a flag. `-flag` and `--flag` are the same. `build`
-writes `deck.html` beside `deck.md` unless `-o` says otherwise.
+`slides <command> --help` prints the flags of a command. Flags may come before
+or after the deck: `slides deck.md -o out.html` and `slides -o out.html
+deck.md` are the same. Long flags take two dashes (`--html`); `-o` is the only
+short one. `build` writes `deck.html` beside `deck.md` unless `-o` says
+otherwise.
 
 ## Flags
 
 | Flag | Commands | What it does |
 | --- | --- | --- |
-| `-o file` | all | output file; `-` for standard output |
+| `-o`, `--output file` | `build`, `expand`, `notes` | output file; `-` for standard output |
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
 | `--theme-set path` | all | a theme CSS file, or a directory of them (repeatable) |
-| `--kinds file` | `build`, `expand`, `notes`, `kinds` | a YAML file of kinds (repeatable) |
-| `--data file` | `build`, `expand`, `notes`, `kinds` | a YAML or JSON file of template data (repeatable) |
-| `--set key=value` | `build`, `expand`, `notes`, `kinds` | one template value (repeatable) |
-| `--no-template` | `build`, `expand`, `notes`, `kinds` | do not expand Go templates |
-| `--strict-yaml` | `build`, `expand`, `notes`, `kinds` | parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely) |
+| `--kinds file` | all | a YAML file of kinds (repeatable) |
+| `--data file` | all | a YAML or JSON file of template data (repeatable) |
+| `--set key=value` | all | one template value (repeatable) |
+| `--no-template` | all | do not expand Go templates |
+| `--strict-yaml` | all | parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely) |
 | `--html` | `build` | allow all raw HTML; by default, Marp Core's allowlist |
 | `--lang code` | `build` | the page's `lang` when the deck sets none |
 | `--bare` | `build` | stack the slides, without the presenting script |
