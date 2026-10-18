@@ -30,6 +30,7 @@ describe it and are published under `/docs/0.1/`.
 | --- | --- |
 | `slides build` (the default) | the deck as one HTML page: each slide an SVG-framed `<section>` that scales to the window, the theme's CSS, a keyboard viewer |
 | `slides build --pdf`, `--images png`, `--image jpeg` | the deck as a PDF (one page per slide, with an outline) or as PNG/JPEG images, with no browser: [go-webengine](https://github.com/go-webengine) renders, [go-pdfkit](https://github.com/go-pdfkit) writes the PDF. [Known limits]({{< relref "cli#images-and-pdf" >}}) apply |
+| math and code | `$…$` and `$$…$$` typeset by go-tex/math, fenced code highlighted by go-rouge, in HTML, images and PDF: [Math and code]({{< relref "math-and-code" >}}) (on `main`, after v0.1.0) |
 | `slides expand` | the deck as plain Marp Markdown: templates evaluated, kinds replaced by the spot directives they stand for |
 | `slides notes` | the speaker notes |
 | `slides kinds`, `slides themes` | what a deck can name |
@@ -38,9 +39,8 @@ describe it and are published under `/docs/0.1/`.
 ## Planned
 
 Not built yet, and listed so nobody has to guess: **PPTX** through
-[go-ooxml](https://github.com/go-ooxml), **math** through
-[go-tex](https://github.com/go-tex), **code highlighting** through
-[go-rouge](https://github.com/go-rouge), and emoji. The difference with
+[go-ooxml](https://github.com/go-ooxml), emoji, and fitting headings
+(`<!-- fit -->`). The difference with
 marp-cli is the route: it renders images and PDF by driving a headless Chrome;
 here that is done by Go libraries.
 
@@ -50,4 +50,5 @@ here that is done by Go libraries.
 - [Marp compatibility]({{< relref "marp" >}})
 - [Templates]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})
+- [Math and code]({{< relref "math-and-code" >}})
 - [Command line]({{< relref "cli" >}})

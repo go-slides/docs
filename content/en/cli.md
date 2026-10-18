@@ -73,9 +73,10 @@ the deck's directory are read: a deck from elsewhere cannot reach `~/.ssh`.
 Several and split backgrounds (`![bg left:40%]`) render as Marp's layers do.
 
 {{< callout type="warning" >}}
-Known limit, tracked in the library it belongs to: headings are lighter than
-with Lato Black. go-opentype/fonts carries one regular instance of Lato and
-Roboto Mono, so gaia and uncover headings are not as heavy.
+Known limit: no italic face is embedded yet, so italic text renders upright.
+The heading weight limit of v0.1.0 is gone: Lato Bold and Black and Roboto Mono
+Bold are embedded (on `main`, after v0.1.0). See
+[Math and code]({{< relref "math-and-code" >}}).
 {{< /callout >}}
 
 ## `slides.yaml`
@@ -99,4 +100,5 @@ matter, so one deck can be built with different data.
 
 ## Planned
 
-Not built yet: PPTX output, math, code highlighting and emoji. When they arrive, they are commands or flags here.
+Not built yet: PPTX output, emoji and fitting headings (`<!-- fit -->`). When
+they arrive, they are commands or flags here.
