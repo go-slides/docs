@@ -7,7 +7,7 @@ tags: [cli]
 
 {{< callout type="warning" >}}
 No version is tagged yet. This page is checked against `slides --help` built
-from `main` after go-slides/slides#3 (2026-10-18); anything here may change
+from `main` after go-slides/slides#4 (2026-10-18); anything here may change
 before the first release.
 {{< /callout >}}
 
@@ -20,7 +20,7 @@ slides [command] [flags] deck.md
 
 | Command | What it does |
 | --- | --- |
-| `build` | writes the presentation as HTML. **The default**: `slides deck.md` is `slides build deck.md` |
+| `build` | writes the presentation as HTML, or as a PDF or images (see below). **The default**: `slides deck.md` is `slides build deck.md` |
 | `expand` | prints the deck as plain Marp Markdown: templates expanded, kinds replaced by the directives they stand for |
 | `notes` | prints the speaker notes |
 | `kinds` | lists the kinds the deck can use and what they set |
@@ -50,6 +50,36 @@ otherwise.
 | `--html` | `build` | allow all raw HTML; by default, Marp Core's allowlist |
 | `--lang code` | `build` | the page's `lang` when the deck sets none |
 | `--bare` | `build` | stack the slides, without the presenting script |
+| `--pdf` | `build` | write a PDF, one page per slide, with an outline (also chosen by `-o file.pdf`) |
+| `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
+| `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
+| `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
+
+## Images and PDF
+
+`-o` with a `.pdf`, `.png` or `.jpg` extension picks the format, as marp-cli
+does. Output directories are created. A PDF has one page per slide, at the
+slide's size, and an outline of the slides and their headings.
+
+Rendering is done by [go-webengine](https://github.com/go-webengine/engine)
+and the PDF is written by [go-pdfkit](https://github.com/go-pdfkit/pdfkit);
+the fonts the built-in themes ask for (Lato, Roboto Mono) come from
+[go-opentype/fonts](https://github.com/go-opentype/fonts) and are embedded, so
+no render touches the network. There is no Chrome.
+
+{{< callout type="warning" >}}
+Known limits, each tracked in the library it belongs to:
+
+- Images are rendered at one device pixel per CSS pixel (1280×720 for 16:9),
+  until go-webengine has a device scale factor.
+- Several or split backgrounds (`![bg left]`) need percentage heights in
+  go-webengine. A single background already renders.
+- Local image files need opt-in `file://` loading in go-webengine. `data:`
+  URIs and `http(s)` images render now.
+- Headings are lighter than with Lato Black: go-opentype/fonts carries one
+  regular instance of Lato and Roboto Mono, so gaia and uncover headings are
+  not as heavy.
+{{< /callout >}}
 
 ## `slides.yaml`
 
@@ -72,5 +102,4 @@ matter, so one deck can be built with different data.
 
 ## Planned
 
-Not in the first release: image (PNG/JPEG), PDF and PPTX output, math and
-code highlighting. When they arrive, they are commands or flags here.
+Not built yet: PPTX output, math, code highlighting and emoji. When they arrive, they are commands or flags here.
