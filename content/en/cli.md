@@ -6,9 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-No version is tagged yet. This page is checked against `slides --help` built
-from `main` after go-slides/slides#4 (2026-10-18); anything here may change
-before the first release.
+This page describes v0.1.0, the first release.
 {{< /callout >}}
 
 ```text

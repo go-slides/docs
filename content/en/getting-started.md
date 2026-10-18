@@ -7,14 +7,14 @@ tags: [start]
 
 ## Install
 
-No version is tagged yet, so install from `main` (Go 1.27.2 or later):
+Go 1.27.2 or later:
 
 ```sh
-go install github.com/go-slides/slides/cmd/slides@main
+go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` is one static Go binary with no cgo: nothing else to install, no
-Node, no Chrome. With the first release this line becomes `@latest`.
+Node, no Chrome. This page describes v0.1.0.
 
 ## A first deck
 
@@ -69,7 +69,7 @@ slides talk.md --pdf --allow-local-files      # images from under the deck's dir
 
 No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless `--allow-local-files` is given. This
-is on `main`, with one known limit (headings lighter than with Lato Black);
+is in v0.1.0, with one known limit (headings lighter than with Lato Black);
 see [Command line]({{< relref "cli#images-and-pdf" >}}).
 
 ## Expand it
