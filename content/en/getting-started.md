@@ -55,6 +55,20 @@ slides -o slides.html talk.md  # or somewhere else; -o - for standard output
 `slides` with no command is `slides build`. Flags may come before or after the
 deck. Open the HTML in a browser; the keyboard moves between slides.
 
+## Export images and PDF
+
+```sh
+slides talk.md --pdf                  # one page per slide, with an outline
+slides talk.md --images png           # talk.001.png, talk.002.png, …
+slides talk.md --image jpeg           # the first slide only
+slides talk.md -o out/slides.pdf      # the extension picks the format; out/ is created
+slides talk.md --images jpeg --jpeg-quality 90
+```
+
+No browser is involved: go-webengine renders the slides and go-pdfkit writes
+the PDF. This is on `main` with known limits (1× resolution, split
+backgrounds, local image files); see [Command line]({{< relref "cli#images-and-pdf" >}}).
+
 ## Expand it
 
 ```sh

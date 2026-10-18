@@ -66,5 +66,6 @@ given with `--theme-set` or listed under `themes:` in `slides.yaml`.
 - **Kinds.** `kind:` and `_kind:` are directives Marp does not have (see
   [Kinds]({{< relref "kinds" >}})). `slides expand` replaces them with the
   directives they stand for, so the expanded deck is plain Marp.
-- **Outputs.** HTML first. PNG, JPEG, PDF and PPTX are **planned**, through
-  Go libraries rather than a headless browser.
+- **Outputs.** HTML, PNG, JPEG and PDF, through Go libraries rather than a
+  headless browser (see [Command line]({{< relref "cli#images-and-pdf" >}}) for
+  the known limits). PPTX is **planned**.

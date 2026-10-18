@@ -30,6 +30,7 @@ and anything here may change before then.
 | | |
 | --- | --- |
 | `slides build` (the default) | the deck as one HTML page: each slide an SVG-framed `<section>` that scales to the window, the theme's CSS, a keyboard viewer |
+| `slides build --pdf`, `--images png`, `--image jpeg` | the deck as a PDF (one page per slide, with an outline) or as PNG/JPEG images, with no browser: [go-webengine](https://github.com/go-webengine) renders, [go-pdfkit](https://github.com/go-pdfkit) writes the PDF. [Known limits]({{< relref "cli#images-and-pdf" >}}) apply |
 | `slides expand` | the deck as plain Marp Markdown: templates evaluated, kinds replaced by the spot directives they stand for |
 | `slides notes` | the speaker notes |
 | `slides kinds`, `slides themes` | what a deck can name |
@@ -37,14 +38,12 @@ and anything here may change before then.
 
 ## Planned
 
-Not built yet, and listed so nobody has to guess: **PNG/JPEG** through
-[go-webengine](https://github.com/go-webengine), **PDF** through
-[go-pdfkit](https://github.com/go-pdfkit), **PPTX** through
+Not built yet, and listed so nobody has to guess: **PPTX** through
 [go-ooxml](https://github.com/go-ooxml), **math** through
 [go-tex](https://github.com/go-tex), **code highlighting** through
-[go-rouge](https://github.com/go-rouge). The difference with marp-cli is the
-route: it renders images and PDF by driving a headless Chrome; these would be
-Go libraries.
+[go-rouge](https://github.com/go-rouge), and emoji. The difference with
+marp-cli is the route: it renders images and PDF by driving a headless Chrome;
+here that is done by Go libraries.
 
 ## Pages
 
