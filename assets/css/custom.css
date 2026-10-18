@@ -1,0 +1,36 @@
+/* go-slides branding on Hextra (github.com/go-slides/brand).
+ *
+ * The mark is the document family's indigo, #4F46E5 -> #1E1B4B
+ * (branding/svg/color/go-slides.svg). Hextra derives its whole primary scale
+ * (links, active sidebar entry, buttons) from these three variables.
+ *
+ * Light theme: #4F46E5 = hsl(243 75% 59%), the gradient's light end: 6.29:1 on
+ *              white. The dark end, #1E1B4B, would read as black.
+ * Dark theme:  #9E99F1 = hsl(243 76% 77%), #4F46E5 mixed with 45 % white,
+ *              which is the landing's chipFgDark (landingkit's rule): 7.45:1
+ *              on #111. #4F46E5 itself is 3.0:1 there, under AA. */
+:root {
+  --primary-hue: 243deg;
+  --primary-saturation: 75%;
+  --primary-lightness: 59%;
+}
+.dark {
+  --primary-hue: 243deg;
+  --primary-saturation: 76%;
+  --primary-lightness: 77%;
+}
+
+/* Tables: their headers stand out in the brand colour (white on #4F46E5,
+ * 6.29:1, in both themes) and their text is a size smaller than the prose. */
+.content table { font-size: 0.875em; }
+.content table th { background: #4F46E5; color: #fff; }
+
+/* The version selector's list hangs from its button's right edge, so that it
+ * stays on screen at the end of the navbar. */
+.fs-version-select .hextra-nav-menu-items { left: auto !important; right: 0; transform: none !important; }
+
+/* The outdated-version banner (layouts/_partials/custom/content-begin.html). */
+.nd-outdated { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 0.5rem;
+  border: 1px solid #f59e0b; background: #fffbeb; color: #78350f; }
+.dark .nd-outdated { background: #451a03; color: #fde68a; border-color: #b45309; }
+.nd-outdated a { text-decoration: underline; font-weight: 600; }
