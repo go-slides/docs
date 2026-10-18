@@ -18,11 +18,10 @@ slides, `![bg]` backgrounds, speaker notes, the `default`, `gaia` and
   (`title`, `section`…) instead of repeating how it looks.
 
 {{< callout type="warning" >}}
-**On `main`, not released yet.** The engine and the command are merged in
-[go-slides/slides](https://github.com/go-slides/slides), but no version is
-tagged. These pages describe `main` and are published under `/docs/main/`;
-they will describe the first release, under `/docs/0.1/`, once it is tagged,
-and anything here may change before then.
+**v0.1.0.** The first release of
+[go-slides/slides](https://github.com/go-slides/slides) is
+[tagged](https://github.com/go-slides/slides/releases/tag/v0.1.0). These pages
+describe it and are published under `/docs/0.1/`.
 {{< /callout >}}
 
 ## What it does today

@@ -6,9 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-No version is tagged yet. This page is checked against `slides --help` built
-from `main` after go-slides/slides#4 (2026-10-18); anything here may change
-before the first release.
+This page describes v0.1.0, the first release.
 {{< /callout >}}
 
 ```text
@@ -54,6 +52,8 @@ otherwise.
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
+| `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
+| `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
 
 ## Images and PDF
 
@@ -67,18 +67,15 @@ the fonts the built-in themes ask for (Lato, Roboto Mono) come from
 [go-opentype/fonts](https://github.com/go-opentype/fonts) and are embedded, so
 no render touches the network. There is no Chrome.
 
-{{< callout type="warning" >}}
-Known limits, each tracked in the library it belongs to:
+`--image-scale 2` renders at two device pixels per CSS pixel. Local images are
+refused unless `--allow-local-files` is given, and even then only files under
+the deck's directory are read: a deck from elsewhere cannot reach `~/.ssh`.
+Several and split backgrounds (`![bg left:40%]`) render as Marp's layers do.
 
-- Images are rendered at one device pixel per CSS pixel (1280×720 for 16:9),
-  until go-webengine has a device scale factor.
-- Several or split backgrounds (`![bg left]`) need percentage heights in
-  go-webengine. A single background already renders.
-- Local image files need opt-in `file://` loading in go-webengine. `data:`
-  URIs and `http(s)` images render now.
-- Headings are lighter than with Lato Black: go-opentype/fonts carries one
-  regular instance of Lato and Roboto Mono, so gaia and uncover headings are
-  not as heavy.
+{{< callout type="warning" >}}
+Known limit, tracked in the library it belongs to: headings are lighter than
+with Lato Black. go-opentype/fonts carries one regular instance of Lato and
+Roboto Mono, so gaia and uncover headings are not as heavy.
 {{< /callout >}}
 
 ## `slides.yaml`
