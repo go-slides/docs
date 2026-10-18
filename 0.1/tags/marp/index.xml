@@ -72,5 +72,8 @@ templates escape it. Code blocks and code spans are left alone.&lt;/li&gt;
 directives they stand for, so the expanded deck is plain Marp.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Outputs.&lt;/strong&gt; HTML, PNG, JPEG and PDF, through Go libraries rather than a
 headless browser (see &lt;a href="https://go-slides.github.io/docs/0.1/cli/#images-and-pdf"&gt;Command line&lt;/a&gt; for
-the known limits). PPTX is &lt;strong&gt;planned&lt;/strong&gt;.&lt;/li&gt;
+the known limit). PPTX is &lt;strong&gt;planned&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Math and code.&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; and &lt;code&gt;$$…$$&lt;/code&gt; follow Marp Core&amp;rsquo;s delimiter rules and
+are typeset by go-tex/math; fenced code is highlighted by go-rouge with
+highlight.js class names (see &lt;a href="https://go-slides.github.io/docs/0.1/math-and-code/"&gt;Math and code&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>

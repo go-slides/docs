@@ -180,9 +180,10 @@ Several and split backgrounds (&lt;code&gt;![bg left:40%]&lt;/code&gt;) render a
 &lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Known limit, tracked in the library it belongs to: headings are lighter than
-with Lato Black. go-opentype/fonts carries one regular instance of Lato and
-Roboto Mono, so gaia and uncover headings are not as heavy.&lt;/div&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Known limit: no italic face is embedded yet, so italic text renders upright.
+The heading weight limit of v0.1.0 is gone: Lato Bold and Black and Roboto Mono
+Bold are embedded (on &lt;code&gt;main&lt;/code&gt;, after v0.1.0). See
+&lt;a href="https://go-slides.github.io/docs/0.1/math-and-code/"&gt;Math and code&lt;/a&gt;.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
@@ -211,4 +212,5 @@ data-copied-label="Copied!"
 Data: the file&amp;rsquo;s and the command line&amp;rsquo;s &lt;code&gt;data&lt;/code&gt; override the deck&amp;rsquo;s front
 matter, so one deck can be built with different data.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;Planned&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: PPTX output, math, code highlighting and emoji. When they arrive, they are commands or flags here.&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: PPTX output, emoji and fitting headings (&lt;code&gt;&amp;lt;!-- fit --&amp;gt;&lt;/code&gt;). When
+they arrive, they are commands or flags here.&lt;/p&gt;</description></item></channel></rss>

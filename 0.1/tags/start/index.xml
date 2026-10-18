@@ -90,8 +90,8 @@ data-copied-label="Copied!"
 &lt;/div&gt;
 &lt;p&gt;No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless &lt;code&gt;--allow-local-files&lt;/code&gt; is given. This
-is in v0.1.0, with one known limit (headings lighter than with Lato Black);
-see &lt;a href="https://go-slides.github.io/docs/0.1/cli/#images-and-pdf"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
+is in v0.1.0; on &lt;code&gt;main&lt;/code&gt;, the only known limit is that italic text renders
+upright (no italic face is embedded). See &lt;a href="https://go-slides.github.io/docs/0.1/cli/#images-and-pdf"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="expand-it"&gt;Expand it&lt;span class="hx:absolute hx:-mt-20" id="expand-it"&gt;&lt;/span&gt;
 &lt;a href="#expand-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides expand talk.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
