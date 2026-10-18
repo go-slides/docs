@@ -63,11 +63,14 @@ slides talk.md --images png           # talk.001.png, talk.002.png, …
 slides talk.md --image jpeg           # the first slide only
 slides talk.md -o out/slides.pdf      # the extension picks the format; out/ is created
 slides talk.md --images jpeg --jpeg-quality 90
+slides talk.md --images png --image-scale 2   # 2560×1440 for 16:9
+slides talk.md --pdf --allow-local-files      # images from under the deck's directory
 ```
 
 No browser is involved: go-webengine renders the slides and go-pdfkit writes
-the PDF. This is on `main` with known limits (1× resolution, split
-backgrounds, local image files); see [Command line]({{< relref "cli#images-and-pdf" >}}).
+the PDF. Local images are refused unless `--allow-local-files` is given. This
+is on `main`, with one known limit (headings lighter than with Lato Black);
+see [Command line]({{< relref "cli#images-and-pdf" >}}).
 
 ## Expand it
 
