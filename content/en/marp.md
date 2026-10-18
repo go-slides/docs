@@ -68,4 +68,7 @@ given with `--theme-set` or listed under `themes:` in `slides.yaml`.
   directives they stand for, so the expanded deck is plain Marp.
 - **Outputs.** HTML, PNG, JPEG and PDF, through Go libraries rather than a
   headless browser (see [Command line]({{< relref "cli#images-and-pdf" >}}) for
-  the known limits). PPTX is **planned**.
+  the known limit). PPTX is **planned**.
+- **Math and code.** `$…$` and `$$…$$` follow Marp Core's delimiter rules and
+  are typeset by go-tex/math; fenced code is highlighted by go-rouge with
+  highlight.js class names (see [Math and code]({{< relref "math-and-code" >}})).

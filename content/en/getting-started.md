@@ -69,8 +69,8 @@ slides talk.md --pdf --allow-local-files      # images from under the deck's dir
 
 No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless `--allow-local-files` is given. This
-is in v0.1.0, with one known limit (headings lighter than with Lato Black);
-see [Command line]({{< relref "cli#images-and-pdf" >}}).
+is in v0.1.0; on `main`, the only known limit is that italic text renders
+upright (no italic face is embedded). See [Command line]({{< relref "cli#images-and-pdf" >}}).
 
 ## Expand it
 
