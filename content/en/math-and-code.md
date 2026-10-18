@@ -6,7 +6,7 @@ tags: [math, code]
 ---
 
 {{< callout type="warning" >}}
-This page describes go-slides/slides PR #7, merged on `main` after v0.1.0.
+Math and code are in v0.2.0.
 {{< /callout >}}
 
 ## Math

@@ -66,9 +66,9 @@ given with `--theme-set` or listed under `themes:` in `slides.yaml`.
 - **Kinds.** `kind:` and `_kind:` are directives Marp does not have (see
   [Kinds]({{< relref "kinds" >}})). `slides expand` replaces them with the
   directives they stand for, so the expanded deck is plain Marp.
-- **Outputs.** HTML, PNG, JPEG and PDF, through Go libraries rather than a
-  headless browser (see [Command line]({{< relref "cli#images-and-pdf" >}}) for
-  the known limit). PPTX is **planned**.
+- **Outputs.** HTML, PNG, JPEG, PDF and PPTX, through Go libraries rather than a
+  headless browser (see [Command line]({{< relref "cli#images-pdf-and-pptx" >}}) for
+  the known limit). As in marp-cli, a PPTX holds pictures, not editable text.
 - **Math and code.** `$…$` and `$$…$$` follow Marp Core's delimiter rules and
   are typeset by go-tex/math; fenced code is highlighted by go-rouge with
   highlight.js class names (see [Math and code]({{< relref "math-and-code" >}})).

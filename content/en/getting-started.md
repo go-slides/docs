@@ -14,7 +14,7 @@ go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` is one static Go binary with no cgo: nothing else to install, no
-Node, no Chrome. This page describes v0.1.0.
+Node, no Chrome. This page describes v0.2.0.
 
 ## A first deck
 
@@ -55,7 +55,7 @@ slides -o slides.html talk.md  # or somewhere else; -o - for standard output
 `slides` with no command is `slides build`. Flags may come before or after the
 deck. Open the HTML in a browser; the keyboard moves between slides.
 
-## Export images and PDF
+## Export images, PDF and PPTX
 
 ```sh
 slides talk.md --pdf                  # one page per slide, with an outline
@@ -65,12 +65,14 @@ slides talk.md -o out/slides.pdf      # the extension picks the format; out/ is 
 slides talk.md --images jpeg --jpeg-quality 90
 slides talk.md --images png --image-scale 2   # 2560×1440 for 16:9
 slides talk.md --pdf --allow-local-files      # images from under the deck's directory
+slides talk.md --pptx                         # or -o talk.pptx: one picture per slide, with notes
 ```
 
 No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless `--allow-local-files` is given. This
-is in v0.1.0; on `main`, the only known limit is that italic text renders
-upright (no italic face is embedded). See [Command line]({{< relref "cli#images-and-pdf" >}}).
+The slides of a PPTX are pictures with the speaker notes attached, not
+editable text, as in marp-cli. The only known limit is that italic text renders
+upright (no italic face is embedded). See [Command line]({{< relref "cli#images-pdf-and-pptx" >}}).
 
 ## Expand it
 
