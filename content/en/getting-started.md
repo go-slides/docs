@@ -52,9 +52,8 @@ slides talk.md                 # writes talk.html beside the deck
 slides -o slides.html talk.md  # or somewhere else; -o - for standard output
 ```
 
-`slides` with no command is `slides build`. **Flags come before the deck**:
-`slides talk.md -o x` is refused, as Go's `flag` package stops at the first
-argument. Open the HTML in a browser; the keyboard moves between slides.
+`slides` with no command is `slides build`. Flags may come before or after the
+deck. Open the HTML in a browser; the keyboard moves between slides.
 
 ## Expand it
 
