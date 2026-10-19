@@ -45,6 +45,6 @@ A language go-rouge does not know is written as plain text, as Marp Core does.
 
 ## Fonts
 
-Lato Regular, Bold and Black and Roboto Mono Regular and Bold are embedded, so
-gaia's headings get their weight. No italic face is embedded yet: italic text
-in those families renders upright.
+Lato Regular, Bold, Black and italics and Roboto Mono Regular, Bold and
+italics are embedded, so gaia's headings get their weight and italic text
+renders italic.
