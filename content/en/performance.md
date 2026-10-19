@@ -6,7 +6,7 @@ tags: [performance]
 ---
 
 {{< callout type="info" >}}
-These figures are for the release after v0.2.0, which renders slides
+These figures are for v0.3.0, which renders slides
 concurrently and parses its fonts once
 ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}

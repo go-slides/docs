@@ -6,8 +6,7 @@ tags: [hcl, configuration]
 ---
 
 {{< callout type="warning" >}}
-HCL is on `main` ([go-slides/slides#13](https://github.com/go-slides/slides/pull/13)),
-not in v0.2.0: it arrives with the next release.
+HCL is in v0.3.0 ([go-slides/slides#13](https://github.com/go-slides/slides/pull/13)).
 {{< /callout >}}
 
 Everywhere `slides` reads YAML, it also reads the native syntax of
