@@ -35,7 +35,11 @@ read only when a deck has an emoji.
 
 The images are drawn by the HTML page, by `--images`/`--image`, by `--pdf`, by
 `--pptx` and by `--odp` alike: go-webengine rasterizes the SVG. All 4,009
-graphics parse and draw under its SVG rasterizer; a test checks it.
+graphics parse and draw under its SVG rasterizer; a test checks it. Since
+v0.5.0 that rasterizer is [go-gfx/oksvg](https://github.com/go-gfx/oksvg)
+v0.2.0: `clipPath`, `fill-rule: evenodd` and arc commands now draw as Chrome
+draws them, which changed one Twemoji and 211 others, and SVG logos are no
+longer garbled.
 
 The rule that sizes an emoji to the text (`img[data-marp-twemoji]`, one `em`
 square, aligned with the baseline) is added to the theme as Marp Core adds it,

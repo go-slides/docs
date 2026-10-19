@@ -14,7 +14,7 @@ go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` is one static Go binary with no cgo: nothing else to install, no
-Node, no Chrome. This page describes v0.4.0.
+Node, no Chrome. This page describes v0.5.0.
 
 ## A first deck
 
@@ -71,7 +71,7 @@ slides talk.md --odp                          # or -o talk.odp: the same, as Ope
 
 No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless `--allow-local-files` is given.
-After v0.4.0 the slides of a PPTX or ODP are editable — text boxes, shapes
+Since v0.5.0 the slides of a PPTX or ODP are editable — text boxes, shapes
 and pictures, fonts embedded — where marp-cli's are pictures; `--pptx-raster`
 keeps pictures ([Editable PPTX and ODP]({{< relref "cli#editable-pptx-and-odp" >}})). Since v0.4.0 the PDF is vectors, its text
 selectable (v0.3.0 wrote one image per page). See [Command line]({{< relref "cli#vector-pdf" >}}).

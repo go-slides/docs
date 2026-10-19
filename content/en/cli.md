@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.4.0.
+This page describes v0.5.0.
 {{< /callout >}}
 
 ```text
@@ -53,10 +53,10 @@ otherwise.
 | `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
-| `--pptx` | `build` | write a PowerPoint file with its speaker notes (also chosen by `-o file.pptx`): editable after v0.4.0, one picture per slide in v0.4.0 |
-| `--pptx-raster` | `build` | write a PowerPoint file of one full-slide picture per slide, as marp-cli does (after v0.4.0); `--image-scale` defaults to 2 |
-| `--odp` | `build` | write an OpenDocument presentation with its speaker notes (also chosen by `-o file.odp`): editable after v0.4.0 |
-| `--odp-raster` | `build` | write an OpenDocument presentation of one picture per slide (after v0.4.0) |
+| `--pptx` | `build` | write a PowerPoint file with its speaker notes (also chosen by `-o file.pptx`): editable since v0.5.0, one picture per slide in v0.4.0 |
+| `--pptx-raster` | `build` | write a PowerPoint file of one full-slide picture per slide, as marp-cli does (since v0.5.0); `--image-scale` defaults to 2 |
+| `--odp` | `build` | write an OpenDocument presentation with its speaker notes (also chosen by `-o file.odp`): editable since v0.5.0 |
+| `--odp-raster` | `build` | write an OpenDocument presentation of one picture per slide (since v0.5.0) |
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
 | `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
@@ -79,17 +79,19 @@ the deck's directory are read: a deck from elsewhere cannot reach `~/.ssh`.
 Several and split backgrounds (`![bg left:40%]`) render as Marp's layers do.
 
 `--pptx` writes the deck with [go-ooxml](https://github.com/go-ooxml)'s
-`WritePresentation`: each slide is one full-slide picture, with its speaker
-notes and the deck's metadata. As in marp-cli, the slides are pictures, not
-editable text. The scale defaults to 2 and `--image-scale` overrides it;
-LibreOffice opens the result.
+`WritePresentation`, with the speaker notes and the deck's metadata. Since
+v0.5.0 the slides are editable (below); `--pptx-raster` writes one full-slide
+picture per slide, as marp-cli does, at a scale that defaults to 2 that
+`--image-scale` overrides. LibreOffice opens the result. Only LibreOffice was
+tested; PowerPoint and Keynote were not.
 
-`--odp` writes the same thing as an OpenDocument presentation, through
-go-odf's `WritePresentation`: one picture per slide, with its speaker notes.
+`--odp` writes an OpenDocument presentation, through go-odf's
+`WritePresentation`, with its speaker notes; `--odp-raster` writes one picture
+per slide.
 
 ### Editable PPTX and ODP
 
-After v0.4.0 the slides of a PPTX or an ODP are **editable** — marp-cli's
+Since v0.5.0 the slides of a PPTX or an ODP are **editable** — marp-cli's
 PPTX is one picture a slide, and its experimental `--pptx-editable` converts
 a PDF through LibreOffice. Here each slide is drawn from its layout, the one
 the PNG and PDF exports draw:

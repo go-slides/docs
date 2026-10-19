@@ -6,7 +6,8 @@ tags: [performance]
 ---
 
 {{< callout type="info" >}}
-The vector PDF figures below are for v0.4.0. The first table is for v0.3.0,
+The PPTX figures below are for v0.5.0 and the vector PDF figures for v0.4.0.
+The first table is for v0.3.0,
 the previous release, which renders slides concurrently and parses its fonts
 once ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
@@ -44,6 +45,21 @@ time 0.9 s against 2.7 s.
 The v0.4.0 figures for the 100-slide PDF were measured on 2026-10-19 at 21:29,
 with a 1-minute load average of 7.7, over three rounds: go-slides 306 ms, 758
 KiB and 158 MiB; marp-cli 1,838 ms, 837 KiB and 1,512 MiB.
+
+## Editable PPTX
+
+Since v0.5.0 the PPTX is made of text boxes, shapes and pictures (see
+[Command line]({{< relref "cli#editable-pptx-and-odp" >}})). Measured on
+2026-10-19 at 22:51, with a 1-minute load average of 7.1, over three rounds:
+
+| Deck | go-slides | marp-cli | go-slides size | marp-cli size | go-slides memory | marp-cli memory |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 100 slides | 348 ms | 7,795 ms | 760 KiB | 7.2 MiB | 204 MiB | 1,370 MiB |
+| gaia, 20 slides | 112 ms | 4,608 ms | 893 KiB | 4.8 MiB | | |
+| math and code, 20 slides | 207 ms | 2,780 ms | 842 KiB | 1.5 MiB | | |
+
+For the 100-slide deck, v0.4.0 took 4.7 s, 4.8 MiB and 540 MiB. marp-cli's
+PPTX holds pictures. Most of an editable deck's size is the embedded fonts.
 
 ## Why it is fast
 
