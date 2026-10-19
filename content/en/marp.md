@@ -71,7 +71,9 @@ given with `--theme-set` or listed under `themes:` in `slides.yaml`.
   directives they stand for, so the expanded deck is plain Marp.
 - **Outputs.** HTML, PNG, JPEG, PDF, PPTX and ODP, through Go libraries rather
   than a headless browser (see [Command line]({{< relref "cli#images-pdf-pptx-and-odp" >}})
-  for the known limit). As in marp-cli, a PPTX holds pictures, not editable text.
+  for the known limit). In v0.4.0, as in marp-cli, a PPTX holds pictures; after
+  v0.4.0 its slides are editable text boxes and shapes, `--pptx-raster` keeping
+  the pictures.
 - **Fitting headings.** `# <!-- fit --> Title` is supported: the heading fills
   the slide width on one line, in the page and in every export.
 - **Math and code.** `$…$` and `$$…$$` follow Marp Core's delimiter rules and

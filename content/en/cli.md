@@ -53,8 +53,10 @@ otherwise.
 | `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
-| `--pptx` | `build` | write a PowerPoint file, one full-slide picture per slide with its speaker notes (also chosen by `-o file.pptx`); `--image-scale` defaults to 2 |
-| `--odp` | `build` | write an OpenDocument presentation, one full-slide picture per slide with its speaker notes (also chosen by `-o file.odp`) |
+| `--pptx` | `build` | write a PowerPoint file with its speaker notes (also chosen by `-o file.pptx`): editable after v0.4.0, one picture per slide in v0.4.0 |
+| `--pptx-raster` | `build` | write a PowerPoint file of one full-slide picture per slide, as marp-cli does (after v0.4.0); `--image-scale` defaults to 2 |
+| `--odp` | `build` | write an OpenDocument presentation with its speaker notes (also chosen by `-o file.odp`): editable after v0.4.0 |
+| `--odp-raster` | `build` | write an OpenDocument presentation of one picture per slide (after v0.4.0) |
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
 | `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
@@ -84,6 +86,28 @@ LibreOffice opens the result.
 
 `--odp` writes the same thing as an OpenDocument presentation, through
 go-odf's `WritePresentation`: one picture per slide, with its speaker notes.
+
+### Editable PPTX and ODP
+
+After v0.4.0 the slides of a PPTX or an ODP are **editable** — marp-cli's
+PPTX is one picture a slide, and its experimental `--pptx-editable` converts
+a PDF through LibreOffice. Here each slide is drawn from its layout, the one
+the PNG and PDF exports draw:
+
+- every line of text is a text box at its laid-out position, in the fonts
+  the slide was laid out with — **embedded in the file**, so it looks the
+  same on a machine without Lato or Inter (checked with LibreOffice 25.8) —
+  with bold, italic, colours, letter spacing and clickable links;
+- backgrounds, borders and rounded boxes are shapes; gradients are gradient
+  fills in the PPTX and pictures in the ODP (an ODF gradient has two
+  colours);
+- pictures are stored once, however many slides show them;
+- what a slide cannot express — an element under `opacity`, a `filter`, a
+  blurred shadow, a formula — is a picture of that element, its text kept
+  over it.
+
+Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export's
+pixels. `--pptx-raster` and `--odp-raster` keep one picture a slide.
 
 ### Vector PDF
 
