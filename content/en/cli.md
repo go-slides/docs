@@ -49,7 +49,8 @@ otherwise.
 | `--html` | `build` | allow all raw HTML; by default, Marp Core's allowlist |
 | `--lang code` | `build` | the page's `lang` when the deck sets none |
 | `--bare` | `build` | stack the slides, without the presenting script |
-| `--pdf` | `build` | write a PDF, one page per slide, with an outline (also chosen by `-o file.pdf`) |
+| `--pdf` | `build` | write a PDF, one page per slide, with an outline — text and shapes as vectors (also chosen by `-o file.pdf`) |
+| `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
 | `--pptx` | `build` | write a PowerPoint file, one full-slide picture per slide with its speaker notes (also chosen by `-o file.pptx`); `--image-scale` defaults to 2 |
@@ -84,10 +85,21 @@ LibreOffice opens the result.
 `--odp` writes the same thing as an OpenDocument presentation, through
 go-odf's `WritePresentation`: one picture per slide, with its speaker notes.
 
-{{< callout type="warning" >}}
-Known limit: a PDF holds one image per slide, so it is larger than a vector
-PDF (about 10 MiB against 0.8 MiB for 100 slides, in the v0.3.0 notes).
-{{< /callout >}}
+### Vector PDF
+
+After v0.3.0 the PDF is drawn as vectors: go-webengine paints the laid-out
+slide into the PDF instead of into pixels. The text is text, in the fonts the
+slide was laid out with, subset-embedded with a `/ToUnicode` map — it can be
+selected, searched and copied. Backgrounds, borders and gradients are paths
+and shadings, an image shown on many slides is embedded once, and links are
+clickable. The 100-slide benchmark deck is 758 KiB, against 837 KiB for
+marp-cli and 10 MiB for the image PDF of v0.3.0, and it is written in 0.3 s.
+
+An element with no vector form here — under `opacity` < 1, with a `filter`
+or a rotation, a blurred `box-shadow`, a gradient whose opacity fades — is
+drawn as a bitmap of that element only, its text laid over it invisibly so it
+stays selectable. Formulas are still bitmaps. `--pdf-raster` writes one image
+per page, as v0.3.0 did.
 
 ## `slides.yaml`
 
@@ -110,5 +122,5 @@ matter, so one deck can be built with different data.
 
 ## Planned
 
-Not built yet: a vector PDF (a PDF holds images today). When it arrives, it is
-a command or flag here.
+Not built yet: formulas as vectors in the PDF. When they arrive, they are a
+command or flag here.

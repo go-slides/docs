@@ -72,8 +72,8 @@ slides talk.md --odp                          # or -o talk.odp: the same, as Ope
 No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless `--allow-local-files` is given. The
 slides of a PPTX or ODP are pictures with the speaker notes attached, not
-editable text, as in marp-cli. A PDF holds one image per slide, so it is
-larger than a vector PDF. See [Command line]({{< relref "cli#images-pdf-pptx-and-odp" >}}).
+editable text, as in marp-cli. After v0.3.0 the PDF is vectors, its text
+selectable (v0.3.0 wrote one image per page). See [Command line]({{< relref "cli#vector-pdf" >}}).
 
 ## Expand it
 

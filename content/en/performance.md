@@ -26,6 +26,21 @@ Time is the median wall time; memory is the peak of the whole process tree
 | gaia, 20 slides | PDF | 283 ms | 1.57 s | 154 MiB | 1,315 MiB |
 | math and code, 20 slides | PNG, every slide | 250 ms | 2.32 s | 168 MiB | 1,286 MiB |
 
+## Vector PDF
+
+After v0.3.0 the PDF is drawn as vectors (see
+[Command line]({{< relref "cli#vector-pdf" >}})). Same machine and method,
+2026-10-19:
+
+| Deck | go-slides | marp-cli | v0.3.0 | go-slides size | marp-cli size | v0.3.0 size |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 100 slides | 306 ms | 1,763 ms | 1,147 ms | 758 KiB | 837 KiB | 10.0 MiB |
+| gaia, 20 slides | 93 ms | 1,546 ms | 285 ms | 32 KiB | 66 KiB | 582 KiB |
+| math and code, 20 slides | 140 ms | 1,643 ms | 294 ms | 124 KiB | 335 KiB | 638 KiB |
+
+Memory for the 100-slide PDF: 161 MiB, against 1,509 MiB for marp-cli; CPU
+time 0.9 s against 2.7 s.
+
 ## Why it is fast
 
 - **No browser to start.** marp-cli launches Chrome for every PDF, image and
@@ -39,10 +54,12 @@ Time is the median wall time; memory is the peak of the whole process tree
 
 ## What it does not win
 
-- **PDF size.** Each slide is an image in the PDF, where Chrome prints text
-  and vectors: 10 MiB against 837 KiB for the 100-slide deck.
+- **PDF size, in v0.3.0.** Each slide was an image in the PDF: 10 MiB against
+  837 KiB for the 100-slide deck. The vector PDF above is smaller than
+  marp-cli's.
 - **CPU time on big decks.** Four workers spend more CPU than the wall time
-  shows: 3.2 s against marp-cli's 2.7 s for the 100-slide PDF.
+  shows: in v0.3.0, 3.2 s against marp-cli's 2.7 s for the 100-slide PDF
+  (0.9 s for the vector PDF).
 - **Memory is an upper bound for marp-cli**: Chrome's processes share pages
   that the sum counts in each. Its largest single process is 220–320 MiB.
 
