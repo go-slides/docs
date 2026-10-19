@@ -75,7 +75,9 @@ templates escape it. Code blocks and code spans are left alone.&lt;/li&gt;
 directives they stand for, so the expanded deck is plain Marp.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Outputs.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX and ODP, through Go libraries rather
 than a headless browser (see &lt;a href="https://go-slides.github.io/docs/0.4/cli/#images-pdf-pptx-and-odp"&gt;Command line&lt;/a&gt;
-for the known limit). As in marp-cli, a PPTX holds pictures, not editable text.&lt;/li&gt;
+for the known limit). In v0.4.0, as in marp-cli, a PPTX holds pictures; after
+v0.4.0 its slides are editable text boxes and shapes, &lt;code&gt;--pptx-raster&lt;/code&gt; keeping
+the pictures.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Fitting headings.&lt;/strong&gt; &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt; is supported: the heading fills
 the slide width on one line, in the page and in every export.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Math and code.&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; and &lt;code&gt;$$…$$&lt;/code&gt; follow Marp Core&amp;rsquo;s delimiter rules and

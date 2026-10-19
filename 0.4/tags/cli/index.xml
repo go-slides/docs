@@ -160,12 +160,22 @@ otherwise.&lt;/p&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--pptx&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;write a PowerPoint file, one full-slide picture per slide with its speaker notes (also chosen by &lt;code&gt;-o file.pptx&lt;/code&gt;); &lt;code&gt;--image-scale&lt;/code&gt; defaults to 2&lt;/td&gt;
+&lt;td&gt;write a PowerPoint file with its speaker notes (also chosen by &lt;code&gt;-o file.pptx&lt;/code&gt;): editable after v0.4.0, one picture per slide in v0.4.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write a PowerPoint file of one full-slide picture per slide, as marp-cli does (after v0.4.0); &lt;code&gt;--image-scale&lt;/code&gt; defaults to 2&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--odp&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;write an OpenDocument presentation, one full-slide picture per slide with its speaker notes (also chosen by &lt;code&gt;-o file.odp&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;write an OpenDocument presentation with its speaker notes (also chosen by &lt;code&gt;-o file.odp&lt;/code&gt;): editable after v0.4.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write an OpenDocument presentation of one picture per slide (after v0.4.0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--jpeg-quality n&lt;/code&gt;&lt;/td&gt;
@@ -204,6 +214,26 @@ editable text. The scale defaults to 2 and &lt;code&gt;--image-scale&lt;/code&gt
 LibreOffice opens the result.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;--odp&lt;/code&gt; writes the same thing as an OpenDocument presentation, through
 go-odf&amp;rsquo;s &lt;code&gt;WritePresentation&lt;/code&gt;: one picture per slide, with its speaker notes.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="editable-pptx-and-odp"&gt;Editable PPTX and ODP&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx-and-odp" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.4.0 the slides of a PPTX or an ODP are &lt;strong&gt;editable&lt;/strong&gt; — marp-cli&amp;rsquo;s
+PPTX is one picture a slide, and its experimental &lt;code&gt;--pptx-editable&lt;/code&gt; converts
+a PDF through LibreOffice. Here each slide is drawn from its layout, the one
+the PNG and PDF exports draw:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;every line of text is a text box at its laid-out position, in the fonts
+the slide was laid out with — &lt;strong&gt;embedded in the file&lt;/strong&gt;, so it looks the
+same on a machine without Lato or Inter (checked with LibreOffice 25.8) —
+with bold, italic, colours, letter spacing and clickable links;&lt;/li&gt;
+&lt;li&gt;backgrounds, borders and rounded boxes are shapes; gradients are gradient
+fills in the PPTX and pictures in the ODP (an ODF gradient has two
+colours);&lt;/li&gt;
+&lt;li&gt;pictures are stored once, however many slides show them;&lt;/li&gt;
+&lt;li&gt;what a slide cannot express — an element under &lt;code&gt;opacity&lt;/code&gt;, a &lt;code&gt;filter&lt;/code&gt;, a
+blurred shadow, a formula — is a picture of that element, its text kept
+over it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export&amp;rsquo;s
+pixels. &lt;code&gt;--pptx-raster&lt;/code&gt; and &lt;code&gt;--odp-raster&lt;/code&gt; keep one picture a slide.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;Vector PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Since v0.4.0 the PDF is drawn as vectors: go-webengine paints the laid-out
 slide into the PDF instead of into pixels. The text is text, in the fonts the
