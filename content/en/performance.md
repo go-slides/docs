@@ -6,9 +6,9 @@ tags: [performance]
 ---
 
 {{< callout type="info" >}}
-These figures are for v0.3.0, which renders slides
-concurrently and parses its fonts once
-([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
+The vector PDF figures below are for v0.4.0. The first table is for v0.3.0,
+the previous release, which renders slides concurrently and parses its fonts
+once ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
 go-slides and [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 were
@@ -28,7 +28,7 @@ Time is the median wall time; memory is the peak of the whole process tree
 
 ## Vector PDF
 
-After v0.3.0 the PDF is drawn as vectors (see
+In v0.4.0 the PDF is drawn as vectors (see
 [Command line]({{< relref "cli#vector-pdf" >}})). Same machine and method,
 2026-10-19:
 
@@ -38,8 +38,12 @@ After v0.3.0 the PDF is drawn as vectors (see
 | gaia, 20 slides | 93 ms | 1,546 ms | 285 ms | 32 KiB | 66 KiB | 582 KiB |
 | math and code, 20 slides | 140 ms | 1,643 ms | 294 ms | 124 KiB | 335 KiB | 638 KiB |
 
-Memory for the 100-slide PDF: 161 MiB, against 1,509 MiB for marp-cli; CPU
+Memory for the 100-slide PDF: 158 MiB, against 1,512 MiB for marp-cli; CPU
 time 0.9 s against 2.7 s.
+
+The v0.4.0 figures for the 100-slide PDF were measured on 2026-10-19 at 21:29,
+with a 1-minute load average of 7.7, over three rounds: go-slides 306 ms, 758
+KiB and 158 MiB; marp-cli 1,838 ms, 837 KiB and 1,512 MiB.
 
 ## Why it is fast
 
