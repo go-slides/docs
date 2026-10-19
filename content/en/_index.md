@@ -35,6 +35,7 @@ and are published under `/docs/0.2/`.
 | `slides notes` | the speaker notes |
 | `slides kinds`, `slides themes` | what a deck can name |
 | `slides.yaml` | shared kinds, themes, data, HTML policy and language for a folder of decks |
+| HCL (on `main`) | `---hcl` front matter, `slides.hcl`, kinds and data files in HCL2, with expressions and functions: [HCL]({{< relref "hcl" >}}) |
 
 ## Planned
 
@@ -49,5 +50,6 @@ here that is done by Go libraries.
 - [Marp compatibility]({{< relref "marp" >}})
 - [Templates]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})
+- [HCL]({{< relref "hcl" >}})
 - [Math and code]({{< relref "math-and-code" >}})
 - [Command line]({{< relref "cli" >}})
