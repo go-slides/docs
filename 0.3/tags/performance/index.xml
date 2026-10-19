@@ -74,6 +74,54 @@ Time is the median wall time; memory is the peak of the whole process tree
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 data-hextra-search-id="vector-pdf"&gt;Vector PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After v0.3.0 the PDF is drawn as vectors (see
+&lt;a href="https://go-slides.github.io/docs/0.3/cli/#vector-pdf"&gt;Command line&lt;/a&gt;). Same machine and method,
+2026-10-19:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Deck&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides size&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli size&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0 size&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 slides&lt;/td&gt;
+&lt;td style="text-align: right"&gt;306 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,763 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,147 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;758 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;837 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;10.0 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 slides&lt;/td&gt;
+&lt;td style="text-align: right"&gt;93 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,546 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;285 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;32 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;66 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;582 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;math and code, 20 slides&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,643 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;294 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;124 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;335 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;638 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Memory for the 100-slide PDF: 161 MiB, against 1,509 MiB for marp-cli; CPU
+time 0.9 s against 2.7 s.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="why-it-is-fast"&gt;Why it is fast&lt;span class="hx:absolute hx:-mt-20" id="why-it-is-fast"&gt;&lt;/span&gt;
 &lt;a href="#why-it-is-fast" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;No browser to start.&lt;/strong&gt; marp-cli launches Chrome for every PDF, image and
@@ -87,10 +135,12 @@ images.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="what-it-does-not-win"&gt;What it does not win&lt;span class="hx:absolute hx:-mt-20" id="what-it-does-not-win"&gt;&lt;/span&gt;
 &lt;a href="#what-it-does-not-win" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;PDF size.&lt;/strong&gt; Each slide is an image in the PDF, where Chrome prints text
-and vectors: 10 MiB against 837 KiB for the 100-slide deck.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF size, in v0.3.0.&lt;/strong&gt; Each slide was an image in the PDF: 10 MiB against
+837 KiB for the 100-slide deck. The vector PDF above is smaller than
+marp-cli&amp;rsquo;s.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CPU time on big decks.&lt;/strong&gt; Four workers spend more CPU than the wall time
-shows: 3.2 s against marp-cli&amp;rsquo;s 2.7 s for the 100-slide PDF.&lt;/li&gt;
+shows: in v0.3.0, 3.2 s against marp-cli&amp;rsquo;s 2.7 s for the 100-slide PDF
+(0.9 s for the vector PDF).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Memory is an upper bound for marp-cli&lt;/strong&gt;: Chrome&amp;rsquo;s processes share pages
 that the sum counts in each. Its largest single process is 220–320 MiB.&lt;/li&gt;
 &lt;/ul&gt;

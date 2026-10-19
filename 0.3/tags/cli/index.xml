@@ -140,7 +140,12 @@ otherwise.&lt;/p&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--pdf&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;write a PDF, one page per slide, with an outline (also chosen by &lt;code&gt;-o file.pdf&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;write a PDF, one page per slide, with an outline — text and shapes as vectors (also chosen by &lt;code&gt;-o file.pdf&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write the PDF with each page one image of the slide, as v0.3.0 did&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--images png|jpeg&lt;/code&gt;&lt;/td&gt;
@@ -199,13 +204,19 @@ editable text. The scale defaults to 2 and &lt;code&gt;--image-scale&lt;/code&gt
 LibreOffice opens the result.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;--odp&lt;/code&gt; writes the same thing as an OpenDocument presentation, through
 go-odf&amp;rsquo;s &lt;code&gt;WritePresentation&lt;/code&gt;: one picture per slide, with its speaker notes.&lt;/p&gt;
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Known limit: a PDF holds one image per slide, so it is larger than a vector
-PDF (about 10 MiB against 0.8 MiB for 100 slides, in the v0.3.0 notes).&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;h3 data-hextra-search-id="vector-pdf"&gt;Vector PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.3.0 the PDF is drawn as vectors: go-webengine paints the laid-out
+slide into the PDF instead of into pixels. The text is text, in the fonts the
+slide was laid out with, subset-embedded with a &lt;code&gt;/ToUnicode&lt;/code&gt; map — it can be
+selected, searched and copied. Backgrounds, borders and gradients are paths
+and shadings, an image shown on many slides is embedded once, and links are
+clickable. The 100-slide benchmark deck is 758 KiB, against 837 KiB for
+marp-cli and 10 MiB for the image PDF of v0.3.0, and it is written in 0.3 s.&lt;/p&gt;
+&lt;p&gt;An element with no vector form here — under &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, with a &lt;code&gt;filter&lt;/code&gt;
+or a rotation, a blurred &lt;code&gt;box-shadow&lt;/code&gt;, a gradient whose opacity fades — is
+drawn as a bitmap of that element only, its text laid over it invisibly so it
+stays selectable. Formulas are still bitmaps. &lt;code&gt;--pdf-raster&lt;/code&gt; writes one image
+per page, as v0.3.0 did.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
 &lt;a href="#slidesyaml" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A configuration file next to the deck applies to it, so a folder of decks
 shares one:&lt;/p&gt;
@@ -232,5 +243,5 @@ data-copied-label="Copied!"
 Data: the file&amp;rsquo;s and the command line&amp;rsquo;s &lt;code&gt;data&lt;/code&gt; override the deck&amp;rsquo;s front
 matter, so one deck can be built with different data.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;Planned&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: a vector PDF (a PDF holds images today). When it arrives, it is
-a command or flag here.&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: formulas as vectors in the PDF. When they arrive, they are a
+command or flag here.&lt;/p&gt;</description></item></channel></rss>

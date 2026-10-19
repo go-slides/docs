@@ -93,8 +93,8 @@ data-copied-label="Copied!"
 &lt;p&gt;No browser is involved: go-webengine renders the slides and go-pdfkit writes
 the PDF. Local images are refused unless &lt;code&gt;--allow-local-files&lt;/code&gt; is given. The
 slides of a PPTX or ODP are pictures with the speaker notes attached, not
-editable text, as in marp-cli. A PDF holds one image per slide, so it is
-larger than a vector PDF. See &lt;a href="https://go-slides.github.io/docs/0.3/cli/#images-pdf-pptx-and-odp"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
+editable text, as in marp-cli. After v0.3.0 the PDF is vectors, its text
+selectable (v0.3.0 wrote one image per page). See &lt;a href="https://go-slides.github.io/docs/0.3/cli/#vector-pdf"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="expand-it"&gt;Expand it&lt;span class="hx:absolute hx:-mt-20" id="expand-it"&gt;&lt;/span&gt;
 &lt;a href="#expand-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides expand talk.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
