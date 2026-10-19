@@ -118,6 +118,11 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-emoji&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;all&lt;/td&gt;
+&lt;td&gt;leave &lt;code&gt;:shortcodes:&lt;/code&gt; and Unicode emoji as text instead of drawing them as images (after v0.3.0: &lt;a href="https://go-slides.github.io/docs/0.3/emoji/"&gt;Emoji&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--html&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;allow all raw HTML; by default, Marp Core&amp;rsquo;s allowlist&lt;/td&gt;
@@ -227,5 +232,5 @@ data-copied-label="Copied!"
 Data: the file&amp;rsquo;s and the command line&amp;rsquo;s &lt;code&gt;data&lt;/code&gt; override the deck&amp;rsquo;s front
 matter, so one deck can be built with different data.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;Planned&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: emoji, and a vector PDF (a PDF holds images today). When
-they arrive, they are commands or flags here.&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: a vector PDF (a PDF holds images today). When it arrives, it is
+a command or flag here.&lt;/p&gt;</description></item></channel></rss>

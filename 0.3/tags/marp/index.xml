@@ -56,6 +56,9 @@ read as Marp reads them.&lt;/p&gt;
 as in Marp.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;: CSS for one slide only.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Raw HTML&lt;/strong&gt;: Marp Core&amp;rsquo;s allowlist by default; &lt;code&gt;--html&lt;/code&gt; allows all of it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emoji&lt;/strong&gt;: &lt;code&gt;:shortcodes:&lt;/code&gt; and Unicode emoji become Twemoji images, as in
+Marp Core, but embedded instead of loaded from a CDN: see
+&lt;a href="https://go-slides.github.io/docs/0.3/emoji/"&gt;Emoji&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="themes"&gt;Themes&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
 &lt;a href="#themes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; and &lt;code&gt;uncover&lt;/code&gt; are built in, selected with &lt;code&gt;theme:&lt;/code&gt;. A
