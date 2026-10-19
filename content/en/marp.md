@@ -50,6 +50,9 @@ read as Marp reads them.
   as in Marp.
 - **`<style scoped>`**: CSS for one slide only.
 - **Raw HTML**: Marp Core's allowlist by default; `--html` allows all of it.
+- **Emoji**: `:shortcodes:` and Unicode emoji become Twemoji images, as in
+  Marp Core, but embedded instead of loaded from a CDN: see
+  [Emoji]({{< relref "emoji" >}}).
 
 ## Themes
 

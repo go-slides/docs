@@ -30,6 +30,7 @@ and are published under `/docs/0.3/`.
 | `slides build` (the default) | the deck as one HTML page: each slide an SVG-framed `<section>` that scales to the window, the theme's CSS, a keyboard viewer |
 | `slides build --pdf`, `--images png`, `--image jpeg` | the deck as a PDF (one page per slide, with an outline) or as PNG/JPEG images, with no browser: [go-webengine](https://github.com/go-webengine) renders, [go-pdfkit](https://github.com/go-pdfkit) writes the PDF. [Known limit]({{< relref "cli#images-pdf-pptx-and-odp" >}}) applies |
 | math and code | `$…$` and `$$…$$` typeset by go-tex/math, fenced code highlighted by go-rouge, in HTML, images and PDF: [Math and code]({{< relref "math-and-code" >}}) |
+| emoji | `:smile:` and 😄 become Twemoji images, embedded, so they need no network and draw in every output: [Emoji]({{< relref "emoji" >}}) (after v0.3.0) |
 | `slides build --pptx` | the deck as a PowerPoint file: one full-slide picture per slide, with its speaker notes and the deck's metadata (not editable text, as in marp-cli) |
 | `slides build --odp` | the same as an OpenDocument presentation (`.odp`) |
 | fitting headings | `# <!-- fit --> Title` fills the slide width on one line, in the page and in every export |
@@ -41,8 +42,8 @@ and are published under `/docs/0.3/`.
 
 ## Planned
 
-Not built yet, and listed so nobody has to guess: emoji, and a vector PDF (a
-PDF holds one image per slide today). The difference with
+Not built yet, and listed so nobody has to guess: a vector PDF (a PDF holds
+one image per slide today). The difference with
 marp-cli is the route: it renders images and PDF by driving a headless Chrome;
 here that is done by Go libraries.
 
@@ -54,4 +55,5 @@ here that is done by Go libraries.
 - [Kinds]({{< relref "kinds" >}})
 - [HCL]({{< relref "hcl" >}})
 - [Math and code]({{< relref "math-and-code" >}})
+- [Emoji]({{< relref "emoji" >}})
 - [Command line]({{< relref "cli" >}})

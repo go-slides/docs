@@ -45,6 +45,7 @@ otherwise.
 | `--set key=value` | all | one template value (repeatable) |
 | `--no-template` | all | do not expand Go templates |
 | `--strict-yaml` | all | parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely) |
+| `--no-emoji` | all | leave `:shortcodes:` and Unicode emoji as text instead of drawing them as images (after v0.3.0: [Emoji]({{< relref "emoji" >}})) |
 | `--html` | `build` | allow all raw HTML; by default, Marp Core's allowlist |
 | `--lang code` | `build` | the page's `lang` when the deck sets none |
 | `--bare` | `build` | stack the slides, without the presenting script |
@@ -109,5 +110,5 @@ matter, so one deck can be built with different data.
 
 ## Planned
 
-Not built yet: emoji, and a vector PDF (a PDF holds images today). When
-they arrive, they are commands or flags here.
+Not built yet: a vector PDF (a PDF holds images today). When it arrives, it is
+a command or flag here.
