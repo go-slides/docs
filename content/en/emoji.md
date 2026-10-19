@@ -6,7 +6,7 @@ tags: [emoji]
 ---
 
 {{< callout type="warning" >}}
-Emoji are not in v0.3.0: they arrive with the release after it.
+Emoji are in v0.4.0; v0.3.0 had none.
 {{< /callout >}}
 
 Write an emoji as a shortcode or as the character itself:

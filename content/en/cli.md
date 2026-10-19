@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.3.0.
+This page describes v0.4.0.
 {{< /callout >}}
 
 ```text
@@ -45,7 +45,7 @@ otherwise.
 | `--set key=value` | all | one template value (repeatable) |
 | `--no-template` | all | do not expand Go templates |
 | `--strict-yaml` | all | parse directives as strict YAML, as plain Marpit does (Marp Core parses them loosely) |
-| `--no-emoji` | all | leave `:shortcodes:` and Unicode emoji as text instead of drawing them as images (after v0.3.0: [Emoji]({{< relref "emoji" >}})) |
+| `--no-emoji` | all | leave `:shortcodes:` and Unicode emoji as text instead of drawing them as images (since v0.4.0: [Emoji]({{< relref "emoji" >}})) |
 | `--html` | `build` | allow all raw HTML; by default, Marp Core's allowlist |
 | `--lang code` | `build` | the page's `lang` when the deck sets none |
 | `--bare` | `build` | stack the slides, without the presenting script |
@@ -87,7 +87,7 @@ go-odf's `WritePresentation`: one picture per slide, with its speaker notes.
 
 ### Vector PDF
 
-After v0.3.0 the PDF is drawn as vectors: go-webengine paints the laid-out
+Since v0.4.0 the PDF is drawn as vectors: go-webengine paints the laid-out
 slide into the PDF instead of into pixels. The text is text, in the fonts the
 slide was laid out with, subset-embedded with a `/ToUnicode` map — it can be
 selected, searched and copied. Backgrounds, borders and gradients are paths
