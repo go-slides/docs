@@ -78,6 +78,16 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;output file; &lt;code&gt;-&lt;/code&gt; for standard output&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-I&lt;/code&gt;, &lt;code&gt;--input-dir dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;convert the Markdown files under &lt;code&gt;dir&lt;/code&gt;, recursively (after v0.5.0); see below&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-P&lt;/code&gt;, &lt;code&gt;--parallel n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;decks built at once (after v0.5.0): 5 by default, at most the number of cores; 1 builds them one after the other&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--config file&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;all&lt;/td&gt;
 &lt;td&gt;configuration file; by default &lt;code&gt;slides.yaml&lt;/code&gt; next to the deck, if there is one&lt;/td&gt;
@@ -219,6 +229,23 @@ otherwise.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 data-hextra-search-id="several-decks-and-a-directory"&gt;Several decks, and a directory&lt;span class="hx:absolute hx:-mt-20" id="several-decks-and-a-directory"&gt;&lt;/span&gt;
+&lt;a href="#several-decks-and-a-directory" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After v0.5.0 &lt;code&gt;build&lt;/code&gt; takes several decks, a directory (the decks under it,
+found recursively) or a pattern, and builds up to &lt;code&gt;--parallel&lt;/code&gt; of them at once.
+&lt;code&gt;-&lt;/code&gt; is standard input; unlike marp-cli, a pipe is not read unless &lt;code&gt;-&lt;/code&gt; says so.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-I dir&lt;/code&gt;&lt;/strong&gt; finds the Markdown files (&lt;code&gt;.md&lt;/code&gt;, &lt;code&gt;.mdown&lt;/code&gt;, &lt;code&gt;.markdown&lt;/code&gt;,
+&lt;code&gt;.markdn&lt;/code&gt;, in lower case) under &lt;code&gt;dir&lt;/code&gt;, as marp-cli does: &lt;code&gt;node_modules&lt;/code&gt; and
+dot directories are not looked in. With &lt;code&gt;-o out&lt;/code&gt;, each deck is written at its
+path under &lt;code&gt;dir&lt;/code&gt;, mirrored under &lt;code&gt;out&lt;/code&gt;: &lt;code&gt;dir/sub/b.md&lt;/code&gt; gives
+&lt;code&gt;out/sub/b.html&lt;/code&gt; (&lt;code&gt;b.pdf&lt;/code&gt;, &lt;code&gt;b.001.png&lt;/code&gt;, &lt;code&gt;b.txt&lt;/code&gt;, … whatever the flags say).
+Without &lt;code&gt;-o&lt;/code&gt; the outputs go next to their decks. Naming decks as well as
+&lt;code&gt;-I&lt;/code&gt; is an error, and so is &lt;code&gt;-o file&lt;/code&gt; for several decks (&lt;code&gt;-o -&lt;/code&gt; is allowed).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-P n&lt;/code&gt;&lt;/strong&gt; builds &lt;code&gt;n&lt;/code&gt; decks at once. A deck&amp;rsquo;s own rendering already uses the
+cores, so &lt;code&gt;n&lt;/code&gt; is capped by their number; with &lt;code&gt;-o -&lt;/code&gt; decks are built one after
+the other. The messages of a deck stay together, and a deck that fails does not
+stop the others: the exit status is 1 and the message lists the failures.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;Page metadata&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The command line wins over the deck, as in marp-cli, where the flags are
 appended to the deck as one last directive comment. Rules read from marp-cli
