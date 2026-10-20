@@ -51,8 +51,10 @@ is stopped.
 
 ## Size and speed
 
-The module is 8.7 MiB as GitHub Pages serves it (gzip), downloaded once with
-a progress bar and kept in the browser's cache until the next release. On
-an Apple M4 Max with Chrome 155, it starts in a quarter of a second once
-downloaded. A change to the 100-slide benchmark deck reaches the preview in
-70–100 ms, 35 ms of which is go-slides rendering it.
+The module is 8.8 MiB as GitHub Pages serves it (gzip; Pages does not
+serve brotli). It is downloaded once with a progress bar, then cached by the
+browser until the next deploy. On an Apple M4 Max with Chrome 155, measured
+against the live page, the editor is ready 2.1 s after the page opens, 1.5 s
+of which is the download, and the first slides appear at 2.4 s. A change to
+the 100-slide benchmark deck reaches the preview in about 70 ms, 37 ms of
+which is go-slides rendering it.
