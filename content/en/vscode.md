@@ -7,8 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 The extension is [go-slides/vscode](https://github.com/go-slides/vscode),
-versioned on its own (v0.1.0). It renders with go-slides in v0.6.0 (the
-`editor` package). It is installed from the `.vsix` attached to its GitHub
+versioned on its own (v0.2.0). It renders with go-slides in v0.6.0 (the
+`editor` package), plus the source lines of scroll sync, which come after
+v0.6.0. It is installed from the `.vsix` attached to its GitHub
 release: it is not on the VS Code Marketplace or Open VSX yet.
 {{< /callout >}}
 
@@ -24,7 +25,7 @@ Download `go-slides-<version>.vsix` from the
 *Extensions: Install from VSIX...*, or:
 
 ```sh
-code --install-extension go-slides-0.1.0.vsix
+code --install-extension go-slides-0.2.0.vsix
 ```
 
 The preview needs nothing else. Exporting needs the `slides` command:
@@ -65,6 +66,20 @@ what the deck uses from the workspace — `slides.yaml` or `slides.hcl` next to
 the deck, the [kinds]({{< relref "kinds" >}}) files they name, files a
 [template]({{< relref "templates" >}}) includes, theme CSS — and only from the
 deck's workspace folder.
+
+## Scroll sync
+
+Since v0.2.0 of the extension (go-slides after v0.6.0), the editor and the
+preview scroll together, both ways, as they do for plain Markdown: the
+preview follows the slide and the block under the editor's cursor, and
+scrolling the preview moves the editor. The settings are VS Code's own,
+`markdown.preview.scrollPreviewWithEditor` and
+`markdown.preview.scrollEditorWithPreview`.
+
+Lines are traced through templates. A slide that a `{{ range }}` generates
+follows the line of its template, and what an `{{ include }}` brings in
+follows the include's line. A deck split by `headingDivider` syncs on its
+headings.
 
 ## Problems, completion, hover
 
