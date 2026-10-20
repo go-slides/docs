@@ -51,6 +51,9 @@ otherwise.
 | `--bare` | `build` | stack the slides, without the presenting script |
 | `--pdf` | `build` | write a PDF, one page per slide, with an outline — text and shapes as vectors (also chosen by `-o file.pdf`) |
 | `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
+| `--notes` | `build` | write the speaker notes as a text file, slides separated by `---` as marp-cli does (after v0.5.0; also chosen by `-o file.txt`). The `notes` command prints them in another layout |
+| `--pdf-notes` | `build` | add each slide's speaker notes to its PDF page as a note annotation, as marp-cli does (after v0.5.0). Asks for a PDF when nothing else says what to write |
+| `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | the PDF's bookmarks (after v0.5.0): "Page N" per slide and the headings nested under it. On by default here, unlike marp-cli; `=false` turns one off. See below |
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
 | `--pptx` | `build` | write a PowerPoint file with its speaker notes (also chosen by `-o file.pptx`): editable since v0.5.0, one picture per slide in v0.4.0 |
@@ -85,6 +88,24 @@ appended to the deck as one last directive comment. Rules read from marp-cli
 `-o` with a `.pdf`, `.pptx`, `.odp`, `.png` or `.jpg` extension picks the format, as marp-cli
 does. Output directories are created. A PDF has one page per slide, at the
 slide's size, and an outline of the slides and their headings.
+
+### PDF notes and outline
+
+After v0.5.0 the PDF takes marp-cli's two options, and they are compared with
+the PDFs marp-cli 4.5.1 writes for the same deck:
+
+- `--pdf-notes` puts each slide's speaker notes on its page as a note
+  annotation: a yellow Note icon at the bottom left whose contents are the
+  notes (several comments joined by a blank line) and whose title is the deck's
+  `author`. `--pdf-notes` alone asks for a PDF, as in marp-cli.
+- The outline holds a bold bookmark "Page N" per slide and, under it, the
+  slide's headings nested by level (`--pdf-outlines.pages` and
+  `--pdf-outlines.headings` choose the two). **The outline is on by default
+  here and off in marp-cli.** `slides` has always written one; it costs a few
+  hundred bytes and makes a long deck navigable, so the default stays.
+  `--pdf-outlines=false`, or marp-cli's `--no-pdf-outlines`, turns it off, and
+  `=false` on `.pages` or `.headings` drops that part. A heading bookmark jumps
+  to its slide; marp-cli also scrolls to the heading.
 
 Rendering is done by [go-webengine](https://github.com/go-webengine/engine)
 and the PDF is written by [go-pdfkit](https://github.com/go-pdfkit/pdfkit);
