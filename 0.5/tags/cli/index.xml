@@ -108,6 +108,31 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;the address &lt;code&gt;--server&lt;/code&gt; listens on, &lt;code&gt;127.0.0.1&lt;/code&gt; by default (after v0.5.0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the HTML page&amp;rsquo;s template (after v0.5.0): &lt;code&gt;bespoke&lt;/code&gt;, the default, with the presenting script, on-screen controller and transitions, or &lt;code&gt;bare&lt;/code&gt;, the slides stacked (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bespoke.osc&lt;/code&gt;, &lt;code&gt;--bespoke.progress&lt;/code&gt;, &lt;code&gt;--bespoke.transition&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the bespoke template&amp;rsquo;s options, with marp-cli&amp;rsquo;s defaults (after v0.5.0): controller on, &lt;strong&gt;progress bar off&lt;/strong&gt; (it was always drawn before), transitions on; &lt;code&gt;--bespoke.osc=false&lt;/code&gt; turns one off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--config-file file&lt;/code&gt;, &lt;code&gt;--no-config-file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;marp-cli&amp;rsquo;s configuration file, JSON or YAML (after v0.5.0); see below. &lt;code&gt;--config&lt;/code&gt; is &lt;code&gt;slides&lt;/code&gt;&amp;rsquo; own file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--browser&lt;/code&gt;, &lt;code&gt;--browser-path&lt;/code&gt;, &lt;code&gt;--browser-protocol&lt;/code&gt;, &lt;code&gt;--browser-timeout&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;accepted and ignored with a warning (after v0.5.0): there is no browser&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-editable&lt;/code&gt;, &lt;code&gt;--no-parallel&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;marp-cli&amp;rsquo;s spellings of &lt;code&gt;--pptx&lt;/code&gt; and &lt;code&gt;-P 1&lt;/code&gt; (after v0.5.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--config file&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;all&lt;/td&gt;
 &lt;td&gt;configuration file; by default &lt;code&gt;slides.yaml&lt;/code&gt; next to the deck, if there is one&lt;/td&gt;
@@ -266,6 +291,42 @@ cores, so &lt;code&gt;n&lt;/code&gt; is capped by their number; with &lt;code&gt
 the other. The messages of a deck stay together, and a deck that fails does not
 stop the others: the exit status is 1 and the message lists the failures.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 data-hextra-search-id="transitions-and-the-presenting-page"&gt;Transitions and the presenting page&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-the-presenting-page"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-the-presenting-page" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After v0.5.0 the &lt;code&gt;transition&lt;/code&gt; directive of marp-cli works: &lt;code&gt;&amp;lt;!-- transition: fade 1s --&amp;gt;&lt;/code&gt;, a name and an optional duration, for the slide and the ones after
+it, or &lt;code&gt;&amp;lt;!-- _transition: cover --&amp;gt;&lt;/code&gt; for one. The built-in names are marp-cli&amp;rsquo;s:
+&lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;counterclockwise&lt;/code&gt;, &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;coverflow&lt;/code&gt;, &lt;code&gt;cube&lt;/code&gt;, &lt;code&gt;cylinder&lt;/code&gt;,
+&lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;drop&lt;/code&gt;, &lt;code&gt;explode&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;fade-out&lt;/code&gt;, &lt;code&gt;fall&lt;/code&gt;, &lt;code&gt;flip&lt;/code&gt;, &lt;code&gt;glow&lt;/code&gt;,
+&lt;code&gt;implode&lt;/code&gt;, &lt;code&gt;in-out&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;iris-out&lt;/code&gt;, &lt;code&gt;melt&lt;/code&gt;, &lt;code&gt;overlap&lt;/code&gt;, &lt;code&gt;pivot&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;,
+&lt;code&gt;push&lt;/code&gt;, &lt;code&gt;reveal&lt;/code&gt;, &lt;code&gt;rotate&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;star&lt;/code&gt;, &lt;code&gt;swap&lt;/code&gt;, &lt;code&gt;swipe&lt;/code&gt;, &lt;code&gt;swoosh&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;,
+&lt;code&gt;wiper&lt;/code&gt; and &lt;code&gt;zoom&lt;/code&gt;; &lt;code&gt;none&lt;/code&gt; turns it off. The page plays it with the browser&amp;rsquo;s
+&lt;strong&gt;View Transition API&lt;/strong&gt; when the viewer leaves the slide that has it, forwards,
+and when it comes back to it; browsers without the API change slides as before,
+and a viewer who asks for reduced motion gets a plain fade. A theme can bring
+keyframes of its own, named &lt;code&gt;marp-transition-NAME&lt;/code&gt; (or &lt;code&gt;marp-outgoing-&lt;/code&gt; and
+&lt;code&gt;marp-incoming-&lt;/code&gt;, and &lt;code&gt;-backward&lt;/code&gt;), which are used before the built-in ones.&lt;/p&gt;
+&lt;p&gt;The page has the &lt;strong&gt;on-screen controller&lt;/strong&gt; — previous, page, next, full screen —
+which shows when the pointer or a key moves and hides after a moment
+(&lt;code&gt;--bespoke.osc=false&lt;/code&gt; removes it), and, with &lt;code&gt;--bespoke.progress&lt;/code&gt;, a progress
+bar. &lt;strong&gt;The progress bar is off by default now&lt;/strong&gt;, as in marp-cli; it was always
+drawn before.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="configuration-files"&gt;Configuration files&lt;span class="hx:absolute hx:-mt-20" id="configuration-files"&gt;&lt;/span&gt;
+&lt;a href="#configuration-files" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;marp-cli reads its options from a file in the working directory, and so does
+&lt;code&gt;slides&lt;/code&gt;, when the file is data: &lt;code&gt;.marprc&lt;/code&gt; (YAML, JSON is YAML too),
+&lt;code&gt;.marprc.json&lt;/code&gt;, &lt;code&gt;.marprc.yaml&lt;/code&gt;, &lt;code&gt;.marprc.yml&lt;/code&gt;, &lt;code&gt;.config/marprc*&lt;/code&gt;, or the
+&lt;code&gt;marp&lt;/code&gt; key of &lt;code&gt;package.json&lt;/code&gt;; &lt;code&gt;--config-file&lt;/code&gt; (&lt;code&gt;-c&lt;/code&gt;) names any JSON or YAML
+file, &lt;code&gt;marp.config.json&lt;/code&gt; for one. Only the working directory is searched, not
+its parents, as marp-cli&amp;rsquo;s search does. A file of JavaScript or TypeScript
+(&lt;code&gt;marp.config.js&lt;/code&gt; &amp;hellip;) is a program, which &lt;code&gt;slides&lt;/code&gt; does not run: it says so and
+goes on. The options are those of marp-cli&amp;rsquo;s documentation that mean something
+here: &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;, &lt;code&gt;keywords&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;ogImage&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt;,
+&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;themeSet&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;, &lt;code&gt;allowLocalFiles&lt;/code&gt;, &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;bespoke&lt;/code&gt;,
+&lt;code&gt;inputDir&lt;/code&gt;, &lt;code&gt;output&lt;/code&gt;, &lt;code&gt;parallel&lt;/code&gt;, &lt;code&gt;pdf&lt;/code&gt;, &lt;code&gt;pptx&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;pdfNotes&lt;/code&gt;,
+&lt;code&gt;pdfOutlines&lt;/code&gt;, &lt;code&gt;images&lt;/code&gt;, &lt;code&gt;image&lt;/code&gt;, &lt;code&gt;imageScale&lt;/code&gt;, &lt;code&gt;jpegQuality&lt;/code&gt;, &lt;code&gt;watch&lt;/code&gt;,
+&lt;code&gt;server&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;; paths are relative to the file. The command line wins.
+&lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;options&lt;/code&gt; and &lt;code&gt;browser*&lt;/code&gt; need Marp&amp;rsquo;s engine and a browser, and are
+ignored with a warning, as are the &lt;code&gt;--browser*&lt;/code&gt; flags: scripts written for
+marp-cli keep working. (&lt;code&gt;slides.yaml&lt;/code&gt; and &lt;code&gt;slides.hcl&lt;/code&gt;, with the kinds and the
+template data, are separate and read as before.)&lt;/p&gt;
 &lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Watch, serve and preview&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
 &lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After v0.5.0, with marp-cli&amp;rsquo;s routes and live reload protocol (read from its
 4.5.1 sources and compared with a running &lt;code&gt;marp -s&lt;/code&gt;).&lt;/p&gt;
