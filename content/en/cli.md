@@ -37,6 +37,8 @@ otherwise.
 | Flag | Commands | What it does |
 | --- | --- | --- |
 | `-o`, `--output file` | `build`, `expand`, `notes` | output file; `-` for standard output |
+| `-I`, `--input-dir dir` | `build` | convert the Markdown files under `dir`, recursively (after v0.5.0); see below |
+| `-P`, `--parallel n` | `build` | decks built at once (after v0.5.0): 5 by default, at most the number of cores; 1 builds them one after the other |
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
 | `--theme-set path` | all | a theme CSS file, or a directory of them (repeatable) |
@@ -65,6 +67,24 @@ otherwise.
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
 | `--theme name\|file.css` | `build` | override the deck's theme (after v0.5.0): a theme name, or a CSS file, which becomes the theme whatever `@theme` it declares; a directory is refused, use `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | the page's metadata (after v0.5.0), over the deck's `title`, `description`, `author`, `keywords`, `url` and `image` directives; see below |
+
+## Several decks, and a directory
+
+After v0.5.0 `build` takes several decks, a directory (the decks under it,
+found recursively) or a pattern, and builds up to `--parallel` of them at once.
+`-` is standard input; unlike marp-cli, a pipe is not read unless `-` says so.
+
+- **`-I dir`** finds the Markdown files (`.md`, `.mdown`, `.markdown`,
+  `.markdn`, in lower case) under `dir`, as marp-cli does: `node_modules` and
+  dot directories are not looked in. With `-o out`, each deck is written at its
+  path under `dir`, mirrored under `out`: `dir/sub/b.md` gives
+  `out/sub/b.html` (`b.pdf`, `b.001.png`, `b.txt`, … whatever the flags say).
+  Without `-o` the outputs go next to their decks. Naming decks as well as
+  `-I` is an error, and so is `-o file` for several decks (`-o -` is allowed).
+- **`-P n`** builds `n` decks at once. A deck's own rendering already uses the
+  cores, so `n` is capped by their number; with `-o -` decks are built one after
+  the other. The messages of a deck stay together, and a deck that fails does not
+  stop the others: the exit status is 1 and the message lists the failures.
 
 ## Page metadata
 
