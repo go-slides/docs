@@ -117,6 +117,27 @@ which shows when the pointer or a key moves and hides after a moment
 bar. **The progress bar is off by default now**, as in marp-cli; it was always
 drawn before.
 
+### Presenter view
+
+After v0.6.0 the page has marp-cli's presenter view. Press `p`, or the last
+button of the controller, and a window opens with the current slide, the step
+after it, your speaker notes, the page, the time and a timer (click the timer
+to reset it; `+` and `-` resize the notes; the bar between the slides and the
+notes can be dragged). The two windows follow each other both ways: the
+arrow keys, a click on the next step or on Previous/Next in either one moves the
+other, a fragment at a time.
+
+It works as marp-cli's does, read from its 4.5.1 sources: the window is
+`?view=presenter&sync=KEY` of the same file, the next step is the same page as
+`?view=next` in a frame, and the windows share their position through
+`localStorage` (`bespoke-marp-sync-KEY`), so it needs no server and no
+network, and does not work in a browser that has no `localStorage` (the
+button says so). The notes are text: `&`, `<` and `>` are escaped, so a note
+can never be markup. They are in the page, hidden, for the presenter view to
+take, which keeps them out of what a screen reader reads to the audience.
+`--bare` pages have none of it. The view adds about 10 KB to a page. There is
+no overview view yet.
+
 ### Configuration files
 
 marp-cli reads its options from a file in the working directory, and so does
