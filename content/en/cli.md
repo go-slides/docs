@@ -60,6 +60,25 @@ otherwise.
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
 | `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
+| `--theme name\|file.css` | `build` | override the deck's theme (after v0.5.0): a theme name, or a CSS file, which becomes the theme whatever `@theme` it declares; a directory is refused, use `--theme-set` |
+| `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | the page's metadata (after v0.5.0), over the deck's `title`, `description`, `author`, `keywords`, `url` and `image` directives; see below |
+
+## Page metadata
+
+The command line wins over the deck, as in marp-cli, where the flags are
+appended to the deck as one last directive comment. Rules read from marp-cli
+4.5.1 and pinned by tests against its output (after v0.5.0):
+
+- A deck that sets no `title` takes the text of its first heading of the lowest
+  level, as written (`# **Bold** title` gives `**Bold** title`). With no
+  heading there is no `<title>`.
+- `keywords` are split at commas, trimmed and deduplicated; a front-matter list
+  is taken as it is. Like marp-cli, the page carries the `keywords` tag from
+  the second keyword on, not for a single one.
+- An invalid `url` (not absolute) is ignored with a warning, and the previous
+  value kept; a valid one also writes `<link rel="canonical">` and `og:url`.
+- `author` and `description` come with their Open Graph twins; `og:image:alt`
+  and the large Twitter card need both a title and an image.
 
 ## Images, PDF, PPTX and ODP
 
