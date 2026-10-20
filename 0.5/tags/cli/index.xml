@@ -192,8 +192,34 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;let images and PDF read local files, from under the deck&amp;rsquo;s directory only; refused by default, as with marp-cli&lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;override the deck&amp;rsquo;s theme (after v0.5.0): a theme name, or a CSS file, which becomes the theme whatever &lt;code&gt;@theme&lt;/code&gt; it declares; a directory is refused, use &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the page&amp;rsquo;s metadata (after v0.5.0), over the deck&amp;rsquo;s &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;, &lt;code&gt;keywords&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt; and &lt;code&gt;image&lt;/code&gt; directives; see below&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 data-hextra-search-id="page-metadata"&gt;Page metadata&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
+&lt;a href="#page-metadata" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The command line wins over the deck, as in marp-cli, where the flags are
+appended to the deck as one last directive comment. Rules read from marp-cli
+4.5.1 and pinned by tests against its output (after v0.5.0):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A deck that sets no &lt;code&gt;title&lt;/code&gt; takes the text of its first heading of the lowest
+level, as written (&lt;code&gt;# **Bold** title&lt;/code&gt; gives &lt;code&gt;**Bold** title&lt;/code&gt;). With no
+heading there is no &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;keywords&lt;/code&gt; are split at commas, trimmed and deduplicated; a front-matter list
+is taken as it is. Like marp-cli, the page carries the &lt;code&gt;keywords&lt;/code&gt; tag from
+the second keyword on, not for a single one.&lt;/li&gt;
+&lt;li&gt;An invalid &lt;code&gt;url&lt;/code&gt; (not absolute) is ignored with a warning, and the previous
+value kept; a valid one also writes &lt;code&gt;&amp;lt;link rel=&amp;quot;canonical&amp;quot;&amp;gt;&lt;/code&gt; and &lt;code&gt;og:url&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;author&lt;/code&gt; and &lt;code&gt;description&lt;/code&gt; come with their Open Graph twins; &lt;code&gt;og:image:alt&lt;/code&gt;
+and the large Twitter card need both a title and an image.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 data-hextra-search-id="images-pdf-pptx-and-odp"&gt;Images, PDF, PPTX and ODP&lt;span class="hx:absolute hx:-mt-20" id="images-pdf-pptx-and-odp"&gt;&lt;/span&gt;
 &lt;a href="#images-pdf-pptx-and-odp" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;-o&lt;/code&gt; with a &lt;code&gt;.pdf&lt;/code&gt;, &lt;code&gt;.pptx&lt;/code&gt;, &lt;code&gt;.odp&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt; or &lt;code&gt;.jpg&lt;/code&gt; extension picks the format, as marp-cli
 does. Output directories are created. A PDF has one page per slide, at the
