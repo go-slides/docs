@@ -309,6 +309,24 @@ which shows when the pointer or a key moves and hides after a moment
 (&lt;code&gt;--bespoke.osc=false&lt;/code&gt; removes it), and, with &lt;code&gt;--bespoke.progress&lt;/code&gt;, a progress
 bar. &lt;strong&gt;The progress bar is off by default now&lt;/strong&gt;, as in marp-cli; it was always
 drawn before.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="presenter-view"&gt;Presenter view&lt;span class="hx:absolute hx:-mt-20" id="presenter-view"&gt;&lt;/span&gt;
+&lt;a href="#presenter-view" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.6.0 the page has marp-cli&amp;rsquo;s presenter view. Press &lt;code&gt;p&lt;/code&gt;, or the last
+button of the controller, and a window opens with the current slide, the step
+after it, your speaker notes, the page, the time and a timer (click the timer
+to reset it; &lt;code&gt;+&lt;/code&gt; and &lt;code&gt;-&lt;/code&gt; resize the notes; the bar between the slides and the
+notes can be dragged). The two windows follow each other both ways: the
+arrow keys, a click on the next step or on Previous/Next in either one moves the
+other, a fragment at a time.&lt;/p&gt;
+&lt;p&gt;It works as marp-cli&amp;rsquo;s does, read from its 4.5.1 sources: the window is
+&lt;code&gt;?view=presenter&amp;amp;sync=KEY&lt;/code&gt; of the same file, the next step is the same page as
+&lt;code&gt;?view=next&lt;/code&gt; in a frame, and the windows share their position through
+&lt;code&gt;localStorage&lt;/code&gt; (&lt;code&gt;bespoke-marp-sync-KEY&lt;/code&gt;), so it needs no server and no
+network, and does not work in a browser that has no &lt;code&gt;localStorage&lt;/code&gt; (the
+button says so). The notes are text: &lt;code&gt;&amp;amp;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt; and &lt;code&gt;&amp;gt;&lt;/code&gt; are escaped, so a note
+can never be markup. They are in the page, hidden, for the presenter view to
+take, which keeps them out of what a screen reader reads to the audience.
+&lt;code&gt;--bare&lt;/code&gt; pages have none of it. The view adds about 10 KB to a page. There is
+no overview view yet.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="configuration-files"&gt;Configuration files&lt;span class="hx:absolute hx:-mt-20" id="configuration-files"&gt;&lt;/span&gt;
 &lt;a href="#configuration-files" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;marp-cli reads its options from a file in the working directory, and so does
 &lt;code&gt;slides&lt;/code&gt;, when the file is data: &lt;code&gt;.marprc&lt;/code&gt; (YAML, JSON is YAML too),
