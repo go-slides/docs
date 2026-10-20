@@ -1,0 +1,48 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.7/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://go-slides.github.io/docs/0.7/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.7/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.7/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Open the playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The playground is go-slides itself, v0.7.0, compiled to WebAssembly and
+running in your browser. Type a deck on the left; the slides follow on the
+right. Nothing is sent to a server: not the deck, not a share link.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;What it has&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Live preview&lt;/strong&gt; of every slide, rendered off the page&amp;rsquo;s thread (a Web
+Worker), so typing never waits for it. Click a slide to move the editor
+to its line; move the caret and the preview scrolls to its slide.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slideshow&lt;/strong&gt;: the presentation itself, with the keyboard, the
+on-screen controller and the transitions. The presenter view needs a
+second window, so it works in the downloaded page rather than in the
+preview.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Completion&lt;/strong&gt; as you type: directive keys (spot &lt;code&gt;_&lt;/code&gt; ones in comments),
+the values of &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, and template functions
+and data fields inside &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Help&lt;/strong&gt; for what is under the caret: a directive, a kind (what it sets),
+a template function. The help pane also links to these pages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Problems&lt;/strong&gt; on their line: template, YAML and HCL errors are highlighted
+in the editor and listed under it, and the preview keeps the last deck
+that rendered.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Examples&lt;/strong&gt;: a welcome deck, templates that generate slides, slide kinds,
+an HCL front matter, themes and spot directives.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Share link&lt;/strong&gt;: the deck travels in the link itself (in its &lt;code&gt;#&lt;/code&gt; part,
+compressed), so opening the link opens the deck. Decks up to 256 KiB.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Download HTML&lt;/strong&gt;: the presentation as one page, the same as
+&lt;code&gt;slides deck.md&lt;/code&gt; writes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PDF, PPTX, ODP and images are not made in the browser. go-slides&amp;rsquo; export
+engines compiled to WebAssembly would weigh 21 MiB more on the wire. Use
+the &lt;a href="https://go-slides.github.io/docs/0.7/cli/"&gt;command&lt;/a&gt; or the
+&lt;a href="https://go-slides.github.io/docs/0.7/vscode/"&gt;VS Code extension&lt;/a&gt; for them.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Security&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The deck is shown in an iframe sandboxed without the page&amp;rsquo;s origin: it can
+reach neither the playground nor its storage, submit no form and navigate
+nothing. Its page carries a Content Security Policy that runs only its own
+scripts. Raw HTML in the deck follows Marp&amp;rsquo;s allowlist, as &lt;code&gt;slides&lt;/code&gt; does by
+default. A render that runs for more than 5 seconds (a template that loops)
+is stopped.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Size and speed&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The module is 8.8 MiB as GitHub Pages serves it (gzip; Pages does not
+serve brotli). It is downloaded once with a progress bar, then cached by the
+browser until the next deploy. On an Apple M4 Max with Chrome 155, measured
+against the live page, the editor is ready 2.1 s after the page opens, 1.5 s
+of which is the download, and the first slides appear at 2.4 s. A change to
+the 100-slide benchmark deck reaches the preview in about 70 ms, 37 ms of
+which is go-slides rendering it.&lt;/p&gt;</description></item></channel></rss>
