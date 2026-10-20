@@ -83,6 +83,14 @@ In v0.6.0 `build` takes several decks, a directory (the decks under it,
 found recursively) or a pattern, and builds up to `--parallel` of them at once.
 `-` is standard input; unlike marp-cli, a pipe is not read unless `-` says so.
 
+A pattern is read as marp-cli's glob reads it (`**` and `{a,b}` after v0.6.0;
+quote it so that the shell leaves it to `slides`): `*`, `?`, `[a-z]` and
+`{md,txt}` within a name, `**` for any number of directories, so that
+`'docs/**/*.md'` takes the decks of the tree. A wildcard does not reach a name
+that starts with a dot, nothing is looked for in `node_modules`, case matters
+(`*.md` does not find `UPPER.MD`), and whatever a pattern matches is converted,
+whatever its extension. A pattern that matches nothing is an error.
+
 - **`-I dir`** finds the Markdown files (`.md`, `.mdown`, `.markdown`,
   `.markdn`, in lower case) under `dir`, as marp-cli does: `node_modules` and
   dot directories are not looked in. With `-o out`, each deck is written at its
