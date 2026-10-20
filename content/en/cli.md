@@ -43,6 +43,11 @@ otherwise.
 | `-s`, `--server dir` | `build` | serve a directory, converting its decks on request (after v0.5.0); see below |
 | `-p`, `--preview` | `build` | open the result in the default browser (after v0.5.0): the HTML pages with `--watch` (implied), the server with `--server` |
 | `--host addr` | `build` | the address `--server` listens on, `127.0.0.1` by default (after v0.5.0) |
+| `--template bespoke\|bare` | `build` | the HTML page's template (after v0.5.0): `bespoke`, the default, with the presenting script, on-screen controller and transitions, or `bare`, the slides stacked (`--bare`) |
+| `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | the bespoke template's options, with marp-cli's defaults (after v0.5.0): controller on, **progress bar off** (it was always drawn before), transitions on; `--bespoke.osc=false` turns one off |
+| `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli's configuration file, JSON or YAML (after v0.5.0); see below. `--config` is `slides`' own file |
+| `--browser`, `--browser-path`, `--browser-protocol`, `--browser-timeout` | `build` | accepted and ignored with a warning (after v0.5.0): there is no browser |
+| `--pptx-editable`, `--no-parallel` | `build` | marp-cli's spellings of `--pptx` and `-P 1` (after v0.5.0) |
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
 | `--theme-set path` | all | a theme CSS file, or a directory of them (repeatable) |
@@ -89,6 +94,48 @@ found recursively) or a pattern, and builds up to `--parallel` of them at once.
   cores, so `n` is capped by their number; with `-o -` decks are built one after
   the other. The messages of a deck stay together, and a deck that fails does not
   stop the others: the exit status is 1 and the message lists the failures.
+
+## Transitions and the presenting page
+
+After v0.5.0 the `transition` directive of marp-cli works: `<!-- transition:
+fade 1s -->`, a name and an optional duration, for the slide and the ones after
+it, or `<!-- _transition: cover -->` for one. The built-in names are marp-cli's:
+`clockwise`, `counterclockwise`, `cover`, `coverflow`, `cube`, `cylinder`,
+`diamond`, `drop`, `explode`, `fade`, `fade-out`, `fall`, `flip`, `glow`,
+`implode`, `in-out`, `iris-in`, `iris-out`, `melt`, `overlap`, `pivot`, `pull`,
+`push`, `reveal`, `rotate`, `slide`, `star`, `swap`, `swipe`, `swoosh`, `wipe`,
+`wiper` and `zoom`; `none` turns it off. The page plays it with the browser's
+**View Transition API** when the viewer leaves the slide that has it, forwards,
+and when it comes back to it; browsers without the API change slides as before,
+and a viewer who asks for reduced motion gets a plain fade. A theme can bring
+keyframes of its own, named `marp-transition-NAME` (or `marp-outgoing-` and
+`marp-incoming-`, and `-backward`), which are used before the built-in ones.
+
+The page has the **on-screen controller** — previous, page, next, full screen —
+which shows when the pointer or a key moves and hides after a moment
+(`--bespoke.osc=false` removes it), and, with `--bespoke.progress`, a progress
+bar. **The progress bar is off by default now**, as in marp-cli; it was always
+drawn before.
+
+### Configuration files
+
+marp-cli reads its options from a file in the working directory, and so does
+`slides`, when the file is data: `.marprc` (YAML, JSON is YAML too),
+`.marprc.json`, `.marprc.yaml`, `.marprc.yml`, `.config/marprc*`, or the
+`marp` key of `package.json`; `--config-file` (`-c`) names any JSON or YAML
+file, `marp.config.json` for one. Only the working directory is searched, not
+its parents, as marp-cli's search does. A file of JavaScript or TypeScript
+(`marp.config.js` ...) is a program, which `slides` does not run: it says so and
+goes on. The options are those of marp-cli's documentation that mean something
+here: `title`, `description`, `author`, `keywords`, `url`, `ogImage`, `lang`,
+`theme`, `themeSet`, `html`, `allowLocalFiles`, `template`, `bespoke`,
+`inputDir`, `output`, `parallel`, `pdf`, `pptx`, `notes`, `pdfNotes`,
+`pdfOutlines`, `images`, `image`, `imageScale`, `jpegQuality`, `watch`,
+`server`, `preview`; paths are relative to the file. The command line wins.
+`engine`, `options` and `browser*` need Marp's engine and a browser, and are
+ignored with a warning, as are the `--browser*` flags: scripts written for
+marp-cli keep working. (`slides.yaml` and `slides.hcl`, with the kinds and the
+template data, are separate and read as before.)
 
 ## Watch, serve and preview
 
