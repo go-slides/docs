@@ -3,8 +3,9 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;The extension is &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
-versioned on its own (v0.1.0). It renders with go-slides in v0.6.0 (the
-&lt;code&gt;editor&lt;/code&gt; package). It is installed from the &lt;code&gt;.vsix&lt;/code&gt; attached to its GitHub
+versioned on its own (v0.2.0). It renders with go-slides in v0.6.0 (the
+&lt;code&gt;editor&lt;/code&gt; package), plus the source lines of scroll sync, which come after
+v0.6.0. It is installed from the &lt;code&gt;.vsix&lt;/code&gt; attached to its GitHub
 release: it is not on the VS Code Marketplace or Open VSX yet.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -17,7 +18,7 @@ directives, kinds and template functions complete as you type.&lt;/p&gt;
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;releases&lt;/a&gt;, then run
 &lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt;, or:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.1.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.2.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
@@ -81,6 +82,17 @@ what the deck uses from the workspace — &lt;code&gt;slides.yaml&lt;/code&gt; o
 the deck, the &lt;a href="https://go-slides.github.io/docs/0.6/kinds/"&gt;kinds&lt;/a&gt; files they name, files a
 &lt;a href="https://go-slides.github.io/docs/0.6/templates/"&gt;template&lt;/a&gt; includes, theme CSS — and only from the
 deck&amp;rsquo;s workspace folder.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="scroll-sync"&gt;Scroll sync&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
+&lt;a href="#scroll-sync" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Since v0.2.0 of the extension (go-slides after v0.6.0), the editor and the
+preview scroll together, both ways, as they do for plain Markdown: the
+preview follows the slide and the block under the editor&amp;rsquo;s cursor, and
+scrolling the preview moves the editor. The settings are VS Code&amp;rsquo;s own,
+&lt;code&gt;markdown.preview.scrollPreviewWithEditor&lt;/code&gt; and
+&lt;code&gt;markdown.preview.scrollEditorWithPreview&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Lines are traced through templates. A slide that a &lt;code&gt;{{ range }}&lt;/code&gt; generates
+follows the line of its template, and what an &lt;code&gt;{{ include }}&lt;/code&gt; brings in
+follows the include&amp;rsquo;s line. A deck split by &lt;code&gt;headingDivider&lt;/code&gt; syncs on its
+headings.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Problems, completion, hover&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
 &lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Problems&lt;/strong&gt;: template, YAML and &lt;a href="https://go-slides.github.io/docs/0.6/hcl/"&gt;HCL&lt;/a&gt; errors, on the
