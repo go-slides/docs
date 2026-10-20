@@ -278,6 +278,13 @@ otherwise.&lt;/p&gt;
 &lt;a href="#several-decks-and-a-directory" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In v0.6.0 &lt;code&gt;build&lt;/code&gt; takes several decks, a directory (the decks under it,
 found recursively) or a pattern, and builds up to &lt;code&gt;--parallel&lt;/code&gt; of them at once.
 &lt;code&gt;-&lt;/code&gt; is standard input; unlike marp-cli, a pipe is not read unless &lt;code&gt;-&lt;/code&gt; says so.&lt;/p&gt;
+&lt;p&gt;A pattern is read as marp-cli&amp;rsquo;s glob reads it (&lt;code&gt;**&lt;/code&gt; and &lt;code&gt;{a,b}&lt;/code&gt; after v0.6.0;
+quote it so that the shell leaves it to &lt;code&gt;slides&lt;/code&gt;): &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;?&lt;/code&gt;, &lt;code&gt;[a-z]&lt;/code&gt; and
+&lt;code&gt;{md,txt}&lt;/code&gt; within a name, &lt;code&gt;**&lt;/code&gt; for any number of directories, so that
+&lt;code&gt;'docs/**/*.md'&lt;/code&gt; takes the decks of the tree. A wildcard does not reach a name
+that starts with a dot, nothing is looked for in &lt;code&gt;node_modules&lt;/code&gt;, case matters
+(&lt;code&gt;*.md&lt;/code&gt; does not find &lt;code&gt;UPPER.MD&lt;/code&gt;), and whatever a pattern matches is converted,
+whatever its extension. A pattern that matches nothing is an error.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;-I dir&lt;/code&gt;&lt;/strong&gt; finds the Markdown files (&lt;code&gt;.md&lt;/code&gt;, &lt;code&gt;.mdown&lt;/code&gt;, &lt;code&gt;.markdown&lt;/code&gt;,
 &lt;code&gt;.markdn&lt;/code&gt;, in lower case) under &lt;code&gt;dir&lt;/code&gt;, as marp-cli does: &lt;code&gt;node_modules&lt;/code&gt; and
