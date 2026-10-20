@@ -88,6 +88,26 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;decks built at once (after v0.5.0): 5 by default, at most the number of cores; 1 builds them one after the other&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;build again when a deck, a theme, kinds or data file or the configuration changes, and reload the open pages (after v0.5.0); see below&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;serve a directory, converting its decks on request (after v0.5.0); see below&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-p&lt;/code&gt;, &lt;code&gt;--preview&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;open the result in the default browser (after v0.5.0): the HTML pages with &lt;code&gt;--watch&lt;/code&gt; (implied), the server with &lt;code&gt;--server&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--host addr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the address &lt;code&gt;--server&lt;/code&gt; listens on, &lt;code&gt;127.0.0.1&lt;/code&gt; by default (after v0.5.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--config file&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;all&lt;/td&gt;
 &lt;td&gt;configuration file; by default &lt;code&gt;slides.yaml&lt;/code&gt; next to the deck, if there is one&lt;/td&gt;
@@ -245,6 +265,72 @@ Without &lt;code&gt;-o&lt;/code&gt; the outputs go next to their decks. Naming d
 cores, so &lt;code&gt;n&lt;/code&gt; is capped by their number; with &lt;code&gt;-o -&lt;/code&gt; decks are built one after
 the other. The messages of a deck stay together, and a deck that fails does not
 stop the others: the exit status is 1 and the message lists the failures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Watch, serve and preview&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
+&lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After v0.5.0, with marp-cli&amp;rsquo;s routes and live reload protocol (read from its
+4.5.1 sources and compared with a running &lt;code&gt;marp -s&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;slides --server dir&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-s&lt;/code&gt;) serves the directory on &lt;code&gt;http://127.0.0.1:8080/&lt;/code&gt;
+(the &lt;code&gt;PORT&lt;/code&gt; environment variable changes the port; a port already in use is an
+error that says so):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Request&lt;/th&gt;
+&lt;th&gt;Answer&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the deck as HTML, converted on request&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md?pdf&lt;/code&gt;, &lt;code&gt;?pptx&lt;/code&gt;, &lt;code&gt;?png&lt;/code&gt;, &lt;code&gt;?jpg&lt;/code&gt; (or &lt;code&gt;?jpeg&lt;/code&gt;), &lt;code&gt;?notes&lt;/code&gt; (or &lt;code&gt;?txt&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;the deck converted as the query asks; the PPTX is an attachment&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a directory&lt;/td&gt;
+&lt;td&gt;its &lt;code&gt;index.md&lt;/code&gt; or &lt;code&gt;PITCHME.md&lt;/code&gt; as a page, else an index with a PDF and a PPTX link for each deck&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;any other file&lt;/td&gt;
+&lt;td&gt;the file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a deck that does not convert&lt;/td&gt;
+&lt;td&gt;503 with the error&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A page opens a WebSocket to &lt;code&gt;/.__marp-cli-watch-notifier__/&amp;lt;id&amp;gt;&lt;/code&gt;, where the id is
+the SHA-256 of the deck&amp;rsquo;s path; the server sends &lt;code&gt;ready&lt;/code&gt;, then &lt;code&gt;reload&lt;/code&gt; when the
+deck, or anything under the directory, changes. A directory requested without
+its trailing slash is redirected to it (marp-cli serves its index there, which
+breaks the page&amp;rsquo;s relative links).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-w&lt;/code&gt;) builds the decks, then builds again the one that changes
+and, when a &lt;code&gt;--theme-set&lt;/code&gt; file, a kinds or data file or the configuration
+changes, all of them. The pages it writes open a socket on the loopback (port
+37717, or the next free one) and reload when their deck is built again. A deck
+that fails to build is reported and watched still. &lt;strong&gt;&lt;code&gt;--preview&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-p&lt;/code&gt;) opens
+the default browser on the server, or on the HTML pages just built; there is no
+window of its own, since &lt;code&gt;slides&lt;/code&gt; has no browser to drive.&lt;/p&gt;
+&lt;p&gt;The server is a way into the machine, so it is stricter than marp-cli&amp;rsquo;s, which
+listens on every interface and checks nothing:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it listens on &lt;strong&gt;127.0.0.1&lt;/strong&gt;; &lt;code&gt;--host&lt;/code&gt; changes that, with a warning, and a
+wildcard address cannot check the &lt;code&gt;Host&lt;/code&gt; header any more;&lt;/li&gt;
+&lt;li&gt;the &lt;strong&gt;&lt;code&gt;Host&lt;/code&gt;&lt;/strong&gt; header must be a loopback name (&lt;code&gt;localhost&lt;/code&gt;, &lt;code&gt;127.0.0.1&lt;/code&gt;,
+&lt;code&gt;[::1]&lt;/code&gt;, &lt;code&gt;*.localhost&lt;/code&gt;) or the host it listens on, which stops DNS rebinding;&lt;/li&gt;
+&lt;li&gt;a WebSocket&amp;rsquo;s &lt;strong&gt;&lt;code&gt;Origin&lt;/code&gt;&lt;/strong&gt; must be the server&amp;rsquo;s own; the watch mode&amp;rsquo;s sockets
+also take the &lt;code&gt;null&lt;/code&gt; origin of a page opened from a file; a request from
+another site that is not a navigation (a script, an image, a &lt;code&gt;fetch&lt;/code&gt;) is
+refused;&lt;/li&gt;
+&lt;li&gt;a path is cleaned, its symbolic links are resolved, and the result must be
+inside the directory: &lt;code&gt;..&lt;/code&gt; and a link out of it are refused, and so is
+&lt;code&gt;?pdf&lt;/code&gt; of a deck outside; names that start with a dot (&lt;code&gt;.git&lt;/code&gt;, &lt;code&gt;.env&lt;/code&gt;) are not
+served;&lt;/li&gt;
+&lt;li&gt;only &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt;; a few conversions at once; at most 4096 directories
+watched, and none in &lt;code&gt;node_modules&lt;/code&gt; or under a dot.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;Page metadata&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The command line wins over the deck, as in marp-cli, where the flags are
