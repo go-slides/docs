@@ -39,6 +39,10 @@ otherwise.
 | `-o`, `--output file` | `build`, `expand`, `notes` | output file; `-` for standard output |
 | `-I`, `--input-dir dir` | `build` | convert the Markdown files under `dir`, recursively (after v0.5.0); see below |
 | `-P`, `--parallel n` | `build` | decks built at once (after v0.5.0): 5 by default, at most the number of cores; 1 builds them one after the other |
+| `-w`, `--watch` | `build` | build again when a deck, a theme, kinds or data file or the configuration changes, and reload the open pages (after v0.5.0); see below |
+| `-s`, `--server dir` | `build` | serve a directory, converting its decks on request (after v0.5.0); see below |
+| `-p`, `--preview` | `build` | open the result in the default browser (after v0.5.0): the HTML pages with `--watch` (implied), the server with `--server` |
+| `--host addr` | `build` | the address `--server` listens on, `127.0.0.1` by default (after v0.5.0) |
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
 | `--theme-set path` | all | a theme CSS file, or a directory of them (repeatable) |
@@ -85,6 +89,55 @@ found recursively) or a pattern, and builds up to `--parallel` of them at once.
   cores, so `n` is capped by their number; with `-o -` decks are built one after
   the other. The messages of a deck stay together, and a deck that fails does not
   stop the others: the exit status is 1 and the message lists the failures.
+
+## Watch, serve and preview
+
+After v0.5.0, with marp-cli's routes and live reload protocol (read from its
+4.5.1 sources and compared with a running `marp -s`).
+
+**`slides --server dir`** (`-s`) serves the directory on `http://127.0.0.1:8080/`
+(the `PORT` environment variable changes the port; a port already in use is an
+error that says so):
+
+| Request | Answer |
+| --- | --- |
+| `/deck.md` | the deck as HTML, converted on request |
+| `/deck.md?pdf`, `?pptx`, `?png`, `?jpg` (or `?jpeg`), `?notes` (or `?txt`) | the deck converted as the query asks; the PPTX is an attachment |
+| a directory | its `index.md` or `PITCHME.md` as a page, else an index with a PDF and a PPTX link for each deck |
+| any other file | the file |
+| a deck that does not convert | 503 with the error |
+
+A page opens a WebSocket to `/.__marp-cli-watch-notifier__/<id>`, where the id is
+the SHA-256 of the deck's path; the server sends `ready`, then `reload` when the
+deck, or anything under the directory, changes. A directory requested without
+its trailing slash is redirected to it (marp-cli serves its index there, which
+breaks the page's relative links).
+
+**`--watch`** (`-w`) builds the decks, then builds again the one that changes
+and, when a `--theme-set` file, a kinds or data file or the configuration
+changes, all of them. The pages it writes open a socket on the loopback (port
+37717, or the next free one) and reload when their deck is built again. A deck
+that fails to build is reported and watched still. **`--preview`** (`-p`) opens
+the default browser on the server, or on the HTML pages just built; there is no
+window of its own, since `slides` has no browser to drive.
+
+The server is a way into the machine, so it is stricter than marp-cli's, which
+listens on every interface and checks nothing:
+
+- it listens on **127.0.0.1**; `--host` changes that, with a warning, and a
+  wildcard address cannot check the `Host` header any more;
+- the **`Host`** header must be a loopback name (`localhost`, `127.0.0.1`,
+  `[::1]`, `*.localhost`) or the host it listens on, which stops DNS rebinding;
+- a WebSocket's **`Origin`** must be the server's own; the watch mode's sockets
+  also take the `null` origin of a page opened from a file; a request from
+  another site that is not a navigation (a script, an image, a `fetch`) is
+  refused;
+- a path is cleaned, its symbolic links are resolved, and the result must be
+  inside the directory: `..` and a link out of it are refused, and so is
+  `?pdf` of a deck outside; names that start with a dot (`.git`, `.env`) are not
+  served;
+- only `GET` and `HEAD`; a few conversions at once; at most 4096 directories
+  watched, and none in `node_modules` or under a dot.
 
 ## Page metadata
 
