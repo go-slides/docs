@@ -7,10 +7,10 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 The extension is [go-slides/vscode](https://github.com/go-slides/vscode),
-versioned on its own (v0.2.0). It renders with go-slides in v0.6.0 (the
-`editor` package), plus the source lines of scroll sync, which come after
-v0.6.0. It is installed from the `.vsix` attached to its GitHub
-release: it is not on the VS Code Marketplace or Open VSX yet.
+versioned on its own (v0.2.1). It renders with go-slides v0.7.0 (the
+`editor` package, and the source lines of scroll sync). It is installed from
+the `go-slides-0.2.1.vsix` attached to its GitHub release: it is not on the VS
+Code Marketplace or Open VSX yet.
 {{< /callout >}}
 
 The extension is go-slides' counterpart of
@@ -25,7 +25,7 @@ Download `go-slides-<version>.vsix` from the
 *Extensions: Install from VSIX...*, or:
 
 ```sh
-code --install-extension go-slides-0.2.0.vsix
+code --install-extension go-slides-0.2.1.vsix
 ```
 
 The preview needs nothing else. Exporting needs the `slides` command:
@@ -69,7 +69,7 @@ deck's workspace folder.
 
 ## Scroll sync
 
-Since v0.2.0 of the extension (go-slides after v0.6.0), the editor and the
+Since v0.2.0 of the extension (go-slides v0.7.0), the editor and the
 preview scroll together, both ways, as they do for plain Markdown: the
 preview follows the slide and the block under the editor's cursor, and
 scrolling the preview moves the editor. The settings are VS Code's own,
@@ -128,11 +128,13 @@ with Marp for VS Code 3.6.1 measured in the same session:
 | | go-slides | Marp for VS Code |
 |---|---:|---:|
 | activation (loading the WebAssembly module) | 189 ms | — |
-| first preview | 85 ms | 78 ms |
-| preview after an edit (median) | 47–51 ms | 24 ms |
+| first preview | 68 ms | 78 ms |
+| preview after an edit (median) | 35 ms | 24 ms |
 | `.vsix` | 7.5 MB | 36.3 MB |
 
-The preview after an edit is twice Marp's: a known defect, tracked in
-[go-regexp/engine#10](https://github.com/go-regexp/engine/issues/10) (the
-regular expressions behind code highlighting allocate most of what a render
-allocates, and WebAssembly collects garbage on the preview's thread).
+The figures are for extension v0.2.1, from four interleaved rounds under a
+1-minute load of 5.5 to 7.2, with `GOGC=400`. The first preview is faster than
+Marp's. **The preview after an edit is still slower than Marp's**, 35 ms
+against 24 ms (v0.2.0 took 47–51 ms): go-regexp/engine v0.3.2 allocates much
+less while highlighting code, and most of the remaining time is in go-slides'
+own parsing.
