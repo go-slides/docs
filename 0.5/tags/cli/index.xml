@@ -148,6 +148,21 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;write the PDF with each page one image of the slide, as v0.3.0 did&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write the speaker notes as a text file, slides separated by &lt;code&gt;---&lt;/code&gt; as marp-cli does (after v0.5.0; also chosen by &lt;code&gt;-o file.txt&lt;/code&gt;). The &lt;code&gt;notes&lt;/code&gt; command prints them in another layout&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;add each slide&amp;rsquo;s speaker notes to its PDF page as a note annotation, as marp-cli does (after v0.5.0). Asks for a PDF when nothing else says what to write&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-outlines&lt;/code&gt;, &lt;code&gt;--pdf-outlines.pages&lt;/code&gt;, &lt;code&gt;--pdf-outlines.headings&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the PDF&amp;rsquo;s bookmarks (after v0.5.0): &amp;ldquo;Page N&amp;rdquo; per slide and the headings nested under it. On by default here, unlike marp-cli; &lt;code&gt;=false&lt;/code&gt; turns one off. See below&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--images png|jpeg&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;write one image per slide: &lt;code&gt;deck.001.png&lt;/code&gt;, …&lt;/td&gt;
@@ -224,6 +239,23 @@ and the large Twitter card need both a title and an image.&lt;/li&gt;
 &lt;a href="#images-pdf-pptx-and-odp" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;-o&lt;/code&gt; with a &lt;code&gt;.pdf&lt;/code&gt;, &lt;code&gt;.pptx&lt;/code&gt;, &lt;code&gt;.odp&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt; or &lt;code&gt;.jpg&lt;/code&gt; extension picks the format, as marp-cli
 does. Output directories are created. A PDF has one page per slide, at the
 slide&amp;rsquo;s size, and an outline of the slides and their headings.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="pdf-notes-and-outline"&gt;PDF notes and outline&lt;span class="hx:absolute hx:-mt-20" id="pdf-notes-and-outline"&gt;&lt;/span&gt;
+&lt;a href="#pdf-notes-and-outline" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.5.0 the PDF takes marp-cli&amp;rsquo;s two options, and they are compared with
+the PDFs marp-cli 4.5.1 writes for the same deck:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--pdf-notes&lt;/code&gt; puts each slide&amp;rsquo;s speaker notes on its page as a note
+annotation: a yellow Note icon at the bottom left whose contents are the
+notes (several comments joined by a blank line) and whose title is the deck&amp;rsquo;s
+&lt;code&gt;author&lt;/code&gt;. &lt;code&gt;--pdf-notes&lt;/code&gt; alone asks for a PDF, as in marp-cli.&lt;/li&gt;
+&lt;li&gt;The outline holds a bold bookmark &amp;ldquo;Page N&amp;rdquo; per slide and, under it, the
+slide&amp;rsquo;s headings nested by level (&lt;code&gt;--pdf-outlines.pages&lt;/code&gt; and
+&lt;code&gt;--pdf-outlines.headings&lt;/code&gt; choose the two). &lt;strong&gt;The outline is on by default
+here and off in marp-cli.&lt;/strong&gt; &lt;code&gt;slides&lt;/code&gt; has always written one; it costs a few
+hundred bytes and makes a long deck navigable, so the default stays.
+&lt;code&gt;--pdf-outlines=false&lt;/code&gt;, or marp-cli&amp;rsquo;s &lt;code&gt;--no-pdf-outlines&lt;/code&gt;, turns it off, and
+&lt;code&gt;=false&lt;/code&gt; on &lt;code&gt;.pages&lt;/code&gt; or &lt;code&gt;.headings&lt;/code&gt; drops that part. A heading bookmark jumps
+to its slide; marp-cli also scrolls to the heading.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Rendering is done by &lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt;
 and the PDF is written by &lt;a href="https://github.com/go-pdfkit/pdfkit" target="_blank" rel="noopener"&gt;go-pdfkit&lt;/a&gt;;
 the fonts the built-in themes ask for (Lato, Roboto Mono) come from
