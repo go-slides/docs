@@ -42,7 +42,7 @@ data-copied-label="Copied!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;lists the kinds the deck can use and what they set&lt;/td&gt;
+&lt;td&gt;lists the kinds the deck can use and what they set; &lt;code&gt;--json&lt;/code&gt; (after v0.5.0) writes them as &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, &lt;code&gt;extends&lt;/code&gt; resolved&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
