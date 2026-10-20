@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.6.0.
+This page describes v0.7.0.
 {{< /callout >}}
 
 ```text
@@ -83,7 +83,7 @@ In v0.6.0 `build` takes several decks, a directory (the decks under it,
 found recursively) or a pattern, and builds up to `--parallel` of them at once.
 `-` is standard input; unlike marp-cli, a pipe is not read unless `-` says so.
 
-A pattern is read as marp-cli's glob reads it (`**` and `{a,b}` after v0.6.0;
+A pattern is read as marp-cli's glob reads it (`**` and `{a,b}` in v0.7.0;
 quote it so that the shell leaves it to `slides`): `*`, `?`, `[a-z]` and
 `{md,txt}` within a name, `**` for any number of directories, so that
 `'docs/**/*.md'` takes the decks of the tree. A wildcard does not reach a name
@@ -127,7 +127,7 @@ drawn before.
 
 ### Presenter view
 
-After v0.6.0 the page has marp-cli's presenter view. Press `p`, or the last
+In v0.7.0 the page has marp-cli's presenter view. Press `p`, or the last
 button of the controller, and a window opens with the current slide, the step
 after it, your speaker notes, the page, the time and a timer (click the timer
 to reset it; `+` and `-` resize the notes; the bar between the slides and the
