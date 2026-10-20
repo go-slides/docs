@@ -21,7 +21,7 @@ slides [command] [flags] deck.md
 | `build` | writes the presentation as HTML, or as a PDF or images (see below). **The default**: `slides deck.md` is `slides build deck.md` |
 | `expand` | prints the deck as plain Marp Markdown: templates expanded, kinds replaced by the directives they stand for |
 | `notes` | prints the speaker notes |
-| `kinds` | lists the kinds the deck can use and what they set |
+| `kinds` | lists the kinds the deck can use and what they set; `--json` (after v0.5.0) writes them as `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` resolved |
 | `themes` | lists the themes |
 | `version` | prints the version (so does `slides --version`) |
 | `completion` | prints a shell completion script: `bash`, `zsh`, `fish` or `powershell` |
