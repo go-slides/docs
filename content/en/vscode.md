@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 The extension is [go-slides/vscode](https://github.com/go-slides/vscode),
-versioned on its own (v0.1.0). It renders with go-slides after v0.5.0 (the
-`editor` package). It is installed from a `.vsix`: it is not on the VS Code
-Marketplace or Open VSX yet.
+versioned on its own (v0.1.0). It renders with go-slides in v0.6.0 (the
+`editor` package). It is installed from the `.vsix` attached to its GitHub
+release: it is not on the VS Code Marketplace or Open VSX yet.
 {{< /callout >}}
 
 The extension is go-slides' counterpart of
