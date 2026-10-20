@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.5.0.
+This page describes v0.6.0.
 {{< /callout >}}
 
 ```text
@@ -21,7 +21,7 @@ slides [command] [flags] deck.md
 | `build` | writes the presentation as HTML, or as a PDF or images (see below). **The default**: `slides deck.md` is `slides build deck.md` |
 | `expand` | prints the deck as plain Marp Markdown: templates expanded, kinds replaced by the directives they stand for |
 | `notes` | prints the speaker notes |
-| `kinds` | lists the kinds the deck can use and what they set; `--json` (after v0.5.0) writes them as `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` resolved |
+| `kinds` | lists the kinds the deck can use and what they set; `--json` (in v0.6.0) writes them as `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` resolved |
 | `themes` | lists the themes |
 | `version` | prints the version (so does `slides --version`) |
 | `completion` | prints a shell completion script: `bash`, `zsh`, `fish` or `powershell` |
@@ -37,17 +37,17 @@ otherwise.
 | Flag | Commands | What it does |
 | --- | --- | --- |
 | `-o`, `--output file` | `build`, `expand`, `notes` | output file; `-` for standard output |
-| `-I`, `--input-dir dir` | `build` | convert the Markdown files under `dir`, recursively (after v0.5.0); see below |
-| `-P`, `--parallel n` | `build` | decks built at once (after v0.5.0): 5 by default, at most the number of cores; 1 builds them one after the other |
-| `-w`, `--watch` | `build` | build again when a deck, a theme, kinds or data file or the configuration changes, and reload the open pages (after v0.5.0); see below |
-| `-s`, `--server dir` | `build` | serve a directory, converting its decks on request (after v0.5.0); see below |
-| `-p`, `--preview` | `build` | open the result in the default browser (after v0.5.0): the HTML pages with `--watch` (implied), the server with `--server` |
-| `--host addr` | `build` | the address `--server` listens on, `127.0.0.1` by default (after v0.5.0) |
-| `--template bespoke\|bare` | `build` | the HTML page's template (after v0.5.0): `bespoke`, the default, with the presenting script, on-screen controller and transitions, or `bare`, the slides stacked (`--bare`) |
-| `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | the bespoke template's options, with marp-cli's defaults (after v0.5.0): controller on, **progress bar off** (it was always drawn before), transitions on; `--bespoke.osc=false` turns one off |
-| `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli's configuration file, JSON or YAML (after v0.5.0); see below. `--config` is `slides`' own file |
-| `--browser`, `--browser-path`, `--browser-protocol`, `--browser-timeout` | `build` | accepted and ignored with a warning (after v0.5.0): there is no browser |
-| `--pptx-editable`, `--no-parallel` | `build` | marp-cli's spellings of `--pptx` and `-P 1` (after v0.5.0) |
+| `-I`, `--input-dir dir` | `build` | convert the Markdown files under `dir`, recursively (in v0.6.0); see below |
+| `-P`, `--parallel n` | `build` | decks built at once (in v0.6.0): 5 by default, at most the number of cores; 1 builds them one after the other |
+| `-w`, `--watch` | `build` | build again when a deck, a theme, kinds or data file or the configuration changes, and reload the open pages (in v0.6.0); see below |
+| `-s`, `--server dir` | `build` | serve a directory, converting its decks on request (in v0.6.0); see below |
+| `-p`, `--preview` | `build` | open the result in the default browser (in v0.6.0): the HTML pages with `--watch` (implied), the server with `--server` |
+| `--host addr` | `build` | the address `--server` listens on, `127.0.0.1` by default (in v0.6.0) |
+| `--template bespoke\|bare` | `build` | the HTML page's template (in v0.6.0): `bespoke`, the default, with the presenting script, on-screen controller and transitions, or `bare`, the slides stacked (`--bare`) |
+| `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | the bespoke template's options, with marp-cli's defaults (in v0.6.0): controller on, **progress bar off** (it was always drawn before), transitions on; `--bespoke.osc=false` turns one off |
+| `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli's configuration file, JSON or YAML (in v0.6.0); see below. `--config` is `slides`' own file |
+| `--browser`, `--browser-path`, `--browser-protocol`, `--browser-timeout` | `build` | accepted and ignored with a warning (in v0.6.0): there is no browser |
+| `--pptx-editable`, `--no-parallel` | `build` | marp-cli's spellings of `--pptx` and `-P 1` (in v0.6.0) |
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
 | `--theme-set path` | all | a theme CSS file, or a directory of them (repeatable) |
@@ -62,9 +62,9 @@ otherwise.
 | `--bare` | `build` | stack the slides, without the presenting script |
 | `--pdf` | `build` | write a PDF, one page per slide, with an outline — text and shapes as vectors (also chosen by `-o file.pdf`) |
 | `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
-| `--notes` | `build` | write the speaker notes as a text file, slides separated by `---` as marp-cli does (after v0.5.0; also chosen by `-o file.txt`). The `notes` command prints them in another layout |
-| `--pdf-notes` | `build` | add each slide's speaker notes to its PDF page as a note annotation, as marp-cli does (after v0.5.0). Asks for a PDF when nothing else says what to write |
-| `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | the PDF's bookmarks (after v0.5.0): "Page N" per slide and the headings nested under it. On by default here, unlike marp-cli; `=false` turns one off. See below |
+| `--notes` | `build` | write the speaker notes as a text file, slides separated by `---` as marp-cli does (in v0.6.0; also chosen by `-o file.txt`). The `notes` command prints them in another layout |
+| `--pdf-notes` | `build` | add each slide's speaker notes to its PDF page as a note annotation, as marp-cli does (in v0.6.0). Asks for a PDF when nothing else says what to write |
+| `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | the PDF's bookmarks (in v0.6.0): "Page N" per slide and the headings nested under it. On by default here, unlike marp-cli; `=false` turns one off. See below |
 | `--images png\|jpeg` | `build` | write one image per slide: `deck.001.png`, … |
 | `--image png\|jpeg` | `build` | write the first slide as an image (also chosen by `-o file.png` or `-o file.jpg`) |
 | `--pptx` | `build` | write a PowerPoint file with its speaker notes (also chosen by `-o file.pptx`): editable since v0.5.0, one picture per slide in v0.4.0 |
@@ -74,12 +74,12 @@ otherwise.
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
 | `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
-| `--theme name\|file.css` | `build` | override the deck's theme (after v0.5.0): a theme name, or a CSS file, which becomes the theme whatever `@theme` it declares; a directory is refused, use `--theme-set` |
-| `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | the page's metadata (after v0.5.0), over the deck's `title`, `description`, `author`, `keywords`, `url` and `image` directives; see below |
+| `--theme name\|file.css` | `build` | override the deck's theme (in v0.6.0): a theme name, or a CSS file, which becomes the theme whatever `@theme` it declares; a directory is refused, use `--theme-set` |
+| `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | the page's metadata (in v0.6.0), over the deck's `title`, `description`, `author`, `keywords`, `url` and `image` directives; see below |
 
 ## Several decks, and a directory
 
-After v0.5.0 `build` takes several decks, a directory (the decks under it,
+In v0.6.0 `build` takes several decks, a directory (the decks under it,
 found recursively) or a pattern, and builds up to `--parallel` of them at once.
 `-` is standard input; unlike marp-cli, a pipe is not read unless `-` says so.
 
@@ -97,7 +97,7 @@ found recursively) or a pattern, and builds up to `--parallel` of them at once.
 
 ## Transitions and the presenting page
 
-After v0.5.0 the `transition` directive of marp-cli works: `<!-- transition:
+In v0.6.0 the `transition` directive of marp-cli works: `<!-- transition:
 fade 1s -->`, a name and an optional duration, for the slide and the ones after
 it, or `<!-- _transition: cover -->` for one. The built-in names are marp-cli's:
 `clockwise`, `counterclockwise`, `cover`, `coverflow`, `cube`, `cylinder`,
@@ -139,7 +139,7 @@ template data, are separate and read as before.)
 
 ## Watch, serve and preview
 
-After v0.5.0, with marp-cli's routes and live reload protocol (read from its
+In v0.6.0, with marp-cli's routes and live reload protocol (read from its
 4.5.1 sources and compared with a running `marp -s`).
 
 **`slides --server dir`** (`-s`) serves the directory on `http://127.0.0.1:8080/`
@@ -190,7 +190,7 @@ listens on every interface and checks nothing:
 
 The command line wins over the deck, as in marp-cli, where the flags are
 appended to the deck as one last directive comment. Rules read from marp-cli
-4.5.1 and pinned by tests against its output (after v0.5.0):
+4.5.1 and pinned by tests against its output (in v0.6.0):
 
 - A deck that sets no `title` takes the text of its first heading of the lowest
   level, as written (`# **Bold** title` gives `**Bold** title`). With no
@@ -211,7 +211,7 @@ slide's size, and an outline of the slides and their headings.
 
 ### PDF notes and outline
 
-After v0.5.0 the PDF takes marp-cli's two options, and they are compared with
+In v0.6.0 the PDF takes marp-cli's two options, and they are compared with
 the PDFs marp-cli 4.5.1 writes for the same deck:
 
 - `--pdf-notes` puts each slide's speaker notes on its page as a note

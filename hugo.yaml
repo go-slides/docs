@@ -91,7 +91,7 @@ params:
   # "main" while nothing is released: the pages then describe the branch
   # being written, and say so.
   slides:
-    version: "v0.5.0"
+    version: "v0.6.0"
   versions:
     # The version selector shows "main" with the development icon.
     development: "main"
