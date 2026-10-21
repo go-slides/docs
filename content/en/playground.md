@@ -17,9 +17,13 @@ right. Nothing is sent to a server: not the deck, not a share link.
   Worker), so typing never waits for it. Click a slide to move the editor
   to its line; move the caret and the preview scrolls to its slide.
 - **Slideshow**: the presentation itself, with the keyboard, the
-  on-screen controller and the transitions. The presenter view needs a
-  second window, so it works in the downloaded page rather than in the
-  preview.
+  on-screen controller and the transitions.
+- **Presenter view**: **Present** (or `p` in the slideshow) opens it in a
+  second window: the current slide, the next step, the speaker notes (the
+  deck's `<!-- comments -->`), a clock and a timer. The arrow keys, Space,
+  Home and End work in either window, and each follows the other, also
+  when you edit the deck. If the window does not open, allow pop-ups for
+  the site. The overview view (`o`) is in the downloaded page only.
 - **Completion** as you type: directive keys (spot `_` ones in comments),
   the values of `kind`, `theme`, `size`, `paginate`, and template functions
   and data fields inside `{{ }}`.
@@ -48,6 +52,12 @@ nothing. Its page carries a Content Security Policy that runs only its own
 scripts. Raw HTML in the deck follows Marp's allowlist, as `slides` does by
 default. A render that runs for more than 5 seconds (a template that loops)
 is stopped.
+
+The presenter window keeps that sandbox. It is opened by the playground
+itself and shows the deck in an iframe sandboxed the same way. The two
+iframes cannot share storage, so the playground relays the slide number
+between them in messages. No frame that runs the deck gets the
+playground's origin.
 
 ## Size and speed
 
