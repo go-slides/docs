@@ -143,8 +143,22 @@ network, and does not work in a browser that has no `localStorage` (the
 button says so). The notes are text: `&`, `<` and `>` are escaped, so a note
 can never be markup. They are in the page, hidden, for the presenter view to
 take, which keeps them out of what a screen reader reads to the audience.
-`--bare` pages have none of it. The view adds about 10 KB to a page. There is
-no overview view yet.
+`--bare` pages have none of it. The view adds about 10 KB to a page.
+
+### Overview view
+
+After v0.7.1, press `o` (or `Escape`: marp-cli toggles with both), the
+controller's grid button, or the presenter view's page counter, and every slide
+shows whole in a grid over the page. The arrow keys choose a slide (up and down
+by row), `Home` and `End` go to the ends, and the other windows follow;
+`Enter`, `Space` or a click chooses a slide and, over the page, closes the
+overview. Over the presenter view a choice leaves it open (the presenter picks
+the slide to show, and keeps looking). The "Close overview" button, `o` and
+`Escape` close it. It is marp-cli's: the page again in a frame at
+`?view=overview&sync=KEY`, sharing the position through `localStorage`, with no
+network. The slides in the grid are focusable and labelled "Slide N", and the
+closed overview is inert, so keyboard and screen-reader users never land in
+it. The two views together add about 15 KB to a page.
 
 ### Configuration files
 
