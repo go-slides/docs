@@ -3,9 +3,9 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;The extension is &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
-versioned on its own (v0.2.1). It renders with go-slides v0.7.0 (the
+versioned on its own (v0.2.2). It renders with go-slides v0.7.1 (the
 &lt;code&gt;editor&lt;/code&gt; package, and the source lines of scroll sync). It is installed from
-the &lt;code&gt;go-slides-0.2.1.vsix&lt;/code&gt; attached to its GitHub release: it is not on the VS
+the &lt;code&gt;go-slides-0.2.2.vsix&lt;/code&gt; attached to its GitHub release: it is not on the VS
 Code Marketplace or Open VSX yet.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -18,7 +18,7 @@ directives, kinds and template functions complete as you type.&lt;/p&gt;
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;releases&lt;/a&gt;, then run
 &lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt;, or:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.2.1.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.2.2.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
@@ -174,13 +174,13 @@ with Marp for VS Code 3.6.1 measured in the same session:&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;first preview&lt;/td&gt;
-&lt;td style="text-align: right"&gt;68 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
 &lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;preview after an edit (median)&lt;/td&gt;
-&lt;td style="text-align: right"&gt;35 ms&lt;/td&gt;
 &lt;td style="text-align: right"&gt;24 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23 ms&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;.vsix&lt;/code&gt;&lt;/td&gt;
@@ -189,48 +189,15 @@ with Marp for VS Code 3.6.1 measured in the same session:&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The figures are for extension v0.2.1, from four interleaved rounds under a
-1-minute load of 5.5 to 7.2, with &lt;code&gt;GOGC=400&lt;/code&gt;. The first preview is faster than
-Marp&amp;rsquo;s. &lt;strong&gt;The preview after an edit is still slower than Marp&amp;rsquo;s&lt;/strong&gt;, 35 ms
-against 24 ms (v0.2.0 took 47–51 ms): go-regexp/engine v0.3.2 allocates much
-less while highlighting code, and most of the remaining time is in go-slides'
-own parsing.&lt;/p&gt;
-&lt;h3 data-hextra-search-id="after-v070"&gt;After v0.7.0&lt;span class="hx:absolute hx:-mt-20" id="after-v070"&gt;&lt;/span&gt;
-&lt;a href="#after-v070" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides after v0.7.0 caches parsed themes, packed style sheets and
-highlighted code between renders, marks scroll-sync lines without going byte by
-byte, and reuses its writers: a render of the 100-slide deck allocates 5.7 MB,
-against 52.7 MB for extension v0.2.0. With it, the extension&amp;rsquo;s main branch
-(after v0.2.1) drops the &lt;code&gt;GOGC=400&lt;/code&gt; override. Same machine and method,
-2026-10-21, four interleaved rounds under a 1-minute load of 5.9 to 7.5:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th style="text-align: right"&gt;v0.2.1&lt;/th&gt;
-&lt;th style="text-align: right"&gt;after v0.2.1&lt;/th&gt;
-&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;first preview&lt;/td&gt;
-&lt;td style="text-align: right"&gt;72 ms&lt;/td&gt;
-&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
-&lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;preview after an edit (median), Go&amp;rsquo;s default &lt;code&gt;GOGC&lt;/code&gt;&lt;/td&gt;
-&lt;td style="text-align: right"&gt;44 ms&lt;/td&gt;
-&lt;td style="text-align: right"&gt;&lt;strong&gt;24 ms&lt;/strong&gt;&lt;/td&gt;
-&lt;td style="text-align: right"&gt;23 ms&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;preview after an edit (median), &lt;code&gt;GOGC=400&lt;/code&gt;&lt;/td&gt;
-&lt;td style="text-align: right"&gt;36 ms&lt;/td&gt;
-&lt;td style="text-align: right"&gt;19 ms&lt;/td&gt;
-&lt;td style="text-align: right"&gt;23 ms&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The preview after an edit now matches Marp&amp;rsquo;s at Go&amp;rsquo;s default collector
-setting.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;The figures are for extension v0.2.2 (go-slides v0.7.1), from four interleaved
+rounds under a 1-minute load of 5.9 to 7.5, at Go&amp;rsquo;s default &lt;code&gt;GOGC&lt;/code&gt;. The first
+preview is faster than Marp&amp;rsquo;s, and the preview after an edit is level with
+Marp&amp;rsquo;s.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v071-and-extension-v022"&gt;In v0.7.1 and extension v0.2.2&lt;span class="hx:absolute hx:-mt-20" id="in-v071-and-extension-v022"&gt;&lt;/span&gt;
+&lt;a href="#in-v071-and-extension-v022" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.7.1 caches parsed themes, packed style sheets and highlighted code
+between renders, marks scroll-sync lines without going byte by byte, and reuses
+its writers: a render of the 100-slide deck allocates 5.7 MB, against 52.7 MB
+for extension v0.2.0. With it, extension v0.2.2 drops the &lt;code&gt;GOGC=400&lt;/code&gt; override.
+For comparison, extension v0.2.1 took 72 ms for the first preview and 44 ms
+after an edit at the default &lt;code&gt;GOGC&lt;/code&gt; (36 ms with &lt;code&gt;GOGC=400&lt;/code&gt;), and v0.2.0 took
+47–51 ms.&lt;/p&gt;</description></item></channel></rss>
