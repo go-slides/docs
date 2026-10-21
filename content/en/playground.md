@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Open the playground →](https://go-slides.github.io/playground/)**
 
-The playground is go-slides itself, v0.7.0, compiled to WebAssembly and
+The playground is go-slides itself, v0.7.1, compiled to WebAssembly and
 running in your browser. Type a deck on the left; the slides follow on the
 right. Nothing is sent to a server: not the deck, not a share link.
 

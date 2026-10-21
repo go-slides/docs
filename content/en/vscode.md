@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 The extension is [go-slides/vscode](https://github.com/go-slides/vscode),
-versioned on its own (v0.2.1). It renders with go-slides v0.7.0 (the
+versioned on its own (v0.2.2). It renders with go-slides v0.7.1 (the
 `editor` package, and the source lines of scroll sync). It is installed from
-the `go-slides-0.2.1.vsix` attached to its GitHub release: it is not on the VS
+the `go-slides-0.2.2.vsix` attached to its GitHub release: it is not on the VS
 Code Marketplace or Open VSX yet.
 {{< /callout >}}
 
@@ -25,7 +25,7 @@ Download `go-slides-<version>.vsix` from the
 *Extensions: Install from VSIX...*, or:
 
 ```sh
-code --install-extension go-slides-0.2.1.vsix
+code --install-extension go-slides-0.2.2.vsix
 ```
 
 The preview needs nothing else. Exporting needs the `slides` command:
@@ -128,31 +128,21 @@ with Marp for VS Code 3.6.1 measured in the same session:
 | | go-slides | Marp for VS Code |
 |---|---:|---:|
 | activation (loading the WebAssembly module) | 189 ms | — |
-| first preview | 68 ms | 78 ms |
-| preview after an edit (median) | 35 ms | 24 ms |
+| first preview | 52 ms | 78 ms |
+| preview after an edit (median) | 24 ms | 23 ms |
 | `.vsix` | 7.5 MB | 36.3 MB |
 
-The figures are for extension v0.2.1, from four interleaved rounds under a
-1-minute load of 5.5 to 7.2, with `GOGC=400`. The first preview is faster than
-Marp's. **The preview after an edit is still slower than Marp's**, 35 ms
-against 24 ms (v0.2.0 took 47–51 ms): go-regexp/engine v0.3.2 allocates much
-less while highlighting code, and most of the remaining time is in go-slides'
-own parsing.
+The figures are for extension v0.2.2 (go-slides v0.7.1), from four interleaved
+rounds under a 1-minute load of 5.9 to 7.5, at Go's default `GOGC`. The first
+preview is faster than Marp's, and the preview after an edit is level with
+Marp's.
 
-### After v0.7.0
+### In v0.7.1 and extension v0.2.2
 
-go-slides after v0.7.0 caches parsed themes, packed style sheets and
-highlighted code between renders, marks scroll-sync lines without going byte by
-byte, and reuses its writers: a render of the 100-slide deck allocates 5.7 MB,
-against 52.7 MB for extension v0.2.0. With it, the extension's main branch
-(after v0.2.1) drops the `GOGC=400` override. Same machine and method,
-2026-10-21, four interleaved rounds under a 1-minute load of 5.9 to 7.5:
-
-| | v0.2.1 | after v0.2.1 | Marp for VS Code |
-|---|---:|---:|---:|
-| first preview | 72 ms | 52 ms | 78 ms |
-| preview after an edit (median), Go's default `GOGC` | 44 ms | **24 ms** | 23 ms |
-| preview after an edit (median), `GOGC=400` | 36 ms | 19 ms | 23 ms |
-
-The preview after an edit now matches Marp's at Go's default collector
-setting.
+go-slides v0.7.1 caches parsed themes, packed style sheets and highlighted code
+between renders, marks scroll-sync lines without going byte by byte, and reuses
+its writers: a render of the 100-slide deck allocates 5.7 MB, against 52.7 MB
+for extension v0.2.0. With it, extension v0.2.2 drops the `GOGC=400` override.
+For comparison, extension v0.2.1 took 72 ms for the first preview and 44 ms
+after an edit at the default `GOGC` (36 ms with `GOGC=400`), and v0.2.0 took
+47–51 ms.
