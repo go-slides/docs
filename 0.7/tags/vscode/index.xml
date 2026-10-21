@@ -194,4 +194,43 @@ with Marp for VS Code 3.6.1 measured in the same session:&lt;/p&gt;
 Marp&amp;rsquo;s. &lt;strong&gt;The preview after an edit is still slower than Marp&amp;rsquo;s&lt;/strong&gt;, 35 ms
 against 24 ms (v0.2.0 took 47–51 ms): go-regexp/engine v0.3.2 allocates much
 less while highlighting code, and most of the remaining time is in go-slides'
-own parsing.&lt;/p&gt;</description></item></channel></rss>
+own parsing.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="after-v070"&gt;After v0.7.0&lt;span class="hx:absolute hx:-mt-20" id="after-v070"&gt;&lt;/span&gt;
+&lt;a href="#after-v070" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides after v0.7.0 caches parsed themes, packed style sheets and
+highlighted code between renders, marks scroll-sync lines without going byte by
+byte, and reuses its writers: a render of the 100-slide deck allocates 5.7 MB,
+against 52.7 MB for extension v0.2.0. With it, the extension&amp;rsquo;s main branch
+(after v0.2.1) drops the &lt;code&gt;GOGC=400&lt;/code&gt; override. Same machine and method,
+2026-10-21, four interleaved rounds under a 1-minute load of 5.9 to 7.5:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.2.1&lt;/th&gt;
+&lt;th style="text-align: right"&gt;after v0.2.1&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;first preview&lt;/td&gt;
+&lt;td style="text-align: right"&gt;72 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;preview after an edit (median), Go&amp;rsquo;s default &lt;code&gt;GOGC&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;44 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;strong&gt;24 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;preview after an edit (median), &lt;code&gt;GOGC=400&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;19 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The preview after an edit now matches Marp&amp;rsquo;s at Go&amp;rsquo;s default collector
+setting.&lt;/p&gt;</description></item></channel></rss>
