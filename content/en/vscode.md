@@ -138,3 +138,21 @@ Marp's. **The preview after an edit is still slower than Marp's**, 35 ms
 against 24 ms (v0.2.0 took 47–51 ms): go-regexp/engine v0.3.2 allocates much
 less while highlighting code, and most of the remaining time is in go-slides'
 own parsing.
+
+### After v0.7.0
+
+go-slides after v0.7.0 caches parsed themes, packed style sheets and
+highlighted code between renders, marks scroll-sync lines without going byte by
+byte, and reuses its writers: a render of the 100-slide deck allocates 5.7 MB,
+against 52.7 MB for extension v0.2.0. With it, the extension's main branch
+(after v0.2.1) drops the `GOGC=400` override. Same machine and method,
+2026-10-21, four interleaved rounds under a 1-minute load of 5.9 to 7.5:
+
+| | v0.2.1 | after v0.2.1 | Marp for VS Code |
+|---|---:|---:|---:|
+| first preview | 72 ms | 52 ms | 78 ms |
+| preview after an edit (median), Go's default `GOGC` | 44 ms | **24 ms** | 23 ms |
+| preview after an edit (median), `GOGC=400` | 36 ms | 19 ms | 23 ms |
+
+The preview after an edit now matches Marp's at Go's default collector
+setting.
