@@ -332,8 +332,20 @@ network, and does not work in a browser that has no &lt;code&gt;localStorage&lt;
 button says so). The notes are text: &lt;code&gt;&amp;amp;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt; and &lt;code&gt;&amp;gt;&lt;/code&gt; are escaped, so a note
 can never be markup. They are in the page, hidden, for the presenter view to
 take, which keeps them out of what a screen reader reads to the audience.
-&lt;code&gt;--bare&lt;/code&gt; pages have none of it. The view adds about 10 KB to a page. There is
-no overview view yet.&lt;/p&gt;
+&lt;code&gt;--bare&lt;/code&gt; pages have none of it. The view adds about 10 KB to a page.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="overview-view"&gt;Overview view&lt;span class="hx:absolute hx:-mt-20" id="overview-view"&gt;&lt;/span&gt;
+&lt;a href="#overview-view" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.7.1, press &lt;code&gt;o&lt;/code&gt; (or &lt;code&gt;Escape&lt;/code&gt;: marp-cli toggles with both), the
+controller&amp;rsquo;s grid button, or the presenter view&amp;rsquo;s page counter, and every slide
+shows whole in a grid over the page. The arrow keys choose a slide (up and down
+by row), &lt;code&gt;Home&lt;/code&gt; and &lt;code&gt;End&lt;/code&gt; go to the ends, and the other windows follow;
+&lt;code&gt;Enter&lt;/code&gt;, &lt;code&gt;Space&lt;/code&gt; or a click chooses a slide and, over the page, closes the
+overview. Over the presenter view a choice leaves it open (the presenter picks
+the slide to show, and keeps looking). The &amp;ldquo;Close overview&amp;rdquo; button, &lt;code&gt;o&lt;/code&gt; and
+&lt;code&gt;Escape&lt;/code&gt; close it. It is marp-cli&amp;rsquo;s: the page again in a frame at
+&lt;code&gt;?view=overview&amp;amp;sync=KEY&lt;/code&gt;, sharing the position through &lt;code&gt;localStorage&lt;/code&gt;, with no
+network. The slides in the grid are focusable and labelled &amp;ldquo;Slide N&amp;rdquo;, and the
+closed overview is inert, so keyboard and screen-reader users never land in
+it. The two views together add about 15 KB to a page.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="configuration-files"&gt;Configuration files&lt;span class="hx:absolute hx:-mt-20" id="configuration-files"&gt;&lt;/span&gt;
 &lt;a href="#configuration-files" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;marp-cli reads its options from a file in the working directory, and so does
 &lt;code&gt;slides&lt;/code&gt;, when the file is data: &lt;code&gt;.marprc&lt;/code&gt; (YAML, JSON is YAML too),
