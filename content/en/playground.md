@@ -33,9 +33,26 @@ right. Nothing is sent to a server: not the deck, not a share link.
   in the editor and listed under it, and the preview keeps the last deck
   that rendered.
 - **Examples**: a welcome deck, templates that generate slides, slide kinds,
-  an HCL front matter, themes and spot directives.
+  an HCL front matter, themes and spot directives, and math, images and
+  backgrounds (`![bg]`, a split `![bg left:40%]`, filters).
+- **Images**: drop or paste an image file (PNG, JPEG, GIF, WebP or SVG, up
+  to 256 KiB) into the editor and it goes into the deck as a `data:` URI. It
+  travels with the deck and nothing is uploaded. `https:` images work too,
+  but the browser fetches them from their server, which then sees your
+  address. The preview sends no referrer.
+- **Highlighting** of the front matter's keys at any depth, in YAML (also
+  in `{a: 1}` mappings) and in HCL.
+- **Theme** picker: default, gaia, uncover, and the themes the deck defines
+  (`/* @theme name */` in a `<style>`). It writes `theme:` into the front
+  matter, YAML or HCL, so a shared link keeps it, and it follows the front
+  matter when you edit it.
+- The preview **keeps its place** as you type: only the slides that
+  changed are replaced, and a change of theme reopens the preview on the
+  same slide.
 - **Share link**: the deck travels in the link itself (in its `#` part,
-  compressed), so opening the link opens the deck. Decks up to 256 KiB.
+  compressed), so opening the link opens the deck. Links carry up to
+  64 KiB compressed, so a deck with images is shared as a download
+  instead.
 - **Download HTML**: the presentation as one page, the same as
   `slides deck.md` writes.
 
