@@ -25,9 +25,26 @@ a template function. The help pane also links to these pages.&lt;/li&gt;
 in the editor and listed under it, and the preview keeps the last deck
 that rendered.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Examples&lt;/strong&gt;: a welcome deck, templates that generate slides, slide kinds,
-an HCL front matter, themes and spot directives.&lt;/li&gt;
+an HCL front matter, themes and spot directives, and math, images and
+backgrounds (&lt;code&gt;![bg]&lt;/code&gt;, a split &lt;code&gt;![bg left:40%]&lt;/code&gt;, filters).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Images&lt;/strong&gt;: drop or paste an image file (PNG, JPEG, GIF, WebP or SVG, up
+to 256 KiB) into the editor and it goes into the deck as a &lt;code&gt;data:&lt;/code&gt; URI. It
+travels with the deck and nothing is uploaded. &lt;code&gt;https:&lt;/code&gt; images work too,
+but the browser fetches them from their server, which then sees your
+address. The preview sends no referrer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Highlighting&lt;/strong&gt; of the front matter&amp;rsquo;s keys at any depth, in YAML (also
+in &lt;code&gt;{a: 1}&lt;/code&gt; mappings) and in HCL.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Theme&lt;/strong&gt; picker: default, gaia, uncover, and the themes the deck defines
+(&lt;code&gt;/* @theme name */&lt;/code&gt; in a &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). It writes &lt;code&gt;theme:&lt;/code&gt; into the front
+matter, YAML or HCL, so a shared link keeps it, and it follows the front
+matter when you edit it.&lt;/li&gt;
+&lt;li&gt;The preview &lt;strong&gt;keeps its place&lt;/strong&gt; as you type: only the slides that
+changed are replaced, and a change of theme reopens the preview on the
+same slide.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Share link&lt;/strong&gt;: the deck travels in the link itself (in its &lt;code&gt;#&lt;/code&gt; part,
-compressed), so opening the link opens the deck. Decks up to 256 KiB.&lt;/li&gt;
+compressed), so opening the link opens the deck. Links carry up to
+64 KiB compressed, so a deck with images is shared as a download
+instead.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Download HTML&lt;/strong&gt;: the presentation as one page, the same as
 &lt;code&gt;slides deck.md&lt;/code&gt; writes.&lt;/li&gt;
 &lt;/ul&gt;
