@@ -35,15 +35,41 @@ right. Nothing is sent to a server: not the deck, not a share link.
 - **Examples**: a welcome deck, templates that generate slides, slide kinds,
   an HCL front matter, themes and spot directives, and math, images and
   backgrounds (`![bg]`, a split `![bg left:40%]`, filters).
-- **Images**: drop or paste an image file (PNG, JPEG, GIF, WebP or SVG, up
-  to 256 KiB) into the editor and it goes into the deck as a `data:` URI. It
-  travels with the deck and nothing is uploaded. `https:` images work too,
-  but the browser fetches them from their server, which then sees your
-  address. The preview sends no referrer.
+- **Files**: the panel left of the editor is the deck's project, laid out
+  the way the [command]({{< relref "cli" >}}) and the
+  [VS Code extension]({{< relref "vscode" >}}) read it: `deck.md`,
+  `slides.yaml`, `themes/`, `kinds/`, `media/`.
+  - Click a file to edit it. The editor colours it by its language
+    (Markdown, YAML, HCL, JSON, CSS) and marks its problems.
+  - Right-click (or Shift+F10) for New File, New Folder, Rename (F2),
+    Delete (asks first) and New theme / New kind. Drag a file onto a folder
+    to move it. The keyboard follows the WAI-ARIA tree pattern, type-ahead
+    included.
+  - **Project ▸ New theme** makes `themes/my-gaia.css` (or from default,
+    uncover): `@import` of the built-in theme and the rules you add. It
+    joins the Theme list. **New kind** and **New data file** start from
+    templates too. Each is listed in `slides.yaml`, so `slides build deck.md`
+    finds it.
+  - **Project ▸ Download project (.zip)** saves it all. Unzipped,
+    `slides build deck.md` builds it. **Open project** takes a `.zip` or a
+    folder back. An archive that leaves its folder (`..`, absolute paths),
+    holds more than 256 files or 8 MiB in a file, or inflates more than 100
+    times is refused.
+  - Everything is kept in this browser with the draft. A project holds up
+    to 64 MiB, and the line under the files says how much is used.
+- **Media**: drop or paste an image, a video or a sound on the editor and it
+  goes into `media/`, and the deck names it: `![](media/photo.png)`. Drop
+  files on a folder of the panel to put them there. The deck stays small and
+  readable, and nothing is uploaded. The preview's sandbox loads them
+  without being opened up (the page hands it the bytes). **Save as ▸ HTML
+  page** puts them in the page. `https:` images work too, but the browser
+  fetches them from their server, which then sees your address. The
+  preview sends no referrer.
 - **Highlighting** of the front matter's keys at any depth, in YAML (also
   in `{a: 1}` mappings) and in HCL.
-- **Theme** picker: default, gaia, uncover, and the themes the deck defines
-  (`/* @theme name */` in a `<style>`). It writes `theme:` into the front
+- **Theme** picker: default, gaia, uncover, the project's themes
+  (`themes/*.css`) and the themes the deck defines (`/* @theme name */` in a
+  `<style>`). It writes `theme:` into the front
   matter, YAML or HCL, so a shared link keeps it, and it follows the front
   matter when you edit it.
 - The preview **keeps its place** as you type: only the slides that
@@ -51,8 +77,8 @@ right. Nothing is sent to a server: not the deck, not a share link.
   same slide.
 - **Share link**: the deck travels in the link itself (in its `#` part,
   compressed), so opening the link opens the deck. Links carry up to
-  64 KiB compressed, so a deck with images is shared as a download
-  instead.
+  64 KiB compressed, and the deck only: when the project holds more
+  (themes, kinds, media), Share says so and offers the `.zip`.
 - **Save as**:
   - the HTML page, the same as `slides deck.md` writes;
   - a **PDF** (vector, its text selectable, with the outline);
@@ -75,6 +101,10 @@ right. Nothing is sent to a server: not the deck, not a share link.
     back.
   - **Draft ▸ Forget my drafts** erases everything stored.
 
+The PDF, PowerPoint and OpenDocument exports render the deck alone for now,
+without the project's themes, kinds and media: for those, download the
+project and use the command.
+
 Images as files (slides `--images`) are not made in the browser: use the
 [command]({{< relref "cli" >}}) or the
 [VS Code extension]({{< relref "vscode" >}}).
@@ -93,6 +123,11 @@ itself and shows the deck in an iframe sandboxed the same way. The two
 iframes cannot share storage, so the playground relays the slide number
 between them in messages. No frame that runs the deck gets the
 playground's origin.
+
+The project's media reach the sandboxed frames as bytes in a message, and
+each frame makes its own `blob:` URLs of them, in its own origin. A `blob:`
+URL made by the playground does not load there, and the frames' policy
+gains only `blob:` for media and fonts.
 
 ## Size and speed
 
