@@ -53,13 +53,31 @@ right. Nothing is sent to a server: not the deck, not a share link.
   compressed), so opening the link opens the deck. Links carry up to
   64 KiB compressed, so a deck with images is shared as a download
   instead.
-- **Download HTML**: the presentation as one page, the same as
-  `slides deck.md` writes.
+- **Save as**:
+  - the HTML page, the same as `slides deck.md` writes;
+  - a **PDF** (vector, its text selectable, with the outline);
+  - an editable **PowerPoint** or **OpenDocument** deck.
 
-PDF, PPTX, ODP and images are not made in the browser. go-slides' export
-engines compiled to WebAssembly would weigh 21 MiB more on the wire. Use
-the [command]({{< relref "cli" >}}) or the
-[VS Code extension]({{< relref "vscode" >}}) for them.
+  They are made in your browser, by the same code as `slides --pdf`,
+  `--pptx` and `--odp`: the 100-slide benchmark deck's PDF is
+  byte-identical to the command's. The first export downloads the export
+  engine (about 21 MiB, once; your browser keeps it until the next update),
+  with a progress line. The 100-slide deck then takes about 3 seconds. An
+  `https:` image is included only if its server allows it (CORS); `data:`
+  images always are.
+- **Your draft is kept**:
+  - The deck is saved in this browser as you type (IndexedDB, for this site
+    only) and comes back when you reload. Nothing is sent anywhere.
+  - A shared link opens its deck and keeps your draft: **Draft ▸ Restore my
+    draft** brings it back.
+  - An example, **Draft ▸ Reset to the example** (which asks first) and
+    another tab never erase it either: **Draft ▸ Restore replaced** swaps it
+    back.
+  - **Draft ▸ Forget my drafts** erases everything stored.
+
+Images as files (slides `--images`) are not made in the browser: use the
+[command]({{< relref "cli" >}}) or the
+[VS Code extension]({{< relref "vscode" >}}).
 
 ## Security
 
@@ -83,5 +101,6 @@ serve brotli). It is downloaded once with a progress bar, then cached by the
 browser until the next deploy. On an Apple M4 Max with Chrome 155, measured
 against the live page, the editor is ready 2.1 s after the page opens, 1.5 s
 of which is the download, and the first slides appear at 2.4 s. A change to
-the 100-slide benchmark deck reaches the preview in about 70 ms, 37 ms of
-which is go-slides rendering it.
+the 100-slide benchmark deck reaches the preview in about 30 ms: go-slides
+renders only the slides that changed, and only those are replaced in the
+preview.
