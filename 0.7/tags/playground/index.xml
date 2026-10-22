@@ -5,53 +5,102 @@ running in your browser. Type a deck on the left; the slides follow on the
 right. Nothing is sent to a server: not the deck, not a share link.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;What it has&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Live preview&lt;/strong&gt; of every slide, rendered off the page&amp;rsquo;s thread (a Web
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Live preview&lt;/strong&gt; of every slide, rendered off the page&amp;rsquo;s thread (a Web
 Worker), so typing never waits for it. Click a slide to move the editor
-to its line; move the caret and the preview scrolls to its slide.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Slideshow&lt;/strong&gt;: the presentation itself, with the keyboard, the
-on-screen controller and the transitions.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Presenter view&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (or &lt;code&gt;p&lt;/code&gt; in the slideshow) opens it in a
+to its line; move the caret and the preview scrolls to its slide.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Slideshow&lt;/strong&gt;: the presentation itself, with the keyboard, the
+on-screen controller and the transitions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Presenter view&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (or &lt;code&gt;p&lt;/code&gt; in the slideshow) opens it in a
 second window: the current slide, the next step, the speaker notes (the
 deck&amp;rsquo;s &lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt;), a clock and a timer. The arrow keys, Space,
 Home and End work in either window, and each follows the other, also
 when you edit the deck. If the window does not open, allow pop-ups for
-the site. The overview view (&lt;code&gt;o&lt;/code&gt;) is in the downloaded page only.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Completion&lt;/strong&gt; as you type: directive keys (spot &lt;code&gt;_&lt;/code&gt; ones in comments),
+the site. The overview view (&lt;code&gt;o&lt;/code&gt;) is in the downloaded page only.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Completion&lt;/strong&gt; as you type: directive keys (spot &lt;code&gt;_&lt;/code&gt; ones in comments),
 the values of &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, and template functions
-and data fields inside &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Help&lt;/strong&gt; for what is under the caret: a directive, a kind (what it sets),
-a template function. The help pane also links to these pages.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Problems&lt;/strong&gt; on their line: template, YAML and HCL errors are highlighted
+and data fields inside &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Help&lt;/strong&gt; for what is under the caret: a directive, a kind (what it sets),
+a template function. The help pane also links to these pages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Problems&lt;/strong&gt; on their line: template, YAML and HCL errors are highlighted
 in the editor and listed under it, and the preview keeps the last deck
-that rendered.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Examples&lt;/strong&gt;: a welcome deck, templates that generate slides, slide kinds,
+that rendered.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Examples&lt;/strong&gt;: a welcome deck, templates that generate slides, slide kinds,
 an HCL front matter, themes and spot directives, and math, images and
-backgrounds (&lt;code&gt;![bg]&lt;/code&gt;, a split &lt;code&gt;![bg left:40%]&lt;/code&gt;, filters).&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Images&lt;/strong&gt;: drop or paste an image file (PNG, JPEG, GIF, WebP or SVG, up
+backgrounds (&lt;code&gt;![bg]&lt;/code&gt;, a split &lt;code&gt;![bg left:40%]&lt;/code&gt;, filters).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Images&lt;/strong&gt;: drop or paste an image file (PNG, JPEG, GIF, WebP or SVG, up
 to 256 KiB) into the editor and it goes into the deck as a &lt;code&gt;data:&lt;/code&gt; URI. It
 travels with the deck and nothing is uploaded. &lt;code&gt;https:&lt;/code&gt; images work too,
 but the browser fetches them from their server, which then sees your
-address. The preview sends no referrer.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Highlighting&lt;/strong&gt; of the front matter&amp;rsquo;s keys at any depth, in YAML (also
-in &lt;code&gt;{a: 1}&lt;/code&gt; mappings) and in HCL.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Theme&lt;/strong&gt; picker: default, gaia, uncover, and the themes the deck defines
+address. The preview sends no referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Highlighting&lt;/strong&gt; of the front matter&amp;rsquo;s keys at any depth, in YAML (also
+in &lt;code&gt;{a: 1}&lt;/code&gt; mappings) and in HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Theme&lt;/strong&gt; picker: default, gaia, uncover, and the themes the deck defines
 (&lt;code&gt;/* @theme name */&lt;/code&gt; in a &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). It writes &lt;code&gt;theme:&lt;/code&gt; into the front
 matter, YAML or HCL, so a shared link keeps it, and it follows the front
-matter when you edit it.&lt;/li&gt;
-&lt;li&gt;The preview &lt;strong&gt;keeps its place&lt;/strong&gt; as you type: only the slides that
+matter when you edit it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The preview &lt;strong&gt;keeps its place&lt;/strong&gt; as you type: only the slides that
 changed are replaced, and a change of theme reopens the preview on the
-same slide.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Share link&lt;/strong&gt;: the deck travels in the link itself (in its &lt;code&gt;#&lt;/code&gt; part,
+same slide.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Share link&lt;/strong&gt;: the deck travels in the link itself (in its &lt;code&gt;#&lt;/code&gt; part,
 compressed), so opening the link opens the deck. Links carry up to
 64 KiB compressed, so a deck with images is shared as a download
-instead.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Download HTML&lt;/strong&gt;: the presentation as one page, the same as
-&lt;code&gt;slides deck.md&lt;/code&gt; writes.&lt;/li&gt;
+instead.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the HTML page, the same as &lt;code&gt;slides deck.md&lt;/code&gt; writes;&lt;/li&gt;
+&lt;li&gt;a &lt;strong&gt;PDF&lt;/strong&gt; (vector, its text selectable, with the outline);&lt;/li&gt;
+&lt;li&gt;an editable &lt;strong&gt;PowerPoint&lt;/strong&gt; or &lt;strong&gt;OpenDocument&lt;/strong&gt; deck.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;PDF, PPTX, ODP and images are not made in the browser. go-slides&amp;rsquo; export
-engines compiled to WebAssembly would weigh 21 MiB more on the wire. Use
-the &lt;a href="https://go-slides.github.io/docs/0.7/cli/"&gt;command&lt;/a&gt; or the
-&lt;a href="https://go-slides.github.io/docs/0.7/vscode/"&gt;VS Code extension&lt;/a&gt; for them.&lt;/p&gt;
+&lt;p&gt;They are made in your browser, by the same code as &lt;code&gt;slides --pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; and &lt;code&gt;--odp&lt;/code&gt;: the 100-slide benchmark deck&amp;rsquo;s PDF is
+byte-identical to the command&amp;rsquo;s. The first export downloads the export
+engine (about 21 MiB, once; your browser keeps it until the next update),
+with a progress line. The 100-slide deck then takes about 3 seconds. An
+&lt;code&gt;https:&lt;/code&gt; image is included only if its server allows it (CORS); &lt;code&gt;data:&lt;/code&gt;
+images always are.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Your draft is kept&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The deck is saved in this browser as you type (IndexedDB, for this site
+only) and comes back when you reload. Nothing is sent anywhere.&lt;/li&gt;
+&lt;li&gt;A shared link opens its deck and keeps your draft: &lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; brings it back.&lt;/li&gt;
+&lt;li&gt;An example, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (which asks first) and
+another tab never erase it either: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; swaps it
+back.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; erases everything stored.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Images as files (slides &lt;code&gt;--images&lt;/code&gt;) are not made in the browser: use the
+&lt;a href="https://go-slides.github.io/docs/0.7/cli/"&gt;command&lt;/a&gt; or the
+&lt;a href="https://go-slides.github.io/docs/0.7/vscode/"&gt;VS Code extension&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Security&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The deck is shown in an iframe sandboxed without the page&amp;rsquo;s origin: it can
 reach neither the playground nor its storage, submit no form and navigate
@@ -70,5 +119,6 @@ serve brotli). It is downloaded once with a progress bar, then cached by the
 browser until the next deploy. On an Apple M4 Max with Chrome 155, measured
 against the live page, the editor is ready 2.1 s after the page opens, 1.5 s
 of which is the download, and the first slides appear at 2.4 s. A change to
-the 100-slide benchmark deck reaches the preview in about 70 ms, 37 ms of
-which is go-slides rendering it.&lt;/p&gt;</description></item></channel></rss>
+the 100-slide benchmark deck reaches the preview in about 30 ms: go-slides
+renders only the slides that changed, and only those are replaced in the
+preview.&lt;/p&gt;</description></item></channel></rss>
