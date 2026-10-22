@@ -42,6 +42,13 @@ right. Nothing is sent to a server: not the deck, not a share link.
   address. The preview sends no referrer.
 - **Highlighting** of the front matter's keys at any depth, in YAML (also
   in `{a: 1}` mappings) and in HCL.
+- **Theme** picker: default, gaia, uncover, and the themes the deck defines
+  (`/* @theme name */` in a `<style>`). It writes `theme:` into the front
+  matter, YAML or HCL, so a shared link keeps it, and it follows the front
+  matter when you edit it.
+- The preview **keeps its place** as you type: only the slides that
+  changed are replaced, and a change of theme reopens the preview on the
+  same slide.
 - **Share link**: the deck travels in the link itself (in its `#` part,
   compressed), so opening the link opens the deck. Links carry up to
   64 KiB compressed, so a deck with images is shared as a download
