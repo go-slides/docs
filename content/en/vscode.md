@@ -146,3 +146,21 @@ for extension v0.2.0. With it, extension v0.2.2 drops the `GOGC=400` override.
 For comparison, extension v0.2.1 took 72 ms for the first preview and 44 ms
 after an edit at the default `GOGC` (36 ms with `GOGC=400`), and v0.2.0 took
 47–51 ms.
+
+### After v0.7.1
+
+go-slides after v0.7.1 keeps each open deck's rendered slides and, after an
+edit, re-renders only those whose source or inherited state changed
+(directives, page number, total, heading ids, link references, source lines);
+the output is the same as a full render, byte for byte. VS Code's preview then
+morphs only the changed slide's DOM. The extension's main branch (after
+v0.2.2) builds on it, and its smoke test now types one character into slide 50
+between timed renders, for both extensions. Same machine and method,
+2026-10-21, four interleaved rounds under a 1-minute load of 5.9 to 7.4:
+
+| | v0.2.2 | after v0.2.2 | Marp for VS Code |
+|---|---:|---:|---:|
+| first preview | 52 ms | 54 ms | 78 ms |
+| preview after an edit (median) | 24 ms | **19 ms** | 23–24 ms |
+
+The preview after an edit is now faster than Marp's.
