@@ -42,19 +42,49 @@ an HCL front matter, themes and spot directives, and math, images and
 backgrounds (&lt;code&gt;![bg]&lt;/code&gt;, a split &lt;code&gt;![bg left:40%]&lt;/code&gt;, filters).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Images&lt;/strong&gt;: drop or paste an image file (PNG, JPEG, GIF, WebP or SVG, up
-to 256 KiB) into the editor and it goes into the deck as a &lt;code&gt;data:&lt;/code&gt; URI. It
-travels with the deck and nothing is uploaded. &lt;code&gt;https:&lt;/code&gt; images work too,
-but the browser fetches them from their server, which then sees your
-address. The preview sends no referrer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Files&lt;/strong&gt;: the panel left of the editor is the deck&amp;rsquo;s project, laid out
+the way the &lt;a href="https://go-slides.github.io/docs/0.7/cli/"&gt;command&lt;/a&gt; and the
+&lt;a href="https://go-slides.github.io/docs/0.7/vscode/"&gt;VS Code extension&lt;/a&gt; read it: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click a file to edit it. The editor colours it by its language
+(Markdown, YAML, HCL, JSON, CSS) and marks its problems.&lt;/li&gt;
+&lt;li&gt;Right-click (or Shift+F10) for New File, New Folder, Rename (F2),
+Delete (asks first) and New theme / New kind. Drag a file onto a folder
+to move it. The keyboard follows the WAI-ARIA tree pattern, type-ahead
+included.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; makes &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (or from default,
+uncover): &lt;code&gt;@import&lt;/code&gt; of the built-in theme and the rules you add. It
+joins the Theme list. &lt;strong&gt;New kind&lt;/strong&gt; and &lt;strong&gt;New data file&lt;/strong&gt; start from
+templates too. Each is listed in &lt;code&gt;slides.yaml&lt;/code&gt;, so &lt;code&gt;slides build deck.md&lt;/code&gt;
+finds it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; saves it all. Unzipped,
+&lt;code&gt;slides build deck.md&lt;/code&gt; builds it. &lt;strong&gt;Open project&lt;/strong&gt; takes a &lt;code&gt;.zip&lt;/code&gt; or a
+folder back. An archive that leaves its folder (&lt;code&gt;..&lt;/code&gt;, absolute paths),
+holds more than 256 files or 8 MiB in a file, or inflates more than 100
+times is refused.&lt;/li&gt;
+&lt;li&gt;Everything is kept in this browser with the draft. A project holds up
+to 64 MiB, and the line under the files says how much is used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Media&lt;/strong&gt;: drop or paste an image, a video or a sound on the editor and it
+goes into &lt;code&gt;media/&lt;/code&gt;, and the deck names it: &lt;code&gt;![](media/photo.png)&lt;/code&gt;. Drop
+files on a folder of the panel to put them there. The deck stays small and
+readable, and nothing is uploaded. The preview&amp;rsquo;s sandbox loads them
+without being opened up (the page hands it the bytes). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; puts them in the page. &lt;code&gt;https:&lt;/code&gt; images work too, but the browser
+fetches them from their server, which then sees your address. The
+preview sends no referrer.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Highlighting&lt;/strong&gt; of the front matter&amp;rsquo;s keys at any depth, in YAML (also
 in &lt;code&gt;{a: 1}&lt;/code&gt; mappings) and in HCL.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Theme&lt;/strong&gt; picker: default, gaia, uncover, and the themes the deck defines
-(&lt;code&gt;/* @theme name */&lt;/code&gt; in a &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). It writes &lt;code&gt;theme:&lt;/code&gt; into the front
+&lt;p&gt;&lt;strong&gt;Theme&lt;/strong&gt; picker: default, gaia, uncover, the project&amp;rsquo;s themes
+(&lt;code&gt;themes/*.css&lt;/code&gt;) and the themes the deck defines (&lt;code&gt;/* @theme name */&lt;/code&gt; in a
+&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). It writes &lt;code&gt;theme:&lt;/code&gt; into the front
 matter, YAML or HCL, so a shared link keeps it, and it follows the front
 matter when you edit it.&lt;/p&gt;
 &lt;/li&gt;
@@ -66,8 +96,8 @@ same slide.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Share link&lt;/strong&gt;: the deck travels in the link itself (in its &lt;code&gt;#&lt;/code&gt; part,
 compressed), so opening the link opens the deck. Links carry up to
-64 KiB compressed, so a deck with images is shared as a download
-instead.&lt;/p&gt;
+64 KiB compressed, and the deck only: when the project holds more
+(themes, kinds, media), Share says so and offers the &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
@@ -98,6 +128,9 @@ back.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;The PDF, PowerPoint and OpenDocument exports render the deck alone for now,
+without the project&amp;rsquo;s themes, kinds and media: for those, download the
+project and use the command.&lt;/p&gt;
 &lt;p&gt;Images as files (slides &lt;code&gt;--images&lt;/code&gt;) are not made in the browser: use the
 &lt;a href="https://go-slides.github.io/docs/0.7/cli/"&gt;command&lt;/a&gt; or the
 &lt;a href="https://go-slides.github.io/docs/0.7/vscode/"&gt;VS Code extension&lt;/a&gt;.&lt;/p&gt;
@@ -113,6 +146,10 @@ itself and shows the deck in an iframe sandboxed the same way. The two
 iframes cannot share storage, so the playground relays the slide number
 between them in messages. No frame that runs the deck gets the
 playground&amp;rsquo;s origin.&lt;/p&gt;
+&lt;p&gt;The project&amp;rsquo;s media reach the sandboxed frames as bytes in a message, and
+each frame makes its own &lt;code&gt;blob:&lt;/code&gt; URLs of them, in its own origin. A &lt;code&gt;blob:&lt;/code&gt;
+URL made by the playground does not load there, and the frames&amp;rsquo; policy
+gains only &lt;code&gt;blob:&lt;/code&gt; for media and fonts.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;Size and speed&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The module is 8.8 MiB as GitHub Pages serves it (gzip; Pages does not
 serve brotli). It is downloaded once with a progress bar, then cached by the
