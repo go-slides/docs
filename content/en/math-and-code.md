@@ -78,11 +78,50 @@ kinds:
 
 The numbers sit in a gutter inside the theme's code box, muted, and are
 **not selectable** in the page nor read by screen readers. The default, gaia
-and uncover themes look right. In a PDF they are text in a block of their own,
-never interleaved with the code in what a text extractor reads; in a PowerPoint
-or OpenDocument file they are a text box of their own. A deck that does not use
-the option renders as before, to the byte. Highlighting chosen lines is not
-supported yet.
+and uncover themes look right. In a PDF they are drawn but left out of the
+text, so a text extractor reads the code alone. In a PowerPoint or OpenDocument
+file they are a text box of their own. A deck that does not use the option
+renders as before, to the byte. Highlighting chosen lines is not supported yet.
+
+### Code callouts
+
+After v0.7.1 a code line can end with a numbered disc that refers to a note
+below the block. The syntax is
+[Quarto's](https://quarto.org/docs/authoring/code-annotation.html), which is
+also Asciidoctor's comment form. The marker is a comment in the code's own
+language, so the code stays valid, and the notes are the ordered list right
+after the block:
+
+````markdown
+```go
+func main() { // <1>
+	x := load() // <2>
+	fmt.Println(x)
+}
+```
+
+1. The entry point.
+2. Reads the input.
+````
+
+| Write | Means |
+| --- | --- |
+| `// <1>`, `# <1>`, `-- <1>`, `; <1>`, `% <1>`, `' <1>` | a line comment that holds only the marker: both are replaced by the disc |
+| `<!-- <1> -->`, `/* <1> */` | the same, for languages with wrapped comments |
+| `// <1> <2>` | two discs on one line |
+| `x = 1 # count <1>` | the comment's text stays and the disc follows it |
+
+The markers become discs only when the list right after the block starts at 1
+and has an item for every number. Otherwise the block stays as written. The
+discs are rings in the code's colour, in the default, gaia and uncover themes,
+light or dark. The list's items are numbered with the same discs.
+
+The discs are **not selectable**. Copying the code from the page gives the code
+without its markers. In a PDF they are vectors left out of the text, and in a
+PowerPoint or OpenDocument file they are editable shapes. Callouts combine
+with line numbers. Marp Core has no callouts (marp-core 4.4.0), so in Marp the
+comments and the numbered list show as written. A deck that does not use them
+renders as before, to the byte.
 
 ## Fonts
 
