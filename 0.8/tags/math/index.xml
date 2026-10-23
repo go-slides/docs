@@ -191,6 +191,15 @@ PowerPoint or OpenDocument file they are editable shapes. Callouts combine
 with line numbers. Marp Core has no callouts (marp-core 4.4.0), so in Marp the
 comments and the numbered list show as written. A deck that does not use them
 renders as before, to the byte.&lt;/p&gt;
+&lt;p&gt;After v0.8.1, a disc and its note find each other in the HTML page. Hovering a
+disc, or reaching it with Tab, tints its note, and a note does the same for its
+disc. This is what Quarto&amp;rsquo;s &lt;code&gt;code-annotations: hover&lt;/code&gt; does, but here the style
+sheet does it alone, with no script. It therefore works the same in the
+playground&amp;rsquo;s sandboxed preview and in VS Code&amp;rsquo;s preview, which both restrict
+scripts. Each disc is described by its note, so a screen reader reads the note
+when it reaches the disc. The tint fades in only when the reader has not asked
+for reduced motion. Images, PDF, PowerPoint and OpenDocument files are
+unchanged, byte for byte.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="fonts"&gt;Fonts&lt;span class="hx:absolute hx:-mt-20" id="fonts"&gt;&lt;/span&gt;
 &lt;a href="#fonts" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Lato Regular, Bold, Black and italics and Roboto Mono Regular, Bold and
 italics are embedded, so gaia&amp;rsquo;s headings get their weight and italic text
