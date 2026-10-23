@@ -75,6 +75,26 @@ right. Nothing is sent to a server: not the deck, not a share link.
   The View tab still switches panes off. The sizes you set are kept in this
   browser, with the draft; the default sizes (190, 168 and 280 px, the editor
   and the preview sharing the rest 6 to 5) are never stored.
+- **Format**: the Format tab edits the Markdown for you, and each press is
+  one step of Undo.
+  - **Text**: Bold, Italic, Strikethrough and Inline code work on the selection
+    or the word at the caret and toggle (Ctrl+B, Ctrl+I, Ctrl+Shift+X and
+    Ctrl+E; Cmd on a Mac). A button shows pressed when the caret is inside
+    its marks. Markdown has no underline: Underline (Ctrl+U) wraps the text in
+    `<u>…</u>`, a tag Marp's default HTML allow-list keeps, so it works with
+    raw HTML off.
+  - **Paragraph**: Heading 1 to 3 (Ctrl+Alt+1..3), bullets (Ctrl+Shift+8),
+    numbering (Ctrl+Shift+7) and a quote work on the selected lines and toggle.
+    The horizontal rule is the `<hr>` tag: `---`, `***` and `___` would each
+    start a new slide in Marp.
+  - **Table**: a grid picks the columns and rows. At the caret in a table you
+    add or remove a row or a column and align the column (`:--`, `:-:`,
+    `--:`); the table is rewritten aligned after each edit.
+  - **Slide text** left, centre or right writes a `<style scoped>` block into
+    the current slide. Marp has no alignment syntax, and a `style` attribute
+    does not pass the default HTML allow-list, but the scoped block does, so it
+    works with raw HTML off and shows in the preview, the HTML page and the PDF.
+  - **Link** (Ctrl+K) writes `[text](url)` with the url selected.
 - **Highlighting** of the front matter's keys at any depth, in YAML (also
   in `{a: 1}` mappings) and in HCL.
 - **Theme** picker: default, gaia, uncover, the project's themes
