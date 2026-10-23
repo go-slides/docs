@@ -93,7 +93,10 @@ right. Nothing is sent to a server: not the deck, not a share link.
   images always are.
 - **Your draft is kept**:
   - The deck is saved in this browser as you type (IndexedDB, for this site
-    only) and comes back when you reload. Nothing is sent anywhere.
+    only) and comes back when you reload. Nothing is sent anywhere. The
+    project's text files (themes, kinds, data, `slides.yaml`) are kept the
+    same way, even when you close the tab right after typing; media are
+    stored as they are dropped.
   - A shared link opens its deck and keeps your draft: **Draft ▸ Restore my
     draft** brings it back.
   - An example, **Draft ▸ Reset to the example** (which asks first) and
@@ -101,9 +104,8 @@ right. Nothing is sent to a server: not the deck, not a share link.
     back.
   - **Draft ▸ Forget my drafts** erases everything stored.
 
-The PDF, PowerPoint and OpenDocument exports render the deck alone for now,
-without the project's themes, kinds and media: for those, download the
-project and use the command.
+Every export renders the project the preview shows: its `slides.yaml`,
+themes, kinds, data files and media, the media inside the document.
 
 Images as files (slides `--images`) are not made in the browser: use the
 [command]({{< relref "cli" >}}) or the
