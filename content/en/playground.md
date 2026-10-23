@@ -65,6 +65,16 @@ right. Nothing is sent to a server: not the deck, not a share link.
   page** puts them in the page. `https:` images work too, but the browser
   fetches them from their server, which then sees your address. The
   preview sends no referrer.
+- **Resizable panes**: the file panel, the editor, the slide thumbnails, the
+  preview and the help are separated by bars you can drag (the pointer
+  becomes a resize cursor over one). The pane beside the bar takes the room,
+  the others keep their size. Double-click a bar, or press Enter on it, to
+  pull the pane shut and bring it back. From the keyboard, F6 moves between
+  the bars, the arrow keys move one by 16 px, Home and End take the pane
+  before it to its smallest and largest, and Escape returns to the editor.
+  The View tab still switches panes off. The sizes you set are kept in this
+  browser, with the draft; the default sizes (190, 168 and 280 px, the editor
+  and the preview sharing the rest 6 to 5) are never stored.
 - **Highlighting** of the front matter's keys at any depth, in YAML (also
   in `{a: 1}` mappings) and in HCL.
 - **Theme** picker: default, gaia, uncover, the project's themes
