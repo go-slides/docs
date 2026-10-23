@@ -127,7 +127,7 @@ with line numbers. Marp Core has no callouts (marp-core 4.4.0), so in Marp the
 comments and the numbered list show as written. A deck that does not use them
 renders as before, to the byte.
 
-After v0.8.1, a disc and its note find each other in the HTML page. Hovering a
+In v0.9.0, a disc and its note find each other in the HTML page. Hovering a
 disc, or reaching it with Tab, tints its note, and a note does the same for its
 disc. This is what Quarto's `code-annotations: hover` does, but here the style
 sheet does it alone, with no script. It therefore works the same in the
