@@ -18,9 +18,9 @@ slides, `![bg]` backgrounds, speaker notes, the `default`, `gaia` and
   (`title`, `section`…) instead of repeating how it looks.
 
 {{< callout type="warning" >}}
-**v0.7.1.** These pages describe
-[go-slides/slides v0.7.1](https://github.com/go-slides/slides/releases/tag/v0.7.1)
-and are published under `/docs/0.7/`.
+**v0.8.0.** These pages describe
+[go-slides/slides v0.8.0](https://github.com/go-slides/slides/releases/tag/v0.8.0)
+and are published under `/docs/0.8/`.
 {{< /callout >}}
 
 ## What it does today

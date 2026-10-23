@@ -45,7 +45,7 @@ A language go-rouge does not know is written as plain text, as Marp Core does.
 
 ### Line numbers
 
-After v0.7.1 a block can number its lines. Marp Core has no line numbers, and
+In v0.8.0 a block can number its lines. Marp Core has no line numbers, and
 it ignores what follows a fence's language, so the options go in braces there
 and a deck that uses them renders in Marp as it would without:
 
@@ -89,7 +89,7 @@ chosen lines is not supported yet.
 
 ### Code callouts
 
-After v0.7.1 a code line can end with a numbered disc that refers to a note
+In v0.8.0 a code line can end with a numbered disc that refers to a note
 below the block. The syntax is
 [Quarto's](https://quarto.org/docs/authoring/code-annotation.html), which is
 also Asciidoctor's comment form. The marker is a comment in the code's own

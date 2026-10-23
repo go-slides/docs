@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 The extension is [go-slides/vscode](https://github.com/go-slides/vscode),
-versioned on its own (v0.2.2). It renders with go-slides v0.7.1 (the
+versioned on its own (v0.3.0). It renders with go-slides v0.8.0 (the
 `editor` package, and the source lines of scroll sync). It is installed from
-the `go-slides-0.2.2.vsix` attached to its GitHub release: it is not on the VS
+the `go-slides-0.3.0.vsix` attached to its GitHub release: it is not on the VS
 Code Marketplace or Open VSX yet.
 {{< /callout >}}
 
@@ -25,7 +25,7 @@ Download `go-slides-<version>.vsix` from the
 *Extensions: Install from VSIX...*, or:
 
 ```sh
-code --install-extension go-slides-0.2.2.vsix
+code --install-extension go-slides-0.3.0.vsix
 ```
 
 The preview needs nothing else. Exporting needs the `slides` command:
@@ -129,13 +129,24 @@ with Marp for VS Code 3.6.1 measured in the same session:
 |---|---:|---:|
 | activation (loading the WebAssembly module) | 189 ms | — |
 | first preview | 52 ms | 78 ms |
-| preview after an edit (median) | 24 ms | 23 ms |
+| preview after an edit (median) | **19 ms** | 23–24 ms |
 | `.vsix` | 7.5 MB | 36.3 MB |
 
-The figures are for extension v0.2.2 (go-slides v0.7.1), from four interleaved
-rounds under a 1-minute load of 5.9 to 7.5, at Go's default `GOGC`. The first
-preview is faster than Marp's, and the preview after an edit is level with
-Marp's.
+The figures are for extension v0.3.0 (go-slides v0.8.0) on a 100-slide deck,
+typing one character into slide 50, from interleaved rounds under a 1-minute
+load below 8. The first preview is faster than Marp's, and the preview after an
+edit is now faster than Marp's too.
+
+### In v0.8.0 and extension v0.3.0
+
+go-slides v0.8.0 keeps each open deck's rendered slides and, after an edit,
+re-renders only those whose source or inherited state changed (directives, page
+number, total, heading ids, link references, source lines); the output is the
+same as a full render, byte for byte. Typing in slide 50 of 100 re-renders one
+slide: 2.5 ms natively, 11.5 ms in WebAssembly. VS Code's preview then morphs
+only the changed slide's DOM, and the extension's smoke test types one
+character into slide 50 between timed renders, for both extensions. The
+extension's presenter view syncs through the parent window (`postMessage`).
 
 ### In v0.7.1 and extension v0.2.2
 
@@ -147,20 +158,5 @@ For comparison, extension v0.2.1 took 72 ms for the first preview and 44 ms
 after an edit at the default `GOGC` (36 ms with `GOGC=400`), and v0.2.0 took
 47–51 ms.
 
-### After v0.7.1
-
-go-slides after v0.7.1 keeps each open deck's rendered slides and, after an
-edit, re-renders only those whose source or inherited state changed
-(directives, page number, total, heading ids, link references, source lines);
-the output is the same as a full render, byte for byte. VS Code's preview then
-morphs only the changed slide's DOM. The extension's main branch (after
-v0.2.2) builds on it, and its smoke test now types one character into slide 50
-between timed renders, for both extensions. Same machine and method,
-2026-10-21, four interleaved rounds under a 1-minute load of 5.9 to 7.4:
-
-| | v0.2.2 | after v0.2.2 | Marp for VS Code |
-|---|---:|---:|---:|
-| first preview | 52 ms | 54 ms | 78 ms |
-| preview after an edit (median) | 24 ms | **19 ms** | 23–24 ms |
-
-The preview after an edit is now faster than Marp's.
+Extension v0.2.2 measured 52 ms for the first preview and 24 ms after an edit,
+level with Marp's 23 ms.
