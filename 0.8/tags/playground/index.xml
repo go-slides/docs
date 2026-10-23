@@ -118,7 +118,10 @@ images always are.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Your draft is kept&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The deck is saved in this browser as you type (IndexedDB, for this site
-only) and comes back when you reload. Nothing is sent anywhere.&lt;/li&gt;
+only) and comes back when you reload. Nothing is sent anywhere. The
+project&amp;rsquo;s text files (themes, kinds, data, &lt;code&gt;slides.yaml&lt;/code&gt;) are kept the
+same way, even when you close the tab right after typing; media are
+stored as they are dropped.&lt;/li&gt;
 &lt;li&gt;A shared link opens its deck and keeps your draft: &lt;strong&gt;Draft ▸ Restore my
 draft&lt;/strong&gt; brings it back.&lt;/li&gt;
 &lt;li&gt;An example, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (which asks first) and
@@ -128,9 +131,8 @@ back.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The PDF, PowerPoint and OpenDocument exports render the deck alone for now,
-without the project&amp;rsquo;s themes, kinds and media: for those, download the
-project and use the command.&lt;/p&gt;
+&lt;p&gt;Every export renders the project the preview shows: its &lt;code&gt;slides.yaml&lt;/code&gt;,
+themes, kinds, data files and media, the media inside the document.&lt;/p&gt;
 &lt;p&gt;Images as files (slides &lt;code&gt;--images&lt;/code&gt;) are not made in the browser: use the
 &lt;a href="https://go-slides.github.io/docs/0.8/cli/"&gt;command&lt;/a&gt; or the
 &lt;a href="https://go-slides.github.io/docs/0.8/vscode/"&gt;VS Code extension&lt;/a&gt;.&lt;/p&gt;
