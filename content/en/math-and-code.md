@@ -76,12 +76,16 @@ kinds:
   listing: {lineNumbers: true}
 ```
 
-The numbers sit in a gutter inside the theme's code box, muted, and are
-**not selectable** in the page nor read by screen readers. The default, gaia
-and uncover themes look right. In a PDF they are drawn but left out of the
-text, so a text extractor reads the code alone. In a PowerPoint or OpenDocument
-file they are a text box of their own. A deck that does not use the option
-renders as before, to the byte. Highlighting chosen lines is not supported yet.
+Each number starts its line inside the theme's code box, set apart by a rule.
+It stays on its line's baseline even when the line is taller, for example
+with a callout or an emoji. The numbers are muted by a colour mixed from the
+code's colour and its background, with 4.5:1 contrast or more in the default,
+gaia and uncover themes, light and dark. They are **not selectable** in the
+page and are not read by screen readers. In a PDF they are drawn but left out
+of the text, so a text extractor reads the code alone. In a PowerPoint or
+OpenDocument file they are editable text at the start of each line. A deck
+that does not use the option renders as before, to the byte. Highlighting
+chosen lines is not supported yet.
 
 ### Code callouts
 
