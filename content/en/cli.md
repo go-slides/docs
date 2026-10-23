@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.7.1.
+This page describes v0.8.0.
 {{< /callout >}}
 
 ```text
@@ -147,7 +147,7 @@ take, which keeps them out of what a screen reader reads to the audience.
 
 ### Overview view
 
-After v0.7.1, press `o` (or `Escape`: marp-cli toggles with both), the
+In v0.8.0, press `o` (or `Escape`: marp-cli toggles with both), the
 controller's grid button, or the presenter view's page counter, and every slide
 shows whole in a grid over the page. The arrow keys choose a slide (up and down
 by row), `Home` and `End` go to the ends, and the other windows follow;
