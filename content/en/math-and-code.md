@@ -127,6 +127,16 @@ with line numbers. Marp Core has no callouts (marp-core 4.4.0), so in Marp the
 comments and the numbered list show as written. A deck that does not use them
 renders as before, to the byte.
 
+After v0.8.1, a disc and its note find each other in the HTML page. Hovering a
+disc, or reaching it with Tab, tints its note, and a note does the same for its
+disc. This is what Quarto's `code-annotations: hover` does, but here the style
+sheet does it alone, with no script. It therefore works the same in the
+playground's sandboxed preview and in VS Code's preview, which both restrict
+scripts. Each disc is described by its note, so a screen reader reads the note
+when it reaches the disc. The tint fades in only when the reader has not asked
+for reduced motion. Images, PDF, PowerPoint and OpenDocument files are
+unchanged, byte for byte.
+
 ## Fonts
 
 Lato Regular, Bold, Black and italics and Roboto Mono Regular, Bold and
