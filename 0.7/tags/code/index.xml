@@ -117,12 +117,16 @@ data-copied-label="Copied!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;The numbers sit in a gutter inside the theme&amp;rsquo;s code box, muted, and are
-&lt;strong&gt;not selectable&lt;/strong&gt; in the page nor read by screen readers. The default, gaia
-and uncover themes look right. In a PDF they are drawn but left out of the
-text, so a text extractor reads the code alone. In a PowerPoint or OpenDocument
-file they are a text box of their own. A deck that does not use the option
-renders as before, to the byte. Highlighting chosen lines is not supported yet.&lt;/p&gt;
+&lt;p&gt;Each number starts its line inside the theme&amp;rsquo;s code box, set apart by a rule.
+It stays on its line&amp;rsquo;s baseline even when the line is taller, for example
+with a callout or an emoji. The numbers are muted by a colour mixed from the
+code&amp;rsquo;s colour and its background, with 4.5:1 contrast or more in the default,
+gaia and uncover themes, light and dark. They are &lt;strong&gt;not selectable&lt;/strong&gt; in the
+page and are not read by screen readers. In a PDF they are drawn but left out
+of the text, so a text extractor reads the code alone. In a PowerPoint or
+OpenDocument file they are editable text at the start of each line. A deck
+that does not use the option renders as before, to the byte. Highlighting
+chosen lines is not supported yet.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="code-callouts"&gt;Code callouts&lt;span class="hx:absolute hx:-mt-20" id="code-callouts"&gt;&lt;/span&gt;
 &lt;a href="#code-callouts" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.7.1 a code line can end with a numbered disc that refers to a note
 below the block. The syntax is
