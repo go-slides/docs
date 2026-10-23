@@ -15,7 +15,7 @@ data-copied-label="Copied!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;slides&lt;/code&gt; is one static Go binary with no cgo: nothing else to install, no
-Node, no Chrome. This page describes v0.8.0.&lt;/p&gt;
+Node, no Chrome. This page describes v0.8.1.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-first-deck"&gt;A first deck&lt;span class="hx:absolute hx:-mt-20" id="a-first-deck"&gt;&lt;/span&gt;
 &lt;a href="#a-first-deck" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Any Marp deck is one. Save this as &lt;code&gt;talk.md&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
