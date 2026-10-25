@@ -155,8 +155,11 @@ proyecto contiene más (temas, kinds, medios), Share lo indica y ofrece el
 &lt;p&gt;Se generan en su navegador, con el mismo código que &lt;code&gt;slides --pdf&lt;/code&gt;, &lt;code&gt;--pptx&lt;/code&gt; y
 &lt;code&gt;--odp&lt;/code&gt;: el PDF de la presentación de prueba de 100 diapositivas es idéntico
 byte a byte al del comando. La primera exportación descarga el motor de
-exportación (unos 21 MiB, una sola vez; su navegador lo conserva hasta la
-siguiente actualización), con una línea de progreso. La presentación de 100
+exportación (unos 5 MiB, una sola vez; su navegador lo conserva hasta la
+siguiente actualización), con una línea de progreso, y lo compila a medida que
+llega. Después solo descarga las fuentes que dibujan sus diapositivas. Con un
+enlace de 3 MB/s, el primer PDF de la presentación de bienvenida está listo en
+menos de 3 segundos. La presentación de 100
 diapositivas tarda entonces unos 3 segundos. Una imagen &lt;code&gt;https:&lt;/code&gt; solo se incluye
 si su servidor lo permite (CORS); las imágenes &lt;code&gt;data:&lt;/code&gt; siempre se incluyen.&lt;/p&gt;
 &lt;/li&gt;

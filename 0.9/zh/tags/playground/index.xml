@@ -125,8 +125,9 @@ matter（YAML 或 HCL），因此分享链接会保留主题；编辑 front matt
 &lt;/ul&gt;
 &lt;p&gt;它们都在你的浏览器中生成，所用代码与 &lt;code&gt;slides --pdf&lt;/code&gt;、
 &lt;code&gt;--pptx&lt;/code&gt; 和 &lt;code&gt;--odp&lt;/code&gt; 相同：100 张幻灯片基准演示文稿的 PDF 与命令行生成的
-逐字节相同。第一次导出时会下载导出引擎（约 21 MiB，仅下载一次；浏览器会保留它直到下次更新），
-并显示进度。之后导出 100 张幻灯片的演示文稿约需 3 秒。
+逐字节相同。第一次导出时会下载导出引擎（约 5 MiB，仅下载一次；浏览器会保留它直到下次更新），
+并显示进度，边下载边编译。之后只下载幻灯片实际用到的字体。在 3 MB/s 的网络上，
+欢迎演示文稿的第一个 PDF 不到 3 秒即可完成。之后导出 100 张幻灯片的演示文稿约需 3 秒。
 &lt;code&gt;https:&lt;/code&gt; 图片只有在其服务器允许时（CORS）才会被包含；&lt;code&gt;data:&lt;/code&gt;
 图片则总会被包含。&lt;/p&gt;
 &lt;/li&gt;

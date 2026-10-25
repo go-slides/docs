@@ -145,8 +145,10 @@ compressée), si bien qu&amp;rsquo;ouvrir le lien ouvre la présentation. Les li
 &lt;p&gt;Ils sont produits dans votre navigateur, par le même code que &lt;code&gt;slides --pdf&lt;/code&gt;,
 &lt;code&gt;--pptx&lt;/code&gt; et &lt;code&gt;--odp&lt;/code&gt; : le PDF de la présentation de référence de 100 diapositives est
 identique, octet pour octet, à celui de la commande. Le premier export télécharge le moteur
-d&amp;rsquo;export (environ 21 Mio, une seule fois ; votre navigateur le conserve jusqu&amp;rsquo;à la prochaine mise à jour),
-avec une ligne de progression. La présentation de 100 diapositives prend ensuite environ 3 secondes. Une
+d&amp;rsquo;export (environ 5 Mio, une seule fois ; votre navigateur le conserve jusqu&amp;rsquo;à la prochaine mise à jour),
+avec une ligne de progression, et le compile pendant qu&amp;rsquo;il arrive. Il ne télécharge ensuite que les polices
+que dessinent vos diapositives. Sur une liaison à 3 Mo/s, le premier PDF de la présentation d&amp;rsquo;accueil
+est prêt en moins de 3 secondes. La présentation de 100 diapositives prend ensuite environ 3 secondes. Une
 image &lt;code&gt;https:&lt;/code&gt; n&amp;rsquo;est incluse que si son serveur l&amp;rsquo;autorise (CORS) ; les images &lt;code&gt;data:&lt;/code&gt;
 le sont toujours.&lt;/p&gt;
 &lt;/li&gt;
