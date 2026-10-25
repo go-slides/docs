@@ -1,0 +1,565 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Cli</title><link>https://go-slides.github.io/docs/0.13/zh/tags/cli/</link><description>Recent content in Cli on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.13/zh/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>命令行</title><link>https://go-slides.github.io/docs/0.13/zh/cli/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.13/zh/cli/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;本页描述的是 v0.13.0。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides [deck.md] [flags]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides [command] [flags] deck.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="commands"&gt;命令&lt;span class="hx:absolute hx:-mt-20" id="commands"&gt;&lt;/span&gt;
+&lt;a href="#commands" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将演示文稿写出为 HTML，或 PDF、图片（见下文）。&lt;strong&gt;默认命令&lt;/strong&gt;：&lt;code&gt;slides deck.md&lt;/code&gt; 即 &lt;code&gt;slides build deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将演示文稿输出为纯 Marp Markdown：模板已展开，kind（幻灯片类型）已替换为其所代表的指令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;输出演讲者备注&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出演示文稿可用的 kind 及其设置的内容；&lt;code&gt;--json&lt;/code&gt;（v0.6.0 起）将其写为 &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;，其中 &lt;code&gt;extends&lt;/code&gt; 已解析&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出主题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;输出版本号（&lt;code&gt;slides --version&lt;/code&gt; 亦可）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;completion&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;输出 shell 自动补全脚本：&lt;code&gt;bash&lt;/code&gt;、&lt;code&gt;zsh&lt;/code&gt;、&lt;code&gt;fish&lt;/code&gt; 或 &lt;code&gt;powershell&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;slides &amp;lt;command&amp;gt; --help&lt;/code&gt; 会列出某个命令的参数。参数可以写在演示文稿之前或之后：
+&lt;code&gt;slides deck.md -o out.html&lt;/code&gt; 与 &lt;code&gt;slides -o out.html deck.md&lt;/code&gt; 等价。长参数使用两个短横线（&lt;code&gt;--html&lt;/code&gt;）；&lt;code&gt;-o&lt;/code&gt; 是唯一的短参数。
+除非 &lt;code&gt;-o&lt;/code&gt; 另行指定，&lt;code&gt;build&lt;/code&gt; 会在 &lt;code&gt;deck.md&lt;/code&gt; 旁边写出 &lt;code&gt;deck.html&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="flags"&gt;参数&lt;span class="hx:absolute hx:-mt-20" id="flags"&gt;&lt;/span&gt;
+&lt;a href="#flags" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;适用命令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-o&lt;/code&gt;, &lt;code&gt;--output file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;、&lt;code&gt;expand&lt;/code&gt;、&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;输出文件；&lt;code&gt;-&lt;/code&gt; 表示标准输出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-I&lt;/code&gt;, &lt;code&gt;--input-dir dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;递归转换 &lt;code&gt;dir&lt;/code&gt; 下的 Markdown 文件（v0.6.0 起）；见下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-P&lt;/code&gt;, &lt;code&gt;--parallel n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;同时构建的演示文稿数（v0.6.0 起）：默认 5，最多为 CPU 核数；为 1 时逐个构建&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当演示文稿、主题、kind 或数据文件、配置发生变化时重新构建，并刷新已打开的页面（v0.6.0 起）；见下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;托管一个目录，按请求转换其中的演示文稿（v0.6.0 起）；见下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-p&lt;/code&gt;, &lt;code&gt;--preview&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在默认浏览器中打开结果（v0.6.0 起）：配合 &lt;code&gt;--watch&lt;/code&gt;（隐含启用）打开 HTML 页面，配合 &lt;code&gt;--server&lt;/code&gt; 打开服务器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--host addr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--server&lt;/code&gt; 监听的地址，默认 &lt;code&gt;127.0.0.1&lt;/code&gt;（v0.6.0 起）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;HTML 页面的模板（v0.6.0 起）：默认的 &lt;code&gt;bespoke&lt;/code&gt; 带有演示脚本、屏幕控制器和过渡效果；&lt;code&gt;bare&lt;/code&gt; 则将幻灯片依次堆叠（&lt;code&gt;--bare&lt;/code&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bespoke.osc&lt;/code&gt;, &lt;code&gt;--bespoke.progress&lt;/code&gt;, &lt;code&gt;--bespoke.transition&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;bespoke 模板的选项，默认值与 marp-cli 相同（v0.6.0 起）：控制器开启，&lt;strong&gt;进度条关闭&lt;/strong&gt;（以前总是绘制），过渡效果开启；&lt;code&gt;--bespoke.osc=false&lt;/code&gt; 可关闭其中一项&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--config-file file&lt;/code&gt;, &lt;code&gt;--no-config-file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;marp-cli 的配置文件，JSON 或 YAML 格式（v0.6.0 起）；见下文。&lt;code&gt;--config&lt;/code&gt; 是 &lt;code&gt;slides&lt;/code&gt; 自己的配置文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--browser&lt;/code&gt;, &lt;code&gt;--browser-path&lt;/code&gt;, &lt;code&gt;--browser-protocol&lt;/code&gt;, &lt;code&gt;--browser-timeout&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;接受但忽略，并给出警告（v0.6.0 起）：这里没有浏览器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-editable&lt;/code&gt;, &lt;code&gt;--no-parallel&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;marp-cli 中 &lt;code&gt;--pptx&lt;/code&gt; 和 &lt;code&gt;-P 1&lt;/code&gt; 的写法（v0.6.0 起）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--config file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;配置文件；默认为演示文稿旁边的 &lt;code&gt;slides.yaml&lt;/code&gt;（如果存在）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;不读取配置文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;一个主题 CSS 文件，或包含主题文件的目录（可重复）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;一个定义 kind 的 YAML 文件（可重复）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;一个提供模板数据的 YAML 或 JSON 文件（可重复）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--set key=value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;一个模板值（可重复）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;不展开 Go 模板&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--strict-yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;按严格 YAML 解析指令，与原生 Marpit 一致（Marp Core 的解析较宽松）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-emoji&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部&lt;/td&gt;
+&lt;td&gt;将 &lt;code&gt;:shortcodes:&lt;/code&gt; 和 Unicode emoji 保留为文本，而不绘制为图片（自 v0.4.0 起：&lt;a href="https://go-slides.github.io/docs/0.13/zh/emoji/"&gt;Emoji&lt;/a&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;允许所有原始 HTML；默认使用 Marp Core 的白名单&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--lang code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;演示文稿未设置时页面使用的 &lt;code&gt;lang&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;堆叠幻灯片，不带演示脚本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;写出 PDF，每张幻灯片一页，带书签大纲；文本和形状为矢量（也可由 &lt;code&gt;-o file.pdf&lt;/code&gt; 选择）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;写出每页为一张幻灯片图片的 PDF，与 v0.3.0 相同&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将演讲者备注写为文本文件，幻灯片之间以 &lt;code&gt;---&lt;/code&gt; 分隔，与 marp-cli 相同（v0.6.0 起；也可由 &lt;code&gt;-o file.txt&lt;/code&gt; 选择）。&lt;code&gt;notes&lt;/code&gt; 命令以另一种格式输出备注&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将每张幻灯片的演讲者备注作为注释批注加到对应的 PDF 页面上，与 marp-cli 相同（v0.6.0 起）。未指定其他输出格式时，会写出 PDF&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-outlines&lt;/code&gt;, &lt;code&gt;--pdf-outlines.pages&lt;/code&gt;, &lt;code&gt;--pdf-outlines.headings&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;PDF 的书签（v0.6.0 起）：每张幻灯片一个 “Page N”，其下嵌套该幻灯片的标题。与 marp-cli 不同，这里默认开启；&lt;code&gt;=false&lt;/code&gt; 可关闭其中一项。见下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--images png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;每张幻灯片写出一张图片：&lt;code&gt;deck.001.png&lt;/code&gt;、…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将第一张幻灯片写为图片（也可由 &lt;code&gt;-o file.png&lt;/code&gt; 或 &lt;code&gt;-o file.jpg&lt;/code&gt; 选择）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;写出带演讲者备注的 PowerPoint 文件（也可由 &lt;code&gt;-o file.pptx&lt;/code&gt; 选择）：自 v0.5.0 起可编辑，v0.4.0 中每张幻灯片是一张图片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;写出每张幻灯片为一整张图片的 PowerPoint 文件，与 marp-cli 相同（自 v0.5.0 起）；&lt;code&gt;--image-scale&lt;/code&gt; 默认为 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;写出带演讲者备注的 OpenDocument 演示文稿（也可由 &lt;code&gt;-o file.odp&lt;/code&gt; 选择）：自 v0.5.0 起可编辑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;写出每张幻灯片为一张图片的 OpenDocument 演示文稿（自 v0.5.0 起）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--jpeg-quality n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;JPEG 质量，1 到 100（默认 85）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image-scale n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;图片和 PDF 中每个 CSS 像素对应的设备像素数（默认 1）；为 2 时 16:9 幻灯片的尺寸为 2560×1440，文本和矢量图形按该密度绘制，而不是放大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allow-local-files&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;允许图片和 PDF 读取本地文件，且仅限演示文稿所在目录之下；默认拒绝，与 marp-cli 相同&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;覆盖演示文稿的主题（v0.6.0 起）：主题名，或一个 CSS 文件，无论其声明的 &lt;code&gt;@theme&lt;/code&gt; 是什么，都会成为当前主题；不接受目录，目录请用 &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;页面的元数据（v0.6.0 起），优先于演示文稿的 &lt;code&gt;title&lt;/code&gt;、&lt;code&gt;description&lt;/code&gt;、&lt;code&gt;author&lt;/code&gt;、&lt;code&gt;keywords&lt;/code&gt;、&lt;code&gt;url&lt;/code&gt; 和 &lt;code&gt;image&lt;/code&gt; 指令；见下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="several-decks-and-a-directory"&gt;多个演示文稿与目录&lt;span class="hx:absolute hx:-mt-20" id="several-decks-and-a-directory"&gt;&lt;/span&gt;
+&lt;a href="#several-decks-and-a-directory" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;从 v0.6.0 起，&lt;code&gt;build&lt;/code&gt; 可以接受多个演示文稿、一个目录（递归查找其中的演示文稿）
+或一个通配模式，并同时构建最多 &lt;code&gt;--parallel&lt;/code&gt; 个。&lt;code&gt;-&lt;/code&gt; 表示标准输入；与 marp-cli
+不同，除非用 &lt;code&gt;-&lt;/code&gt; 明确指定，否则不会读取管道。&lt;/p&gt;
+&lt;p&gt;通配模式的解释方式与 marp-cli 的 glob 相同（&lt;code&gt;**&lt;/code&gt; 和 &lt;code&gt;{a,b}&lt;/code&gt; 自 v0.7.0 起支持；
+请加引号，让 shell 把它原样交给 &lt;code&gt;slides&lt;/code&gt;）：名称中可使用 &lt;code&gt;*&lt;/code&gt;、&lt;code&gt;?&lt;/code&gt;、&lt;code&gt;[a-z]&lt;/code&gt; 和
+&lt;code&gt;{md,txt}&lt;/code&gt;，&lt;code&gt;**&lt;/code&gt; 匹配任意层目录，因此 &lt;code&gt;'docs/**/*.md'&lt;/code&gt; 会选取整棵目录树中的演示文稿。
+通配符不会匹配以点开头的名称，不会在 &lt;code&gt;node_modules&lt;/code&gt; 中查找，区分大小写
+（&lt;code&gt;*.md&lt;/code&gt; 找不到 &lt;code&gt;UPPER.MD&lt;/code&gt;），并且模式匹配到的任何文件都会被转换，无论其扩展名是什么。
+没有匹配到任何文件的模式会报错。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-I dir&lt;/code&gt;&lt;/strong&gt; 与 marp-cli 一样，查找 &lt;code&gt;dir&lt;/code&gt; 下的 Markdown 文件（&lt;code&gt;.md&lt;/code&gt;、&lt;code&gt;.mdown&lt;/code&gt;、&lt;code&gt;.markdown&lt;/code&gt;、
+&lt;code&gt;.markdn&lt;/code&gt;，小写）：不会进入 &lt;code&gt;node_modules&lt;/code&gt; 和以点开头的目录。配合 &lt;code&gt;-o out&lt;/code&gt; 时，
+每个演示文稿按其在 &lt;code&gt;dir&lt;/code&gt; 下的路径，镜像写到 &lt;code&gt;out&lt;/code&gt; 下：&lt;code&gt;dir/sub/b.md&lt;/code&gt; 生成
+&lt;code&gt;out/sub/b.html&lt;/code&gt;（或 &lt;code&gt;b.pdf&lt;/code&gt;、&lt;code&gt;b.001.png&lt;/code&gt;、&lt;code&gt;b.txt&lt;/code&gt;、…，取决于参数）。
+不带 &lt;code&gt;-o&lt;/code&gt; 时，输出文件写在各自的演示文稿旁边。同时指定演示文稿和
+&lt;code&gt;-I&lt;/code&gt; 会报错，对多个演示文稿使用 &lt;code&gt;-o file&lt;/code&gt; 也会报错（允许 &lt;code&gt;-o -&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-P n&lt;/code&gt;&lt;/strong&gt; 同时构建 &lt;code&gt;n&lt;/code&gt; 个演示文稿。单个演示文稿的渲染本身已经会利用多核，
+所以 &lt;code&gt;n&lt;/code&gt; 的上限是 CPU 核数；使用 &lt;code&gt;-o -&lt;/code&gt; 时逐个构建。同一个演示文稿的消息会集中在一起输出，
+一个演示文稿失败不会中断其他演示文稿：退出状态为 1，消息中会列出失败项。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="transitions-and-the-presenting-page"&gt;过渡效果与演示页面&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-the-presenting-page"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-the-presenting-page" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;从 v0.6.0 起，marp-cli 的 &lt;code&gt;transition&lt;/code&gt; 指令可用：&lt;code&gt;&amp;lt;!-- transition: fade 1s --&amp;gt;&lt;/code&gt;（名称加可选的时长）作用于当前幻灯片及其后的幻灯片，
+&lt;code&gt;&amp;lt;!-- _transition: cover --&amp;gt;&lt;/code&gt; 则只作用于一张。内置名称与 marp-cli 相同：
+&lt;code&gt;clockwise&lt;/code&gt;、&lt;code&gt;counterclockwise&lt;/code&gt;、&lt;code&gt;cover&lt;/code&gt;、&lt;code&gt;coverflow&lt;/code&gt;、&lt;code&gt;cube&lt;/code&gt;、&lt;code&gt;cylinder&lt;/code&gt;、
+&lt;code&gt;diamond&lt;/code&gt;、&lt;code&gt;drop&lt;/code&gt;、&lt;code&gt;explode&lt;/code&gt;、&lt;code&gt;fade&lt;/code&gt;、&lt;code&gt;fade-out&lt;/code&gt;、&lt;code&gt;fall&lt;/code&gt;、&lt;code&gt;flip&lt;/code&gt;、&lt;code&gt;glow&lt;/code&gt;、
+&lt;code&gt;implode&lt;/code&gt;、&lt;code&gt;in-out&lt;/code&gt;、&lt;code&gt;iris-in&lt;/code&gt;、&lt;code&gt;iris-out&lt;/code&gt;、&lt;code&gt;melt&lt;/code&gt;、&lt;code&gt;overlap&lt;/code&gt;、&lt;code&gt;pivot&lt;/code&gt;、&lt;code&gt;pull&lt;/code&gt;、
+&lt;code&gt;push&lt;/code&gt;、&lt;code&gt;reveal&lt;/code&gt;、&lt;code&gt;rotate&lt;/code&gt;、&lt;code&gt;slide&lt;/code&gt;、&lt;code&gt;star&lt;/code&gt;、&lt;code&gt;swap&lt;/code&gt;、&lt;code&gt;swipe&lt;/code&gt;、&lt;code&gt;swoosh&lt;/code&gt;、&lt;code&gt;wipe&lt;/code&gt;、
+&lt;code&gt;wiper&lt;/code&gt; 和 &lt;code&gt;zoom&lt;/code&gt;；&lt;code&gt;none&lt;/code&gt; 表示关闭。当观众向前离开带有过渡效果的幻灯片，
+以及返回该幻灯片时，页面会使用浏览器的 &lt;strong&gt;View Transition API&lt;/strong&gt; 播放过渡；
+不支持该 API 的浏览器照旧切换幻灯片，而要求减弱动态效果的观众会看到简单的淡入淡出。
+主题可以自带关键帧，命名为 &lt;code&gt;marp-transition-NAME&lt;/code&gt;（或 &lt;code&gt;marp-outgoing-&lt;/code&gt; 和
+&lt;code&gt;marp-incoming-&lt;/code&gt;，以及 &lt;code&gt;-backward&lt;/code&gt;），它们优先于内置关键帧。&lt;/p&gt;
+&lt;p&gt;页面带有&lt;strong&gt;屏幕控制器&lt;/strong&gt;（上一张、页码、下一张、全屏），在指针移动或按键时显示，
+片刻后隐藏（&lt;code&gt;--bespoke.osc=false&lt;/code&gt; 可将其移除）；使用 &lt;code&gt;--bespoke.progress&lt;/code&gt; 时还会显示进度条。
+&lt;strong&gt;进度条现在默认关闭&lt;/strong&gt;，与 marp-cli 相同；以前总是绘制。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="presenter-view"&gt;演讲者视图&lt;span class="hx:absolute hx:-mt-20" id="presenter-view"&gt;&lt;/span&gt;
+&lt;a href="#presenter-view" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;从 v0.7.0 起，页面提供 marp-cli 的演讲者视图。按 &lt;code&gt;p&lt;/code&gt; 或控制器的最后一个按钮，
+会打开一个窗口，显示当前幻灯片、下一步、你的演讲者备注、页码、时间和计时器
+（点击计时器可重置；&lt;code&gt;+&lt;/code&gt; 和 &lt;code&gt;-&lt;/code&gt; 调整备注字号；幻灯片与备注之间的分隔条可以拖动）。
+两个窗口双向同步：在任一窗口中按方向键、点击下一步或点击 Previous/Next，
+另一个窗口都会跟着移动，每次一个片段。&lt;/p&gt;
+&lt;p&gt;它的工作方式与 marp-cli 相同（依据其 4.5.1 源码）：该窗口是同一文件的
+&lt;code&gt;?view=presenter&amp;amp;sync=KEY&lt;/code&gt;，下一步是在框架中以 &lt;code&gt;?view=next&lt;/code&gt; 打开的同一页面，
+窗口之间通过 &lt;code&gt;localStorage&lt;/code&gt;（&lt;code&gt;bespoke-marp-sync-KEY&lt;/code&gt;）共享位置，因此不需要服务器，
+也不需要网络；在没有 &lt;code&gt;localStorage&lt;/code&gt; 的浏览器中无法使用（按钮会给出提示）。
+备注是纯文本：&lt;code&gt;&amp;amp;&lt;/code&gt;、&lt;code&gt;&amp;lt;&lt;/code&gt; 和 &lt;code&gt;&amp;gt;&lt;/code&gt; 会被转义，所以备注永远不会成为标记。
+备注隐藏在页面中，供演讲者视图读取，这样屏幕阅读器就不会把它们读给观众听。
+&lt;code&gt;--bare&lt;/code&gt; 页面不包含这些功能。该视图会使页面增加约 10 KB。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="overview-view"&gt;概览视图&lt;span class="hx:absolute hx:-mt-20" id="overview-view"&gt;&lt;/span&gt;
+&lt;a href="#overview-view" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;从 v0.8.0 起，按 &lt;code&gt;o&lt;/code&gt;（或 &lt;code&gt;Escape&lt;/code&gt;：marp-cli 两者都可切换）、控制器的网格按钮，
+或演讲者视图的页码计数器，所有幻灯片会以网格形式完整显示在页面上方。
+方向键选择幻灯片（上下键按行移动），&lt;code&gt;Home&lt;/code&gt; 和 &lt;code&gt;End&lt;/code&gt; 跳到首尾，其他窗口随之同步；
+&lt;code&gt;Enter&lt;/code&gt;、&lt;code&gt;Space&lt;/code&gt; 或点击会选中幻灯片，在主页面上还会关闭概览。
+在演讲者视图上选择后概览保持打开（演讲者挑选要展示的幻灯片，并继续浏览）。
+“Close overview” 按钮、&lt;code&gt;o&lt;/code&gt; 和 &lt;code&gt;Escape&lt;/code&gt; 可关闭概览。它与 marp-cli 的实现相同：
+同一页面再次在框架中以 &lt;code&gt;?view=overview&amp;amp;sync=KEY&lt;/code&gt; 打开，通过 &lt;code&gt;localStorage&lt;/code&gt;
+共享位置，无需网络。网格中的幻灯片可获得焦点，标签为 “Slide N”；
+概览关闭时处于 inert 状态，因此键盘用户和屏幕阅读器用户不会误入其中。
+两个视图合计使页面增加约 15 KB。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="configuration-files"&gt;配置文件&lt;span class="hx:absolute hx:-mt-20" id="configuration-files"&gt;&lt;/span&gt;
+&lt;a href="#configuration-files" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;marp-cli 从工作目录中的文件读取选项，&lt;code&gt;slides&lt;/code&gt; 也一样，前提是该文件是数据文件：
+&lt;code&gt;.marprc&lt;/code&gt;（YAML；JSON 也是 YAML）、&lt;code&gt;.marprc.json&lt;/code&gt;、&lt;code&gt;.marprc.yaml&lt;/code&gt;、&lt;code&gt;.marprc.yml&lt;/code&gt;、
+&lt;code&gt;.config/marprc*&lt;/code&gt;，或 &lt;code&gt;package.json&lt;/code&gt; 中的 &lt;code&gt;marp&lt;/code&gt; 键；&lt;code&gt;--config-file&lt;/code&gt;（&lt;code&gt;-c&lt;/code&gt;）
+可指定任意 JSON 或 YAML 文件，例如 &lt;code&gt;marp.config.json&lt;/code&gt;。与 marp-cli 的查找方式一样，
+只查找工作目录，不查找其上级目录。JavaScript 或 TypeScript 文件
+（&lt;code&gt;marp.config.js&lt;/code&gt; &amp;hellip;）是程序，&lt;code&gt;slides&lt;/code&gt; 不会运行它：会给出提示并继续。
+支持的选项是 marp-cli 文档中在这里有意义的那些：&lt;code&gt;title&lt;/code&gt;、&lt;code&gt;description&lt;/code&gt;、&lt;code&gt;author&lt;/code&gt;、
+&lt;code&gt;keywords&lt;/code&gt;、&lt;code&gt;url&lt;/code&gt;、&lt;code&gt;ogImage&lt;/code&gt;、&lt;code&gt;lang&lt;/code&gt;、&lt;code&gt;theme&lt;/code&gt;、&lt;code&gt;themeSet&lt;/code&gt;、&lt;code&gt;html&lt;/code&gt;、&lt;code&gt;allowLocalFiles&lt;/code&gt;、
+&lt;code&gt;template&lt;/code&gt;、&lt;code&gt;bespoke&lt;/code&gt;、&lt;code&gt;inputDir&lt;/code&gt;、&lt;code&gt;output&lt;/code&gt;、&lt;code&gt;parallel&lt;/code&gt;、&lt;code&gt;pdf&lt;/code&gt;、&lt;code&gt;pptx&lt;/code&gt;、&lt;code&gt;notes&lt;/code&gt;、
+&lt;code&gt;pdfNotes&lt;/code&gt;、&lt;code&gt;pdfOutlines&lt;/code&gt;、&lt;code&gt;images&lt;/code&gt;、&lt;code&gt;image&lt;/code&gt;、&lt;code&gt;imageScale&lt;/code&gt;、&lt;code&gt;jpegQuality&lt;/code&gt;、&lt;code&gt;watch&lt;/code&gt;、
+&lt;code&gt;server&lt;/code&gt;、&lt;code&gt;preview&lt;/code&gt;；路径相对于该文件。命令行优先。
+&lt;code&gt;engine&lt;/code&gt;、&lt;code&gt;options&lt;/code&gt; 和 &lt;code&gt;browser*&lt;/code&gt; 需要 Marp 的引擎和浏览器，会被忽略并给出警告，
+&lt;code&gt;--browser*&lt;/code&gt; 参数也是如此：为 marp-cli 编写的脚本可以继续使用。
+（&lt;code&gt;slides.yaml&lt;/code&gt; 和 &lt;code&gt;slides.hcl&lt;/code&gt;，连同 kind 和模板数据，是独立的，读取方式不变。）&lt;/p&gt;
+&lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;监视、托管与预览&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
+&lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;自 v0.6.0 起，采用 marp-cli 的路由和实时刷新协议（依据其 4.5.1 源码，
+并与运行中的 &lt;code&gt;marp -s&lt;/code&gt; 对照过）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;slides --server dir&lt;/code&gt;&lt;/strong&gt;（&lt;code&gt;-s&lt;/code&gt;）在 &lt;code&gt;http://127.0.0.1:8080/&lt;/code&gt; 上托管该目录
+（环境变量 &lt;code&gt;PORT&lt;/code&gt; 可修改端口；端口已被占用时会报错并说明原因）：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;请求&lt;/th&gt;
+&lt;th&gt;响应&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按请求转换为 HTML 的演示文稿&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md?pdf&lt;/code&gt;、&lt;code&gt;?pptx&lt;/code&gt;、&lt;code&gt;?png&lt;/code&gt;、&lt;code&gt;?jpg&lt;/code&gt;（或 &lt;code&gt;?jpeg&lt;/code&gt;）、&lt;code&gt;?notes&lt;/code&gt;（或 &lt;code&gt;?txt&lt;/code&gt;）&lt;/td&gt;
+&lt;td&gt;按查询参数转换后的演示文稿；PPTX 以附件形式返回&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;目录&lt;/td&gt;
+&lt;td&gt;其中的 &lt;code&gt;index.md&lt;/code&gt; 或 &lt;code&gt;PITCHME.md&lt;/code&gt; 作为页面返回，否则返回一个索引，为每个演示文稿提供 PDF 和 PPTX 链接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;其他文件&lt;/td&gt;
+&lt;td&gt;文件本身&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;无法转换的演示文稿&lt;/td&gt;
+&lt;td&gt;503 及错误信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;页面会打开一个连接到 &lt;code&gt;/.__marp-cli-watch-notifier__/&amp;lt;id&amp;gt;&lt;/code&gt; 的 WebSocket，其中 id 是
+演示文稿路径的 SHA-256；服务器先发送 &lt;code&gt;ready&lt;/code&gt;，在演示文稿或目录下任何内容变化时发送 &lt;code&gt;reload&lt;/code&gt;。
+请求目录时如果缺少结尾的斜杠，会重定向到带斜杠的地址（marp-cli 会在不带斜杠的地址上返回索引，
+这会破坏页面的相对链接）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt;（&lt;code&gt;-w&lt;/code&gt;）先构建演示文稿，之后重新构建发生变化的那一个；当 &lt;code&gt;--theme-set&lt;/code&gt;
+文件、kind 或数据文件、配置发生变化时，则全部重新构建。它写出的页面会在回环地址上打开一个套接字
+（端口 37717，或下一个空闲端口），并在对应演示文稿重新构建时刷新。构建失败的演示文稿会报告错误，
+但仍继续监视。&lt;strong&gt;&lt;code&gt;--preview&lt;/code&gt;&lt;/strong&gt;（&lt;code&gt;-p&lt;/code&gt;）在默认浏览器中打开服务器，或刚刚构建的 HTML 页面；
+它没有自己的窗口，因为 &lt;code&gt;slides&lt;/code&gt; 没有可以驱动的浏览器。&lt;/p&gt;
+&lt;p&gt;服务器是进入本机的一个入口，所以它比 marp-cli 的更严格（marp-cli 的服务器监听所有网络接口，
+且不做任何检查）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;它监听 &lt;strong&gt;127.0.0.1&lt;/strong&gt;；&lt;code&gt;--host&lt;/code&gt; 可以更改，但会给出警告，而且通配地址将无法再检查 &lt;code&gt;Host&lt;/code&gt; 请求头；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Host&lt;/code&gt;&lt;/strong&gt; 请求头必须是回环名称（&lt;code&gt;localhost&lt;/code&gt;、&lt;code&gt;127.0.0.1&lt;/code&gt;、
+&lt;code&gt;[::1]&lt;/code&gt;、&lt;code&gt;*.localhost&lt;/code&gt;）或其监听的主机名，以防范 DNS 重绑定；&lt;/li&gt;
+&lt;li&gt;WebSocket 的 &lt;strong&gt;&lt;code&gt;Origin&lt;/code&gt;&lt;/strong&gt; 必须是服务器自身；监视模式的套接字还接受从文件打开的页面的
+&lt;code&gt;null&lt;/code&gt; 来源；来自其他站点、且不是页面导航的请求（脚本、图片、&lt;code&gt;fetch&lt;/code&gt;）会被拒绝；&lt;/li&gt;
+&lt;li&gt;路径会被规范化，符号链接会被解析，结果必须位于该目录内：&lt;code&gt;..&lt;/code&gt; 和指向目录外的链接会被拒绝，
+对目录外演示文稿的 &lt;code&gt;?pdf&lt;/code&gt; 请求也是如此；以点开头的名称（&lt;code&gt;.git&lt;/code&gt;、&lt;code&gt;.env&lt;/code&gt;）不会被提供；&lt;/li&gt;
+&lt;li&gt;只接受 &lt;code&gt;GET&lt;/code&gt; 和 &lt;code&gt;HEAD&lt;/code&gt;；同时进行的转换数量有限；最多监视 4096 个目录，
+且不监视 &lt;code&gt;node_modules&lt;/code&gt; 中或以点开头的目录。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="page-metadata"&gt;页面元数据&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
+&lt;a href="#page-metadata" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;与 marp-cli 一样，命令行优先于演示文稿；在 marp-cli 中，这些参数会作为最后一条指令注释追加到演示文稿末尾。
+以下规则依据 marp-cli 4.5.1 整理，并由针对其输出的测试固定下来（v0.6.0 起）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;未设置 &lt;code&gt;title&lt;/code&gt; 的演示文稿，取其最低层级的第一个标题的原文
+（&lt;code&gt;# **Bold** title&lt;/code&gt; 得到 &lt;code&gt;**Bold** title&lt;/code&gt;）。没有标题时就没有 &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;keywords&lt;/code&gt; 按逗号拆分、去除首尾空白并去重；front matter 中的列表按原样使用。
+与 marp-cli 一样，只有从第二个关键词起，页面才会带 &lt;code&gt;keywords&lt;/code&gt; 标签，只有一个关键词时不带。&lt;/li&gt;
+&lt;li&gt;无效的 &lt;code&gt;url&lt;/code&gt;（非绝对地址）会被忽略并给出警告，保留之前的值；
+有效值还会写出 &lt;code&gt;&amp;lt;link rel=&amp;quot;canonical&amp;quot;&amp;gt;&lt;/code&gt; 和 &lt;code&gt;og:url&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;author&lt;/code&gt; 和 &lt;code&gt;description&lt;/code&gt; 会附带对应的 Open Graph 标签；&lt;code&gt;og:image:alt&lt;/code&gt;
+和 Twitter 大图卡片需要同时有标题和图片。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="images-pdf-pptx-and-odp"&gt;图片、PDF、PPTX 和 ODP&lt;span class="hx:absolute hx:-mt-20" id="images-pdf-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#images-pdf-pptx-and-odp" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;与 marp-cli 一样，&lt;code&gt;-o&lt;/code&gt; 配合 &lt;code&gt;.pdf&lt;/code&gt;、&lt;code&gt;.pptx&lt;/code&gt;、&lt;code&gt;.odp&lt;/code&gt;、&lt;code&gt;.png&lt;/code&gt; 或 &lt;code&gt;.jpg&lt;/code&gt; 扩展名即可选择格式。
+输出目录会自动创建。PDF 每张幻灯片一页，页面尺寸与幻灯片相同，并带有由幻灯片及其标题组成的书签大纲。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="pdf-notes-and-outline"&gt;PDF 备注与书签大纲&lt;span class="hx:absolute hx:-mt-20" id="pdf-notes-and-outline"&gt;&lt;/span&gt;
+&lt;a href="#pdf-notes-and-outline" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;从 v0.6.0 起，PDF 支持 marp-cli 的两个选项，并与 marp-cli 4.5.1 为同一演示文稿写出的 PDF 做过对比：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--pdf-notes&lt;/code&gt; 将每张幻灯片的演讲者备注作为注释批注放在对应页面上：
+左下角一个黄色的 Note 图标，内容为备注（多条注释之间以空行连接），标题为演示文稿的
+&lt;code&gt;author&lt;/code&gt;。与 marp-cli 一样，单独使用 &lt;code&gt;--pdf-notes&lt;/code&gt; 时会写出 PDF。&lt;/li&gt;
+&lt;li&gt;书签大纲为每张幻灯片包含一个粗体书签 “Page N”，其下按层级嵌套该幻灯片的标题
+（&lt;code&gt;--pdf-outlines.pages&lt;/code&gt; 和 &lt;code&gt;--pdf-outlines.headings&lt;/code&gt; 分别控制这两部分）。
+&lt;strong&gt;书签大纲在这里默认开启，在 marp-cli 中默认关闭。&lt;/strong&gt; &lt;code&gt;slides&lt;/code&gt; 一直都会写出书签大纲；
+它只占几百字节，却能让长篇演示文稿便于导航，所以保留这一默认值。
+&lt;code&gt;--pdf-outlines=false&lt;/code&gt; 或 marp-cli 的 &lt;code&gt;--no-pdf-outlines&lt;/code&gt; 可将其关闭，
+在 &lt;code&gt;.pages&lt;/code&gt; 或 &lt;code&gt;.headings&lt;/code&gt; 上使用 &lt;code&gt;=false&lt;/code&gt; 则去掉对应部分。标题书签跳转到其所在的幻灯片；
+marp-cli 还会滚动到该标题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;渲染由 &lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt; 完成，
+PDF 由 &lt;a href="https://github.com/go-pdfkit/pdfkit" target="_blank" rel="noopener"&gt;go-pdfkit&lt;/a&gt; 写出；
+内置主题所需的字体（Lato、Roboto Mono）来自
+&lt;a href="https://github.com/go-opentype/fonts" target="_blank" rel="noopener"&gt;go-opentype/fonts&lt;/a&gt; 并被内嵌，
+因此任何渲染都不会访问网络。这里没有 Chrome。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--image-scale 2&lt;/code&gt; 以每个 CSS 像素两个设备像素进行渲染。除非指定 &lt;code&gt;--allow-local-files&lt;/code&gt;，
+否则会拒绝本地图片；即使指定了，也只读取演示文稿所在目录之下的文件：
+来自别处的演示文稿无法访问 &lt;code&gt;~/.ssh&lt;/code&gt;。多重背景和分栏背景（&lt;code&gt;![bg left:40%]&lt;/code&gt;）
+的渲染方式与 Marp 的图层相同。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--pptx&lt;/code&gt; 使用 &lt;a href="https://github.com/go-ooxml" target="_blank" rel="noopener"&gt;go-ooxml&lt;/a&gt; 的
+&lt;code&gt;WritePresentation&lt;/code&gt; 写出演示文稿，包含演讲者备注和演示文稿的元数据。自
+v0.5.0 起幻灯片可编辑（见下文）；&lt;code&gt;--pptx-raster&lt;/code&gt; 则与 marp-cli 一样，每张幻灯片写出一整张图片，
+缩放比例默认为 2，可由 &lt;code&gt;--image-scale&lt;/code&gt; 覆盖。生成的文件可以用 LibreOffice 打开。
+只在 LibreOffice 中测试过，未在 PowerPoint 和 Keynote 中测试。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--odp&lt;/code&gt; 通过 go-odf 的 &lt;code&gt;WritePresentation&lt;/code&gt; 写出 OpenDocument 演示文稿，
+包含演讲者备注；&lt;code&gt;--odp-raster&lt;/code&gt; 每张幻灯片写出一张图片。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="editable-pptx-and-odp"&gt;可编辑的 PPTX 和 ODP&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx-and-odp" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;自 v0.5.0 起，PPTX 或 ODP 中的幻灯片是&lt;strong&gt;可编辑的&lt;/strong&gt;：marp-cli 的 PPTX 每张幻灯片是一张图片，
+其实验性的 &lt;code&gt;--pptx-editable&lt;/code&gt; 则是借助 LibreOffice 转换 PDF。这里每张幻灯片都依据其布局绘制，
+与 PNG 和 PDF 导出所用的布局相同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每行文本都是一个位于其布局位置的文本框，使用幻灯片排版时所用的字体，
+且&lt;strong&gt;字体内嵌在文件中&lt;/strong&gt;，因此在没有 Lato 或 Inter 的机器上看起来也一样
+（已用 LibreOffice 25.8 验证），并保留粗体、斜体、颜色、字间距和可点击的链接；&lt;/li&gt;
+&lt;li&gt;背景、边框和圆角框是形状；渐变在 PPTX 中是渐变填充，在 ODP 中是图片
+（ODF 的渐变只有两种颜色）；&lt;/li&gt;
+&lt;li&gt;图片只存储一次，无论有多少张幻灯片显示它；&lt;/li&gt;
+&lt;li&gt;幻灯片无法表达的内容（受 &lt;code&gt;opacity&lt;/code&gt; 影响的元素、&lt;code&gt;filter&lt;/code&gt;、
+模糊阴影、公式）会成为该元素的一张图片，其上保留文本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;经 LibreOffice 重新渲染后，幻灯片与 PNG 导出结果的像素差异在 0.04–2 % 之间。
+&lt;code&gt;--pptx-raster&lt;/code&gt; 和 &lt;code&gt;--odp-raster&lt;/code&gt; 仍然每张幻灯片一张图片。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="vector-pdf"&gt;矢量 PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;自 v0.4.0 起，PDF 以矢量方式绘制：go-webengine 将排好版的幻灯片绘制到 PDF 中，而不是绘制成像素。
+文本就是文本，使用幻灯片排版时所用的字体，以子集方式内嵌并带有 &lt;code&gt;/ToUnicode&lt;/code&gt; 映射，
+因此可以选中、搜索和复制。背景、边框和渐变是路径和着色，在多张幻灯片上出现的图片只内嵌一次，
+链接可以点击。100 张幻灯片的基准演示文稿大小为 758 KiB，marp-cli 为 837 KiB，
+v0.3.0 的图片 PDF 为 10 MiB，写出耗时 0.3 s。&lt;/p&gt;
+&lt;p&gt;这里没有矢量形式的元素（&lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1、带有 &lt;code&gt;filter&lt;/code&gt; 或旋转、模糊的 &lt;code&gt;box-shadow&lt;/code&gt;、
+透明度渐变的渐变色）只会将该元素绘制为位图，其上覆盖不可见的文本，以保持可选中。
+公式目前仍是位图。&lt;code&gt;--pdf-raster&lt;/code&gt; 与 v0.3.0 一样，每页写出一张图片。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;无障碍的带标签 PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
+&lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;自 v0.12.0 起，矢量 PDF 带有标签。它包含文档的逻辑结构，屏幕阅读器会按顺序朗读，
+就像朗读网页一样：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;演示文稿中&lt;/th&gt;
+&lt;th&gt;PDF 中&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;一张幻灯片&lt;/td&gt;
+&lt;td&gt;一个节（&lt;code&gt;Sect&lt;/code&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;#&lt;/code&gt; … &lt;code&gt;######&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;H1&lt;/code&gt; … &lt;code&gt;H6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;段落、列表、表格&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;P&lt;/code&gt;；&lt;code&gt;L&lt;/code&gt;，包含每一项的标号和正文；&lt;code&gt;Table&lt;/code&gt;，表头单元格带有其作用范围&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;链接&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Link&lt;/code&gt;，包含其可点击区域，以其文本作为描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;图片&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Figure&lt;/code&gt;，带有替代文本；没有替代文本的 &lt;code&gt;![](…)&lt;/code&gt; 视为装饰&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;、&lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;，以其 TeX 源码作为描述&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;代码&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Code&lt;/code&gt;，不含行号和标注圆点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;span lang=&amp;quot;fr&amp;quot;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;使用该语言的文本片段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;背景、边框、页码&lt;/td&gt;
+&lt;td&gt;工件（artifact），阅读器会跳过&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;演讲者备注（&lt;code&gt;--pdf-notes&lt;/code&gt;）&lt;/td&gt;
+&lt;td&gt;结构中的批注&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;该文件声明符合 PDF/UA-1，即无障碍 PDF 的标准。它包含演示文稿的 &lt;code&gt;title&lt;/code&gt;（由阅读器显示）
+及其 &lt;code&gt;lang&lt;/code&gt;（演示文稿未设置时取 &lt;code&gt;--lang&lt;/code&gt;，否则为 &lt;code&gt;en&lt;/code&gt;）。&lt;/p&gt;
+&lt;p&gt;用 veraPDF 检查的演示文稿可以通过 PDF/UA-1，除非其自身的标题违反了标准规定的层级顺序。
+PDF/UA 要求第一个标题为 &lt;code&gt;H1&lt;/code&gt;，且不得跳级（如 &lt;code&gt;#&lt;/code&gt; 之后直接 &lt;code&gt;###&lt;/code&gt;）。这只能由演示文稿的作者修正。
+同一演示文稿由 Chrome 生成的 PDF（marp-cli 写出的就是它）也带有标签，但违反了 PDF/UA 的
+七条规则，没有按幻灯片划分的节，也没有公式。&lt;/p&gt;
+&lt;p&gt;为 100 张幻灯片的基准演示文稿添加标签，体积增加 4%（788 KiB 对 757 KiB），
+耗时没有可测量的增加。&lt;code&gt;--pdf-tags=false&lt;/code&gt; 写出不带标签的 PDF。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
+&lt;a href="#slidesyaml" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;演示文稿旁边的配置文件会作用于该演示文稿，因此一个文件夹中的演示文稿可以共享同一个配置文件：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;kinds.yaml &lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# a mapping of kinds, or file(s) holding one&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;themes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# theme CSS files or directories&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;themes/&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# template data&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;company&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Example Inc.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# allow all raw HTML&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;en&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;kind：演示文稿自身的 &lt;code&gt;kinds:&lt;/code&gt; 优先于配置文件和命令行中的定义。
+数据：配置文件和命令行中的 &lt;code&gt;data&lt;/code&gt; 优先于演示文稿的 front matter，
+因此同一个演示文稿可以用不同的数据构建。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="planned"&gt;计划中&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
+&lt;a href="#planned" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;尚未实现：PDF 中的公式矢量化。实现后，会在这里以命令或参数的形式提供。&lt;/p&gt;</description></item></channel></rss>

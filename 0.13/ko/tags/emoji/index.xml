@@ -1,0 +1,103 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Emoji</title><link>https://go-slides.github.io/docs/0.13/ko/tags/emoji/</link><description>Recent content in Emoji on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.13/ko/tags/emoji/index.xml" rel="self" type="application/rss+xml"/><item><title>이모지</title><link>https://go-slides.github.io/docs/0.13/ko/emoji/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.13/ko/emoji/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;이모지는 v0.4.0에 추가되었습니다. v0.3.0에는 없었습니다.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;이모지는 단축 코드로 쓰거나 문자 자체로 쓸 수 있습니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Launch :rocket: 🎉
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Shortcodes :smile: :+1: :heart_eyes: and Unicode 😄 👍🏽 👩‍💻 🇫🇷 1️⃣.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;각 이모지는 Marp Core가 그리는 &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;Twemoji&lt;/a&gt;
+이미지가 되며, 마크업도 Marp Core가 쓰는 것과 같습니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;emoji&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;draggable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;false&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;😄&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;data:image/svg+xml;base64,…&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;data-marp-twemoji&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="no-network"&gt;네트워크 불필요&lt;span class="hx:absolute hx:-mt-20" id="no-network"&gt;&lt;/span&gt;
+&lt;a href="#no-network" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp Core의 &lt;code&gt;src&lt;/code&gt;는 CDN의 URL이므로, 오프라인에서 보여 주거나 인쇄하거나
+인터넷 연결이 없는 컴퓨터에서 PDF로 만든 프레젠테이션에는 깨진 이미지가
+나타납니다. go-slides는 SVG 자체를 &lt;code&gt;data:&lt;/code&gt; URI에 넣습니다. 그래픽 4,009개
+(Twemoji 17.0.3, Emoji 17.0)는 순수 Go 모듈
+&lt;a href="https://github.com/go-icons/twemoji" target="_blank" rel="noopener"&gt;go-icons/twemoji&lt;/a&gt;를 통해 프로그램에
+내장되어 있으며, 압축 시 2 MB이고 프레젠테이션에 이모지가 있을 때만 읽습니다.&lt;/p&gt;
+&lt;p&gt;이미지는 HTML 페이지, &lt;code&gt;--images&lt;/code&gt;/&lt;code&gt;--image&lt;/code&gt;, &lt;code&gt;--pdf&lt;/code&gt;, &lt;code&gt;--pptx&lt;/code&gt;, &lt;code&gt;--odp&lt;/code&gt; 모두에서
+똑같이 그려지며, SVG 래스터화는 go-webengine이 맡습니다. 그래픽 4,009개 모두가
+이 SVG 래스터라이저에서 파싱되고 그려지는지 테스트로 확인합니다. v0.5.0부터
+래스터라이저는 &lt;a href="https://github.com/go-gfx/oksvg" target="_blank" rel="noopener"&gt;go-gfx/oksvg&lt;/a&gt; v0.2.0입니다.
+이제 &lt;code&gt;clipPath&lt;/code&gt;, &lt;code&gt;fill-rule: evenodd&lt;/code&gt;, 원호 명령이 Chrome과 똑같이 그려지며,
+이로 인해 Twemoji 하나와 그 밖의 211개가 달라졌고 SVG 로고도 더 이상 깨지지
+않습니다.&lt;/p&gt;
+&lt;p&gt;이모지 크기를 텍스트에 맞추는 규칙(&lt;code&gt;img[data-marp-twemoji]&lt;/code&gt;, 한 변이 &lt;code&gt;em&lt;/code&gt;
+하나인 정사각형, 기준선에 정렬)은 Marp Core와 같은 방식으로 테마에 추가되므로,
+직접 만든 테마에도 적용됩니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-is-converted"&gt;변환 대상&lt;span class="hx:absolute hx:-mt-20" id="what-is-converted"&gt;&lt;/span&gt;
+&lt;a href="#what-is-converted" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;규칙은 Marp Core의 것을 따르며, 모든 경우를 담은 프레젠테이션에 대해 Marp Core
+4.4.0이 출력하는 HTML과 비교하는 테스트가 있습니다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:smile:&lt;/code&gt;, &lt;code&gt;:+1:&lt;/code&gt;, &lt;code&gt;:heart_eyes:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;markdown-it-emoji의 이름 1,903개. 본문, 제목, 링크, 표, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;에서 변환되며 코드, URL, 이미지 대체 텍스트에서는 변환되지 않습니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;😄&lt;/code&gt;, &lt;code&gt;👩‍💻&lt;/code&gt;, &lt;code&gt;🇫🇷&lt;/code&gt;, &lt;code&gt;1️⃣&lt;/code&gt;, &lt;code&gt;👍🏽&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unicode 이모지. 본문 &lt;strong&gt;그리고 코드에서도&lt;/strong&gt; 변환됩니다. Marp Core가 렌더링된 코드 HTML을 다시 쓰기 때문입니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;✔&lt;/code&gt;, &lt;code&gt;©&lt;/code&gt;, &lt;code&gt;™&lt;/code&gt;, &lt;code&gt;▶&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;텍스트로 남습니다. 기본 표시 형태가 텍스트인 문자는 U+FE0F가 붙을 때만(&lt;code&gt;✔️&lt;/code&gt;) 이모지가 됩니다. &lt;code&gt;❤&lt;/code&gt;는 예외입니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;☺︎&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;텍스트로 남습니다. 이모지 뒤의 U+FE0E는 일반 글리프를 요청합니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;12:30:45&lt;/code&gt;, &lt;code&gt;:not_a_name:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;쓴 그대로 남습니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;제목의 &lt;code&gt;id&lt;/code&gt;와 개요에는 단축 코드 이름이 아니라 이모지가 쓰입니다.
+&lt;code&gt;# Launch :rocket:&lt;/code&gt;의 id는 Marp와 마찬가지로 &lt;code&gt;launch-%F0%9F%9A%80&lt;/code&gt;입니다.&lt;/p&gt;
+&lt;p&gt;go-slides가 Marp Core와 다른 점은 더 많이 변환한다는 것입니다. Marp Core의
+emoji-regex가 텍스트로 남겨 두는 &lt;code&gt;✌️ ☝️ ✍️ 🏋️&lt;/code&gt; 등 기본 표시가 텍스트인 몇몇
+문자와, Unicode 목록에는 없지만 Twemoji가 그리는 몇 가지 시퀀스도 변환합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="turning-it-off"&gt;끄기&lt;span class="hx:absolute hx:-mt-20" id="turning-it-off"&gt;&lt;/span&gt;
+&lt;a href="#turning-it-off" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;--no-emoji&lt;/code&gt;(코드에서는 &lt;code&gt;slides.Config{NoEmoji: true}&lt;/code&gt;)를 쓰면 단축 코드와
+Unicode 이모지가 쓴 그대로의 텍스트로 남습니다. Marp Core의
+&lt;code&gt;emoji: false&lt;/code&gt;에 해당합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="attribution"&gt;저작자 표시&lt;span class="hx:absolute hx:-mt-20" id="attribution"&gt;&lt;/span&gt;
+&lt;a href="#attribution" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;그래픽은 Twemoji이며 Copyright 2020 Twitter, Inc and other contributors,
+&lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&gt;CC-BY 4.0&lt;/a&gt; 라이선스로 배포되고
+&lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;jdecked/twemoji&lt;/a&gt; 프로젝트가 이어 가고
+있습니다. 이를 표시하는 프레젠테이션은 푸터나 마지막 슬라이드 등에 출처를
+밝혀야 합니다. 단축 코드 표는 markdown-it-emoji(MIT)의 것입니다.&lt;/p&gt;</description></item></channel></rss>

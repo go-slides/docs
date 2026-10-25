@@ -1,0 +1,81 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Marp</title><link>https://go-slides.github.io/docs/0.13/zh/tags/marp/</link><description>Recent content in Marp on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.13/zh/tags/marp/index.xml" rel="self" type="application/rss+xml"/><item><title>Marp 兼容性</title><link>https://go-slides.github.io/docs/0.13/zh/marp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.13/zh/marp/</guid><description>
+&lt;p&gt;为 &lt;a href="https://marp.app" target="_blank" rel="noopener"&gt;Marp&lt;/a&gt; 编写的演示文稿就是 go-slides 演示文稿。下面的规则来自
+&lt;a href="https://marpit.marp.app" target="_blank" rel="noopener"&gt;Marpit&lt;/a&gt; 和
+&lt;a href="https://github.com/marp-team/marp-core" target="_blank" rel="noopener"&gt;Marp Core&lt;/a&gt;；凡是 go-slides
+有所不同的地方，本页都会注明。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides"&gt;幻灯片&lt;span class="hx:absolute hx:-mt-20" id="slides"&gt;&lt;/span&gt;
+&lt;a href="#slides" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;水平分隔线（单独一行的 &lt;code&gt;---&lt;/code&gt;，与 Marpit 的分隔方式相同）开始一张新幻灯片，
+&lt;code&gt;headingDivider&lt;/code&gt; 指令所指定级别的标题也会开始新幻灯片。front matter 位于最前面的两个
+&lt;code&gt;---&lt;/code&gt; 之间，包含全局指令和演示文稿的数据。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="directives"&gt;指令&lt;span class="hx:absolute hx:-mt-20" id="directives"&gt;&lt;/span&gt;
+&lt;a href="#directives" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;位置&lt;/th&gt;
+&lt;th&gt;作用范围&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;全局&lt;/td&gt;
+&lt;td&gt;front matter，或任意位置的 &lt;code&gt;&amp;lt;!-- theme: gaia --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;整个演示文稿：&lt;code&gt;theme&lt;/code&gt;、&lt;code&gt;style&lt;/code&gt;、&lt;code&gt;headingDivider&lt;/code&gt;、&lt;code&gt;lang&lt;/code&gt;…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;局部&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- paginate: true --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前幻灯片及其后的幻灯片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;单页&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- _class: lead --&amp;gt;&lt;/code&gt;（下划线开头）&lt;/td&gt;
+&lt;td&gt;仅当前幻灯片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;局部指令与 Marpit 相同：&lt;code&gt;paginate&lt;/code&gt;、&lt;code&gt;header&lt;/code&gt;、&lt;code&gt;footer&lt;/code&gt;、&lt;code&gt;class&lt;/code&gt;、
+&lt;code&gt;backgroundColor&lt;/code&gt;、&lt;code&gt;backgroundImage&lt;/code&gt;、&lt;code&gt;backgroundPosition&lt;/code&gt;、
+&lt;code&gt;backgroundRepeat&lt;/code&gt;、&lt;code&gt;backgroundSize&lt;/code&gt;、&lt;code&gt;color&lt;/code&gt;。与 Marp Core 一样，
+指令按宽松 YAML 解析；&lt;code&gt;--strict-yaml&lt;/code&gt; 则与原生 Marpit 一样严格解析。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="images"&gt;图片&lt;span class="hx:absolute hx:-mt-20" id="images"&gt;&lt;/span&gt;
+&lt;a href="#images" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;![bg](image.jpg)&lt;/code&gt; 将图片设为幻灯片背景，支持 Marp 的关键字：
+&lt;code&gt;bg contain&lt;/code&gt;、&lt;code&gt;bg cover&lt;/code&gt;、&lt;code&gt;bg 50%&lt;/code&gt;、用于分栏背景的 &lt;code&gt;bg left&lt;/code&gt;/&lt;code&gt;bg right&lt;/code&gt;、
+多张并排的 &lt;code&gt;bg&lt;/code&gt; 图片，以及图片滤镜（&lt;code&gt;blur&lt;/code&gt;、&lt;code&gt;sepia&lt;/code&gt;、&lt;code&gt;grayscale&lt;/code&gt;…）。
+行内图片尺寸（&lt;code&gt;w:200px&lt;/code&gt;、&lt;code&gt;h:&lt;/code&gt;）的解释方式与 Marp 相同。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="around-the-slide"&gt;幻灯片周边&lt;span class="hx:absolute hx:-mt-20" id="around-the-slide"&gt;&lt;/span&gt;
+&lt;a href="#around-the-slide" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;页眉和页脚&lt;/strong&gt;：&lt;code&gt;header:&lt;/code&gt; 和 &lt;code&gt;footer:&lt;/code&gt; 指令，内容为 Markdown。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;页码&lt;/strong&gt;：&lt;code&gt;paginate: true&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;演讲者备注&lt;/strong&gt;：不是指令的 HTML 注释就是备注。
+&lt;code&gt;slides notes&lt;/code&gt; 可输出备注。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;逐项显示列表&lt;/strong&gt;：用 &lt;code&gt;*&lt;/code&gt;（或 &lt;code&gt;1)&lt;/code&gt;）编写的列表会逐项出现，
+与 Marp 相同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;：只作用于一张幻灯片的 CSS。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;原始 HTML&lt;/strong&gt;：默认使用 Marp Core 的白名单；&lt;code&gt;--html&lt;/code&gt; 允许所有 HTML。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emoji&lt;/strong&gt;：&lt;code&gt;:shortcodes:&lt;/code&gt; 和 Unicode emoji 会变成 Twemoji 图片，与
+Marp Core 相同，但图片是内嵌的，而不是从 CDN 加载：参见
+&lt;a href="https://go-slides.github.io/docs/0.13/zh/emoji/"&gt;Emoji&lt;/a&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="themes"&gt;主题&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
+&lt;a href="#themes" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;内置 &lt;code&gt;default&lt;/code&gt;、&lt;code&gt;gaia&lt;/code&gt; 和 &lt;code&gt;uncover&lt;/code&gt; 主题，通过 &lt;code&gt;theme:&lt;/code&gt; 选择。
+自定义主题是一个带有 Marp 的 &lt;code&gt;/* @theme name */&lt;/code&gt; 注释的 CSS 文件，
+通过 &lt;code&gt;--theme-set&lt;/code&gt; 指定，或列在 &lt;code&gt;slides.yaml&lt;/code&gt; 的 &lt;code&gt;themes:&lt;/code&gt; 下。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="where-go-slides-differs"&gt;go-slides 的不同之处&lt;span class="hx:absolute hx:-mt-20" id="where-go-slides-differs"&gt;&lt;/span&gt;
+&lt;a href="#where-go-slides-differs" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模板。&lt;/strong&gt; 正文中的 &lt;code&gt;{{ }}&lt;/code&gt; 是 Go 模板动作（参见
+&lt;a href="https://go-slides.github.io/docs/0.13/zh/templates/"&gt;模板&lt;/a&gt;）。如果演示文稿要在代码块之外把 &lt;code&gt;{{&lt;/code&gt; 作为文本显示，
+需要使用 &lt;code&gt;--no-template&lt;/code&gt;，或按 Go 模板的方式转义该文本。代码块和行内代码不受影响。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kind。&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; 和 &lt;code&gt;_kind:&lt;/code&gt; 是 Marp 没有的指令（参见
+&lt;a href="https://go-slides.github.io/docs/0.13/zh/kinds/"&gt;Kind&lt;/a&gt;）。&lt;code&gt;slides expand&lt;/code&gt; 会将它们替换为其所代表的指令，
+因此展开后的演示文稿是纯 Marp。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出格式。&lt;/strong&gt; HTML、PNG、JPEG、PDF、PPTX 和 ODP，由 Go 库生成，而不是无头浏览器
+（已知限制参见&lt;a href="https://go-slides.github.io/docs/0.13/zh/cli/#images-pdf-pptx-and-odp"&gt;命令行&lt;/a&gt;）。
+在 v0.4.0 中，PPTX 与 marp-cli 一样由图片组成；自
+v0.5.0 起，其幻灯片由可编辑的文本框和形状组成，&lt;code&gt;--pptx-raster&lt;/code&gt; 则保留图片形式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自适应标题。&lt;/strong&gt; 支持 &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt;：标题在一行内撑满幻灯片宽度，
+在页面和所有导出格式中均有效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数学公式与代码。&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; 和 &lt;code&gt;$$…$$&lt;/code&gt; 遵循 Marp Core 的定界符规则，
+由 go-tex/math 排版；围栏代码由 go-rouge 高亮，使用
+highlight.js 的类名（参见&lt;a href="https://go-slides.github.io/docs/0.13/zh/math-and-code/"&gt;数学公式与代码&lt;/a&gt;）。&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
