@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.9.0.
+This page describes v0.13.0.
 {{< /callout >}}
 
 ```text
@@ -332,7 +332,7 @@ per page, as v0.3.0 did.
 
 ### Accessible, tagged PDF
 
-After v0.9.0 the vector PDF is tagged. It carries its logical structure, which
+Since v0.12.0 the vector PDF is tagged. It carries its logical structure, which
 a screen reader reads in order, as it reads a web page:
 
 | In the deck | In the PDF |

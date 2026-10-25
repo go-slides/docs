@@ -14,7 +14,7 @@ go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides`는 cgo를 쓰지 않는 정적 Go 바이너리 하나입니다. Node도 Chrome도 필요
-없고, 따로 설치할 것이 없습니다. 이 페이지는 v0.9.0을 기준으로 설명합니다.
+없고, 따로 설치할 것이 없습니다. 이 페이지는 v0.13.0을 기준으로 설명합니다.
 
 ## 첫 프레젠테이션 {#a-first-deck}
 

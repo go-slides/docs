@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Esta página describe v0.9.0.
+Esta página describe v0.13.0.
 {{< /callout >}}
 
 ```text
@@ -354,6 +354,39 @@ rotación, un `box-shadow` difuminado, un degradado cuya opacidad se atenúa) se
 dibuja como un mapa de bits solo de ese elemento, con su texto superpuesto de
 forma invisible para que siga siendo seleccionable. Las fórmulas siguen siendo
 mapas de bits. `--pdf-raster` escribe una imagen por página, como hacía v0.3.0.
+
+### PDF accesible y etiquetado {#accessible-tagged-pdf}
+
+Desde v0.12.0 el PDF vectorial está etiquetado. Lleva su estructura lógica, que
+un lector de pantalla lee en orden, como lee una página web:
+
+| En la presentación | En el PDF |
+| --- | --- |
+| una diapositiva | una sección (`Sect`) |
+| `#` … `######` | `H1` … `H6` |
+| un párrafo, una lista, una tabla | `P`; `L` con la etiqueta y el cuerpo de cada elemento; `Table`, con celdas de encabezado y su ámbito |
+| un enlace | un `Link`, con su área clicable incluida y su texto como descripción |
+| una imagen | una `Figure` con su texto alternativo; `![](…)` sin texto alternativo es decoración |
+| `$…$`, `$$…$$` | una `Formula`, con su código fuente TeX como descripción |
+| código | `Code`, sin sus números de línea ni sus círculos de llamada |
+| `<span lang="fr">` | un tramo en ese idioma |
+| fondos, bordes, números de página | artefactos, que un lector omite |
+| notas del orador (`--pdf-notes`) | anotaciones en la estructura |
+
+El archivo declara PDF/UA-1, el estándar del PDF accesible. Lleva el `title` de
+la presentación, que el visor muestra, y su `lang` (`--lang` cuando la
+presentación no define ninguno, `en` en caso contrario).
+
+Una presentación verificada con veraPDF cumple PDF/UA-1, salvo que sus propios
+encabezados rompan el orden del estándar. PDF/UA exige que el primer encabezado
+sea un `H1` y que no se salte ningún nivel (`#` y luego `###`). Solo el autor de
+la presentación puede corregirlo. El PDF de Chrome de la misma presentación, el
+que escribe marp-cli, también está etiquetado, pero incumple siete de las reglas
+de PDF/UA, no tiene una sección por diapositiva ni fórmulas.
+
+Etiquetar la presentación de prueba de 100 diapositivas cuesta un 4 % de tamaño
+(788 frente a 757 KiB) y ningún tiempo medible. `--pdf-tags=false` escribe el PDF
+sin etiquetas.
 
 ## `slides.yaml` {#slidesyaml}
 
