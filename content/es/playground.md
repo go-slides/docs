@@ -127,8 +127,11 @@ presentación, ni un enlace para compartir.
   Se generan en su navegador, con el mismo código que `slides --pdf`, `--pptx` y
   `--odp`: el PDF de la presentación de prueba de 100 diapositivas es idéntico
   byte a byte al del comando. La primera exportación descarga el motor de
-  exportación (unos 21 MiB, una sola vez; su navegador lo conserva hasta la
-  siguiente actualización), con una línea de progreso. La presentación de 100
+  exportación (unos 5 MiB, una sola vez; su navegador lo conserva hasta la
+  siguiente actualización), con una línea de progreso, y lo compila a medida que
+  llega. Después solo descarga las fuentes que dibujan sus diapositivas. Con un
+  enlace de 3 MB/s, el primer PDF de la presentación de bienvenida está listo en
+  menos de 3 segundos. La presentación de 100
   diapositivas tarda entonces unos 3 segundos. Una imagen `https:` solo se incluye
   si su servidor lo permite (CORS); las imágenes `data:` siempre se incluyen.
 - **Su borrador se conserva**:
