@@ -330,6 +330,37 @@ drawn as a bitmap of that element only, its text laid over it invisibly so it
 stays selectable. Formulas are still bitmaps. `--pdf-raster` writes one image
 per page, as v0.3.0 did.
 
+### Accessible, tagged PDF
+
+After v0.9.0 the vector PDF is tagged. It carries its logical structure, which
+a screen reader reads in order, as it reads a web page:
+
+| In the deck | In the PDF |
+| --- | --- |
+| a slide | a section (`Sect`) |
+| `#` … `######` | `H1` … `H6` |
+| a paragraph, a list, a table | `P`; `L` with each item's label and body; `Table`, header cells with their scope |
+| a link | a `Link`, its clickable area included, its text as its description |
+| an image | a `Figure` with its alt text; `![](…)` with no alt text is decoration |
+| `$…$`, `$$…$$` | a `Formula`, its TeX source as its description |
+| code | `Code`, without its line numbers or callout discs |
+| `<span lang="fr">` | a span in that language |
+| backgrounds, borders, page numbers | artifacts, which a reader skips |
+| speaker notes (`--pdf-notes`) | annotations in the structure |
+
+The file declares PDF/UA-1, the standard for accessible PDF. It carries the
+deck's `title`, which the viewer shows, and its `lang` (`--lang` when the deck
+sets none, `en` otherwise).
+
+A deck checked with veraPDF passes PDF/UA-1, unless its own headings break
+the standard's order. PDF/UA asks that the first heading be an `H1` and that
+no level be skipped (`#` then `###`). Only the deck's author can fix that.
+Chrome's PDF of the same deck, which marp-cli writes, is tagged too, but fails
+seven of PDF/UA's rules, has no section per slide and no formulas.
+
+Tagging the 100-slide benchmark deck costs 4% in size (788 against 757 KiB)
+and no measurable time. `--pdf-tags=false` writes the PDF without tags.
+
 ## `slides.yaml`
 
 A configuration file next to the deck applies to it, so a folder of decks
