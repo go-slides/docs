@@ -1,0 +1,198 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Performance</title><link>https://go-slides.github.io/docs/0.9/ja/tags/performance/</link><description>Recent content in Performance on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.9/ja/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>パフォーマンス</title><link>https://go-slides.github.io/docs/0.9/ja/performance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.9/ja/performance/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;以下の PPTX の数値は v0.5.0、ベクター PDF の数値は v0.4.0 のものです。
+最初の表は v0.3.0（その前のリリース）のものです。v0.3.0 はスライドを並行してレンダリングし、
+フォントの解析を 1 回だけ行います（&lt;a href="https://github.com/go-slides/slides/pull/11" target="_blank" rel="noopener"&gt;go-slides/slides#11&lt;/a&gt;）。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;go-slides と &lt;a href="https://github.com/marp-team/marp-cli" target="_blank" rel="noopener"&gt;marp-cli&lt;/a&gt; 4.5.1 を、
+同じスライドデッキに対してサブプロセスとして実行しました。マシンは Apple M4 Max（16 CPU）、
+1 分間のロードアベレージは 8 未満で、ウォームアップの後に交互に 5 ラウンド計測しています。
+時間は実時間の中央値、メモリはプロセスツリー全体のピークです
+（marp-cli は Chrome を操作するため、Chrome のプロセスも含めています）。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;スライドデッキ&lt;/th&gt;
+&lt;th&gt;出力&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides のメモリ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli のメモリ&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 枚&lt;/td&gt;
+&lt;td&gt;HTML&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;315 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;47 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 枚&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.14 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.88 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;242 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,509 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 枚&lt;/td&gt;
+&lt;td&gt;PNG（全スライド）&lt;/td&gt;
+&lt;td style="text-align: right"&gt;0.97 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;5.44 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;225 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,354 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 枚&lt;/td&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td style="text-align: right"&gt;3.39 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;8.03 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;530 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,373 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia、20 枚&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;283 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.57 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;154 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,315 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数式とコード、20 枚&lt;/td&gt;
+&lt;td&gt;PNG（全スライド）&lt;/td&gt;
+&lt;td style="text-align: right"&gt;250 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2.32 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;168 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,286 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="vector-pdf"&gt;ベクター PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;v0.4.0 では、PDF はベクターで描画されます（
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/cli/#vector-pdf"&gt;コマンドライン&lt;/a&gt; を参照）。同じマシンと方法で、
+2026-10-19 に計測しました。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;スライドデッキ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides のサイズ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli のサイズ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0 のサイズ&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 枚&lt;/td&gt;
+&lt;td style="text-align: right"&gt;306 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,763 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,147 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;758 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;837 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;10.0 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia、20 枚&lt;/td&gt;
+&lt;td style="text-align: right"&gt;93 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,546 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;285 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;32 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;66 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;582 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数式とコード、20 枚&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,643 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;294 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;124 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;335 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;638 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;100 枚の PDF のメモリ使用量は 158 MiB で、marp-cli は 1,512 MiB です。CPU
+時間は 0.9 s 対 2.7 s です。&lt;/p&gt;
+&lt;p&gt;100 枚の PDF についての v0.4.0 の数値は、2026-10-19 の 21:29 に、
+1 分間のロードアベレージ 7.7 の状態で 3 ラウンド計測したものです：go-slides は 306 ms、758
+KiB、158 MiB、marp-cli は 1,838 ms、837 KiB、1,512 MiB でした。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="editable-pptx"&gt;編集可能な PPTX&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;v0.5.0 以降、PPTX はテキストボックス、図形、画像で構成されます（
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/cli/#editable-pptx-and-odp"&gt;コマンドライン&lt;/a&gt; を参照）。
+2026-10-19 の 22:51 に、1 分間のロードアベレージ 7.1 の状態で 3 ラウンド計測しました。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;スライドデッキ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides のサイズ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli のサイズ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides のメモリ&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli のメモリ&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 枚&lt;/td&gt;
+&lt;td style="text-align: right"&gt;348 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,795 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;760 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7.2 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;204 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,370 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia、20 枚&lt;/td&gt;
+&lt;td style="text-align: right"&gt;112 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4,608 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;893 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4.8 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数式とコード、20 枚&lt;/td&gt;
+&lt;td style="text-align: right"&gt;207 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2,780 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;842 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.5 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;100 枚のスライドデッキでは、v0.4.0 は 4.7 s、4.8 MiB、540 MiB でした。marp-cli の
+PPTX の中身は画像です。編集可能なスライドデッキのサイズの大部分は、埋め込まれたフォントが占めています。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="why-it-is-fast"&gt;速い理由&lt;span class="hx:absolute hx:-mt-20" id="why-it-is-fast"&gt;&lt;/span&gt;
+&lt;a href="#why-it-is-fast" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;起動するブラウザーがない。&lt;/strong&gt; marp-cli は PDF、画像、
+PPTX へのエクスポートのたびに Chrome を起動します。go-slides は
+&lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt; を使って自身の
+プロセス内でレンダリングします。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;スライドは並列にレンダリングされます。&lt;/strong&gt; デフォルトでは 4 枚ずつで、各画像は
+順番が来しだい書き出されます。そのため、長いスライドデッキが画像としてメモリに保持され続けることはありません。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;フォントの解析はプロセスごとに 1 回&lt;/strong&gt; だけで、スライドごとには行いません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="what-it-does-not-win"&gt;優位でない点&lt;span class="hx:absolute hx:-mt-20" id="what-it-does-not-win"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does-not-win" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;v0.3.0 での PDF のサイズ。&lt;/strong&gt; PDF の各スライドが画像だったため、100 枚のスライドデッキでは
+10 MiB 対 837 KiB でした。上記のベクター PDF は marp-cli のものより小さくなっています。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大きなスライドデッキでの CPU 時間。&lt;/strong&gt; 4 つのワーカーは、実時間から見えるより多くの CPU を消費します。
+v0.3.0 の 100 枚の PDF では 3.2 s で、marp-cli の 2.7 s を上回りました
+（ベクター PDF では 0.9 s）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;marp-cli のメモリは上限値です。&lt;/strong&gt; Chrome のプロセスはページを共有しており、合計ではそれを
+プロセスごとに重複して数えています。単一プロセスで最大のものは 220–320 MiB です。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;計測方法、すべてのスライドデッキとモード、数値を再現するためのコマンドは
+&lt;a href="https://github.com/go-slides/slides/blob/main/BENCHMARKS.md" target="_blank" rel="noopener"&gt;BENCHMARKS.md&lt;/a&gt;
+にあります。&lt;/p&gt;</description></item></channel></rss>

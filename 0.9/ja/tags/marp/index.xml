@@ -1,0 +1,85 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Marp</title><link>https://go-slides.github.io/docs/0.9/ja/tags/marp/</link><description>Recent content in Marp on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.9/ja/tags/marp/index.xml" rel="self" type="application/rss+xml"/><item><title>Marp との互換性</title><link>https://go-slides.github.io/docs/0.9/ja/marp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.9/ja/marp/</guid><description>
+&lt;p&gt;&lt;a href="https://marp.app" target="_blank" rel="noopener"&gt;Marp&lt;/a&gt; 向けに書かれたスライドデッキは、そのまま go-slides のスライドデッキです。以下の
+ルールは &lt;a href="https://marpit.marp.app" target="_blank" rel="noopener"&gt;Marpit&lt;/a&gt; と
+&lt;a href="https://github.com/marp-team/marp-core" target="_blank" rel="noopener"&gt;Marp Core&lt;/a&gt; のものです。go-slides が
+異なる点は、このページで明記します。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides"&gt;スライド&lt;span class="hx:absolute hx:-mt-20" id="slides"&gt;&lt;/span&gt;
+&lt;a href="#slides" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;水平線（Marpit が分割するのと同じく、1 行に単独で書いた &lt;code&gt;---&lt;/code&gt;）で
+新しいスライドが始まります。&lt;code&gt;headingDivider&lt;/code&gt; ディレクティブで指定したレベルの見出しでも
+新しいスライドが始まります。最初の 2 つの &lt;code&gt;---&lt;/code&gt; の間にあるフロントマターには、グローバルディレクティブと
+スライドデッキのデータを書きます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="directives"&gt;ディレクティブ&lt;span class="hx:absolute hx:-mt-20" id="directives"&gt;&lt;/span&gt;
+&lt;a href="#directives" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;種類&lt;/th&gt;
+&lt;th&gt;書く場所&lt;/th&gt;
+&lt;th&gt;適用範囲&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;グローバル&lt;/td&gt;
+&lt;td&gt;フロントマター、または任意の場所の &lt;code&gt;&amp;lt;!-- theme: gaia --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;スライドデッキ全体：&lt;code&gt;theme&lt;/code&gt;、&lt;code&gt;style&lt;/code&gt;、&lt;code&gt;headingDivider&lt;/code&gt;、&lt;code&gt;lang&lt;/code&gt;…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ローカル&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- paginate: true --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;そのスライドと以降のスライド&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;スポット&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- _class: lead --&amp;gt;&lt;/code&gt;（アンダースコア付き）&lt;/td&gt;
+&lt;td&gt;そのスライドのみ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;ローカルディレクティブは Marpit のものです：&lt;code&gt;paginate&lt;/code&gt;、&lt;code&gt;header&lt;/code&gt;、&lt;code&gt;footer&lt;/code&gt;、&lt;code&gt;class&lt;/code&gt;、
+&lt;code&gt;backgroundColor&lt;/code&gt;、&lt;code&gt;backgroundImage&lt;/code&gt;、&lt;code&gt;backgroundPosition&lt;/code&gt;、
+&lt;code&gt;backgroundRepeat&lt;/code&gt;、&lt;code&gt;backgroundSize&lt;/code&gt;、&lt;code&gt;color&lt;/code&gt;。ディレクティブは Marp Core と同じく
+緩い YAML として解析されます。&lt;code&gt;--strict-yaml&lt;/code&gt; を指定すると、素の Marpit と同じように
+解析されます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="images"&gt;画像&lt;span class="hx:absolute hx:-mt-20" id="images"&gt;&lt;/span&gt;
+&lt;a href="#images" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;![bg](image.jpg)&lt;/code&gt; は画像をスライドの背景にします。Marp のキーワードが使えます：
+&lt;code&gt;bg contain&lt;/code&gt;、&lt;code&gt;bg cover&lt;/code&gt;、&lt;code&gt;bg 50%&lt;/code&gt;、分割背景の &lt;code&gt;bg left&lt;/code&gt;/&lt;code&gt;bg right&lt;/code&gt;、複数の &lt;code&gt;bg&lt;/code&gt; 画像の横並び、
+画像フィルター（&lt;code&gt;blur&lt;/code&gt;、&lt;code&gt;sepia&lt;/code&gt;、&lt;code&gt;grayscale&lt;/code&gt;…）。インライン画像のサイズ指定（&lt;code&gt;w:200px&lt;/code&gt;、&lt;code&gt;h:&lt;/code&gt;）も
+Marp と同じように解釈されます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="around-the-slide"&gt;スライドの周辺要素&lt;span class="hx:absolute hx:-mt-20" id="around-the-slide"&gt;&lt;/span&gt;
+&lt;a href="#around-the-slide" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ヘッダーとフッター&lt;/strong&gt;：Markdown で書く &lt;code&gt;header:&lt;/code&gt; と &lt;code&gt;footer:&lt;/code&gt; のディレクティブ。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ページ番号&lt;/strong&gt;：&lt;code&gt;paginate: true&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;スピーカーノート&lt;/strong&gt;：ディレクティブではない HTML コメントはノートになります。
+&lt;code&gt;slides notes&lt;/code&gt; で出力できます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;段階的に表示するリスト&lt;/strong&gt;：&lt;code&gt;*&lt;/code&gt;（または &lt;code&gt;1)&lt;/code&gt;）で書いたリストは、Marp と同じく
+項目が 1 つずつ表示されます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;：1 枚のスライドだけに適用される CSS。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生の HTML&lt;/strong&gt;：デフォルトでは Marp Core の許可リストに従います。&lt;code&gt;--html&lt;/code&gt; を指定するとすべて許可されます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;絵文字&lt;/strong&gt;：&lt;code&gt;:shortcodes:&lt;/code&gt; と Unicode の絵文字は、Marp Core と同じく Twemoji の画像になります。
+ただし、CDN から読み込むのではなく埋め込まれます。詳しくは
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/emoji/"&gt;絵文字&lt;/a&gt; を参照してください。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="themes"&gt;テーマ&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
+&lt;a href="#themes" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;default&lt;/code&gt;、&lt;code&gt;gaia&lt;/code&gt;、&lt;code&gt;uncover&lt;/code&gt; が組み込まれており、&lt;code&gt;theme:&lt;/code&gt; で選択します。
+独自のテーマは、Marp の &lt;code&gt;/* @theme name */&lt;/code&gt; コメントを含む CSS ファイルです。
+&lt;code&gt;--theme-set&lt;/code&gt; で指定するか、&lt;code&gt;slides.yaml&lt;/code&gt; の &lt;code&gt;themes:&lt;/code&gt; に列挙します。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="where-go-slides-differs"&gt;go-slides が異なる点&lt;span class="hx:absolute hx:-mt-20" id="where-go-slides-differs"&gt;&lt;/span&gt;
+&lt;a href="#where-go-slides-differs" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;テンプレート。&lt;/strong&gt; 本文中の &lt;code&gt;{{ }}&lt;/code&gt; は Go テンプレートのアクションです（
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/templates/"&gt;テンプレート&lt;/a&gt; を参照）。コードブロックの外で &lt;code&gt;{{&lt;/code&gt; をテキストとして表示する
+スライドデッキでは、&lt;code&gt;--no-template&lt;/code&gt; を指定するか、Go テンプレートの方法でそのテキストをエスケープする必要があります。
+コードブロックとインラインコードはそのまま残ります。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;kind。&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; と &lt;code&gt;_kind:&lt;/code&gt; は Marp にはないディレクティブです（
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/kinds/"&gt;kind&lt;/a&gt;（スライドの種類）を参照）。&lt;code&gt;slides expand&lt;/code&gt; はこれらを、それが表す
+ディレクティブに置き換えるので、展開後のスライドデッキはプレーンな Marp になります。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;出力。&lt;/strong&gt; HTML、PNG、JPEG、PDF、PPTX、ODP を、ヘッドレスブラウザーではなく Go のライブラリで
+出力します（既知の制限については &lt;a href="https://go-slides.github.io/docs/0.9/ja/cli/#images-pdf-pptx-and-odp"&gt;コマンドライン&lt;/a&gt;
+を参照）。v0.4.0 では marp-cli と同じく PPTX の中身は画像でしたが、
+v0.5.0 以降のスライドは編集可能なテキストボックスと図形で構成されます。&lt;code&gt;--pptx-raster&lt;/code&gt; を指定すると
+画像のままにできます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;見出しのフィット。&lt;/strong&gt; &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt; に対応しています。ページでもすべてのエクスポートでも、
+見出しが 1 行でスライドの幅いっぱいに表示されます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数式とコード。&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; と &lt;code&gt;$$…$$&lt;/code&gt; は Marp Core の区切り文字のルールに従い、
+go-tex/math で組版されます。フェンスで囲んだコードは go-rouge によって
+highlight.js のクラス名でハイライトされます（&lt;a href="https://go-slides.github.io/docs/0.9/ja/math-and-code/"&gt;数式とコード&lt;/a&gt; を参照）。&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

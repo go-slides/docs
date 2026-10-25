@@ -1,0 +1,86 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Marp</title><link>https://go-slides.github.io/docs/0.9/de/tags/marp/</link><description>Recent content in Marp on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.9/de/tags/marp/index.xml" rel="self" type="application/rss+xml"/><item><title>Marp-Kompatibilität</title><link>https://go-slides.github.io/docs/0.9/de/marp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.9/de/marp/</guid><description>
+&lt;p&gt;Ein für &lt;a href="https://marp.app" target="_blank" rel="noopener"&gt;Marp&lt;/a&gt; geschriebener Foliensatz ist ein go-slides-Foliensatz. Die folgenden
+Regeln stammen von &lt;a href="https://marpit.marp.app" target="_blank" rel="noopener"&gt;Marpit&lt;/a&gt; und
+&lt;a href="https://github.com/marp-team/marp-core" target="_blank" rel="noopener"&gt;Marp Core&lt;/a&gt;; wo go-slides
+abweicht, sagt diese Seite es.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides"&gt;Folien&lt;span class="hx:absolute hx:-mt-20" id="slides"&gt;&lt;/span&gt;
+&lt;a href="#slides" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Eine horizontale Linie – &lt;code&gt;---&lt;/code&gt; allein auf einer Zeile, so wie Marpit trennt – beginnt eine
+neue Folie, ebenso eine Überschrift der Ebene, die die Direktive &lt;code&gt;headingDivider&lt;/code&gt;
+nennt. Das Front-Matter zwischen den ersten beiden &lt;code&gt;---&lt;/code&gt; enthält globale Direktiven
+und die Daten des Foliensatzes.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="directives"&gt;Direktiven&lt;span class="hx:absolute hx:-mt-20" id="directives"&gt;&lt;/span&gt;
+&lt;a href="#directives" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Art&lt;/th&gt;
+&lt;th&gt;Wo&lt;/th&gt;
+&lt;th&gt;Gilt für&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;global&lt;/td&gt;
+&lt;td&gt;Front-Matter oder &lt;code&gt;&amp;lt;!-- theme: gaia --&amp;gt;&lt;/code&gt; an beliebiger Stelle&lt;/td&gt;
+&lt;td&gt;den ganzen Foliensatz: &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt; …&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lokal&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- paginate: true --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;diese Folie und die folgenden&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spot&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- _class: lead --&amp;gt;&lt;/code&gt; (Unterstrich)&lt;/td&gt;
+&lt;td&gt;nur diese Folie&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Die lokalen Direktiven sind die von Marpit: &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;,
+&lt;code&gt;backgroundColor&lt;/code&gt;, &lt;code&gt;backgroundImage&lt;/code&gt;, &lt;code&gt;backgroundPosition&lt;/code&gt;,
+&lt;code&gt;backgroundRepeat&lt;/code&gt;, &lt;code&gt;backgroundSize&lt;/code&gt;, &lt;code&gt;color&lt;/code&gt;. Direktiven werden als
+nachsichtiges YAML geparst, wie es Marp Core tut; &lt;code&gt;--strict-yaml&lt;/code&gt; parst sie so, wie es
+reines Marpit tut.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="images"&gt;Bilder&lt;span class="hx:absolute hx:-mt-20" id="images"&gt;&lt;/span&gt;
+&lt;a href="#images" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;![bg](image.jpg)&lt;/code&gt; macht ein Bild zum Hintergrund der Folie, mit den Schlüsselwörtern
+von Marp: &lt;code&gt;bg contain&lt;/code&gt;, &lt;code&gt;bg cover&lt;/code&gt;, &lt;code&gt;bg 50%&lt;/code&gt;, &lt;code&gt;bg left&lt;/code&gt;/&lt;code&gt;bg right&lt;/code&gt; für einen geteilten
+Hintergrund, mehrere &lt;code&gt;bg&lt;/code&gt;-Bilder nebeneinander und die Bildfilter
+(&lt;code&gt;blur&lt;/code&gt;, &lt;code&gt;sepia&lt;/code&gt;, &lt;code&gt;grayscale&lt;/code&gt; …). Größenangaben für Inline-Bilder (&lt;code&gt;w:200px&lt;/code&gt;, &lt;code&gt;h:&lt;/code&gt;) werden
+so gelesen, wie Marp sie liest.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="around-the-slide"&gt;Rund um die Folie&lt;span class="hx:absolute hx:-mt-20" id="around-the-slide"&gt;&lt;/span&gt;
+&lt;a href="#around-the-slide" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kopf- und Fußzeile&lt;/strong&gt;: die Direktiven &lt;code&gt;header:&lt;/code&gt; und &lt;code&gt;footer:&lt;/code&gt;, in Markdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Seitennummerierung&lt;/strong&gt;: &lt;code&gt;paginate: true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sprechernotizen&lt;/strong&gt;: Ein HTML-Kommentar, der keine Direktive ist, ist eine Notiz.
+&lt;code&gt;slides notes&lt;/code&gt; gibt sie aus.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Schrittweise Listen&lt;/strong&gt;: Eine mit &lt;code&gt;*&lt;/code&gt; (oder &lt;code&gt;1)&lt;/code&gt;) geschriebene Liste erscheint Eintrag für Eintrag,
+wie in Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;: CSS nur für eine Folie.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rohes HTML&lt;/strong&gt;: standardmäßig die Allowlist von Marp Core; &lt;code&gt;--html&lt;/code&gt; erlaubt alles.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emoji&lt;/strong&gt;: &lt;code&gt;:shortcodes:&lt;/code&gt; und Unicode-Emoji werden zu Twemoji-Bildern, wie in
+Marp Core, jedoch eingebettet statt von einem CDN geladen: siehe
+&lt;a href="https://go-slides.github.io/docs/0.9/de/emoji/"&gt;Emoji&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="themes"&gt;Themes&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
+&lt;a href="#themes" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; und &lt;code&gt;uncover&lt;/code&gt; sind eingebaut und werden mit &lt;code&gt;theme:&lt;/code&gt; gewählt. Ein
+eigenes Theme ist eine CSS-Datei mit dem Marp-Kommentar &lt;code&gt;/* @theme name */&lt;/code&gt;,
+die Sie mit &lt;code&gt;--theme-set&lt;/code&gt; angeben oder in &lt;code&gt;slides.yaml&lt;/code&gt; unter &lt;code&gt;themes:&lt;/code&gt; aufführen.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="where-go-slides-differs"&gt;Wo go-slides abweicht&lt;span class="hx:absolute hx:-mt-20" id="where-go-slides-differs"&gt;&lt;/span&gt;
+&lt;a href="#where-go-slides-differs" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Vorlagen.&lt;/strong&gt; &lt;code&gt;{{ }}&lt;/code&gt; im Rumpf ist eine Aktion einer Go-Vorlage (siehe
+&lt;a href="https://go-slides.github.io/docs/0.9/de/templates/"&gt;Vorlagen&lt;/a&gt;). Ein Foliensatz, der &lt;code&gt;{{&lt;/code&gt; außerhalb eines Codeblocks als Text
+zeigt, braucht &lt;code&gt;--no-template&lt;/code&gt; oder den Text maskiert, so wie Go-Vorlagen
+ihn maskieren. Codeblöcke und Code-Spans bleiben unberührt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kinds (Folientypen).&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; und &lt;code&gt;_kind:&lt;/code&gt; sind Direktiven, die Marp nicht kennt (siehe
+&lt;a href="https://go-slides.github.io/docs/0.9/de/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; ersetzt sie durch die
+Direktiven, für die sie stehen, sodass der expandierte Foliensatz reines Marp ist.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ausgaben.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX und ODP, über Go-Bibliotheken statt über
+einen Headless-Browser (zur bekannten Einschränkung siehe &lt;a href="https://go-slides.github.io/docs/0.9/de/cli/#images-pdf-pptx-and-odp"&gt;Kommandozeile&lt;/a&gt;).
+In v0.4.0 enthält ein PPTX wie bei marp-cli Bilder; seit
+v0.5.0 sind seine Folien editierbare Textfelder und Formen, und &lt;code&gt;--pptx-raster&lt;/code&gt; behält
+die Bilder bei.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Einpassende Überschriften.&lt;/strong&gt; &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt; wird unterstützt: Die Überschrift füllt
+die Folienbreite in einer Zeile, auf der Seite und in jedem Export.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mathematik und Code.&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; und &lt;code&gt;$$…$$&lt;/code&gt; folgen den Begrenzerregeln von Marp Core und
+werden von go-tex/math gesetzt; Codeblöcke hebt go-rouge mit den Klassennamen von
+highlight.js hervor (siehe &lt;a href="https://go-slides.github.io/docs/0.9/de/math-and-code/"&gt;Mathematik und Code&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

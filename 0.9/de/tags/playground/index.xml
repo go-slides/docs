@@ -1,0 +1,198 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.9/de/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.9/de/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.9/de/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.9/de/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Playground öffnen →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Der Playground ist go-slides selbst, v0.9.0, nach WebAssembly kompiliert und
+in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
+folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Was er bietet&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Live-Vorschau&lt;/strong&gt; jeder Folie, außerhalb des Threads der Seite gerendert (ein Web
+Worker), sodass das Tippen nie darauf wartet. Klicken Sie auf eine Folie, um den Editor
+zu ihrer Zeile springen zu lassen; bewegen Sie den Cursor, und die Vorschau scrollt zu ihrer Folie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Bildschirmpräsentation&lt;/strong&gt;: die Präsentation selbst, mit Tastatur,
+Bedienelementen auf dem Bildschirm und den Übergängen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Referentenansicht&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (oder &lt;code&gt;p&lt;/code&gt; in der Bildschirmpräsentation) öffnet sie in einem
+zweiten Fenster: die aktuelle Folie, der nächste Schritt, die Sprechernotizen (die
+&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt; des Foliensatzes), eine Uhr und ein Timer. Die Pfeiltasten, die Leertaste,
+Pos1 und Ende funktionieren in beiden Fenstern, und jedes folgt dem anderen, auch
+wenn Sie den Foliensatz bearbeiten. Öffnet sich das Fenster nicht, erlauben Sie Pop-ups für
+die Website. Die Übersichtsansicht (&lt;code&gt;o&lt;/code&gt;) gibt es nur auf der heruntergeladenen Seite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vervollständigung&lt;/strong&gt; beim Tippen: Direktivenschlüssel (Spot-Direktiven mit &lt;code&gt;_&lt;/code&gt; in Kommentaren),
+die Werte von &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt; sowie Vorlagenfunktionen
+und Datenfelder innerhalb von &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hilfe&lt;/strong&gt; zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (Folientyp; was es setzt),
+eine Vorlagenfunktion. Der Hilfebereich verlinkt auch auf diese Seiten.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Probleme&lt;/strong&gt; in ihrer Zeile: Fehler in Vorlagen, YAML und HCL werden im Editor hervorgehoben
+und darunter aufgelistet, und die Vorschau behält den letzten Foliensatz,
+der sich rendern ließ.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Beispiele&lt;/strong&gt;: ein Willkommens-Foliensatz, Vorlagen, die Folien erzeugen, Kinds,
+ein HCL-Front-Matter, Themes und Spot-Direktiven sowie Mathematik, Bilder und
+Hintergründe (&lt;code&gt;![bg]&lt;/code&gt;, ein geteiltes &lt;code&gt;![bg left:40%]&lt;/code&gt;, Filter).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dateien&lt;/strong&gt;: Der Bereich links vom Editor ist das Projekt des Foliensatzes, so angeordnet,
+wie der &lt;a href="https://go-slides.github.io/docs/0.9/de/cli/"&gt;Befehl&lt;/a&gt; und die
+&lt;a href="https://go-slides.github.io/docs/0.9/de/vscode/"&gt;VS-Code-Erweiterung&lt;/a&gt; es lesen: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Klicken Sie auf eine Datei, um sie zu bearbeiten. Der Editor färbt sie nach ihrer Sprache ein
+(Markdown, YAML, HCL, JSON, CSS) und markiert ihre Probleme.&lt;/li&gt;
+&lt;li&gt;Rechtsklick (oder Umschalt+F10) für Neue Datei, Neuer Ordner, Umbenennen (F2),
+Löschen (fragt vorher nach) und Neues Theme / Neues Kind. Ziehen Sie eine Datei auf einen Ordner,
+um sie zu verschieben. Die Tastaturbedienung folgt dem WAI-ARIA-Tree-Muster, einschließlich
+Type-ahead.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; erzeugt &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (oder auf Basis von default,
+uncover): ein &lt;code&gt;@import&lt;/code&gt; des eingebauten Themes und die Regeln, die Sie ergänzen. Es
+erscheint in der Theme-Liste. &lt;strong&gt;New kind&lt;/strong&gt; und &lt;strong&gt;New data file&lt;/strong&gt; beginnen ebenfalls mit
+Vorlagen. Jedes wird in &lt;code&gt;slides.yaml&lt;/code&gt; aufgeführt, sodass &lt;code&gt;slides build deck.md&lt;/code&gt;
+es findet.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; sichert alles. Entpackt, baut
+&lt;code&gt;slides build deck.md&lt;/code&gt; es. &lt;strong&gt;Open project&lt;/strong&gt; nimmt eine &lt;code&gt;.zip&lt;/code&gt;-Datei oder einen
+Ordner wieder entgegen. Ein Archiv, das seinen Ordner verlässt (&lt;code&gt;..&lt;/code&gt;, absolute Pfade),
+mehr als 256 Dateien oder 8 MiB in einer Datei enthält oder sich auf mehr als das 100-Fache
+entpackt, wird abgelehnt.&lt;/li&gt;
+&lt;li&gt;Alles wird zusammen mit dem Entwurf in diesem Browser gespeichert. Ein Projekt fasst
+bis zu 64 MiB, und die Zeile unter den Dateien zeigt, wie viel belegt ist.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Medien&lt;/strong&gt;: Ziehen Sie ein Bild, ein Video oder einen Ton auf den Editor oder fügen Sie es ein, und es
+landet in &lt;code&gt;media/&lt;/code&gt;, und der Foliensatz benennt es: &lt;code&gt;![](media/photo.png)&lt;/code&gt;. Ziehen Sie
+Dateien auf einen Ordner des Bereichs, um sie dort abzulegen. Der Foliensatz bleibt klein und
+lesbar, und nichts wird hochgeladen. Die Sandbox der Vorschau lädt sie,
+ohne geöffnet zu werden (die Seite reicht ihr die Bytes). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; legt sie in die Seite. Auch &lt;code&gt;https:&lt;/code&gt;-Bilder funktionieren, aber der Browser
+holt sie von ihrem Server, der dann Ihre Adresse sieht. Die
+Vorschau sendet keinen Referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Größenveränderbare Bereiche&lt;/strong&gt;: Der Dateibereich, der Editor, die Folienminiaturen, die
+Vorschau und die Hilfe sind durch Leisten getrennt, die Sie ziehen können (der Mauszeiger
+wird darüber zum Größenänderungs-Cursor). Der Bereich neben der Leiste erhält den Platz,
+die anderen behalten ihre Größe. Doppelklicken Sie auf eine Leiste oder drücken Sie die Eingabetaste darauf, um den Bereich
+zu schließen und wieder zu öffnen. Per Tastatur wechselt F6 zwischen
+den Leisten, die Pfeiltasten verschieben eine um 16 px, Pos1 und Ende bringen den davorliegenden Bereich
+auf seine kleinste und größte Größe, und Escape führt zurück in den Editor.
+Der Reiter View schaltet Bereiche weiterhin ab. Die von Ihnen eingestellten Größen werden in diesem
+Browser mit dem Entwurf gespeichert; die Standardgrößen (190, 168 und 280 px, wobei sich Editor
+und Vorschau den Rest im Verhältnis 6 zu 5 teilen) werden nie gespeichert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;: Der Reiter Format bearbeitet das Markdown für Sie, und jeder Druck
+ist ein Schritt für Rückgängig.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Text&lt;/strong&gt;: Bold, Italic, Strikethrough und Inline code wirken auf die Auswahl
+oder das Wort am Cursor und schalten um (Strg+B, Strg+I, Strg+Umschalt+X und
+Strg+E; Cmd auf dem Mac). Eine Schaltfläche erscheint gedrückt, wenn der Cursor innerhalb
+ihrer Auszeichnung steht. Markdown kennt kein Unterstreichen: Underline (Strg+U) umschließt den Text mit
+&lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;, einem Tag, das die Standard-HTML-Allowlist von Marp beibehält, sodass es auch bei ausgeschaltetem
+rohem HTML funktioniert.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paragraph&lt;/strong&gt;: Heading 1 bis 3 (Strg+Alt+1..3), Aufzählung (Strg+Umschalt+8),
+Nummerierung (Strg+Umschalt+7) und ein Zitat wirken auf die ausgewählten Zeilen und schalten um.
+Die horizontale Linie ist das Tag &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt; und &lt;code&gt;___&lt;/code&gt; würden in Marp jeweils
+eine neue Folie beginnen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Table&lt;/strong&gt;: Ein Raster wählt Spalten und Zeilen. Am Cursor in einer Tabelle
+fügen Sie eine Zeile oder Spalte hinzu oder entfernen sie und richten die Spalte aus (&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;,
+&lt;code&gt;--:&lt;/code&gt;); die Tabelle wird nach jeder Änderung ausgerichtet neu geschrieben.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slide text&lt;/strong&gt; links, zentriert oder rechts schreibt einen &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;-Block in
+die aktuelle Folie. Marp kennt keine Ausrichtungssyntax, und ein &lt;code&gt;style&lt;/code&gt;-Attribut
+passiert die Standard-HTML-Allowlist nicht, der Scoped-Block aber schon, sodass er bei ausgeschaltetem
+rohem HTML funktioniert und in der Vorschau, auf der HTML-Seite und im PDF erscheint.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Strg+K) schreibt &lt;code&gt;[text](url)&lt;/code&gt; mit markierter URL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hervorhebung&lt;/strong&gt; der Schlüssel des Front-Matters in beliebiger Tiefe, in YAML (auch
+in &lt;code&gt;{a: 1}&lt;/code&gt;-Maps) und in HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Theme&lt;/strong&gt;-Auswahl: default, gaia, uncover, die Themes des Projekts
+(&lt;code&gt;themes/*.css&lt;/code&gt;) und die Themes, die der Foliensatz definiert (&lt;code&gt;/* @theme name */&lt;/code&gt; in einem
+&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Sie schreibt &lt;code&gt;theme:&lt;/code&gt; in das Front-Matter, YAML oder HCL, sodass ein geteilter Link es beibehält,
+und folgt dem Front-Matter, wenn Sie es bearbeiten.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Die Vorschau &lt;strong&gt;behält ihre Position&lt;/strong&gt; beim Tippen: Nur die Folien, die sich
+geändert haben, werden ersetzt, und ein Themenwechsel öffnet die Vorschau
+wieder an derselben Folie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Link zum Teilen&lt;/strong&gt;: Der Foliensatz reist im Link selbst (in dessen &lt;code&gt;#&lt;/code&gt;-Teil,
+komprimiert), sodass das Öffnen des Links den Foliensatz öffnet. Links fassen bis zu
+64 KiB komprimiert, und nur den Foliensatz: Enthält das Projekt mehr
+(Themes, Kinds, Medien), weist Share darauf hin und bietet die &lt;code&gt;.zip&lt;/code&gt;-Datei an.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;die HTML-Seite, dieselbe wie von &lt;code&gt;slides deck.md&lt;/code&gt; geschrieben;&lt;/li&gt;
+&lt;li&gt;ein &lt;strong&gt;PDF&lt;/strong&gt; (Vektor, Text auswählbar, mit Gliederung);&lt;/li&gt;
+&lt;li&gt;ein editierbarer &lt;strong&gt;PowerPoint&lt;/strong&gt;- oder &lt;strong&gt;OpenDocument&lt;/strong&gt;-Foliensatz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sie entstehen in Ihrem Browser, mit demselben Code wie &lt;code&gt;slides --pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; und &lt;code&gt;--odp&lt;/code&gt;: Das PDF des Benchmark-Foliensatzes mit 100 Folien ist
+byteidentisch mit dem des Befehls. Der erste Export lädt die Export-Engine herunter
+(etwa 21 MiB, einmalig; Ihr Browser behält sie bis zum nächsten Update),
+mit einer Fortschrittszeile. Der Foliensatz mit 100 Folien braucht dann etwa 3 Sekunden. Ein
+&lt;code&gt;https:&lt;/code&gt;-Bild wird nur eingebunden, wenn sein Server es erlaubt (CORS); &lt;code&gt;data:&lt;/code&gt;-Bilder
+immer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ihr Entwurf bleibt erhalten&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Der Foliensatz wird beim Tippen in diesem Browser gespeichert (IndexedDB, nur für diese
+Website) und kommt beim Neuladen zurück. Nichts wird irgendwohin gesendet. Die
+Textdateien des Projekts (Themes, Kinds, Daten, &lt;code&gt;slides.yaml&lt;/code&gt;) werden auf dieselbe Weise
+gespeichert, auch wenn Sie den Tab direkt nach dem Tippen schließen; Medien werden
+gespeichert, sobald sie abgelegt werden.&lt;/li&gt;
+&lt;li&gt;Ein geteilter Link öffnet seinen Foliensatz und behält Ihren Entwurf: &lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; holt ihn zurück.&lt;/li&gt;
+&lt;li&gt;Ein Beispiel, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (fragt vorher nach) und
+ein anderer Tab löschen ihn ebenfalls nie: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; holt ihn
+zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; löscht alles Gespeicherte.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jeder Export rendert das Projekt, das die Vorschau zeigt: seine &lt;code&gt;slides.yaml&lt;/code&gt;,
+Themes, Kinds, Datendateien und Medien, die Medien im Dokument.&lt;/p&gt;
+&lt;p&gt;Bilder als Dateien (&lt;code&gt;--images&lt;/code&gt; von slides) entstehen nicht im Browser: Verwenden Sie den
+&lt;a href="https://go-slides.github.io/docs/0.9/de/cli/"&gt;Befehl&lt;/a&gt; oder die
+&lt;a href="https://go-slides.github.io/docs/0.9/de/vscode/"&gt;VS-Code-Erweiterung&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
+weder den Playground noch dessen Speicher erreichen, kein Formular absenden und
+nirgendwohin navigieren. Seine Seite trägt eine Content Security Policy, die nur ihre eigenen
+Skripte ausführt. Rohes HTML im Foliensatz folgt der Allowlist von Marp, wie es &lt;code&gt;slides&lt;/code&gt;
+standardmäßig tut. Ein Rendern, das länger als 5 Sekunden läuft (eine Vorlage mit Endlosschleife),
+wird abgebrochen.&lt;/p&gt;
+&lt;p&gt;Das Referentenfenster behält diese Sandbox. Es wird vom Playground
+selbst geöffnet und zeigt den Foliensatz in einem ebenso abgeschotteten iframe. Die beiden
+iframes können keinen Speicher teilen, deshalb reicht der Playground die Foliennummer
+in Nachrichten zwischen ihnen weiter. Kein Frame, der den Foliensatz ausführt, erhält den
+Ursprung des Playgrounds.&lt;/p&gt;
+&lt;p&gt;Die Medien des Projekts erreichen die Sandbox-Frames als Bytes in einer Nachricht, und
+jeder Frame erzeugt daraus seine eigenen &lt;code&gt;blob:&lt;/code&gt;-URLs, in seinem eigenen Ursprung. Eine &lt;code&gt;blob:&lt;/code&gt;-URL, die vom Playground
+erzeugt wurde, lädt dort nicht, und die Richtlinie der Frames
+erhält lediglich &lt;code&gt;blob:&lt;/code&gt; für Medien und Schriften hinzu.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Größe und Geschwindigkeit&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Das Modul umfasst 8,8 MiB, wie GitHub Pages es ausliefert (gzip; Pages liefert
+kein Brotli aus). Es wird einmal mit Fortschrittsbalken heruntergeladen und dann vom
+Browser bis zum nächsten Deploy zwischengespeichert. Auf einem Apple M4 Max mit Chrome 155, gemessen
+an der Live-Seite, ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon 1,5 s
+für den Download, und die ersten Folien erscheinen nach 2,4 s. Eine Änderung am
+Benchmark-Foliensatz mit 100 Folien erreicht die Vorschau in etwa 30 ms: go-slides
+rendert nur die Folien neu, die sich geändert haben, und nur diese werden in der
+Vorschau ersetzt.&lt;/p&gt;</description></item></channel></rss>

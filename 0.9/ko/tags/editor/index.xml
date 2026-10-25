@@ -1,0 +1,244 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Editor</title><link>https://go-slides.github.io/docs/0.9/ko/tags/editor/</link><description>Recent content in Editor on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.9/ko/tags/editor/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code</title><link>https://go-slides.github.io/docs/0.9/ko/vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.9/ko/vscode/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;이 확장은 &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;이며, 버전은
+따로 관리됩니다(v0.4.0). 렌더링에는 go-slides v0.9.0을 사용합니다(&lt;code&gt;editor&lt;/code&gt;
+패키지, 스크롤 동기화용 소스 줄, 개요와 발표자 보기). GitHub 릴리스에 첨부된
+&lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt;로 설치합니다. VS Code Marketplace와 Open VSX 게시는
+준비되어 있지만 아직 올라가 있지 않습니다.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;이 확장은 &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt;에
+대응하는 go-slides용 확장입니다. 프레젠테이션은 VS Code의 Markdown 미리 보기에
+슬라이드로 표시되고, 오류는 문제 패널에 나타나며, 디렉티브, kind(슬라이드
+유형), 템플릿 함수는 입력하는 동안 자동 완성됩니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="install"&gt;설치&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;릴리스&lt;/a&gt;에서
+&lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt;를 내려받은 다음 *Extensions: Install from VSIX&amp;hellip;*를
+실행하거나, 다음 명령을 실행하십시오.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;미리 보기에는 그 밖에 필요한 것이 없습니다. 내보내기에는 &lt;code&gt;slides&lt;/code&gt; 명령이
+필요합니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install github.com/go-slides/slides/cmd/slides@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="preview"&gt;미리 보기&lt;span class="hx:absolute hx:-mt-20" id="preview"&gt;&lt;/span&gt;
+&lt;a href="#preview" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;프레젠테이션을 열고 &lt;em&gt;Markdown: Open Preview to the Side&lt;/em&gt;를 실행합니다.
+프레젠테이션은 프런트 매터에 &lt;code&gt;slides: true&lt;/code&gt;가 있는 Markdown 파일입니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;slides&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;who&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;World&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Hello {{ .who }}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cm"&gt;&amp;lt;!-- _kind: title --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Page {{ page }} of {{ total }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;marp: true&lt;/code&gt;가 있는 파일도 미리 보기를 제공합니다. 단, Marp for VS Code가
+설치되어 있으면 두 확장이 같은 문서를 렌더링하게 되므로 예외입니다. 설정
+&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;로 정하며, 값은 &lt;code&gt;auto&lt;/code&gt;(기본값), &lt;code&gt;always&lt;/code&gt;,
+&lt;code&gt;never&lt;/code&gt;입니다.&lt;/p&gt;
+&lt;p&gt;미리 보기는 WebAssembly로 컴파일되어 확장이 불러오는 go-slides 자체입니다.
+바이너리가 필요 없으며 &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;에서도 동작합니다.
+프레젠테이션이 사용하는 파일, 즉 프레젠테이션 옆의 &lt;code&gt;slides.yaml&lt;/code&gt;이나
+&lt;code&gt;slides.hcl&lt;/code&gt;, 거기서 지정한 &lt;a href="https://go-slides.github.io/docs/0.9/ko/kinds/"&gt;kind&lt;/a&gt; 파일,
+&lt;a href="https://go-slides.github.io/docs/0.9/ko/templates/"&gt;템플릿&lt;/a&gt;이 포함하는 파일, 테마 CSS를 작업 영역에서
+읽으며, 프레젠테이션이 속한 작업 영역 폴더에서만 읽습니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="scroll-sync"&gt;스크롤 동기화&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
+&lt;a href="#scroll-sync" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;확장 v0.2.0(go-slides v0.7.0)부터 편집기와 미리 보기가 일반 Markdown에서처럼
+양방향으로 함께 스크롤됩니다. 미리 보기는 편집기 커서가 있는 슬라이드와 블록을
+따라가고, 미리 보기를 스크롤하면 편집기가 움직입니다. 설정은 VS Code 자체의
+&lt;code&gt;markdown.preview.scrollPreviewWithEditor&lt;/code&gt;와
+&lt;code&gt;markdown.preview.scrollEditorWithPreview&lt;/code&gt;입니다.&lt;/p&gt;
+&lt;p&gt;줄 위치는 템플릿을 거쳐서도 추적됩니다. &lt;code&gt;{{ range }}&lt;/code&gt;가 생성한 슬라이드는
+템플릿의 해당 줄을 따라가고, &lt;code&gt;{{ include }}&lt;/code&gt;로 가져온 내용은 include가 있는
+줄을 따라갑니다. &lt;code&gt;headingDivider&lt;/code&gt;로 나뉜 프레젠테이션은 제목을 기준으로
+동기화됩니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="presenting"&gt;발표하기&lt;span class="hx:absolute hx:-mt-20" id="presenting"&gt;&lt;/span&gt;
+&lt;a href="#presenting" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;확장 v0.4.0(go-slides v0.9.0)부터 VS Code를 떠나지 않고 프레젠테이션을 발표할
+수 있습니다. 편집기에 프레젠테이션을 연 상태에서 명령 팔레트나 편집기의 &lt;code&gt;…&lt;/code&gt;
+메뉴에서 다음 명령을 실행합니다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;명령&lt;/th&gt;
+&lt;th&gt;여는 화면&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Open Overview&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;모든 슬라이드를 격자로 보여 주는 패널. 슬라이드를 고르면 편집기에 그 소스가 표시되며, &lt;code&gt;Esc&lt;/code&gt;로 패널을 닫습니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Start Presenter View&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;슬라이드와 그 옆의 발표자 보기: 다음 단계, 발표자 노트, 타이머&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;패널은 편집기 옆에 놓이며 서로 연동됩니다. 한 패널에서 슬라이드를 바꾸면 다른
+패널도 함께 바뀝니다. 프레젠테이션을 편집한 내용도 따라갑니다. 슬라이드에서 &lt;code&gt;p&lt;/code&gt;
+키를 누르면 발표자 보기가 열립니다.&lt;/p&gt;
+&lt;p&gt;다른 화면에서 발표하려면 &lt;em&gt;View: Move Editor into New Window&lt;/em&gt;로 슬라이드 패널을
+그쪽으로 옮기십시오.&lt;/p&gt;
+&lt;p&gt;각 패널은 &lt;code&gt;default-src 'none'&lt;/code&gt; 정책 아래 샌드박스 프레임(&lt;code&gt;allow-same-origin&lt;/code&gt;
+없음)에서 프레젠테이션을 실행합니다. 프레임은 이미지, 미디어, 스타일, 글꼴만
+불러오고, go-slides가 페이지에 넣은 해시로 지정된 스크립트만 실행합니다.
+프레젠테이션에 작성된 스크립트는 실행되지 않습니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="problems-completion-hover"&gt;문제 표시, 자동 완성, 호버&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
+&lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;문제 표시&lt;/strong&gt;: 템플릿, YAML, &lt;a href="https://go-slides.github.io/docs/0.9/ko/hcl/"&gt;HCL&lt;/a&gt; 오류를 해당 줄에
+표시합니다. 오류가 프레젠테이션에 있든, 그 출처인 kind 파일에 있든 마찬가지입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;자동 완성&lt;/strong&gt;: 프런트 매터와 &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt; 주석의 디렉티브 키(스폿 디렉티브는
+&lt;code&gt;_&lt;/code&gt; 포함), &lt;code&gt;kind&lt;/code&gt;와 &lt;code&gt;_kind&lt;/code&gt;의 값(각 kind가 설정하는 내용과 함께), &lt;code&gt;theme&lt;/code&gt;,
+&lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;, 그리고 &lt;code&gt;{{ }}&lt;/code&gt; 안에서는 템플릿
+함수와 데이터 필드를 완성합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;호버&lt;/strong&gt;: 디렉티브의 역할, kind가 설정하는 내용, 템플릿 함수의 인수를
+보여 줍니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="export"&gt;내보내기&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;
+&lt;a href="#export" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;go-slides: Export Slide Deck&amp;hellip;&lt;/em&gt;(편집기 제목 표시줄에도 있음)은
+&lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt;처럼 &lt;code&gt;slides&lt;/code&gt; 명령으로 HTML, 벡터 PDF, 편집 가능한
+PPTX와 ODP, PNG, JPEG를 만듭니다. &lt;a href="https://go-slides.github.io/docs/0.9/ko/cli/"&gt;명령줄&lt;/a&gt;을
+참고하십시오. 신뢰할 수 있는 작업 영역이 필요합니다. &lt;code&gt;slides&lt;/code&gt;를 찾지 못하면
+확장이 위의 &lt;code&gt;go install&lt;/code&gt;을 터미널에서 실행하도록 제안합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="settings"&gt;설정&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
+&lt;a href="#settings" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;설정&lt;/th&gt;
+&lt;th&gt;기본값&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.cliPath&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides&lt;/code&gt; 명령. 비어 있으면 &lt;code&gt;PATH&lt;/code&gt;의 &lt;code&gt;slides&lt;/code&gt;를 씁니다. 컴퓨터 설정이므로 작업 영역에서는 지정할 수 없습니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportType&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;내보내기 대화 상자가 처음 제안하는 형식&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportAutoOpen&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;내보낸 파일 열기&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Marp 허용 목록 대신 모든 원시 HTML 허용. 신뢰할 수 있는 작업 영역에서만 적용됩니다&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;marp: true&lt;/code&gt; 프레젠테이션 미리 보기: &lt;code&gt;auto&lt;/code&gt;, &lt;code&gt;always&lt;/code&gt;, &lt;code&gt;never&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="security"&gt;보안&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;프레젠테이션과 작업 영역은 신뢰하지 않는 것으로 취급합니다. 원시 HTML은
+신뢰할 수 있는 작업 영역에서 &lt;code&gt;goSlides.html&lt;/code&gt;을 켜지 않는 한 Marp 허용 목록을
+따르며(&lt;code&gt;html: true&lt;/code&gt;가 있는 &lt;code&gt;slides.yaml&lt;/code&gt;로는 미리 보기에서 켜지지 않습니다),
+VS Code 미리 보기는 프레젠테이션의 스크립트를 실행하지 않습니다. 미리 보기는
+프레젠테이션이 속한 작업 영역 폴더의 파일만 읽고, 심볼릭 링크를 따라가지 않으며,
+템플릿은 환경 변수를 볼 수 없습니다. 내보내기는 프로그램을 실행하므로 작업 영역
+신뢰를 기다리며, 실행할 프로그램을 작업 영역이 지정하는 일은 없습니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="performance"&gt;성능&lt;span class="hx:absolute hx:-mt-20" id="performance"&gt;&lt;/span&gt;
+&lt;a href="#performance" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;go-slides의 슬라이드 100장짜리 벤치마크 프레젠테이션으로, Apple M4 Max의
+VS Code 1.142에서 같은 세션에 Marp for VS Code 3.6.1도 함께 측정했습니다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;활성화(WebAssembly 모듈 로드)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;189 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;첫 미리 보기&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;편집 후 미리 보기(중앙값)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;strong&gt;19 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23–24 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.vsix&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7.5 MB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36.3 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;수치는 확장 v0.3.0(go-slides v0.8.0) 기준이며, 슬라이드 100장 프레젠테이션의
+50번째 슬라이드에 문자 하나를 입력하는 작업을 1분 부하 8 미만에서 번갈아
+측정한 결과입니다. 첫 미리 보기는 Marp보다 빠르고, 이제 편집 후 미리 보기도
+Marp보다 빠릅니다.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v080-and-extension-v030"&gt;v0.8.0과 확장 v0.3.0&lt;span class="hx:absolute hx:-mt-20" id="in-v080-and-extension-v030"&gt;&lt;/span&gt;
+&lt;a href="#in-v080-and-extension-v030" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.8.0은 열려 있는 각 프레젠테이션의 렌더링된 슬라이드를 보관하고,
+편집 후에는 소스나 상속된 상태(디렉티브, 페이지 번호, 전체 수, 제목 id, 링크
+참조, 소스 줄)가 바뀐 슬라이드만 다시 렌더링합니다. 결과는 전체 렌더링과
+바이트 단위까지 같습니다. 100장 중 50번째 슬라이드에 입력하면 슬라이드 한 장만
+다시 렌더링하며, 네이티브로 2.5 ms, WebAssembly로 11.5 ms가 걸립니다. 그러면
+VS Code 미리 보기는 바뀐 슬라이드의 DOM만 변형하며, 확장의 스모크 테스트는 두
+확장 모두에 대해 시간을 재는 렌더링 사이에 50번째 슬라이드에 문자 하나를
+입력합니다. 확장의 발표자 보기는 부모 창을 통해(&lt;code&gt;postMessage&lt;/code&gt;) 동기화합니다.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v071-and-extension-v022"&gt;v0.7.1과 확장 v0.2.2&lt;span class="hx:absolute hx:-mt-20" id="in-v071-and-extension-v022"&gt;&lt;/span&gt;
+&lt;a href="#in-v071-and-extension-v022" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.7.1은 파싱한 테마, 압축한 스타일시트, 강조 표시한 코드를 렌더링
+사이에 캐시하고, 스크롤 동기화용 줄을 바이트 단위로 훑지 않고 표시하며, 작성기를
+재사용합니다. 슬라이드 100장 프레젠테이션 한 번 렌더링에 할당하는 메모리는
+5.7 MB로, 확장 v0.2.0의 52.7 MB보다 적습니다. 덕분에 확장 v0.2.2는
+&lt;code&gt;GOGC=400&lt;/code&gt; 재정의를 없앴습니다. 비교하자면 확장 v0.2.1은 기본 &lt;code&gt;GOGC&lt;/code&gt;에서 첫 미리
+보기 72 ms, 편집 후 44 ms(&lt;code&gt;GOGC=400&lt;/code&gt;에서는 36 ms)였고, v0.2.0은 47–51 ms였습니다.&lt;/p&gt;
+&lt;p&gt;확장 v0.2.2는 첫 미리 보기 52 ms, 편집 후 24 ms로 측정되어 Marp의 23 ms와 대등한
+수준이었습니다.&lt;/p&gt;</description></item></channel></rss>

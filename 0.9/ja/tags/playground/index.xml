@@ -1,0 +1,194 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.9/ja/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.9/ja/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.9/ja/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.9/ja/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Playground を開く →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Playground は go-slides v0.9.0 そのものを WebAssembly にコンパイルし、
+ブラウザー内で動かしたものです。左側にスライドデッキを入力すると、右側にスライドが追従して表示されます。
+スライドデッキも共有リンクも、サーバーには何も送信されません。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;主な機能&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;各スライドの &lt;strong&gt;ライブプレビュー&lt;/strong&gt;。ページのスレッドとは別（Web
+Worker）でレンダリングされるので、入力が待たされることはありません。スライドをクリックすると、エディターが
+その行に移動します。キャレットを動かすと、プレビューがそのスライドまでスクロールします。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;スライドショー&lt;/strong&gt;：キーボード操作、画面上のコントローラー、トランジションを備えた、
+プレゼンテーションそのものです。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;発表者ビュー&lt;/strong&gt;：&lt;strong&gt;Present&lt;/strong&gt;（スライドショーでは &lt;code&gt;p&lt;/code&gt;）を押すと、2 つ目のウィンドウで開きます。
+現在のスライド、次のステップ、スピーカーノート（スライドデッキの
+&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt;）、時計、タイマーが表示されます。矢印キー、Space、
+Home、End はどちらのウィンドウでも使え、互いに連動します。スライドデッキを編集したときも
+連動します。ウィンドウが開かない場合は、このサイトのポップアップを許可してください。
+一覧表示（&lt;code&gt;o&lt;/code&gt;）は、ダウンロードしたページでのみ使えます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;入力中の &lt;strong&gt;補完&lt;/strong&gt;：ディレクティブのキー（コメント内ではスポットディレクティブの &lt;code&gt;_&lt;/code&gt; 付きのものも）、
+&lt;code&gt;kind&lt;/code&gt;、&lt;code&gt;theme&lt;/code&gt;、&lt;code&gt;size&lt;/code&gt;、&lt;code&gt;paginate&lt;/code&gt; の値、そして &lt;code&gt;{{ }}&lt;/code&gt; 内のテンプレート関数と
+データのフィールド。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;キャレット位置にあるものの &lt;strong&gt;ヘルプ&lt;/strong&gt;：ディレクティブ、kind（スライドの種類。何を設定するか）、
+テンプレート関数。ヘルプペインからは、このドキュメントの各ページにもリンクしています。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;該当行に表示される &lt;strong&gt;問題&lt;/strong&gt;：テンプレート、YAML、HCL のエラーはエディター内でハイライトされ、
+エディターの下に一覧表示されます。プレビューには、最後に正しくレンダリングできたスライドデッキが
+表示されたままになります。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;サンプル&lt;/strong&gt;：ウェルカム用のスライドデッキ、スライドを生成するテンプレート、スライドの kind、
+HCL のフロントマター、テーマとスポットディレクティブ、そして数式、画像、
+背景（&lt;code&gt;![bg]&lt;/code&gt;、分割背景の &lt;code&gt;![bg left:40%]&lt;/code&gt;、フィルター）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ファイル&lt;/strong&gt;：エディターの左にあるパネルはスライドデッキのプロジェクトで、
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/cli/"&gt;コマンド&lt;/a&gt; や
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/vscode/"&gt;VS Code 拡張機能&lt;/a&gt; が読み込むのと同じ構成になっています：&lt;code&gt;deck.md&lt;/code&gt;、
+&lt;code&gt;slides.yaml&lt;/code&gt;、&lt;code&gt;themes/&lt;/code&gt;、&lt;code&gt;kinds/&lt;/code&gt;、&lt;code&gt;media/&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ファイルをクリックすると編集できます。エディターは言語
+（Markdown、YAML、HCL、JSON、CSS）に応じて色付けし、問題箇所に印を付けます。&lt;/li&gt;
+&lt;li&gt;右クリック（または Shift+F10）で、New File、New Folder、Rename（F2）、
+Delete（確認あり）、New theme / New kind を使えます。ファイルをフォルダーにドラッグすると
+移動できます。キーボード操作は WAI-ARIA のツリーパターンに従い、先行入力による検索にも
+対応しています。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; は &lt;code&gt;themes/my-gaia.css&lt;/code&gt;（または default、
+uncover をもとにしたもの）を作成します。内容は組み込みテーマの &lt;code&gt;@import&lt;/code&gt; と、追加したルールです。
+作成したテーマは Theme の一覧に加わります。&lt;strong&gt;New kind&lt;/strong&gt; と &lt;strong&gt;New data file&lt;/strong&gt; も
+テンプレートから始まります。いずれも &lt;code&gt;slides.yaml&lt;/code&gt; に登録されるので、&lt;code&gt;slides build deck.md&lt;/code&gt;
+で見つかります。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; ですべてを保存できます。展開すれば、
+&lt;code&gt;slides build deck.md&lt;/code&gt; でビルドできます。&lt;strong&gt;Open project&lt;/strong&gt; では &lt;code&gt;.zip&lt;/code&gt; または
+フォルダーを読み込めます。フォルダーの外に出るアーカイブ（&lt;code&gt;..&lt;/code&gt;、絶対パス）、
+256 個を超えるファイルや 8 MiB を超えるファイルを含むアーカイブ、展開後のサイズが 100
+倍を超えるアーカイブは拒否されます。&lt;/li&gt;
+&lt;li&gt;すべては下書きと一緒に、このブラウザー内に保存されます。プロジェクトの容量は
+最大 64 MiB で、ファイル一覧の下の行に使用量が表示されます。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;メディア&lt;/strong&gt;：画像、動画、音声をエディターにドロップまたは貼り付けると、
+&lt;code&gt;media/&lt;/code&gt; に保存され、スライドデッキにその参照が書き込まれます：&lt;code&gt;![](media/photo.png)&lt;/code&gt;。パネルのフォルダーに
+ファイルをドロップすると、そのフォルダーに保存されます。スライドデッキは小さく読みやすいままで、
+何もアップロードされません。プレビューのサンドボックスは、制限を緩めることなくメディアを読み込みます
+（ページがバイト列を渡します）。&lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; では、メディアがページに埋め込まれます。&lt;code&gt;https:&lt;/code&gt; の画像も使えますが、ブラウザーが
+そのサーバーから取得するため、サーバー側にはあなたのアドレスが伝わります。
+プレビューはリファラーを送信しません。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;サイズ変更可能なペイン&lt;/strong&gt;：ファイルパネル、エディター、スライドのサムネイル、
+プレビュー、ヘルプは、ドラッグできるバーで区切られています（バーの上ではポインターが
+サイズ変更カーソルになります）。バーの隣のペインが広さを取り、
+ほかのペインはサイズを保ちます。バーをダブルクリックするか、バー上で Enter を押すと、
+ペインを閉じたり元に戻したりできます。キーボードでは、F6 でバー間を移動し、
+矢印キーで 16 px ずつ動かし、Home と End でバーの前のペインを最小・最大にし、Escape でエディターに戻ります。
+View タブではこれまでどおりペインを非表示にできます。設定したサイズは下書きと一緒に
+このブラウザーに保存されます。デフォルトのサイズ（190、168、280 px で、残りをエディターと
+プレビューが 6 対 5 で分け合う）は保存されません。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;書式&lt;/strong&gt;：Format タブで Markdown を編集でき、1 回押すごとに
+元に戻す（Undo）の 1 ステップになります。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;テキスト&lt;/strong&gt;：Bold、Italic、Strikethrough、Inline code は、選択範囲
+またはキャレット位置の単語に適用され、オン・オフが切り替わります（Ctrl+B、Ctrl+I、Ctrl+Shift+X、
+Ctrl+E。Mac では Cmd）。キャレットが書式の記号の内側にあると、ボタンが押された状態で表示されます。
+Markdown には下線がないため、Underline（Ctrl+U）はテキストを
+&lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt; で囲みます。このタグは Marp のデフォルトの HTML 許可リストで残されるので、
+生の HTML がオフでも機能します。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;段落&lt;/strong&gt;：見出し 1〜3（Ctrl+Alt+1..3）、箇条書き（Ctrl+Shift+8）、
+番号付きリスト（Ctrl+Shift+7）、引用は、選択した行に適用され、オン・オフが切り替わります。
+水平線は &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; タグです：&lt;code&gt;---&lt;/code&gt;、&lt;code&gt;***&lt;/code&gt;、&lt;code&gt;___&lt;/code&gt; は、Marp ではいずれも
+新しいスライドの開始になってしまうためです。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表&lt;/strong&gt;：グリッドで列数と行数を選びます。表の中にキャレットがあるときは、
+行や列を追加・削除したり、列の配置（&lt;code&gt;:--&lt;/code&gt;、&lt;code&gt;:-:&lt;/code&gt;、
+&lt;code&gt;--:&lt;/code&gt;）を設定したりできます。編集のたびに、表は整形し直されます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;スライドのテキスト&lt;/strong&gt; の左揃え、中央揃え、右揃えは、現在のスライドに &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; ブロックを
+書き込みます。Marp には配置の構文がなく、&lt;code&gt;style&lt;/code&gt; 属性はデフォルトの HTML 許可リストを
+通りませんが、scoped ブロックは通ります。そのため、生の HTML がオフでも機能し、
+プレビュー、HTML ページ、PDF に反映されます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;リンク&lt;/strong&gt;（Ctrl+K）は、url を選択した状態で &lt;code&gt;[text](url)&lt;/code&gt; を書き込みます。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;フロントマターのキーを、どの深さでも &lt;strong&gt;ハイライト&lt;/strong&gt; します。YAML（
+&lt;code&gt;{a: 1}&lt;/code&gt; 形式のマッピングも含む）と HCL に対応しています。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;テーマ&lt;/strong&gt; の選択：default、gaia、uncover、プロジェクトのテーマ
+（&lt;code&gt;themes/*.css&lt;/code&gt;）、スライドデッキ内で定義したテーマ（&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; 内の
+&lt;code&gt;/* @theme name */&lt;/code&gt;）から選べます。選択すると、YAML または HCL のフロントマターに &lt;code&gt;theme:&lt;/code&gt; が
+書き込まれるので、共有リンクにも反映されます。フロントマターを編集すると、
+選択もそれに追従します。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;入力中もプレビューは &lt;strong&gt;表示位置を保ちます&lt;/strong&gt;：変更されたスライドだけが置き換えられ、
+テーマを変更してもプレビューは同じスライドで開き直されます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;共有リンク&lt;/strong&gt;：スライドデッキはリンク自体（&lt;code&gt;#&lt;/code&gt; 以降の部分に
+圧縮して）に含まれるので、リンクを開けばスライドデッキが開きます。リンクで運べるのは
+圧縮後 64 KiB までで、スライドデッキだけです。プロジェクトにほかのもの
+（テーマ、kind、メディア）が含まれる場合は、Share がその旨を伝え、&lt;code&gt;.zip&lt;/code&gt; を提案します。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML ページ（&lt;code&gt;slides deck.md&lt;/code&gt; が書き出すものと同じ）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt;（ベクター、テキスト選択可、アウトライン付き）&lt;/li&gt;
+&lt;li&gt;編集可能な &lt;strong&gt;PowerPoint&lt;/strong&gt; または &lt;strong&gt;OpenDocument&lt;/strong&gt; のスライドデッキ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これらは、&lt;code&gt;slides --pdf&lt;/code&gt;、
+&lt;code&gt;--pptx&lt;/code&gt;、&lt;code&gt;--odp&lt;/code&gt; と同じコードによってブラウザー内で作成されます。100 枚のベンチマーク用スライドデッキの PDF は、
+コマンドで作成したものとバイト単位で同一です。最初のエクスポート時には、エクスポート
+エンジン（約 21 MiB。一度だけで、次の更新までブラウザーに保持されます）が、
+進捗表示付きでダウンロードされます。その後、100 枚のスライドデッキは約 3 秒で書き出せます。
+&lt;code&gt;https:&lt;/code&gt; の画像は、そのサーバーが許可している場合（CORS）にだけ含まれます。&lt;code&gt;data:&lt;/code&gt; の
+画像は常に含まれます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;下書きは保持されます&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;スライドデッキは入力に合わせてこのブラウザーに保存され（IndexedDB、このサイト専用）、
+再読み込みしても戻ってきます。どこにも何も送信されません。
+プロジェクトのテキストファイル（テーマ、kind、データ、&lt;code&gt;slides.yaml&lt;/code&gt;）も同じように保存され、
+入力直後にタブを閉じても失われません。メディアはドロップした時点で保存されます。&lt;/li&gt;
+&lt;li&gt;共有リンクを開くとそのスライドデッキが開きますが、あなたの下書きは保持されます：&lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; で元に戻せます。&lt;/li&gt;
+&lt;li&gt;サンプルを開いても、&lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt;（確認あり）を実行しても、
+別のタブで作業しても、下書きは消えません：&lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; で
+元に戻せます。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; は、保存されているものをすべて消去します。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;どのエクスポートも、プレビューに表示されているプロジェクト（&lt;code&gt;slides.yaml&lt;/code&gt;、
+テーマ、kind、データファイル、メディア）をレンダリングし、メディアはドキュメント内に埋め込まれます。&lt;/p&gt;
+&lt;p&gt;ファイルとしての画像（slides の &lt;code&gt;--images&lt;/code&gt;）はブラウザーでは作成できません。
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/cli/"&gt;コマンド&lt;/a&gt; または
+&lt;a href="https://go-slides.github.io/docs/0.9/ja/vscode/"&gt;VS Code 拡張機能&lt;/a&gt; を使ってください。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;セキュリティ&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;スライドデッキは、ページのオリジンを持たないサンドボックス化された iframe に表示されます。
+iframe からは Playground にもそのストレージにもアクセスできず、フォームの送信もナビゲーションもできません。
+そのページには、自身のスクリプトだけを実行する Content Security Policy が設定されています。
+スライドデッキ内の生の HTML は、&lt;code&gt;slides&lt;/code&gt; のデフォルトと同じく Marp の許可リストに従います。
+5 秒を超えて実行されるレンダリング（ループするテンプレートなど）は
+停止されます。&lt;/p&gt;
+&lt;p&gt;発表者ウィンドウも同じサンドボックスを保ちます。このウィンドウは Playground 自身が開き、
+同じようにサンドボックス化された iframe にスライドデッキを表示します。2 つの
+iframe はストレージを共有できないので、Playground がメッセージでスライド番号を
+中継します。スライドデッキを実行するフレームが Playground の
+オリジンを得ることはありません。&lt;/p&gt;
+&lt;p&gt;プロジェクトのメディアは、メッセージ内のバイト列としてサンドボックス化されたフレームに渡され、
+各フレームは自身のオリジンで、それぞれ独自の &lt;code&gt;blob:&lt;/code&gt; URL を作成します。Playground が作成した &lt;code&gt;blob:&lt;/code&gt;
+URL はそこでは読み込まれず、フレームのポリシーに追加されるのは、メディアとフォント向けの &lt;code&gt;blob:&lt;/code&gt; だけです。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;サイズと速度&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;モジュールは、GitHub Pages が配信する状態で 8.8 MiB です（gzip。Pages は
+brotli で配信しません）。進捗バー付きで一度だけダウンロードされ、その後は次のデプロイまで
+ブラウザーにキャッシュされます。Apple M4 Max と Chrome 155 で公開中のページを
+計測したところ、エディターはページを開いてから 2.1 s で使えるようになり、そのうち 1.5 s
+はダウンロードで、最初のスライドは 2.4 s で表示されました。100 枚のベンチマーク用スライドデッキへの変更は、
+約 30 ms でプレビューに反映されます：go-slides は変更されたスライドだけを
+レンダリングし、プレビューでもそのスライドだけが置き換えられます。&lt;/p&gt;</description></item></channel></rss>

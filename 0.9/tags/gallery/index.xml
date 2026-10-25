@@ -208,10 +208,7 @@ that use them say so.&lt;/p&gt;
 &lt;a class="gallery-open" href="https://go-slides.github.io/docs/0.9/gallery/kinds.zip"&gt;Download the .zip&lt;/a&gt;
 &lt;a href="https://github.com/go-slides/slides/tree/main/examples/kinds"&gt;Source on GitHub&lt;/a&gt;
 &lt;/p&gt;
-&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt;
-(&lt;code&gt;kinds/brand.yaml&lt;/code&gt;),
-so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;,
-or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
+&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt; (&lt;code&gt;kinds/brand.yaml&lt;/code&gt;), so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;, or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;details&gt;
 &lt;summary&gt;deck.md&lt;/summary&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
@@ -285,10 +282,7 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;a class="gallery-open" href="https://go-slides.github.io/docs/0.9/gallery/templates.zip"&gt;Download the .zip&lt;/a&gt;
 &lt;a href="https://github.com/go-slides/slides/tree/main/examples/templates"&gt;Source on GitHub&lt;/a&gt;
 &lt;/p&gt;
-&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt;
-(&lt;code&gt;parts/thanks.md&lt;/code&gt;),
-so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;,
-or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
+&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt; (&lt;code&gt;parts/thanks.md&lt;/code&gt;), so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;, or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;details&gt;
 &lt;summary&gt;deck.md&lt;/summary&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
@@ -497,10 +491,7 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;a class="gallery-open" href="https://go-slides.github.io/docs/0.9/gallery/images.zip"&gt;Download the .zip&lt;/a&gt;
 &lt;a href="https://github.com/go-slides/slides/tree/main/examples/images"&gt;Source on GitHub&lt;/a&gt;
 &lt;/p&gt;
-&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt;
-(&lt;code&gt;media/grid.svg&lt;/code&gt;, &lt;code&gt;media/hills.svg&lt;/code&gt;, &lt;code&gt;media/mark.svg&lt;/code&gt;),
-so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;,
-or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
+&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt; (&lt;code&gt;media/grid.svg&lt;/code&gt;, &lt;code&gt;media/hills.svg&lt;/code&gt;, &lt;code&gt;media/mark.svg&lt;/code&gt;), so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;, or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;details&gt;
 &lt;summary&gt;deck.md&lt;/summary&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
@@ -849,10 +840,7 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;a class="gallery-open" href="https://go-slides.github.io/docs/0.9/gallery/talk.zip"&gt;Download the .zip&lt;/a&gt;
 &lt;a href="https://github.com/go-slides/slides/tree/main/examples/talk"&gt;Source on GitHub&lt;/a&gt;
 &lt;/p&gt;
-&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt;
-(&lt;code&gt;media/hills.svg&lt;/code&gt;),
-so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;,
-or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
+&lt;p class="gallery-note"&gt;This deck has files besides &lt;code&gt;deck.md&lt;/code&gt; (&lt;code&gt;media/hills.svg&lt;/code&gt;), so it cannot travel in a link: unzip it and run &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;, or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;details&gt;
 &lt;summary&gt;deck.md&lt;/summary&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
