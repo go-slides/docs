@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Playground öffnen →](https://go-slides.github.io/playground/)**
 
-Der Playground ist go-slides selbst, v0.9.0, nach WebAssembly kompiliert und
+Der Playground ist go-slides selbst, v0.13.0, nach WebAssembly kompiliert und
 in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
 folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.
 

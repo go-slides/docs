@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Diese Seite beschreibt v0.9.0.
+Diese Seite beschreibt v0.13.0.
 {{< /callout >}}
 
 ```text
@@ -325,6 +325,38 @@ oder einer Drehung, ein weichgezeichneter `box-shadow`, ein Verlauf mit ausblend
 wird als Bitmap nur dieses Elements gezeichnet, mit unsichtbar darübergelegtem Text, damit er
 auswählbar bleibt. Formeln sind weiterhin Bitmaps. `--pdf-raster` schreibt ein Bild
 pro Seite, wie es v0.3.0 tat.
+
+### Barrierefreies, getaggtes PDF {#accessible-tagged-pdf}
+
+Seit v0.12.0 ist das Vektor-PDF getaggt. Es trägt seine logische Struktur, die ein
+Screenreader der Reihe nach liest, wie er eine Webseite liest:
+
+| Im Foliensatz | Im PDF |
+| --- | --- |
+| eine Folie | ein Abschnitt (`Sect`) |
+| `#` … `######` | `H1` … `H6` |
+| ein Absatz, eine Liste, eine Tabelle | `P`; `L` mit Marke und Inhalt jedes Eintrags; `Table`, Kopfzellen mit ihrem Bezugsbereich |
+| ein Link | ein `Link`, einschließlich seiner anklickbaren Fläche, sein Text als Beschreibung |
+| ein Bild | eine `Figure` mit ihrem Alternativtext; `![](…)` ohne Alternativtext ist Dekoration |
+| `$…$`, `$$…$$` | eine `Formula`, ihr TeX-Quelltext als Beschreibung |
+| Code | `Code`, ohne Zeilennummern und Callout-Scheiben |
+| `<span lang="fr">` | ein Span in dieser Sprache |
+| Hintergründe, Rahmen, Seitenzahlen | Artefakte, die ein Reader überspringt |
+| Sprechernotizen (`--pdf-notes`) | Annotationen in der Struktur |
+
+Die Datei deklariert PDF/UA-1, den Standard für barrierefreies PDF. Sie trägt den
+`title` des Foliensatzes, den der Viewer anzeigt, und seine `lang` (`--lang`, wenn der
+Foliensatz keine setzt, sonst `en`).
+
+Ein mit veraPDF geprüfter Foliensatz besteht PDF/UA-1, es sei denn, seine eigenen
+Überschriften verletzen die Reihenfolge des Standards. PDF/UA verlangt, dass die erste
+Überschrift eine `H1` ist und keine Ebene übersprungen wird (`#`, dann `###`). Das kann
+nur der Autor des Foliensatzes beheben. Das PDF von Chrome für denselben Foliensatz, das
+marp-cli schreibt, ist ebenfalls getaggt, verletzt aber sieben Regeln von PDF/UA, hat
+keinen Abschnitt pro Folie und keine Formeln.
+
+Das Taggen des Benchmark-Foliensatzes mit 100 Folien kostet 4 % an Größe (788 gegenüber
+757 KiB) und keine messbare Zeit. `--pdf-tags=false` schreibt das PDF ohne Tags.
 
 ## `slides.yaml` {#slidesyaml}
 

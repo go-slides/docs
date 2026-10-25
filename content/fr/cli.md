@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Cette page décrit la v0.9.0.
+Cette page décrit la v0.13.0.
 {{< /callout >}}
 
 ```text
@@ -329,6 +329,37 @@ ou une rotation, une `box-shadow` floue, un dégradé dont l'opacité s'estompe 
 dessiné comme un bitmap de ce seul élément, son texte étant posé dessus de façon invisible pour
 rester sélectionnable. Les formules sont encore des bitmaps. `--pdf-raster` écrit une image
 par page, comme le faisait la v0.3.0.
+
+### PDF accessible et balisé {#accessible-tagged-pdf}
+
+Depuis la v0.12.0, le PDF vectoriel est balisé. Il porte sa structure logique, qu'un lecteur
+d'écran lit dans l'ordre, comme il lit une page web :
+
+| Dans la présentation | Dans le PDF |
+| --- | --- |
+| une diapositive | une section (`Sect`) |
+| `#` … `######` | `H1` … `H6` |
+| un paragraphe, une liste, un tableau | `P` ; `L` avec l'étiquette et le corps de chaque élément ; `Table`, cellules d'en-tête avec leur portée |
+| un lien | un `Link`, sa zone cliquable comprise, son texte comme description |
+| une image | une `Figure` avec son texte alternatif ; `![](…)` sans texte alternatif est décoratif |
+| `$…$`, `$$…$$` | une `Formula`, sa source TeX comme description |
+| du code | `Code`, sans ses numéros de ligne ni ses pastilles d'annotation |
+| `<span lang="fr">` | un segment dans cette langue |
+| arrière-plans, bordures, numéros de page | des artefacts, qu'un lecteur ignore |
+| notes de l'orateur (`--pdf-notes`) | des annotations dans la structure |
+
+Le fichier déclare PDF/UA-1, la norme du PDF accessible. Il porte le `title` de la
+présentation, que la visionneuse affiche, et sa `lang` (`--lang` si la présentation
+n'en définit pas, `en` sinon).
+
+Une présentation vérifiée avec veraPDF satisfait PDF/UA-1, sauf si ses propres titres enfreignent
+l'ordre qu'impose la norme. PDF/UA demande que le premier titre soit un `H1` et
+qu'aucun niveau ne soit sauté (`#` puis `###`). Seul l'auteur de la présentation peut corriger cela.
+Le PDF de Chrome pour la même présentation, celui qu'écrit marp-cli, est lui aussi balisé, mais enfreint
+sept des règles de PDF/UA, n'a pas de section par diapositive et pas de formules.
+
+Baliser la présentation de référence de 100 diapositives coûte 4% en taille (788 contre 757 Kio)
+et aucun temps mesurable. `--pdf-tags=false` écrit le PDF sans balises.
 
 ## `slides.yaml` {#slidesyaml}
 
