@@ -50,6 +50,7 @@ here that is done by Go libraries.
 ## Pages
 
 - [Getting started]({{< relref "getting-started" >}})
+- [Gallery]({{< relref "gallery" >}}): twelve example decks, to open in the playground
 - [Marp compatibility]({{< relref "marp" >}})
 - [Templates]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})

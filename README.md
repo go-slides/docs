@@ -41,6 +41,8 @@ against that release (flags from its `slides -h`).
 | `assets/css/custom.css` | the brand indigo as Hextra's primary colour, with its contrast measured |
 | `themes/hextra` | submodule: tannevaled/hextra at tag v0.16.0 |
 | `branding` | submodule: [go-slides/brand](https://github.com/go-slides/brand) |
+| `tools/gallery` | a Go program (stdlib only, with tests) that renders the gallery: it reads go-slides/slides' `examples/`, renders each deck's first slide with the slides command, and writes `data/gallery.json` and `static/gallery/` (both ignored by git) |
+| `layouts/_shortcodes/gallery.html` | the gallery page's cards, from `data/gallery.json` |
 | `scripts/publish-version.sh` | puts one build into a `gh-pages` checkout and rewrites `versions.json`, `latest` and the root redirect |
 
 ## Working locally
@@ -49,10 +51,14 @@ against that release (flags from its `slides -h`).
 git clone --recurse-submodules https://github.com/go-slides/docs.git
 cd docs
 mkdir -p data && sh themes/hextra/scripts/page-history.sh > data/pagehistory.json
+git clone https://github.com/go-slides/slides ../slides      # the gallery's decks
+(cd tools/gallery && go run . -src ../../../slides -out ../..)   # Go 1.27.2 or later
 hugo server --baseURL http://localhost:1313/docs/main/
 ```
 
-Hugo 0.146 or later; no Python, no Node.
+Hugo 0.146 or later; no Python, no Node. The gallery page fails the build when
+`data/gallery.json` is missing, which is the `go run` line above. CI does it
+before every build, from the ref `params.gallery.ref` names.
 
 ## Publication
 

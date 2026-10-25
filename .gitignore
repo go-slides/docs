@@ -6,3 +6,9 @@
 
 # Written by themes/hextra/scripts/page-history.sh before each build (CI and local).
 /data/pagehistory.json
+
+# Written by tools/gallery before each build (CI and local): the gallery's data
+# and its thumbnails, sources and archives.
+/data/gallery.json
+/static/gallery/
+/slides-src/

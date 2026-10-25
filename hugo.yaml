@@ -92,6 +92,12 @@ params:
   # being written, and say so.
   slides:
     version: "v0.9.0"
+  # The ref of go-slides/slides whose examples/ the gallery shows, and from
+  # which tools/gallery builds the slides command that renders the thumbnails
+  # (the CI reads it here). "main" until a release has an examples/ folder;
+  # then the release's tag, so that the gallery matches the pages.
+  gallery:
+    ref: "main"
   versions:
     # The version selector shows "main" with the development icon.
     development: "main"

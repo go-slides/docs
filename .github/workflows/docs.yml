@@ -68,6 +68,34 @@ jobs:
           echo "version=${version}" >> "$GITHUB_OUTPUT"
           echo "slides ${slides}: documentation version ${version}"
 
+      # The gallery: the decks of go-slides/slides' examples/, rendered by
+      # go-slides itself (tools/gallery builds the slides command from the same
+      # checkout), as data/gallery.json and static/gallery/. The ref is
+      # params.gallery.ref in hugo.yaml.
+      - name: Gallery ref
+        id: gallery
+        run: echo "ref=$(hugo config --format json | jq -r '.params.gallery.ref')" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the examples
+        uses: actions/checkout@v7
+        with:
+          repository: go-slides/slides
+          ref: ${{ steps.gallery.outputs.ref }}
+          path: slides-src
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version: "1.27.2"
+          cache: false
+
+      - name: Build the gallery
+        env:
+          GOWORK: "off"
+        working-directory: tools/gallery
+        run: |
+          go test ./...
+          go run . -src ../../slides-src -out ../..
+
       # Each page's creation (first commit, followed across renames) and its
       # author, for the page history at its foot (params.page.history).
       - name: Page history
