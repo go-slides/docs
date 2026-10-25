@@ -117,8 +117,11 @@ right. Nothing is sent to a server: not the deck, not a share link.
   They are made in your browser, by the same code as `slides --pdf`,
   `--pptx` and `--odp`: the 100-slide benchmark deck's PDF is
   byte-identical to the command's. The first export downloads the export
-  engine (about 21 MiB, once; your browser keeps it until the next update),
-  with a progress line. The 100-slide deck then takes about 3 seconds. An
+  engine (about 5 MiB, once; your browser keeps it until the next update),
+  with a progress line, and compiles it as it arrives. Then it downloads only
+  the fonts your slides draw. On a 3 MB/s link the first PDF of the welcome
+  deck is ready in under 3 seconds. The 100-slide deck then takes about
+  3 seconds. An
   `https:` image is included only if its server allows it (CORS); `data:`
   images always are.
 - **Your draft is kept**:

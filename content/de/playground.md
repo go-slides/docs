@@ -116,8 +116,10 @@ folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz no
   Sie entstehen in Ihrem Browser, mit demselben Code wie `slides --pdf`,
   `--pptx` und `--odp`: Das PDF des Benchmark-Foliensatzes mit 100 Folien ist
   byteidentisch mit dem des Befehls. Der erste Export lädt die Export-Engine herunter
-  (etwa 21 MiB, einmalig; Ihr Browser behält sie bis zum nächsten Update),
-  mit einer Fortschrittszeile. Der Foliensatz mit 100 Folien braucht dann etwa 3 Sekunden. Ein
+  (etwa 5 MiB, einmalig; Ihr Browser behält sie bis zum nächsten Update),
+  mit einer Fortschrittszeile, und kompiliert sie, während sie eintrifft. Danach lädt er nur die
+  Schriften, die Ihre Folien zeichnen. Bei 3 MB/s ist das erste PDF des Willkommens-Foliensatzes
+  in unter 3 Sekunden fertig. Der Foliensatz mit 100 Folien braucht dann etwa 3 Sekunden. Ein
   `https:`-Bild wird nur eingebunden, wenn sein Server es erlaubt (CORS); `data:`-Bilder
   immer.
 - **Ihr Entwurf bleibt erhalten**:

@@ -117,8 +117,10 @@ droite. Rien n'est envoyé à un serveur : ni la présentation, ni un lien de p
   Ils sont produits dans votre navigateur, par le même code que `slides --pdf`,
   `--pptx` et `--odp` : le PDF de la présentation de référence de 100 diapositives est
   identique, octet pour octet, à celui de la commande. Le premier export télécharge le moteur
-  d'export (environ 21 Mio, une seule fois ; votre navigateur le conserve jusqu'à la prochaine mise à jour),
-  avec une ligne de progression. La présentation de 100 diapositives prend ensuite environ 3 secondes. Une
+  d'export (environ 5 Mio, une seule fois ; votre navigateur le conserve jusqu'à la prochaine mise à jour),
+  avec une ligne de progression, et le compile pendant qu'il arrive. Il ne télécharge ensuite que les polices
+  que dessinent vos diapositives. Sur une liaison à 3 Mo/s, le premier PDF de la présentation d'accueil
+  est prêt en moins de 3 secondes. La présentation de 100 diapositives prend ensuite environ 3 secondes. Une
   image `https:` n'est incluse que si son serveur l'autorise (CORS) ; les images `data:`
   le sont toujours.
 - **Votre brouillon est conservé** :
