@@ -1,16 +1,17 @@
 ---
 title: "VS Code"
 weight: 55
-description: "The go-slides extension for VS Code: preview, problems, completion and export, as Marp for VS Code does for Marp."
+description: "The go-slides extension for VS Code: preview, presenting, problems, completion and export, as Marp for VS Code does for Marp."
 tags: [vscode, editor]
 ---
 
 {{< callout type="info" >}}
 The extension is [go-slides/vscode](https://github.com/go-slides/vscode),
-versioned on its own (v0.3.0). It renders with go-slides v0.8.0 (the
-`editor` package, and the source lines of scroll sync). It is installed from
-the `go-slides-0.3.0.vsix` attached to its GitHub release: it is not on the VS
-Code Marketplace or Open VSX yet.
+versioned on its own (v0.4.0). It renders with go-slides v0.9.0 (the
+`editor` package, the source lines of scroll sync, and the overview and
+presenter view). It is installed from the `go-slides-0.4.0.vsix` attached to
+its GitHub release: its publication on the VS Code Marketplace and Open VSX is
+prepared, but it is not there yet.
 {{< /callout >}}
 
 The extension is go-slides' counterpart of
@@ -25,7 +26,7 @@ Download `go-slides-<version>.vsix` from the
 *Extensions: Install from VSIX...*, or:
 
 ```sh
-code --install-extension go-slides-0.3.0.vsix
+code --install-extension go-slides-0.4.0.vsix
 ```
 
 The preview needs nothing else. Exporting needs the `slides` command:
@@ -80,6 +81,29 @@ Lines are traced through templates. A slide that a `{{ range }}` generates
 follows the line of its template, and what an `{{ include }}` brings in
 follows the include's line. A deck split by `headingDivider` syncs on its
 headings.
+
+## Presenting
+
+Since v0.4.0 of the extension (go-slides v0.9.0), a deck can be presented
+without leaving VS Code. With the deck in the editor, from the Command Palette
+or the editor's `…` menu:
+
+| Command | Opens |
+|---|---|
+| *go-slides: Open Overview* | a panel with every slide in a grid. A chosen slide shows its source in the editor; `Esc` closes the panel |
+| *go-slides: Start Presenter View* | the slides, and beside them the presenter view: the next step, the speaker's notes and a timer |
+
+The panels sit beside the editor and follow one another: change slide in one
+and the others change with it. They also follow your edits to the deck. The `p`
+key in the slides opens the presenter view.
+
+To present on another screen, move the slides panel there with *View: Move
+Editor into New Window*.
+
+Each panel runs the deck in a sandboxed frame (no `allow-same-origin`) under a
+policy of `default-src 'none'`: the frame loads images, media, styles and fonts
+and nothing else, and runs only the scripts go-slides built into the page,
+named by hash. A script the deck wrote does not run.
 
 ## Problems, completion, hover
 
