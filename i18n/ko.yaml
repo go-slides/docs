@@ -1,0 +1,15 @@
+# 사이트 문자열. Hextra 자체 문자열(themes/hextra/i18n/ko.yaml)에 더해 쓰입니다.
+copyright: "© 2026 go-slides 작성자 · BSD-3-Clause"
+version: "버전"
+outdated: "오래된 버전의 문서를 보고 계십니다. 내용이 더 이상 정확하지 않을 수 있습니다."
+outdatedLink: "최신 버전으로 이동"
+
+# 갤러리 페이지 (layouts/_shortcodes/gallery.html)
+gallerySlides:
+  one: "슬라이드 {{ .Count }}장"
+  other: "슬라이드 {{ .Count }}장"
+galleryAlt: "“{{ .title }}”의 첫 번째 슬라이드"
+galleryOpen: "Playground에서 열기"
+galleryZip: ".zip 다운로드"
+gallerySource: "GitHub에서 소스 보기"
+galleryNote: "이 프레젠테이션에는 <code>deck.md</code> 외에도 파일({{ .files }})이 있어 링크에 담을 수 없습니다. 압축을 풀고 <code>slides build --allow-local-files deck.md</code>를 실행하거나, Playground의 <em>Import</em>로 .zip을 가져오세요."

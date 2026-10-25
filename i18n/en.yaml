@@ -3,3 +3,13 @@ copyright: "© 2026 the go-slides authors · BSD-3-Clause"
 version: "Version"
 outdated: "You are reading the documentation of an outdated version, whose text may no longer be accurate."
 outdatedLink: "Go to the latest version."
+
+# The gallery page (layouts/_shortcodes/gallery.html).
+gallerySlides:
+  one: "{{ .Count }} slide"
+  other: "{{ .Count }} slides"
+galleryAlt: "The first slide of “{{ .title }}”"
+galleryOpen: "Open in the playground"
+galleryZip: "Download the .zip"
+gallerySource: "Source on GitHub"
+galleryNote: "This deck has files besides <code>deck.md</code> ({{ .files }}), so it cannot travel in a link: unzip it and run <code>slides build --allow-local-files deck.md</code>, or import the .zip with the playground's <em>Import</em>."

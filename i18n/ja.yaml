@@ -1,0 +1,15 @@
+# サイトの文字列。Hextra 自体の文字列（themes/hextra/i18n/ja.yaml）に加えて使われます。
+copyright: "© 2026 go-slides の作者 · BSD-3-Clause"
+version: "バージョン"
+outdated: "古いバージョンのドキュメントを表示しています。内容が現在と異なる可能性があります。"
+outdatedLink: "最新バージョンへ移動"
+
+# ギャラリーのページ（layouts/_shortcodes/gallery.html）
+gallerySlides:
+  one: "{{ .Count }} 枚のスライド"
+  other: "{{ .Count }} 枚のスライド"
+galleryAlt: "「{{ .title }}」の最初のスライド"
+galleryOpen: "Playground で開く"
+galleryZip: ".zip をダウンロード"
+gallerySource: "GitHub でソースを見る"
+galleryNote: "このスライドデッキには <code>deck.md</code> 以外のファイル（{{ .files }}）があり、リンクに収まりません。展開して <code>slides build --allow-local-files deck.md</code> を実行するか、Playground の <em>Import</em> で .zip を読み込んでください。"

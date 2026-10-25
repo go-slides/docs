@@ -13,16 +13,76 @@ title: "go-slides"
 # related-sites menu, page subtitle and history, darkreaderLock).
 theme: hextra
 
-# English is the default language and stays at the root of each version.
-# Another language would live under its code, with content/<lang>/.
+# English is the default language and stays at the root of each version
+# (/docs/<version>/cli/); the others live under their code
+# (/docs/<version>/fr/cli/), as in go-widgets/docs.
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 
+# Each language has its own content directory, with the same file names, so
+# that a page and its translation are paired; tools/i18n (run by the CI) fails
+# when a page of content/en is missing in one of them, and checks that code,
+# flags and anchors are what the English page has. A language is declared here
+# only once its content exists. The flags are lipis/flag-icons' 4x3 flags (MIT,
+# static/images/flags/LICENSE). Each language is listed under its own name.
+# Chinese is Simplified (zh-Hans): the browser picks the right glyph variants
+# of the Han characters from the page's lang.
 languages:
   en:
     label: "English"
     contentDir: content/en
     weight: 1
+    params:
+      flag: images/flags/gb.svg
+  fr:
+    label: "Français"
+    contentDir: content/fr
+    weight: 2
+    params:
+      flag: images/flags/fr.svg
+      dateFormat: "2 January 2006"
+      description: "Des présentations compatibles Marp en Go pur (CGO=0), avec des gabarits Go et des types de diapositives."
+  de:
+    label: "Deutsch"
+    contentDir: content/de
+    weight: 3
+    params:
+      flag: images/flags/de.svg
+      dateFormat: "2. January 2006"
+      description: "Marp-kompatible Präsentationen in reinem Go (CGO=0), mit Go-Vorlagen und Folientypen."
+  es:
+    label: "Español"
+    contentDir: content/es
+    weight: 4
+    params:
+      flag: images/flags/es.svg
+      dateFormat: "2 de January de 2006"
+      description: "Presentaciones compatibles con Marp en Go puro (CGO=0), con plantillas de Go y tipos de diapositiva."
+  zh:
+    label: "简体中文"
+    locale: zh-Hans
+    contentDir: content/zh
+    weight: 5
+    params:
+      flag: images/flags/cn.svg
+      dateFormat: "2006年1月2日"
+      description: "用纯 Go（CGO=0）编写、兼容 Marp 的幻灯片，支持 Go 模板和幻灯片类型。"
+  ko:
+    label: "한국어"
+    contentDir: content/ko
+    weight: 6
+    params:
+      flag: images/flags/kr.svg
+      dateFormat: "2006년 1월 2일"
+      description: "순수 Go(CGO=0)로 만든 Marp 호환 슬라이드. Go 템플릿과 슬라이드 유형을 지원합니다."
+  ja:
+    label: "日本語"
+    contentDir: content/ja
+    weight: 7
+    params:
+      flag: images/flags/jp.svg
+      dateFormat: "2006年1月2日"
+      description: "純粋な Go（CGO=0）で書かれた Marp 互換のスライド。Go テンプレートとスライドの種類に対応します。"
 
 enableRobotsTXT: true
 # Git history dates every page: "Last updated on" at the bottom of each page.
@@ -62,24 +122,30 @@ module:
 
 menu:
   main:
-    # Navbar, left to right: version, theme, search, sources.
+    # Navbar, left to right: version, language, theme, search, sources.
     - name: Version
       weight: 3
       params:
         type: partial
         partial: custom/version-select.html
-    - name: Theme
+    - name: Language
       weight: 4
+      params:
+        type: language-switch
+        label: true
+        icon: translate
+    - name: Theme
+      weight: 5
       params:
         type: theme-toggle
         combo: true
     - name: Search
-      weight: 5
+      weight: 6
       params:
         type: search
     - name: GitHub
       url: https://github.com/go-slides/slides
-      weight: 6
+      weight: 7
       params:
         icon: github
 
@@ -98,6 +164,10 @@ params:
   # then the release's tag, so that the gallery matches the pages.
   gallery:
     ref: "main"
+  # The language switch shows the translate icon, then the language's flag.
+  # It appears once a second language is declared (languages: above).
+  languageSwitch:
+    icon: translate
   versions:
     # The version selector shows "main" with the development icon.
     development: "main"
