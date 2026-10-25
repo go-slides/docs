@@ -29,6 +29,22 @@
  * stays on screen at the end of the navbar. */
 .fs-version-select .hextra-nav-menu-items { left: auto !important; right: 0; transform: none !important; }
 
+/* The gallery (layouts/_shortcodes/gallery.html): a card per deck. */
+.gallery { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); margin-top: 1.5rem; }
+.gallery-card { border: 1px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem; min-width: 0; }
+.dark .gallery-card { border-color: #374151; }
+.gallery-thumb img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 0.5rem; border: 1px solid #e5e7eb; }
+.gallery-card h3 { margin: 0.75rem 0 0; font-size: 1.1rem; }
+.gallery-card p { margin: 0.4rem 0 0; }
+.gallery-meta { font-size: 0.8rem; opacity: 0.7; }
+.gallery-actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+.gallery-open { background: #4F46E5; color: #fff; padding: 0.25rem 0.75rem; border-radius: 0.375rem; font-weight: 600; text-decoration: none; }
+.gallery-open:hover { background: #4338ca; }
+.gallery-note { font-size: 0.85rem; }
+.gallery-card details { margin-top: 0.6rem; }
+.gallery-card summary { cursor: pointer; font-weight: 600; }
+.gallery-card pre { max-height: 24rem; overflow: auto; }
+
 /* The outdated-version banner (layouts/_partials/custom/content-begin.html). */
 .nd-outdated { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 0.5rem;
   border: 1px solid #f59e0b; background: #fffbeb; color: #78350f; }
