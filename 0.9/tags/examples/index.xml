@@ -86,7 +86,7 @@ that use them say so.&lt;/p&gt;
 &lt;p class="gallery-meta"&gt;4 slides&lt;/p&gt;
 &lt;p&gt;Marp&amp;#39;s gaia theme, warm and bold, with lead slides for covers and chapter breaks.&lt;/p&gt;
 &lt;p class="gallery-actions"&gt;
-&lt;a class="gallery-open" href="https://go-slides.github.io/playground/#deck=fJLBihNBEIbv_RS_5CA0mTxAEGH1IILiQWGPbmW6MtOk0zVU1yTmybz7ZNI9E3ZZ0ON0Vf3_X99U13WupBi47GE6s7ORz7zHQJHcREPMZHwvRUu8x4-RWxmt1QUuvcbJouQ9vpJOb8uL8hZX0jMoBxwkhS2u0UYkpoDFFkdR9HJhLa2rH2kyVhyU6VR27ihirHsM0q0Df36_tK8LuHdvug4_-0Sl7Bfxrnvv3OZ1VvdYw0w0sW5RTCUPGJlCzEPZgpYcS7CdW6Q3G3yUbJxtDezcpypY2AqoTl9udw20cVpWPlB_GlTmfF-6yieZlQMOdVPJNZVLfDTIEaIhZtLbalP98dmgTKHgyinhqHKuI026jhBU5Ow6fJhTqnmK0Q1lFDXX4VtmxMCE6b6T-xetmC-stkLb4AtT2K6PHJyrFL2vnd6jzaHnbMoFtNLCQwjwfpnxvv1VQiA9QfJLmN8nMYSo3Fu8VJoPz18rp4w5B9bSizKK3RIXeG9jLIsZJKeb9zs8RhtlNkTbNpTPQj2pRi6NsdTa_droaKw7556ens6kpyDX_H8em8Zxxdc6X59ZvbJYrbgdcDXL_MvqQ6k-7u8A"&gt;Open in the playground&lt;/a&gt;
+&lt;a class="gallery-open" href="https://go-slides.github.io/playground/#deck=fJLBqttADEX38xW3ZFEIcT4glMJrF6XQ0kULb1krHtkeMhkZjZw0X9Z9v6zM2OGFB-3SI-neq2M1TeNyDJ7zAaYzOxv5zAcMFMhNNIRExvdSsMgH_Bi5llFbnefcaZgsSDrgK-n0Nj-Ud7iSnkHJ4yjR73ANNiIyeSy26EXRyYU1165upMlYcVSmU967XsRYDxikWQf-_H60Lwu4d2-aBj-7SDkfFvGmee_c5nVW91zCTDSx7pBNJQ0YmXxIQ96BlhxLsL1bpDcbfJRknGwN7NynIpjZMqhMX253DdRxWlY-UncaVOZ0X7rIR5mVPY5lU0kllYvcG6SHqA-J9LbaFH98NiiTz7hyjOhVzmWkSpcRgoqcXYMPc4wlTza6IY-i5hp8S4zgmTDdd3L_ohXShdVWaBt8YfK79ZG9c4ViWxpb1Cl0nEw5g1ZWePIe7TLQ1j9K8KQnSHoE-X0Sgw_KnYVLIfn08rUySpiTZ82dKCPbLXLGdmtjyIsVJMXbdrvHc7BRZkOwXcX4ItSRauBc-Uqp3S-NemPdO9e27Zn05OWa_s9iUxmu6Grn6xMrFxaKFdfjLWaJf1l5yMXH_R0A"&gt;Open in the playground&lt;/a&gt;
 &lt;a href="https://github.com/go-slides/slides/tree/main/examples/theme-gaia"&gt;Source on GitHub&lt;/a&gt;
 &lt;/p&gt;
 &lt;details&gt;
@@ -123,7 +123,7 @@ that use them say so.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gu"&gt;## Lead, inverted
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The &lt;span class="gs"&gt;**lead**&lt;/span&gt; class centres a slide. Add &lt;span class="gs"&gt;**invert**&lt;/span&gt; for a dark one.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The &lt;span class="sb"&gt;`lead`&lt;/span&gt; class centres a slide. Add &lt;span class="sb"&gt;`invert`&lt;/span&gt; for a dark one.
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
@@ -244,10 +244,10 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| Kind | What it is |
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| --------- | --------------------------------------------- |
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="gs"&gt;**title**&lt;/span&gt; | a cover: no header, footer or page number |
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="gs"&gt;**section**&lt;/span&gt; | a chapter break |
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="gs"&gt;**content**&lt;/span&gt; | the deck&amp;#39;s defaults |
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="gs"&gt;**blank**&lt;/span&gt; | nothing around the content |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="sb"&gt;`title`&lt;/span&gt; | a cover: no header, footer or page number |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="sb"&gt;`section`&lt;/span&gt; | a chapter break |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="sb"&gt;`content`&lt;/span&gt; | the deck&amp;#39;s defaults |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;| &lt;span class="sb"&gt;`blank`&lt;/span&gt; | nothing around the content |
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
@@ -255,8 +255,8 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gu"&gt;## Our own kinds
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The file &lt;span class="gs"&gt;**kinds/brand.yaml**&lt;/span&gt; defines &lt;span class="gs"&gt;**chapter**&lt;/span&gt;, &lt;span class="gs"&gt;**callout**&lt;/span&gt; and &lt;span class="gs"&gt;**quote**&lt;/span&gt;.
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;This slide is a &lt;span class="gs"&gt;**callout**&lt;/span&gt;: a warm background and a header, from one word.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The file &lt;span class="sb"&gt;`kinds/brand.yaml`&lt;/span&gt; defines &lt;span class="sb"&gt;`chapter`&lt;/span&gt;, &lt;span class="sb"&gt;`callout`&lt;/span&gt; and &lt;span class="sb"&gt;`quote`&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;This slide is a &lt;span class="sb"&gt;`callout`&lt;/span&gt;: a warm background and a header, from one word.
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
@@ -536,15 +536,15 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;bg left:40%&lt;/span&gt;](&lt;span class="na"&gt;media/grid.svg&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;bg right:40%&lt;/span&gt;](&lt;span class="na"&gt;media/grid.svg&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gu"&gt;## A split background
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```markdown
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;bg left:40%&lt;/span&gt;](&lt;span class="na"&gt;media/grid.svg&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;bg right:40%&lt;/span&gt;](&lt;span class="na"&gt;media/grid.svg&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The image takes the left 40% and the text flows into the rest.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The image takes the right 40% (&lt;span class="sb"&gt;`left`&lt;/span&gt; takes the left) and the text flows into the rest.
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
@@ -883,7 +883,7 @@ or import the .zip with the playground's &lt;em&gt;Import&lt;/em&gt;.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cm"&gt;&amp;lt;!-- _kind: title --&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;bg left:38%&lt;/span&gt;](&lt;span class="na"&gt;media/hills.svg&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;bg right:38%&lt;/span&gt;](&lt;span class="na"&gt;media/hills.svg&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Decks are code
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;

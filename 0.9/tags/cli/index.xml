@@ -518,6 +518,69 @@ or a rotation, a blurred &lt;code&gt;box-shadow&lt;/code&gt;, a gradient whose o
 drawn as a bitmap of that element only, its text laid over it invisibly so it
 stays selectable. Formulas are still bitmaps. &lt;code&gt;--pdf-raster&lt;/code&gt; writes one image
 per page, as v0.3.0 did.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Accessible, tagged PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
+&lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;After v0.9.0 the vector PDF is tagged. It carries its logical structure, which
+a screen reader reads in order, as it reads a web page:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;In the deck&lt;/th&gt;
+&lt;th&gt;In the PDF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;a slide&lt;/td&gt;
+&lt;td&gt;a section (&lt;code&gt;Sect&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;#&lt;/code&gt; … &lt;code&gt;######&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;H1&lt;/code&gt; … &lt;code&gt;H6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a paragraph, a list, a table&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;P&lt;/code&gt;; &lt;code&gt;L&lt;/code&gt; with each item&amp;rsquo;s label and body; &lt;code&gt;Table&lt;/code&gt;, header cells with their scope&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a link&lt;/td&gt;
+&lt;td&gt;a &lt;code&gt;Link&lt;/code&gt;, its clickable area included, its text as its description&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;an image&lt;/td&gt;
+&lt;td&gt;a &lt;code&gt;Figure&lt;/code&gt; with its alt text; &lt;code&gt;![](…)&lt;/code&gt; with no alt text is decoration&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;a &lt;code&gt;Formula&lt;/code&gt;, its TeX source as its description&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;code&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Code&lt;/code&gt;, without its line numbers or callout discs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;span lang=&amp;quot;fr&amp;quot;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;a span in that language&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;backgrounds, borders, page numbers&lt;/td&gt;
+&lt;td&gt;artifacts, which a reader skips&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;speaker notes (&lt;code&gt;--pdf-notes&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;annotations in the structure&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The file declares PDF/UA-1, the standard for accessible PDF. It carries the
+deck&amp;rsquo;s &lt;code&gt;title&lt;/code&gt;, which the viewer shows, and its &lt;code&gt;lang&lt;/code&gt; (&lt;code&gt;--lang&lt;/code&gt; when the deck
+sets none, &lt;code&gt;en&lt;/code&gt; otherwise).&lt;/p&gt;
+&lt;p&gt;A deck checked with veraPDF passes PDF/UA-1, unless its own headings break
+the standard&amp;rsquo;s order. PDF/UA asks that the first heading be an &lt;code&gt;H1&lt;/code&gt; and that
+no level be skipped (&lt;code&gt;#&lt;/code&gt; then &lt;code&gt;###&lt;/code&gt;). Only the deck&amp;rsquo;s author can fix that.
+Chrome&amp;rsquo;s PDF of the same deck, which marp-cli writes, is tagged too, but fails
+seven of PDF/UA&amp;rsquo;s rules, has no section per slide and no formulas.&lt;/p&gt;
+&lt;p&gt;Tagging the 100-slide benchmark deck costs 4% in size (788 against 757 KiB)
+and no measurable time. &lt;code&gt;--pdf-tags=false&lt;/code&gt; writes the PDF without tags.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
 &lt;a href="#slidesyaml" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A configuration file next to the deck applies to it, so a folder of decks
 shares one:&lt;/p&gt;
