@@ -96,6 +96,18 @@ jobs:
           go test ./...
           go run . -src ../../slides-src -out ../..
 
+      # The translations pair up with the English pages: every page of
+      # content/en exists in each language of hugo.yaml, and a translation keeps
+      # the code, the shortcodes, the link targets and the headings' anchors the
+      # English page has. A missing page fails here, before the build.
+      - name: Check the translations
+        env:
+          GOWORK: "off"
+        working-directory: tools/i18n
+        run: |
+          go test ./...
+          go run . -root ../..
+
       # Each page's creation (first commit, followed across renames) and its
       # author, for the page history at its foot (params.page.history).
       - name: Page history
@@ -111,6 +123,15 @@ jobs:
         run: >-
           hugo --gc --minify --panicOnWarning --printPathWarnings
           --baseURL "${DOCS_URL}/${{ steps.version.outputs.version }}/"
+
+      # In the built site, each translated page's headings have the ids of the
+      # English page's, so that a link into a page reaches the same place in
+      # every language.
+      - name: Check the translated anchors
+        env:
+          GOWORK: "off"
+        working-directory: tools/i18n
+        run: go run . -root ../.. -built ../../public
 
       # Internal links and anchors, offline, with the site laid out under
       # /docs/<version>/ as it is served.

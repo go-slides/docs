@@ -29,6 +29,27 @@
  * stays on screen at the end of the navbar. */
 .fs-version-select .hextra-nav-menu-items { left: auto !important; right: 0; transform: none !important; }
 
+/* The navbar's language switch: its flag at the size of the other icons. */
+.hextra-language-switcher[data-location="top"] img { width: 18px; height: 13.5px; }
+
+/* Chinese, Japanese and Korean: the system font stack (Hextra's own, which
+ * leaves the choice to the system) with the CJK system fonts named after
+ * system-ui, so that each language's glyph variants are found on macOS, iOS,
+ * Windows, Android and Linux. lang tells the browser which variants of the
+ * Han characters shared by the three languages to draw. */
+html:lang(zh-Hans) {
+  --hx-font-sans: ui-sans-serif, system-ui, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+}
+html:lang(ja) {
+  --hx-font-sans: ui-sans-serif, system-ui, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans CJK JP", "Source Han Sans JP", Meiryo, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+}
+html:lang(ko) {
+  --hx-font-sans: ui-sans-serif, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK KR", "Source Han Sans KR", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+}
+/* Long unbroken runs (a heading, a table cell) wrap rather than overflow. */
+html:lang(zh-Hans) .content, html:lang(ja) .content, html:lang(ko) .content { overflow-wrap: break-word; }
+html:lang(ja) .content, html:lang(zh-Hans) .content { line-break: strict; }
+
 /* The gallery (layouts/_shortcodes/gallery.html): a card per deck. */
 .gallery { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); margin-top: 1.5rem; }
 .gallery-card { border: 1px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem; min-width: 0; }

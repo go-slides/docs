@@ -1,6 +1,8 @@
 {{- /*
   The gallery of example decks, from data/gallery.json and static/gallery/,
-  which tools/gallery writes before every build (CI and local).
+  which tools/gallery writes before every build (CI and local). The page's
+  words are the language's (i18n/<lang>.yaml); the decks' titles and
+  descriptions are the English ones of their front matter, as are the decks.
 */ -}}
 {{- $items := hugo.Data.gallery -}}
 {{- if not $items -}}
@@ -10,25 +12,24 @@
 {{- range $items }}
   <article class="gallery-card" id="{{ .name }}">
     <a class="gallery-thumb" href="{{ .thumbnail | relURL }}">
-      <img src="{{ .thumbnail | relURL }}" alt="The first slide of “{{ .title }}”" width="640" height="360" loading="lazy">
+      <img src="{{ .thumbnail | relURL }}" alt="{{ i18n "galleryAlt" (dict "title" .title) }}" width="640" height="360" loading="lazy">
     </a>
     <h3><a href="#{{ .name }}">{{ .title }}</a></h3>
-    <p class="gallery-meta">{{ .slides }} slides</p>
+    <p class="gallery-meta">{{ i18n "gallerySlides" (int .slides) }}</p>
     <p>{{ .description }}</p>
     <p class="gallery-actions">
       {{- if .playground }}
-      <a class="gallery-open" href="{{ .playground | safeURL }}">Open in the playground</a>
+      <a class="gallery-open" href="{{ .playground | safeURL }}">{{ i18n "galleryOpen" }}</a>
       {{- end }}
       {{- if .zip }}
-      <a class="gallery-open" href="{{ .zip | relURL }}">Download the .zip</a>
+      <a class="gallery-open" href="{{ .zip | relURL }}">{{ i18n "galleryZip" }}</a>
       {{- end }}
-      <a href="{{ .repo }}">Source on GitHub</a>
+      <a href="{{ .repo }}">{{ i18n "gallerySource" }}</a>
     </p>
     {{- if .zip }}
-    <p class="gallery-note">This deck has files besides <code>deck.md</code>
-      ({{ range $i, $f := .files }}{{ if $i }}, {{ end }}<code>{{ $f }}</code>{{ end }}),
-      so it cannot travel in a link: unzip it and run <code>slides build --allow-local-files deck.md</code>,
-      or import the .zip with the playground's <em>Import</em>.</p>
+    {{- $files := slice -}}
+    {{- range .files }}{{ $files = $files | append (printf "<code>%s</code>" .) }}{{ end }}
+    <p class="gallery-note">{{ i18n "galleryNote" (dict "files" (delimit $files ", " | safeHTML)) | safeHTML }}</p>
     {{- end }}
     <details>
       <summary>deck.md</summary>

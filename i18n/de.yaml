@@ -1,0 +1,15 @@
+# Zeichenketten der Website, zusätzlich zu denen von Hextra (themes/hextra/i18n/de.yaml).
+copyright: "© 2026 die Autoren von go-slides · BSD-3-Clause"
+version: "Version"
+outdated: "Sie lesen die Dokumentation einer veralteten Version; ihr Inhalt ist möglicherweise nicht mehr korrekt."
+outdatedLink: "Zur neuesten Version."
+
+# Die Galerie-Seite (layouts/_shortcodes/gallery.html).
+gallerySlides:
+  one: "{{ .Count }} Folie"
+  other: "{{ .Count }} Folien"
+galleryAlt: "Erste Folie von „{{ .title }}“"
+galleryOpen: "Im Playground öffnen"
+galleryZip: ".zip herunterladen"
+gallerySource: "Quelle auf GitHub"
+galleryNote: "Dieser Foliensatz enthält neben <code>deck.md</code> weitere Dateien ({{ .files }}) und passt deshalb nicht in einen Link: Entpacken Sie ihn und führen Sie <code>slides build --allow-local-files deck.md</code> aus, oder importieren Sie die .zip-Datei mit <em>Import</em> im Playground."

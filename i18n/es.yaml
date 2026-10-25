@@ -1,0 +1,15 @@
+# Cadenas del sitio, además de las de Hextra (themes/hextra/i18n/es.yaml).
+copyright: "© 2026 los autores de go-slides · BSD-3-Clause"
+version: "Versión"
+outdated: "Está leyendo la documentación de una versión obsoleta; es posible que su contenido ya no sea exacto."
+outdatedLink: "Ir a la última versión."
+
+# La página Galería (layouts/_shortcodes/gallery.html).
+gallerySlides:
+  one: "{{ .Count }} diapositiva"
+  other: "{{ .Count }} diapositivas"
+galleryAlt: "Primera diapositiva de «{{ .title }}»"
+galleryOpen: "Abrir en el playground"
+galleryZip: "Descargar el .zip"
+gallerySource: "Código fuente en GitHub"
+galleryNote: "Esta presentación tiene archivos además de <code>deck.md</code> ({{ .files }}), por lo que no cabe en un enlace: descomprímala y ejecute <code>slides build --allow-local-files deck.md</code>, o importe el .zip con <em>Import</em> en el playground."

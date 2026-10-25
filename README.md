@@ -41,6 +41,10 @@ against that release (flags from its `slides -h`).
 | `assets/css/custom.css` | the brand indigo as Hextra's primary colour, with its contrast measured |
 | `themes/hextra` | submodule: tannevaled/hextra at tag v0.16.0 |
 | `branding` | submodule: [go-slides/brand](https://github.com/go-slides/brand) |
+| `content/<lang>/` | the translations (fr, de, es, zh, ko, ja), with the English file names; Chinese is Simplified (`zh-Hans`). Code, flags, directive names and file names stay as in English; each translated heading carries the English heading's `{#anchor}` |
+| `tools/i18n` | a Go program (stdlib only, with tests): the CI fails when a page of `content/en` is missing in a language of `hugo.yaml` (or exists only in a translation), and warns when a translation changes code, shortcodes, link targets or anchors (`-strict` fails on those too); `-fix` adds the anchors, `-built public` compares the built site's heading ids with the English ones |
+| `static/images/flags` | the language flags, lipis/flag-icons (MIT) |
+| `layouts/baseof.html` | Hextra's, with `lang` taken from the language's `locale` (`zh-Hans`) |
 | `tools/gallery` | a Go program (stdlib only, with tests) that renders the gallery: it reads go-slides/slides' `examples/`, renders each deck's first slide with the slides command, and writes `data/gallery.json` and `static/gallery/` (both ignored by git) |
 | `layouts/_shortcodes/gallery.html` | the gallery page's cards, from `data/gallery.json` |
 | `scripts/publish-version.sh` | puts one build into a `gh-pages` checkout and rewrites `versions.json`, `latest` and the root redirect |
