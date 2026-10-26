@@ -140,9 +140,8 @@ decks.example.org {
 プロキシとそのサインインを素通りしてしまいます。
 
 {{< callout type="info" >}}
-`--allowed-host` は v0.13.0 の後に入りました。次のリリースまでは、
-それを含むコミットをインストールしてください。
-`go install github.com/go-slides/slides/cmd/slides@v0.13.1-0.20261026090714-2e1da79f663e`
+`--allowed-host` は v0.14.0 以降にあります。
+`go install github.com/go-slides/slides/cmd/slides@v0.14.0`
 {{< /callout >}}
 
 ## OpenID Connect によるサインイン {#sign-in-with-openid-connect}

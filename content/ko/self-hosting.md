@@ -140,9 +140,8 @@ decks.example.org {
 프록시와 로그인을 우회하게 됩니다.
 
 {{< callout type="info" >}}
-`--allowed-host`는 v0.13.0 이후에 들어왔습니다. 다음 릴리스가 나올 때까지는
-이 옵션이 포함된 커밋을 설치하십시오.
-`go install github.com/go-slides/slides/cmd/slides@v0.13.1-0.20261026090714-2e1da79f663e`.
+`--allowed-host`는 v0.14.0부터 들어 있습니다.
+`go install github.com/go-slides/slides/cmd/slides@v0.14.0`.
 {{< /callout >}}
 
 ## OpenID Connect로 로그인 {#sign-in-with-openid-connect}

@@ -14,7 +14,7 @@ go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` 是一个不使用 cgo 的静态 Go 二进制文件：无需安装其他任何东西，
-不需要 Node，也不需要 Chrome。本页描述的是 v0.13.0。
+不需要 Node，也不需要 Chrome。本页描述的是 v0.14.0。
 
 ## 第一个演示文稿 {#a-first-deck}
 

@@ -141,9 +141,8 @@ decks.example.org {
 绕过代理及其登录。
 
 {{< callout type="info" >}}
-`--allowed-host` 出现在 v0.13.0 之后。在下一个版本发布之前，请安装
-包含它的提交：
-`go install github.com/go-slides/slides/cmd/slides@v0.13.1-0.20261026090714-2e1da79f663e`。
+`--allowed-host` 自 v0.14.0 起提供：
+`go install github.com/go-slides/slides/cmd/slides@v0.14.0`。
 {{< /callout >}}
 
 ## 使用 OpenID Connect 登录 {#sign-in-with-openid-connect}

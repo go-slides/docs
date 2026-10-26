@@ -147,9 +147,8 @@ Konfiguration weiter). Verwenden Sie dafür nicht `--host 0.0.0.0`: Das stellt d
 Verzeichnis dem ganzen Netzwerk bereit, am Proxy und seiner Anmeldung vorbei.
 
 {{< callout type="info" >}}
-`--allowed-host` kommt nach v0.13.0. Bis zum nächsten Release installieren Sie
-den Commit, der es enthält:
-`go install github.com/go-slides/slides/cmd/slides@v0.13.1-0.20261026090714-2e1da79f663e`.
+`--allowed-host` gibt es ab v0.14.0:
+`go install github.com/go-slides/slides/cmd/slides@v0.14.0`.
 {{< /callout >}}
 
 ## Anmeldung mit OpenID Connect {#sign-in-with-openid-connect}
