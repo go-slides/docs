@@ -164,6 +164,9 @@ each frame makes its own `blob:` URLs of them, in its own origin. A `blob:`
 URL made by the playground does not load there, and the frames' policy
 gains only `blob:` for media and fonts.
 
+The playground can be served from your own machine, behind a sign-in:
+see [Self-hosting]({{< relref "self-hosting" >}}).
+
 ## Size and speed
 
 The module is 8.8 MiB as GitHub Pages serves it (gzip; Pages does not

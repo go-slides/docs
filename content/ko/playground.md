@@ -157,6 +157,9 @@ Marp 허용 목록을 따릅니다. 5초 넘게 걸리는 렌더링(무한 반�
 URL은 그 안에서 로드되지 않으며, 프레임 정책에는 미디어와 글꼴용 `blob:`만
 추가됩니다.
 
+Playground는 로그인 뒤에서 자신의 컴퓨터로 서비스할 수 있습니다.
+[셀프 호스팅]({{< relref "self-hosting" >}})을 참고하세요.
+
 ## 크기와 속도 {#size-and-speed}
 
 모듈은 GitHub Pages가 제공하는 상태(gzip, Pages는 brotli를 제공하지 않음)로

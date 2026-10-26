@@ -175,6 +175,9 @@ cada marco crea con ellos sus propias URL `blob:`, en su propio origen. Una URL
 `blob:` creada por el playground no se carga allí, y la política de los marcos
 solo añade `blob:` para medios y fuentes.
 
+El playground puede servirse desde su propio equipo, detrás de un inicio de
+sesión: consulte [Autoalojamiento]({{< relref "self-hosting" >}}).
+
 ## Tamaño y velocidad {#size-and-speed}
 
 El módulo pesa 8,8 MiB tal como lo sirve GitHub Pages (gzip; Pages no sirve

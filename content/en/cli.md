@@ -43,6 +43,7 @@ otherwise.
 | `-s`, `--server dir` | `build` | serve a directory, converting its decks on request (in v0.6.0); see below |
 | `-p`, `--preview` | `build` | open the result in the default browser (in v0.6.0): the HTML pages with `--watch` (implied), the server with `--server` |
 | `--host addr` | `build` | the address `--server` listens on, `127.0.0.1` by default (in v0.6.0) |
+| `--allowed-host name` | `build` | a reverse proxy's public host name that `--server` answers to, repeatable (after v0.13.0); see [Self-hosting]({{< relref "self-hosting" >}}) |
 | `--template bespoke\|bare` | `build` | the HTML page's template (in v0.6.0): `bespoke`, the default, with the presenting script, on-screen controller and transitions, or `bare`, the slides stacked (`--bare`) |
 | `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | the bespoke template's options, with marp-cli's defaults (in v0.6.0): controller on, **progress bar off** (it was always drawn before), transitions on; `--bespoke.osc=false` turns one off |
 | `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli's configuration file, JSON or YAML (in v0.6.0); see below. `--config` is `slides`' own file |
@@ -228,6 +229,12 @@ listens on every interface and checks nothing:
   served;
 - only `GET` and `HEAD`; a few conversions at once; at most 4096 directories
   watched, and none in `node_modules` or under a dot.
+
+Behind a reverse proxy, `--allowed-host name` (after v0.13.0, repeatable)
+adds the proxy's public name to the accepted `Host` and `Origin`; the checks
+stay on and the server stays on the loopback.
+[Self-hosting]({{< relref "self-hosting" >}}) puts it behind Caddy, with
+HTTPS and a sign-in.
 
 ## Page metadata
 

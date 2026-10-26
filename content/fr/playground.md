@@ -163,6 +163,9 @@ chaque cadre en fait ses propres URL `blob:`, dans sa propre origine. Une URL `b
 créée par le playground ne s'y charge pas, et la politique des cadres
 n'ajoute que `blob:` pour les médias et les polices.
 
+Le playground peut être servi depuis votre propre machine, derrière une
+authentification : voir [Auto-hébergement]({{< relref "self-hosting" >}}).
+
 ## Taille et vitesse {#size-and-speed}
 
 Le module pèse 8,8 Mio tel que GitHub Pages le sert (gzip ; Pages ne

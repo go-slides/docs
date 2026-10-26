@@ -158,6 +158,9 @@ iframe はストレージを共有できないので、Playground がメッセ�
 各フレームは自身のオリジンで、それぞれ独自の `blob:` URL を作成します。Playground が作成した `blob:`
 URL はそこでは読み込まれず、フレームのポリシーに追加されるのは、メディアとフォント向けの `blob:` だけです。
 
+Playground は、サインインを必須にしたうえで、自分のマシンから配信することもできます。詳しくは
+[セルフホスティング]({{< relref "self-hosting" >}})を参照してください。
+
 ## サイズと速度 {#size-and-speed}
 
 モジュールは、GitHub Pages が配信する状態で 8.8 MiB です（gzip。Pages は
