@@ -189,6 +189,8 @@ Ursprung des Playgrounds.&lt;/p&gt;
 jeder Frame erzeugt daraus seine eigenen &lt;code&gt;blob:&lt;/code&gt;-URLs, in seinem eigenen Ursprung. Eine &lt;code&gt;blob:&lt;/code&gt;-URL, die vom Playground
 erzeugt wurde, lädt dort nicht, und die Richtlinie der Frames
 erhält lediglich &lt;code&gt;blob:&lt;/code&gt; für Medien und Schriften hinzu.&lt;/p&gt;
+&lt;p&gt;Der Playground kann von Ihrem eigenen Rechner aus bereitgestellt werden, hinter
+einer Anmeldung: siehe &lt;a href="https://go-slides.github.io/docs/0.13/de/self-hosting/"&gt;Self-Hosting&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;Größe und Geschwindigkeit&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Das Modul umfasst 8,8 MiB, wie GitHub Pages es ausliefert (gzip; Pages liefert
 kein Brotli aus). Es wird einmal mit Fortschrittsbalken heruntergeladen und dann vom
@@ -197,4 +199,359 @@ an der Live-Seite, ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon
 für den Download, und die ersten Folien erscheinen nach 2,4 s. Eine Änderung am
 Benchmark-Foliensatz mit 100 Folien erreicht die Vorschau in etwa 30 ms: go-slides
 rendert nur die Folien neu, die sich geändert haben, und nur diese werden in der
-Vorschau ersetzt.&lt;/p&gt;</description></item></channel></rss>
+Vorschau ersetzt.&lt;/p&gt;</description></item><item><title>Self-Hosting</title><link>https://go-slides.github.io/docs/0.13/de/self-hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.13/de/self-hosting/</guid><description>
+&lt;p&gt;Der &lt;a href="https://go-slides.github.io/docs/0.13/de/playground/"&gt;Playground&lt;/a&gt; besteht aus statischen Dateien, und
+&lt;a href="https://go-slides.github.io/docs/0.13/de/cli/"&gt;&lt;code&gt;slides --server&lt;/code&gt;&lt;/a&gt; ist ein einzelner Prozess auf dem Loopback. Beide
+können auf Ihrem eigenen Rechner laufen, unter Ihrem eigenen Namen, für Personen, die sich
+mit dem Konto Ihrer Organisation anmelden. Diese Seite richtet das ein mit
+&lt;a href="https://caddyserver.com/docs/" target="_blank" rel="noopener"&gt;Caddy&lt;/a&gt; (getestet mit v2.11.7), der die HTTPS-Zertifikate
+selbst bezieht und erneuert, und
+&lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/" target="_blank" rel="noopener"&gt;oauth2-proxy&lt;/a&gt; für die
+Anmeldung. Jede hier gezeigte Datei liegt in
+&lt;a href="https://github.com/go-slides/go-slides.github.io/tree/main/selfhost" target="_blank" rel="noopener"&gt;&lt;code&gt;selfhost/&lt;/code&gt;&lt;/a&gt;,
+und deren CI prüft jedes Caddyfile mit &lt;code&gt;caddy validate&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-playground"&gt;Der Playground&lt;span class="hx:absolute hx:-mt-20" id="the-playground"&gt;&lt;/span&gt;
+&lt;a href="#the-playground" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Jedes Release der Website hängt die ganze Website samt Playground als
+ein Tarball an, gebaut für die Wurzel einer Domain, mit seiner SHA-256:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz.sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sha256sum -c go-slides-site-v0.1.0.tar.gz.sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xzf go-slides-site-v0.1.0.tar.gz -C /srv
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mv /srv/go-slides-site-v0.1.0 /srv/go-slides-site&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Der Tarball ist reproduzierbar: Wer denselben Tag erneut baut, erhält dieselben
+Bytes. Neben jeder Datei, die sich komprimieren lässt (die WebAssembly-Module, die
+Schriften, die Seiten, die Skripte), liegt dieselbe Datei komprimiert mit
+Brotli (&lt;code&gt;.br&lt;/code&gt;) und gzip (&lt;code&gt;.gz&lt;/code&gt;), sodass der Server sie unverändert sendet und
+nichts im laufenden Betrieb komprimiert.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="caddyfile"&gt;Caddyfile&lt;span class="hx:absolute hx:-mt-20" id="caddyfile"&gt;&lt;/span&gt;
+&lt;a href="#caddyfile" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;slides.example.org&lt;/code&gt; ist Ihr Name. Seine A- und AAAA-Einträge zeigen auf den
+Rechner, und die Ports 80 und 443 erreichen Caddy:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="vm"&gt;headers.caddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;slides.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;root&lt;/span&gt; &lt;span class="nd"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/srv/go-slides-site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;file_server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;precompressed&lt;/span&gt; &lt;span class="s"&gt;br&lt;/span&gt; &lt;span class="s"&gt;gzip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; playground_headers
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;caddy run --config Caddyfile.playground&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Der Playground liegt dann unter &lt;code&gt;https://slides.example.org/playground/&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="what-the-server-must-get-right"&gt;Was der Server richtig machen muss&lt;span class="hx:absolute hx:-mt-20" id="what-the-server-must-get-right"&gt;&lt;/span&gt;
+&lt;a href="#what-the-server-must-get-right" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTTPS.&lt;/strong&gt; Caddy bezieht das Zertifikat von Let&amp;rsquo;s Encrypt per ACME
+(&lt;a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener"&gt;RFC 8555&lt;/a&gt;), beweist den Besitz
+des Namens, indem es auf Port 80 (HTTP-01) oder 443 (TLS-ALPN-01) antwortet, und
+erneuert es. Ein Rechner, den die CA nicht erreichen kann, kann stattdessen die
+DNS-01-Challenge nutzen (ein TXT-Eintrag, wofür ein Caddy mit dem Modul Ihres
+DNS-Anbieters gebaut sein muss) oder ein eigenes Zertifikat mit &lt;code&gt;tls cert.pem key.pem&lt;/code&gt;.
+Auf einem Testrechner verwendet &lt;code&gt;tls internal&lt;/code&gt; die lokale CA von Caddy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;application/wasm&lt;/code&gt;.&lt;/strong&gt; Caddy sendet diesen Typ für &lt;code&gt;.wasm&lt;/code&gt;; ein anderer Server
+muss es möglicherweise ausdrücklich gesagt bekommen. Der Playground kompiliert seine Module aus den Bytes, die er
+gelesen hat (die Export-Engine schon beim Herunterladen, in einer eigenen Antwort
+mit diesem Typ), er startet also auch von einem Server, der einen anderen Typ sendet;
+mit &lt;code&gt;nosniff&lt;/code&gt; ist der richtige Typ trotzdem der, den man senden sollte.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kompression.&lt;/strong&gt; &lt;code&gt;precompressed br gzip&lt;/code&gt; sendet &lt;code&gt;playground.wasm.br&lt;/code&gt; an einen
+Browser, der Brotli akzeptiert, &lt;code&gt;.gz&lt;/code&gt; an einen, der gzip akzeptiert, und sonst die Datei
+selbst, mit &lt;code&gt;Vary: Accept-Encoding&lt;/code&gt;. Das Modul des Editors hat
+mit Brotli etwa 7 MiB, unkomprimiert 33 MiB.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching.&lt;/strong&gt; Die Seite fordert jedes Modul, jeden Worker, jede Schrift und jedes Bild
+mit dem Release in der Query an (&lt;code&gt;playground.wasm?v=v0.1.0&lt;/code&gt;), daher können diese
+ein Jahr lang aufbewahrt werden (&lt;code&gt;immutable&lt;/code&gt;). Die Seiten selbst werden neu validiert
+(&lt;code&gt;no-cache&lt;/code&gt;): Ein neues Release ist beim nächsten Besuch zu sehen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Die Header in &lt;code&gt;headers.caddy&lt;/code&gt;:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;(playground_headers)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Content-Security-Policy&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default-src &amp;#39;self&amp;#39;; script-src &amp;#39;self&amp;#39; &amp;#39;unsafe-inline&amp;#39; &amp;#39;wasm-unsafe-eval&amp;#39;; worker-src &amp;#39;self&amp;#39;; connect-src &amp;#39;self&amp;#39; https:; img-src &amp;#39;self&amp;#39; data: blob: https:; media-src &amp;#39;self&amp;#39; data: blob: https:; style-src &amp;#39;self&amp;#39; &amp;#39;unsafe-inline&amp;#39; https:; font-src &amp;#39;self&amp;#39; data: blob: https:; frame-src &amp;#39;self&amp;#39;; object-src &amp;#39;none&amp;#39;; base-uri &amp;#39;none&amp;#39;; form-action &amp;#39;none&amp;#39;; frame-ancestors &amp;#39;self&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;X-Content-Type-Options&lt;/span&gt; &lt;span class="s"&gt;nosniff&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Referrer-Policy&lt;/span&gt; &lt;span class="s"&gt;no-referrer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Strict-Transport-Security&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;max-age=31536000&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@versioned&lt;/span&gt; &lt;span class="k"&gt;query&lt;/span&gt; &lt;span class="s"&gt;v=*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="nd"&gt;@versioned&lt;/span&gt; &lt;span class="s"&gt;Cache-Control&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;public, max-age=31536000, immutable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@unversioned&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;query&lt;/span&gt; &lt;span class="s"&gt;v=*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="nd"&gt;@unversioned&lt;/span&gt; &lt;span class="s"&gt;Cache-Control&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;no-cache&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Die Richtlinie ist die, die der Playground braucht: seine Skripte (der Loader ist
+inline), sein WebAssembly (&lt;code&gt;'wasm-unsafe-eval'&lt;/code&gt;) und sein Worker, alle von
+Ihrem Server. Bilder, Stylesheets und Schriften einer Präsentation dürfen von jeder
+&lt;code&gt;https:&lt;/code&gt;-Adresse kommen, wie in der Ausgabe des Befehls; entfernen Sie &lt;code&gt;https:&lt;/code&gt; aus
+&lt;code&gt;img-src&lt;/code&gt;, &lt;code&gt;style-src&lt;/code&gt;, &lt;code&gt;font-src&lt;/code&gt;, &lt;code&gt;media-src&lt;/code&gt; und &lt;code&gt;connect-src&lt;/code&gt;, damit
+alle Anfragen auf Ihrem Server bleiben; Präsentationen, die woandershin verweisen, werden dann ohne
+diese Ressourcen angezeigt. Die Präsentation selbst läuft in iframes in einer Sandbox ohne Ihren
+Ursprung, unter einer strengeren eigenen Richtlinie, die der Playground
+in jeden Frame schreibt: Sie kann weder den Playground noch seinen Speicher noch Ihre
+Cookies erreichen, was auch immer dieser Header sagt. &lt;code&gt;frame-ancestors 'self'&lt;/code&gt; verhindert, dass andere
+Websites den Playground in einen Frame einbetten.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kein COOP und kein COEP.&lt;/strong&gt; Der Playground verwendet weder &lt;code&gt;SharedArrayBuffer&lt;/code&gt; noch
+Threads, er muss also nicht cross-origin-isoliert sein. Wer
+&lt;code&gt;Cross-Origin-Embedder-Policy: require-corp&lt;/code&gt; sendet, blockiert die Bilder einer Präsentation
+von anderen Websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 data-hextra-search-id="without-the-network"&gt;Ohne Netzwerk&lt;span class="hx:absolute hx:-mt-20" id="without-the-network"&gt;&lt;/span&gt;
+&lt;a href="#without-the-network" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Sobald die Seite geladen ist, passiert alles im Browser: der Editor,
+die Vorschau, die Referentenansicht und die PDF-, PPTX- und ODP-Exporte, deren
+Schriften im Tarball liegen. Die Präsentation wird weder an Ihren Server noch
+sonst irgendwohin gesendet. Das Netzwerk brauchen die Dinge, die die Präsentation nennt: Bilder oder
+Stylesheets unter einer &lt;code&gt;https:&lt;/code&gt;-Adresse und die Webschrift des Themes &lt;code&gt;gaia&lt;/code&gt;, die
+es bei &lt;code&gt;fonts.bunny.net&lt;/code&gt; anfordert (ohne sie weichen die Folien auf eine andere
+Schrift aus). Die Links zu dieser Dokumentation verlassen Ihren Server.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides---server-behind-the-proxy"&gt;&lt;code&gt;slides --server&lt;/code&gt; hinter dem Proxy&lt;span class="hx:absolute hx:-mt-20" id="slides---server-behind-the-proxy"&gt;&lt;/span&gt;
+&lt;a href="#slides---server-behind-the-proxy" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;slides --server&lt;/code&gt; bleibt auf &lt;code&gt;127.0.0.1&lt;/code&gt;, und Caddy leitet an ihn weiter. Der Server
+prüft den &lt;code&gt;Host&lt;/code&gt;-Header jeder Anfrage und den &lt;code&gt;Origin&lt;/code&gt; des WebSockets jedes
+Live-Reloads, gegen DNS-Rebinding und Seiten anderer Websites, und der
+Proxy behält in beiden den öffentlichen Namen. &lt;code&gt;--allowed-host&lt;/code&gt; fügt diesen Namen dem hinzu,
+was die Prüfungen akzeptieren; sie bleiben eingeschaltet:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides -s --allowed-host decks.example.org /srv/decks&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;decks.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Der Live-Reload geht unverändert durch (Caddy leitet WebSockets ohne
+Konfiguration weiter). Verwenden Sie dafür nicht &lt;code&gt;--host 0.0.0.0&lt;/code&gt;: Das stellt das
+Verzeichnis dem ganzen Netzwerk bereit, am Proxy und seiner Anmeldung vorbei.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;code&gt;--allowed-host&lt;/code&gt; kommt nach v0.13.0. Bis zum nächsten Release installieren Sie
+den Commit, der es enthält:
+&lt;code&gt;go install github.com/go-slides/slides/cmd/slides@v0.13.1-0.20261026090714-2e1da79f663e&lt;/code&gt;.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="sign-in-with-openid-connect"&gt;Anmeldung mit OpenID Connect&lt;span class="hx:absolute hx:-mt-20" id="sign-in-with-openid-connect"&gt;&lt;/span&gt;
+&lt;a href="#sign-in-with-openid-connect" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Caddy fragt oauth2-proxy bei jeder Anfrage (&lt;code&gt;forward_auth&lt;/code&gt;). oauth2-proxy
+antwortet &lt;code&gt;202&lt;/code&gt; für einen Browser, der sich angemeldet hat, was Caddy dann ausliefert,
+und sonst &lt;code&gt;401&lt;/code&gt;, was Caddy in eine Weiterleitung zur Anmeldung verwandelt. Die
+Anmeldung ist der Authorization-Code-Flow von
+&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener"&gt;OpenID Connect Core 1.0&lt;/a&gt;:
+Der Browser geht zu Ihrem Anbieter (Keycloak, Authentik, Entra ID, Google,
+Okta, Dex&amp;hellip;), kommt mit einem Code auf &lt;code&gt;/oauth2/callback&lt;/code&gt; zurück, oauth2-proxy
+tauscht den Code gegen ein ID Token, prüft es und setzt sein eigenes Cookie.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Registrieren Sie einen Client&lt;/strong&gt; bei Ihrem Anbieter, vertraulich, mit dem
+Authorization-Code-Flow. Seine Redirect-URIs, die genau übereinstimmen müssen:
+&lt;code&gt;https://slides.example.org/oauth2/callback&lt;/code&gt; und
+&lt;code&gt;https://decks.example.org/oauth2/callback&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Legen Sie die Geheimnisse in Dateien&lt;/strong&gt;, die nur oauth2-proxy lesen kann: das
+Geheimnis des Clients, ohne Zeilenumbruch am Ende, und ein Cookie-Geheimnis aus
+genau 32 Zufallsbytes (&lt;code&gt;head -c 32 /dev/urandom&lt;/code&gt;). Ihr
+Secret-Speicher schreibt sie (systemd-Credentials, Docker- oder Kubernetes-Secrets,
+Vault&amp;hellip;); keines gehört in eine Konfigurationsdatei, eine Befehlszeile
+oder eine Umgebungsvariable, wo Logs und &lt;code&gt;ps&lt;/code&gt; sie zeigen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Konfigurieren Sie oauth2-proxy&lt;/strong&gt; (&lt;code&gt;oauth2-proxy.cfg&lt;/code&gt;):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;http_address&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;127.0.0.1:4180&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;reverse_proxy&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;trusted_proxy_ips&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;127.0.0.1/32&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;::1/128&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;upstreams&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;static://202&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;set_xauthrequest&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;provider&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;oidc&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;oidc_issuer_url&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://id.example.org/realms/example&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;client_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;go-slides&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;client_secret_file&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/run/secrets/oauth2-proxy-client-secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;code_challenge_method&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;S256&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;redirect_url&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/oauth2/callback&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;whitelist_domains&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;slides.example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;decks.example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;email_domains&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_secret_file&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/run/secrets/oauth2-proxy-cookie-secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_secure&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_samesite&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lax&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;redirect_url&lt;/code&gt; ohne Host führt die Anmeldung jeder Website zu ihrem eigenen
+Callback zurück, sodass jede Website ihr eigenes Cookie behält. &lt;code&gt;whitelist_domains&lt;/code&gt; ist, wohin eine
+Anmeldung zurückkehren darf: Soll sie anderswohin gehen, bleibt sie auf Ihrer Website.
+&lt;code&gt;trusted_proxy_ips&lt;/code&gt; glaubt den &lt;code&gt;X-Forwarded-*&lt;/code&gt;-Headern nur von Caddy.
+&lt;code&gt;email_domains&lt;/code&gt; legt fest, wer hinein darf; oauth2-proxy hat außerdem Optionen für
+Gruppen und Adresslisten.&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;&lt;strong&gt;Konfigurieren Sie Caddy&lt;/strong&gt; (&lt;code&gt;Caddyfile.oidc&lt;/code&gt;):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="vm"&gt;headers.caddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;(signed_in)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle&lt;/span&gt; &lt;span class="nd"&gt;/oauth2/*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4180&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;forward_auth&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4180&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;uri&lt;/span&gt; &lt;span class="nd"&gt;/oauth2/auth&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;copy_headers&lt;/span&gt; &lt;span class="s"&gt;X-Auth-Request-User&lt;/span&gt; &lt;span class="s"&gt;X-Auth-Request-Email&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@unauthorized&lt;/span&gt; &lt;span class="k"&gt;status&lt;/span&gt; &lt;span class="mi"&gt;401&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle_response&lt;/span&gt; &lt;span class="nd"&gt;@unauthorized&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;redir&lt;/span&gt; &lt;span class="nd"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/oauth2/sign_in?rd=&lt;/span&gt;&lt;span class="se"&gt;{scheme}&lt;/span&gt;&lt;span class="s"&gt;://&lt;/span&gt;&lt;span class="se"&gt;{hostport}{uri}&lt;/span&gt; &lt;span class="mi"&gt;302&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;{block}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;slides.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; signed_in &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;root&lt;/span&gt; &lt;span class="s"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/srv/go-slides-site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;file_server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;precompressed&lt;/span&gt; &lt;span class="s"&gt;br&lt;/span&gt; &lt;span class="s"&gt;gzip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; playground_headers
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;decks.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; signed_in &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides -s --allowed-host decks.example.org /srv/decks
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;oauth2-proxy --config /etc/oauth2-proxy/oauth2-proxy.cfg
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;caddy run --config Caddyfile.oidc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;oauth2-proxy und &lt;code&gt;slides&lt;/code&gt; lauschen nur auf dem Loopback: Der einzige Zugang führt
+über Caddy und damit über die Anmeldung. Die Header des Playgrounds stehen
+innerhalb des angemeldeten Blocks, nur beim Playground: Die Anmeldeseite von
+oauth2-proxy ist ein Formular, das ihr &lt;code&gt;form-action 'none'&lt;/code&gt; verhindern würde.&lt;/p&gt;
+&lt;p&gt;Die Alternative ist &lt;a href="https://github.com/greenpau/caddy-security" target="_blank" rel="noopener"&gt;caddy-security&lt;/a&gt;,
+ein Caddy-Modul, das die Anmeldung innerhalb von Caddy erledigt, ohne zweiten Prozess.
+Es braucht einen Caddy, der mit dem Modul gebaut wurde (&lt;code&gt;xcaddy&lt;/code&gt;), und eine eigene
+Konfigurationssprache.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="check-it"&gt;Prüfen&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
+&lt;a href="#check-it" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Die Antwort nennt &lt;code&gt;content-type: application/wasm&lt;/code&gt;, &lt;code&gt;content-encoding: br&lt;/code&gt;
+und &lt;code&gt;cache-control: public, max-age=31536000, immutable&lt;/code&gt;, mit dem
+&lt;code&gt;content-security-policy&lt;/code&gt; von oben. Mit der Anmeldung davor antwortet dieselbe
+Anfrage ohne Cookie mit &lt;code&gt;302&lt;/code&gt; auf &lt;code&gt;/oauth2/sign_in&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="references"&gt;Referenzen&lt;span class="hx:absolute hx:-mt-20" id="references"&gt;&lt;/span&gt;
+&lt;a href="#references" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Caddy: &lt;a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener"&gt;automatisches HTTPS&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/file_server" target="_blank" rel="noopener"&gt;&lt;code&gt;file_server&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/header" target="_blank" rel="noopener"&gt;&lt;code&gt;header&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy" target="_blank" rel="noopener"&gt;&lt;code&gt;reverse_proxy&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/forward_auth" target="_blank" rel="noopener"&gt;&lt;code&gt;forward_auth&lt;/code&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener"&gt;RFC 8555&lt;/a&gt;, ACME: HTTP-01 (8.3),
+DNS-01 (8.4).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener"&gt;OpenID Connect Core 1.0&lt;/a&gt;:
+der Authorization-Code-Flow (3.1), die Redirect-URI (3.1.2.1), das ID
+Token (2).&lt;/li&gt;
+&lt;li&gt;oauth2-proxy: &lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview" target="_blank" rel="noopener"&gt;Konfiguration&lt;/a&gt;,
+&lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect" target="_blank" rel="noopener"&gt;OpenID-Connect-Anbieter&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

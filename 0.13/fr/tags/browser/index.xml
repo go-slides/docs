@@ -190,6 +190,8 @@ playground.&lt;/p&gt;
 chaque cadre en fait ses propres URL &lt;code&gt;blob:&lt;/code&gt;, dans sa propre origine. Une URL &lt;code&gt;blob:&lt;/code&gt;
 créée par le playground ne s&amp;rsquo;y charge pas, et la politique des cadres
 n&amp;rsquo;ajoute que &lt;code&gt;blob:&lt;/code&gt; pour les médias et les polices.&lt;/p&gt;
+&lt;p&gt;Le playground peut être servi depuis votre propre machine, derrière une
+authentification : voir &lt;a href="https://go-slides.github.io/docs/0.13/fr/self-hosting/"&gt;Auto-hébergement&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;Taille et vitesse&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Le module pèse 8,8 Mio tel que GitHub Pages le sert (gzip ; Pages ne
 sert pas de brotli). Il est téléchargé une fois avec une barre de progression, puis mis en cache par le

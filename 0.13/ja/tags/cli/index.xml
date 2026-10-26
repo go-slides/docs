@@ -107,6 +107,11 @@ data-copied-label="コピーしました！"
 &lt;td&gt;&lt;code&gt;--server&lt;/code&gt; が待ち受けるアドレス。デフォルトは &lt;code&gt;127.0.0.1&lt;/code&gt;（v0.6.0）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--server&lt;/code&gt; が応答する、リバースプロキシの公開ホスト名。複数回指定できます（v0.13.0 の後）。&lt;a href="https://go-slides.github.io/docs/0.13/ja/self-hosting/"&gt;セルフホスティング&lt;/a&gt;を参照&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;HTML ページのテンプレート（v0.6.0）。デフォルトの &lt;code&gt;bespoke&lt;/code&gt; は発表用スクリプト、画面上のコントローラー、トランジション付き、&lt;code&gt;bare&lt;/code&gt; はスライドを縦に並べたもの（&lt;code&gt;--bare&lt;/code&gt;）です&lt;/td&gt;
@@ -425,6 +430,11 @@ marp-cli のサーバーよりも厳しくしています。&lt;/p&gt;
 &lt;li&gt;受け付けるのは &lt;code&gt;GET&lt;/code&gt; と &lt;code&gt;HEAD&lt;/code&gt; だけです。同時に行う変換は少数に限られ、監視するディレクトリは
 最大 4096 個で、&lt;code&gt;node_modules&lt;/code&gt; の中やドットで始まるディレクトリ以下は監視しません。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;リバースプロキシの背後では、&lt;code&gt;--allowed-host name&lt;/code&gt;（v0.13.0 の後、複数回指定可）が
+プロキシの公開名を、受け付ける &lt;code&gt;Host&lt;/code&gt; と &lt;code&gt;Origin&lt;/code&gt; に加えます。チェックは有効なままで、
+サーバーもループバックにとどまります。
+&lt;a href="https://go-slides.github.io/docs/0.13/ja/self-hosting/"&gt;セルフホスティング&lt;/a&gt;では、これを Caddy の背後に置き、
+HTTPS とサインインを組み合わせます。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;ページのメタデータ&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;marp-cli と同じく、コマンドラインの指定がスライドデッキより優先されます。marp-cli では、フラグは
 最後のディレクティブコメントとしてスライドデッキに追加されます。以下のルールは marp-cli

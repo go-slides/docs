@@ -109,6 +109,11 @@ pueden ir antes o después de la presentación: &lt;code&gt;slides deck.md -o ou
 &lt;td&gt;la dirección en la que escucha &lt;code&gt;--server&lt;/code&gt;, &lt;code&gt;127.0.0.1&lt;/code&gt; por defecto (en v0.6.0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;el nombre de host público de un proxy inverso al que responde &lt;code&gt;--server&lt;/code&gt;, repetible (después de v0.13.0); consulte &lt;a href="https://go-slides.github.io/docs/0.13/es/self-hosting/"&gt;Autoalojamiento&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;la plantilla de la página HTML (en v0.6.0): &lt;code&gt;bespoke&lt;/code&gt;, la de por defecto, con el script de presentación, el controlador en pantalla y las transiciones, o &lt;code&gt;bare&lt;/code&gt;, con las diapositivas apiladas (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
@@ -444,6 +449,11 @@ punto (&lt;code&gt;.git&lt;/code&gt;, &lt;code&gt;.env&lt;/code&gt;) no se sirve
 &lt;li&gt;solo &lt;code&gt;GET&lt;/code&gt; y &lt;code&gt;HEAD&lt;/code&gt;; pocas conversiones a la vez; como máximo 4096 directorios
 observados, y ninguno en &lt;code&gt;node_modules&lt;/code&gt; ni bajo un punto.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Detrás de un proxy inverso, &lt;code&gt;--allowed-host name&lt;/code&gt; (después de v0.13.0,
+repetible) añade el nombre público del proxy a los &lt;code&gt;Host&lt;/code&gt; y &lt;code&gt;Origin&lt;/code&gt; aceptados;
+las comprobaciones siguen activas y el servidor sigue en el bucle local.
+&lt;a href="https://go-slides.github.io/docs/0.13/es/self-hosting/"&gt;Autoalojamiento&lt;/a&gt; lo coloca detrás de Caddy, con
+HTTPS y un inicio de sesión.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;Metadatos de la página&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La línea de comandos prevalece sobre la presentación, como en marp-cli, donde las
 opciones se añaden a la presentación como un último comentario de directivas.

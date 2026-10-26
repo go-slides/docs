@@ -108,6 +108,11 @@ angibt.&lt;/p&gt;
 &lt;td&gt;die Adresse, auf der &lt;code&gt;--server&lt;/code&gt; lauscht, standardmäßig &lt;code&gt;127.0.0.1&lt;/code&gt; (in v0.6.0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;der öffentliche Hostname eines Reverse-Proxys, auf den &lt;code&gt;--server&lt;/code&gt; antwortet, wiederholbar (nach v0.13.0); siehe &lt;a href="https://go-slides.github.io/docs/0.13/de/self-hosting/"&gt;Self-Hosting&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;die Vorlage der HTML-Seite (in v0.6.0): &lt;code&gt;bespoke&lt;/code&gt;, der Standard, mit Präsentationsskript, Bedienelementen auf dem Bildschirm und Übergängen, oder &lt;code&gt;bare&lt;/code&gt;, die Folien untereinander (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
@@ -428,6 +433,11 @@ ausgeliefert;&lt;/li&gt;
 &lt;li&gt;nur &lt;code&gt;GET&lt;/code&gt; und &lt;code&gt;HEAD&lt;/code&gt;; wenige Umwandlungen gleichzeitig; höchstens 4096 Verzeichnisse
 beobachtet, und keines in &lt;code&gt;node_modules&lt;/code&gt; oder unter einem Punkt.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Hinter einem Reverse-Proxy fügt &lt;code&gt;--allowed-host name&lt;/code&gt; (nach v0.13.0,
+wiederholbar) den öffentlichen Namen des Proxys zu den akzeptierten &lt;code&gt;Host&lt;/code&gt; und
+&lt;code&gt;Origin&lt;/code&gt; hinzu; die Prüfungen bleiben aktiv, und der Server bleibt auf dem
+Loopback. &lt;a href="https://go-slides.github.io/docs/0.13/de/self-hosting/"&gt;Self-Hosting&lt;/a&gt; stellt ihn hinter Caddy,
+mit HTTPS und einer Anmeldung.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;Seitenmetadaten&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Die Kommandozeile hat Vorrang vor dem Foliensatz, wie bei marp-cli, wo die Flags
 als letzter Direktivenkommentar an den Foliensatz angehängt werden. Die Regeln sind aus marp-cli

@@ -189,6 +189,8 @@ Ursprung des Playgrounds.&lt;/p&gt;
 jeder Frame erzeugt daraus seine eigenen &lt;code&gt;blob:&lt;/code&gt;-URLs, in seinem eigenen Ursprung. Eine &lt;code&gt;blob:&lt;/code&gt;-URL, die vom Playground
 erzeugt wurde, lädt dort nicht, und die Richtlinie der Frames
 erhält lediglich &lt;code&gt;blob:&lt;/code&gt; für Medien und Schriften hinzu.&lt;/p&gt;
+&lt;p&gt;Der Playground kann von Ihrem eigenen Rechner aus bereitgestellt werden, hinter
+einer Anmeldung: siehe &lt;a href="https://go-slides.github.io/docs/0.13/de/self-hosting/"&gt;Self-Hosting&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;Größe und Geschwindigkeit&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Das Modul umfasst 8,8 MiB, wie GitHub Pages es ausliefert (gzip; Pages liefert
 kein Brotli aus). Es wird einmal mit Fortschrittsbalken heruntergeladen und dann vom

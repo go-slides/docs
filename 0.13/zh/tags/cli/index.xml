@@ -107,6 +107,11 @@ data-copied-label="已复制！"
 &lt;td&gt;&lt;code&gt;--server&lt;/code&gt; 监听的地址，默认 &lt;code&gt;127.0.0.1&lt;/code&gt;（v0.6.0 起）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--server&lt;/code&gt; 应答的反向代理公开主机名，可重复使用（v0.13.0 之后）；参见 &lt;a href="https://go-slides.github.io/docs/0.13/zh/self-hosting/"&gt;自托管&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;HTML 页面的模板（v0.6.0 起）：默认的 &lt;code&gt;bespoke&lt;/code&gt; 带有演示脚本、屏幕控制器和过渡效果；&lt;code&gt;bare&lt;/code&gt; 则将幻灯片依次堆叠（&lt;code&gt;--bare&lt;/code&gt;）&lt;/td&gt;
@@ -405,6 +410,9 @@ data-copied-label="已复制！"
 &lt;li&gt;只接受 &lt;code&gt;GET&lt;/code&gt; 和 &lt;code&gt;HEAD&lt;/code&gt;；同时进行的转换数量有限；最多监视 4096 个目录，
 且不监视 &lt;code&gt;node_modules&lt;/code&gt; 中或以点开头的目录。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;在反向代理之后，&lt;code&gt;--allowed-host name&lt;/code&gt;（v0.13.0 之后，可重复使用）会把代理的公开名称
+加入可接受的 &lt;code&gt;Host&lt;/code&gt; 和 &lt;code&gt;Origin&lt;/code&gt;；检查保持开启，服务器仍停留在回环地址上。
+&lt;a href="https://go-slides.github.io/docs/0.13/zh/self-hosting/"&gt;自托管&lt;/a&gt;把它放在 Caddy 之后，并配有 HTTPS 和登录。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;页面元数据&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;与 marp-cli 一样，命令行优先于演示文稿；在 marp-cli 中，这些参数会作为最后一条指令注释追加到演示文稿末尾。
 以下规则依据 marp-cli 4.5.1 整理，并由针对其输出的测试固定下来（v0.6.0 起）：&lt;/p&gt;

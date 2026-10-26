@@ -163,6 +163,8 @@ iframe 无法共享存储，因此由 Playground 通过消息在它们之间转�
 &lt;p&gt;项目中的媒体以消息中的字节数据形式传给沙盒框架，
 每个框架在自己的来源中为其创建各自的 &lt;code&gt;blob:&lt;/code&gt; URL。由 Playground 创建的 &lt;code&gt;blob:&lt;/code&gt;
 URL 在框架中无法加载，而框架的策略仅为媒体和字体额外放开了 &lt;code&gt;blob:&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;Playground 可以从你自己的机器上提供服务，并置于登录之后：参见
+&lt;a href="https://go-slides.github.io/docs/0.13/zh/self-hosting/"&gt;自托管&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;体积与速度&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;按 GitHub Pages 提供的形式（gzip；Pages 不提供
 brotli），模块大小为 8.8 MiB。它只会下载一次并显示进度条，之后由浏览器缓存，直到下次部署。

@@ -108,6 +108,11 @@ autrement.&lt;/p&gt;
 &lt;td&gt;l&amp;rsquo;adresse sur laquelle écoute &lt;code&gt;--server&lt;/code&gt;, &lt;code&gt;127.0.0.1&lt;/code&gt; par défaut (depuis la v0.6.0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;le nom d&amp;rsquo;hôte public d&amp;rsquo;un reverse proxy auquel &lt;code&gt;--server&lt;/code&gt; répond, répétable (après la v0.13.0) ; voir &lt;a href="https://go-slides.github.io/docs/0.13/fr/self-hosting/"&gt;Auto-hébergement&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;le gabarit de la page HTML (depuis la v0.6.0) : &lt;code&gt;bespoke&lt;/code&gt;, par défaut, avec le script de présentation, le contrôleur à l&amp;rsquo;écran et les transitions, ou &lt;code&gt;bare&lt;/code&gt;, les diapositives empilées (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
@@ -430,6 +435,11 @@ servis ;&lt;/li&gt;
 &lt;li&gt;seulement &lt;code&gt;GET&lt;/code&gt; et &lt;code&gt;HEAD&lt;/code&gt; ; quelques conversions à la fois ; au plus 4096 répertoires
 surveillés, et aucun dans &lt;code&gt;node_modules&lt;/code&gt; ni sous un répertoire commençant par un point.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Derrière un reverse proxy, &lt;code&gt;--allowed-host name&lt;/code&gt; (après la v0.13.0, répétable)
+ajoute le nom public du proxy aux &lt;code&gt;Host&lt;/code&gt; et &lt;code&gt;Origin&lt;/code&gt; acceptés ; les contrôles
+restent actifs et le serveur reste sur la boucle locale.
+&lt;a href="https://go-slides.github.io/docs/0.13/fr/self-hosting/"&gt;Auto-hébergement&lt;/a&gt; le place derrière Caddy, avec
+HTTPS et une authentification.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;Métadonnées de la page&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La ligne de commande l&amp;rsquo;emporte sur la présentation, comme dans marp-cli, où les options sont
 ajoutées à la présentation sous la forme d&amp;rsquo;un dernier commentaire de directive. Règles lues dans marp-cli

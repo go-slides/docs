@@ -185,6 +185,8 @@ iframe はストレージを共有できないので、Playground がメッセ�
 &lt;p&gt;プロジェクトのメディアは、メッセージ内のバイト列としてサンドボックス化されたフレームに渡され、
 各フレームは自身のオリジンで、それぞれ独自の &lt;code&gt;blob:&lt;/code&gt; URL を作成します。Playground が作成した &lt;code&gt;blob:&lt;/code&gt;
 URL はそこでは読み込まれず、フレームのポリシーに追加されるのは、メディアとフォント向けの &lt;code&gt;blob:&lt;/code&gt; だけです。&lt;/p&gt;
+&lt;p&gt;Playground は、サインインを必須にしたうえで、自分のマシンから配信することもできます。詳しくは
+&lt;a href="https://go-slides.github.io/docs/0.13/ja/self-hosting/"&gt;セルフホスティング&lt;/a&gt;を参照してください。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;サイズと速度&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;モジュールは、GitHub Pages が配信する状態で 8.8 MiB です（gzip。Pages は
 brotli で配信しません）。進捗バー付きで一度だけダウンロードされ、その後は次のデプロイまで

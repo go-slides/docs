@@ -108,6 +108,11 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;the address &lt;code&gt;--server&lt;/code&gt; listens on, &lt;code&gt;127.0.0.1&lt;/code&gt; by default (in v0.6.0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;a reverse proxy&amp;rsquo;s public host name that &lt;code&gt;--server&lt;/code&gt; answers to, repeatable (after v0.13.0); see &lt;a href="https://go-slides.github.io/docs/0.13/self-hosting/"&gt;Self-hosting&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;the HTML page&amp;rsquo;s template (in v0.6.0): &lt;code&gt;bespoke&lt;/code&gt;, the default, with the presenting script, on-screen controller and transitions, or &lt;code&gt;bare&lt;/code&gt;, the slides stacked (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
@@ -430,6 +435,11 @@ served;&lt;/li&gt;
 &lt;li&gt;only &lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt;; a few conversions at once; at most 4096 directories
 watched, and none in &lt;code&gt;node_modules&lt;/code&gt; or under a dot.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Behind a reverse proxy, &lt;code&gt;--allowed-host name&lt;/code&gt; (after v0.13.0, repeatable)
+adds the proxy&amp;rsquo;s public name to the accepted &lt;code&gt;Host&lt;/code&gt; and &lt;code&gt;Origin&lt;/code&gt;; the checks
+stay on and the server stays on the loopback.
+&lt;a href="https://go-slides.github.io/docs/0.13/self-hosting/"&gt;Self-hosting&lt;/a&gt; puts it behind Caddy, with
+HTTPS and a sign-in.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="page-metadata"&gt;Page metadata&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
 &lt;a href="#page-metadata" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The command line wins over the deck, as in marp-cli, where the flags are
 appended to the deck as one last directive comment. Rules read from marp-cli

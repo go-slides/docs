@@ -191,6 +191,8 @@ playground&amp;rsquo;s origin.&lt;/p&gt;
 each frame makes its own &lt;code&gt;blob:&lt;/code&gt; URLs of them, in its own origin. A &lt;code&gt;blob:&lt;/code&gt;
 URL made by the playground does not load there, and the frames&amp;rsquo; policy
 gains only &lt;code&gt;blob:&lt;/code&gt; for media and fonts.&lt;/p&gt;
+&lt;p&gt;The playground can be served from your own machine, behind a sign-in:
+see &lt;a href="https://go-slides.github.io/docs/0.13/self-hosting/"&gt;Self-hosting&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;Size and speed&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The module is 8.8 MiB as GitHub Pages serves it (gzip; Pages does not
 serve brotli). It is downloaded once with a progress bar, then cached by the

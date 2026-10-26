@@ -202,6 +202,8 @@ la presentación obtiene el origen del playground.&lt;/p&gt;
 cada marco crea con ellos sus propias URL &lt;code&gt;blob:&lt;/code&gt;, en su propio origen. Una URL
 &lt;code&gt;blob:&lt;/code&gt; creada por el playground no se carga allí, y la política de los marcos
 solo añade &lt;code&gt;blob:&lt;/code&gt; para medios y fuentes.&lt;/p&gt;
+&lt;p&gt;El playground puede servirse desde su propio equipo, detrás de un inicio de
+sesión: consulte &lt;a href="https://go-slides.github.io/docs/0.13/es/self-hosting/"&gt;Autoalojamiento&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;Tamaño y velocidad&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;El módulo pesa 8,8 MiB tal como lo sirve GitHub Pages (gzip; Pages no sirve
 brotli). Se descarga una sola vez con una barra de progreso y luego el navegador

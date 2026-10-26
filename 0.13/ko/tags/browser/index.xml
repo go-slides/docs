@@ -184,6 +184,8 @@ Marp 허용 목록을 따릅니다. 5초 넘게 걸리는 렌더링(무한 반�
 프레임은 자신의 출처에서 직접 &lt;code&gt;blob:&lt;/code&gt; URL을 만듭니다. Playground가 만든 &lt;code&gt;blob:&lt;/code&gt;
 URL은 그 안에서 로드되지 않으며, 프레임 정책에는 미디어와 글꼴용 &lt;code&gt;blob:&lt;/code&gt;만
 추가됩니다.&lt;/p&gt;
+&lt;p&gt;Playground는 로그인 뒤에서 자신의 컴퓨터로 서비스할 수 있습니다.
+&lt;a href="https://go-slides.github.io/docs/0.13/ko/self-hosting/"&gt;셀프 호스팅&lt;/a&gt;을 참고하세요.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="size-and-speed"&gt;크기와 속도&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
 &lt;a href="#size-and-speed" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모듈은 GitHub Pages가 제공하는 상태(gzip, Pages는 brotli를 제공하지 않음)로
 8.8 MiB입니다. 진행률 막대와 함께 한 번 내려받으며, 이후 다음 배포까지 브라우저가
