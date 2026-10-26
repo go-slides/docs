@@ -191,6 +191,21 @@ params:
         - name: go-slides
           url: https://go-slides.github.io/
           logo: images/brand/svg/go-slides.svg
+        # The sister orgs' marks are their brand repositories' svg/color files,
+        # copied verbatim into static/images/brand/svg/ (go-slides' own comes
+        # through the branding submodule).
+        - name: go-tex
+          url: https://go-tex.github.io/
+          logo: images/brand/svg/go-tex.svg
+        - name: go-richdoc
+          url: https://go-richdoc.github.io/
+          logo: images/brand/svg/go-richdoc.svg
+        - name: go-docutils
+          url: https://go-docutils.github.io/
+          logo: images/brand/svg/go-docutils.svg
+        - name: go-pdfkit
+          url: https://go-pdfkit.github.io/
+          logo: images/brand/svg/go-pdfkit.svg
 
   theme:
     default: system
