@@ -20,9 +20,9 @@ tiene:
   que es (`title`, `section`…) en lugar de repetir cómo se ve.
 
 {{< callout type="warning" >}}
-**v0.13.0.** Estas páginas describen
-[go-slides/slides v0.13.0](https://github.com/go-slides/slides/releases/tag/v0.13.0)
-y se publican en `/docs/0.13/`.
+**v0.14.0.** Estas páginas describen
+[go-slides/slides v0.14.0](https://github.com/go-slides/slides/releases/tag/v0.14.0)
+y se publican en `/docs/0.14/`.
 {{< /callout >}}
 
 ## Qué hace hoy {#what-it-does-today}

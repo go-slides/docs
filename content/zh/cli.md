@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-本页描述的是 v0.13.0。
+本页描述的是 v0.14.0。
 {{< /callout >}}
 
 ```text
@@ -42,7 +42,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `-s`, `--server dir` | `build` | 托管一个目录，按请求转换其中的演示文稿（v0.6.0 起）；见下文 |
 | `-p`, `--preview` | `build` | 在默认浏览器中打开结果（v0.6.0 起）：配合 `--watch`（隐含启用）打开 HTML 页面，配合 `--server` 打开服务器 |
 | `--host addr` | `build` | `--server` 监听的地址，默认 `127.0.0.1`（v0.6.0 起） |
-| `--allowed-host name` | `build` | `--server` 应答的反向代理公开主机名，可重复使用（v0.13.0 之后）；参见 [自托管]({{< relref "self-hosting" >}}) |
+| `--allowed-host name` | `build` | `--server` 应答的反向代理公开主机名，可重复使用（自 v0.14.0 起）；参见 [自托管]({{< relref "self-hosting" >}}) |
 | `--template bespoke\|bare` | `build` | HTML 页面的模板（v0.6.0 起）：默认的 `bespoke` 带有演示脚本、屏幕控制器和过渡效果；`bare` 则将幻灯片依次堆叠（`--bare`） |
 | `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | bespoke 模板的选项，默认值与 marp-cli 相同（v0.6.0 起）：控制器开启，**进度条关闭**（以前总是绘制），过渡效果开启；`--bespoke.osc=false` 可关闭其中一项 |
 | `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli 的配置文件，JSON 或 YAML 格式（v0.6.0 起）；见下文。`--config` 是 `slides` 自己的配置文件 |
@@ -205,7 +205,7 @@ marp-cli 从工作目录中的文件读取选项，`slides` 也一样，前提�
 - 只接受 `GET` 和 `HEAD`；同时进行的转换数量有限；最多监视 4096 个目录，
   且不监视 `node_modules` 中或以点开头的目录。
 
-在反向代理之后，`--allowed-host name`（v0.13.0 之后，可重复使用）会把代理的公开名称
+在反向代理之后，`--allowed-host name`（自 v0.14.0 起，可重复使用）会把代理的公开名称
 加入可接受的 `Host` 和 `Origin`；检查保持开启，服务器仍停留在回环地址上。
 [自托管]({{< relref "self-hosting" >}})把它放在 Caddy 之后，并配有 HTTPS 和登录。
 

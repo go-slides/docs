@@ -158,7 +158,7 @@ params:
   # "main" while nothing is released: the pages then describe the branch
   # being written, and say so.
   slides:
-    version: "v0.13.0"
+    version: "v0.14.0"
   # The ref of go-slides/slides whose examples/ the gallery shows, and from
   # which tools/gallery builds the slides command that renders the thumbnails
   # (the CI reads it here). "main" until a release has an examples/ folder;

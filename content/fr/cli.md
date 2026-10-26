@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Cette page décrit la v0.13.0.
+Cette page décrit la v0.14.0.
 {{< /callout >}}
 
 ```text
@@ -43,7 +43,7 @@ autrement.
 | `-s`, `--server dir` | `build` | sert un répertoire en convertissant ses présentations à la demande (depuis la v0.6.0) ; voir plus bas |
 | `-p`, `--preview` | `build` | ouvre le résultat dans le navigateur par défaut (depuis la v0.6.0) : les pages HTML avec `--watch` (implicite), le serveur avec `--server` |
 | `--host addr` | `build` | l'adresse sur laquelle écoute `--server`, `127.0.0.1` par défaut (depuis la v0.6.0) |
-| `--allowed-host name` | `build` | le nom d'hôte public d'un reverse proxy auquel `--server` répond, répétable (après la v0.13.0) ; voir [Auto-hébergement]({{< relref "self-hosting" >}}) |
+| `--allowed-host name` | `build` | le nom d'hôte public d'un reverse proxy auquel `--server` répond, répétable (depuis la v0.14.0) ; voir [Auto-hébergement]({{< relref "self-hosting" >}}) |
 | `--template bespoke\|bare` | `build` | le gabarit de la page HTML (depuis la v0.6.0) : `bespoke`, par défaut, avec le script de présentation, le contrôleur à l'écran et les transitions, ou `bare`, les diapositives empilées (`--bare`) |
 | `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | les options du gabarit bespoke, avec les valeurs par défaut de marp-cli (depuis la v0.6.0) : contrôleur activé, **barre de progression désactivée** (elle était auparavant toujours affichée), transitions activées ; `--bespoke.osc=false` en désactive une |
 | `-c`, `--config-file file`, `--no-config-file` | `build` | le fichier de configuration de marp-cli, en JSON ou en YAML (depuis la v0.6.0) ; voir plus bas. `--config` désigne le fichier propre à `slides` |
@@ -230,7 +230,7 @@ Le serveur est une porte d'entrée sur la machine : il est donc plus strict que
 - seulement `GET` et `HEAD` ; quelques conversions à la fois ; au plus 4096 répertoires
   surveillés, et aucun dans `node_modules` ni sous un répertoire commençant par un point.
 
-Derrière un reverse proxy, `--allowed-host name` (après la v0.13.0, répétable)
+Derrière un reverse proxy, `--allowed-host name` (depuis la v0.14.0, répétable)
 ajoute le nom public du proxy aux `Host` et `Origin` acceptés ; les contrôles
 restent actifs et le serveur reste sur la boucle locale.
 [Auto-hébergement]({{< relref "self-hosting" >}}) le place derrière Caddy, avec
