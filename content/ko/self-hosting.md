@@ -21,13 +21,11 @@ tags: [playground, server, security]
 도메인 루트용으로 빌드된 tarball 하나로, SHA-256과 함께 첨부됩니다.
 
 ```sh
-v=v0.1.0
-base=https://github.com/go-slides/go-slides.github.io/releases/download/$v
-curl -fLO "$base/go-slides-site-$v.tar.gz"
-curl -fLO "$base/go-slides-site-$v.tar.gz.sha256"
-sha256sum -c "go-slides-site-$v.tar.gz.sha256"
-tar -xzf "go-slides-site-$v.tar.gz" -C /srv
-mv "/srv/go-slides-site-$v" /srv/go-slides-site
+curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz
+curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz.sha256
+sha256sum -c go-slides-site-v0.1.0.tar.gz.sha256
+tar -xzf go-slides-site-v0.1.0.tar.gz -C /srv
+mv /srv/go-slides-site-v0.1.0 /srv/go-slides-site
 ```
 
 이 tarball은 재현 가능합니다. 같은 태그를 다시 빌드하면 같은

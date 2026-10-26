@@ -21,13 +21,11 @@ tags: [playground, server, security]
 ドメインのルート向けにビルドされた 1 つの tarball として、SHA-256 とともに添付されています。
 
 ```sh
-v=v0.1.0
-base=https://github.com/go-slides/go-slides.github.io/releases/download/$v
-curl -fLO "$base/go-slides-site-$v.tar.gz"
-curl -fLO "$base/go-slides-site-$v.tar.gz.sha256"
-sha256sum -c "go-slides-site-$v.tar.gz.sha256"
-tar -xzf "go-slides-site-$v.tar.gz" -C /srv
-mv "/srv/go-slides-site-$v" /srv/go-slides-site
+curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz
+curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz.sha256
+sha256sum -c go-slides-site-v0.1.0.tar.gz.sha256
+tar -xzf go-slides-site-v0.1.0.tar.gz -C /srv
+mv /srv/go-slides-site-v0.1.0 /srv/go-slides-site
 ```
 
 この tarball は再現可能です。同じタグをもう一度ビルドすると、同じバイト列になります。
