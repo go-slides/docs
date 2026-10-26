@@ -8,7 +8,7 @@
 
 A [Hugo](https://gohugo.io/) site with the [tannevaled/hextra](https://github.com/tannevaled/hextra)
 fork of the [Hextra](https://github.com/imfing/hextra) theme, pinned at its
-**v0.16.0** tag, built the same way as the
+**v0.20.0** tag, built the same way as the
 [go-plot documentation](https://github.com/go-plot/docs), with go-slides'
 branding. It documents [`go-slides/slides`](https://github.com/go-slides/slides).
 
@@ -39,7 +39,7 @@ against that release (flags from its `slides -h`).
 | `layouts/_partials/custom/content-begin.html` | the outdated-version banner |
 | `layouts/_partials/favicons.html` | the brand's favicons |
 | `assets/css/custom.css` | the brand indigo as Hextra's primary colour, with its contrast measured |
-| `themes/hextra` | submodule: tannevaled/hextra at tag v0.16.0 |
+| `themes/hextra` | submodule: tannevaled/hextra at tag v0.20.0 |
 | `branding` | submodule: [go-slides/brand](https://github.com/go-slides/brand) |
 | `content/<lang>/` | the translations (fr, de, es, zh, ko, ja), with the English file names; Chinese is Simplified (`zh-Hans`). Code, flags, directive names and file names stay as in English; each translated heading carries the English heading's `{#anchor}` |
 | `tools/i18n` | a Go program (stdlib only, with tests): the CI fails when a page of `content/en` is missing in a language of `hugo.yaml` (or exists only in a translation), and warns when a translation changes code, shortcodes, link targets or anchors (`-strict` fails on those too); `-fix` adds the anchors, `-built public` compares the built site's heading ids with the English ones |
