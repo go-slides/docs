@@ -162,6 +162,9 @@ jeder Frame erzeugt daraus seine eigenen `blob:`-URLs, in seinem eigenen Ursprun
 erzeugt wurde, lädt dort nicht, und die Richtlinie der Frames
 erhält lediglich `blob:` für Medien und Schriften hinzu.
 
+Der Playground kann von Ihrem eigenen Rechner aus bereitgestellt werden, hinter
+einer Anmeldung: siehe [Self-Hosting]({{< relref "self-hosting" >}}).
+
 ## Größe und Geschwindigkeit {#size-and-speed}
 
 Das Modul umfasst 8,8 MiB, wie GitHub Pages es ausliefert (gzip; Pages liefert

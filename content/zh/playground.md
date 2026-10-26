@@ -136,6 +136,9 @@ iframe 无法共享存储，因此由 Playground 通过消息在它们之间转�
 每个框架在自己的来源中为其创建各自的 `blob:` URL。由 Playground 创建的 `blob:`
 URL 在框架中无法加载，而框架的策略仅为媒体和字体额外放开了 `blob:`。
 
+Playground 可以从你自己的机器上提供服务，并置于登录之后：参见
+[自托管]({{< relref "self-hosting" >}})。
+
 ## 体积与速度 {#size-and-speed}
 
 按 GitHub Pages 提供的形式（gzip；Pages 不提供

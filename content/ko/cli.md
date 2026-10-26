@@ -43,6 +43,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `-s`, `--server dir` | `build` | 디렉터리를 제공하며, 요청이 오면 그 안의 프레젠테이션을 변환합니다(v0.6.0부터). 아래 참고 |
 | `-p`, `--preview` | `build` | 결과를 기본 브라우저로 엽니다(v0.6.0부터). `--watch`(자동 적용)와 함께면 HTML 페이지를, `--server`와 함께면 서버를 엽니다 |
 | `--host addr` | `build` | `--server`가 수신할 주소. 기본값은 `127.0.0.1`입니다(v0.6.0부터) |
+| `--allowed-host name` | `build` | `--server`가 응답할 리버스 프록시의 공개 호스트 이름. 여러 번 지정할 수 있습니다(v0.13.0 이후). [셀프 호스팅]({{< relref "self-hosting" >}}) 참고 |
 | `--template bespoke\|bare` | `build` | HTML 페이지 템플릿(v0.6.0부터). 기본값인 `bespoke`는 발표 스크립트, 화면 컨트롤러, 전환 효과를 포함하고, `bare`는 슬라이드를 쌓아 놓습니다(`--bare`) |
 | `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | bespoke 템플릿의 옵션으로, 기본값은 marp-cli와 같습니다(v0.6.0부터). 컨트롤러 켜짐, **진행률 막대 꺼짐**(이전에는 항상 그려졌음), 전환 효과 켜짐. `--bespoke.osc=false`처럼 하나씩 끌 수 있습니다 |
 | `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli의 설정 파일(JSON 또는 YAML, v0.6.0부터). 아래 참고. `--config`는 `slides` 자체의 설정 파일입니다 |
@@ -234,6 +235,12 @@ v0.6.0부터 marp-cli의 경로와 실시간 새로 고침 프로토콜을 지�
 - `GET`과 `HEAD`만 받습니다. 동시 변환 수는 몇 개로 제한되고, 감시하는
   디렉터리는 최대 4096개이며 `node_modules` 안이나 점으로 시작하는 디렉터리
   아래는 감시하지 않습니다.
+
+리버스 프록시 뒤에서는 `--allowed-host name`(v0.13.0 이후, 여러 번 지정 가능)이
+프록시의 공개 이름을 허용되는 `Host`와 `Origin`에 추가합니다. 검사는 켜진 채로
+유지되고 서버는 루프백에 그대로 머뭅니다.
+[셀프 호스팅]({{< relref "self-hosting" >}})은 이를 Caddy 뒤에 두고
+HTTPS와 로그인을 함께 구성합니다.
 
 ## 페이지 메타데이터 {#page-metadata}
 

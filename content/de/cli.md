@@ -43,6 +43,7 @@ angibt.
 | `-s`, `--server dir` | `build` | stellt ein Verzeichnis bereit und wandelt seine Foliensätze auf Anfrage um (in v0.6.0); siehe unten |
 | `-p`, `--preview` | `build` | öffnet das Ergebnis im Standardbrowser (in v0.6.0): die HTML-Seiten mit `--watch` (impliziert), den Server mit `--server` |
 | `--host addr` | `build` | die Adresse, auf der `--server` lauscht, standardmäßig `127.0.0.1` (in v0.6.0) |
+| `--allowed-host name` | `build` | der öffentliche Hostname eines Reverse-Proxys, auf den `--server` antwortet, wiederholbar (nach v0.13.0); siehe [Self-Hosting]({{< relref "self-hosting" >}}) |
 | `--template bespoke\|bare` | `build` | die Vorlage der HTML-Seite (in v0.6.0): `bespoke`, der Standard, mit Präsentationsskript, Bedienelementen auf dem Bildschirm und Übergängen, oder `bare`, die Folien untereinander (`--bare`) |
 | `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | die Optionen der bespoke-Vorlage, mit den Standardwerten von marp-cli (in v0.6.0): Bedienelemente an, **Fortschrittsbalken aus** (er wurde zuvor immer gezeichnet), Übergänge an; `--bespoke.osc=false` schaltet eines ab |
 | `-c`, `--config-file file`, `--no-config-file` | `build` | die Konfigurationsdatei von marp-cli, JSON oder YAML (in v0.6.0); siehe unten. `--config` ist die eigene Datei von `slides` |
@@ -226,6 +227,12 @@ auf jeder Schnittstelle lauscht und nichts prüft:
   ausgeliefert;
 - nur `GET` und `HEAD`; wenige Umwandlungen gleichzeitig; höchstens 4096 Verzeichnisse
   beobachtet, und keines in `node_modules` oder unter einem Punkt.
+
+Hinter einem Reverse-Proxy fügt `--allowed-host name` (nach v0.13.0,
+wiederholbar) den öffentlichen Namen des Proxys zu den akzeptierten `Host` und
+`Origin` hinzu; die Prüfungen bleiben aktiv, und der Server bleibt auf dem
+Loopback. [Self-Hosting]({{< relref "self-hosting" >}}) stellt ihn hinter Caddy,
+mit HTTPS und einer Anmeldung.
 
 ## Seitenmetadaten {#page-metadata}
 

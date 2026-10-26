@@ -42,6 +42,7 @@ deck.md` は同じです。長い形式のフラグはダッシュ 2 つ（`--ht
 | `-s`, `--server dir` | `build` | ディレクトリを配信し、リクエストに応じてその中のスライドデッキを変換します（v0.6.0）。後述 |
 | `-p`, `--preview` | `build` | 結果をデフォルトのブラウザーで開きます（v0.6.0）。`--watch`（暗黙的に有効）では HTML ページを、`--server` ではサーバーを開きます |
 | `--host addr` | `build` | `--server` が待ち受けるアドレス。デフォルトは `127.0.0.1`（v0.6.0） |
+| `--allowed-host name` | `build` | `--server` が応答する、リバースプロキシの公開ホスト名。複数回指定できます（v0.13.0 の後）。[セルフホスティング]({{< relref "self-hosting" >}})を参照 |
 | `--template bespoke\|bare` | `build` | HTML ページのテンプレート（v0.6.0）。デフォルトの `bespoke` は発表用スクリプト、画面上のコントローラー、トランジション付き、`bare` はスライドを縦に並べたもの（`--bare`）です |
 | `--bespoke.osc`, `--bespoke.progress`, `--bespoke.transition` | `build` | bespoke テンプレートのオプション。デフォルトは marp-cli と同じです（v0.6.0）：コントローラーはオン、**プログレスバーはオフ**（以前は常に表示されていました）、トランジションはオン。`--bespoke.osc=false` のようにして個別にオフにします |
 | `-c`, `--config-file file`, `--no-config-file` | `build` | marp-cli の設定ファイル（JSON または YAML、v0.6.0）。後述。`--config` は `slides` 独自の設定ファイルです |
@@ -223,6 +224,12 @@ marp-cli のサーバーよりも厳しくしています。
   ドットで始まる名前（`.git`、`.env`）は配信されません。
 - 受け付けるのは `GET` と `HEAD` だけです。同時に行う変換は少数に限られ、監視するディレクトリは
   最大 4096 個で、`node_modules` の中やドットで始まるディレクトリ以下は監視しません。
+
+リバースプロキシの背後では、`--allowed-host name`（v0.13.0 の後、複数回指定可）が
+プロキシの公開名を、受け付ける `Host` と `Origin` に加えます。チェックは有効なままで、
+サーバーもループバックにとどまります。
+[セルフホスティング]({{< relref "self-hosting" >}})では、これを Caddy の背後に置き、
+HTTPS とサインインを組み合わせます。
 
 ## ページのメタデータ {#page-metadata}
 
