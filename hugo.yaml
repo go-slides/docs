@@ -133,6 +133,7 @@ menu:
       params:
         type: language-switch
         label: true
+        combo: true
         icon: translate
     - name: Theme
       weight: 5
@@ -168,6 +169,9 @@ params:
   # It appears once a second language is declared (languages: above).
   languageSwitch:
     icon: translate
+    # Once, in the navbar beside the theme toggle: not also at the foot of the
+    # sidebar. On a phone the navbar's combo keeps its icon and chevron.
+    location: navbar
   versions:
     # The version selector shows "main" with the development icon.
     development: "main"
