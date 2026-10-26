@@ -1,0 +1,200 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Code</title><link>https://go-slides.github.io/docs/0.14/ja/tags/code/</link><description>Recent content in Code on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.14/ja/tags/code/index.xml" rel="self" type="application/rss+xml"/><item><title>数式とコード</title><link>https://go-slides.github.io/docs/0.14/ja/math-and-code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/ja/math-and-code/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;数式とコードは v0.2.0 で追加されました。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="math"&gt;数式&lt;span class="hx:absolute hx:-mt-20" id="math"&gt;&lt;/span&gt;
+&lt;a href="#math" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;$…$&lt;/code&gt; はインライン数式、&lt;code&gt;$$…$$&lt;/code&gt; はディスプレイ数式です。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The famous one is $E=mc^2$, and this is a display formula:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$$
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;区切り文字のルールは、marp-core 4.4.0 から読み取った Marp Core のものです。空白が続く &lt;code&gt;$&lt;/code&gt;
+は数式を開始せず、数字が続くものは数式を閉じません。そのため、&lt;code&gt;$5 and $10&lt;/code&gt; のような価格表記は
+テキストのまま残ります。&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/go-tex/math" target="_blank" rel="noopener"&gt;go-tex/math&lt;/a&gt; は各数式を、&lt;code&gt;em&lt;/code&gt; 単位でサイズ指定された
+インライン SVG に組版します。そのため、数式はテキストのサイズに追従し、テキストのベースラインに揃います。
+HTML ページ、画像、PDF のいずれでも同じ SVG が使われます。&lt;/li&gt;
+&lt;li&gt;解析できない数式は書いたとおりに表示され、エラーはその &lt;code&gt;title&lt;/code&gt; に保持されます。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="code"&gt;コード&lt;span class="hx:absolute hx:-mt-20" id="code"&gt;&lt;/span&gt;
+&lt;a href="#code" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;フェンスで囲んだコードブロックは &lt;a href="https://github.com/go-rouge/rouge" target="_blank" rel="noopener"&gt;go-rouge&lt;/a&gt; で色付けされます。
+go-rouge は、Marp のテーマがスタイルを定義している highlight.js のクラス名を出力します。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;go-rouge が知らない言語は、Marp Core と同じくプレーンテキストとして出力されます。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="line-numbers"&gt;行番号&lt;span class="hx:absolute hx:-mt-20" id="line-numbers"&gt;&lt;/span&gt;
+&lt;a href="#line-numbers" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;v0.8.0 では、コードブロックに行番号を付けられます。Marp Core には行番号の機能がなく、
+フェンスの言語名の後ろに続く部分を無視します。そのため、オプションはそこに波かっこで書きます。
+オプションを使ったスライドデッキも、Marp ではオプションがない場合と同じようにレンダリングされます。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;``&lt;span class="sb"&gt;`go {lineNumbers}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;func main() {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt; fmt.Println(&amp;#34;hello&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;`&lt;span class="sb"&gt;`
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;`&lt;span class="sb"&gt;`go {lineNumbers=10}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;// starts at 10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;``&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;書き方&lt;/th&gt;
+&lt;th&gt;意味&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1 から番号を付けます（Slidev の &lt;code&gt;{lines:true}&lt;/code&gt; と Pandoc の &lt;code&gt;{.numberLines}&lt;/code&gt; も解釈されます）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers=10}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;10 から番号を付けます（&lt;code&gt;startLine=10&lt;/code&gt;、Pandoc の &lt;code&gt;startFrom=&amp;quot;10&amp;quot;&lt;/code&gt; も可）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers=false}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;スライドの設定にかかわらず、番号を付けません&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;あるスライドとそれ以降のスライドのすべてのコードブロックに番号を付けるには、ディレクティブ
+&lt;code&gt;&amp;lt;!-- lineNumbers: true --&amp;gt;&lt;/code&gt; を設定します（1 枚のスライドだけなら &lt;code&gt;_lineNumbers&lt;/code&gt;）。kind（スライドの種類）を使えば、
+同じ系統のスライドにまとめて一度で設定できます。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;listing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;{&lt;span class="nt"&gt;lineNumbers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;各番号は、テーマのコードボックス内で行の先頭に置かれ、罫線で区切られます。
+吹き出しや絵文字などで行の高さが増えても、番号はその行のベースラインに揃ったままです。番号は、
+コードの文字色と背景色を混ぜた控えめな色で表示され、default・
+gaia・uncover の各テーマのライトとダークのいずれでも、コントラスト比は 4.5:1 以上です。ページ上では番号は &lt;strong&gt;選択できず&lt;/strong&gt;、
+スクリーンリーダーにも読み上げられません。PDF では描画されますがテキストからは除外されるため、
+テキスト抽出ツールはコードだけを読み取ります。PowerPoint や
+OpenDocument のファイルでは、各行の先頭にある編集可能なテキストになります。このオプションを使わない
+スライドデッキは、以前とバイト単位で同じ出力になります。指定した行のハイライトにはまだ対応していません。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="code-callouts"&gt;コードの吹き出し&lt;span class="hx:absolute hx:-mt-20" id="code-callouts"&gt;&lt;/span&gt;
+&lt;a href="#code-callouts" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;v0.8.0 では、コードの行末に、ブロックの下にある注釈を参照する番号付きの丸印を付けられます。構文は
+&lt;a href="https://quarto.org/docs/authoring/code-annotation.html" target="_blank" rel="noopener"&gt;Quarto のもの&lt;/a&gt; で、
+Asciidoctor のコメント形式でもあります。マーカーはそのコード自体の言語のコメントなので、
+コードは有効なままです。注釈は、ブロックの直後にある番号付きリストです。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;func&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// &amp;lt;1&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;load&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// &amp;lt;2&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;1.&lt;/span&gt; The entry point.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;2. Reads the input.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;書き方&lt;/th&gt;
+&lt;th&gt;意味&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;// &amp;lt;1&amp;gt;&lt;/code&gt;、&lt;code&gt;# &amp;lt;1&amp;gt;&lt;/code&gt;、&lt;code&gt;-- &amp;lt;1&amp;gt;&lt;/code&gt;、&lt;code&gt;; &amp;lt;1&amp;gt;&lt;/code&gt;、&lt;code&gt;% &amp;lt;1&amp;gt;&lt;/code&gt;、&lt;code&gt;' &amp;lt;1&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;マーカーだけを含む行コメント。コメントとマーカーの両方が丸印に置き換えられます&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- &amp;lt;1&amp;gt; --&amp;gt;&lt;/code&gt;、&lt;code&gt;/* &amp;lt;1&amp;gt; */&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;同上。囲み型のコメントを使う言語向けです&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;// &amp;lt;1&amp;gt; &amp;lt;2&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1 行に 2 つの丸印&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;x = 1 # count &amp;lt;1&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;コメントのテキストは残り、その後ろに丸印が付きます&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;マーカーが丸印になるのは、ブロックの直後のリストが 1 から始まり、
+すべての番号に対応する項目がある場合だけです。そうでない場合、ブロックは書いたとおりに残ります。
+丸印は、default・gaia・uncover の各テーマのライトとダークのいずれでも、コードの文字色のリングで描画されます。
+リストの項目にも同じ丸印で番号が付きます。&lt;/p&gt;
+&lt;p&gt;丸印は &lt;strong&gt;選択できません&lt;/strong&gt;。ページからコードをコピーすると、マーカーを除いたコードが得られます。
+PDF ではテキストから除外されたベクターとして描画され、
+PowerPoint や OpenDocument のファイルでは編集可能な図形になります。吹き出しは
+行番号と組み合わせられます。Marp Core には吹き出しの機能がないため（marp-core 4.4.0）、Marp では
+コメントと番号付きリストが書いたとおりに表示されます。吹き出しを使わないスライドデッキは、
+以前とバイト単位で同じ出力になります。&lt;/p&gt;
+&lt;p&gt;v0.9.0 では、HTML ページ上で丸印と注釈が互いに連動します。丸印にマウスを重ねるか、
+Tab キーでフォーカスすると対応する注釈が色付けされ、注釈の側でも同様に対応する丸印が色付けされます。
+これは Quarto の &lt;code&gt;code-annotations: hover&lt;/code&gt; と同じ動作ですが、ここではスクリプトを使わず、
+スタイルシートだけで実現しています。そのため、どちらもスクリプトを制限している Playground のサンドボックス化された
+プレビューでも、VS Code のプレビューでも同じように動作します。各丸印には注釈が説明として関連付けられているので、
+スクリーンリーダーは丸印に到達すると注釈を読み上げます。色付けのフェードインは、閲覧者が
+視差効果を減らす設定（reduced motion）を求めていない場合にだけ行われます。画像、PDF、PowerPoint、OpenDocument の
+ファイルは、バイト単位で変わりません。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="fonts"&gt;フォント&lt;span class="hx:absolute hx:-mt-20" id="fonts"&gt;&lt;/span&gt;
+&lt;a href="#fonts" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Lato の Regular、Bold、Black と各イタリック、Roboto Mono の Regular、Bold と
+各イタリックが埋め込まれています。そのため、gaia の見出しは本来の太さで表示され、イタリックのテキストも
+イタリックで描画されます。&lt;/p&gt;</description></item></channel></rss>

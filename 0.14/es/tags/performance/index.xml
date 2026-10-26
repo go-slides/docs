@@ -1,0 +1,204 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Performance</title><link>https://go-slides.github.io/docs/0.14/es/tags/performance/</link><description>Recent content in Performance on go-slides</description><generator>Hugo -- gohugo.io</generator><language>es</language><atom:link href="https://go-slides.github.io/docs/0.14/es/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>Rendimiento</title><link>https://go-slides.github.io/docs/0.14/es/performance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/es/performance/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Las cifras de PPTX de abajo corresponden a v0.5.0 y las del PDF vectorial a
+v0.4.0. La primera tabla es de v0.3.0, la versión anterior, que renderiza las
+diapositivas de forma concurrente y analiza sus fuentes una sola vez
+(&lt;a href="https://github.com/go-slides/slides/pull/11" target="_blank" rel="noopener"&gt;go-slides/slides#11&lt;/a&gt;).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;go-slides y &lt;a href="https://github.com/marp-team/marp-cli" target="_blank" rel="noopener"&gt;marp-cli&lt;/a&gt; 4.5.1 se ejecutaron
+como subprocesos sobre las mismas presentaciones, en un Apple M4 Max (16 CPU) con
+una carga media de 1 minuto inferior a 8, cinco rondas intercaladas tras un
+calentamiento. El tiempo es la mediana del tiempo real; la memoria es el pico de
+todo el árbol de procesos (marp-cli controla un Chrome, cuyos procesos cuentan).&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Presentación&lt;/th&gt;
+&lt;th&gt;Salida&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;memoria de go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;memoria de marp-cli&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 diapositivas&lt;/td&gt;
+&lt;td&gt;HTML&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;315 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;47 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 diapositivas&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,14 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,88 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;242 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1509 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 diapositivas&lt;/td&gt;
+&lt;td&gt;PNG, todas las diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;0,97 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;5,44 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;225 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1354 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 diapositivas&lt;/td&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td style="text-align: right"&gt;3,39 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;8,03 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;530 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1373 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 diapositivas&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;283 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,57 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;154 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1315 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;matemáticas y código, 20 diapositivas&lt;/td&gt;
+&lt;td&gt;PNG, todas las diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;250 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2,32 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;168 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1286 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="vector-pdf"&gt;PDF vectorial&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;En v0.4.0 el PDF se dibuja en vectores (véase
+&lt;a href="https://go-slides.github.io/docs/0.14/es/cli/#vector-pdf"&gt;Línea de comandos&lt;/a&gt;). Misma máquina y mismo
+método, 2026-10-19:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Presentación&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0&lt;/th&gt;
+&lt;th style="text-align: right"&gt;tamaño de go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;tamaño de marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;tamaño de v0.3.0&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;306 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1763 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1147 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;758 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;837 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;10,0 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;93 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1546 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;285 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;32 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;66 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;582 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;matemáticas y código, 20 diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1643 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;294 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;124 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;335 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;638 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Memoria del PDF de 100 diapositivas: 158 MiB, frente a 1512 MiB de marp-cli;
+tiempo de CPU de 0,9 s frente a 2,7 s.&lt;/p&gt;
+&lt;p&gt;Las cifras de v0.4.0 para el PDF de 100 diapositivas se midieron el 2026-10-19 a
+las 21:29, con una carga media de 1 minuto de 7,7, en tres rondas: go-slides
+306 ms, 758 KiB y 158 MiB; marp-cli 1838 ms, 837 KiB y 1512 MiB.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="editable-pptx"&gt;PPTX editable&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Desde v0.5.0 el PPTX se compone de cuadros de texto, formas e imágenes (véase
+&lt;a href="https://go-slides.github.io/docs/0.14/es/cli/#editable-pptx-and-odp"&gt;Línea de comandos&lt;/a&gt;). Medido el
+2026-10-19 a las 22:51, con una carga media de 1 minuto de 7,1, en tres rondas:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Presentación&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;tamaño de go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;tamaño de marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;memoria de go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;memoria de marp-cli&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;348 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7795 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;760 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,2 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;204 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1370 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;112 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4608 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;893 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4,8 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;matemáticas y código, 20 diapositivas&lt;/td&gt;
+&lt;td style="text-align: right"&gt;207 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2780 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;842 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,5 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Para la presentación de 100 diapositivas, v0.4.0 tardaba 4,7 s y ocupaba 4,8 MiB
+y 540 MiB. El PPTX de marp-cli contiene imágenes. La mayor parte del tamaño de
+una presentación editable son las fuentes incrustadas.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="why-it-is-fast"&gt;Por qué es rápido&lt;span class="hx:absolute hx:-mt-20" id="why-it-is-fast"&gt;&lt;/span&gt;
+&lt;a href="#why-it-is-fast" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;No hay que arrancar ningún navegador.&lt;/strong&gt; marp-cli lanza Chrome en cada
+exportación a PDF, imagen o PPTX; go-slides renderiza con
+&lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt; dentro de su propio
+proceso.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Las diapositivas se renderizan en paralelo&lt;/strong&gt;, cuatro a la vez por defecto, y
+cada imagen se escribe en cuanto le toca el turno: una presentación larga nunca
+se mantiene en memoria como imágenes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Las fuentes se analizan una sola vez&lt;/strong&gt; por proceso, no una vez por
+diapositiva.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="what-it-does-not-win"&gt;Dónde no gana&lt;span class="hx:absolute hx:-mt-20" id="what-it-does-not-win"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does-not-win" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tamaño del PDF, en v0.3.0.&lt;/strong&gt; Cada diapositiva era una imagen en el PDF: 10 MiB
+frente a 837 KiB en la presentación de 100 diapositivas. El PDF vectorial de
+arriba es más pequeño que el de marp-cli.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tiempo de CPU en presentaciones grandes.&lt;/strong&gt; Cuatro trabajadores gastan más CPU
+de lo que muestra el tiempo real: en v0.3.0, 3,2 s frente a los 2,7 s de
+marp-cli en el PDF de 100 diapositivas (0,9 s con el PDF vectorial).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;La memoria de marp-cli es una cota superior&lt;/strong&gt;: los procesos de Chrome
+comparten páginas que la suma cuenta en cada uno. Su mayor proceso individual
+ocupa entre 220 y 320 MiB.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El método, cada presentación y modo, y los comandos para reproducir las cifras
+están en
+&lt;a href="https://github.com/go-slides/slides/blob/main/BENCHMARKS.md" target="_blank" rel="noopener"&gt;BENCHMARKS.md&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>

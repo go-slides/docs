@@ -1,0 +1,101 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Emoji</title><link>https://go-slides.github.io/docs/0.14/ja/tags/emoji/</link><description>Recent content in Emoji on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.14/ja/tags/emoji/index.xml" rel="self" type="application/rss+xml"/><item><title>絵文字</title><link>https://go-slides.github.io/docs/0.14/ja/emoji/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/ja/emoji/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;絵文字は v0.4.0 で追加されました。v0.3.0 では使えません。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;絵文字はショートコードでも、文字そのものでも書けます。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Launch :rocket: 🎉
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Shortcodes :smile: :+1: :heart_eyes: and Unicode 😄 👍🏽 👩‍💻 🇫🇷 1️⃣.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;いずれも Marp Core が描画するのと同じ &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;Twemoji&lt;/a&gt; の画像になり、
+Marp Core と同じマークアップで出力されます。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;emoji&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;draggable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;false&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;😄&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;data:image/svg+xml;base64,…&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;data-marp-twemoji&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="no-network"&gt;ネットワーク不要&lt;span class="hx:absolute hx:-mt-20" id="no-network"&gt;&lt;/span&gt;
+&lt;a href="#no-network" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp Core の &lt;code&gt;src&lt;/code&gt; は CDN 上の URL なので、オフラインで表示したり、印刷したり、
+ネットワークに接続していないマシンで PDF に変換したりすると、画像が壊れて表示されます。
+go-slides は SVG そのものを &lt;code&gt;data:&lt;/code&gt; URI に埋め込みます。画像データ（Twemoji 17.0.3、Emoji 17.0 の 4,009 個）は、
+純粋な Go のモジュール &lt;a href="https://github.com/go-icons/twemoji" target="_blank" rel="noopener"&gt;go-icons/twemoji&lt;/a&gt; からプログラムに組み込まれています。
+圧縮時のサイズは 2 MB で、スライドデッキに絵文字が含まれる場合にだけ読み込まれます。&lt;/p&gt;
+&lt;p&gt;画像は HTML ページでも、&lt;code&gt;--images&lt;/code&gt;/&lt;code&gt;--image&lt;/code&gt;、&lt;code&gt;--pdf&lt;/code&gt;、
+&lt;code&gt;--pptx&lt;/code&gt;、&lt;code&gt;--odp&lt;/code&gt; でも同じように描画されます。SVG のラスタライズは go-webengine が行います。4,009 個の
+画像はすべて、その SVG ラスタライザーで解析・描画でき、テストでそれを確認しています。
+v0.5.0 以降、このラスタライザーは &lt;a href="https://github.com/go-gfx/oksvg" target="_blank" rel="noopener"&gt;go-gfx/oksvg&lt;/a&gt;
+v0.2.0 です。&lt;code&gt;clipPath&lt;/code&gt;、&lt;code&gt;fill-rule: evenodd&lt;/code&gt;、円弧コマンドが Chrome と同じように描画されるようになり、
+その結果 Twemoji の 1 個とそのほか 211 個の描画が変わり、SVG のロゴも崩れなくなりました。&lt;/p&gt;
+&lt;p&gt;絵文字をテキストに合わせたサイズにするルール（&lt;code&gt;img[data-marp-twemoji]&lt;/code&gt;、1 &lt;code&gt;em&lt;/code&gt; 四方、
+ベースラインに揃える）は、Marp Core と同様にテーマへ追加されます。
+そのため、独自のテーマにも適用されます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-is-converted"&gt;変換されるもの&lt;span class="hx:absolute hx:-mt-20" id="what-is-converted"&gt;&lt;/span&gt;
+&lt;a href="#what-is-converted" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ルールは Marp Core と同じです。あらゆるケースを含むスライドデッキについて、
+Marp Core 4.4.0 が出力する HTML と比較するテストがあります。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:smile:&lt;/code&gt;、&lt;code&gt;:+1:&lt;/code&gt;、&lt;code&gt;:heart_eyes:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;markdown-it-emoji の 1,903 個の名前。本文、見出し、リンク、表、&lt;code&gt;header&lt;/code&gt;、&lt;code&gt;footer&lt;/code&gt; で変換されます。コード、URL、画像の代替テキストでは変換されません&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;😄&lt;/code&gt;、&lt;code&gt;👩‍💻&lt;/code&gt;、&lt;code&gt;🇫🇷&lt;/code&gt;、&lt;code&gt;1️⃣&lt;/code&gt;、&lt;code&gt;👍🏽&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unicode の絵文字。本文に加えて &lt;strong&gt;コード内でも&lt;/strong&gt; 変換されます。Marp Core はレンダリング後のコードの HTML を書き換えるためです&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;✔&lt;/code&gt;、&lt;code&gt;©&lt;/code&gt;、&lt;code&gt;™&lt;/code&gt;、&lt;code&gt;▶&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;テキストのままです。デフォルトの表示がテキストである文字は、U+FE0F が付いた場合（&lt;code&gt;✔️&lt;/code&gt;）にだけ絵文字になります。&lt;code&gt;❤&lt;/code&gt; は例外です&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;☺︎&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;テキストのままです。絵文字の後の U+FE0E は、通常のグリフでの表示を求めます&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;12:30:45&lt;/code&gt;、&lt;code&gt;:not_a_name:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;書いたとおりに残ります&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;見出しの &lt;code&gt;id&lt;/code&gt; とアウトラインでは、ショートコードの名前ではなく絵文字が使われます。
+&lt;code&gt;# Launch :rocket:&lt;/code&gt; の id は、Marp と同じく &lt;code&gt;launch-%F0%9F%9A%80&lt;/code&gt; になります。&lt;/p&gt;
+&lt;p&gt;go-slides が Marp Core と異なる点では、go-slides のほうが多くを変換します。&lt;code&gt;✌️ ☝️ ✍️ 🏋️&lt;/code&gt; など、
+Marp Core の emoji-regex がテキストのまま残す、デフォルト表示がテキストの文字をいくつか変換するほか、
+Twemoji は描画できるものの Unicode には登録されていない少数のシーケンスも変換します。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="turning-it-off"&gt;無効にする&lt;span class="hx:absolute hx:-mt-20" id="turning-it-off"&gt;&lt;/span&gt;
+&lt;a href="#turning-it-off" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;--no-emoji&lt;/code&gt;（コードでは &lt;code&gt;slides.Config{NoEmoji: true}&lt;/code&gt;）を指定すると、ショートコードと
+Unicode の絵文字は書いたとおりのテキストのまま残ります。これは Marp Core の
+&lt;code&gt;emoji: false&lt;/code&gt; に相当します。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="attribution"&gt;クレジット表記&lt;span class="hx:absolute hx:-mt-20" id="attribution"&gt;&lt;/span&gt;
+&lt;a href="#attribution" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;画像は Twemoji（Copyright 2020 Twitter, Inc and other contributors）で、
+&lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&gt;CC-BY 4.0&lt;/a&gt; の下でライセンスされており、
+&lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;jdecked/twemoji&lt;/a&gt; プロジェクトによって引き継がれています。
+これらを表示するスライドデッキでは、フッターや最後のスライドなどでクレジットを記載してください。
+ショートコードの対応表は markdown-it-emoji のもの（MIT）です。&lt;/p&gt;</description></item></channel></rss>

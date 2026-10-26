@@ -1,0 +1,235 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.14/fr/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>fr</language><atom:link href="https://go-slides.github.io/docs/0.14/fr/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>HCL</title><link>https://go-slides.github.io/docs/0.14/fr/hcl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/fr/hcl/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;HCL est arrivé en v0.3.0 (&lt;a href="https://github.com/go-slides/slides/pull/13" target="_blank" rel="noopener"&gt;go-slides/slides#13&lt;/a&gt;).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Partout où &lt;code&gt;slides&lt;/code&gt; lit du YAML, il lit aussi la syntaxe native de
+&lt;a href="https://github.com/hashicorp/hcl/blob/main/hclsyntax/spec.md" target="_blank" rel="noopener"&gt;HCL2&lt;/a&gt; — pour
+ses expressions et ses fonctions.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Où&lt;/th&gt;
+&lt;th&gt;YAML&lt;/th&gt;
+&lt;th&gt;HCL&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;front matter&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;---&lt;/code&gt; … &lt;code&gt;---&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;---hcl&lt;/code&gt; … &lt;code&gt;---&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;configuration&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides.hcl&lt;/code&gt;, cherché en premier&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fichiers de &lt;em&gt;kinds&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--kinds kinds.yaml&lt;/code&gt;, &lt;code&gt;kinds: kinds.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tout fichier nommé &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fichiers de données&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--data data.yaml&lt;/code&gt; ou &lt;code&gt;.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tout fichier nommé &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Les commentaires de directive (&lt;code&gt;&amp;lt;!-- class: invert --&amp;gt;&lt;/code&gt;) restent en YAML, comme dans Marp, et le
+corps de la présentation reste un &lt;a href="https://go-slides.github.io/docs/0.14/fr/templates/"&gt;gabarit Go&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-front-matter-in-hcl"&gt;Un front matter en HCL&lt;span class="hx:absolute hx:-mt-20" id="a-front-matter-in-hcl"&gt;&lt;/span&gt;
+&lt;a href="#a-front-matter-in-hcl" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;---&lt;/span&gt;&lt;span class="k"&gt;hcl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;theme&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;gaia&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Quarterly review&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; quarter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%s — Q%d&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;company&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;quarter&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${upper(data.company)} · ${page()}/${total()}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;formatdate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;D MMMM YYYY&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;now&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;chapter&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;section&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;lead&amp;#34;, &amp;#34;invert&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;---&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;#&lt;/span&gt; {{ &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;title&lt;/span&gt; }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Les &lt;strong&gt;attributs&lt;/strong&gt; sont les clés YAML, sous les mêmes noms : les directives de Marp
+(&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt;…),
+les métadonnées (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;…), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (chemins de
+fichiers) et &lt;code&gt;data&lt;/code&gt;, un objet.&lt;/li&gt;
+&lt;li&gt;Les blocs &lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; définissent des &lt;a href="https://go-slides.github.io/docs/0.14/fr/kinds/"&gt;types de diapositives (kinds)&lt;/a&gt;,
+avec les directives locales et &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Les &lt;strong&gt;valeurs&lt;/strong&gt; parviennent aux directives sous les formes textuelles que leur donne YAML —
+&lt;code&gt;true&lt;/code&gt; devient &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, une liste de classes est une liste — si bien qu&amp;rsquo;une directive se comporte
+de la même façon quelle que soit la syntaxe qui l&amp;rsquo;a définie. &lt;code&gt;null&lt;/code&gt; laisse une directive non définie.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt; conserve ses types : dans les gabarits, un nombre entier est un &lt;code&gt;int&lt;/code&gt;,
+les autres nombres des &lt;code&gt;float64&lt;/code&gt;, et listes et objets restent des listes et des maps : ainsi,
+&lt;code&gt;{{ add .quarter 1 }}&lt;/code&gt; fonctionne.&lt;/li&gt;
+&lt;li&gt;Une valeur HCL est définitive : les gabarits Go ne repassent pas dessus.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="variables"&gt;Variables&lt;span class="hx:absolute hx:-mt-20" id="variables"&gt;&lt;/span&gt;
+&lt;a href="#variables" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt; contient les données du gabarit : le &lt;code&gt;data&lt;/code&gt; du front matter lui-même, surchargé par
+celui de &lt;code&gt;slides.hcl&lt;/code&gt;, par les fichiers &lt;code&gt;--data&lt;/code&gt; et par &lt;code&gt;--set&lt;/code&gt;. &lt;code&gt;&amp;quot;${data.company}&amp;quot;&lt;/code&gt; fonctionne
+partout où &lt;code&gt;{{ .company }}&lt;/code&gt; fonctionnerait.&lt;/p&gt;
+&lt;p&gt;Les attributs du front matter peuvent faire référence à &lt;code&gt;data.*&lt;/code&gt;, mais &lt;strong&gt;pas les uns aux autres&lt;/strong&gt; :
+&lt;code&gt;footer = title&lt;/code&gt; est une erreur. Les directives ponctuelles (&lt;code&gt;_class&lt;/code&gt;…) ne sont pas des
+identifiants HCL ; écrivez-les dans un commentaire.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="functions"&gt;Fonctions&lt;span class="hx:absolute hx:-mt-20" id="functions"&gt;&lt;/span&gt;
+&lt;a href="#functions" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;page()&lt;/code&gt;, &lt;code&gt;total()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;le numéro de page et celui de la dernière page, comme &lt;code&gt;{{ page }}&lt;/code&gt; et &lt;code&gt;{{ total }}&lt;/code&gt; : un pied de page peut ainsi paginer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;now()&lt;/code&gt;, &lt;code&gt;timestamp()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;l&amp;rsquo;heure, au format RFC 3339, locale et UTC ; &lt;code&gt;formatdate&lt;/code&gt; la met en forme&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;env(name)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;une variable d&amp;rsquo;environnement, &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; si elle n&amp;rsquo;est pas définie&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;file(path)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;un fichier texte UTF-8 d&amp;rsquo;au plus 1 Mio, relatif à la présentation ou au fichier de configuration&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nombres&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;abs ceil floor log max min parseint pow signum&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;chaînes&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chomp format formatlist join lower regex regexall regexreplace replace split strlen strrev substr title trim trimprefix trimspace trimsuffix upper&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;collections&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chunklist coalesce coalescelist compact concat contains distinct element flatten keys length lookup merge range reverse slice sort values zipmap&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;encodages&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;csvdecode jsondecode jsonencode&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;dates&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;formatdate timeadd&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Toutes, sauf celles des quatre premières lignes, viennent de la bibliothèque standard de
+&lt;a href="https://github.com/zclconf/go-cty" target="_blank" rel="noopener"&gt;go-cty&lt;/a&gt;. Aucune n&amp;rsquo;accède au réseau.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slideshcl"&gt;slides.hcl&lt;span class="hx:absolute hx:-mt-20" id="slideshcl"&gt;&lt;/span&gt;
+&lt;a href="#slideshcl" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;kinds&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;kinds.hcl&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # or a list of files
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;themes/acme.css&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt; { company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt; }&lt;span class="c1"&gt; # or file paths
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;lang&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;en&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;quote&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;blank&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${data.company}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Un attribut inconnu est une erreur, et non une opération silencieusement ignorée. Un fichier de &lt;em&gt;kinds&lt;/em&gt; contient
+des blocs &lt;code&gt;kind&lt;/code&gt; ; ses autres attributs sont ignorés, si bien que &lt;code&gt;slides.hcl&lt;/code&gt; peut en tenir
+lieu. Les attributs d&amp;rsquo;un fichier de données sont les clés des données :&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# data.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2026&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;motto&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;trimspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;motto.txt&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="errors"&gt;Erreurs&lt;span class="hx:absolute hx:-mt-20" id="errors"&gt;&lt;/span&gt;
+&lt;a href="#errors" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Les erreurs sont les diagnostics de HCL, positionnés dans le fichier de la présentation lui-même :
+&lt;code&gt;footer = data.compnay&lt;/code&gt; sur la quatrième ligne de la présentation donne&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;deck.md:4:14: Unsupported attribute: This object does not have an attribute named &amp;#34;compnay&amp;#34;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="marp-and-slides-expand"&gt;Marp et &lt;code&gt;slides expand&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="marp-and-slides-expand"&gt;&lt;/span&gt;
+&lt;a href="#marp-and-slides-expand" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp lit lui aussi &lt;code&gt;---hcl&lt;/code&gt; comme le début d&amp;rsquo;un front matter — sa règle de
+front matter s&amp;rsquo;ouvre sur toute première ligne commençant par trois tirets — et, le bloc
+n&amp;rsquo;étant pas un mapping YAML, n&amp;rsquo;en applique rien : la présentation s&amp;rsquo;affiche quand même dans Marp,
+sans ses directives. Un test le vérifie par rapport à la sortie de Marp Core.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slides expand&lt;/code&gt; réécrit le front matter en YAML : la présentation développée est donc
+du Marp ordinaire et s&amp;rsquo;affiche comme &lt;code&gt;slides&lt;/code&gt; affiche l&amp;rsquo;original :&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;gaia&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Quarterly review&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;header&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ACME — Q3&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;footer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ACME · 1/2&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;19 October 2026&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="licences"&gt;Licences&lt;span class="hx:absolute hx:-mt-20" id="licences"&gt;&lt;/span&gt;
+&lt;a href="#licences" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La prise en charge de HCL lie &lt;a href="https://github.com/hashicorp/hcl" target="_blank" rel="noopener"&gt;hashicorp/hcl&lt;/a&gt;
+(MPL-2.0, utilisé sans modification comme bibliothèque) et
+&lt;a href="https://github.com/zclconf/go-cty" target="_blank" rel="noopener"&gt;zclconf/go-cty&lt;/a&gt; (MIT).&lt;/p&gt;</description></item></channel></rss>

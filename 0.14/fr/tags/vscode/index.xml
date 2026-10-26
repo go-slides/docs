@@ -1,0 +1,246 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Vscode</title><link>https://go-slides.github.io/docs/0.14/fr/tags/vscode/</link><description>Recent content in Vscode on go-slides</description><generator>Hugo -- gohugo.io</generator><language>fr</language><atom:link href="https://go-slides.github.io/docs/0.14/fr/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code</title><link>https://go-slides.github.io/docs/0.14/fr/vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/fr/vscode/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;L&amp;rsquo;extension est &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
+versionnée séparément (v0.4.0). Elle fait le rendu avec go-slides v0.9.0 (le paquet
+&lt;code&gt;editor&lt;/code&gt;, les lignes sources de la synchronisation du défilement, la vue d&amp;rsquo;ensemble et le
+mode présentateur). Elle s&amp;rsquo;installe à partir du fichier &lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt; joint à
+sa version GitHub : sa publication sur le VS Code Marketplace et sur Open VSX est
+prête, mais elle n&amp;rsquo;y figure pas encore.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;L&amp;rsquo;extension est l&amp;rsquo;équivalent, pour go-slides, de
+&lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt; : la présentation s&amp;rsquo;affiche dans
+l&amp;rsquo;aperçu Markdown de VS Code sous forme de diapositives, ses erreurs dans le panneau Problèmes, et
+les directives, les types de diapositives (kinds) et les fonctions de gabarit se complètent pendant la saisie.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Installation&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Téléchargez &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; depuis les
+&lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;versions publiées&lt;/a&gt;, puis lancez
+&lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt;, ou :&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;L&amp;rsquo;aperçu n&amp;rsquo;a besoin de rien d&amp;rsquo;autre. L&amp;rsquo;export nécessite la commande &lt;code&gt;slides&lt;/code&gt; :&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install github.com/go-slides/slides/cmd/slides@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="preview"&gt;Aperçu&lt;span class="hx:absolute hx:-mt-20" id="preview"&gt;&lt;/span&gt;
+&lt;a href="#preview" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ouvrez une présentation, puis &lt;em&gt;Markdown: Open Preview to the Side&lt;/em&gt;. Une présentation est un fichier Markdown
+dont le front matter indique &lt;code&gt;slides: true&lt;/code&gt; :&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;slides&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;who&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;World&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Hello {{ .who }}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cm"&gt;&amp;lt;!-- _kind: title --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Page {{ page }} of {{ total }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copier le code"
+aria-label="Copier le code"
+data-copied-label="Copié !"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Les fichiers avec &lt;code&gt;marp: true&lt;/code&gt; sont eux aussi prévisualisés, sauf si Marp for VS Code est installé :
+les deux extensions rendraient le même document. Le paramètre
+&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt; en décide : &lt;code&gt;auto&lt;/code&gt; (par défaut), &lt;code&gt;always&lt;/code&gt; ou
+&lt;code&gt;never&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;aperçu, c&amp;rsquo;est go-slides lui-même, compilé en WebAssembly et chargé par
+l&amp;rsquo;extension : aucun binaire, et il fonctionne sur &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;. Il lit
+dans l&amp;rsquo;espace de travail ce qu&amp;rsquo;utilise la présentation — &lt;code&gt;slides.yaml&lt;/code&gt; ou &lt;code&gt;slides.hcl&lt;/code&gt; à côté de
+la présentation, les fichiers de &lt;a href="https://go-slides.github.io/docs/0.14/fr/kinds/"&gt;kinds&lt;/a&gt; qu&amp;rsquo;ils désignent, les fichiers qu&amp;rsquo;un
+&lt;a href="https://go-slides.github.io/docs/0.14/fr/templates/"&gt;gabarit&lt;/a&gt; inclut, le CSS des thèmes — et uniquement dans le
+dossier de l&amp;rsquo;espace de travail de la présentation.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="scroll-sync"&gt;Synchronisation du défilement&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
+&lt;a href="#scroll-sync" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Depuis la v0.2.0 de l&amp;rsquo;extension (go-slides v0.7.0), l&amp;rsquo;éditeur et
+l&amp;rsquo;aperçu défilent ensemble, dans les deux sens, comme pour du Markdown ordinaire : l&amp;rsquo;aperçu
+suit la diapositive et le bloc sous le curseur de l&amp;rsquo;éditeur, et
+faire défiler l&amp;rsquo;aperçu déplace l&amp;rsquo;éditeur. Les paramètres sont ceux de VS Code lui-même,
+&lt;code&gt;markdown.preview.scrollPreviewWithEditor&lt;/code&gt; et
+&lt;code&gt;markdown.preview.scrollEditorWithPreview&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Les lignes sont suivies à travers les gabarits. Une diapositive générée par un &lt;code&gt;{{ range }}&lt;/code&gt;
+suit la ligne de son gabarit, et ce qu&amp;rsquo;apporte un &lt;code&gt;{{ include }}&lt;/code&gt;
+suit la ligne de l&amp;rsquo;inclusion. Une présentation découpée par &lt;code&gt;headingDivider&lt;/code&gt; se synchronise sur ses
+titres.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="presenting"&gt;Présentation&lt;span class="hx:absolute hx:-mt-20" id="presenting"&gt;&lt;/span&gt;
+&lt;a href="#presenting" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Depuis la v0.4.0 de l&amp;rsquo;extension (go-slides v0.9.0), une présentation peut être projetée
+sans quitter VS Code. La présentation ouverte dans l&amp;rsquo;éditeur, depuis la palette de commandes
+ou le menu &lt;code&gt;…&lt;/code&gt; de l&amp;rsquo;éditeur :&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Commande&lt;/th&gt;
+&lt;th&gt;Ouvre&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Open Overview&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;un panneau avec toutes les diapositives dans une grille. Une diapositive choisie affiche sa source dans l&amp;rsquo;éditeur ; &lt;code&gt;Esc&lt;/code&gt; ferme le panneau&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Start Presenter View&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;les diapositives et, à côté, le mode présentateur : l&amp;rsquo;étape suivante, les notes de l&amp;rsquo;orateur et un chronomètre&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Les panneaux se placent à côté de l&amp;rsquo;éditeur et se suivent : changez de diapositive dans l&amp;rsquo;un
+et les autres changent avec lui. Ils suivent aussi vos modifications de la présentation. La touche &lt;code&gt;p&lt;/code&gt;
+dans les diapositives ouvre le mode présentateur.&lt;/p&gt;
+&lt;p&gt;Pour projeter sur un autre écran, déplacez-y le panneau des diapositives avec &lt;em&gt;View: Move
+Editor into New Window&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Chaque panneau exécute la présentation dans un cadre isolé (sans &lt;code&gt;allow-same-origin&lt;/code&gt;) sous une
+politique &lt;code&gt;default-src 'none'&lt;/code&gt; : le cadre charge les images, les médias, les styles et les polices,
+rien d&amp;rsquo;autre, et n&amp;rsquo;exécute que les scripts que go-slides a intégrés à la page,
+désignés par leur empreinte. Un script écrit par la présentation ne s&amp;rsquo;exécute pas.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Problèmes, complétion, survol&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
+&lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Problèmes&lt;/strong&gt; : les erreurs de gabarit, de YAML et de &lt;a href="https://go-slides.github.io/docs/0.14/fr/hcl/"&gt;HCL&lt;/a&gt;, sur la
+ligne où elles se trouvent, dans la présentation ou dans le fichier de &lt;em&gt;kinds&lt;/em&gt; dont elles proviennent.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Complétion&lt;/strong&gt; : les clés de directive dans le front matter et dans les commentaires &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;
+(avec &lt;code&gt;_&lt;/code&gt; pour une directive ponctuelle), les valeurs de &lt;code&gt;kind&lt;/code&gt; et de &lt;code&gt;_kind&lt;/code&gt; (avec ce que
+définit chaque &lt;em&gt;kind&lt;/em&gt;), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt; ; dans
+&lt;code&gt;{{ }}&lt;/code&gt;, les fonctions de gabarit et les champs de données.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Survol&lt;/strong&gt; : ce que fait une directive, ce que définit un &lt;em&gt;kind&lt;/em&gt;, les arguments d&amp;rsquo;une
+fonction de gabarit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="export"&gt;Export&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;
+&lt;a href="#export" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;go-slides: Export Slide Deck&amp;hellip;&lt;/em&gt; (également dans la barre de titre de l&amp;rsquo;éditeur) écrit du HTML,
+du PDF vectoriel, du PPTX et de l&amp;rsquo;ODP modifiables, du PNG ou du JPEG avec la commande &lt;code&gt;slides&lt;/code&gt;, comme
+le ferait &lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt; ; voir &lt;a href="https://go-slides.github.io/docs/0.14/fr/cli/"&gt;Ligne de commande&lt;/a&gt;.
+Il nécessite un espace de travail approuvé. Si &lt;code&gt;slides&lt;/code&gt; est introuvable, l&amp;rsquo;extension propose de
+lancer le &lt;code&gt;go install&lt;/code&gt; ci-dessus dans un terminal.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="settings"&gt;Paramètres&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
+&lt;a href="#settings" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Paramètre&lt;/th&gt;
+&lt;th&gt;Défaut&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.cliPath&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;la commande &lt;code&gt;slides&lt;/code&gt; ; vide : &lt;code&gt;slides&lt;/code&gt; dans le &lt;code&gt;PATH&lt;/code&gt;. Paramètre de machine : un espace de travail ne peut pas le définir&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportType&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;le format que la boîte de dialogue d&amp;rsquo;export propose en premier&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportAutoOpen&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ouvrir le fichier exporté&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;autoriser tout le HTML brut au lieu de la liste d&amp;rsquo;autorisation de Marp ; pris en compte uniquement dans un espace de travail approuvé&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;prévisualiser les présentations &lt;code&gt;marp: true&lt;/code&gt; : &lt;code&gt;auto&lt;/code&gt;, &lt;code&gt;always&lt;/code&gt;, &lt;code&gt;never&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Sécurité&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La présentation et l&amp;rsquo;espace de travail ne sont pas dignes de confiance. Le HTML brut suit la liste d&amp;rsquo;autorisation de Marp,
+sauf si &lt;code&gt;goSlides.html&lt;/code&gt; est activé dans un espace de travail approuvé (un &lt;code&gt;slides.yaml&lt;/code&gt; avec
+&lt;code&gt;html: true&lt;/code&gt; ne l&amp;rsquo;active pas dans l&amp;rsquo;aperçu), et l&amp;rsquo;aperçu de VS Code n&amp;rsquo;exécute aucun
+script de la présentation. L&amp;rsquo;aperçu ne lit que les fichiers du dossier de l&amp;rsquo;espace de travail de la présentation,
+ne suit aucun lien symbolique, et les gabarits ne voient aucune variable d&amp;rsquo;environnement.
+L&amp;rsquo;export exécute un programme : il attend donc que l&amp;rsquo;espace de travail soit approuvé, et le programme n&amp;rsquo;est
+jamais désigné par l&amp;rsquo;espace de travail.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="performance"&gt;Performances&lt;span class="hx:absolute hx:-mt-20" id="performance"&gt;&lt;/span&gt;
+&lt;a href="#performance" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Sur la présentation de référence de 100 diapositives de go-slides, dans VS Code 1.142 sur un Apple M4 Max,
+avec Marp for VS Code 3.6.1 mesuré dans la même session :&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;activation (chargement du module WebAssembly)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;189 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;premier aperçu&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;aperçu après une modification (médiane)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;strong&gt;19 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23–24 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.vsix&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,5 Mo&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36,3 Mo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Les chiffres concernent l&amp;rsquo;extension v0.3.0 (go-slides v0.8.0) sur une présentation de 100 diapositives,
+en tapant un caractère dans la diapositive 50, sur des tours entrelacés avec une charge moyenne sur 1 minute
+inférieure à 8. Le premier aperçu est plus rapide que celui de Marp, et l&amp;rsquo;aperçu après une
+modification l&amp;rsquo;est désormais aussi.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v080-and-extension-v030"&gt;Dans la v0.8.0 et l&amp;rsquo;extension v0.3.0&lt;span class="hx:absolute hx:-mt-20" id="in-v080-and-extension-v030"&gt;&lt;/span&gt;
+&lt;a href="#in-v080-and-extension-v030" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.8.0 conserve les diapositives rendues de chaque présentation ouverte et, après une modification,
+ne refait le rendu que de celles dont la source ou l&amp;rsquo;état hérité a changé (directives, numéro de
+page, total, ids des titres, références de liens, lignes sources) ; la sortie est
+identique à celle d&amp;rsquo;un rendu complet, octet pour octet. Taper dans la diapositive 50 sur 100 refait le rendu d&amp;rsquo;une seule
+diapositive : 2,5 ms en natif, 11,5 ms en WebAssembly. L&amp;rsquo;aperçu de VS Code ne transforme alors
+que le DOM de la diapositive modifiée, et le test de fumée de l&amp;rsquo;extension tape un
+caractère dans la diapositive 50 entre deux rendus chronométrés, pour les deux extensions. Le
+mode présentateur de l&amp;rsquo;extension se synchronise via la fenêtre parente (&lt;code&gt;postMessage&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v071-and-extension-v022"&gt;Dans la v0.7.1 et l&amp;rsquo;extension v0.2.2&lt;span class="hx:absolute hx:-mt-20" id="in-v071-and-extension-v022"&gt;&lt;/span&gt;
+&lt;a href="#in-v071-and-extension-v022" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.7.1 met en cache, d&amp;rsquo;un rendu à l&amp;rsquo;autre, les thèmes analysés, les feuilles de style compactées et le code coloré,
+marque les lignes de synchronisation du défilement sans parcourir les octets un à un, et réutilise
+ses writers : un rendu de la présentation de 100 diapositives alloue 5,7 Mo, contre 52,7 Mo
+pour l&amp;rsquo;extension v0.2.0. Grâce à cela, l&amp;rsquo;extension v0.2.2 abandonne le forçage &lt;code&gt;GOGC=400&lt;/code&gt;.
+À titre de comparaison, l&amp;rsquo;extension v0.2.1 prenait 72 ms pour le premier aperçu et 44 ms
+après une modification avec le &lt;code&gt;GOGC&lt;/code&gt; par défaut (36 ms avec &lt;code&gt;GOGC=400&lt;/code&gt;), et la v0.2.0 prenait
+47 à 51 ms.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;extension v0.2.2 a mesuré 52 ms pour le premier aperçu et 24 ms après une modification,
+à égalité avec les 23 ms de Marp.&lt;/p&gt;</description></item></channel></rss>

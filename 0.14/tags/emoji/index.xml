@@ -1,0 +1,103 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Emoji</title><link>https://go-slides.github.io/docs/0.14/tags/emoji/</link><description>Recent content in Emoji on go-slides</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://go-slides.github.io/docs/0.14/tags/emoji/index.xml" rel="self" type="application/rss+xml"/><item><title>Emoji</title><link>https://go-slides.github.io/docs/0.14/emoji/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/emoji/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Emoji are in v0.4.0; v0.3.0 had none.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Write an emoji as a shortcode or as the character itself:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Launch :rocket: 🎉
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Shortcodes :smile: :+1: :heart_eyes: and Unicode 😄 👍🏽 👩‍💻 🇫🇷 1️⃣.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+aria-label="Copy code"
+data-copied-label="Copied!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Each becomes the &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;Twemoji&lt;/a&gt; image Marp Core
+draws, with the markup Marp Core writes:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;emoji&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;draggable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;false&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;😄&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;data:image/svg+xml;base64,…&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;data-marp-twemoji&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+aria-label="Copy code"
+data-copied-label="Copied!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="no-network"&gt;No network&lt;span class="hx:absolute hx:-mt-20" id="no-network"&gt;&lt;/span&gt;
+&lt;a href="#no-network" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp Core&amp;rsquo;s &lt;code&gt;src&lt;/code&gt; is a URL on a CDN, so a deck shown offline, printed, or
+turned into a PDF on a machine without a connection shows broken images.
+go-slides puts the SVG itself in a &lt;code&gt;data:&lt;/code&gt; URI. The graphics (4,009 of them,
+Twemoji 17.0.3, Emoji 17.0) are embedded in the program from the pure-Go module
+&lt;a href="https://github.com/go-icons/twemoji" target="_blank" rel="noopener"&gt;go-icons/twemoji&lt;/a&gt;, 2 MB compressed and
+read only when a deck has an emoji.&lt;/p&gt;
+&lt;p&gt;The images are drawn by the HTML page, by &lt;code&gt;--images&lt;/code&gt;/&lt;code&gt;--image&lt;/code&gt;, by &lt;code&gt;--pdf&lt;/code&gt;, by
+&lt;code&gt;--pptx&lt;/code&gt; and by &lt;code&gt;--odp&lt;/code&gt; alike: go-webengine rasterizes the SVG. All 4,009
+graphics parse and draw under its SVG rasterizer; a test checks it. Since
+v0.5.0 that rasterizer is &lt;a href="https://github.com/go-gfx/oksvg" target="_blank" rel="noopener"&gt;go-gfx/oksvg&lt;/a&gt;
+v0.2.0: &lt;code&gt;clipPath&lt;/code&gt;, &lt;code&gt;fill-rule: evenodd&lt;/code&gt; and arc commands now draw as Chrome
+draws them, which changed one Twemoji and 211 others, and SVG logos are no
+longer garbled.&lt;/p&gt;
+&lt;p&gt;The rule that sizes an emoji to the text (&lt;code&gt;img[data-marp-twemoji]&lt;/code&gt;, one &lt;code&gt;em&lt;/code&gt;
+square, aligned with the baseline) is added to the theme as Marp Core adds it,
+so a theme of your own gets it too.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-is-converted"&gt;What is converted&lt;span class="hx:absolute hx:-mt-20" id="what-is-converted"&gt;&lt;/span&gt;
+&lt;a href="#what-is-converted" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The rules are Marp Core&amp;rsquo;s; a test compares them with the HTML Marp Core 4.4.0
+writes for a deck of every case.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:smile:&lt;/code&gt;, &lt;code&gt;:+1:&lt;/code&gt;, &lt;code&gt;:heart_eyes:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the 1,903 names of markdown-it-emoji, in text, headings, links, tables, &lt;code&gt;header&lt;/code&gt; and &lt;code&gt;footer&lt;/code&gt;; not in code, URLs or an image&amp;rsquo;s alt text&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;😄&lt;/code&gt;, &lt;code&gt;👩‍💻&lt;/code&gt;, &lt;code&gt;🇫🇷&lt;/code&gt;, &lt;code&gt;1️⃣&lt;/code&gt;, &lt;code&gt;👍🏽&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unicode emoji, in text &lt;strong&gt;and in code&lt;/strong&gt;: Marp Core rewrites the rendered code HTML&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;✔&lt;/code&gt;, &lt;code&gt;©&lt;/code&gt;, &lt;code&gt;™&lt;/code&gt;, &lt;code&gt;▶&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;stay text: characters whose default presentation is text are emoji only with U+FE0F (&lt;code&gt;✔️&lt;/code&gt;); &lt;code&gt;❤&lt;/code&gt; is the exception&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;☺︎&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;stays text: a U+FE0E after an emoji asks for the plain glyph&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;12:30:45&lt;/code&gt;, &lt;code&gt;:not_a_name:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;stay as written&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A heading&amp;rsquo;s &lt;code&gt;id&lt;/code&gt; and the outline use the emoji, not the shortcode&amp;rsquo;s name:
+&lt;code&gt;# Launch :rocket:&lt;/code&gt; has the id &lt;code&gt;launch-%F0%9F%9A%80&lt;/code&gt;, as in Marp.&lt;/p&gt;
+&lt;p&gt;Where go-slides differs from Marp Core, it converts more: &lt;code&gt;✌️ ☝️ ✍️ 🏋️&lt;/code&gt; and a
+few other text-default characters that Marp Core&amp;rsquo;s emoji-regex leaves as text,
+and the handful of sequences Twemoji draws that Unicode does not list.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="turning-it-off"&gt;Turning it off&lt;span class="hx:absolute hx:-mt-20" id="turning-it-off"&gt;&lt;/span&gt;
+&lt;a href="#turning-it-off" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;--no-emoji&lt;/code&gt; (in code, &lt;code&gt;slides.Config{NoEmoji: true}&lt;/code&gt;) leaves shortcodes and
+Unicode emoji as the text they were written as, which is Marp Core&amp;rsquo;s
+&lt;code&gt;emoji: false&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="attribution"&gt;Attribution&lt;span class="hx:absolute hx:-mt-20" id="attribution"&gt;&lt;/span&gt;
+&lt;a href="#attribution" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The graphics are Twemoji, Copyright 2020 Twitter, Inc and other contributors,
+licensed &lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&gt;CC-BY 4.0&lt;/a&gt; and
+continued by the &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;jdecked/twemoji&lt;/a&gt; project.
+A deck that shows them should credit them, for instance in a footer or on a
+closing slide. The shortcode table is markdown-it-emoji&amp;rsquo;s (MIT).&lt;/p&gt;</description></item></channel></rss>
