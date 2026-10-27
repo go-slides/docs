@@ -35,7 +35,6 @@ against that release (flags from its `slides -h`).
 | `content/en/` | the pages; `_index.md` is the home, `weight` orders the sidebar |
 | `i18n/en.yaml` | the site's strings, beside the theme's |
 | `hugo.yaml` | `baseURL`, the slides version described, the navbar, the brand mounts |
-| `layouts/_partials/custom/version-select.html` | the version selector (reads `versions.json`), from go-plot/docs |
 | `layouts/_partials/custom/content-begin.html` | the outdated-version banner |
 | `layouts/_partials/favicons.html` | the brand's favicons |
 | `assets/css/custom.css` | the brand indigo as Hextra's primary colour, with its contrast measured |
@@ -54,7 +53,7 @@ against that release (flags from its `slides -h`).
 ```sh
 git clone --recurse-submodules https://github.com/go-slides/docs.git
 cd docs
-mkdir -p data && sh themes/hextra/scripts/page-history.sh > data/pagehistory.json
+mkdir -p data && go run github.com/tannevaled/hextra/cmd/pagehistory@v0.21.0 > data/pagehistory.json
 git clone https://github.com/go-slides/slides ../slides      # the gallery's decks
 (cd tools/gallery && go run . -src ../../../slides -out ../..)   # Go 1.27.2 or later
 hugo server --baseURL http://localhost:1313/docs/main/
