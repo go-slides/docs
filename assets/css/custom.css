@@ -27,7 +27,6 @@
 
 /* The version selector's list hangs from its button's right edge, so that it
  * stays on screen at the end of the navbar. */
-.fs-version-select .hextra-nav-menu-items { left: auto !important; right: 0; transform: none !important; }
 
 /* The navbar's language switch: its flag at the size of the other icons. */
 .hextra-language-switcher[data-location="top"] img { width: 18px; height: 13.5px; }
