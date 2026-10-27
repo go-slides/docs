@@ -168,6 +168,9 @@ params:
   # The language switch shows the translate icon, then the language's flag.
   # It appears once a second language is declared (languages: above).
   languageSwitch:
+    # No flags: a language is not a country (W3C i18n guidance). The names are
+    # each language's own.
+    flags: false
     icon: translate
     # Once, in the navbar beside the theme toggle: not also at the foot of the
     # sidebar. On a phone the navbar's combo keeps its icon and chevron.
