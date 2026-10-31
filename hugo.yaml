@@ -37,7 +37,7 @@ languages:
   fr:
     label: "Français"
     contentDir: content/fr
-    weight: 2
+    weight: 4
     params:
       flag: images/flags/fr.svg
       dateFormat: "2 January 2006"
@@ -45,7 +45,7 @@ languages:
   de:
     label: "Deutsch"
     contentDir: content/de
-    weight: 3
+    weight: 2
     params:
       flag: images/flags/de.svg
       dateFormat: "2. January 2006"
@@ -53,16 +53,56 @@ languages:
   es:
     label: "Español"
     contentDir: content/es
-    weight: 4
+    weight: 3
     params:
       flag: images/flags/es.svg
       dateFormat: "2 de January de 2006"
       description: "Presentaciones compatibles con Marp en Go puro (CGO=0), con plantillas de Go y tipos de diapositiva."
+  it:
+    label: "Italiano"
+    contentDir: content/it
+    weight: 5
+    params:
+      dateFormat: "2 January 2006"
+      description: "Presentazioni compatibili con Marp in puro Go (CGO=0), con template Go e tipi di diapositiva."
+  pl:
+    label: "Polski"
+    contentDir: content/pl
+    weight: 6
+    params:
+      dateFormat: "02.01.2006"
+      description: "Prezentacje zgodne z Marp w czystym Go (CGO=0), z szablonami Go i rodzajami slajdów."
+  pt:
+    label: "Português"
+    # Brazilian Portuguese, the larger audience (European Portuguese differs in
+    # spelling and in some terms); the path stays /pt/.
+    locale: pt-BR
+    contentDir: content/pt
+    weight: 7
+    params:
+      dateFormat: "2 de January de 2006"
+      description: "Apresentações compatíveis com Marp em Go puro (CGO=0), com templates Go e tipos de slide."
+  ru:
+    label: "Русский"
+    contentDir: content/ru
+    weight: 8
+    params:
+      # Numeric: Hugo prints the nominative month name, and Russian dates need
+      # the genitive ("2 октября"); so do Polish ones.
+      dateFormat: "02.01.2006"
+      description: "Презентации, совместимые с Marp, на чистом Go (CGO=0), с шаблонами Go и видами слайдов."
+  uk:
+    label: "Українська"
+    contentDir: content/uk
+    weight: 9
+    params:
+      dateFormat: "02.01.2006"
+      description: "Презентації, сумісні з Marp, на чистому Go (CGO=0), із шаблонами Go та видами слайдів."
   zh:
     label: "简体中文"
     locale: zh-Hans
     contentDir: content/zh
-    weight: 5
+    weight: 12
     params:
       flag: images/flags/cn.svg
       dateFormat: "2006年1月2日"
@@ -70,7 +110,7 @@ languages:
   ko:
     label: "한국어"
     contentDir: content/ko
-    weight: 6
+    weight: 11
     params:
       flag: images/flags/kr.svg
       dateFormat: "2006년 1월 2일"
@@ -78,7 +118,7 @@ languages:
   ja:
     label: "日本語"
     contentDir: content/ja
-    weight: 7
+    weight: 10
     params:
       flag: images/flags/jp.svg
       dateFormat: "2006年1月2日"

@@ -49,6 +49,16 @@ html:lang(ko) {
 html:lang(zh-Hans) .content, html:lang(ja) .content, html:lang(ko) .content { overflow-wrap: break-word; }
 html:lang(ja) .content, html:lang(zh-Hans) .content { line-break: strict; }
 
+/* Cyrillic (Russian, Ukrainian) needs no font of its own: system-ui, which
+ * Hextra's stack starts with, has it on every system we checked (a screenshot
+ * of /ru/ and /uk/ shows no missing-glyph box). Long words (Polish, Russian,
+ * Ukrainian, German compounds) wrap rather than push a phone's page wide. */
+html:lang(ru) .content, html:lang(uk) .content, html:lang(pl) .content, html:lang(de) .content { overflow-wrap: break-word; hyphens: auto; }
+
+/* Twelve languages are more than the 16rem Hextra gives the menu: it scrolls
+ * on a short screen only. */
+ul.hextra-language-options { max-height: min(30rem, 70vh); }
+
 /* The gallery (layouts/_shortcodes/gallery.html): a card per deck. */
 .gallery { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); margin-top: 1.5rem; }
 .gallery-card { border: 1px solid #d1d5db; border-radius: 0.75rem; padding: 0.75rem; min-width: 0; }
