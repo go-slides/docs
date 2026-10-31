@@ -151,6 +151,36 @@ Bilder als Dateien (`--images` von slides) entstehen nicht im Browser: Verwenden
 [Befehl]({{< relref "cli" >}}) oder die
 [VS-Code-Erweiterung]({{< relref "vscode" >}}).
 
+## Rückgängig, Wiederholen und Versionen {#undo-redo-and-versions}
+
+**Undo** und **Redo** (Rückgängig und Wiederholen) stehen im Reiter Home und
+auf Strg+Z, Strg+Umschalt+Z oder Strg+Y (Cmd auf dem Mac). Sie nehmen die
+letzte Änderung der angezeigten Datei zurück (jede Datei hat ihren eigenen
+Verlauf) und danach die letzte Operation am ganzen Projekt: ein gewähltes
+Beispiel, Reset, ein geöffnetes .zip oder ein geöffneter Ordner, ein
+wiederhergestellter Entwurf, eine gelöschte oder umbenannte Datei oder ein
+solcher Ordner, eine wiederhergestellte Version. Redo bringt alles so zurück,
+wie es war, als Undo gedrückt wurde.
+
+**Versionen** halten das ganze Projekt in diesem Browser fest, ohne dass etwas
+irgendwohin gesendet wird. Eine Version entsteht kurz nachdem Sie aufhören zu
+tippen (höchstens alle 2 Minuten), vor jeder Operation am ganzen Projekt und bei
+jedem Export und Teilen-Link. **Save version…** hält eine unter einem Namen
+fest. **Home ▸ Versions** öffnet den Bereich Versions:
+
+- **Preview** zeigt eine Version in der Vorschau.
+- **Compare with now** zeigt die Änderungen jeder Datei Zeile für Zeile, inline
+  oder nebeneinander; F7 und Umschalt+F7 springen zwischen den Änderungen.
+- **Restore** stellt eine Version wieder her; Undo nimmt die Wiederherstellung
+  zurück.
+- **Delete** entfernt eine Version.
+
+Was behalten wird: die 20 neuesten automatischen Versionen, dann eine pro Stunde
+für einen Tag und eine pro Tag für einen Monat. Benannte Versionen bleiben, bis
+Sie sie löschen (höchstens 50). Alle Versionen zusammen belegen höchstens
+96 MiB, und unveränderte Dateien werden nur einmal gespeichert. Ist der
+Speicher des Browsers voll, gehen die ältesten automatischen Versionen zuerst.
+
 ## Sicherheit {#security}
 
 Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
