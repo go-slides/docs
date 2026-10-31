@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Abrir el Playground →](https://go-slides.github.io/es/playground/)**
 
-El Playground es el propio go-slides, v0.14.0, compilado a WebAssembly y
+El Playground es el propio go-slides, v0.15.0, compilado a WebAssembly y
 ejecutándose en su navegador. Escriba una presentación a la izquierda; las
 diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
 presentación, ni un enlace para compartir.

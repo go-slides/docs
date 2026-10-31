@@ -148,7 +148,8 @@ répertoire à tout le réseau, en contournant le proxy et son authentification.
 
 {{< callout type="info" >}}
 `--allowed-host` est dans la v0.14.0 et les suivantes :
-`go install github.com/go-slides/slides/cmd/slides@v0.14.0`.
+`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Il demande Go 1.27.3
+ou plus récent.
 {{< /callout >}}
 
 ## Authentification avec OpenID Connect {#sign-in-with-openid-connect}

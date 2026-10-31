@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.14.0.
+This page describes v0.15.0.
 {{< /callout >}}
 
 ```text
@@ -316,8 +316,8 @@ the PNG and PDF exports draw:
 - pictures are stored once, however many slides show them;
 - what a slide cannot express — an element under `opacity`, a `filter`, a
   blurred shadow — is a picture of that element, its text kept over it;
-- a formula, an emoji or an SVG image is a group of vector shapes (`p:grpSp`
-  in the PPTX, `draw:g` in the ODP) that moves as one. An SVG that needs a
+- since v0.15.0 a formula, an emoji or an SVG image is a group of vector shapes
+  (`p:grpSp` in the PPTX, `draw:g` in the ODP) that moves as one. An SVG that needs a
   clip or a radial gradient stays a picture.
 
 Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export's
@@ -338,7 +338,7 @@ or a rotation, a blurred `box-shadow`, a gradient whose opacity fades — is
 drawn as a bitmap of that element only, its text laid over it invisibly so it
 stays selectable. `--pdf-raster` writes one image per page, as v0.3.0 did.
 
-Formulas, emoji and SVG images are vectors too (go-webengine v0.22.0): each
+Since v0.15.0, formulas, emoji and SVG images are vectors too (go-webengine v0.22.0): each
 distinct drawing is one PDF form XObject, painted where it is used, and sharp
 at any zoom.
 

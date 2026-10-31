@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-本页描述的是 v0.14.0。
+本页描述的是 v0.15.0。
 {{< /callout >}}
 
 ```text
@@ -277,7 +277,7 @@ v0.5.0 起幻灯片可编辑（见下文）；`--pptx-raster` 则与 marp-cli �
 - 图片只存储一次，无论有多少张幻灯片显示它；
 - 幻灯片无法表达的内容（受 `opacity` 影响的元素、`filter`、
   模糊阴影）会成为该元素的一张图片，其上保留文本；
-- 公式、emoji 或 SVG 图像是一组矢量形状（PPTX 中为 `p:grpSp`，ODP 中为 `draw:g`），作为一个整体移动。
+- 自 v0.15.0 起，公式、emoji 或 SVG 图像是一组矢量形状（PPTX 中为 `p:grpSp`，ODP 中为 `draw:g`），作为一个整体移动。
   需要裁剪或径向渐变的 SVG 仍是图片。
 
 经 LibreOffice 重新渲染后，幻灯片与 PNG 导出结果的像素差异在 0.04–2 % 之间。
@@ -295,7 +295,7 @@ v0.3.0 的图片 PDF 为 10 MiB，写出耗时 0.3 s。
 透明度渐变的渐变色）只会将该元素绘制为位图，其上覆盖不可见的文本，以保持可选中。
 `--pdf-raster` 与 v0.3.0 一样，每页写出一张图片。
 
-公式、emoji 和 SVG 图像同样是矢量（go-webengine v0.22.0）：每个不同的图形是一个 PDF 表单
+自 v0.15.0 起，公式、emoji 和 SVG 图像同样是矢量（go-webengine v0.22.0）：每个不同的图形是一个 PDF 表单
 XObject，在使用处绘制，任意缩放都清晰。
 
 ### 无障碍的带标签 PDF {#accessible-tagged-pdf}

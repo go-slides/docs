@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Esta página descreve a v0.14.0.
+Esta página descreve a v0.15.0.
 {{< /callout >}}
 
 ```text
@@ -328,8 +328,9 @@ layout, o mesmo que as exportações para PNG e PDF desenham:
 - o que um slide não consegue expressar — um elemento sob `opacity`, um
   `filter`, uma sombra desfocada — é uma imagem desse elemento, com
   o seu texto mantido por cima;
-- uma fórmula, um emoji ou uma imagem SVG é um grupo de formas vetoriais (`p:grpSp` no PPTX,
-  `draw:g` no ODP) que se move como um só. Um SVG que precisa de um recorte ou de um gradiente radial continua a ser uma imagem.
+- desde a v0.15.0, uma fórmula, um emoji ou uma imagem SVG é um grupo de formas
+  vetoriais (`p:grpSp` no PPTX, `draw:g` no ODP) que se move como um só. Um SVG
+  que precisa de um recorte ou de um gradiente radial continua sendo uma imagem.
 
 Renderizado de volta pelo LibreOffice, um slide fica a 0,04–2 % dos pixels da
 exportação para PNG. `--pptx-raster` e `--odp-raster` mantêm uma imagem por
@@ -351,8 +352,9 @@ rotação, um `box-shadow` desfocado, um gradiente cuja opacidade se desvanece �
 desenhado como um bitmap apenas desse elemento, com o seu texto colocado por
 cima de forma invisível para que continue selecionável. `--pdf-raster` escreve uma imagem por página, como a v0.3.0 fazia.
 
-As fórmulas, os emoji e as imagens SVG também são vetores (go-webengine v0.22.0): cada desenho
-distinto é um XObject de formulário PDF, pintado onde é usado, nítido em qualquer zoom.
+Desde a v0.15.0, as fórmulas, os emoji e as imagens SVG também são vetores
+(go-webengine v0.22.0): cada desenho distinto é um XObject de formulário PDF,
+pintado onde é usado e nítido em qualquer zoom.
 
 ### PDF acessível e etiquetado {#accessible-tagged-pdf}
 

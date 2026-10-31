@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Відкрити Playground →](https://go-slides.github.io/uk/playground/)**
 
-Playground — це сам go-slides, v0.14.0, скомпільований у WebAssembly і
+Playground — це сам go-slides, v0.15.0, скомпільований у WebAssembly і
 запущений у вашому браузері. Пишіть презентацію ліворуч; слайди з'являються
 праворуч. Нічого не надсилається на сервер: ні презентація, ні посилання для
 поширення.

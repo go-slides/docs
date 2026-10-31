@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Apri il Playground →](https://go-slides.github.io/it/playground/)**
 
-Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.14.0, compilato in WebAssembly ed
+Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.15.0, compilato in WebAssembly ed
 eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
 destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.
 

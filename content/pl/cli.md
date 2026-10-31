@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Ta strona opisuje v0.14.0.
+Ta strona opisuje v0.15.0.
 {{< /callout >}}
 
 ```text
@@ -317,7 +317,7 @@ który rysują eksporty PNG i PDF:
 - to, czego slajd nie umie wyrazić — element pod `opacity`, `filter`,
   rozmyty cień — jest obrazem tego elementu, z tekstem zachowanym
   nad nim;
-- wzór, emoji lub obraz SVG to grupa kształtów wektorowych (`p:grpSp` w PPTX,
+- od v0.15.0 wzór, emoji lub obraz SVG to grupa kształtów wektorowych (`p:grpSp` w PPTX,
   `draw:g` w ODP), która przesuwa się jako całość. SVG wymagający przycinania lub gradientu radialnego pozostaje obrazem.
 
 Odrenderowany z powrotem przez LibreOffice, slajd mieści się w 0,04–2 % pikseli
@@ -339,7 +339,7 @@ rysowany jako bitmapa samego tego elementu, z tekstem nałożonym na nią niewid
 pozostał zaznaczalny. `--pdf-raster` zapisuje jeden obraz
 na stronę, jak robiła v0.3.0.
 
-Wzory, emoji i obrazy SVG są również wektorami (go-webengine v0.22.0): każdy odrębny rysunek
+Od v0.15.0 wzory, emoji i obrazy SVG są również wektorami (go-webengine v0.22.0): każdy odrębny rysunek
 to jeden formularzowy XObject PDF, malowany tam, gdzie jest użyty, ostry przy każdym powiększeniu.
 
 ### Dostępny, otagowany PDF {#accessible-tagged-pdf}

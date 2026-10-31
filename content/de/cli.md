@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Diese Seite beschreibt v0.14.0.
+Diese Seite beschreibt v0.15.0.
 {{< /callout >}}
 
 ```text
@@ -313,7 +313,7 @@ das die PNG- und PDF-Exporte zeichnen:
 - Bilder werden nur einmal gespeichert, egal wie viele Folien sie zeigen;
 - was eine Folie nicht ausdrücken kann – ein Element unter `opacity`, ein `filter`, ein
   weichgezeichneter Schatten – ist ein Bild dieses Elements, mit seinem darüberliegenden Text;
-- eine Formel, ein Emoji oder ein SVG-Bild ist eine Gruppe von Vektorformen (`p:grpSp` in der PPTX,
+- seit v0.15.0 ist eine Formel, ein Emoji oder ein SVG-Bild ist eine Gruppe von Vektorformen (`p:grpSp` in der PPTX,
   `draw:g` in der ODP), die sich als Ganzes bewegt. Ein SVG, das einen Zuschnitt oder einen radialen Verlauf braucht, bleibt ein Bild.
 
 Von LibreOffice zurückgerendert, liegt eine Folie 0,04–2 % von den Pixeln des
@@ -335,7 +335,7 @@ wird als Bitmap nur dieses Elements gezeichnet, mit unsichtbar darübergelegtem 
 auswählbar bleibt. `--pdf-raster` schreibt ein Bild
 pro Seite, wie es v0.3.0 tat.
 
-Formeln, Emoji und SVG-Bilder sind ebenfalls Vektoren (go-webengine v0.22.0): Jede
+Seit v0.15.0 sind Formeln, Emoji und SVG-Bilder ebenfalls Vektoren (go-webengine v0.22.0): Jede
 verschiedene Zeichnung ist ein PDF-Form-XObject, an der Stelle gemalt, wo sie verwendet wird, bei jedem Zoom scharf.
 
 ### Barrierefreies, getaggtes PDF {#accessible-tagged-pdf}

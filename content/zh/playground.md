@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[打开 Playground →](https://go-slides.github.io/zh/playground/)**
 
-Playground 就是 go-slides 本身（v0.14.0），编译为 WebAssembly 后在你的浏览器中运行。
+Playground 就是 go-slides 本身（v0.15.0），编译为 WebAssembly 后在你的浏览器中运行。
 在左侧输入演示文稿，右侧的幻灯片会随之更新。不会向服务器发送任何内容：演示文稿不会，分享链接也不会。
 
 Playground 自身的界面（功能区、帮助、提示信息）使用页面所用的语言：

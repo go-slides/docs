@@ -20,9 +20,9 @@ que o Marp não tem:
   (`title`, `section`…) em vez de repetir a sua aparência.
 
 {{< callout type="warning" >}}
-**v0.14.0.** Estas páginas descrevem
-[go-slides/slides v0.14.0](https://github.com/go-slides/slides/releases/tag/v0.14.0)
-e são publicadas em `/docs/0.14/`.
+**v0.15.0.** Estas páginas descrevem
+[go-slides/slides v0.15.0](https://github.com/go-slides/slides/releases/tag/v0.15.0)
+e são publicadas em `/docs/0.15/`.
 {{< /callout >}}
 
 ## O que ele faz hoje {#what-it-does-today}

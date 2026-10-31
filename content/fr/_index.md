@@ -18,9 +18,9 @@ les diapositives, les arrière-plans `![bg]`, les notes de l'orateur, les thème
   (`title`, `section`…) au lieu de répéter à quoi elle ressemble.
 
 {{< callout type="warning" >}}
-**v0.14.0.** Ces pages décrivent
-[go-slides/slides v0.14.0](https://github.com/go-slides/slides/releases/tag/v0.14.0)
-et sont publiées sous `/docs/0.14/`.
+**v0.15.0.** Ces pages décrivent
+[go-slides/slides v0.15.0](https://github.com/go-slides/slides/releases/tag/v0.15.0)
+et sont publiées sous `/docs/0.15/`.
 {{< /callout >}}
 
 ## Ce qu'il fait aujourd'hui {#what-it-does-today}
