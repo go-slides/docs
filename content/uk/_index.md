@@ -48,7 +48,7 @@ marp-cli — у шляху: він рендерить зображення й PD
 ## Сторінки {#pages}
 
 - [Початок роботи]({{< relref "getting-started" >}})
-- [Галерея]({{< relref "gallery" >}}): дванадцять прикладів презентацій, які можна відкрити в playground
+- [Галерея]({{< relref "gallery" >}}): дванадцять прикладів презентацій, які можна відкрити в Playground
 - [Сумісність з Marp]({{< relref "marp" >}})
 - [Шаблони]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})

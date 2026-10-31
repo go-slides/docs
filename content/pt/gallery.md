@@ -1,7 +1,7 @@
 ---
 title: "Galeria"
 weight: 12
-description: "Doze pequenas apresentações, cada uma mostrando bem uma coisa: temas, kinds, templates, HCL, matemática, imagens, código, emoji, transições e uma palestra completa. Abra qualquer uma delas no playground."
+description: "Doze pequenas apresentações, cada uma mostrando bem uma coisa: temas, kinds, templates, HCL, matemática, imagens, código, emoji, transições e uma palestra completa. Abra qualquer uma delas no Playground."
 tags: [gallery, examples]
 ---
 
@@ -12,10 +12,10 @@ de cada apresentação, renderizado pelo próprio go-slides quando este site é
 construído; a CI constrói cada apresentação em HTML e PDF, então nenhuma delas
 quebra.
 
-**Abrir no playground** carrega a apresentação no seu navegador, em um link que
+**Abrir no Playground** carrega a apresentação no seu navegador, em um link que
 não envia nada a nenhum servidor. Uma apresentação que tem arquivos além de
 `deck.md` (um arquivo de kinds, partes incluídas, imagens) não cabe em um link:
-baixe o **.zip** e importe-o com o painel de arquivos do playground, ou
+baixe o **.zip** e importe-o com o painel de arquivos do Playground, ou
 descompacte-o e construa-o com `slides build --allow-local-files deck.md`.
 
 As imagens são SVGs originais dos autores do go-slides, liberados sob

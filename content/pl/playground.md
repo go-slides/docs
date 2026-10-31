@@ -5,13 +5,13 @@ description: "Napisz prezentację w przeglądarce i patrz, jak slajdy za tobą p
 tags: [playground, browser]
 ---
 
-**[Otwórz playground →](https://go-slides.github.io/pl/playground/)**
+**[Otwórz Playground →](https://go-slides.github.io/pl/playground/)**
 
 Playground to sam go-slides, v0.14.0, skompilowany do WebAssembly i
 działający w twojej przeglądarce. Pisz prezentację po lewej; slajdy podążają
 po prawej. Nic nie jest wysyłane na serwer: ani prezentacja, ani odnośnik do udostępnienia.
 
-Interfejs playgrounda (Wstążka, pomoc, komunikaty) mówi językiem strony:
+Interfejs w Playground (Wstążka, pomoc, komunikaty) mówi językiem strony:
 otwórz `/pl/playground/`, aby uzyskać polski, i tak samo dla dwunastu języków
 tej witryny. Selektor języka na stronie go zmienia, a Twój wybór jest
 zapamiętywany w tej przeglądarce; link wskazujący język zawsze ma pierwszeństwo.
@@ -155,21 +155,21 @@ Obrazy jako pliki (slides `--images`) nie powstają w przeglądarce: użyj
 ## Bezpieczeństwo {#security}
 
 Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie
-sięgnie ani do playgroundu, ani do jego pamięci, nie wyśle żadnego formularza i nie
+sięgnie ani do Playground, ani do jego pamięci, nie wyśle żadnego formularza i nie
 przejdzie nigdzie. Jej strona niesie Content Security Policy, która uruchamia tylko jej własne
 skrypty. Surowy HTML w prezentacji podlega liście dozwolonych Marp, tak jak `slides` domyślnie.
 Renderowanie trwające dłużej niż 5 sekund (szablon, który się zapętla)
 jest przerywane.
 
-Okno prelegenta zachowuje tę piaskownicę. Jest otwierane przez sam playground
+Okno prelegenta zachowuje tę piaskownicę. Jest otwierane przez sam Playground
 i pokazuje prezentację w iframe z taką samą piaskownicą. Dwa
-iframe nie mogą współdzielić pamięci, więc playground przekazuje numer slajdu
+iframe nie mogą współdzielić pamięci, więc Playground przekazuje numer slajdu
 między nimi w komunikatach. Żadna ramka uruchamiająca prezentację nie dostaje
-pochodzenia playgroundu.
+pochodzenia Playground.
 
 Media projektu docierają do ramek w piaskownicy jako bajty w komunikacie, a
 każda ramka tworzy z nich własne adresy `blob:`, w swoim pochodzeniu. Adres `blob:`
-utworzony przez playground tam się nie ładuje, a polityka ramek
+utworzony przez Playground tam się nie ładuje, a polityka ramek
 zyskuje tylko `blob:` dla mediów i czcionek.
 
 Playground można serwować z własnej maszyny, za logowaniem:

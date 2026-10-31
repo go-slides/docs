@@ -47,7 +47,7 @@ ici, ce sont des bibliothèques Go qui s'en chargent.
 ## Pages {#pages}
 
 - [Premiers pas]({{< relref "getting-started" >}})
-- [Galerie]({{< relref "gallery" >}}) : douze présentations d'exemple, à ouvrir dans le playground
+- [Galerie]({{< relref "gallery" >}}) : douze présentations d'exemple, à ouvrir dans le Playground (bac à sable en ligne)
 - [Compatibilité Marp]({{< relref "marp" >}})
 - [Gabarits]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})

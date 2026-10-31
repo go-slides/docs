@@ -5,14 +5,14 @@ description: "Escriba una presentación en el navegador y vea cómo las diaposit
 tags: [playground, browser]
 ---
 
-**[Abrir el playground →](https://go-slides.github.io/es/playground/)**
+**[Abrir el Playground →](https://go-slides.github.io/es/playground/)**
 
-El playground es el propio go-slides, v0.14.0, compilado a WebAssembly y
+El Playground es el propio go-slides, v0.14.0, compilado a WebAssembly y
 ejecutándose en su navegador. Escriba una presentación a la izquierda; las
 diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
 presentación, ni un enlace para compartir.
 
-La interfaz del playground (cinta, ayuda, mensajes) habla el idioma de la
+La interfaz del Playground (cinta, ayuda, mensajes) habla el idioma de la
 página: abra `/es/playground/` para el español, y así con los doce idiomas de
 este sitio. El selector de idioma de la página lo cambia y su elección se
 conserva en este navegador; un enlace que nombra un idioma siempre prevalece.
@@ -165,7 +165,7 @@ use el [comando]({{< relref "cli" >}}) o la
 ## Seguridad {#security}
 
 La presentación se muestra en un iframe aislado, sin el origen de la página: no
-puede alcanzar ni el playground ni su almacenamiento, no puede enviar ningún
+puede alcanzar ni el Playground ni su almacenamiento, no puede enviar ningún
 formulario y no navega a ninguna parte. Su página lleva una Content Security
 Policy que ejecuta solo sus propios scripts. El HTML sin procesar de la
 presentación sigue la lista de permitidos de Marp, como hace `slides` por
@@ -173,17 +173,17 @@ defecto. Un renderizado que dure más de 5 segundos (una plantilla que entra en
 bucle) se detiene.
 
 La ventana del presentador mantiene ese aislamiento. La abre el propio
-playground y muestra la presentación en un iframe aislado de la misma manera. Los
-dos iframes no pueden compartir almacenamiento, así que el playground retransmite
+Playground y muestra la presentación en un iframe aislado de la misma manera. Los
+dos iframes no pueden compartir almacenamiento, así que el Playground retransmite
 el número de diapositiva entre ellos mediante mensajes. Ningún marco que ejecute
-la presentación obtiene el origen del playground.
+la presentación obtiene el origen del Playground.
 
 Los medios del proyecto llegan a los marcos aislados como bytes en un mensaje, y
 cada marco crea con ellos sus propias URL `blob:`, en su propio origen. Una URL
-`blob:` creada por el playground no se carga allí, y la política de los marcos
+`blob:` creada por el Playground no se carga allí, y la política de los marcos
 solo añade `blob:` para medios y fuentes.
 
-El playground puede servirse desde su propio equipo, detrás de un inicio de
+El Playground puede servirse desde su propio equipo, detrás de un inicio de
 sesión: consulte [Autoalojamiento]({{< relref "self-hosting" >}}).
 
 ## Tamaño y velocidad {#size-and-speed}

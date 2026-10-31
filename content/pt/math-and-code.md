@@ -136,7 +136,7 @@ Na v0.9.0, um disco e a sua nota se encontram na página HTML. Passar o mouse
 sobre um disco, ou chegar a ele com Tab, realça a sua nota, e uma nota faz o
 mesmo com o seu disco. É o que o `code-annotations: hover` do Quarto faz, mas
 aqui a folha de estilo faz isso sozinha, sem script. Por isso funciona do mesmo
-jeito na pré-visualização em sandbox do playground e na pré-visualização do VS
+jeito na pré-visualização em sandbox do Playground e na pré-visualização do VS
 Code, que restringem scripts. Cada disco é descrito pela sua nota, então um
 leitor de tela lê a nota quando chega ao disco. O realce surge gradualmente
 somente quando o leitor não pediu movimento reduzido. Imagens, PDF e arquivos

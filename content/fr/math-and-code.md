@@ -131,7 +131,7 @@ Depuis la v0.9.0, une pastille et sa note se répondent dans la page HTML. Survo
 pastille, ou l'atteindre avec Tab, teinte sa note, et une note fait de même pour sa
 pastille. C'est ce que fait `code-annotations: hover` dans Quarto, mais ici la feuille de style
 s'en charge seule, sans script. Cela fonctionne donc de la même façon dans l'aperçu
-isolé du playground et dans l'aperçu de VS Code, qui restreignent tous deux les
+isolé du Playground (bac à sable en ligne) et dans l'aperçu de VS Code, qui restreignent tous deux les
 scripts. Chaque pastille est décrite par sa note : un lecteur d'écran lit la note
 quand il atteint la pastille. La teinte n'apparaît en fondu que si le lecteur n'a pas demandé
 de mouvements réduits. Les images, les PDF et les fichiers PowerPoint et OpenDocument sont

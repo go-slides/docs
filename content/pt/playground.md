@@ -5,14 +5,14 @@ description: "Escreva uma apresentação no navegador e veja os slides acompanha
 tags: [playground, browser]
 ---
 
-**[Abrir o playground →](https://go-slides.github.io/pt/playground/)**
+**[Abrir o Playground →](https://go-slides.github.io/pt/playground/)**
 
-O playground é o próprio go-slides, v0.14.0, compilado para WebAssembly e
+O Playground é o próprio go-slides, v0.14.0, compilado para WebAssembly e
 executado no seu navegador. Digite uma apresentação à esquerda; os slides
 acompanham à direita. Nada é enviado a um servidor: nem a apresentação, nem um
 link de compartilhamento.
 
-A interface do playground (faixa de opções, ajuda, mensagens) fala o idioma da
+A interface do Playground (faixa de opções, ajuda, mensagens) fala o idioma da
 página: abra `/pt/playground/` para o português, e assim para os doze idiomas
 deste site. O seletor de idioma da página o altera e a sua escolha fica
 guardada neste navegador; um link que nomeia um idioma sempre prevalece. As
@@ -160,7 +160,7 @@ Imagens como arquivos (slides `--images`) não são feitas no navegador: use o
 ## Segurança {#security}
 
 A apresentação é exibida em um iframe em sandbox, sem a origem da página: ele
-não alcança nem o playground nem o armazenamento dele, não envia nenhum
+não alcança nem o Playground nem o armazenamento dele, não envia nenhum
 formulário e não navega para lugar algum. A página dele carrega uma Content
 Security Policy que executa somente os scripts dela. O HTML bruto da
 apresentação segue a lista de permissões do Marp, como o `slides` faz por
@@ -168,17 +168,17 @@ padrão. Uma renderização que dura mais de 5 segundos (um template em laço) �
 interrompida.
 
 A janela do apresentador mantém essa sandbox. Ela é aberta pelo próprio
-playground e mostra a apresentação em um iframe em sandbox do mesmo modo. Os dois
-iframes não podem compartilhar armazenamento, então o playground repassa o
+Playground e mostra a apresentação em um iframe em sandbox do mesmo modo. Os dois
+iframes não podem compartilhar armazenamento, então o Playground repassa o
 número do slide entre eles em mensagens. Nenhum frame que executa a
-apresentação recebe a origem do playground.
+apresentação recebe a origem do Playground.
 
 A mídia do projeto chega aos frames em sandbox como bytes em uma mensagem, e
 cada frame faz com eles as suas próprias URLs `blob:`, na sua própria origem. Uma
-URL `blob:` feita pelo playground não carrega ali, e a política dos frames ganha
+URL `blob:` feita pelo Playground não carrega ali, e a política dos frames ganha
 apenas `blob:` para mídia e fontes.
 
-O playground pode ser servido a partir da sua própria máquina, atrás de um
+O Playground pode ser servido a partir da sua própria máquina, atrás de um
 login: veja [Auto-hospedagem]({{< relref "self-hosting" >}}).
 
 ## Tamanho e velocidade {#size-and-speed}

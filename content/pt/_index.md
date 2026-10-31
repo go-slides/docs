@@ -49,7 +49,7 @@ sem interface; aqui isso é feito por bibliotecas Go.
 ## Páginas {#pages}
 
 - [Primeiros passos]({{< relref "getting-started" >}})
-- [Galeria]({{< relref "gallery" >}}): doze apresentações de exemplo, para abrir no playground
+- [Galeria]({{< relref "gallery" >}}): doze apresentações de exemplo, para abrir no Playground
 - [Compatibilidade com o Marp]({{< relref "marp" >}})
 - [Templates]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})
