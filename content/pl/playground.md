@@ -153,6 +153,33 @@ Obrazy jako pliki (slides `--images`) nie powstają w przeglądarce: użyj
 [polecenia]({{< relref "cli" >}}) lub
 [rozszerzenia VS Code]({{< relref "vscode" >}}).
 
+## Cofnij, ponów i wersje {#undo-redo-and-versions}
+
+**Undo** i **Redo** (cofnij i ponów) są na karcie Home oraz pod Ctrl+Z,
+Ctrl+Shift+Z lub Ctrl+Y (Cmd na Macu). Cofają ostatnią edycję pokazanego pliku
+(każdy plik ma własną historię), a potem ostatnią operację na całym projekcie:
+wybrany przykład, Reset, otwarty .zip lub folder, przywrócony szkic, usunięty
+lub przemianowany plik albo folder, przywróconą wersję. Redo przywraca
+wszystko tak, jak było w chwili naciśnięcia Undo.
+
+**Wersje** przechowują cały projekt w tej przeglądarce, niczego nigdzie nie
+wysyłając. Jedna jest zapisywana chwilę po tym, jak przestaniesz pisać
+(najwyżej co 2 minuty), przed każdą operacją na całym projekcie oraz przy
+każdym eksporcie i odnośniku do udostępniania. **Save version…** zapisuje jedną
+pod nazwą. **Home ▸ Versions** otwiera panel Versions:
+
+- **Preview** pokazuje wersję w podglądzie.
+- **Compare with now** pokazuje zmiany każdego pliku wiersz po wierszu, w
+  jednej kolumnie lub obok siebie; F7 i Shift+F7 przechodzą między zmianami.
+- **Restore** przywraca wersję; Undo cofa przywrócenie.
+- **Delete** usuwa wersję.
+
+Co jest przechowywane: 20 najnowszych wersji automatycznych, potem jedna na
+godzinę przez dobę i jedna na dzień przez miesiąc. Wersje nazwane zostają, aż je
+usuniesz (najwyżej 50). Wszystkie wersje razem zajmują najwyżej 96 MiB, a pliki,
+które się nie zmieniły, są zapisane raz. Gdy pamięć przeglądarki jest pełna,
+najpierw znikają najstarsze wersje automatyczne.
+
 ## Bezpieczeństwo {#security}
 
 Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie

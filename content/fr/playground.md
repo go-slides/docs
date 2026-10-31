@@ -152,6 +152,36 @@ Les images en tant que fichiers (`--images` de slides) ne sont pas produites dan
 [commande]({{< relref "cli" >}}) ou
 l'[extension VS Code]({{< relref "vscode" >}}).
 
+## Annuler, rétablir et versions {#undo-redo-and-versions}
+
+**Undo** et **Redo** (annuler et rétablir) se trouvent dans l'onglet Home et
+sur Ctrl+Z, Ctrl+Maj+Z ou Ctrl+Y (Cmd sur Mac). Ils annulent la dernière
+modification du fichier affiché (chaque fichier a son propre historique), puis
+la dernière opération sur l'ensemble du projet : un exemple choisi, Reset,
+un .zip ou un dossier ouvert, un brouillon restauré, un fichier ou un dossier
+supprimé ou renommé, une version restaurée. Redo rétablit tout dans l'état où
+Undo l'a trouvé.
+
+Les **versions** conservent tout le projet dans ce navigateur, sans rien envoyer
+nulle part. Une version est enregistrée peu après que vous avez cessé de
+taper (au plus toutes les 2 minutes), avant chaque opération sur l'ensemble du
+projet, et à chaque export et lien de partage. **Save version…** en enregistre
+une sous un nom. **Home ▸ Versions** ouvre le volet Versions :
+
+- **Preview** affiche une version dans l'aperçu.
+- **Compare with now** montre les modifications de chaque fichier ligne par
+  ligne, en ligne ou côte à côte ; F7 et Maj+F7 passent d'une modification à
+  l'autre.
+- **Restore** remet une version en place ; Undo annule la restauration.
+- **Delete** supprime une version.
+
+Ce qui est conservé : les 20 versions automatiques les plus récentes, puis une
+par heure pendant un jour et une par jour pendant un mois. Les versions
+nommées restent jusqu'à ce que vous les supprimiez (50 au plus). L'ensemble des
+versions occupe au plus 96 MiB, et les fichiers qui n'ont pas changé ne sont
+stockés qu'une fois. Quand le stockage du navigateur est plein, les versions
+automatiques les plus anciennes partent d'abord.
+
 ## Sécurité {#security}
 
 La présentation s'affiche dans une iframe isolée, privée de l'origine de la page : elle ne peut

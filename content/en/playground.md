@@ -153,6 +153,33 @@ Images as files (slides `--images`) are not made in the browser: use the
 [command]({{< relref "cli" >}}) or the
 [VS Code extension]({{< relref "vscode" >}}).
 
+## Undo, Redo and versions
+
+**Undo** and **Redo** are on the Home tab and on Ctrl+Z, Ctrl+Shift+Z or
+Ctrl+Y (Cmd on a Mac). They take back the last edit of the file shown (each
+file keeps its own history), and then the last operation on the whole
+project: an example picked, Reset, a .zip or a folder opened, a draft
+restored, a file or folder deleted or renamed, a version restored. Redo brings
+back everything as it was when Undo was pressed.
+
+**Versions** keep the whole project in this browser, with nothing sent
+anywhere. One is kept a little after you stop typing (at most every 2
+minutes), before each operation on the whole project, and at each export and
+share link. **Save version…** keeps one under a name. **Home ▸ Versions**
+opens the Versions pane:
+
+- **Preview** shows a version in the preview.
+- **Compare with now** shows each file's changes line by line, inline or side
+  by side; F7 and Shift+F7 move between changes.
+- **Restore** puts a version back; Undo takes the restore back.
+- **Delete** removes a version.
+
+What is kept: the 20 newest automatic versions, then one an hour for a day and
+one a day for a month. Named versions stay until you delete them (50 at most).
+All versions together take at most 96 MiB, and files that did not change are
+stored once. When the browser's storage is full, the oldest automatic versions
+go first.
+
 ## Security
 
 The deck is shown in an iframe sandboxed without the page's origin: it can
