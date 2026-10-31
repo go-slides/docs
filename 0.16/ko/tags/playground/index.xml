@@ -1,0 +1,547 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.16/ko/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.16/ko/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.16/ko/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/ko/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/ko/playground/" target="_blank" rel="noopener"&gt;Playground 열기 →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Playground는 WebAssembly로 컴파일되어 브라우저에서 실행되는 go-slides v0.16.0
+그 자체입니다. 왼쪽에 프레젠테이션을 입력하면 오른쪽에 슬라이드가 따라
+나타납니다. 프레젠테이션도, 공유 링크도 서버로 전송되지 않습니다.&lt;/p&gt;
+&lt;p&gt;Playground 자체의 인터페이스(리본, 도움말, 메시지)는 페이지의 언어로 표시됩니다.
+한국어는 &lt;code&gt;/ko/playground/&lt;/code&gt;를 열면 되고, 이 사이트의 열두 언어 모두 마찬가지입니다.
+페이지의 언어 선택기로 바꿀 수 있으며 선택은 이 브라우저에 저장됩니다. 언어가 지정된 링크가
+항상 우선합니다. 예제 프레젠테이션은 영어로 유지됩니다. 우크라이나어, 러시아어, 중국어,
+일본어, 한국어는 페이지가 해당 언어에 한해 내려받는 Noto Sans 부분집합(0.06~2.3 MiB)으로 그려집니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;제공 기능&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;모든 슬라이드의 &lt;strong&gt;실시간 미리 보기&lt;/strong&gt;: 페이지 스레드와 분리된 Web Worker에서
+렌더링하므로 입력이 미리 보기 때문에 멈추지 않습니다. 슬라이드를 클릭하면
+편집기가 해당 줄로 이동하고, 캐럿을 옮기면 미리 보기가 해당 슬라이드로
+스크롤됩니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;슬라이드 쇼&lt;/strong&gt;: 키보드, 화면 컨트롤러, 전환 효과를 갖춘 실제 발표 화면입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;발표자 보기&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt;(또는 슬라이드 쇼에서 &lt;code&gt;p&lt;/code&gt;)를 누르면 두 번째 창에
+열립니다. 현재 슬라이드, 다음 단계, 발표자 노트(프레젠테이션의
+&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt;), 시계, 타이머가 표시됩니다. 화살표 키, Space, Home, End는
+어느 창에서나 동작하며, 프레젠테이션을 편집할 때도 두 창이 서로 연동됩니다.
+창이 열리지 않으면 이 사이트의 팝업을 허용하십시오. 개요 보기(&lt;code&gt;o&lt;/code&gt;)는 내려받은
+페이지에서만 쓸 수 있습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;입력 중 &lt;strong&gt;자동 완성&lt;/strong&gt;: 디렉티브 키(주석 안에서는 &lt;code&gt;_&lt;/code&gt;로 시작하는 스폿
+디렉티브), &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;의 값, 그리고 &lt;code&gt;{{ }}&lt;/code&gt; 안의 템플릿
+함수와 데이터 필드.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;캐럿 위치에 있는 요소의 &lt;strong&gt;도움말&lt;/strong&gt;: 디렉티브, kind(슬라이드 유형, 설정하는
+내용), 템플릿 함수. 도움말 창에서 이 문서로 연결되는 링크도 제공합니다. v0.16.0부터 디렉티브 도움말은 인터페이스 언어를
+따르며, 11개 언어를 지원합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;해당 줄에 표시되는 &lt;strong&gt;문제&lt;/strong&gt;: 템플릿, YAML, HCL 오류가 편집기에서 강조되고
+그 아래에 나열되며, 미리 보기는 마지막으로 렌더링에 성공한 프레젠테이션을
+유지합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;예제&lt;/strong&gt;: 환영 프레젠테이션, 슬라이드를 생성하는 템플릿, 슬라이드 kind, HCL
+프런트 매터, 테마와 스폿 디렉티브, 그리고 수식, 이미지, 배경(&lt;code&gt;![bg]&lt;/code&gt;, 화면을
+나누는 &lt;code&gt;![bg left:40%]&lt;/code&gt;, 필터).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;파일&lt;/strong&gt;: 편집기 왼쪽 패널은 프레젠테이션의 프로젝트이며,
+&lt;a href="https://go-slides.github.io/docs/0.16/ko/cli/"&gt;명령&lt;/a&gt;과
+&lt;a href="https://go-slides.github.io/docs/0.16/ko/vscode/"&gt;VS Code 확장&lt;/a&gt;이 읽는 구조와 같습니다: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;파일을 클릭하면 편집할 수 있습니다. 편집기는 파일 언어(Markdown, YAML, HCL,
+JSON, CSS)에 따라 색을 입히고 문제를 표시합니다.&lt;/li&gt;
+&lt;li&gt;마우스 오른쪽 버튼(또는 Shift+F10)으로 New File, New Folder, Rename(F2),
+Delete(먼저 확인), New theme / New kind를 실행합니다. 파일을 폴더로 끌어다
+놓으면 이동합니다. 키보드 조작은 미리 입력 검색을 포함해 WAI-ARIA 트리
+패턴을 따릅니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt;은 &lt;code&gt;themes/my-gaia.css&lt;/code&gt;(또는 default, uncover 기반)를
+만듭니다. 기본 제공 테마의 &lt;code&gt;@import&lt;/code&gt;와 직접 추가하는 규칙으로 이루어지며,
+Theme 목록에 추가됩니다. &lt;strong&gt;New kind&lt;/strong&gt;와 &lt;strong&gt;New data file&lt;/strong&gt;도 템플릿에서
+시작합니다. 각각 &lt;code&gt;slides.yaml&lt;/code&gt;에 등록되므로 &lt;code&gt;slides build deck.md&lt;/code&gt;가 찾을
+수 있습니다.&lt;/li&gt;
+&lt;li&gt;**Project ▸ Download project (.zip)**은 전체를 저장합니다. 압축을 풀면
+&lt;code&gt;slides build deck.md&lt;/code&gt;로 빌드할 수 있습니다. &lt;strong&gt;Open project&lt;/strong&gt;는 &lt;code&gt;.zip&lt;/code&gt;이나
+폴더를 다시 불러옵니다. 자기 폴더 밖으로 나가는 아카이브(&lt;code&gt;..&lt;/code&gt;, 절대 경로),
+파일이 256개를 넘거나 한 파일이 8 MiB를 넘는 아카이브, 압축 해제 시 100배
+넘게 커지는 아카이브는 거부됩니다.&lt;/li&gt;
+&lt;li&gt;모든 내용은 초안과 함께 이 브라우저에 보관됩니다. 프로젝트는 최대 64 MiB까지
+담을 수 있으며, 파일 목록 아래 줄에 사용량이 표시됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;미디어&lt;/strong&gt;: 이미지, 동영상, 소리를 편집기에 끌어다 놓거나 붙여 넣으면
+&lt;code&gt;media/&lt;/code&gt;에 들어가고 프레젠테이션에서 &lt;code&gt;![](media/photo.png)&lt;/code&gt;처럼 참조됩니다.
+패널의 폴더에 파일을 끌어다 놓으면 그 폴더에 들어갑니다. 프레젠테이션은 작고
+읽기 쉬운 상태로 유지되며, 아무것도 업로드되지 않습니다. 미리 보기 샌드박스는
+제한을 풀지 않고도 미디어를 불러옵니다(페이지가 바이트를 직접 넘겨줍니다).
+&lt;strong&gt;Save as ▸ HTML page&lt;/strong&gt;는 미디어를 페이지 안에 넣습니다. &lt;code&gt;https:&lt;/code&gt; 이미지도
+쓸 수 있지만 브라우저가 해당 서버에서 가져오므로 그 서버에 사용자의 주소가
+노출됩니다. 미리 보기는 리퍼러를 보내지 않습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;크기 조절 가능한 창&lt;/strong&gt;: 파일 패널, 편집기, 슬라이드 썸네일, 미리 보기,
+도움말은 끌어서 움직일 수 있는 막대로 나뉩니다(막대 위에서는 포인터가 크기
+조절 커서로 바뀝니다). 막대 옆의 창이 공간을 차지하고 나머지 창은 크기를
+유지합니다. 막대를 더블클릭하거나 막대에서 Enter를 누르면 창을 접었다가 다시
+펼칩니다. 키보드에서는 F6으로 막대 사이를 이동하고, 화살표 키로 막대를 16 px씩
+옮기며, Home과 End로 막대 앞의 창을 최소·최대 크기로 만들고, Escape로
+편집기로 돌아갑니다. View 탭으로 창을 끌 수도 있습니다. 직접 설정한 크기는
+초안과 함께 이 브라우저에 보관되며, 기본 크기(190, 168, 280 px, 편집기와 미리
+보기가 나머지를 6 대 5로 나눔)는 저장되지 않습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;서식&lt;/strong&gt;: Format 탭이 Markdown을 대신 편집해 주며, 한 번 누를 때마다 Undo 한
+단계가 됩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;텍스트&lt;/strong&gt;: Bold, Italic, Strikethrough, Inline code는 선택 영역이나 캐럿
+위치의 단어에 적용되며 켜고 끄는 방식입니다(Ctrl+B, Ctrl+I, Ctrl+Shift+X,
+Ctrl+E, Mac에서는 Cmd). 캐럿이 해당 표식 안에 있으면 버튼이 눌린 상태로
+표시됩니다. Markdown에는 밑줄이 없으므로 Underline(Ctrl+U)은 텍스트를
+&lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;로 감쌉니다. 이 태그는 Marp의 기본 HTML 허용 목록에 포함되므로
+원시 HTML을 꺼도 동작합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;문단&lt;/strong&gt;: Heading 1~3(Ctrl+Alt+1..3), 글머리 기호(Ctrl+Shift+8), 번호 매기기
+(Ctrl+Shift+7), 인용은 선택한 줄에 적용되며 켜고 끄는 방식입니다. 수평선은
+&lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; 태그입니다. &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt;, &lt;code&gt;___&lt;/code&gt;는 Marp에서 모두 새 슬라이드를
+시작하기 때문입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;표&lt;/strong&gt;: 격자에서 열과 행 수를 고릅니다. 표 안에 캐럿이 있으면 행이나 열을
+추가·삭제하고 열 정렬(&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;, &lt;code&gt;--:&lt;/code&gt;)을 지정할 수 있으며, 편집할 때마다
+표가 정렬된 형태로 다시 작성됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;슬라이드 텍스트&lt;/strong&gt; 왼쪽·가운데·오른쪽 정렬은 현재 슬라이드에
+&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; 블록을 씁니다. Marp에는 정렬 문법이 없고 &lt;code&gt;style&lt;/code&gt; 속성은
+기본 HTML 허용 목록을 통과하지 못하지만, scoped 블록은 통과합니다. 따라서
+원시 HTML을 꺼도 동작하며 미리 보기, HTML 페이지, PDF에 반영됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;링크&lt;/strong&gt;(Ctrl+K)는 url이 선택된 상태로 &lt;code&gt;[text](url)&lt;/code&gt;을 씁니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;프런트 매터 키의 &lt;strong&gt;구문 강조&lt;/strong&gt;: 깊이와 관계없이 YAML(&lt;code&gt;{a: 1}&lt;/code&gt; 매핑 포함)과
+HCL 모두에서 강조합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;테마&lt;/strong&gt; 선택기: default, gaia, uncover, 프로젝트의 테마(&lt;code&gt;themes/*.css&lt;/code&gt;),
+프레젠테이션이 정의한 테마(&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; 안의 &lt;code&gt;/* @theme name */&lt;/code&gt;). 선택하면
+프런트 매터(YAML 또는 HCL)에 &lt;code&gt;theme:&lt;/code&gt;를 쓰므로 공유 링크에도 유지되며,
+프런트 매터를 편집하면 선택기도 따라 바뀝니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;입력하는 동안 미리 보기가 &lt;strong&gt;위치를 유지합니다&lt;/strong&gt;. 바뀐 슬라이드만 교체되며,
+테마를 바꾸면 미리 보기가 같은 슬라이드에서 다시 열립니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;공유 링크&lt;/strong&gt;: 프레젠테이션이 링크 자체(&lt;code&gt;#&lt;/code&gt; 부분에 압축된 형태)에 담기므로
+링크를 열면 프레젠테이션이 열립니다. 링크에는 압축 후 64 KiB까지,
+프레젠테이션만 담을 수 있습니다. 프로젝트에 그 밖의 파일(테마, kind, 미디어)이
+있으면 Share가 이를 알리고 &lt;code&gt;.zip&lt;/code&gt;을 제안합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;다른 이름으로 저장&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;slides deck.md&lt;/code&gt;가 쓰는 것과 같은 HTML 페이지&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt;(벡터, 텍스트 선택 가능, 개요 포함)&lt;/li&gt;
+&lt;li&gt;편집 가능한 &lt;strong&gt;PowerPoint&lt;/strong&gt; 또는 &lt;strong&gt;OpenDocument&lt;/strong&gt; 프레젠테이션&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;모두 &lt;code&gt;slides --pdf&lt;/code&gt;, &lt;code&gt;--pptx&lt;/code&gt;, &lt;code&gt;--odp&lt;/code&gt;와 같은 코드로 브라우저에서 만들어집니다.
+슬라이드 100장 벤치마크 프레젠테이션의 PDF는 명령으로 만든 것과 바이트 단위까지
+같습니다. 처음 내보낼 때 진행률 표시와 함께 내보내기 엔진(약 5 MiB, 한 번만
+받으며 다음 업데이트까지 브라우저가 보관)을 내려받고, 받는 동안 컴파일합니다. 그다음에는
+슬라이드가 그리는 글꼴만 내려받습니다. 3 MB/s 회선에서 환영 프레젠테이션의 첫 PDF는
+3초 안에 완성됩니다. 그 뒤 슬라이드 100장
+프레젠테이션은 약 3초가 걸립니다. &lt;code&gt;https:&lt;/code&gt; 이미지는 서버가 허용할 때(CORS)만
+포함되며, &lt;code&gt;data:&lt;/code&gt; 이미지는 항상 포함됩니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;초안이 보관됩니다&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;프레젠테이션은 입력하는 동안 이 브라우저에 저장되며(IndexedDB, 이 사이트
+전용), 새로 고침하면 다시 나타납니다. 어디에도 전송되지 않습니다. 프로젝트의
+텍스트 파일(테마, kind, 데이터, &lt;code&gt;slides.yaml&lt;/code&gt;)도 같은 방식으로 보관되며,
+입력 직후 탭을 닫아도 유지됩니다. 미디어는 끌어다 놓는 즉시 저장됩니다.&lt;/li&gt;
+&lt;li&gt;공유 링크를 열면 해당 프레젠테이션이 열리고 내 초안은 보관됩니다.
+&lt;strong&gt;Draft ▸ Restore my draft&lt;/strong&gt;로 되돌릴 수 있습니다.&lt;/li&gt;
+&lt;li&gt;예제를 열거나, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt;(먼저 확인)을 실행하거나,
+다른 탭을 써도 초안은 지워지지 않습니다. &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt;로 다시
+바꿀 수 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;는 저장된 모든 내용을 지웁니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;모든 내보내기는 미리 보기에 표시된 프로젝트를 렌더링합니다. &lt;code&gt;slides.yaml&lt;/code&gt;,
+테마, kind, 데이터 파일, 미디어가 포함되며, 미디어는 문서 안에 들어갑니다.&lt;/p&gt;
+&lt;p&gt;이미지 파일 출력(slides &lt;code&gt;--images&lt;/code&gt;)은 브라우저에서 만들 수 없습니다.
+&lt;a href="https://go-slides.github.io/docs/0.16/ko/cli/"&gt;명령&lt;/a&gt;이나
+&lt;a href="https://go-slides.github.io/docs/0.16/ko/vscode/"&gt;VS Code 확장&lt;/a&gt;을 사용하십시오.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;보안&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;프레젠테이션은 페이지의 출처(origin)를 갖지 않는 샌드박스 iframe에 표시됩니다.
+따라서 Playground에도, 그 저장소에도 접근할 수 없고, 양식을 제출하거나 페이지를
+이동할 수도 없습니다. 이 페이지에는 자체 스크립트만 실행하는 Content Security
+Policy가 적용됩니다. 프레젠테이션의 원시 HTML은 &lt;code&gt;slides&lt;/code&gt;의 기본 동작과 마찬가지로
+Marp 허용 목록을 따릅니다. 5초 넘게 걸리는 렌더링(무한 반복하는 템플릿 등)은
+중단됩니다.&lt;/p&gt;
+&lt;p&gt;발표자 창도 이 샌드박스를 유지합니다. 발표자 창은 Playground가 직접 열며,
+같은 방식으로 샌드박스 처리된 iframe에 프레젠테이션을 표시합니다. 두 iframe은
+저장소를 공유할 수 없으므로 Playground가 메시지로 슬라이드 번호를 중계합니다.
+프레젠테이션을 실행하는 어떤 프레임도 Playground의 출처를 얻지 못합니다.&lt;/p&gt;
+&lt;p&gt;프로젝트의 미디어는 메시지에 담긴 바이트로 샌드박스 프레임에 전달되며, 각
+프레임은 자신의 출처에서 직접 &lt;code&gt;blob:&lt;/code&gt; URL을 만듭니다. Playground가 만든 &lt;code&gt;blob:&lt;/code&gt;
+URL은 그 안에서 로드되지 않으며, 프레임 정책에는 미디어와 글꼴용 &lt;code&gt;blob:&lt;/code&gt;만
+추가됩니다.&lt;/p&gt;
+&lt;p&gt;Playground는 로그인 뒤에서 자신의 컴퓨터로 서비스할 수 있습니다.
+&lt;a href="https://go-slides.github.io/docs/0.16/ko/self-hosting/"&gt;셀프 호스팅&lt;/a&gt;을 참고하세요.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;크기와 속도&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;모듈은 GitHub Pages가 제공하는 상태(gzip, Pages는 brotli를 제공하지 않음)로
+8.8 MiB입니다. 진행률 막대와 함께 한 번 내려받으며, 이후 다음 배포까지 브라우저가
+캐시합니다. Apple M4 Max의 Chrome 155에서 실제 페이지로 측정한 결과, 편집기는
+페이지를 연 뒤 2.1 s(그중 1.5 s는 내려받기)에 준비되고 첫 슬라이드는 2.4 s에
+나타납니다. 슬라이드 100장 벤치마크 프레젠테이션을 수정하면 약 30 ms 만에 미리
+보기에 반영됩니다. go-slides는 바뀐 슬라이드만 렌더링하고, 미리 보기에서도 그
+슬라이드만 교체합니다.&lt;/p&gt;</description></item><item><title>셀프 호스팅</title><link>https://go-slides.github.io/docs/0.16/ko/self-hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/ko/self-hosting/</guid><description>
+&lt;p&gt;&lt;a href="https://go-slides.github.io/docs/0.16/ko/playground/"&gt;Playground&lt;/a&gt;는 정적 파일이고,
+&lt;a href="https://go-slides.github.io/docs/0.16/ko/cli/"&gt;&lt;code&gt;slides --server&lt;/code&gt;&lt;/a&gt;는 루프백에서 동작하는 하나의 프로세스입니다. 둘 다
+자신의 컴퓨터에서, 자신의 이름으로 실행해 조직의 계정으로 로그인하는 사람들에게
+제공할 수 있습니다. 이 페이지에서는 HTTPS 인증서를 직접 받고 갱신하는
+&lt;a href="https://caddyserver.com/docs/" target="_blank" rel="noopener"&gt;Caddy&lt;/a&gt;(v2.11.7로 테스트)와, 로그인을 맡는
+&lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/" target="_blank" rel="noopener"&gt;oauth2-proxy&lt;/a&gt;를 사용합니다.
+여기에 나오는 모든 파일은
+&lt;a href="https://github.com/go-slides/go-slides.github.io/tree/main/selfhost" target="_blank" rel="noopener"&gt;&lt;code&gt;selfhost/&lt;/code&gt;&lt;/a&gt;에
+있으며, 그곳의 CI가 각 Caddyfile을 &lt;code&gt;caddy validate&lt;/code&gt;로 검사합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-playground"&gt;Playground&lt;span class="hx:absolute hx:-mt-20" id="the-playground"&gt;&lt;/span&gt;
+&lt;a href="#the-playground" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;사이트의 각 릴리스에는 Playground를 포함한 사이트 전체가
+도메인 루트용으로 빌드된 tarball 하나로, SHA-256과 함께 첨부됩니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz.sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sha256sum -c go-slides-site-v0.1.0.tar.gz.sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xzf go-slides-site-v0.1.0.tar.gz -C /srv
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mv /srv/go-slides-site-v0.1.0 /srv/go-slides-site&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;이 tarball은 재현 가능합니다. 같은 태그를 다시 빌드하면 같은
+바이트가 나옵니다. 압축되는 모든 파일(WebAssembly 모듈, 글꼴, 페이지, 스크립트) 옆에는
+같은 파일을 Brotli(&lt;code&gt;.br&lt;/code&gt;)와 gzip(&lt;code&gt;.gz&lt;/code&gt;)으로 압축한 것도 들어 있어서, 서버는 이를
+그대로 보내고 즉석에서는 아무것도 압축하지 않습니다.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="caddyfile"&gt;Caddyfile&lt;span class="hx:absolute hx:-mt-20" id="caddyfile"&gt;&lt;/span&gt;
+&lt;a href="#caddyfile" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;slides.example.org&lt;/code&gt;는 여러분의 이름입니다. 이 이름의 A 레코드와 AAAA 레코드가 해당
+컴퓨터를 가리키고, 80번과 443번 포트가 Caddy에 도달해야 합니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="vm"&gt;headers.caddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;slides.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;root&lt;/span&gt; &lt;span class="nd"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/srv/go-slides-site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;file_server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;precompressed&lt;/span&gt; &lt;span class="s"&gt;br&lt;/span&gt; &lt;span class="s"&gt;gzip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; playground_headers
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;caddy run --config Caddyfile.playground&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;그러면 Playground는 &lt;code&gt;https://slides.example.org/playground/&lt;/code&gt;에서 열립니다.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="what-the-server-must-get-right"&gt;서버가 올바르게 해야 하는 일&lt;span class="hx:absolute hx:-mt-20" id="what-the-server-must-get-right"&gt;&lt;/span&gt;
+&lt;a href="#what-the-server-must-get-right" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTTPS.&lt;/strong&gt; Caddy는 ACME(&lt;a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener"&gt;RFC 8555&lt;/a&gt;)로
+Let&amp;rsquo;s Encrypt에서 인증서를 받습니다. 80번 포트(HTTP-01) 또는 443번 포트(TLS-ALPN-01)에서
+응답해 이름을 가지고 있음을 증명하고, 인증서를 갱신합니다. CA가 접근할 수 없는 컴퓨터는 대신
+DNS-01 챌린지(TXT 레코드이며, DNS 제공업체의 모듈이 들어간 Caddy가 필요합니다)나
+&lt;code&gt;tls cert.pem key.pem&lt;/code&gt;으로 지정한 자체 인증서를 쓸 수 있습니다.
+테스트용 컴퓨터에서는 &lt;code&gt;tls internal&lt;/code&gt;이 Caddy의 로컬 CA를 사용합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;application/wasm&lt;/code&gt;.&lt;/strong&gt; Caddy는 &lt;code&gt;.wasm&lt;/code&gt;에 이 타입을 보냅니다. 다른 서버는
+따로 지정해야 할 수 있습니다. Playground는 읽어 들인 바이트에서 모듈을 컴파일하므로
+(내보내기 엔진은 내려받는 동안, 이 타입의 별도 응답으로), 다른 타입을 보내는 서버에서도
+시작되지만, &lt;code&gt;nosniff&lt;/code&gt;가 있더라도 올바른 타입을 보내는 것이 맞습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;압축.&lt;/strong&gt; &lt;code&gt;precompressed br gzip&lt;/code&gt;은 Brotli를 받는 브라우저에는 &lt;code&gt;playground.wasm.br&lt;/code&gt;을,
+gzip을 받는 브라우저에는 &lt;code&gt;.gz&lt;/code&gt;를, 둘 다 아니면 파일 자체를 &lt;code&gt;Vary: Accept-Encoding&lt;/code&gt;과
+함께 보냅니다. 편집기 모듈은 Brotli로 약 7 MiB이고, 압축하지 않으면
+33 MiB입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;캐싱.&lt;/strong&gt; 페이지는 모든 모듈, 워커, 글꼴, 그림을 쿼리에 릴리스를 붙여
+(&lt;code&gt;playground.wasm?v=v0.1.0&lt;/code&gt;) 요청하므로, 이들은 1년 동안
+보관할 수 있습니다(&lt;code&gt;immutable&lt;/code&gt;). 페이지 자체는 매번 재검증됩니다
+(&lt;code&gt;no-cache&lt;/code&gt;). 새 릴리스는 다음 방문 때 보입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;headers.caddy&lt;/code&gt;의 헤더:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;(playground_headers)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Content-Security-Policy&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default-src &amp;#39;self&amp;#39;; script-src &amp;#39;self&amp;#39; &amp;#39;unsafe-inline&amp;#39; &amp;#39;wasm-unsafe-eval&amp;#39;; worker-src &amp;#39;self&amp;#39;; connect-src &amp;#39;self&amp;#39; https:; img-src &amp;#39;self&amp;#39; data: blob: https:; media-src &amp;#39;self&amp;#39; data: blob: https:; style-src &amp;#39;self&amp;#39; &amp;#39;unsafe-inline&amp;#39; https:; font-src &amp;#39;self&amp;#39; data: blob: https:; frame-src &amp;#39;self&amp;#39;; object-src &amp;#39;none&amp;#39;; base-uri &amp;#39;none&amp;#39;; form-action &amp;#39;none&amp;#39;; frame-ancestors &amp;#39;self&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;X-Content-Type-Options&lt;/span&gt; &lt;span class="s"&gt;nosniff&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Referrer-Policy&lt;/span&gt; &lt;span class="s"&gt;no-referrer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Strict-Transport-Security&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;max-age=31536000&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@versioned&lt;/span&gt; &lt;span class="k"&gt;query&lt;/span&gt; &lt;span class="s"&gt;v=*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="nd"&gt;@versioned&lt;/span&gt; &lt;span class="s"&gt;Cache-Control&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;public, max-age=31536000, immutable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@unversioned&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;query&lt;/span&gt; &lt;span class="s"&gt;v=*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="nd"&gt;@unversioned&lt;/span&gt; &lt;span class="s"&gt;Cache-Control&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;no-cache&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;이 정책은 Playground가 필요로 하는 그대로입니다. 스크립트(로더는
+인라인), WebAssembly(&lt;code&gt;'wasm-unsafe-eval'&lt;/code&gt;), 워커가 모두
+여러분의 서버에서 옵니다. 덱의 그림, 스타일시트, 글꼴은 명령의 출력과 마찬가지로
+어떤 &lt;code&gt;https:&lt;/code&gt; 주소에서든 올 수 있습니다. 모든 요청을 여러분의 서버에 두려면
+&lt;code&gt;img-src&lt;/code&gt;, &lt;code&gt;style-src&lt;/code&gt;, &lt;code&gt;font-src&lt;/code&gt;, &lt;code&gt;media-src&lt;/code&gt;, &lt;code&gt;connect-src&lt;/code&gt;에서 &lt;code&gt;https:&lt;/code&gt;를 빼십시오.
+그러면 다른 곳을 가리키는 덱은 그 리소스 없이 표시됩니다. 덱 자체는 여러분의 출처가 없는
+샌드박스 iframe 안에서, Playground가 각 프레임에 써 넣는 더 엄격한 자체 정책 아래 실행됩니다.
+이 헤더가 무엇이라 하든, 덱은 Playground, 그 저장소, 여러분의 쿠키에 접근할 수
+없습니다. &lt;code&gt;frame-ancestors 'self'&lt;/code&gt;는 다른 사이트가 Playground를 프레임에 넣지
+못하게 합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;COOP도 COEP도 없음.&lt;/strong&gt; Playground는 &lt;code&gt;SharedArrayBuffer&lt;/code&gt;도 스레드도 쓰지 않으므로
+교차 출처 격리가 필요하지 않습니다.
+&lt;code&gt;Cross-Origin-Embedder-Policy: require-corp&lt;/code&gt;를 보내면 덱이 다른 사이트에서 가져오는 그림이
+차단됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 data-hextra-search-id="without-the-network"&gt;네트워크 없이&lt;span class="hx:absolute hx:-mt-20" id="without-the-network"&gt;&lt;/span&gt;
+&lt;a href="#without-the-network" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;페이지를 불러온 뒤에는 편집기, 미리보기, 발표자 보기, 그리고 PDF·PPTX·ODP 내보내기
+(글꼴은 tarball에 들어 있습니다)까지 모든 것이 브라우저 안에서 일어납니다. 덱은 여러분의
+서버로도, 다른 어디로도 전송되지 않습니다. 네트워크가 필요한 것은 덱이 직접 가리키는 것들, 즉
+&lt;code&gt;https:&lt;/code&gt; 주소의 그림이나 스타일시트와, &lt;code&gt;gaia&lt;/code&gt; 테마의 웹 글꼴입니다. 이 글꼴은
+&lt;code&gt;fonts.bunny.net&lt;/code&gt;에 요청합니다(없으면 슬라이드는 다른 글꼴로 대체됩니다).
+이 문서로 향하는 링크는 여러분의 서버를 벗어납니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides---server-behind-the-proxy"&gt;프록시 뒤의 &lt;code&gt;slides --server&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slides---server-behind-the-proxy"&gt;&lt;/span&gt;
+&lt;a href="#slides---server-behind-the-proxy" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;slides --server&lt;/code&gt;는 &lt;code&gt;127.0.0.1&lt;/code&gt;에 머물고 Caddy가 그쪽으로 전달합니다. 서버는 DNS 리바인딩과
+다른 사이트의 페이지를 막기 위해 각 요청의 &lt;code&gt;Host&lt;/code&gt; 헤더와 각 라이브 리로드
+WebSocket의 &lt;code&gt;Origin&lt;/code&gt;을 검사하며, 프록시는 둘 다에 공개 이름을 유지합니다.
+&lt;code&gt;--allowed-host&lt;/code&gt;는 그 이름을 검사가 받아들이는 대상에 추가합니다. 검사는 켜진 채로 있습니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides -s --allowed-host decks.example.org /srv/decks&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;decks.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;라이브 리로드는 그대로 통과합니다(Caddy는 설정 없이 WebSocket을 프록시합니다).
+이를 위해 &lt;code&gt;--host 0.0.0.0&lt;/code&gt;을 쓰지 마십시오. 디렉터리를 네트워크 전체에 제공하게 되어
+프록시와 로그인을 우회하게 됩니다.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;code&gt;--allowed-host&lt;/code&gt;는 v0.14.0부터 들어 있습니다.
+&lt;code&gt;go install github.com/go-slides/slides/cmd/slides@v0.16.0&lt;/code&gt;. Go 1.27.3 이상이 필요합니다.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="sign-in-with-openid-connect"&gt;OpenID Connect로 로그인&lt;span class="hx:absolute hx:-mt-20" id="sign-in-with-openid-connect"&gt;&lt;/span&gt;
+&lt;a href="#sign-in-with-openid-connect" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Caddy는 모든 요청에 대해 oauth2-proxy에 물어봅니다(&lt;code&gt;forward_auth&lt;/code&gt;). oauth2-proxy는
+로그인한 브라우저에는 &lt;code&gt;202&lt;/code&gt;로 답하고 Caddy가 그 요청을 처리하며,
+그렇지 않으면 &lt;code&gt;401&lt;/code&gt;로 답하고 Caddy가 이를 로그인으로의 리디렉션으로 바꿉니다.
+로그인은
+&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener"&gt;OpenID Connect Core 1.0&lt;/a&gt;의
+인증 코드 흐름입니다. 브라우저는 제공자(Keycloak, Authentik, Entra ID, Google,
+Okta, Dex 등)에게 갔다가 코드를 가지고 &lt;code&gt;/oauth2/callback&lt;/code&gt;으로 돌아오고, oauth2-proxy가
+그 코드를 ID Token으로 교환해 검증한 뒤 자체 쿠키를 설정합니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;제공자에 &lt;strong&gt;클라이언트를 등록&lt;/strong&gt;합니다. 기밀 클라이언트이며 인증 코드 흐름을 사용합니다.
+리디렉션 URI는 정확히 일치해야 합니다.
+&lt;code&gt;https://slides.example.org/oauth2/callback&lt;/code&gt;과
+&lt;code&gt;https://decks.example.org/oauth2/callback&lt;/code&gt;입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;비밀 값은 파일에 두고&lt;/strong&gt; oauth2-proxy만 읽을 수 있게 합니다. 클라이언트의
+비밀 값(끝에 줄바꿈 없음)과, 정확히 32바이트의 무작위 쿠키
+비밀 값(&lt;code&gt;head -c 32 /dev/urandom&lt;/code&gt;)입니다. 비밀 값 저장소(systemd credentials,
+Docker나 Kubernetes secret, Vault 등)가 이를 기록합니다.
+둘 다 설정 파일, 명령줄, 환경 변수에는 넣지 마십시오. 로그와 &lt;code&gt;ps&lt;/code&gt;에 노출됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;oauth2-proxy를 설정&lt;/strong&gt;합니다(&lt;code&gt;oauth2-proxy.cfg&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;http_address&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;127.0.0.1:4180&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;reverse_proxy&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;trusted_proxy_ips&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;127.0.0.1/32&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;::1/128&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;upstreams&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;static://202&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;set_xauthrequest&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;provider&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;oidc&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;oidc_issuer_url&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://id.example.org/realms/example&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;client_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;go-slides&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;client_secret_file&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/run/secrets/oauth2-proxy-client-secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;code_challenge_method&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;S256&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;redirect_url&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/oauth2/callback&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;whitelist_domains&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;slides.example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;decks.example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;email_domains&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_secret_file&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/run/secrets/oauth2-proxy-cookie-secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_secure&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_samesite&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lax&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;호스트가 없는 &lt;code&gt;redirect_url&lt;/code&gt;은 각 사이트의 로그인을 그 사이트 자신의 콜백으로 되돌려 보내므로,
+각 사이트가 자기 쿠키를 가집니다. &lt;code&gt;whitelist_domains&lt;/code&gt;는 로그인 후 돌아갈 수 있는 곳입니다.
+다른 곳으로 가라고 요청받아도 여러분의 사이트에 머뭅니다.
+&lt;code&gt;trusted_proxy_ips&lt;/code&gt;는 Caddy가 보낸 &lt;code&gt;X-Forwarded-*&lt;/code&gt; 헤더만 믿습니다.
+&lt;code&gt;email_domains&lt;/code&gt;는 누가 들어올 수 있는지를 정합니다. oauth2-proxy에는 그룹과
+주소 목록을 위한 옵션도 있습니다.&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;&lt;strong&gt;Caddy를 설정&lt;/strong&gt;합니다(&lt;code&gt;Caddyfile.oidc&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="vm"&gt;headers.caddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;(signed_in)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle&lt;/span&gt; &lt;span class="nd"&gt;/oauth2/*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4180&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;forward_auth&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4180&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;uri&lt;/span&gt; &lt;span class="nd"&gt;/oauth2/auth&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;copy_headers&lt;/span&gt; &lt;span class="s"&gt;X-Auth-Request-User&lt;/span&gt; &lt;span class="s"&gt;X-Auth-Request-Email&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@unauthorized&lt;/span&gt; &lt;span class="k"&gt;status&lt;/span&gt; &lt;span class="mi"&gt;401&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle_response&lt;/span&gt; &lt;span class="nd"&gt;@unauthorized&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;redir&lt;/span&gt; &lt;span class="nd"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/oauth2/sign_in?rd=&lt;/span&gt;&lt;span class="se"&gt;{scheme}&lt;/span&gt;&lt;span class="s"&gt;://&lt;/span&gt;&lt;span class="se"&gt;{hostport}{uri}&lt;/span&gt; &lt;span class="mi"&gt;302&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;{block}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;slides.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; signed_in &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;root&lt;/span&gt; &lt;span class="s"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/srv/go-slides-site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;file_server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;precompressed&lt;/span&gt; &lt;span class="s"&gt;br&lt;/span&gt; &lt;span class="s"&gt;gzip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; playground_headers
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;decks.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; signed_in &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides -s --allowed-host decks.example.org /srv/decks
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;oauth2-proxy --config /etc/oauth2-proxy/oauth2-proxy.cfg
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;caddy run --config Caddyfile.oidc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;oauth2-proxy와 &lt;code&gt;slides&lt;/code&gt;는 루프백에서만 수신합니다. 들어오는 길은 Caddy뿐이며,
+따라서 로그인을 반드시 거칩니다. Playground의 헤더는 로그인된 블록 안쪽에,
+Playground에만 둡니다. oauth2-proxy의 로그인 페이지는 폼인데,
+이 헤더의 &lt;code&gt;form-action 'none'&lt;/code&gt;이 그것을 막기 때문입니다.&lt;/p&gt;
+&lt;p&gt;대안은 &lt;a href="https://github.com/greenpau/caddy-security" target="_blank" rel="noopener"&gt;caddy-security&lt;/a&gt;입니다.
+Caddy 안에서 로그인을 처리하는 Caddy 모듈로, 두 번째 프로세스가 필요 없습니다.
+다만 이 모듈을 넣어 빌드한 Caddy(&lt;code&gt;xcaddy&lt;/code&gt;)와 자체 설정 언어가 필요합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="check-it"&gt;확인하기&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
+&lt;a href="#check-it" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;응답에는 &lt;code&gt;content-type: application/wasm&lt;/code&gt;, &lt;code&gt;content-encoding: br&lt;/code&gt;,
+&lt;code&gt;cache-control: public, max-age=31536000, immutable&lt;/code&gt;이 나오며, 위에서 본
+&lt;code&gt;content-security-policy&lt;/code&gt;도 함께 옵니다. 앞단에 로그인이 있으면, 같은
+요청을 쿠키 없이 보낼 때 &lt;code&gt;302&lt;/code&gt;로 &lt;code&gt;/oauth2/sign_in&lt;/code&gt;에 리디렉션됩니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="references"&gt;참고 자료&lt;span class="hx:absolute hx:-mt-20" id="references"&gt;&lt;/span&gt;
+&lt;a href="#references" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Caddy: &lt;a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener"&gt;automatic HTTPS&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/file_server" target="_blank" rel="noopener"&gt;&lt;code&gt;file_server&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/header" target="_blank" rel="noopener"&gt;&lt;code&gt;header&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy" target="_blank" rel="noopener"&gt;&lt;code&gt;reverse_proxy&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/forward_auth" target="_blank" rel="noopener"&gt;&lt;code&gt;forward_auth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener"&gt;RFC 8555&lt;/a&gt;, ACME: HTTP-01(8.3),
+DNS-01(8.4)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener"&gt;OpenID Connect Core 1.0&lt;/a&gt;:
+인증 코드 흐름(3.1), 리디렉션 URI(3.1.2.1), ID
+Token(2)&lt;/li&gt;
+&lt;li&gt;oauth2-proxy: &lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview" target="_blank" rel="noopener"&gt;configuration&lt;/a&gt;,
+&lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect" target="_blank" rel="noopener"&gt;OpenID Connect provider&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

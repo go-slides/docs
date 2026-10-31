@@ -1,0 +1,212 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.16/it/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>it</language><atom:link href="https://go-slides.github.io/docs/0.16/it/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.16/it/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/it/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/it/playground/" target="_blank" rel="noopener"&gt;Apri il Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Il Playground (l&amp;rsquo;editor di go-slides nel browser) è go-slides stesso, v0.16.0, compilato in WebAssembly ed
+eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
+destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;interfaccia del Playground (barra multifunzione, guida, messaggi) parla la
+lingua della pagina: apri &lt;code&gt;/it/playground/&lt;/code&gt; per l&amp;rsquo;italiano, e così per le
+dodici lingue di questo sito. Il selettore di lingua della pagina la cambia e
+la tua scelta resta salvata in questo browser; un link che indica una lingua
+prevale sempre. Le presentazioni di esempio restano in inglese. Ucraino, russo,
+cinese, giapponese e coreano sono disegnati con un sottoinsieme di Noto Sans
+(da 0,06 a 2,3 MiB) che la pagina scarica solo per queste lingue.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Cosa offre&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Anteprima in tempo reale&lt;/strong&gt; di ogni slide, resa fuori dal thread della pagina (un Web
+Worker), quindi la digitazione non deve mai aspettarla. Fai clic su una slide per portare l&amp;rsquo;editor
+alla sua riga; sposta il cursore e l&amp;rsquo;anteprima scorre fino alla sua slide.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Slideshow&lt;/strong&gt;: la presentazione vera e propria, con la tastiera, il
+controller a schermo e le transizioni.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vista del relatore&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (o &lt;code&gt;p&lt;/code&gt; nello slideshow) la apre in una
+seconda finestra: la slide corrente, il passo successivo, le note del relatore (i
+&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt; della presentazione), un orologio e un timer. I tasti freccia, Spazio,
+Home e Fine funzionano in entrambe le finestre, e ciascuna segue l&amp;rsquo;altra, anche
+quando modifichi la presentazione. Se la finestra non si apre, consenti i pop-up per
+il sito. La vista panoramica (&lt;code&gt;o&lt;/code&gt;) esiste solo nella pagina scaricata.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Completamento&lt;/strong&gt; durante la digitazione: chiavi delle direttive (quelle spot con &lt;code&gt;_&lt;/code&gt; nei commenti),
+i valori di &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, e le funzioni dei template e i campi dei dati
+dentro &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Guida&lt;/strong&gt; per ciò che si trova sotto il cursore: una direttiva, un kind (il tipo di una slide: cosa imposta),
+una funzione di template. Il riquadro della guida rimanda anche a queste pagine. Dalla v0.16.0
+la guida alle direttive segue la lingua dell&amp;rsquo;interfaccia, in 11 lingue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Problemi&lt;/strong&gt; sulla loro riga: gli errori di template, YAML e HCL sono evidenziati
+nell&amp;rsquo;editor ed elencati sotto di esso, e l&amp;rsquo;anteprima conserva l&amp;rsquo;ultima presentazione
+che è stata resa.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Esempi&lt;/strong&gt;: una presentazione di benvenuto, template che generano slide, kinds,
+un front matter HCL, temi e direttive spot, e matematica, immagini e
+sfondi (&lt;code&gt;![bg]&lt;/code&gt;, un &lt;code&gt;![bg left:40%]&lt;/code&gt; diviso, filtri).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;File&lt;/strong&gt;: il pannello a sinistra dell&amp;rsquo;editor è il progetto della presentazione, organizzato
+come lo leggono il &lt;a href="https://go-slides.github.io/docs/0.16/it/cli/"&gt;comando&lt;/a&gt; e
+l&amp;rsquo;&lt;a href="https://go-slides.github.io/docs/0.16/it/vscode/"&gt;estensione di VS Code&lt;/a&gt;: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fai clic su un file per modificarlo. L&amp;rsquo;editor lo colora secondo il suo linguaggio
+(Markdown, YAML, HCL, JSON, CSS) e ne segnala i problemi.&lt;/li&gt;
+&lt;li&gt;Clic destro (o Maiusc+F10) per Nuovo file, Nuova cartella, Rinomina (F2),
+Elimina (chiede conferma) e Nuovo tema / Nuovo kind. Trascina un file su una cartella
+per spostarlo. La tastiera segue il pattern ad albero WAI-ARIA, compresa
+la ricerca digitando.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; crea &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (oppure da default,
+uncover): un &lt;code&gt;@import&lt;/code&gt; del tema integrato e le regole che aggiungi. Entra
+nell&amp;rsquo;elenco dei temi. Anche &lt;strong&gt;New kind&lt;/strong&gt; e &lt;strong&gt;New data file&lt;/strong&gt; partono da
+modelli. Ognuno è elencato in &lt;code&gt;slides.yaml&lt;/code&gt;, così &lt;code&gt;slides build deck.md&lt;/code&gt;
+lo trova.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; salva tutto. Decompresso,
+&lt;code&gt;slides build deck.md&lt;/code&gt; lo compila. &lt;strong&gt;Open project&lt;/strong&gt; riprende uno &lt;code&gt;.zip&lt;/code&gt; o una
+cartella. Un archivio che esce dalla propria cartella (&lt;code&gt;..&lt;/code&gt;, percorsi assoluti),
+contiene più di 256 file o 8 MiB in un file, o si espande più di 100
+volte viene rifiutato.&lt;/li&gt;
+&lt;li&gt;Tutto viene conservato in questo browser insieme alla bozza. Un progetto contiene fino
+a 64 MiB, e la riga sotto i file dice quanto ne è usato.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Media&lt;/strong&gt;: trascina o incolla un&amp;rsquo;immagine, un video o un suono sull&amp;rsquo;editor e finisce
+in &lt;code&gt;media/&lt;/code&gt;, e la presentazione lo nomina: &lt;code&gt;![](media/photo.png)&lt;/code&gt;. Trascina
+file su una cartella del pannello per metterli lì. La presentazione resta piccola e
+leggibile, e nulla viene caricato. La sandbox dell&amp;rsquo;anteprima li carica
+senza essere aperta (la pagina le passa i byte). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; li inserisce nella pagina. Funzionano anche le immagini &lt;code&gt;https:&lt;/code&gt;, ma il browser
+le preleva dal loro server, che vede così il tuo indirizzo. L&amp;rsquo;anteprima
+non invia alcun referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Riquadri ridimensionabili&lt;/strong&gt;: il pannello dei file, l&amp;rsquo;editor, le miniature delle slide, l'
+anteprima e la guida sono separati da barre che puoi trascinare (il puntatore
+diventa un cursore di ridimensionamento sopra una di esse). Il riquadro accanto alla barra prende lo spazio,
+gli altri mantengono la loro dimensione. Fai doppio clic su una barra, o premi Invio su di essa,
+per chiudere il riquadro e riaprirlo. Da tastiera, F6 passa tra
+le barre, i tasti freccia ne spostano una di 16 px, Home e Fine portano il riquadro
+che la precede alla dimensione minima e massima, ed Esc torna all&amp;rsquo;editor.
+La scheda View continua a disattivare i riquadri. Le dimensioni impostate sono conservate in questo
+browser, con la bozza; le dimensioni predefinite (190, 168 e 280 px, con l&amp;rsquo;editor
+e l&amp;rsquo;anteprima che si dividono il resto 6 a 5) non vengono mai memorizzate.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Formato&lt;/strong&gt;: la scheda Format modifica il Markdown al posto tuo, e ogni pressione è
+un passo di Annulla.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Testo&lt;/strong&gt;: Grassetto, Corsivo, Barrato e Codice in linea agiscono sulla selezione
+o sulla parola sotto il cursore e si alternano (Ctrl+B, Ctrl+I, Ctrl+Maiusc+X e
+Ctrl+E; Cmd su Mac). Un pulsante appare premuto quando il cursore è dentro
+i suoi segni. Markdown non ha il sottolineato: Underline (Ctrl+U) racchiude il testo in
+&lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;, un tag che la lista consentita HTML predefinita di Marp mantiene, quindi funziona con
+l&amp;rsquo;HTML grezzo disattivato.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paragrafo&lt;/strong&gt;: Titolo da 1 a 3 (Ctrl+Alt+1..3), elenchi puntati (Ctrl+Maiusc+8),
+numerati (Ctrl+Maiusc+7) e una citazione agiscono sulle righe selezionate e si alternano.
+La linea orizzontale è il tag &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt; e &lt;code&gt;___&lt;/code&gt; inizierebbero ciascuno
+una nuova slide in Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tabella&lt;/strong&gt;: una griglia sceglie colonne e righe. Con il cursore in una tabella
+aggiungi o rimuovi una riga o una colonna e allinei la colonna (&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;,
+&lt;code&gt;--:&lt;/code&gt;); la tabella viene riscritta allineata dopo ogni modifica.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testo della slide&lt;/strong&gt; a sinistra, al centro o a destra scrive un blocco &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; nella
+slide corrente. Marp non ha una sintassi di allineamento, e un attributo &lt;code&gt;style&lt;/code&gt; non
+supera la lista consentita HTML predefinita, mentre il blocco scoped sì, quindi
+funziona con l&amp;rsquo;HTML grezzo disattivato e compare nell&amp;rsquo;anteprima, nella pagina HTML e nel PDF.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Ctrl+K) scrive &lt;code&gt;[text](url)&lt;/code&gt; con l&amp;rsquo;url selezionato.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Evidenziazione&lt;/strong&gt; delle chiavi del front matter a qualsiasi profondità, in YAML (anche
+nelle mappe &lt;code&gt;{a: 1}&lt;/code&gt;) e in HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Selettore di &lt;strong&gt;tema&lt;/strong&gt;: default, gaia, uncover, i temi del progetto
+(&lt;code&gt;themes/*.css&lt;/code&gt;) e i temi definiti dalla presentazione (&lt;code&gt;/* @theme name */&lt;/code&gt; in un
+&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Scrive &lt;code&gt;theme:&lt;/code&gt; nel front
+matter, YAML o HCL, così un link condiviso lo conserva, e segue il front
+matter quando lo modifichi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;L&amp;rsquo;anteprima &lt;strong&gt;mantiene la posizione&lt;/strong&gt; mentre digiti: vengono sostituite solo le slide che
+sono cambiate, e un cambio di tema riapre l&amp;rsquo;anteprima sulla
+stessa slide.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Link di condivisione&lt;/strong&gt;: la presentazione viaggia nel link stesso (nella sua parte &lt;code&gt;#&lt;/code&gt;,
+compressa), quindi aprire il link apre la presentazione. I link trasportano fino a
+64 KiB compressi, e solo la presentazione: quando il progetto contiene di più
+(temi, kinds, media), Share lo dice e propone lo &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;la pagina HTML, la stessa che scrive &lt;code&gt;slides deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;un &lt;strong&gt;PDF&lt;/strong&gt; (vettoriale, con testo selezionabile, con indice);&lt;/li&gt;
+&lt;li&gt;una presentazione &lt;strong&gt;PowerPoint&lt;/strong&gt; o &lt;strong&gt;OpenDocument&lt;/strong&gt; modificabile.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sono prodotti nel tuo browser, dallo stesso codice di &lt;code&gt;slides --pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; e &lt;code&gt;--odp&lt;/code&gt;: il PDF della presentazione di benchmark da 100 slide è
+identico byte per byte a quello del comando. La prima esportazione scarica il motore
+di esportazione (circa 5 MiB, una volta; il browser lo conserva fino al prossimo aggiornamento),
+con una riga di avanzamento, e lo compila man mano che arriva. Poi scarica solo
+i font che le tue slide disegnano. Con un collegamento a 3 MB/s il primo PDF della
+presentazione di benvenuto è pronto in meno di 3 secondi. La presentazione da 100 slide richiede poi circa
+3 secondi. Un&amp;rsquo;immagine
+&lt;code&gt;https:&lt;/code&gt; è inclusa solo se il suo server lo consente (CORS); quelle &lt;code&gt;data:&lt;/code&gt;
+lo sono sempre.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;La tua bozza viene conservata&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La presentazione è salvata in questo browser mentre digiti (IndexedDB, solo per questo sito)
+e ritorna quando ricarichi. Nulla viene inviato altrove. I
+file di testo del progetto (temi, kinds, dati, &lt;code&gt;slides.yaml&lt;/code&gt;) sono conservati
+allo stesso modo, anche se chiudi la scheda subito dopo aver digitato; i media sono
+memorizzati nel momento in cui vengono trascinati.&lt;/li&gt;
+&lt;li&gt;Un link condiviso apre la sua presentazione e conserva la tua bozza: &lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; la riporta indietro.&lt;/li&gt;
+&lt;li&gt;Un esempio, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (che chiede conferma) e
+un&amp;rsquo;altra scheda non la cancellano mai: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; la
+riporta indietro.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; cancella tutto ciò che è memorizzato.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ogni esportazione rende il progetto che mostra l&amp;rsquo;anteprima: il suo &lt;code&gt;slides.yaml&lt;/code&gt;,
+temi, kinds, file di dati e media, con i media dentro il documento.&lt;/p&gt;
+&lt;p&gt;Le immagini come file (slides &lt;code&gt;--images&lt;/code&gt;) non vengono prodotte nel browser: usa il
+&lt;a href="https://go-slides.github.io/docs/0.16/it/cli/"&gt;comando&lt;/a&gt; o l'
+&lt;a href="https://go-slides.github.io/docs/0.16/it/vscode/"&gt;estensione di VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Sicurezza&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentazione è mostrata in un iframe in sandbox senza l&amp;rsquo;origine della pagina: non può
+raggiungere né il Playground né la sua memoria, non può inviare moduli e non naviga
+da nessuna parte. La sua pagina ha una Content Security Policy che esegue solo i propri
+script. L&amp;rsquo;HTML grezzo nella presentazione segue la lista consentita di Marp, come fa &lt;code&gt;slides&lt;/code&gt; per
+impostazione predefinita. Un rendering che dura più di 5 secondi (un template che va in ciclo)
+viene interrotto.&lt;/p&gt;
+&lt;p&gt;La finestra del relatore mantiene quella sandbox. È aperta dal Playground
+stesso e mostra la presentazione in un iframe in sandbox allo stesso modo. I due
+iframe non possono condividere la memoria, quindi il Playground inoltra il numero della slide
+tra loro tramite messaggi. Nessun frame che esegue la presentazione ottiene l&amp;rsquo;origine
+del Playground.&lt;/p&gt;
+&lt;p&gt;I media del progetto raggiungono i frame in sandbox come byte in un messaggio, e
+ogni frame ne crea i propri URL &lt;code&gt;blob:&lt;/code&gt;, nella propria origine. Un URL &lt;code&gt;blob:&lt;/code&gt;
+creato dal Playground non vi si carica, e la policy dei frame
+guadagna solo &lt;code&gt;blob:&lt;/code&gt; per media e font.&lt;/p&gt;
+&lt;p&gt;Il Playground può essere servito dalla tua macchina, dietro un accesso:
+vedi &lt;a href="https://go-slides.github.io/docs/0.16/it/self-hosting/"&gt;Self-hosting&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Dimensione e velocità&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Il modulo è di 8,8 MiB come lo serve GitHub Pages (gzip; Pages non
+serve brotli). Viene scaricato una volta con una barra di avanzamento, poi messo in cache dal
+browser fino al prossimo deploy. Su un Apple M4 Max con Chrome 155, misurato
+sulla pagina pubblicata, l&amp;rsquo;editor è pronto 2,1 s dopo l&amp;rsquo;apertura della pagina, di cui 1,5 s
+sono il download, e le prime slide compaiono a 2,4 s. Una modifica alla
+presentazione di benchmark da 100 slide raggiunge l&amp;rsquo;anteprima in circa 30 ms: go-slides
+rende solo le slide cambiate, e solo quelle vengono sostituite
+nell&amp;rsquo;anteprima.&lt;/p&gt;</description></item></channel></rss>

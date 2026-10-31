@@ -1,0 +1,210 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Code</title><link>https://go-slides.github.io/docs/0.16/ru/tags/code/</link><description>Recent content in Code on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.16/ru/tags/code/index.xml" rel="self" type="application/rss+xml"/><item><title>Математика и код</title><link>https://go-slides.github.io/docs/0.16/ru/math-and-code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/ru/math-and-code/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Математика и код появились в v0.2.0.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="math"&gt;Математика&lt;span class="hx:absolute hx:-mt-20" id="math"&gt;&lt;/span&gt;
+&lt;a href="#math" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;$…$&lt;/code&gt; — строчная формула, &lt;code&gt;$$…$$&lt;/code&gt; — выключная:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The famous one is $E=mc^2$, and this is a display formula:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$$
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Правила разделителей взяты из Marp Core (по marp-core 4.4.0): &lt;code&gt;$&lt;/code&gt; с пробелом
+после него не открывает формулу, а с цифрой после него не закрывает её,
+так что цены вроде &lt;code&gt;$5 and $10&lt;/code&gt; остаются текстом.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/go-tex/math" target="_blank" rel="noopener"&gt;go-tex/math&lt;/a&gt; набирает каждую формулу во
+встроенный SVG с размерами в &lt;code&gt;em&lt;/code&gt;, так что она следует размеру текста и стоит
+на его базовой линии. Один и тот же SVG используется в HTML-странице, в
+изображениях и в PDF.&lt;/li&gt;
+&lt;li&gt;Формула, которая не разбирается, остаётся видимой как написана; ошибка
+сохраняется в её &lt;code&gt;title&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="code"&gt;Код&lt;span class="hx:absolute hx:-mt-20" id="code"&gt;&lt;/span&gt;
+&lt;a href="#code" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Блоки кода раскрашивает &lt;a href="https://github.com/go-rouge/rouge" target="_blank" rel="noopener"&gt;go-rouge&lt;/a&gt;, который
+пишет имена классов highlight.js — те, что стилизуют темы Marp:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Язык, неизвестный go-rouge, записывается простым текстом, как это делает Marp
+Core.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="line-numbers"&gt;Номера строк&lt;span class="hx:absolute hx:-mt-20" id="line-numbers"&gt;&lt;/span&gt;
+&lt;a href="#line-numbers" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;В v0.8.0 блок может нумеровать свои строки. В Marp Core номеров строк нет, и он
+игнорирует то, что идёт после языка в ограждении, поэтому параметры пишутся в
+фигурных скобках, и презентация, которая их использует, отрисовывается в Marp
+так же, как без них:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;``&lt;span class="sb"&gt;`go {lineNumbers}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;func main() {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt; fmt.Println(&amp;#34;hello&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;`&lt;span class="sb"&gt;`
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;`&lt;span class="sb"&gt;`go {lineNumbers=10}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;// starts at 10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;``&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Запись&lt;/th&gt;
+&lt;th&gt;Значение&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;нумерация с 1 (читаются также &lt;code&gt;{lines:true}&lt;/code&gt; из Slidev и &lt;code&gt;{.numberLines}&lt;/code&gt; из Pandoc)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers=10}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;нумерация с 10 (также &lt;code&gt;startLine=10&lt;/code&gt;, &lt;code&gt;startFrom=&amp;quot;10&amp;quot;&lt;/code&gt; из Pandoc)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers=false}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;без номеров, что бы ни говорил слайд&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Чтобы включить нумерацию для каждого блока слайда и следующих за ним, задайте
+директиву: &lt;code&gt;&amp;lt;!-- lineNumbers: true --&amp;gt;&lt;/code&gt; (&lt;code&gt;_lineNumbers&lt;/code&gt; — для одного слайда).
+Kind (тип слайда) может задать её сразу для семейства слайдов:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;listing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;{&lt;span class="nt"&gt;lineNumbers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Каждый номер начинает свою строку внутри блока кода темы, отделённый чертой. Он
+остаётся на базовой линии своей строки, даже если строка выше обычной,
+например из-за выноски или эмодзи. Номера приглушены цветом, смешанным из цвета
+кода и его фона, с контрастом не ниже 4,5:1 в темах default, gaia и uncover,
+светлых и тёмных. Они &lt;strong&gt;не выделяются&lt;/strong&gt; на странице и не читаются скринридерами.
+В PDF они нарисованы, но исключены из текста, так что извлекатель текста читает
+только код. В файле PowerPoint или OpenDocument они — редактируемый текст в
+начале каждой строки. Презентация, не использующая этот параметр,
+отрисовывается как раньше, байт в байт. Подсветка выбранных строк пока не
+поддерживается.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="code-callouts"&gt;Выноски в коде&lt;span class="hx:absolute hx:-mt-20" id="code-callouts"&gt;&lt;/span&gt;
+&lt;a href="#code-callouts" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;В v0.8.0 строка кода может заканчиваться пронумерованным кружком, который
+отсылает к примечанию под блоком. Синтаксис —
+&lt;a href="https://quarto.org/docs/authoring/code-annotation.html" target="_blank" rel="noopener"&gt;из Quarto&lt;/a&gt;, он же
+форма комментария в Asciidoctor. Маркер — это комментарий на собственном языке
+кода, так что код остаётся корректным, а примечания — это упорядоченный список
+сразу после блока:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;func&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// &amp;lt;1&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;load&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// &amp;lt;2&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;1.&lt;/span&gt; The entry point.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;2. Reads the input.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Запись&lt;/th&gt;
+&lt;th&gt;Значение&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;// &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;# &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;-- &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;; &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;% &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;' &amp;lt;1&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;строчный комментарий, содержащий только маркер: заменяются оба — комментарий и маркер — кружком&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- &amp;lt;1&amp;gt; --&amp;gt;&lt;/code&gt;, &lt;code&gt;/* &amp;lt;1&amp;gt; */&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;то же для языков с обрамлёнными комментариями&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;// &amp;lt;1&amp;gt; &amp;lt;2&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;два кружка на одной строке&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;x = 1 # count &amp;lt;1&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;текст комментария остаётся, кружок идёт после него&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Маркеры становятся кружками, только если список сразу после блока начинается с
+1 и содержит пункт для каждого номера. Иначе блок остаётся как написан. Кружки —
+это кольца цвета кода в темах default, gaia и uncover, светлых или тёмных.
+Пункты списка нумеруются такими же кружками.&lt;/p&gt;
+&lt;p&gt;Кружки &lt;strong&gt;не выделяются&lt;/strong&gt;. Копирование кода со страницы даёт код без маркеров. В
+PDF они — векторы, исключённые из текста, а в файле PowerPoint или OpenDocument
+— редактируемые фигуры. Выноски сочетаются с номерами строк. В Marp Core выносок
+нет (marp-core 4.4.0), поэтому в Marp комментарии и нумерованный список
+показываются как написано. Презентация, которая их не использует,
+отрисовывается как раньше, байт в байт.&lt;/p&gt;
+&lt;p&gt;В v0.9.0 кружок и его примечание находят друг друга в HTML-странице. Наведение
+на кружок или переход к нему клавишей Tab подкрашивает его примечание, и
+примечание делает то же со своим кружком. Это то, что делает
+&lt;code&gt;code-annotations: hover&lt;/code&gt; в Quarto, но здесь это делает одна лишь таблица
+стилей, без скрипта. Поэтому оно одинаково работает и в изолированном
+превью Playground, и в превью VS Code, которые оба ограничивают скрипты. Каждый
+кружок описан своим примечанием, так что скринридер читает примечание, когда
+доходит до кружка. Подсветка плавно появляется, только если читатель не просил
+уменьшить анимацию. Изображения, PDF, файлы PowerPoint и OpenDocument не
+меняются, байт в байт.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="fonts"&gt;Шрифты&lt;span class="hx:absolute hx:-mt-20" id="fonts"&gt;&lt;/span&gt;
+&lt;a href="#fonts" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Встроены Lato Regular, Bold, Black и курсивы, а также Roboto Mono Regular, Bold
+и курсивы, так что заголовки gaia получают свою насыщенность, а курсивный текст
+отображается курсивом.&lt;/p&gt;</description></item></channel></rss>

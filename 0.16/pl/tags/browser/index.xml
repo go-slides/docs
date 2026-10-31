@@ -1,0 +1,212 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.16/pl/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pl</language><atom:link href="https://go-slides.github.io/docs/0.16/pl/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.16/pl/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/pl/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/pl/playground/" target="_blank" rel="noopener"&gt;Otwórz Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Playground to sam go-slides, v0.16.0, skompilowany do WebAssembly i
+działający w twojej przeglądarce. Pisz prezentację po lewej; slajdy podążają
+po prawej. Nic nie jest wysyłane na serwer: ani prezentacja, ani odnośnik do udostępnienia.&lt;/p&gt;
+&lt;p&gt;Interfejs w Playground (Wstążka, pomoc, komunikaty) mówi językiem strony:
+otwórz &lt;code&gt;/pl/playground/&lt;/code&gt;, aby uzyskać polski, i tak samo dla dwunastu języków
+tej witryny. Selektor języka na stronie go zmienia, a Twój wybór jest
+zapamiętywany w tej przeglądarce; link wskazujący język zawsze ma pierwszeństwo.
+Przykładowe prezentacje pozostają po angielsku. Ukraiński, rosyjski, chiński,
+japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
+2,3 MiB), który strona pobiera tylko dla tych języków.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Co ma&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Podgląd na żywo&lt;/strong&gt; każdego slajdu, renderowany poza wątkiem strony (Web
+Worker), więc pisanie nigdy na niego nie czeka. Kliknij slajd, by przenieść
+edytor do jego linii; przesuń kursor, a podgląd przewinie się do jego slajdu.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pokaz slajdów&lt;/strong&gt;: sama prezentacja, z klawiaturą,
+kontrolerem na ekranie i przejściami.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Widok prelegenta&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (lub &lt;code&gt;p&lt;/code&gt; w pokazie slajdów) otwiera go w
+drugim oknie: bieżący slajd, następny krok, notatki prelegenta (komentarze
+&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt; prezentacji), zegar i stoper. Strzałki, Spacja,
+Home i End działają w obu oknach, a każde podąża za drugim, także
+gdy edytujesz prezentację. Jeśli okno się nie otwiera, zezwól na wyskakujące okna
+dla witryny. Widok przeglądu (&lt;code&gt;o&lt;/code&gt;) jest tylko na pobranej stronie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Uzupełnianie&lt;/strong&gt; w trakcie pisania: klucze dyrektyw (punktowe z &lt;code&gt;_&lt;/code&gt; w komentarzach),
+wartości &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt; oraz funkcje szablonów
+i pola danych wewnątrz &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pomoc&lt;/strong&gt; dla tego, co jest pod kursorem: dyrektywa, kind (co ustawia),
+funkcja szablonu. Panel pomocy odsyła też do tych stron. Od v0.16.0
+pomoc do dyrektyw podąża za językiem interfejsu, w 11 językach.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Problemy&lt;/strong&gt; w ich linii: błędy szablonów, YAML i HCL są podświetlane
+w edytorze i wypisane pod nim, a podgląd zachowuje ostatnią prezentację,
+która się wyrenderowała.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Przykłady&lt;/strong&gt;: prezentacja powitalna, szablony generujące slajdy, kinds,
+front matter w HCL, motywy i dyrektywy punktowe oraz matematyka, obrazy i
+tła (&lt;code&gt;![bg]&lt;/code&gt;, dzielone &lt;code&gt;![bg left:40%]&lt;/code&gt;, filtry).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pliki&lt;/strong&gt;: panel po lewej od edytora to projekt prezentacji, ułożony
+tak, jak czytają go &lt;a href="https://go-slides.github.io/docs/0.16/pl/cli/"&gt;polecenie&lt;/a&gt; i
+&lt;a href="https://go-slides.github.io/docs/0.16/pl/vscode/"&gt;rozszerzenie VS Code&lt;/a&gt;: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kliknij plik, by go edytować. Edytor koloruje go według języka
+(Markdown, YAML, HCL, JSON, CSS) i zaznacza jego problemy.&lt;/li&gt;
+&lt;li&gt;Kliknij prawym przyciskiem (lub Shift+F10), by uzyskać New File, New Folder, Rename (F2),
+Delete (pyta wcześniej) i New theme / New kind. Przeciągnij plik na folder,
+by go przenieść. Klawiatura podąża za wzorcem drzewa WAI-ARIA, łącznie
+z wyszukiwaniem po wpisywaniu.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; tworzy &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (lub z default,
+uncover): &lt;code&gt;@import&lt;/code&gt; wbudowanego motywu i reguły, które dodasz. Trafia
+na listę motywów. &lt;strong&gt;New kind&lt;/strong&gt; i &lt;strong&gt;New data file&lt;/strong&gt; także startują
+z szablonów. Każdy jest wpisany do &lt;code&gt;slides.yaml&lt;/code&gt;, więc &lt;code&gt;slides build deck.md&lt;/code&gt;
+go znajduje.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; zapisuje wszystko. Po rozpakowaniu
+&lt;code&gt;slides build deck.md&lt;/code&gt; go zbuduje. &lt;strong&gt;Open project&lt;/strong&gt; przyjmuje &lt;code&gt;.zip&lt;/code&gt; lub
+folder z powrotem. Archiwum, które wychodzi poza swój folder (&lt;code&gt;..&lt;/code&gt;, ścieżki bezwzględne),
+zawiera więcej niż 256 plików albo 8 MiB w pliku, lub rozpakowuje się ponad 100
+razy, jest odrzucane.&lt;/li&gt;
+&lt;li&gt;Wszystko jest przechowywane w tej przeglądarce razem ze szkicem. Projekt mieści
+do 64 MiB, a linia pod plikami mówi, ile jest zajęte.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Media&lt;/strong&gt;: upuść lub wklej obraz, wideo albo dźwięk na edytor, a trafi do
+&lt;code&gt;media/&lt;/code&gt;, a prezentacja go nazwie: &lt;code&gt;![](media/photo.png)&lt;/code&gt;. Upuść
+pliki na folder panelu, by umieścić je tam. Prezentacja pozostaje mała i
+czytelna, a nic nie jest wysyłane. Piaskownica podglądu ładuje je
+bez otwierania się (strona przekazuje jej bajty). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; umieszcza je w stronie. Obrazy &lt;code&gt;https:&lt;/code&gt; też działają, ale przeglądarka
+pobiera je z ich serwera, który widzi wtedy twój adres. Podgląd
+nie wysyła referera.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Panele ze zmiennym rozmiarem&lt;/strong&gt;: panel plików, edytor, miniatury slajdów,
+podgląd i pomoc są rozdzielone paskami, które można przeciągać (wskaźnik
+zmienia się na kursor zmiany rozmiaru). Panel obok paska zajmuje miejsce,
+pozostałe zachowują rozmiar. Kliknij pasek dwukrotnie lub naciśnij na nim Enter,
+by zwinąć panel i przywrócić go. Z klawiatury F6 przechodzi między
+paskami, strzałki przesuwają jeden o 16 px, Home i End doprowadzają panel
+przed nim do najmniejszego i największego rozmiaru, a Escape wraca do edytora.
+Karta View nadal wyłącza panele. Ustawione rozmiary są zapamiętywane w tej
+przeglądarce razem ze szkicem; rozmiary domyślne (190, 168 i 280 px, edytor
+i podgląd dzielą resztę w stosunku 6 do 5) nigdy nie są zapisywane.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;: karta Format edytuje Markdown za ciebie, a każde naciśnięcie to
+jeden krok cofania.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tekst&lt;/strong&gt;: Bold, Italic, Strikethrough i Inline code działają na zaznaczeniu
+lub słowie pod kursorem i się przełączają (Ctrl+B, Ctrl+I, Ctrl+Shift+X i
+Ctrl+E; Cmd na Macu). Przycisk jest wciśnięty, gdy kursor jest wewnątrz
+jego znaczników. Markdown nie ma podkreślenia: Underline (Ctrl+U) otacza tekst
+znacznikiem &lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;, który domyślna lista dozwolonego HTML z Marp zachowuje, więc działa
+przy wyłączonym surowym HTML.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Akapit&lt;/strong&gt;: Heading 1 do 3 (Ctrl+Alt+1..3), punktory (Ctrl+Shift+8),
+numerowanie (Ctrl+Shift+7) i cytat działają na zaznaczonych liniach i się przełączają.
+Linia pozioma to znacznik &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt; i &lt;code&gt;___&lt;/code&gt; zaczęłyby w Marp
+każde nowy slajd.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tabela&lt;/strong&gt;: siatka wybiera kolumny i wiersze. Przy kursorze w tabeli możesz
+dodać lub usunąć wiersz albo kolumnę i wyrównać kolumnę (&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;,
+&lt;code&gt;--:&lt;/code&gt;); tabela jest po każdej edycji przepisywana wyrównana.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slide text&lt;/strong&gt; do lewej, do środka lub do prawej zapisuje blok &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; w
+bieżącym slajdzie. Marp nie ma składni wyrównania, a atrybut &lt;code&gt;style&lt;/code&gt;
+nie przechodzi przez domyślną listę dozwolonego HTML, ale blok scoped przechodzi, więc
+działa przy wyłączonym surowym HTML i widać go w podglądzie, na stronie HTML i w PDF.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Ctrl+K) zapisuje &lt;code&gt;[text](url)&lt;/code&gt; z zaznaczonym url.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Podświetlanie&lt;/strong&gt; kluczy front matter na dowolnej głębokości, w YAML (także
+w mapach &lt;code&gt;{a: 1}&lt;/code&gt;) i w HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wybór &lt;strong&gt;motywu&lt;/strong&gt;: default, gaia, uncover, motywy projektu
+(&lt;code&gt;themes/*.css&lt;/code&gt;) i motywy zdefiniowane w prezentacji (&lt;code&gt;/* @theme name */&lt;/code&gt; w
+&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Zapisuje &lt;code&gt;theme:&lt;/code&gt; w front
+matter, YAML lub HCL, więc udostępniony odnośnik go zachowuje, i podąża za front
+matter, gdy go edytujesz.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Podgląd &lt;strong&gt;zachowuje swoje miejsce&lt;/strong&gt; w trakcie pisania: wymieniane są tylko slajdy,
+które się zmieniły, a zmiana motywu otwiera podgląd ponownie na
+tym samym slajdzie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Odnośnik do udostępnienia&lt;/strong&gt;: prezentacja podróżuje w samym odnośniku (w jego części &lt;code&gt;#&lt;/code&gt;,
+skompresowana), więc otwarcie odnośnika otwiera prezentację. Odnośniki niosą do
+64 KiB po kompresji, i tylko prezentację: gdy projekt zawiera więcej
+(motywy, kinds, media), Share o tym mówi i oferuje &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;strona HTML, taka sama jak ta, którą zapisuje &lt;code&gt;slides deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt; (wektorowy, z zaznaczalnym tekstem, ze spisem treści);&lt;/li&gt;
+&lt;li&gt;edytowalna prezentacja &lt;strong&gt;PowerPoint&lt;/strong&gt; lub &lt;strong&gt;OpenDocument&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Powstają w twojej przeglądarce, przez ten sam kod co &lt;code&gt;slides --pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; i &lt;code&gt;--odp&lt;/code&gt;: PDF z 100-slajdowej prezentacji testowej jest
+bajt w bajt identyczny z wynikiem polecenia. Pierwszy eksport pobiera
+silnik eksportu (około 5 MiB, jednorazowo; przeglądarka trzyma go do następnej
+aktualizacji), z linią postępu, i kompiluje go w miarę napływu. Potem pobiera tylko
+czcionki, które rysują twoje slajdy. Na łączu 3 MB/s pierwszy PDF z prezentacji
+powitalnej jest gotowy w mniej niż 3 sekundy. Prezentacja ze 100 slajdów zajmuje wtedy
+około 3 sekund. Obraz
+&lt;code&gt;https:&lt;/code&gt; jest dołączany tylko wtedy, gdy jego serwer na to pozwala (CORS); obrazy &lt;code&gt;data:&lt;/code&gt;
+zawsze.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Twój szkic jest zachowywany&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prezentacja jest zapisywana w tej przeglądarce w trakcie pisania (IndexedDB, tylko dla tej
+witryny) i wraca po przeładowaniu. Nic nie jest nigdzie wysyłane.
+Pliki tekstowe projektu (motywy, kinds, dane, &lt;code&gt;slides.yaml&lt;/code&gt;) są zachowywane
+tak samo, nawet gdy zamkniesz kartę zaraz po pisaniu; media są
+zapisywane w chwili upuszczenia.&lt;/li&gt;
+&lt;li&gt;Udostępniony odnośnik otwiera swoją prezentację i zachowuje twój szkic: &lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; go przywraca.&lt;/li&gt;
+&lt;li&gt;Przykład, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (który pyta wcześniej) i
+inna karta też go nigdy nie kasują: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; zamienia go
+z powrotem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; kasuje wszystko, co zapisano.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Każdy eksport renderuje projekt, który pokazuje podgląd: jego &lt;code&gt;slides.yaml&lt;/code&gt;,
+motywy, kinds, pliki danych i media, z mediami wewnątrz dokumentu.&lt;/p&gt;
+&lt;p&gt;Obrazy jako pliki (slides &lt;code&gt;--images&lt;/code&gt;) nie powstają w przeglądarce: użyj
+&lt;a href="https://go-slides.github.io/docs/0.16/pl/cli/"&gt;polecenia&lt;/a&gt; lub
+&lt;a href="https://go-slides.github.io/docs/0.16/pl/vscode/"&gt;rozszerzenia VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Bezpieczeństwo&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie
+sięgnie ani do Playground, ani do jego pamięci, nie wyśle żadnego formularza i nie
+przejdzie nigdzie. Jej strona niesie Content Security Policy, która uruchamia tylko jej własne
+skrypty. Surowy HTML w prezentacji podlega liście dozwolonych Marp, tak jak &lt;code&gt;slides&lt;/code&gt; domyślnie.
+Renderowanie trwające dłużej niż 5 sekund (szablon, który się zapętla)
+jest przerywane.&lt;/p&gt;
+&lt;p&gt;Okno prelegenta zachowuje tę piaskownicę. Jest otwierane przez sam Playground
+i pokazuje prezentację w iframe z taką samą piaskownicą. Dwa
+iframe nie mogą współdzielić pamięci, więc Playground przekazuje numer slajdu
+między nimi w komunikatach. Żadna ramka uruchamiająca prezentację nie dostaje
+pochodzenia Playground.&lt;/p&gt;
+&lt;p&gt;Media projektu docierają do ramek w piaskownicy jako bajty w komunikacie, a
+każda ramka tworzy z nich własne adresy &lt;code&gt;blob:&lt;/code&gt;, w swoim pochodzeniu. Adres &lt;code&gt;blob:&lt;/code&gt;
+utworzony przez Playground tam się nie ładuje, a polityka ramek
+zyskuje tylko &lt;code&gt;blob:&lt;/code&gt; dla mediów i czcionek.&lt;/p&gt;
+&lt;p&gt;Playground można serwować z własnej maszyny, za logowaniem:
+zobacz &lt;a href="https://go-slides.github.io/docs/0.16/pl/self-hosting/"&gt;Self-hosting&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Rozmiar i szybkość&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Moduł ma 8,8 MiB w postaci, w jakiej serwuje go GitHub Pages (gzip; Pages nie
+serwuje brotli). Jest pobierany raz z paskiem postępu, potem trzymany w pamięci podręcznej
+przeglądarki do następnego wdrożenia. Na Apple M4 Max z Chrome 155, mierzone
+na żywej stronie, edytor jest gotowy 2,1 s po otwarciu strony, z czego 1,5 s
+to pobieranie, a pierwsze slajdy pojawiają się po 2,4 s. Zmiana w
+100-slajdowej prezentacji testowej dociera do podglądu w około 30 ms: go-slides
+renderuje tylko slajdy, które się zmieniły, i tylko te są wymieniane w
+podglądzie.&lt;/p&gt;</description></item></channel></rss>

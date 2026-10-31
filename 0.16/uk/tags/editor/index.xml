@@ -1,0 +1,257 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Editor</title><link>https://go-slides.github.io/docs/0.16/uk/tags/editor/</link><description>Recent content in Editor on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.16/uk/tags/editor/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code</title><link>https://go-slides.github.io/docs/0.16/uk/vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/uk/vscode/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Розширення — це &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;, зі
+своїм власним версіюванням (v0.5.0). Воно рендерить за допомогою go-slides
+v0.14.0 (пакет &lt;code&gt;editor&lt;/code&gt;, рядки джерела для синхронної прокрутки, а також огляд і
+вигляд доповідача). Воно встановлюється з &lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt;, доданого до
+його випуску на GitHub: публікацію на VS Code Marketplace та Open VSX
+підготовлено, але її там ще немає.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Розширення — це аналог &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt;
+для go-slides: презентація показується в попередньому перегляді Markdown VS Code
+як слайди, її помилки — на панелі Problems, а директиви, kinds і функції
+шаблонів доповнюються під час набору.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Встановлення&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Завантажте &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; зі сторінки
+&lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;випусків&lt;/a&gt;, потім виконайте
+&lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt; або:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для попереднього перегляду більше нічого не потрібно. Для експорту потрібна
+команда &lt;code&gt;slides&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install github.com/go-slides/slides/cmd/slides@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="preview"&gt;Попередній перегляд&lt;span class="hx:absolute hx:-mt-20" id="preview"&gt;&lt;/span&gt;
+&lt;a href="#preview" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Відкрийте презентацію та &lt;em&gt;Markdown: Open Preview to the Side&lt;/em&gt;. Презентація — це
+файл Markdown, у front matter якого сказано &lt;code&gt;slides: true&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;slides&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;who&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;World&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Hello {{ .who }}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cm"&gt;&amp;lt;!-- _kind: title --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Page {{ page }} of {{ total }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Файли з &lt;code&gt;marp: true&lt;/code&gt; також переглядаються, якщо не встановлено Marp for VS Code:
+обидва розширення рендерили б один і той самий документ. Вирішує параметр
+&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;: &lt;code&gt;auto&lt;/code&gt; (типово), &lt;code&gt;always&lt;/code&gt; або &lt;code&gt;never&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Попередній перегляд — це сам go-slides, скомпільований у WebAssembly і
+завантажений розширенням: жодного бінарного файла, і він працює на
+&lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;. Він читає те, що використовує презентація, з
+робочого простору — &lt;code&gt;slides.yaml&lt;/code&gt; або &lt;code&gt;slides.hcl&lt;/code&gt; поруч із презентацією, файли
+&lt;a href="https://go-slides.github.io/docs/0.16/uk/kinds/"&gt;kinds&lt;/a&gt;, які вони називають, файли, що їх підключає
+&lt;a href="https://go-slides.github.io/docs/0.16/uk/templates/"&gt;шаблон&lt;/a&gt;, CSS теми — і лише з теки робочого
+простору презентації.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="scroll-sync"&gt;Синхронна прокрутка&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
+&lt;a href="#scroll-sync" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Починаючи з v0.2.0 розширення (go-slides v0.7.0), редактор і попередній перегляд
+прокручуються разом, в обидва боки, як це відбувається зі звичайним Markdown:
+попередній перегляд слідує за слайдом і блоком під курсором редактора, а
+прокрутка попереднього перегляду рухає редактор. Параметри — власні параметри
+VS Code, &lt;code&gt;markdown.preview.scrollPreviewWithEditor&lt;/code&gt; і
+&lt;code&gt;markdown.preview.scrollEditorWithPreview&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Рядки відстежуються крізь шаблони. Слайд, який генерує &lt;code&gt;{{ range }}&lt;/code&gt;, слідує за
+рядком свого шаблону, а те, що приносить &lt;code&gt;{{ include }}&lt;/code&gt;, слідує за рядком
+включення. Презентація, розбита за &lt;code&gt;headingDivider&lt;/code&gt;, синхронізується за своїми
+заголовками.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="presenting"&gt;Показ&lt;span class="hx:absolute hx:-mt-20" id="presenting"&gt;&lt;/span&gt;
+&lt;a href="#presenting" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Починаючи з v0.4.0 розширення (go-slides v0.9.0), презентацію можна показувати,
+не виходячи з VS Code. З презентацією в редакторі, з палітри команд або з меню
+&lt;code&gt;…&lt;/code&gt; редактора:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Команда&lt;/th&gt;
+&lt;th&gt;Відкриває&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Open Overview&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;панель з усіма слайдами в сітці. Вибраний слайд показує своє джерело в редакторі; &lt;code&gt;Esc&lt;/code&gt; закриває панель&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Start Presenter View&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;слайди, а поруч — вигляд доповідача: наступний крок, нотатки доповідача й таймер&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Панелі розташовуються поруч із редактором і слідують одна за одною: змініть
+слайд в одній, і інші змінюються разом із нею. Вони також слідують за вашими
+правками презентації. Клавіша &lt;code&gt;p&lt;/code&gt; у слайдах відкриває вигляд доповідача.&lt;/p&gt;
+&lt;p&gt;Щоб показувати на іншому екрані, перемістіть панель слайдів туди через &lt;em&gt;View:
+Move Editor into New Window&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Кожна панель запускає презентацію в ізольованому фреймі (без
+&lt;code&gt;allow-same-origin&lt;/code&gt;) під політикою &lt;code&gt;default-src 'none'&lt;/code&gt;: фрейм завантажує
+зображення, медіа, стилі та шрифти й більше нічого, і запускає лише скрипти,
+які go-slides вбудував у сторінку, названі за хешем. Скрипт, написаний
+презентацією, не запускається.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Проблеми, автодоповнення, підказки&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
+&lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Проблеми&lt;/strong&gt;: помилки шаблонів, YAML і &lt;a href="https://go-slides.github.io/docs/0.16/uk/hcl/"&gt;HCL&lt;/a&gt; — на
+рядку, де вони є, у презентації або у файлі kinds, з якого вони походять.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Автодоповнення&lt;/strong&gt;: ключі директив у front matter і в коментарях &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;
+(з &lt;code&gt;_&lt;/code&gt; для spot-директиви), значення &lt;code&gt;kind&lt;/code&gt; і &lt;code&gt;_kind&lt;/code&gt; (з тим, що встановлює
+кожен kind), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; усередині
+&lt;code&gt;{{ }}&lt;/code&gt; — функції шаблонів і поля даних.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Підказка при наведенні&lt;/strong&gt;: що робить директива, що встановлює kind,
+аргументи функції шаблону. Починаючи з v0.16.0 довідка про директиви
+відповідає мові інтерфейсу редактора (мові відображення VS Code), 11 мовами.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="export"&gt;Експорт&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;
+&lt;a href="#export" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;go-slides: Export Slide Deck&amp;hellip;&lt;/em&gt; (також у заголовку редактора) записує HTML,
+векторний PDF, редагований PPTX і ODP, PNG або JPEG командою &lt;code&gt;slides&lt;/code&gt;, так само
+як &lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt;; див. &lt;a href="https://go-slides.github.io/docs/0.16/uk/cli/"&gt;Командний рядок&lt;/a&gt;.
+Потрібен довірений робочий простір. Якщо &lt;code&gt;slides&lt;/code&gt; не знайдено, розширення
+пропонує виконати наведений вище &lt;code&gt;go install&lt;/code&gt; у терміналі.&lt;/p&gt;
+&lt;p&gt;Починаючи з v0.5.0 розширення (go-slides v0.14.0), PDF, який воно записує,
+&lt;strong&gt;доступний&lt;/strong&gt;: з &lt;code&gt;slides&lt;/code&gt; v0.12.0 або новішим векторний PDF тегований для
+екранних читачів і оголошує PDF/UA-1, з &lt;code&gt;title&lt;/code&gt; і &lt;code&gt;lang&lt;/code&gt; презентації та секцією
+на слайд. &lt;code&gt;slides --pdf-tags=false&lt;/code&gt; записує нетегований файл. Оновіть команду
+через наведений вище &lt;code&gt;go install&lt;/code&gt;, щоб отримати це.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="settings"&gt;Параметри&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
+&lt;a href="#settings" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Параметр&lt;/th&gt;
+&lt;th&gt;Типово&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.cliPath&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;команда &lt;code&gt;slides&lt;/code&gt;; порожньо: &lt;code&gt;slides&lt;/code&gt; у &lt;code&gt;PATH&lt;/code&gt;. Параметр машини: робочий простір не може його задати&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportType&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;формат, який діалог експорту пропонує першим&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportAutoOpen&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;відкрити експортований файл&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;дозволити весь сирий HTML замість білого списку Marp; враховується лише в довіреному робочому просторі&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;переглядати презентації &lt;code&gt;marp: true&lt;/code&gt;: &lt;code&gt;auto&lt;/code&gt;, &lt;code&gt;always&lt;/code&gt;, &lt;code&gt;never&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Безпека&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентація та робочий простір не є довіреними. Сирий HTML дотримується білого
+списку Marp, якщо &lt;code&gt;goSlides.html&lt;/code&gt; не ввімкнено в довіреному робочому просторі
+(&lt;code&gt;slides.yaml&lt;/code&gt; з &lt;code&gt;html: true&lt;/code&gt; не вмикає його в попередньому перегляді), а
+попередній перегляд VS Code не запускає жодного скрипта з презентації.
+Попередній перегляд читає лише файли теки робочого простору презентації, не
+йде за символічними посиланнями, а шаблони не бачать жодної змінної
+середовища. Експорт запускає програму, тож чекає на довіру до робочого
+простору, а програму ніколи не називає робочий простір.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="performance"&gt;Продуктивність&lt;span class="hx:absolute hx:-mt-20" id="performance"&gt;&lt;/span&gt;
+&lt;a href="#performance" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;На еталонній презентації go-slides зі 100 слайдів, у VS Code 1.142 на Apple M4
+Max, з Marp for VS Code 3.6.1, виміряним у тому самому сеансі:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;активація (завантаження модуля WebAssembly)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;189 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;перший попередній перегляд&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;78 мс&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;попередній перегляд після правки (медіана)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;strong&gt;19 мс&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23–24 мс&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.vsix&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,5 МБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36,3 МБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Показники — для розширення v0.3.0 (go-slides v0.8.0) на презентації зі 100
+слайдів, з набором одного символу в слайді 50, з чергованих раундів при
+навантаженні за 1 хвилину нижче 8. Перший попередній перегляд швидший за Marp,
+і попередній перегляд після правки тепер теж швидший за Marp.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v080-and-extension-v030"&gt;У v0.8.0 і розширенні v0.3.0&lt;span class="hx:absolute hx:-mt-20" id="in-v080-and-extension-v030"&gt;&lt;/span&gt;
+&lt;a href="#in-v080-and-extension-v030" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.8.0 зберігає відрендерені слайди кожної відкритої презентації та
+після правки повторно рендерить лише ті, чиє джерело чи успадкований стан
+змінилися (директиви, номер сторінки, підсумок, id заголовків, посилання,
+рядки джерела); вивід такий самий, як при повному рендері, байт у байт. Набір
+тексту в слайді 50 зі 100 повторно рендерить один слайд: 2,5 мс нативно, 11,5
+мс у WebAssembly. Попередній перегляд VS Code тоді перетворює лише DOM
+зміненого слайда, а димовий тест розширення набирає один символ у слайді 50
+між вимірюваними рендерами, для обох розширень. Вигляд доповідача розширення
+синхронізується через батьківське вікно (&lt;code&gt;postMessage&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v071-and-extension-v022"&gt;У v0.7.1 і розширенні v0.2.2&lt;span class="hx:absolute hx:-mt-20" id="in-v071-and-extension-v022"&gt;&lt;/span&gt;
+&lt;a href="#in-v071-and-extension-v022" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.7.1 кешує розібрані теми, запаковані таблиці стилів і
+підсвічений код між рендерами, позначає рядки синхронної прокрутки без
+проходу байт за байтом і повторно використовує свої writers: рендер
+презентації зі 100 слайдів виділяє 5,7 МБ проти 52,7 МБ у розширенні v0.2.0.
+З цим розширення v0.2.2 відмовляється від перевизначення &lt;code&gt;GOGC=400&lt;/code&gt;. Для
+порівняння, розширенню v0.2.1 знадобилося 72 мс для першого попереднього
+перегляду і 44 мс після правки при типовому &lt;code&gt;GOGC&lt;/code&gt; (36 мс з &lt;code&gt;GOGC=400&lt;/code&gt;), а
+v0.2.0 — 47–51 мс.&lt;/p&gt;
+&lt;p&gt;Розширення v0.2.2 виміряно: 52 мс для першого попереднього перегляду і 24 мс
+після правки, на рівні з 23 мс у Marp.&lt;/p&gt;</description></item></channel></rss>

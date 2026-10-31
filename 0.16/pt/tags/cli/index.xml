@@ -1,0 +1,639 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Cli</title><link>https://go-slides.github.io/docs/0.16/pt/tags/cli/</link><description>Recent content in Cli on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pt-BR</language><atom:link href="https://go-slides.github.io/docs/0.16/pt/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Linha de comando</title><link>https://go-slides.github.io/docs/0.16/pt/cli/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/pt/cli/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Esta página descreve a v0.16.0.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides [deck.md] [flags]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides [command] [flags] deck.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="commands"&gt;Comandos&lt;span class="hx:absolute hx:-mt-20" id="commands"&gt;&lt;/span&gt;
+&lt;a href="#commands" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Comando&lt;/th&gt;
+&lt;th&gt;O que faz&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve a apresentação como HTML, ou como PDF ou imagens (veja abaixo). &lt;strong&gt;O padrão&lt;/strong&gt;: &lt;code&gt;slides deck.md&lt;/code&gt; é &lt;code&gt;slides build deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;imprime a apresentação como Markdown Marp simples: templates expandidos, kinds (o tipo de um slide) substituídos pelas diretivas que eles representam&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;imprime as notas do apresentador&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;lista os kinds que a apresentação pode usar e o que eles definem; &lt;code&gt;--json&lt;/code&gt; (na v0.6.0) os escreve como &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, com &lt;code&gt;extends&lt;/code&gt; resolvido&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;lista os temas&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;imprime a versão (assim como &lt;code&gt;slides --version&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;completion&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;imprime um script de autocompletar do shell: &lt;code&gt;bash&lt;/code&gt;, &lt;code&gt;zsh&lt;/code&gt;, &lt;code&gt;fish&lt;/code&gt; ou &lt;code&gt;powershell&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;slides &amp;lt;command&amp;gt; --help&lt;/code&gt; imprime as flags de um comando. As flags podem vir
+antes ou depois da apresentação: &lt;code&gt;slides deck.md -o out.html&lt;/code&gt; e &lt;code&gt;slides -o out.html deck.md&lt;/code&gt; são a mesma coisa. As flags longas levam dois hifens
+(&lt;code&gt;--html&lt;/code&gt;); &lt;code&gt;-o&lt;/code&gt; é a única curta. O &lt;code&gt;build&lt;/code&gt; escreve &lt;code&gt;deck.html&lt;/code&gt; ao lado de
+&lt;code&gt;deck.md&lt;/code&gt;, a menos que &lt;code&gt;-o&lt;/code&gt; diga outra coisa.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="flags"&gt;Flags&lt;span class="hx:absolute hx:-mt-20" id="flags"&gt;&lt;/span&gt;
+&lt;a href="#flags" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Flag&lt;/th&gt;
+&lt;th&gt;Comandos&lt;/th&gt;
+&lt;th&gt;O que faz&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-o&lt;/code&gt;, &lt;code&gt;--output file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;arquivo de saída; &lt;code&gt;-&lt;/code&gt; para a saída padrão&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-I&lt;/code&gt;, &lt;code&gt;--input-dir dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;converte os arquivos Markdown sob &lt;code&gt;dir&lt;/code&gt;, recursivamente (na v0.6.0); veja abaixo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-P&lt;/code&gt;, &lt;code&gt;--parallel n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;apresentações construídas ao mesmo tempo (na v0.6.0): 5 por padrão, no máximo o número de núcleos; 1 as constrói uma após a outra&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;constrói de novo quando uma apresentação, um tema, um arquivo de kinds ou de dados ou a configuração muda, e recarrega as páginas abertas (na v0.6.0); veja abaixo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;serve um diretório, convertendo as suas apresentações sob demanda (na v0.6.0); veja abaixo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-p&lt;/code&gt;, &lt;code&gt;--preview&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;abre o resultado no navegador padrão (na v0.6.0): as páginas HTML com &lt;code&gt;--watch&lt;/code&gt; (implícito), o servidor com &lt;code&gt;--server&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--host addr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o endereço em que &lt;code&gt;--server&lt;/code&gt; escuta, &lt;code&gt;127.0.0.1&lt;/code&gt; por padrão (na v0.6.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o nome de host público de um proxy reverso ao qual &lt;code&gt;--server&lt;/code&gt; responde, repetível (na v0.14.0); veja &lt;a href="https://go-slides.github.io/docs/0.16/pt/self-hosting/"&gt;Auto-hospedagem&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o template da página HTML (na v0.6.0): &lt;code&gt;bespoke&lt;/code&gt;, o padrão, com o script de apresentação, o controle na tela e as transições, ou &lt;code&gt;bare&lt;/code&gt;, os slides empilhados (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bespoke.osc&lt;/code&gt;, &lt;code&gt;--bespoke.progress&lt;/code&gt;, &lt;code&gt;--bespoke.transition&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;as opções do template bespoke, com os padrões do marp-cli (na v0.6.0): controle ligado, &lt;strong&gt;barra de progresso desligada&lt;/strong&gt; (antes ela era sempre desenhada), transições ligadas; &lt;code&gt;--bespoke.osc=false&lt;/code&gt; desliga uma delas&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--config-file file&lt;/code&gt;, &lt;code&gt;--no-config-file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o arquivo de configuração do marp-cli, JSON ou YAML (na v0.6.0); veja abaixo. &lt;code&gt;--config&lt;/code&gt; é o arquivo próprio do &lt;code&gt;slides&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--browser&lt;/code&gt;, &lt;code&gt;--browser-path&lt;/code&gt;, &lt;code&gt;--browser-protocol&lt;/code&gt;, &lt;code&gt;--browser-timeout&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;aceitas e ignoradas com um aviso (na v0.6.0): não há navegador&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-editable&lt;/code&gt;, &lt;code&gt;--no-parallel&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;as grafias do marp-cli para &lt;code&gt;--pptx&lt;/code&gt; e &lt;code&gt;-P 1&lt;/code&gt; (na v0.6.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--config file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;arquivo de configuração; por padrão &lt;code&gt;slides.yaml&lt;/code&gt; ao lado da apresentação, se houver&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;não lê um arquivo de configuração&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;um arquivo CSS de tema, ou um diretório deles (repetível)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;um arquivo YAML de kinds (repetível)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;um arquivo YAML ou JSON de dados de template (repetível)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--set key=value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;um valor de template (repetível)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;não expande os templates Go&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--strict-yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;analisa as diretivas como YAML estrito, como o Marpit puro faz (o Marp Core as analisa de forma flexível)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-emoji&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;todos&lt;/td&gt;
+&lt;td&gt;deixa &lt;code&gt;:shortcodes:&lt;/code&gt; e emoji Unicode como texto em vez de desenhá-los como imagens (desde a v0.4.0: &lt;a href="https://go-slides.github.io/docs/0.16/pt/emoji/"&gt;Emoji&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;permite todo o HTML bruto; por padrão, a lista de permissões do Marp Core&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--lang code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o &lt;code&gt;lang&lt;/code&gt; da página quando a apresentação não define nenhum&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;empilha os slides, sem o script de apresentação&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve um PDF, uma página por slide, com sumário — texto e formas como vetores (também escolhido por &lt;code&gt;-o file.pdf&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve o PDF com cada página sendo uma imagem do slide, como a v0.3.0 fazia&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve as notas do apresentador como um arquivo de texto, com os slides separados por &lt;code&gt;---&lt;/code&gt; como o marp-cli faz (na v0.6.0; também escolhido por &lt;code&gt;-o file.txt&lt;/code&gt;). O comando &lt;code&gt;notes&lt;/code&gt; as imprime em outro formato&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;acrescenta as notas do apresentador de cada slide à sua página do PDF como uma anotação de nota, como o marp-cli faz (na v0.6.0). Pede um PDF quando nada mais diz o que escrever&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-outlines&lt;/code&gt;, &lt;code&gt;--pdf-outlines.pages&lt;/code&gt;, &lt;code&gt;--pdf-outlines.headings&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;os marcadores do PDF (na v0.6.0): &amp;ldquo;Page N&amp;rdquo; por slide e os títulos aninhados sob ele. Ligado por padrão aqui, diferente do marp-cli; &lt;code&gt;=false&lt;/code&gt; desliga uma parte. Veja abaixo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--images png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve uma imagem por slide: &lt;code&gt;deck.001.png&lt;/code&gt;, …&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve o primeiro slide como imagem (também escolhido por &lt;code&gt;-o file.png&lt;/code&gt; ou &lt;code&gt;-o file.jpg&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve um arquivo PowerPoint com as notas do apresentador (também escolhido por &lt;code&gt;-o file.pptx&lt;/code&gt;): editável desde a v0.5.0, uma imagem por slide na v0.4.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve um arquivo PowerPoint com uma imagem de slide inteiro por slide, como o marp-cli faz (desde a v0.5.0); &lt;code&gt;--image-scale&lt;/code&gt; tem padrão 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve uma apresentação OpenDocument com as notas do apresentador (também escolhido por &lt;code&gt;-o file.odp&lt;/code&gt;): editável desde a v0.5.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve uma apresentação OpenDocument com uma imagem por slide (desde a v0.5.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--jpeg-quality n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;qualidade do JPEG, de 1 a 100 (padrão 85)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image-scale n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;pixels do dispositivo por pixel CSS para imagens e PDF (padrão 1); 2 dá 2560×1440 para 16:9, com texto e vetores desenhados nessa densidade, não ampliados&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allow-local-files&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;deixa imagens e PDF lerem arquivos locais, somente de dentro do diretório da apresentação; recusado por padrão, como no marp-cli&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;substitui o tema da apresentação (na v0.6.0): um nome de tema, ou um arquivo CSS, que se torna o tema qualquer que seja o &lt;code&gt;@theme&lt;/code&gt; que ele declare; um diretório é recusado, use &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;os metadados da página (na v0.6.0), sobre as diretivas &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;, &lt;code&gt;keywords&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt; e &lt;code&gt;image&lt;/code&gt; da apresentação; veja abaixo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="several-decks-and-a-directory"&gt;Várias apresentações, e um diretório&lt;span class="hx:absolute hx:-mt-20" id="several-decks-and-a-directory"&gt;&lt;/span&gt;
+&lt;a href="#several-decks-and-a-directory" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Na v0.6.0, o &lt;code&gt;build&lt;/code&gt; aceita várias apresentações, um diretório (as
+apresentações sob ele, encontradas recursivamente) ou um padrão, e constrói até
+&lt;code&gt;--parallel&lt;/code&gt; delas ao mesmo tempo. &lt;code&gt;-&lt;/code&gt; é a entrada padrão; diferente do
+marp-cli, um pipe não é lido a menos que &lt;code&gt;-&lt;/code&gt; o diga.&lt;/p&gt;
+&lt;p&gt;Um padrão é lido como o glob do marp-cli o lê (&lt;code&gt;**&lt;/code&gt; e &lt;code&gt;{a,b}&lt;/code&gt; na v0.7.0; coloque
+entre aspas para que o shell o deixe para o &lt;code&gt;slides&lt;/code&gt;): &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;?&lt;/code&gt;, &lt;code&gt;[a-z]&lt;/code&gt; e
+&lt;code&gt;{md,txt}&lt;/code&gt; dentro de um nome, &lt;code&gt;**&lt;/code&gt; para qualquer número de diretórios, de modo
+que &lt;code&gt;'docs/**/*.md'&lt;/code&gt; pega as apresentações da árvore. Um curinga não alcança um
+nome que começa com ponto, nada é procurado em &lt;code&gt;node_modules&lt;/code&gt;, maiúsculas e
+minúsculas importam (&lt;code&gt;*.md&lt;/code&gt; não encontra &lt;code&gt;UPPER.MD&lt;/code&gt;), e tudo o que um padrão
+casa é convertido, qualquer que seja a extensão. Um padrão que não casa com nada
+é um erro.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-I dir&lt;/code&gt;&lt;/strong&gt; encontra os arquivos Markdown (&lt;code&gt;.md&lt;/code&gt;, &lt;code&gt;.mdown&lt;/code&gt;, &lt;code&gt;.markdown&lt;/code&gt;,
+&lt;code&gt;.markdn&lt;/code&gt;, em minúsculas) sob &lt;code&gt;dir&lt;/code&gt;, como o marp-cli faz: &lt;code&gt;node_modules&lt;/code&gt; e
+diretórios com ponto não são vasculhados. Com &lt;code&gt;-o out&lt;/code&gt;, cada apresentação é
+escrita no seu caminho sob &lt;code&gt;dir&lt;/code&gt;, espelhado sob &lt;code&gt;out&lt;/code&gt;: &lt;code&gt;dir/sub/b.md&lt;/code&gt; dá
+&lt;code&gt;out/sub/b.html&lt;/code&gt; (&lt;code&gt;b.pdf&lt;/code&gt;, &lt;code&gt;b.001.png&lt;/code&gt;, &lt;code&gt;b.txt&lt;/code&gt;, … o que as flags disserem).
+Sem &lt;code&gt;-o&lt;/code&gt;, as saídas vão para ao lado das suas apresentações. Nomear
+apresentações além de &lt;code&gt;-I&lt;/code&gt; é um erro, e &lt;code&gt;-o file&lt;/code&gt; para várias apresentações
+também (&lt;code&gt;-o -&lt;/code&gt; é permitido).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-P n&lt;/code&gt;&lt;/strong&gt; constrói &lt;code&gt;n&lt;/code&gt; apresentações ao mesmo tempo. A renderização de uma
+apresentação já usa os núcleos, então &lt;code&gt;n&lt;/code&gt; é limitado pelo número deles; com
+&lt;code&gt;-o -&lt;/code&gt;, as apresentações são construídas uma após a outra. As mensagens de uma
+apresentação ficam juntas, e uma apresentação que falha não interrompe as
+outras: o status de saída é 1 e a mensagem lista as falhas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="transitions-and-the-presenting-page"&gt;Transições e a página de apresentação&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-the-presenting-page"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-the-presenting-page" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Na v0.6.0, a diretiva &lt;code&gt;transition&lt;/code&gt; do marp-cli funciona: &lt;code&gt;&amp;lt;!-- transition: fade 1s --&amp;gt;&lt;/code&gt;, um nome e uma duração opcional, para o slide e os seguintes, ou
+&lt;code&gt;&amp;lt;!-- _transition: cover --&amp;gt;&lt;/code&gt; para um só. Os nomes embutidos são os do marp-cli:
+&lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;counterclockwise&lt;/code&gt;, &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;coverflow&lt;/code&gt;, &lt;code&gt;cube&lt;/code&gt;, &lt;code&gt;cylinder&lt;/code&gt;,
+&lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;drop&lt;/code&gt;, &lt;code&gt;explode&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;fade-out&lt;/code&gt;, &lt;code&gt;fall&lt;/code&gt;, &lt;code&gt;flip&lt;/code&gt;, &lt;code&gt;glow&lt;/code&gt;,
+&lt;code&gt;implode&lt;/code&gt;, &lt;code&gt;in-out&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;iris-out&lt;/code&gt;, &lt;code&gt;melt&lt;/code&gt;, &lt;code&gt;overlap&lt;/code&gt;, &lt;code&gt;pivot&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;,
+&lt;code&gt;push&lt;/code&gt;, &lt;code&gt;reveal&lt;/code&gt;, &lt;code&gt;rotate&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;star&lt;/code&gt;, &lt;code&gt;swap&lt;/code&gt;, &lt;code&gt;swipe&lt;/code&gt;, &lt;code&gt;swoosh&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;,
+&lt;code&gt;wiper&lt;/code&gt; e &lt;code&gt;zoom&lt;/code&gt;; &lt;code&gt;none&lt;/code&gt; a desliga. A página a executa com a &lt;strong&gt;View Transition
+API&lt;/strong&gt; do navegador quando o espectador sai do slide que a tem, avançando, e
+quando volta a ele; os navegadores sem a API trocam de slide como antes, e um
+espectador que pede movimento reduzido recebe um fade simples. Um tema pode
+trazer keyframes próprios, chamados &lt;code&gt;marp-transition-NAME&lt;/code&gt; (ou &lt;code&gt;marp-outgoing-&lt;/code&gt; e
+&lt;code&gt;marp-incoming-&lt;/code&gt;, e &lt;code&gt;-backward&lt;/code&gt;), que são usados antes dos embutidos.&lt;/p&gt;
+&lt;p&gt;A página tem o &lt;strong&gt;controle na tela&lt;/strong&gt; — anterior, página, próximo, tela cheia —
+que aparece quando o ponteiro ou uma tecla se move e some depois de um instante
+(&lt;code&gt;--bespoke.osc=false&lt;/code&gt; o remove) e, com &lt;code&gt;--bespoke.progress&lt;/code&gt;, uma barra de
+progresso. &lt;strong&gt;A barra de progresso agora vem desligada por padrão&lt;/strong&gt;, como no
+marp-cli; antes ela era sempre desenhada.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="presenter-view"&gt;Visão do apresentador&lt;span class="hx:absolute hx:-mt-20" id="presenter-view"&gt;&lt;/span&gt;
+&lt;a href="#presenter-view" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Na v0.7.0, a página tem a visão do apresentador do marp-cli. Pressione &lt;code&gt;p&lt;/code&gt;, ou o
+último botão do controle, e abre-se uma janela com o slide atual, o passo
+seguinte, as suas notas do apresentador, a página, a hora e um cronômetro
+(clique no cronômetro para zerá-lo; &lt;code&gt;+&lt;/code&gt; e &lt;code&gt;-&lt;/code&gt; redimensionam as notas; a barra
+entre os slides e as notas pode ser arrastada). As duas janelas se acompanham nos
+dois sentidos: as setas, um clique no próximo passo ou em Previous/Next em
+qualquer uma move a outra, um fragmento de cada vez.&lt;/p&gt;
+&lt;p&gt;Ela funciona como a do marp-cli, lida a partir dos fontes da 4.5.1: a janela é
+&lt;code&gt;?view=presenter&amp;amp;sync=KEY&lt;/code&gt; do mesmo arquivo, o próximo passo é a mesma página que
+&lt;code&gt;?view=next&lt;/code&gt; em um frame, e as janelas compartilham a sua posição por meio do
+&lt;code&gt;localStorage&lt;/code&gt; (&lt;code&gt;bespoke-marp-sync-KEY&lt;/code&gt;), então não precisa de servidor nem de
+rede, e não funciona em um navegador sem &lt;code&gt;localStorage&lt;/code&gt; (o botão avisa). As notas
+são texto: &lt;code&gt;&amp;amp;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt; e &lt;code&gt;&amp;gt;&lt;/code&gt; são escapados, de modo que uma nota nunca pode ser
+marcação. Elas ficam na página, ocultas, para a visão do apresentador pegá-las, o
+que as mantém fora do que um leitor de tela lê para o público. As páginas
+&lt;code&gt;--bare&lt;/code&gt; não têm nada disso. A visão acrescenta cerca de 10 KB a uma página.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="overview-view"&gt;Visão geral&lt;span class="hx:absolute hx:-mt-20" id="overview-view"&gt;&lt;/span&gt;
+&lt;a href="#overview-view" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Na v0.8.0, pressione &lt;code&gt;o&lt;/code&gt; (ou &lt;code&gt;Escape&lt;/code&gt;: o marp-cli alterna com os dois), o botão
+de grade do controle, ou o contador de páginas da visão do apresentador, e cada
+slide é exibido inteiro em uma grade sobre a página. As setas escolhem um slide
+(para cima e para baixo, por linha), &lt;code&gt;Home&lt;/code&gt; e &lt;code&gt;End&lt;/code&gt; vão às extremidades, e as
+outras janelas acompanham; &lt;code&gt;Enter&lt;/code&gt;, &lt;code&gt;Space&lt;/code&gt; ou um clique escolhe um slide e,
+sobre a página, fecha a visão geral. Sobre a visão do apresentador, uma escolha a
+deixa aberta (o apresentador escolhe o slide a mostrar e continua olhando). O
+botão &amp;ldquo;Close overview&amp;rdquo;, &lt;code&gt;o&lt;/code&gt; e &lt;code&gt;Escape&lt;/code&gt; a fecham. É a do marp-cli: a página de
+novo em um frame em &lt;code&gt;?view=overview&amp;amp;sync=KEY&lt;/code&gt;, compartilhando a posição pelo
+&lt;code&gt;localStorage&lt;/code&gt;, sem rede. Os slides da grade são focalizáveis e rotulados &amp;ldquo;Slide
+N&amp;rdquo;, e a visão geral fechada é inerte, de modo que os usuários de teclado e de
+leitor de tela nunca caem nela. As duas visões juntas acrescentam cerca de 15 KB
+a uma página.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="configuration-files"&gt;Arquivos de configuração&lt;span class="hx:absolute hx:-mt-20" id="configuration-files"&gt;&lt;/span&gt;
+&lt;a href="#configuration-files" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O marp-cli lê suas opções de um arquivo no diretório de trabalho, e o &lt;code&gt;slides&lt;/code&gt;
+também, quando o arquivo é de dados: &lt;code&gt;.marprc&lt;/code&gt; (YAML; JSON também é YAML),
+&lt;code&gt;.marprc.json&lt;/code&gt;, &lt;code&gt;.marprc.yaml&lt;/code&gt;, &lt;code&gt;.marprc.yml&lt;/code&gt;, &lt;code&gt;.config/marprc*&lt;/code&gt;, ou a chave
+&lt;code&gt;marp&lt;/code&gt; do &lt;code&gt;package.json&lt;/code&gt;; &lt;code&gt;--config-file&lt;/code&gt; (&lt;code&gt;-c&lt;/code&gt;) nomeia qualquer arquivo JSON ou
+YAML, &lt;code&gt;marp.config.json&lt;/code&gt; para um deles. Somente o diretório de trabalho é
+procurado, não os seus pais, como a busca do marp-cli. Um arquivo de JavaScript
+ou TypeScript (&lt;code&gt;marp.config.js&lt;/code&gt; &amp;hellip;) é um programa, que o &lt;code&gt;slides&lt;/code&gt; não executa:
+ele avisa e segue em frente. As opções são as da documentação do marp-cli que
+fazem sentido aqui: &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;, &lt;code&gt;keywords&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;,
+&lt;code&gt;ogImage&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;themeSet&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;, &lt;code&gt;allowLocalFiles&lt;/code&gt;, &lt;code&gt;template&lt;/code&gt;,
+&lt;code&gt;bespoke&lt;/code&gt;, &lt;code&gt;inputDir&lt;/code&gt;, &lt;code&gt;output&lt;/code&gt;, &lt;code&gt;parallel&lt;/code&gt;, &lt;code&gt;pdf&lt;/code&gt;, &lt;code&gt;pptx&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;pdfNotes&lt;/code&gt;,
+&lt;code&gt;pdfOutlines&lt;/code&gt;, &lt;code&gt;images&lt;/code&gt;, &lt;code&gt;image&lt;/code&gt;, &lt;code&gt;imageScale&lt;/code&gt;, &lt;code&gt;jpegQuality&lt;/code&gt;, &lt;code&gt;watch&lt;/code&gt;, &lt;code&gt;server&lt;/code&gt;,
+&lt;code&gt;preview&lt;/code&gt;; os caminhos são relativos ao arquivo. A linha de comando prevalece.
+&lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;options&lt;/code&gt; e &lt;code&gt;browser*&lt;/code&gt; precisam do motor do Marp e de um navegador, e
+são ignoradas com um aviso, assim como as flags &lt;code&gt;--browser*&lt;/code&gt;: os scripts escritos
+para o marp-cli continuam funcionando. (&lt;code&gt;slides.yaml&lt;/code&gt; e &lt;code&gt;slides.hcl&lt;/code&gt;, com os
+kinds e os dados de template, são separados e lidos como antes.)&lt;/p&gt;
+&lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Observar, servir e pré-visualizar&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
+&lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Na v0.6.0, com as rotas e o protocolo de recarga ao vivo do marp-cli (lidos dos
+fontes da 4.5.1 e comparados com um &lt;code&gt;marp -s&lt;/code&gt; em execução).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;slides --server dir&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-s&lt;/code&gt;) serve o diretório em &lt;code&gt;http://127.0.0.1:8080/&lt;/code&gt; (a
+variável de ambiente &lt;code&gt;PORT&lt;/code&gt; muda a porta; uma porta já em uso é um erro que diz
+isso):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Requisição&lt;/th&gt;
+&lt;th&gt;Resposta&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;a apresentação como HTML, convertida sob demanda&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md?pdf&lt;/code&gt;, &lt;code&gt;?pptx&lt;/code&gt;, &lt;code&gt;?png&lt;/code&gt;, &lt;code&gt;?jpg&lt;/code&gt; (ou &lt;code&gt;?jpeg&lt;/code&gt;), &lt;code&gt;?notes&lt;/code&gt; (ou &lt;code&gt;?txt&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;a apresentação convertida como a query pede; o PPTX é um anexo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;um diretório&lt;/td&gt;
+&lt;td&gt;o seu &lt;code&gt;index.md&lt;/code&gt; ou &lt;code&gt;PITCHME.md&lt;/code&gt; como página, senão um índice com um link de PDF e um de PPTX para cada apresentação&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;qualquer outro arquivo&lt;/td&gt;
+&lt;td&gt;o arquivo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;uma apresentação que não converte&lt;/td&gt;
+&lt;td&gt;503 com o erro&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Uma página abre um WebSocket em &lt;code&gt;/.__marp-cli-watch-notifier__/&amp;lt;id&amp;gt;&lt;/code&gt;, em que o id
+é o SHA-256 do caminho da apresentação; o servidor envia &lt;code&gt;ready&lt;/code&gt; e depois
+&lt;code&gt;reload&lt;/code&gt; quando a apresentação, ou qualquer coisa sob o diretório, muda. Um
+diretório requisitado sem a barra final é redirecionado para ela (o marp-cli
+serve o índice ali, o que quebra os links relativos da página).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-w&lt;/code&gt;) constrói as apresentações e depois constrói de novo a que
+muda e, quando um arquivo de &lt;code&gt;--theme-set&lt;/code&gt;, um arquivo de kinds ou de dados ou a
+configuração muda, todas elas. As páginas que ele escreve abrem um socket no
+loopback (porta 37717, ou a próxima livre) e recarregam quando a apresentação
+delas é construída de novo. Uma apresentação que falha ao ser construída é
+reportada e continua sendo observada. &lt;strong&gt;&lt;code&gt;--preview&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-p&lt;/code&gt;) abre o navegador
+padrão no servidor, ou nas páginas HTML recém-construídas; não há janela
+própria, já que o &lt;code&gt;slides&lt;/code&gt; não tem um navegador para controlar.&lt;/p&gt;
+&lt;p&gt;O servidor é uma porta de entrada para a máquina, então é mais estrito que o do
+marp-cli, que escuta em todas as interfaces e não verifica nada:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ele escuta em &lt;strong&gt;127.0.0.1&lt;/strong&gt;; &lt;code&gt;--host&lt;/code&gt; muda isso, com um aviso, e um endereço
+curinga não consegue mais verificar o cabeçalho &lt;code&gt;Host&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;o cabeçalho &lt;strong&gt;&lt;code&gt;Host&lt;/code&gt;&lt;/strong&gt; deve ser um nome de loopback (&lt;code&gt;localhost&lt;/code&gt;, &lt;code&gt;127.0.0.1&lt;/code&gt;,
+&lt;code&gt;[::1]&lt;/code&gt;, &lt;code&gt;*.localhost&lt;/code&gt;) ou o host em que ele escuta, o que impede o DNS
+rebinding;&lt;/li&gt;
+&lt;li&gt;a &lt;strong&gt;&lt;code&gt;Origin&lt;/code&gt;&lt;/strong&gt; de um WebSocket deve ser a do próprio servidor; os sockets do
+modo watch também aceitam a origem &lt;code&gt;null&lt;/code&gt; de uma página aberta a partir de um
+arquivo; uma requisição de outro site que não seja uma navegação (um script,
+uma imagem, um &lt;code&gt;fetch&lt;/code&gt;) é recusada;&lt;/li&gt;
+&lt;li&gt;um caminho é limpo, seus links simbólicos são resolvidos, e o resultado deve
+estar dentro do diretório: &lt;code&gt;..&lt;/code&gt; e um link que sai dele são recusados, e o
+&lt;code&gt;?pdf&lt;/code&gt; de uma apresentação de fora também; nomes que começam com ponto
+(&lt;code&gt;.git&lt;/code&gt;, &lt;code&gt;.env&lt;/code&gt;) não são servidos;&lt;/li&gt;
+&lt;li&gt;somente &lt;code&gt;GET&lt;/code&gt; e &lt;code&gt;HEAD&lt;/code&gt;; poucas conversões ao mesmo tempo; no máximo 4096
+diretórios observados, e nenhum em &lt;code&gt;node_modules&lt;/code&gt; ou sob um ponto.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Atrás de um proxy reverso, &lt;code&gt;--allowed-host name&lt;/code&gt; (na v0.14.0, repetível)
+acrescenta o nome público do proxy aos &lt;code&gt;Host&lt;/code&gt; e &lt;code&gt;Origin&lt;/code&gt; aceitos; as verificações
+continuam ativas e o servidor continua no loopback.
+&lt;a href="https://go-slides.github.io/docs/0.16/pt/self-hosting/"&gt;Auto-hospedagem&lt;/a&gt; o coloca atrás do Caddy, com
+HTTPS e um login.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="page-metadata"&gt;Metadados da página&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
+&lt;a href="#page-metadata" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A linha de comando prevalece sobre a apresentação, como no marp-cli, onde as
+flags são anexadas à apresentação como um último comentário de diretiva. Regras
+lidas do marp-cli 4.5.1 e fixadas por testes contra a saída dele (na v0.6.0):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Uma apresentação que não define &lt;code&gt;title&lt;/code&gt; usa o texto do seu primeiro título do
+nível mais baixo, como escrito (&lt;code&gt;# **Bold** title&lt;/code&gt; dá &lt;code&gt;**Bold** title&lt;/code&gt;). Sem
+título, não há &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;keywords&lt;/code&gt; são divididas nas vírgulas, aparadas e sem duplicatas; uma lista do
+front matter é tomada como está. Como o marp-cli, a página traz a tag
+&lt;code&gt;keywords&lt;/code&gt; a partir da segunda palavra-chave, não para uma só.&lt;/li&gt;
+&lt;li&gt;Uma &lt;code&gt;url&lt;/code&gt; inválida (não absoluta) é ignorada com um aviso, e o valor anterior
+é mantido; uma válida também escreve &lt;code&gt;&amp;lt;link rel=&amp;quot;canonical&amp;quot;&amp;gt;&lt;/code&gt; e &lt;code&gt;og:url&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;author&lt;/code&gt; e &lt;code&gt;description&lt;/code&gt; vêm com seus gêmeos do Open Graph; &lt;code&gt;og:image:alt&lt;/code&gt; e o
+cartão grande do Twitter precisam de um título e de uma imagem.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="images-pdf-pptx-and-odp"&gt;Imagens, PDF, PPTX e ODP&lt;span class="hx:absolute hx:-mt-20" id="images-pdf-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#images-pdf-pptx-and-odp" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;-o&lt;/code&gt; com a extensão &lt;code&gt;.pdf&lt;/code&gt;, &lt;code&gt;.pptx&lt;/code&gt;, &lt;code&gt;.odp&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt; ou &lt;code&gt;.jpg&lt;/code&gt; escolhe o formato,
+como o marp-cli faz. Os diretórios de saída são criados. Um PDF tem uma página
+por slide, no tamanho do slide, e um sumário dos slides e dos seus títulos.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="pdf-notes-and-outline"&gt;Notas e sumário do PDF&lt;span class="hx:absolute hx:-mt-20" id="pdf-notes-and-outline"&gt;&lt;/span&gt;
+&lt;a href="#pdf-notes-and-outline" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Na v0.6.0, o PDF aceita as duas opções do marp-cli, e elas são comparadas com os
+PDFs que o marp-cli 4.5.1 escreve para a mesma apresentação:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--pdf-notes&lt;/code&gt; coloca as notas do apresentador de cada slide na sua página como
+uma anotação de nota: um ícone Note amarelo no canto inferior esquerdo, cujo
+conteúdo são as notas (vários comentários unidos por uma linha em branco) e
+cujo título é o &lt;code&gt;author&lt;/code&gt; da apresentação. &lt;code&gt;--pdf-notes&lt;/code&gt; sozinho pede um PDF,
+como no marp-cli.&lt;/li&gt;
+&lt;li&gt;O sumário contém um marcador em negrito &amp;ldquo;Page N&amp;rdquo; por slide e, sob ele, os
+títulos do slide aninhados por nível (&lt;code&gt;--pdf-outlines.pages&lt;/code&gt; e
+&lt;code&gt;--pdf-outlines.headings&lt;/code&gt; escolhem as duas partes). &lt;strong&gt;O sumário vem ligado por
+padrão aqui e desligado no marp-cli.&lt;/strong&gt; O &lt;code&gt;slides&lt;/code&gt; sempre escreveu um; ele custa
+algumas centenas de bytes e torna navegável uma apresentação longa, então o
+padrão permanece. &lt;code&gt;--pdf-outlines=false&lt;/code&gt;, ou o &lt;code&gt;--no-pdf-outlines&lt;/code&gt; do
+marp-cli, o desliga, e &lt;code&gt;=false&lt;/code&gt; em &lt;code&gt;.pages&lt;/code&gt; ou &lt;code&gt;.headings&lt;/code&gt; descarta essa
+parte. Um marcador de título salta para o seu slide; o marp-cli também rola até
+o título.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A renderização é feita pelo &lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt;
+e o PDF é escrito pelo &lt;a href="https://github.com/go-pdfkit/pdfkit" target="_blank" rel="noopener"&gt;go-pdfkit&lt;/a&gt;; as
+fontes que os temas embutidos pedem (Lato, Roboto Mono) vêm do
+&lt;a href="https://github.com/go-opentype/fonts" target="_blank" rel="noopener"&gt;go-opentype/fonts&lt;/a&gt; e são incorporadas,
+então nenhuma renderização toca a rede. Não há Chrome.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--image-scale 2&lt;/code&gt; renderiza a dois pixels do dispositivo por pixel CSS. Imagens
+locais são recusadas a menos que &lt;code&gt;--allow-local-files&lt;/code&gt; seja informado, e mesmo
+assim só os arquivos sob o diretório da apresentação são lidos: uma apresentação
+de outro lugar não consegue alcançar &lt;code&gt;~/.ssh&lt;/code&gt;. Fundos múltiplos e divididos
+(&lt;code&gt;![bg left:40%]&lt;/code&gt;) são renderizados como as camadas do Marp.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--pptx&lt;/code&gt; escreve a apresentação com o &lt;code&gt;WritePresentation&lt;/code&gt; do
+&lt;a href="https://github.com/go-ooxml" target="_blank" rel="noopener"&gt;go-ooxml&lt;/a&gt;, com as notas do apresentador e os
+metadados da apresentação. Desde a v0.5.0, os slides são editáveis (abaixo);
+&lt;code&gt;--pptx-raster&lt;/code&gt; escreve uma imagem de slide inteiro por slide, como o marp-cli
+faz, em uma escala com padrão 2 que &lt;code&gt;--image-scale&lt;/code&gt; substitui. O LibreOffice abre
+o resultado. Somente o LibreOffice foi testado; o PowerPoint e o Keynote não.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--odp&lt;/code&gt; escreve uma apresentação OpenDocument, por meio do &lt;code&gt;WritePresentation&lt;/code&gt; do
+go-odf, com as suas notas do apresentador; &lt;code&gt;--odp-raster&lt;/code&gt; escreve uma imagem por
+slide.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="editable-pptx-and-odp"&gt;PPTX e ODP editáveis&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx-and-odp" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Desde a v0.5.0, os slides de um PPTX ou de um ODP são &lt;strong&gt;editáveis&lt;/strong&gt; — o PPTX do
+marp-cli é uma imagem por slide, e o seu &lt;code&gt;--pptx-editable&lt;/code&gt; experimental converte
+um PDF por meio do LibreOffice. Aqui, cada slide é desenhado a partir do seu
+layout, o mesmo que as exportações para PNG e PDF desenham:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cada linha de texto é uma caixa de texto na sua posição calculada, nas fontes
+com que o slide foi diagramado — &lt;strong&gt;incorporadas ao arquivo&lt;/strong&gt;, de modo que ele
+fica igual em uma máquina sem Lato ou Inter (verificado com o LibreOffice
+25.8) — com negrito, itálico, cores, espaçamento entre letras e links
+clicáveis;&lt;/li&gt;
+&lt;li&gt;fundos, bordas e caixas arredondadas são formas; os gradientes são
+preenchimentos em gradiente no PPTX e imagens no ODP (um gradiente ODF tem duas
+cores);&lt;/li&gt;
+&lt;li&gt;as imagens são armazenadas uma única vez, por mais slides que as mostrem;&lt;/li&gt;
+&lt;li&gt;o que um slide não consegue expressar — um elemento sob &lt;code&gt;opacity&lt;/code&gt;, um
+&lt;code&gt;filter&lt;/code&gt;, uma sombra desfocada — é uma imagem desse elemento, com
+o seu texto mantido por cima;&lt;/li&gt;
+&lt;li&gt;desde a v0.15.0, uma fórmula, um emoji ou uma imagem SVG é um grupo de formas
+vetoriais (&lt;code&gt;p:grpSp&lt;/code&gt; no PPTX, &lt;code&gt;draw:g&lt;/code&gt; no ODP) que se move como um só. Um SVG
+que precisa de um recorte ou de um gradiente radial continua sendo uma imagem.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Renderizado de volta pelo LibreOffice, um slide fica a 0,04–2 % dos pixels da
+exportação para PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; e &lt;code&gt;--odp-raster&lt;/code&gt; mantêm uma imagem por
+slide.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="vector-pdf"&gt;PDF vetorial&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Desde a v0.4.0, o PDF é desenhado como vetores: o go-webengine pinta o slide
+diagramado no PDF em vez de em pixels. O texto é texto, nas fontes com que o
+slide foi diagramado, incorporadas em subconjunto com um mapa &lt;code&gt;/ToUnicode&lt;/code&gt; — ele
+pode ser selecionado, pesquisado e copiado. Fundos, bordas e gradientes são
+caminhos e sombreamentos, uma imagem mostrada em muitos slides é incorporada uma
+única vez, e os links são clicáveis. A apresentação de referência de 100 slides
+tem 758 KiB, contra 837 KiB do marp-cli e 10 MiB do PDF de imagens da v0.3.0, e
+é escrita em 0,3 s.&lt;/p&gt;
+&lt;p&gt;Um elemento sem forma vetorial aqui — sob &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, com um &lt;code&gt;filter&lt;/code&gt; ou uma
+rotação, um &lt;code&gt;box-shadow&lt;/code&gt; desfocado, um gradiente cuja opacidade se desvanece — é
+desenhado como um bitmap apenas desse elemento, com o seu texto colocado por
+cima de forma invisível para que continue selecionável. &lt;code&gt;--pdf-raster&lt;/code&gt; escreve uma imagem por página, como a v0.3.0 fazia.&lt;/p&gt;
+&lt;p&gt;Desde a v0.15.0, as fórmulas, os emoji e as imagens SVG também são vetores
+(go-webengine v0.22.0): cada desenho distinto é um XObject de formulário PDF,
+pintado onde é usado e nítido em qualquer zoom.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;PDF acessível e etiquetado&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
+&lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Desde a v0.12.0, o PDF vetorial é etiquetado (tagged). Ele carrega a sua
+estrutura lógica, que um leitor de tela lê em ordem, como lê uma página web:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Na apresentação&lt;/th&gt;
+&lt;th&gt;No PDF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;um slide&lt;/td&gt;
+&lt;td&gt;uma seção (&lt;code&gt;Sect&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;#&lt;/code&gt; … &lt;code&gt;######&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;H1&lt;/code&gt; … &lt;code&gt;H6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;um parágrafo, uma lista, uma tabela&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;P&lt;/code&gt;; &lt;code&gt;L&lt;/code&gt; com o rótulo e o corpo de cada item; &lt;code&gt;Table&lt;/code&gt;, células de cabeçalho com o seu escopo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;um link&lt;/td&gt;
+&lt;td&gt;um &lt;code&gt;Link&lt;/code&gt;, com a sua área clicável incluída e o seu texto como descrição&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;uma imagem&lt;/td&gt;
+&lt;td&gt;uma &lt;code&gt;Figure&lt;/code&gt; com o seu texto alternativo; &lt;code&gt;![](…)&lt;/code&gt; sem texto alternativo é decoração&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;uma &lt;code&gt;Formula&lt;/code&gt;, com o seu código TeX como &lt;code&gt;/Alt&lt;/code&gt; e &lt;code&gt;/ActualText&lt;/code&gt; (os seus glifos são contornos: pdftotext e mupdf não os extraem, os leitores que seguem a estrutura sim)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;código&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Code&lt;/code&gt;, sem os seus números de linha nem discos de chamada&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;span lang=&amp;quot;fr&amp;quot;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;um span nesse idioma&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fundos, bordas, números de página&lt;/td&gt;
+&lt;td&gt;artefatos, que um leitor ignora&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;notas do apresentador (&lt;code&gt;--pdf-notes&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;anotações na estrutura&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;O arquivo declara PDF/UA-1, o padrão para PDF acessível. Ele carrega o &lt;code&gt;title&lt;/code&gt; da
+apresentação, que o visualizador mostra, e o seu &lt;code&gt;lang&lt;/code&gt; (&lt;code&gt;--lang&lt;/code&gt; quando a
+apresentação não define nenhum, &lt;code&gt;en&lt;/code&gt; caso contrário).&lt;/p&gt;
+&lt;p&gt;Uma apresentação verificada com o veraPDF passa no PDF/UA-1, a menos que os seus
+próprios títulos quebrem a ordem do padrão. O PDF/UA exige que o primeiro título
+seja um &lt;code&gt;H1&lt;/code&gt; e que nenhum nível seja pulado (&lt;code&gt;#&lt;/code&gt; e depois &lt;code&gt;###&lt;/code&gt;). Somente o autor
+da apresentação pode corrigir isso. O PDF do Chrome da mesma apresentação, que o
+marp-cli escreve, também é etiquetado, mas falha em sete regras do PDF/UA, não
+tem uma seção por slide e não tem fórmulas.&lt;/p&gt;
+&lt;p&gt;Etiquetar a apresentação de referência de 100 slides custa 4% em tamanho (788
+contra 757 KiB) e nenhum tempo mensurável. &lt;code&gt;--pdf-tags=false&lt;/code&gt; escreve o PDF sem
+etiquetas.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
+&lt;a href="#slidesyaml" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Um arquivo de configuração ao lado da apresentação se aplica a ela, de modo que
+uma pasta de apresentações compartilha um só:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;kinds.yaml &lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# a mapping of kinds, or file(s) holding one&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;themes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# theme CSS files or directories&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;themes/&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# template data&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;company&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Example Inc.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# allow all raw HTML&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;en&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Kinds: o &lt;code&gt;kinds:&lt;/code&gt; da própria apresentação sobrescreve o do arquivo e o da linha
+de comando. Dados: o &lt;code&gt;data&lt;/code&gt; do arquivo e o da linha de comando sobrescrevem o
+front matter da apresentação, de modo que uma apresentação pode ser construída
+com dados diferentes.&lt;/p&gt;</description></item></channel></rss>

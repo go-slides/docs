@@ -1,0 +1,96 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Emoji</title><link>https://go-slides.github.io/docs/0.16/zh/tags/emoji/</link><description>Recent content in Emoji on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.16/zh/tags/emoji/index.xml" rel="self" type="application/rss+xml"/><item><title>Emoji</title><link>https://go-slides.github.io/docs/0.16/zh/emoji/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/zh/emoji/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Emoji 自 v0.4.0 起提供；v0.3.0 不支持。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;emoji 可以写成短代码，也可以直接写字符本身：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Launch :rocket: 🎉
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Shortcodes :smile: :+1: :heart_eyes: and Unicode 😄 👍🏽 👩‍💻 🇫🇷 1️⃣.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;每个 emoji 都会变成 Marp Core 所绘制的 &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;Twemoji&lt;/a&gt; 图片，
+标记与 Marp Core 写出的相同：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;emoji&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;draggable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;false&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;😄&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;data:image/svg+xml;base64,…&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;data-marp-twemoji&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="no-network"&gt;无需网络&lt;span class="hx:absolute hx:-mt-20" id="no-network"&gt;&lt;/span&gt;
+&lt;a href="#no-network" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp Core 的 &lt;code&gt;src&lt;/code&gt; 是 CDN 上的一个 URL，因此离线展示、打印，或在没有网络连接的机器上转换为 PDF 的演示文稿，
+都会显示破损的图片。go-slides 则把 SVG 本身放进 &lt;code&gt;data:&lt;/code&gt; URI。这些图形（共 4,009 个，
+Twemoji 17.0.3，Emoji 17.0）来自纯 Go 模块
+&lt;a href="https://github.com/go-icons/twemoji" target="_blank" rel="noopener"&gt;go-icons/twemoji&lt;/a&gt;，内嵌在程序中，压缩后 2 MB，
+只有在演示文稿包含 emoji 时才会读取。&lt;/p&gt;
+&lt;p&gt;HTML 页面、&lt;code&gt;--images&lt;/code&gt;/&lt;code&gt;--image&lt;/code&gt;、&lt;code&gt;--pdf&lt;/code&gt;、&lt;code&gt;--pptx&lt;/code&gt; 和 &lt;code&gt;--odp&lt;/code&gt; 都同样会绘制这些图片：
+由 go-webengine 对 SVG 进行栅格化。全部 4,009 个图形都能被其 SVG 栅格化器解析和绘制；
+有测试对此进行检查。自 v0.5.0 起，该栅格化器为 &lt;a href="https://github.com/go-gfx/oksvg" target="_blank" rel="noopener"&gt;go-gfx/oksvg&lt;/a&gt;
+v0.2.0：&lt;code&gt;clipPath&lt;/code&gt;、&lt;code&gt;fill-rule: evenodd&lt;/code&gt; 和圆弧命令现在的绘制效果与 Chrome 一致，
+这改变了一个 Twemoji 和另外 211 个图形，SVG 徽标也不再错乱。&lt;/p&gt;
+&lt;p&gt;让 emoji 与文字等大的规则（&lt;code&gt;img[data-marp-twemoji]&lt;/code&gt;，一个 &lt;code&gt;em&lt;/code&gt; 见方，与基线对齐）
+会像 Marp Core 那样添加到主题中，因此你自己的主题也能用上。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-is-converted"&gt;转换范围&lt;span class="hx:absolute hx:-mt-20" id="what-is-converted"&gt;&lt;/span&gt;
+&lt;a href="#what-is-converted" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;规则与 Marp Core 相同；有测试将其与 Marp Core 4.4.0 为一个涵盖所有情况的演示文稿写出的 HTML 进行比较。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:smile:&lt;/code&gt;、&lt;code&gt;:+1:&lt;/code&gt;、&lt;code&gt;:heart_eyes:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;markdown-it-emoji 的 1,903 个名称，适用于正文、标题、链接、表格、&lt;code&gt;header&lt;/code&gt; 和 &lt;code&gt;footer&lt;/code&gt;；不适用于代码、URL 或图片的替代文本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;😄&lt;/code&gt;、&lt;code&gt;👩‍💻&lt;/code&gt;、&lt;code&gt;🇫🇷&lt;/code&gt;、&lt;code&gt;1️⃣&lt;/code&gt;、&lt;code&gt;👍🏽&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unicode emoji，适用于正文&lt;strong&gt;以及代码&lt;/strong&gt;：Marp Core 会改写渲染后的代码 HTML&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;✔&lt;/code&gt;、&lt;code&gt;©&lt;/code&gt;、&lt;code&gt;™&lt;/code&gt;、&lt;code&gt;▶&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;保留为文本：默认以文本形式呈现的字符，只有带 U+FE0F（&lt;code&gt;✔️&lt;/code&gt;）时才是 emoji；&lt;code&gt;❤&lt;/code&gt; 是例外&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;☺︎&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;保留为文本：emoji 后的 U+FE0E 表示要求使用普通字形&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;12:30:45&lt;/code&gt;、&lt;code&gt;:not_a_name:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;保持原样&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;标题的 &lt;code&gt;id&lt;/code&gt; 和书签大纲使用的是 emoji 本身，而不是短代码的名称：
+&lt;code&gt;# Launch :rocket:&lt;/code&gt; 的 id 为 &lt;code&gt;launch-%F0%9F%9A%80&lt;/code&gt;，与 Marp 相同。&lt;/p&gt;
+&lt;p&gt;go-slides 与 Marp Core 的不同之处在于它转换得更多：&lt;code&gt;✌️ ☝️ ✍️ 🏋️&lt;/code&gt;，以及其他一些
+Marp Core 的 emoji-regex 保留为文本的默认文本字符，还有少数 Twemoji 能绘制但 Unicode 未列出的序列。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="turning-it-off"&gt;关闭&lt;span class="hx:absolute hx:-mt-20" id="turning-it-off"&gt;&lt;/span&gt;
+&lt;a href="#turning-it-off" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;--no-emoji&lt;/code&gt;（在代码中为 &lt;code&gt;slides.Config{NoEmoji: true}&lt;/code&gt;）会将短代码和
+Unicode emoji 保留为书写时的文本，相当于 Marp Core 的
+&lt;code&gt;emoji: false&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="attribution"&gt;署名&lt;span class="hx:absolute hx:-mt-20" id="attribution"&gt;&lt;/span&gt;
+&lt;a href="#attribution" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;这些图形来自 Twemoji，Copyright 2020 Twitter, Inc and other contributors，
+采用 &lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&gt;CC-BY 4.0&lt;/a&gt; 许可，
+由 &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;jdecked/twemoji&lt;/a&gt; 项目继续维护。
+展示这些图形的演示文稿应注明出处，例如在页脚或结尾幻灯片中。短代码表来自 markdown-it-emoji（MIT）。&lt;/p&gt;</description></item></channel></rss>

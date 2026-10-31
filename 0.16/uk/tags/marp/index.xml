@@ -1,0 +1,86 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Marp</title><link>https://go-slides.github.io/docs/0.16/uk/tags/marp/</link><description>Recent content in Marp on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.16/uk/tags/marp/index.xml" rel="self" type="application/rss+xml"/><item><title>Сумісність з Marp</title><link>https://go-slides.github.io/docs/0.16/uk/marp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.16/uk/marp/</guid><description>
+&lt;p&gt;Презентація, написана для &lt;a href="https://marp.app" target="_blank" rel="noopener"&gt;Marp&lt;/a&gt;, є презентацією go-slides.
+Наведені нижче правила — це правила &lt;a href="https://marpit.marp.app" target="_blank" rel="noopener"&gt;Marpit&lt;/a&gt; і
+&lt;a href="https://github.com/marp-team/marp-core" target="_blank" rel="noopener"&gt;Marp Core&lt;/a&gt;; там, де go-slides
+відрізняється, ця сторінка про це каже.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides"&gt;Слайди&lt;span class="hx:absolute hx:-mt-20" id="slides"&gt;&lt;/span&gt;
+&lt;a href="#slides" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Горизонтальна лінія — &lt;code&gt;---&lt;/code&gt; в окремому рядку, як розділяє Marpit, — починає
+новий слайд, так само як і заголовок того рівня, який називає директива
+&lt;code&gt;headingDivider&lt;/code&gt;. Front matter, між першими двома &lt;code&gt;---&lt;/code&gt;, містить глобальні
+директиви та дані презентації.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="directives"&gt;Директиви&lt;span class="hx:absolute hx:-mt-20" id="directives"&gt;&lt;/span&gt;
+&lt;a href="#directives" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Вид&lt;/th&gt;
+&lt;th&gt;Де&lt;/th&gt;
+&lt;th&gt;До чого застосовується&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;глобальна&lt;/td&gt;
+&lt;td&gt;front matter або &lt;code&gt;&amp;lt;!-- theme: gaia --&amp;gt;&lt;/code&gt; будь-де&lt;/td&gt;
+&lt;td&gt;до всієї презентації: &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt;…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;локальна&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- paginate: true --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;до цього слайда й наступних&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;spot&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- _class: lead --&amp;gt;&lt;/code&gt; (підкреслення)&lt;/td&gt;
+&lt;td&gt;лише до цього слайда&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Локальні директиви — ті, що в Marpit: &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;,
+&lt;code&gt;backgroundColor&lt;/code&gt;, &lt;code&gt;backgroundImage&lt;/code&gt;, &lt;code&gt;backgroundPosition&lt;/code&gt;,
+&lt;code&gt;backgroundRepeat&lt;/code&gt;, &lt;code&gt;backgroundSize&lt;/code&gt;, &lt;code&gt;color&lt;/code&gt;. Директиви розбираються як
+вільний YAML, як це робить Marp Core; &lt;code&gt;--strict-yaml&lt;/code&gt; розбирає їх так, як
+звичайний Marpit.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="images"&gt;Зображення&lt;span class="hx:absolute hx:-mt-20" id="images"&gt;&lt;/span&gt;
+&lt;a href="#images" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;![bg](image.jpg)&lt;/code&gt; робить зображення фоном слайда, з ключовими словами Marp:
+&lt;code&gt;bg contain&lt;/code&gt;, &lt;code&gt;bg cover&lt;/code&gt;, &lt;code&gt;bg 50%&lt;/code&gt;, &lt;code&gt;bg left&lt;/code&gt;/&lt;code&gt;bg right&lt;/code&gt; для розділеного фону,
+кілька зображень &lt;code&gt;bg&lt;/code&gt; поруч і фільтри зображень (&lt;code&gt;blur&lt;/code&gt;, &lt;code&gt;sepia&lt;/code&gt;,
+&lt;code&gt;grayscale&lt;/code&gt;…). Розміри вбудованих зображень (&lt;code&gt;w:200px&lt;/code&gt;, &lt;code&gt;h:&lt;/code&gt;) читаються так,
+як їх читає Marp.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="around-the-slide"&gt;Навколо слайда&lt;span class="hx:absolute hx:-mt-20" id="around-the-slide"&gt;&lt;/span&gt;
+&lt;a href="#around-the-slide" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Верхній і нижній колонтитули&lt;/strong&gt;: директиви &lt;code&gt;header:&lt;/code&gt; і &lt;code&gt;footer:&lt;/code&gt;, у Markdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Нумерація&lt;/strong&gt;: &lt;code&gt;paginate: true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Нотатки доповідача&lt;/strong&gt;: HTML-коментар, що не є директивою, — це нотатка.
+&lt;code&gt;slides notes&lt;/code&gt; їх виводить.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Поетапні списки&lt;/strong&gt;: список, написаний з &lt;code&gt;*&lt;/code&gt; (або &lt;code&gt;1)&lt;/code&gt;), з&amp;rsquo;являється
+елемент за елементом, як у Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;: CSS лише для одного слайда.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Сирий HTML&lt;/strong&gt;: типово білий список Marp Core; &lt;code&gt;--html&lt;/code&gt; дозволяє весь.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Емодзі&lt;/strong&gt;: &lt;code&gt;:shortcodes:&lt;/code&gt; та емодзі Unicode стають зображеннями Twemoji, як
+у Marp Core, але вбудованими замість завантаження з CDN: див.
+&lt;a href="https://go-slides.github.io/docs/0.16/uk/emoji/"&gt;Емодзі&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="themes"&gt;Теми&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
+&lt;a href="#themes" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; та &lt;code&gt;uncover&lt;/code&gt; вбудовані й вибираються через &lt;code&gt;theme:&lt;/code&gt;. Власна
+тема — це файл CSS з коментарем Marp &lt;code&gt;/* @theme name */&lt;/code&gt;, який передається
+через &lt;code&gt;--theme-set&lt;/code&gt; або перелічується в &lt;code&gt;themes:&lt;/code&gt; у &lt;code&gt;slides.yaml&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="where-go-slides-differs"&gt;Чим go-slides відрізняється&lt;span class="hx:absolute hx:-mt-20" id="where-go-slides-differs"&gt;&lt;/span&gt;
+&lt;a href="#where-go-slides-differs" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Шаблони.&lt;/strong&gt; &lt;code&gt;{{ }}&lt;/code&gt; у тілі — це дія шаблону Go (див.
+&lt;a href="https://go-slides.github.io/docs/0.16/uk/templates/"&gt;Шаблони&lt;/a&gt;). Презентація, що показує &lt;code&gt;{{&lt;/code&gt; як текст
+поза блоком коду, потребує &lt;code&gt;--no-template&lt;/code&gt; або тексту, екранованого так, як
+екранують шаблони Go. Блоки коду й фрагменти коду не чіпаються.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kinds.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; та &lt;code&gt;_kind:&lt;/code&gt; — директиви, яких у Marp немає (див.
+&lt;a href="https://go-slides.github.io/docs/0.16/uk/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; замінює їх директивами, які
+вони означають, тож розгорнута презентація — звичайний Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Виводи.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX та ODP — через бібліотеки Go, а не
+headless-браузер (відомі обмеження див. у
+&lt;a href="https://go-slides.github.io/docs/0.16/uk/cli/#images-pdf-pptx-and-odp"&gt;Командний рядок&lt;/a&gt;). У v0.4.0, як
+і в marp-cli, PPTX містить картинки; починаючи з v0.5.0 його слайди — це
+редаговані текстові блоки та фігури, а &lt;code&gt;--pptx-raster&lt;/code&gt; зберігає картинки.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Заголовки за шириною.&lt;/strong&gt; &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt; підтримується: заголовок
+заповнює ширину слайда в один рядок, на сторінці й у кожному експорті.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Математика й код.&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; та &lt;code&gt;$$…$$&lt;/code&gt; дотримуються правил роздільників
+Marp Core і верстаються go-tex/math; блоки коду підсвічує go-rouge з іменами
+класів highlight.js (див. &lt;a href="https://go-slides.github.io/docs/0.16/uk/math-and-code/"&gt;Математика й код&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
