@@ -100,6 +100,19 @@ jobs:
       # content/en exists in each language of hugo.yaml, and a translation keeps
       # the code, the shortcodes, the link targets and the headings' anchors the
       # English page has. A missing page fails here, before the build.
+      # The theme never goes back: .hextra-version is the tag the site needs
+      # (the language menu's `flags: false` came with v0.22.0, and a stale
+      # branch's squash merge moved the submodule back to v0.21.0, so the flags
+      # returned on the live site). A submodule older than the pin fails here;
+      # raising the pin is a deliberate edit.
+      - name: The theme is not older than the pinned version
+        env:
+          GOWORK: "off"
+        working-directory: tools/hextrapin
+        run: |
+          go test ./...
+          go run . --root ../..
+
       - name: Check the translations
         env:
           GOWORK: "off"
