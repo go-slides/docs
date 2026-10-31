@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 A extensão é o [go-slides/vscode](https://github.com/go-slides/vscode), com
-versionamento próprio (v0.4.0). Ela renderiza com o go-slides v0.9.0 (o pacote
+versionamento próprio (v0.5.0). Ela renderiza com o go-slides v0.14.0 (o pacote
 `editor`, as linhas de origem da rolagem sincronizada, e a visão geral e a visão
-do apresentador). Ela é instalada a partir do `go-slides-0.4.0.vsix` anexado à
+do apresentador). Ela é instalada a partir do `go-slides-0.5.0.vsix` anexado à
 sua release no GitHub: a publicação no VS Code Marketplace e no Open VSX está
 preparada, mas ainda não está lá.
 {{< /callout >}}
@@ -27,7 +27,7 @@ Baixe `go-slides-<version>.vsix` das
 *Extensions: Install from VSIX...*, ou:
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 A pré-visualização não precisa de mais nada. Exportar precisa do comando
@@ -128,6 +128,12 @@ como `slides -o deck.pdf deck.md` faria; veja
 [Linha de comando]({{< relref "cli" >}}). Requer um workspace confiável. Se o
 `slides` não for encontrado, a extensão oferece executar o `go install` acima em
 um terminal.
+
+Desde a v0.5.0 da extensão (go-slides v0.14.0), o PDF que ela escreve é
+**acessível**: com o `slides` v0.12.0 ou posterior, o PDF vetorial é etiquetado
+para leitores de tela e declara PDF/UA-1, com o `title` e o `lang` da
+apresentação e uma seção por slide. `slides --pdf-tags=false` escreve o arquivo
+sem etiquetas. Atualize o comando com o `go install` acima para obtê-lo.
 
 ## Configurações {#settings}
 

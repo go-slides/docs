@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 Rozszerzenie to [go-slides/vscode](https://github.com/go-slides/vscode),
-wersjonowane osobno (v0.4.0). Renderuje przez go-slides v0.9.0 (pakiet
+wersjonowane osobno (v0.5.0). Renderuje przez go-slides v0.14.0 (pakiet
 `editor`, linie źródłowe synchronizacji przewijania oraz widok przeglądu i
-prelegenta). Instaluje się je z `go-slides-0.4.0.vsix` dołączonego do
+prelegenta). Instaluje się je z `go-slides-0.5.0.vsix` dołączonego do
 wydania na GitHubie: jego publikacja w VS Code Marketplace i Open VSX jest
 przygotowana, ale jeszcze jej tam nie ma.
 {{< /callout >}}
@@ -26,7 +26,7 @@ Pobierz `go-slides-<version>.vsix` z
 *Extensions: Install from VSIX...* albo:
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 Podgląd nie potrzebuje niczego więcej. Eksport potrzebuje polecenia `slides`:
@@ -122,6 +122,12 @@ wektorowy PDF, edytowalne PPTX i ODP, PNG lub JPEG poleceniem `slides`, tak jak
 zrobiłoby `slides -o deck.pdf deck.md`; zobacz [Wiersz poleceń]({{< relref "cli" >}}).
 Wymaga zaufanej przestrzeni roboczej. Jeśli `slides` nie zostanie znalezione, rozszerzenie proponuje
 uruchomienie powyższego `go install` w terminalu.
+
+Od v0.5.0 rozszerzenia (go-slides v0.14.0) zapisywany przez nie PDF jest
+**dostępny**: z `slides` v0.12.0 lub nowszym wektorowy PDF jest otagowany dla
+czytników ekranu i deklaruje PDF/UA-1, z `title` i `lang` prezentacji oraz
+sekcją na slajd. `slides --pdf-tags=false` zapisuje plik bez tagów. Zaktualizuj
+polecenie powyższym `go install`, aby go uzyskać.
 
 ## Ustawienia {#settings}
 
