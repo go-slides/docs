@@ -5,10 +5,15 @@ description: "在浏览器中编写演示文稿，幻灯片实时跟随：编译
 tags: [playground, browser]
 ---
 
-**[打开 Playground →](https://go-slides.github.io/playground/)**
+**[打开 Playground →](https://go-slides.github.io/zh/playground/)**
 
 Playground 就是 go-slides 本身（v0.14.0），编译为 WebAssembly 后在你的浏览器中运行。
 在左侧输入演示文稿，右侧的幻灯片会随之更新。不会向服务器发送任何内容：演示文稿不会，分享链接也不会。
+
+Playground 自身的界面（功能区、帮助、提示信息）使用页面所用的语言：
+打开 `/zh/playground/` 即为简体中文，本站的十二种语言同理。页面上的语言选择器可以切换语言，
+你的选择会保存在此浏览器中；链接中指明了语言时，始终以链接为准。示例演示文稿仍为英文。
+乌克兰语、俄语、中文、日语和韩语使用 Noto Sans 的子集（0.06 至 2.3 MiB）绘制，页面只为这些语言下载它。
 
 ## 功能 {#what-it-has}
 
