@@ -510,8 +510,10 @@ gradientowe w PPTX i obrazy w ODP (gradient ODF ma dwa
 kolory);&lt;/li&gt;
 &lt;li&gt;obrazy są przechowywane raz, niezależnie od tego, ile slajdów je pokazuje;&lt;/li&gt;
 &lt;li&gt;to, czego slajd nie umie wyrazić — element pod &lt;code&gt;opacity&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;,
-rozmyty cień, wzór — jest obrazem tego elementu, z tekstem zachowanym
-nad nim.&lt;/li&gt;
+rozmyty cień — jest obrazem tego elementu, z tekstem zachowanym
+nad nim;&lt;/li&gt;
+&lt;li&gt;wzór, emoji lub obraz SVG to grupa kształtów wektorowych (&lt;code&gt;p:grpSp&lt;/code&gt; w PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; w ODP), która przesuwa się jako całość. SVG wymagający przycinania lub gradientu radialnego pozostaje obrazem.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Odrenderowany z powrotem przez LibreOffice, slajd mieści się w 0,04–2 % pikseli
 eksportu PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; i &lt;code&gt;--odp-raster&lt;/code&gt; zachowują jeden obraz na slajd.&lt;/p&gt;
@@ -526,8 +528,10 @@ marp-cli i 10 MiB w PDF-ie z obrazów z v0.3.0, a zapisuje się w 0,3 s.&lt;/p&g
 &lt;p&gt;Element bez formy wektorowej tutaj — pod &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, z &lt;code&gt;filter&lt;/code&gt;
 lub obrotem, rozmyty &lt;code&gt;box-shadow&lt;/code&gt;, gradient, którego przezroczystość zanika — jest
 rysowany jako bitmapa samego tego elementu, z tekstem nałożonym na nią niewidocznie, by
-pozostał zaznaczalny. Wzory są nadal bitmapami. &lt;code&gt;--pdf-raster&lt;/code&gt; zapisuje jeden obraz
+pozostał zaznaczalny. &lt;code&gt;--pdf-raster&lt;/code&gt; zapisuje jeden obraz
 na stronę, jak robiła v0.3.0.&lt;/p&gt;
+&lt;p&gt;Wzory, emoji i obrazy SVG są również wektorami (go-webengine v0.22.0): każdy odrębny rysunek
+to jeden formularzowy XObject PDF, malowany tam, gdzie jest użyty, ostry przy każdym powiększeniu.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Dostępny, otagowany PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Od v0.12.0 wektorowy PDF jest otagowany. Niesie swoją strukturę logiczną,
 którą czytnik ekranu czyta po kolei, tak jak czyta stronę internetową:&lt;/p&gt;
@@ -561,7 +565,7 @@ którą czytnik ekranu czyta po kolei, tak jak czyta stronę internetową:&lt;/p
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, jej źródło TeX jako opis&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, jej źródło TeX jako &lt;code&gt;/Alt&lt;/code&gt; i &lt;code&gt;/ActualText&lt;/code&gt; (jej glify są konturami: pdftotext i mupdf ich nie wyodrębniają, czytniki uwzględniające strukturę — tak)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;kod&lt;/td&gt;
@@ -615,7 +619,4 @@ data-copied-label="Skopiowano!"
 &lt;/div&gt;
 &lt;p&gt;Kinds: własne &lt;code&gt;kinds:&lt;/code&gt; prezentacji nadpisują te z pliku i z wiersza poleceń.
 Dane: &lt;code&gt;data&lt;/code&gt; z pliku i z wiersza poleceń nadpisują front matter prezentacji,
-więc jedną prezentację można zbudować z różnymi danymi.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Planowane&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Jeszcze niezbudowane: wzory jako wektory w PDF. Gdy się pojawią, będą tu
-poleceniem lub flagą.&lt;/p&gt;</description></item></channel></rss>
+więc jedną prezentację można zbudować z różnymi danymi.&lt;/p&gt;</description></item></channel></rss>

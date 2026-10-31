@@ -516,8 +516,10 @@ marp-cli에서는 꺼져 있습니다.&lt;/strong&gt; &lt;code&gt;slides&lt;/cod
 &lt;li&gt;배경, 테두리, 둥근 상자는 도형입니다. 그레이디언트는 PPTX에서는 그레이디언트
 채우기, ODP에서는 그림입니다(ODF 그레이디언트는 색이 두 개뿐입니다).&lt;/li&gt;
 &lt;li&gt;그림은 여러 슬라이드에 나오더라도 한 번만 저장됩니다.&lt;/li&gt;
-&lt;li&gt;슬라이드로 표현할 수 없는 것(&lt;code&gt;opacity&lt;/code&gt;가 적용된 요소, &lt;code&gt;filter&lt;/code&gt;, 흐린 그림자,
-수식)은 해당 요소의 그림이 되며, 그 위에 텍스트가 유지됩니다.&lt;/li&gt;
+&lt;li&gt;슬라이드로 표현할 수 없는 것(&lt;code&gt;opacity&lt;/code&gt;가 적용된 요소, &lt;code&gt;filter&lt;/code&gt;, 흐린 그림자)은
+해당 요소의 그림이 되며, 그 위에 텍스트가 유지됩니다.&lt;/li&gt;
+&lt;li&gt;수식, 이모지, SVG 이미지는 벡터 도형의 그룹(PPTX는 &lt;code&gt;p:grpSp&lt;/code&gt;, ODP는 &lt;code&gt;draw:g&lt;/code&gt;)이 되어
+하나로 함께 움직입니다. 클리핑이나 방사형 그레이디언트가 필요한 SVG는 그림으로 남습니다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;LibreOffice로 다시 렌더링하면 슬라이드는 PNG 내보내기와 픽셀 기준 0.04–2 %
 이내로 일치합니다. &lt;code&gt;--pptx-raster&lt;/code&gt;와 &lt;code&gt;--odp-raster&lt;/code&gt;는 슬라이드당 그림 한 장을
@@ -533,8 +535,10 @@ marp-cli에서는 꺼져 있습니다.&lt;/strong&gt; &lt;code&gt;slides&lt;/cod
 &lt;p&gt;여기서 벡터로 표현할 수 없는 요소(&lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1이 적용된 요소, &lt;code&gt;filter&lt;/code&gt;나
 회전이 있는 요소, 흐린 &lt;code&gt;box-shadow&lt;/code&gt;, 불투명도가 점점 옅어지는 그레이디언트)는
 해당 요소만 비트맵으로 그리고, 그 위에 텍스트를 보이지 않게 겹쳐 선택할 수 있게
-합니다. 수식은 아직 비트맵입니다. &lt;code&gt;--pdf-raster&lt;/code&gt;는 v0.3.0처럼 페이지마다 이미지
+합니다. &lt;code&gt;--pdf-raster&lt;/code&gt;는 v0.3.0처럼 페이지마다 이미지
 한 장을 씁니다.&lt;/p&gt;
+&lt;p&gt;수식, 이모지, SVG 이미지도 벡터입니다(go-webengine v0.22.0). 서로 다른 그림마다 PDF 폼
+XObject 하나가 만들어져 사용되는 위치에 그려지며, 어떤 배율에서도 선명합니다.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;접근성 있는 태그 PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;v0.12.0부터 벡터 PDF에는 태그가 붙습니다. PDF에 논리 구조가 담기므로, 화면
 낭독기는 웹 페이지를 읽을 때처럼 이를 순서대로 읽습니다.&lt;/p&gt;
@@ -568,7 +572,7 @@ marp-cli에서는 꺼져 있습니다.&lt;/strong&gt; &lt;code&gt;slides&lt;/cod
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;TeX 소스를 설명으로 갖는 &lt;code&gt;Formula&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TeX 소스를 &lt;code&gt;/Alt&lt;/code&gt;와 &lt;code&gt;/ActualText&lt;/code&gt;로 갖는 &lt;code&gt;Formula&lt;/code&gt; (글리프가 윤곽선이라 pdftotext와 mupdf는 추출하지 못하지만, 구조를 인식하는 리더는 추출합니다)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;코드&lt;/td&gt;
@@ -623,7 +627,4 @@ data-copied-label="복사됨!"
 &lt;/div&gt;
 &lt;p&gt;kind: 프레젠테이션 자체의 &lt;code&gt;kinds:&lt;/code&gt;가 설정 파일과 명령줄의 kind보다 우선합니다.
 데이터: 설정 파일과 명령줄의 &lt;code&gt;data&lt;/code&gt;가 프레젠테이션의 프런트 매터보다 우선하므로,
-같은 프레젠테이션을 서로 다른 데이터로 빌드할 수 있습니다.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;계획된 기능&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;아직 구현되지 않은 기능은 PDF 안의 수식을 벡터로 출력하는 것입니다. 구현되면
-이 페이지에 명령이나 플래그로 추가됩니다.&lt;/p&gt;</description></item></channel></rss>
+같은 프레젠테이션을 서로 다른 데이터로 빌드할 수 있습니다.&lt;/p&gt;</description></item></channel></rss>

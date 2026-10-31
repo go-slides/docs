@@ -504,8 +504,10 @@ PDF を LibreOffice で変換するものです。go-slides では、各スラ�
 ODP では画像になります（ODF のグラデーションは 2 色までのため）。&lt;/li&gt;
 &lt;li&gt;画像は、何枚のスライドに表示されていても 1 回だけ格納されます。&lt;/li&gt;
 &lt;li&gt;スライドで表現できないもの（&lt;code&gt;opacity&lt;/code&gt; の下にある要素、&lt;code&gt;filter&lt;/code&gt;、
-ぼかしのある影、数式）は、その要素の画像になり、テキストはその上に
+ぼかしのある影）は、その要素の画像になり、テキストはその上に
 保持されます。&lt;/li&gt;
+&lt;li&gt;数式、絵文字、SVG 画像は、ベクター図形のグループ（PPTX では &lt;code&gt;p:grpSp&lt;/code&gt;、ODP では &lt;code&gt;draw:g&lt;/code&gt;）になり、
+ひとまとまりで移動します。クリップや放射状グラデーションが必要な SVG は画像のままです。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;LibreOffice でレンダリングし直すと、スライドは PNG エクスポートのピクセルとの差が 0.04〜2 % に収まります。
 &lt;code&gt;--pptx-raster&lt;/code&gt; と &lt;code&gt;--odp-raster&lt;/code&gt; では、スライドごとに 1 枚の画像のままです。&lt;/p&gt;
@@ -519,8 +521,10 @@ marp-cli の 837 KiB、v0.3.0 の画像 PDF の 10 MiB と比べて小さく、0
 &lt;p&gt;ここでベクターで表現できない要素（&lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1 の下にあるもの、&lt;code&gt;filter&lt;/code&gt;
 や回転があるもの、ぼかしのある &lt;code&gt;box-shadow&lt;/code&gt;、不透明度がフェードするグラデーション）は、
 その要素だけをビットマップとして描画し、テキストは選択できるように、その上に透明なまま重ねます。
-数式は現在もビットマップです。&lt;code&gt;--pdf-raster&lt;/code&gt; は、v0.3.0 と同じくページごとに 1 枚の画像を
+&lt;code&gt;--pdf-raster&lt;/code&gt; は、v0.3.0 と同じくページごとに 1 枚の画像を
 書き出します。&lt;/p&gt;
+&lt;p&gt;数式、絵文字、SVG 画像もベクターです（go-webengine v0.22.0）。異なる図形ごとに PDF の
+フォーム XObject が 1 つ作られ、使われる場所に描画されるので、どれだけ拡大しても鮮明です。&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;アクセシブルなタグ付き PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;v0.12.0 以降、ベクター PDF にはタグが付きます。PDF は論理構造を持ち、スクリーンリーダーは
 Web ページを読むのと同じように、それを順番に読み上げます：&lt;/p&gt;
@@ -554,7 +558,7 @@ Web ページを読むのと同じように、それを順番に読み上げま�
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;、&lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;。その TeX ソースが説明になります&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;。その TeX ソースが &lt;code&gt;/Alt&lt;/code&gt; と &lt;code&gt;/ActualText&lt;/code&gt; になります (グリフはアウトラインなので pdftotext と mupdf は抽出しませんが、構造を認識するリーダーは抽出します)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;コード&lt;/td&gt;
@@ -608,7 +612,4 @@ data-copied-label="コピーしました！"
 &lt;/div&gt;
 &lt;p&gt;kind について：スライドデッキ自体の &lt;code&gt;kinds:&lt;/code&gt; が、設定ファイルとコマンドラインの指定より優先されます。
 データについて：設定ファイルとコマンドラインの &lt;code&gt;data&lt;/code&gt; が、スライドデッキのフロントマターより
-優先されます。そのため、1 つのスライドデッキを異なるデータでビルドできます。&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;予定&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;まだ実装されていないもの：PDF 内の数式のベクター化。実装されたら、ここにコマンドまたはフラグとして
-記載します。&lt;/p&gt;</description></item></channel></rss>
+優先されます。そのため、1 つのスライドデッキを異なるデータでビルドできます。&lt;/p&gt;</description></item></channel></rss>

@@ -510,8 +510,10 @@ fills in the PPTX and pictures in the ODP (an ODF gradient has two
 colours);&lt;/li&gt;
 &lt;li&gt;pictures are stored once, however many slides show them;&lt;/li&gt;
 &lt;li&gt;what a slide cannot express — an element under &lt;code&gt;opacity&lt;/code&gt;, a &lt;code&gt;filter&lt;/code&gt;, a
-blurred shadow, a formula — is a picture of that element, its text kept
-over it.&lt;/li&gt;
+blurred shadow — is a picture of that element, its text kept over it;&lt;/li&gt;
+&lt;li&gt;a formula, an emoji or an SVG image is a group of vector shapes (&lt;code&gt;p:grpSp&lt;/code&gt;
+in the PPTX, &lt;code&gt;draw:g&lt;/code&gt; in the ODP) that moves as one. An SVG that needs a
+clip or a radial gradient stays a picture.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export&amp;rsquo;s
 pixels. &lt;code&gt;--pptx-raster&lt;/code&gt; and &lt;code&gt;--odp-raster&lt;/code&gt; keep one picture a slide.&lt;/p&gt;
@@ -526,8 +528,10 @@ marp-cli and 10 MiB for the image PDF of v0.3.0, and it is written in 0.3 s.&lt;
 &lt;p&gt;An element with no vector form here — under &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, with a &lt;code&gt;filter&lt;/code&gt;
 or a rotation, a blurred &lt;code&gt;box-shadow&lt;/code&gt;, a gradient whose opacity fades — is
 drawn as a bitmap of that element only, its text laid over it invisibly so it
-stays selectable. Formulas are still bitmaps. &lt;code&gt;--pdf-raster&lt;/code&gt; writes one image
-per page, as v0.3.0 did.&lt;/p&gt;
+stays selectable. &lt;code&gt;--pdf-raster&lt;/code&gt; writes one image per page, as v0.3.0 did.&lt;/p&gt;
+&lt;p&gt;Formulas, emoji and SVG images are vectors too (go-webengine v0.22.0): each
+distinct drawing is one PDF form XObject, painted where it is used, and sharp
+at any zoom.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Accessible, tagged PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Since v0.12.0 the vector PDF is tagged. It carries its logical structure, which
 a screen reader reads in order, as it reads a web page:&lt;/p&gt;
@@ -561,7 +565,7 @@ a screen reader reads in order, as it reads a web page:&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;a &lt;code&gt;Formula&lt;/code&gt;, its TeX source as its description&lt;/td&gt;
+&lt;td&gt;a &lt;code&gt;Formula&lt;/code&gt;, its TeX source as its &lt;code&gt;/Alt&lt;/code&gt; and &lt;code&gt;/ActualText&lt;/code&gt; (its glyphs are outlines, so pdftotext and mupdf do not extract them; structure-aware readers do)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;code&lt;/td&gt;
@@ -615,7 +619,4 @@ data-copied-label="Copied!"
 &lt;/div&gt;
 &lt;p&gt;Kinds: the deck&amp;rsquo;s own &lt;code&gt;kinds:&lt;/code&gt; override the file&amp;rsquo;s and the command line&amp;rsquo;s.
 Data: the file&amp;rsquo;s and the command line&amp;rsquo;s &lt;code&gt;data&lt;/code&gt; override the deck&amp;rsquo;s front
-matter, so one deck can be built with different data.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Planned&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Not built yet: formulas as vectors in the PDF. When they arrive, they are a
-command or flag here.&lt;/p&gt;</description></item></channel></rss>
+matter, so one deck can be built with different data.&lt;/p&gt;</description></item></channel></rss>

@@ -510,8 +510,10 @@ a gradiente nel PPTX e immagini nell&amp;rsquo;ODP (un gradiente ODF ha due
 colori);&lt;/li&gt;
 &lt;li&gt;le immagini vengono memorizzate una volta sola, per quante slide le mostrino;&lt;/li&gt;
 &lt;li&gt;ciò che una slide non può esprimere — un elemento sotto &lt;code&gt;opacity&lt;/code&gt;, un &lt;code&gt;filter&lt;/code&gt;, un'
-ombra sfocata, una formula — è un&amp;rsquo;immagine di quell&amp;rsquo;elemento, con il suo testo mantenuto
-sopra.&lt;/li&gt;
+ombra sfocata — è un&amp;rsquo;immagine di quell&amp;rsquo;elemento, con il suo testo mantenuto
+sopra;&lt;/li&gt;
+&lt;li&gt;una formula, un&amp;rsquo;emoji o un&amp;rsquo;immagine SVG è un gruppo di forme vettoriali (&lt;code&gt;p:grpSp&lt;/code&gt; nel PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; nell&amp;rsquo;ODP) che si sposta come un tutt&amp;rsquo;uno. Un SVG che richiede un ritaglio o un gradiente radiale resta un&amp;rsquo;immagine.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Rese di nuovo da LibreOffice, una slide è entro lo 0,04–2 % dei pixel dell&amp;rsquo;esportazione
 PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; e &lt;code&gt;--odp-raster&lt;/code&gt; mantengono un&amp;rsquo;immagine per slide.&lt;/p&gt;
@@ -526,8 +528,10 @@ marp-cli e 10 MiB del PDF a immagini della v0.3.0, e viene scritta in 0,3 s.&lt;
 &lt;p&gt;Un elemento senza forma vettoriale qui — sotto &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, con un &lt;code&gt;filter&lt;/code&gt;
 o una rotazione, un &lt;code&gt;box-shadow&lt;/code&gt; sfocato, un gradiente la cui opacità sfuma — è
 disegnato come bitmap di quel solo elemento, con il suo testo sovrapposto in modo invisibile perché
-resti selezionabile. Le formule sono ancora bitmap. &lt;code&gt;--pdf-raster&lt;/code&gt; scrive un&amp;rsquo;immagine
+resti selezionabile. &lt;code&gt;--pdf-raster&lt;/code&gt; scrive un&amp;rsquo;immagine
 per pagina, come faceva la v0.3.0.&lt;/p&gt;
+&lt;p&gt;Anche formule, emoji e immagini SVG sono vettori (go-webengine v0.22.0): ogni disegno
+distinto è un form XObject PDF, dipinto dove viene usato, nitido a qualsiasi zoom.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;PDF accessibile e con tag&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Dalla v0.12.0 il PDF vettoriale ha i tag. Porta la propria struttura logica, che
 uno screen reader legge in ordine, come legge una pagina web:&lt;/p&gt;
@@ -561,7 +565,7 @@ uno screen reader legge in ordine, come legge una pagina web:&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;una &lt;code&gt;Formula&lt;/code&gt;, con il suo sorgente TeX come descrizione&lt;/td&gt;
+&lt;td&gt;una &lt;code&gt;Formula&lt;/code&gt;, con il suo sorgente TeX come &lt;code&gt;/Alt&lt;/code&gt; e &lt;code&gt;/ActualText&lt;/code&gt; (i suoi glifi sono contorni: pdftotext e mupdf non li estraggono, i lettori che seguono la struttura sì)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;codice&lt;/td&gt;
@@ -615,7 +619,4 @@ data-copied-label="Copiato!"
 &lt;/div&gt;
 &lt;p&gt;Kinds: i &lt;code&gt;kinds:&lt;/code&gt; della presentazione prevalgono su quelli del file e della riga di comando.
 Dati: i &lt;code&gt;data&lt;/code&gt; del file e della riga di comando prevalgono sul front
-matter della presentazione, così una presentazione può essere compilata con dati diversi.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;In programma&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Non ancora realizzato: le formule come vettori nel PDF. Quando arriveranno, saranno un
-comando o un flag qui.&lt;/p&gt;</description></item></channel></rss>
+matter della presentazione, così una presentazione può essere compilata con dati diversi.&lt;/p&gt;</description></item></channel></rss>

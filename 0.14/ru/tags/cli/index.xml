@@ -516,7 +516,9 @@ PDF через LibreOffice. Здесь каждый слайд рисуется 
 заливки в PPTX и картинки в ODP (у градиента ODF два цвета);&lt;/li&gt;
 &lt;li&gt;картинки хранятся один раз, сколько бы слайдов их ни показывало;&lt;/li&gt;
 &lt;li&gt;то, что слайд выразить не может — элемент под &lt;code&gt;opacity&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, размытая
-тень, формула, — это картинка этого элемента, а его текст остаётся поверх неё.&lt;/li&gt;
+тень, — это картинка этого элемента, а его текст остаётся поверх неё;&lt;/li&gt;
+&lt;li&gt;формула, эмодзи или SVG-изображение — это группа векторных фигур (&lt;code&gt;p:grpSp&lt;/code&gt; в PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; в ODP), которая перемещается как одно целое. SVG, которому нужны обрезка или радиальный градиент, остаётся картинкой.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;При обратной отрисовке LibreOffice слайд отличается от пикселей экспорта в PNG на
 0,04–2 %. &lt;code&gt;--pptx-raster&lt;/code&gt; и &lt;code&gt;--odp-raster&lt;/code&gt; сохраняют по одной картинке на слайд.&lt;/p&gt;
@@ -532,8 +534,10 @@ PDF через LibreOffice. Здесь каждый слайд рисуется 
 &lt;p&gt;Элемент, не имеющий здесь векторной формы, — под &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, с &lt;code&gt;filter&lt;/code&gt; или
 поворотом, с размытым &lt;code&gt;box-shadow&lt;/code&gt;, с градиентом с затухающей непрозрачностью, —
 рисуется как растр только этого элемента, а его текст кладётся поверх
-невидимо, чтобы оставаться выделяемым. Формулы пока остаются растрами.
+невидимо, чтобы оставаться выделяемым.
 &lt;code&gt;--pdf-raster&lt;/code&gt; записывает по одному изображению на страницу, как v0.3.0.&lt;/p&gt;
+&lt;p&gt;Формулы, эмодзи и SVG-изображения тоже векторные (go-webengine v0.22.0): каждый отдельный рисунок —
+одна форма-XObject PDF, нарисованная там, где используется, чёткая при любом масштабе.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Доступный размеченный PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Начиная с v0.12.0 векторный PDF размечен тегами. Он несёт свою логическую
 структуру, которую скринридер читает по порядку, как читает веб-страницу:&lt;/p&gt;
@@ -567,7 +571,7 @@ PDF через LibreOffice. Здесь каждый слайд рисуется 
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, её исходник TeX как описание&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, её исходник TeX как &lt;code&gt;/Alt&lt;/code&gt; и &lt;code&gt;/ActualText&lt;/code&gt; (её глифы — контуры: pdftotext и mupdf их не извлекают, программы, учитывающие структуру, извлекают)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;код&lt;/td&gt;
@@ -623,7 +627,4 @@ data-copied-label="Скопировано!"
 &lt;/div&gt;
 &lt;p&gt;Kinds: собственные &lt;code&gt;kinds:&lt;/code&gt; презентации переопределяют kinds файла и командной
 строки. Данные: &lt;code&gt;data&lt;/code&gt; файла и командной строки переопределяют front matter
-презентации, так что одну презентацию можно собрать с разными данными.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Запланировано&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Пока не сделано: формулы векторами в PDF. Когда они появятся, это будет команда
-или флаг здесь.&lt;/p&gt;</description></item></channel></rss>
+презентации, так что одну презентацию можно собрать с разными данными.&lt;/p&gt;</description></item></channel></rss>

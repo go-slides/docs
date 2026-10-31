@@ -507,7 +507,9 @@ füllungen im PPTX und Bilder im ODP (ein ODF-Verlauf hat zwei
 Farben);&lt;/li&gt;
 &lt;li&gt;Bilder werden nur einmal gespeichert, egal wie viele Folien sie zeigen;&lt;/li&gt;
 &lt;li&gt;was eine Folie nicht ausdrücken kann – ein Element unter &lt;code&gt;opacity&lt;/code&gt;, ein &lt;code&gt;filter&lt;/code&gt;, ein
-weichgezeichneter Schatten, eine Formel – ist ein Bild dieses Elements, mit seinem darüberliegenden Text.&lt;/li&gt;
+weichgezeichneter Schatten – ist ein Bild dieses Elements, mit seinem darüberliegenden Text;&lt;/li&gt;
+&lt;li&gt;eine Formel, ein Emoji oder ein SVG-Bild ist eine Gruppe von Vektorformen (&lt;code&gt;p:grpSp&lt;/code&gt; in der PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; in der ODP), die sich als Ganzes bewegt. Ein SVG, das einen Zuschnitt oder einen radialen Verlauf braucht, bleibt ein Bild.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Von LibreOffice zurückgerendert, liegt eine Folie 0,04–2 % von den Pixeln des
 PNG-Exports entfernt. &lt;code&gt;--pptx-raster&lt;/code&gt; und &lt;code&gt;--odp-raster&lt;/code&gt; behalten ein Bild pro Folie.&lt;/p&gt;
@@ -522,8 +524,10 @@ marp-cli und 10 MiB beim Bild-PDF von v0.3.0, und er ist in 0,3 s geschrieben.&l
 &lt;p&gt;Ein Element ohne Vektorform – unter &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, mit einem &lt;code&gt;filter&lt;/code&gt;
 oder einer Drehung, ein weichgezeichneter &lt;code&gt;box-shadow&lt;/code&gt;, ein Verlauf mit ausblendender Deckkraft –
 wird als Bitmap nur dieses Elements gezeichnet, mit unsichtbar darübergelegtem Text, damit er
-auswählbar bleibt. Formeln sind weiterhin Bitmaps. &lt;code&gt;--pdf-raster&lt;/code&gt; schreibt ein Bild
+auswählbar bleibt. &lt;code&gt;--pdf-raster&lt;/code&gt; schreibt ein Bild
 pro Seite, wie es v0.3.0 tat.&lt;/p&gt;
+&lt;p&gt;Formeln, Emoji und SVG-Bilder sind ebenfalls Vektoren (go-webengine v0.22.0): Jede
+verschiedene Zeichnung ist ein PDF-Form-XObject, an der Stelle gemalt, wo sie verwendet wird, bei jedem Zoom scharf.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Barrierefreies, getaggtes PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Seit v0.12.0 ist das Vektor-PDF getaggt. Es trägt seine logische Struktur, die ein
 Screenreader der Reihe nach liest, wie er eine Webseite liest:&lt;/p&gt;
@@ -557,7 +561,7 @@ Screenreader der Reihe nach liest, wie er eine Webseite liest:&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;eine &lt;code&gt;Formula&lt;/code&gt;, ihr TeX-Quelltext als Beschreibung&lt;/td&gt;
+&lt;td&gt;eine &lt;code&gt;Formula&lt;/code&gt;, ihr TeX-Quelltext als &lt;code&gt;/Alt&lt;/code&gt; und &lt;code&gt;/ActualText&lt;/code&gt; (ihre Glyphen sind Umrisse: pdftotext und mupdf extrahieren sie nicht, strukturbewusste Leser schon)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Code&lt;/td&gt;
@@ -612,7 +616,4 @@ data-copied-label="Kopiert!"
 &lt;/div&gt;
 &lt;p&gt;Kinds: Das eigene &lt;code&gt;kinds:&lt;/code&gt; des Foliensatzes überschreibt das der Datei und das der Kommandozeile.
 Daten: Das &lt;code&gt;data&lt;/code&gt; der Datei und der Kommandozeile überschreibt das Front-Matter des Foliensatzes,
-sodass ein Foliensatz mit verschiedenen Daten gebaut werden kann.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Geplant&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Noch nicht gebaut: Formeln als Vektoren im PDF. Sobald sie kommen, sind sie hier ein
-Befehl oder Flag.&lt;/p&gt;</description></item></channel></rss>
+sodass ein Foliensatz mit verschiedenen Daten gebaut werden kann.&lt;/p&gt;</description></item></channel></rss>

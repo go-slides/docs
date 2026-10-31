@@ -518,7 +518,9 @@ marp-cli 4.5.1 записує для тієї самої презентації:
 заливки в PPTX і картинки в ODP (градієнт ODF має два кольори);&lt;/li&gt;
 &lt;li&gt;зображення зберігаються один раз, скільки б слайдів їх не показувало;&lt;/li&gt;
 &lt;li&gt;те, чого слайд не може виразити — елемент під &lt;code&gt;opacity&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, розмита
-тінь, формула, — є картинкою цього елемента, а його текст лишається над нею.&lt;/li&gt;
+тінь, — є картинкою цього елемента, а його текст лишається над нею;&lt;/li&gt;
+&lt;li&gt;формула, емодзі або SVG-зображення — це група векторних фігур (&lt;code&gt;p:grpSp&lt;/code&gt; у PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; в ODP), яка переміщується як одне ціле. SVG, якому потрібні обрізання або радіальний градієнт, лишається картинкою.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Після зворотного рендерингу LibreOffice слайд відрізняється в межах 0,04–2 %
 пікселів від експорту PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; та &lt;code&gt;--odp-raster&lt;/code&gt; зберігають одну
@@ -534,8 +536,10 @@ marp-cli 4.5.1 записує для тієї самої презентації:
 &lt;p&gt;Елемент без векторної форми тут — під &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, з &lt;code&gt;filter&lt;/code&gt; чи поворотом,
 розмитим &lt;code&gt;box-shadow&lt;/code&gt;, градієнтом із згасанням непрозорості — малюється
 растром лише цього елемента, а його текст накладається невидимо, щоб його
-можна було виділяти. Формули поки що растрові. &lt;code&gt;--pdf-raster&lt;/code&gt; записує одне
+можна було виділяти. &lt;code&gt;--pdf-raster&lt;/code&gt; записує одне
 зображення на сторінку, як це робила v0.3.0.&lt;/p&gt;
+&lt;p&gt;Формули, емодзі та SVG-зображення теж векторні (go-webengine v0.22.0): кожен окремий малюнок —
+це один форм-XObject PDF, намальований там, де його використано, чіткий за будь-якого масштабу.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Доступний, тегований PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Починаючи з v0.12.0 векторний PDF тегований. Він несе свою логічну структуру,
 яку екранний читач читає по порядку, як читає веб-сторінку:&lt;/p&gt;
@@ -569,7 +573,7 @@ marp-cli 4.5.1 записує для тієї самої презентації:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, її джерело TeX як опис&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, її джерело TeX як &lt;code&gt;/Alt&lt;/code&gt; і &lt;code&gt;/ActualText&lt;/code&gt; (її гліфи — контури: pdftotext і mupdf їх не витягують, програми, що враховують структуру, — витягують)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;код&lt;/td&gt;
@@ -624,7 +628,4 @@ data-copied-label="Скопійовано!"
 &lt;/div&gt;
 &lt;p&gt;Kinds: власні &lt;code&gt;kinds:&lt;/code&gt; презентації перевизначають kinds файла й командного
 рядка. Дані: &lt;code&gt;data&lt;/code&gt; файла й командного рядка перевизначають front matter
-презентації, тож одну презентацію можна зібрати з різними даними.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Заплановано&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ще не зроблено: формули векторами в PDF. Коли вони з&amp;rsquo;являться, це буде команда
-або прапорець тут.&lt;/p&gt;</description></item></channel></rss>
+презентації, тож одну презентацію можна зібрати з різними даними.&lt;/p&gt;</description></item></channel></rss>

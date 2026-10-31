@@ -521,8 +521,10 @@ preenchimentos em gradiente no PPTX e imagens no ODP (um gradiente ODF tem duas
 cores);&lt;/li&gt;
 &lt;li&gt;as imagens são armazenadas uma única vez, por mais slides que as mostrem;&lt;/li&gt;
 &lt;li&gt;o que um slide não consegue expressar — um elemento sob &lt;code&gt;opacity&lt;/code&gt;, um
-&lt;code&gt;filter&lt;/code&gt;, uma sombra desfocada, uma fórmula — é uma imagem desse elemento, com
-o seu texto mantido por cima.&lt;/li&gt;
+&lt;code&gt;filter&lt;/code&gt;, uma sombra desfocada — é uma imagem desse elemento, com
+o seu texto mantido por cima;&lt;/li&gt;
+&lt;li&gt;uma fórmula, um emoji ou uma imagem SVG é um grupo de formas vetoriais (&lt;code&gt;p:grpSp&lt;/code&gt; no PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; no ODP) que se move como um só. Um SVG que precisa de um recorte ou de um gradiente radial continua a ser uma imagem.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Renderizado de volta pelo LibreOffice, um slide fica a 0,04–2 % dos pixels da
 exportação para PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; e &lt;code&gt;--odp-raster&lt;/code&gt; mantêm uma imagem por
@@ -539,8 +541,9 @@ tem 758 KiB, contra 837 KiB do marp-cli e 10 MiB do PDF de imagens da v0.3.0, e
 &lt;p&gt;Um elemento sem forma vetorial aqui — sob &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, com um &lt;code&gt;filter&lt;/code&gt; ou uma
 rotação, um &lt;code&gt;box-shadow&lt;/code&gt; desfocado, um gradiente cuja opacidade se desvanece — é
 desenhado como um bitmap apenas desse elemento, com o seu texto colocado por
-cima de forma invisível para que continue selecionável. As fórmulas ainda são
-bitmaps. &lt;code&gt;--pdf-raster&lt;/code&gt; escreve uma imagem por página, como a v0.3.0 fazia.&lt;/p&gt;
+cima de forma invisível para que continue selecionável. &lt;code&gt;--pdf-raster&lt;/code&gt; escreve uma imagem por página, como a v0.3.0 fazia.&lt;/p&gt;
+&lt;p&gt;As fórmulas, os emoji e as imagens SVG também são vetores (go-webengine v0.22.0): cada desenho
+distinto é um XObject de formulário PDF, pintado onde é usado, nítido em qualquer zoom.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;PDF acessível e etiquetado&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Desde a v0.12.0, o PDF vetorial é etiquetado (tagged). Ele carrega a sua
 estrutura lógica, que um leitor de tela lê em ordem, como lê uma página web:&lt;/p&gt;
@@ -574,7 +577,7 @@ estrutura lógica, que um leitor de tela lê em ordem, como lê uma página web:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;uma &lt;code&gt;Formula&lt;/code&gt;, com o seu código TeX como descrição&lt;/td&gt;
+&lt;td&gt;uma &lt;code&gt;Formula&lt;/code&gt;, com o seu código TeX como &lt;code&gt;/Alt&lt;/code&gt; e &lt;code&gt;/ActualText&lt;/code&gt; (os seus glifos são contornos: pdftotext e mupdf não os extraem, os leitores que seguem a estrutura sim)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;código&lt;/td&gt;
@@ -631,7 +634,4 @@ data-copied-label="Copiado!"
 &lt;p&gt;Kinds: o &lt;code&gt;kinds:&lt;/code&gt; da própria apresentação sobrescreve o do arquivo e o da linha
 de comando. Dados: o &lt;code&gt;data&lt;/code&gt; do arquivo e o da linha de comando sobrescrevem o
 front matter da apresentação, de modo que uma apresentação pode ser construída
-com dados diferentes.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Planejado&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ainda não foi feito: fórmulas como vetores no PDF. Quando chegarem, serão um
-comando ou uma flag aqui.&lt;/p&gt;</description></item></channel></rss>
+com dados diferentes.&lt;/p&gt;</description></item></channel></rss>

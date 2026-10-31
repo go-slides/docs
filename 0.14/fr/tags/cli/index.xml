@@ -510,8 +510,10 @@ en dégradé dans le PPTX et des images dans l&amp;rsquo;ODP (un dégradé ODF n
 couleurs) ;&lt;/li&gt;
 &lt;li&gt;les images ne sont stockées qu&amp;rsquo;une fois, quel que soit le nombre de diapositives qui les affichent ;&lt;/li&gt;
 &lt;li&gt;ce qu&amp;rsquo;une diapositive ne peut pas exprimer — un élément sous &lt;code&gt;opacity&lt;/code&gt;, un &lt;code&gt;filter&lt;/code&gt;, une
-ombre floue, une formule — devient une image de cet élément, son texte étant conservé
-par-dessus.&lt;/li&gt;
+ombre floue — devient une image de cet élément, son texte étant conservé
+par-dessus ;&lt;/li&gt;
+&lt;li&gt;une formule, un emoji ou une image SVG est un groupe de formes vectorielles (&lt;code&gt;p:grpSp&lt;/code&gt; dans le PPTX,
+&lt;code&gt;draw:g&lt;/code&gt; dans l&amp;rsquo;ODP) qui se déplace d&amp;rsquo;un bloc. Un SVG qui exige un détourage ou un dégradé radial reste une image.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Rendue à nouveau par LibreOffice, une diapositive ne s&amp;rsquo;écarte que de 0,04 à 2 % des pixels de l&amp;rsquo;export
 PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; et &lt;code&gt;--odp-raster&lt;/code&gt; conservent une image par diapositive.&lt;/p&gt;
@@ -526,8 +528,10 @@ marp-cli et 10 Mio pour le PDF en images de la v0.3.0, et elle est écrite en 0,
 &lt;p&gt;Un élément sans forme vectorielle ici — sous &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, avec un &lt;code&gt;filter&lt;/code&gt;
 ou une rotation, une &lt;code&gt;box-shadow&lt;/code&gt; floue, un dégradé dont l&amp;rsquo;opacité s&amp;rsquo;estompe — est
 dessiné comme un bitmap de ce seul élément, son texte étant posé dessus de façon invisible pour
-rester sélectionnable. Les formules sont encore des bitmaps. &lt;code&gt;--pdf-raster&lt;/code&gt; écrit une image
+rester sélectionnable. &lt;code&gt;--pdf-raster&lt;/code&gt; écrit une image
 par page, comme le faisait la v0.3.0.&lt;/p&gt;
+&lt;p&gt;Les formules, les emoji et les images SVG sont aussi des vecteurs (go-webengine v0.22.0) : chaque dessin
+distinct est un XObject formulaire PDF, peint là où il sert, net à tout niveau de zoom.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;PDF accessible et balisé&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
 &lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Depuis la v0.12.0, le PDF vectoriel est balisé. Il porte sa structure logique, qu&amp;rsquo;un lecteur
 d&amp;rsquo;écran lit dans l&amp;rsquo;ordre, comme il lit une page web :&lt;/p&gt;
@@ -561,7 +565,7 @@ d&amp;rsquo;écran lit dans l&amp;rsquo;ordre, comme il lit une page web :&lt;/p
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;une &lt;code&gt;Formula&lt;/code&gt;, sa source TeX comme description&lt;/td&gt;
+&lt;td&gt;une &lt;code&gt;Formula&lt;/code&gt;, sa source TeX comme &lt;code&gt;/Alt&lt;/code&gt; et &lt;code&gt;/ActualText&lt;/code&gt; (ses glyphes sont des contours : pdftotext et mupdf ne les extraient pas, les lecteurs qui suivent la structure oui)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;du code&lt;/td&gt;
@@ -615,7 +619,4 @@ data-copied-label="Copié !"
 &lt;/div&gt;
 &lt;p&gt;&lt;em&gt;Kinds&lt;/em&gt; : les &lt;code&gt;kinds:&lt;/code&gt; propres à la présentation remplacent ceux du fichier et de la ligne de commande.
 Données : les &lt;code&gt;data&lt;/code&gt; du fichier et de la ligne de commande remplacent celles du front
-matter de la présentation, si bien qu&amp;rsquo;une même présentation peut être générée avec des données différentes.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="planned"&gt;Prévu&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
-&lt;a href="#planned" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pas encore réalisé : les formules en vectoriel dans le PDF. Quand elles arriveront, elles prendront la forme d&amp;rsquo;une
-commande ou d&amp;rsquo;une option décrite ici.&lt;/p&gt;</description></item></channel></rss>
+matter de la présentation, si bien qu&amp;rsquo;une même présentation peut être générée avec des données différentes.&lt;/p&gt;</description></item></channel></rss>
