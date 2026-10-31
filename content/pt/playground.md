@@ -157,6 +157,34 @@ Imagens como arquivos (slides `--images`) não são feitas no navegador: use o
 [comando]({{< relref "cli" >}}) ou a
 [extensão do VS Code]({{< relref "vscode" >}}).
 
+## Desfazer, refazer e versões {#undo-redo-and-versions}
+
+**Undo** e **Redo** (desfazer e refazer) ficam na aba Home e em Ctrl+Z,
+Ctrl+Shift+Z ou Ctrl+Y (Cmd no Mac). Eles desfazem a última edição do arquivo
+exibido (cada arquivo tem seu próprio histórico) e depois a última operação
+sobre o projeto inteiro: um exemplo escolhido, Reset, um .zip ou uma pasta
+aberta, um rascunho restaurado, um arquivo ou uma pasta excluído ou renomeado,
+uma versão restaurada. Redo traz tudo de volta como estava quando Undo foi
+pressionado.
+
+As **versões** guardam o projeto inteiro neste navegador, sem enviar nada para
+lugar nenhum. Uma é guardada pouco depois de você parar de digitar (no máximo a
+cada 2 minutos), antes de cada operação sobre o projeto inteiro e a cada
+exportação e link de compartilhamento. **Save version…** guarda uma com um nome.
+**Home ▸ Versions** abre o painel Versions:
+
+- **Preview** mostra uma versão na visualização.
+- **Compare with now** mostra as mudanças de cada arquivo linha a linha, em
+  linha ou lado a lado; F7 e Shift+F7 passam de uma mudança à outra.
+- **Restore** coloca uma versão de volta; Undo desfaz a restauração.
+- **Delete** remove uma versão.
+
+O que é guardado: as 20 versões automáticas mais recentes, depois uma por hora
+durante um dia e uma por dia durante um mês. As versões com nome ficam até você
+excluí-las (no máximo 50). Todas as versões juntas ocupam no máximo 96 MiB, e
+os arquivos que não mudaram são armazenados uma só vez. Quando o armazenamento
+do navegador está cheio, as versões automáticas mais antigas saem primeiro.
+
 ## Segurança {#security}
 
 A apresentação é exibida em um iframe em sandbox, sem a origem da página: ele
