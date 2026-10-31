@@ -7,14 +7,14 @@ tags: [start]
 
 ## Instalacja {#install}
 
-Go 1.27.2 lub nowsze:
+Go 1.27.3 lub nowsze:
 
 ```sh
 go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` to jeden statyczny plik wykonywalny Go bez cgo: nie trzeba instalować
-niczego więcej, ani Node, ani Chrome. Ta strona opisuje v0.14.0.
+niczego więcej, ani Node, ani Chrome. Ta strona opisuje v0.15.0.
 
 ## Pierwsza prezentacja {#a-first-deck}
 

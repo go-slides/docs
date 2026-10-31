@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Playground 열기 →](https://go-slides.github.io/ko/playground/)**
 
-Playground는 WebAssembly로 컴파일되어 브라우저에서 실행되는 go-slides v0.14.0
+Playground는 WebAssembly로 컴파일되어 브라우저에서 실행되는 go-slides v0.15.0
 그 자체입니다. 왼쪽에 프레젠테이션을 입력하면 오른쪽에 슬라이드가 따라
 나타납니다. 프레젠테이션도, 공유 링크도 서버로 전송되지 않습니다.
 

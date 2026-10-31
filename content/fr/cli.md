@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Cette page décrit la v0.14.0.
+Cette page décrit la v0.15.0.
 {{< /callout >}}
 
 ```text
@@ -317,7 +317,7 @@ que dessinent les exports PNG et PDF :
 - ce qu'une diapositive ne peut pas exprimer — un élément sous `opacity`, un `filter`, une
   ombre floue — devient une image de cet élément, son texte étant conservé
   par-dessus ;
-- une formule, un emoji ou une image SVG est un groupe de formes vectorielles (`p:grpSp` dans le PPTX,
+- depuis la v0.15.0, une formule, un emoji ou une image SVG est un groupe de formes vectorielles (`p:grpSp` dans le PPTX,
   `draw:g` dans l'ODP) qui se déplace d'un bloc. Un SVG qui exige un détourage ou un dégradé radial reste une image.
 
 Rendue à nouveau par LibreOffice, une diapositive ne s'écarte que de 0,04 à 2 % des pixels de l'export
@@ -339,7 +339,7 @@ dessiné comme un bitmap de ce seul élément, son texte étant posé dessus de 
 rester sélectionnable. `--pdf-raster` écrit une image
 par page, comme le faisait la v0.3.0.
 
-Les formules, les emoji et les images SVG sont aussi des vecteurs (go-webengine v0.22.0) : chaque dessin
+Depuis la v0.15.0, les formules, les emoji et les images SVG sont aussi des vecteurs (go-webengine v0.22.0) : chaque dessin
 distinct est un XObject formulaire PDF, peint là où il sert, net à tout niveau de zoom.
 
 ### PDF accessible et balisé {#accessible-tagged-pdf}

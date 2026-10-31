@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Playground を開く →](https://go-slides.github.io/ja/playground/)**
 
-Playground は go-slides v0.14.0 そのものを WebAssembly にコンパイルし、
+Playground は go-slides v0.15.0 そのものを WebAssembly にコンパイルし、
 ブラウザー内で動かしたものです。左側にスライドデッキを入力すると、右側にスライドが追従して表示されます。
 スライドデッキも共有リンクも、サーバーには何も送信されません。
 

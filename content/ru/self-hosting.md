@@ -148,7 +148,8 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host` есть в v0.14.0 и позже:
-`go install github.com/go-slides/slides/cmd/slides@v0.14.0`.
+`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Нужен Go 1.27.3
+или новее.
 {{< /callout >}}
 
 ## Вход через OpenID Connect {#sign-in-with-openid-connect}

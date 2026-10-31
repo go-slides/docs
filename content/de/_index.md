@@ -18,9 +18,9 @@ den Folien, `![bg]`-Hintergründe, Sprechernotizen, die Themes `default`, `gaia`
   (`title`, `section` …), statt immer wieder zu wiederholen, wie sie aussieht.
 
 {{< callout type="warning" >}}
-**v0.14.0.** Diese Seiten beschreiben
-[go-slides/slides v0.14.0](https://github.com/go-slides/slides/releases/tag/v0.14.0)
-und sind unter `/docs/0.14/` veröffentlicht.
+**v0.15.0.** Diese Seiten beschreiben
+[go-slides/slides v0.15.0](https://github.com/go-slides/slides/releases/tag/v0.15.0)
+und sind unter `/docs/0.15/` veröffentlicht.
 {{< /callout >}}
 
 ## Was es heute kann {#what-it-does-today}

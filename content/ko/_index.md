@@ -18,9 +18,9 @@ description: "순수 Go(CGO=0)로 만드는 Marp 호환 프레젠테이션. Go �
   보이는지를 반복하는 대신 자신이 무엇인지(`title`, `section`…)를 밝힙니다.
 
 {{< callout type="warning" >}}
-**v0.14.0.** 이 문서는
-[go-slides/slides v0.14.0](https://github.com/go-slides/slides/releases/tag/v0.14.0)을
-설명하며 `/docs/0.14/` 아래에 게시됩니다.
+**v0.15.0.** 이 문서는
+[go-slides/slides v0.15.0](https://github.com/go-slides/slides/releases/tag/v0.15.0)을
+설명하며 `/docs/0.15/` 아래에 게시됩니다.
 {{< /callout >}}
 
 ## 현재 지원하는 기능 {#what-it-does-today}

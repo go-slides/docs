@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Ouvrir le Playground →](https://go-slides.github.io/fr/playground/)**
 
-Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.14.0, compilé en WebAssembly et
+Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.15.0, compilé en WebAssembly et
 exécuté dans votre navigateur. Tapez une présentation à gauche ; les diapositives suivent à
 droite. Rien n'est envoyé à un serveur : ni la présentation, ni un lien de partage.
 

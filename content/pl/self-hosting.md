@@ -148,7 +148,8 @@ katalog całej sieci, z pominięciem proxy i jego logowania.
 
 {{< callout type="info" >}}
 `--allowed-host` jest w v0.14.0 i nowszych:
-`go install github.com/go-slides/slides/cmd/slides@v0.14.0`.
+`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Wymaga Go 1.27.3
+lub nowszego.
 {{< /callout >}}
 
 ## Logowanie przez OpenID Connect {#sign-in-with-openid-connect}

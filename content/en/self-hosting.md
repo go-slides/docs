@@ -148,7 +148,8 @@ directory to the whole network, around the proxy and its sign-in.
 
 {{< callout type="info" >}}
 `--allowed-host` is in v0.14.0 and later:
-`go install github.com/go-slides/slides/cmd/slides@v0.14.0`.
+`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. It needs Go 1.27.3
+or later.
 {{< /callout >}}
 
 ## Sign-in with OpenID Connect

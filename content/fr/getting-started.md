@@ -7,14 +7,14 @@ tags: [start]
 
 ## Installation {#install}
 
-Go 1.27.2 ou ultérieur :
+Go 1.27.3 ou ultérieur :
 
 ```sh
 go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` est un binaire Go statique, sans cgo : rien d'autre à installer, ni
-Node ni Chrome. Cette page décrit la v0.14.0.
+Node ni Chrome. Cette page décrit la v0.15.0.
 
 ## Une première présentation {#a-first-deck}
 
