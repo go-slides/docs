@@ -51,7 +51,7 @@ kind "chapter" {
   (`theme`, `paginate`, `header`, `footer`, `class`, `backgroundColor` …),
   die Metadaten (`title`, `author` …), `template`, `delims`, `kinds` (Dateipfade)
   und `data`, ein Objekt.
-- **`kind "<name>" { … }`**-Blöcke definieren [Kinds (Folientypen)]({{< relref "kinds" >}})
+- **`kind "<name>" { … }`**-Blöcke definieren [Kinds (die Art einer Folie)]({{< relref "kinds" >}})
   mit den lokalen Direktiven und `extends`.
 - **Werte** erreichen die Direktiven in den Zeichenkettenformen, die YAML ihnen gibt –
   `true` wird zu `"true"`, eine Liste von Klassen bleibt eine Liste –, sodass sich eine Direktive

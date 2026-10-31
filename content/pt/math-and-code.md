@@ -72,7 +72,7 @@ func main() {
 | `{lineNumbers=false}` | sem números, o que quer que o slide diga |
 
 Para todos os blocos de um slide e dos slides seguintes, defina a diretiva:
-`<!-- lineNumbers: true -->` (`_lineNumbers` para um único slide). Um kind pode
+`<!-- lineNumbers: true -->` (`_lineNumbers` para um único slide). Um kind (o tipo de um slide) pode
 defini-la uma vez para uma família de slides:
 
 ```yaml

@@ -43,7 +43,7 @@ data:
 
 O front matter é o do Marp, mais `data:`. O corpo é um template Go: o `range`
 escreve um slide por tópico, cada um começando com `---`, e o primeiro slide é
-do kind embutido `title` (sem cabeçalho, sem rodapé, sem número de página).
+do kind (o tipo de slide) embutido `title` (sem cabeçalho, sem rodapé, sem número de página).
 
 ## Construir {#build-it}
 

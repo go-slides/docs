@@ -4,7 +4,7 @@ linkTitle: "Start"
 type: docs
 cascade:
   type: docs
-description: "Marp-kompatible Foliensätze in reinem Go (CGO=0), mit Go-Vorlagen zur Interpolation und Folientypen (Kinds)."
+description: "Marp-kompatible Foliensätze in reinem Go (CGO=0), mit Go-Vorlagen zur Interpolation und Kinds."
 ---
 
 **`slides` macht aus einem Marp-Foliensatz eine Präsentation, in reinem Go.** Es liest
@@ -14,7 +14,7 @@ den Folien, `![bg]`-Hintergründe, Sprechernotizen, die Themes `default`, `gaia`
 
 - **[Go-Vorlagen]({{< relref "templates" >}})** im Foliensatz, die ausgewertet werden,
   bevor das Markdown geparst wird, sodass ein Foliensatz seine eigenen Folien erzeugen kann;
-- **[Kinds (Folientypen)]({{< relref "kinds" >}})**: Eine Folie gibt an, was sie ist
+- **[Kinds (die Art einer Folie)]({{< relref "kinds" >}})**: Eine Folie gibt an, was sie ist
   (`title`, `section` …), statt immer wieder zu wiederholen, wie sie aussieht.
 
 {{< callout type="warning" >}}

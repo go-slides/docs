@@ -17,7 +17,7 @@ przygotowana, ale jeszcze jej tam nie ma.
 Rozszerzenie to odpowiednik
 [Marp for VS Code](https://github.com/marp-team/marp-vscode) w go-slides: prezentacja pokazuje się w
 podglądzie Markdown VS Code jako slajdy, jej błędy w panelu Problems, a
-dyrektywy, rodzaje i funkcje szablonów uzupełniają się w trakcie pisania.
+dyrektywy, kinds (rodzaje slajdów) i funkcje szablonów uzupełniają się w trakcie pisania.
 
 ## Instalacja {#install}
 
@@ -64,7 +64,7 @@ oba rozszerzenia renderowałyby ten sam dokument. Decyduje o tym ustawienie
 Podgląd to sam go-slides, skompilowany do WebAssembly i ładowany przez
 rozszerzenie: bez pliku binarnego, działa na [vscode.dev](https://vscode.dev). Czyta
 to, czego używa prezentacja, z przestrzeni roboczej — `slides.yaml` lub `slides.hcl` obok
-prezentacji, pliki [rodzajów]({{< relref "kinds" >}}), które wskazują, pliki dołączane przez
+prezentacji, pliki [kinds]({{< relref "kinds" >}}), które wskazują, pliki dołączane przez
 [szablon]({{< relref "templates" >}}), CSS motywów — i tylko z
 folderu przestrzeni roboczej prezentacji.
 
@@ -108,12 +108,12 @@ wskazane przez skrót. Skrypt napisany w prezentacji się nie uruchamia.
 ## Problemy, uzupełnianie, podpowiedzi {#problems-completion-hover}
 
 - **Problems**: błędy szablonów, YAML i [HCL]({{< relref "hcl" >}}), w
-  linii, w której są, w prezentacji lub w pliku rodzajów, z którego pochodzą.
+  linii, w której są, w prezentacji lub w pliku kinds, z którego pochodzą.
 - **Uzupełnianie**: klucze dyrektyw we front matter i w komentarzach `<!-- -->`
   (z `_` dla dyrektywy punktowej), wartości `kind` i `_kind` (z tym, co
-  ustawia każdy rodzaj), `theme`, `size`, `paginate`, `math`, `headingDivider`; wewnątrz
+  ustawia każdy kind), `theme`, `size`, `paginate`, `math`, `headingDivider`; wewnątrz
   `{{ }}` funkcje szablonów i pola danych.
-- **Hover**: co robi dyrektywa, co ustawia rodzaj, argumenty funkcji szablonu.
+- **Hover**: co robi dyrektywa, co ustawia kind, argumenty funkcji szablonu.
 
 ## Eksport {#export}
 

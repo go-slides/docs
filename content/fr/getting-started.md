@@ -43,7 +43,7 @@ data:
 
 Le front matter est celui de Marp, plus `data:`. Le corps est un gabarit Go : le
 `range` écrit une diapositive par sujet, chacune commençant par `---`, et la première
-diapositive est du type de diapositive (kind) intégré `title` (ni en-tête, ni pied de page, ni numéro de page).
+diapositive est du *kind* (le type d'une diapositive) intégré `title` (ni en-tête, ni pied de page, ni numéro de page).
 
 ## Génération {#build-it}
 

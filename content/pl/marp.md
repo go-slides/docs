@@ -66,8 +66,8 @@ podany przez `--theme-set` lub wymieniony w `themes:` w `slides.yaml`.
   [Szablony]({{< relref "templates" >}})). Prezentacja, która pokazuje `{{` jako tekst
   poza blokiem kodu, potrzebuje `--no-template` albo tekstu z ucieczką tak, jak
   robią to szablony Go. Bloki kodu i fragmenty kodu pozostają nietknięte.
-- **Rodzaje.** `kind:` i `_kind:` to dyrektywy, których Marp nie ma (zobacz
-  [Rodzaje]({{< relref "kinds" >}})). `slides expand` zastępuje je
+- **Kinds.** `kind:` i `_kind:` to dyrektywy, których Marp nie ma (zobacz
+  [Kinds]({{< relref "kinds" >}})). `slides expand` zastępuje je
   dyrektywami, które reprezentują, więc rozwinięta prezentacja to zwykły Marp.
 - **Formaty wyjściowe.** HTML, PNG, JPEG, PDF, PPTX i ODP, przez biblioteki Go, a nie
   przez przeglądarkę headless (znane ograniczenie opisuje [Wiersz poleceń]({{< relref "cli#images-pdf-pptx-and-odp" >}})).

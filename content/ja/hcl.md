@@ -17,7 +17,7 @@ HCL2 の式と関数を使うためです。
 | --- | --- | --- |
 | フロントマター | `---` … `---` | `---hcl` … `---` |
 | 設定 | `slides.yaml` | `slides.hcl`（こちらが先に検索されます） |
-| kind のファイル | `--kinds kinds.yaml`、`kinds: kinds.yaml` | `*.hcl` という名前の任意のファイル |
+| kind（スライドの種類）のファイル | `--kinds kinds.yaml`、`kinds: kinds.yaml` | `*.hcl` という名前の任意のファイル |
 | データファイル | `--data data.yaml` または `.json` | `*.hcl` という名前の任意のファイル |
 
 ディレクティブのコメント（`<!-- class: invert -->`）は Marp と同じく YAML のままで、
@@ -51,7 +51,7 @@ kind "chapter" {
   （`theme`、`paginate`、`header`、`footer`、`class`、`backgroundColor`…）、
   メタデータ（`title`、`author`…）、`template`、`delims`、`kinds`（ファイルの
   パス）、そしてオブジェクトである `data` です。
-- **`kind "<name>" { … }`** ブロックは [kind]({{< relref "kinds" >}})（スライドの種類）を定義します。
+- **`kind "<name>" { … }`** ブロックは [kind]({{< relref "kinds" >}}) を定義します。
   中にはローカルディレクティブと `extends` を書けます。
 - **値** は、YAML の場合と同じ文字列の形でディレクティブに渡されます。
   `true` は `"true"` になり、クラスのリストはリストのままです。そのため、どちらの構文で設定しても

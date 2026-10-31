@@ -1,7 +1,7 @@
 ---
 title: "HCL"
 weight: 45
-description: "HCL2 wszędzie tam, gdzie prezentacja przyjmuje YAML: nagłówek w HCL, slides.hcl, pliki rodzajów i danych, z wyrażeniami i funkcjami."
+description: "HCL2 wszędzie tam, gdzie prezentacja przyjmuje YAML: nagłówek w HCL, slides.hcl, pliki kinds i danych, z wyrażeniami i funkcjami."
 tags: [hcl, configuration]
 ---
 
@@ -17,7 +17,7 @@ jej wyrażeń i funkcji.
 | --- | --- | --- |
 | front matter | `---` … `---` | `---hcl` … `---` |
 | konfiguracja | `slides.yaml` | `slides.hcl`, szukany w pierwszej kolejności |
-| pliki rodzajów | `--kinds kinds.yaml`, `kinds: kinds.yaml` | dowolny plik o nazwie `*.hcl` |
+| pliki kinds | `--kinds kinds.yaml`, `kinds: kinds.yaml` | dowolny plik o nazwie `*.hcl` |
 | pliki danych | `--data data.yaml` lub `.json` | dowolny plik o nazwie `*.hcl` |
 
 Komentarze z dyrektywami (`<!-- class: invert -->`) pozostają w YAML, jak w Marp, a
@@ -51,7 +51,7 @@ kind "chapter" {
   (`theme`, `paginate`, `header`, `footer`, `class`, `backgroundColor`…),
   metadane (`title`, `author`…), `template`, `delims`, `kinds` (ścieżki
   plików) i `data`, obiekt.
-- **Bloki `kind "<name>" { … }`** definiują [rodzaje]({{< relref "kinds" >}}),
+- **Bloki `kind "<name>" { … }`** definiują [kinds (rodzaje slajdów)]({{< relref "kinds" >}}),
   z dyrektywami lokalnymi i `extends`.
 - **Wartości** trafiają do dyrektyw w postaci tekstowej, jaką nadaje im YAML —
   `true` to `"true"`, lista klas to lista — więc dyrektywa zachowuje się
@@ -103,7 +103,7 @@ kind "quote" {
 }
 ```
 
-Nieznany atrybut jest błędem, a nie cichym zignorowaniem. Plik rodzajów zawiera
+Nieznany atrybut jest błędem, a nie cichym zignorowaniem. Plik kinds zawiera
 bloki `kind`; jego pozostałe atrybuty są ignorowane, więc `slides.hcl` może służyć
 jako taki plik. Atrybuty pliku danych to klucze danych:
 

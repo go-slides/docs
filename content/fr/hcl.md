@@ -51,7 +51,7 @@ kind "chapter" {
   (`theme`, `paginate`, `header`, `footer`, `class`, `backgroundColor`…),
   les métadonnées (`title`, `author`…), `template`, `delims`, `kinds` (chemins de
   fichiers) et `data`, un objet.
-- Les blocs **`kind "<name>" { … }`** définissent des [types de diapositives (kinds)]({{< relref "kinds" >}}),
+- Les blocs **`kind "<name>" { … }`** définissent des [*kinds* (le type d'une diapositive)]({{< relref "kinds" >}}),
   avec les directives locales et `extends`.
 - Les **valeurs** parviennent aux directives sous les formes textuelles que leur donne YAML —
   `true` devient `"true"`, une liste de classes est une liste — si bien qu'une directive se comporte

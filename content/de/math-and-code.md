@@ -68,7 +68,7 @@ func main() {
 | `{lineNumbers=false}` | keine Nummern, was die Folie auch sagt |
 
 Für alle Blöcke einer Folie und der folgenden Folien setzen Sie die Direktive:
-`<!-- lineNumbers: true -->` (`_lineNumbers` für eine einzelne Folie). Ein Kind (Folientyp) kann sie
+`<!-- lineNumbers: true -->` (`_lineNumbers` für eine einzelne Folie). Ein Kind (die Art einer Folie) kann sie
 einmal für eine ganze Gruppe von Folien setzen:
 
 ```yaml

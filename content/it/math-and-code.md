@@ -68,7 +68,7 @@ func main() {
 | `{lineNumbers=false}` | nessun numero, qualunque cosa dica la slide |
 
 Per ogni blocco di una slide e delle slide successive, imposta la direttiva:
-`<!-- lineNumbers: true -->` (`_lineNumbers` per una sola slide). Un tipo può impostarla
+`<!-- lineNumbers: true -->` (`_lineNumbers` per una sola slide). Un kind (il tipo di una slide) può impostarla
 una volta per tutta una famiglia di slide:
 
 ```yaml

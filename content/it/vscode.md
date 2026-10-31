@@ -17,7 +17,7 @@ preparata, ma non è ancora disponibile.
 L'estensione è la controparte di go-slides di
 [Marp for VS Code](https://github.com/marp-team/marp-vscode): la presentazione appare
 nell'anteprima Markdown di VS Code come slide, i suoi errori nel pannello Problemi, e
-direttive, tipi e funzioni di template vengono completati mentre digiti.
+direttive, kinds (i tipi di slide) e funzioni di template vengono completati mentre digiti.
 
 ## Installazione {#install}
 
@@ -64,7 +64,7 @@ entrambe le estensioni renderebbero lo stesso documento. Lo decide l'impostazion
 L'anteprima è go-slides stesso, compilato in WebAssembly e caricato
 dall'estensione: nessun binario, e funziona su [vscode.dev](https://vscode.dev). Legge
 ciò che la presentazione usa dall'area di lavoro — `slides.yaml` o `slides.hcl` accanto alla
-presentazione, i file di [tipi]({{< relref "kinds" >}}) che nominano, i file che un
+presentazione, i file di [kinds]({{< relref "kinds" >}}) che nominano, i file che un
 [template]({{< relref "templates" >}}) include, il CSS dei temi — e solo dalla
 cartella di lavoro della presentazione.
 
@@ -108,12 +108,12 @@ indicati per hash. Uno script scritto dalla presentazione non viene eseguito.
 ## Problemi, completamento, hover {#problems-completion-hover}
 
 - **Problemi**: errori di template, YAML e [HCL]({{< relref "hcl" >}}), sulla
-  riga in cui si trovano, nella presentazione o nel file di tipi da cui provengono.
+  riga in cui si trovano, nella presentazione o nel file di kinds da cui provengono.
 - **Completamento**: chiavi delle direttive nel front matter e nei commenti `<!-- -->`
   (con `_` per una direttiva spot), i valori di `kind` e `_kind` (con ciò che
-  imposta ciascun tipo), `theme`, `size`, `paginate`, `math`, `headingDivider`; dentro
+  imposta ciascun kind), `theme`, `size`, `paginate`, `math`, `headingDivider`; dentro
   `{{ }}`, le funzioni dei template e i campi dei dati.
-- **Hover**: cosa fa una direttiva, cosa imposta un tipo, gli argomenti di una funzione
+- **Hover**: cosa fa una direttiva, cosa imposta un kind, gli argomenti di una funzione
   di template.
 
 ## Esportazione {#export}

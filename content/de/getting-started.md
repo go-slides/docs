@@ -43,7 +43,7 @@ data:
 
 Das Front-Matter ist das von Marp, ergänzt um `data:`. Der Rumpf ist eine Go-Vorlage: Das
 `range` schreibt pro Thema eine Folie, jeweils mit `---` eingeleitet, und die erste
-Folie hat das eingebaute Kind (Folientyp) `title` (ohne Kopfzeile, ohne Fußzeile, ohne Seitenzahl).
+Folie hat das eingebaute Kind (die Art einer Folie) `title` (ohne Kopfzeile, ohne Fußzeile, ohne Seitenzahl).
 
 ## Bauen {#build-it}
 

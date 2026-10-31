@@ -35,12 +35,12 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
 - **Uzupełnianie** w trakcie pisania: klucze dyrektyw (punktowe z `_` w komentarzach),
   wartości `kind`, `theme`, `size`, `paginate` oraz funkcje szablonów
   i pola danych wewnątrz `{{ }}`.
-- **Pomoc** dla tego, co jest pod kursorem: dyrektywa, rodzaj (co ustawia),
+- **Pomoc** dla tego, co jest pod kursorem: dyrektywa, kind (co ustawia),
   funkcja szablonu. Panel pomocy odsyła też do tych stron.
 - **Problemy** w ich linii: błędy szablonów, YAML i HCL są podświetlane
   w edytorze i wypisane pod nim, a podgląd zachowuje ostatnią prezentację,
   która się wyrenderowała.
-- **Przykłady**: prezentacja powitalna, szablony generujące slajdy, rodzaje slajdów,
+- **Przykłady**: prezentacja powitalna, szablony generujące slajdy, kinds,
   front matter w HCL, motywy i dyrektywy punktowe oraz matematyka, obrazy i
   tła (`![bg]`, dzielone `![bg left:40%]`, filtry).
 - **Pliki**: panel po lewej od edytora to projekt prezentacji, ułożony
@@ -116,7 +116,7 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
 - **Odnośnik do udostępnienia**: prezentacja podróżuje w samym odnośniku (w jego części `#`,
   skompresowana), więc otwarcie odnośnika otwiera prezentację. Odnośniki niosą do
   64 KiB po kompresji, i tylko prezentację: gdy projekt zawiera więcej
-  (motywy, rodzaje, media), Share o tym mówi i oferuje `.zip`.
+  (motywy, kinds, media), Share o tym mówi i oferuje `.zip`.
 - **Save as**:
   - strona HTML, taka sama jak ta, którą zapisuje `slides deck.md`;
   - **PDF** (wektorowy, z zaznaczalnym tekstem, ze spisem treści);
@@ -135,7 +135,7 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
 - **Twój szkic jest zachowywany**:
   - Prezentacja jest zapisywana w tej przeglądarce w trakcie pisania (IndexedDB, tylko dla tej
     witryny) i wraca po przeładowaniu. Nic nie jest nigdzie wysyłane.
-    Pliki tekstowe projektu (motywy, rodzaje, dane, `slides.yaml`) są zachowywane
+    Pliki tekstowe projektu (motywy, kinds, dane, `slides.yaml`) są zachowywane
     tak samo, nawet gdy zamkniesz kartę zaraz po pisaniu; media są
     zapisywane w chwili upuszczenia.
   - Udostępniony odnośnik otwiera swoją prezentację i zachowuje twój szkic: **Draft ▸ Restore my
@@ -146,7 +146,7 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
   - **Draft ▸ Forget my drafts** kasuje wszystko, co zapisano.
 
 Każdy eksport renderuje projekt, który pokazuje podgląd: jego `slides.yaml`,
-motywy, rodzaje, pliki danych i media, z mediami wewnątrz dokumentu.
+motywy, kinds, pliki danych i media, z mediami wewnątrz dokumentu.
 
 Obrazy jako pliki (slides `--images`) nie powstają w przeglądarce: użyj
 [polecenia]({{< relref "cli" >}}) lub

@@ -1,7 +1,7 @@
 ---
 title: "Galleria"
 weight: 12
-description: "Dodici piccole presentazioni, ciascuna con una sola cosa ben fatta: temi, tipi di slide, template, HCL, matematica, immagini, codice, emoji, transizioni e un intervento completo. Aprile qualsiasi nel playground."
+description: "Dodici piccole presentazioni, ciascuna con una sola cosa ben fatta: temi, kinds, template, HCL, matematica, immagini, codice, emoji, transizioni e un intervento completo. Aprile qualsiasi nel playground."
 tags: [gallery, examples]
 ---
 
@@ -12,7 +12,7 @@ ogni presentazione, resa da go-slides stesso quando questo sito viene compilato;
 presentazione in HTML e PDF, quindi nessuna si rompe.
 
 **Apri nel playground** carica la presentazione nel tuo browser, tramite un link che non invia
-nulla a nessun server. Una presentazione che ha file oltre a `deck.md` (un file di tipi, 
+nulla a nessun server. Una presentazione che ha file oltre a `deck.md` (un file di kinds, cioè di tipi di slide,
 parti incluse, immagini) non può viaggiare in un link: scarica il suo **.zip**
 e importalo con il pannello dei file del playground, oppure decomprimilo e compilalo con
 `slides build --allow-local-files deck.md`.

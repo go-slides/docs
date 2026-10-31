@@ -35,7 +35,7 @@ Sans (de 0,06 à 2,3 Mio) que la page ne télécharge que pour ces langues.
 - **Complétion** pendant la saisie : clés de directive (les ponctuelles, avec `_`, dans les commentaires),
   les valeurs de `kind`, `theme`, `size`, `paginate`, ainsi que les fonctions de gabarit
   et les champs de données dans `{{ }}`.
-- **Aide** sur ce qui se trouve sous le curseur : une directive, un type de diapositive (kind) (ce qu'il définit),
+- **Aide** sur ce qui se trouve sous le curseur : une directive, un *kind* (le type d'une diapositive) (ce qu'il définit),
   une fonction de gabarit. Le volet d'aide renvoie aussi vers ces pages.
 - **Problèmes** sur leur ligne : les erreurs de gabarit, de YAML et de HCL sont mises en évidence
   dans l'éditeur et listées en dessous, et l'aperçu conserve la dernière présentation

@@ -1,5 +1,5 @@
 ---
-title: "kind"
+title: "Kinds"
 weight: 40
 description: "スライドは自分が何であるかを宣言します。kind はローカルディレクティブのプリセットに名前を付けたものです。"
 tags: [kinds]

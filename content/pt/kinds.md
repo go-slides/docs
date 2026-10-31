@@ -5,7 +5,7 @@ description: "Um slide diz o que ele é: kind nomeia um conjunto predefinido de 
 tags: [kinds]
 ---
 
-Um **kind** é um conjunto predefinido e nomeado de diretivas locais:
+Um **kind** (o tipo de um slide) é um conjunto predefinido e nomeado de diretivas locais:
 cabeçalho, rodapé, paginação, classe, fundo. Um slide diz o que ele é —
 `title`, `section` — em vez de repetir a sua aparência, e o visual de uma
 apresentação muda em um único lugar.

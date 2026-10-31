@@ -1,16 +1,16 @@
 ---
-title: "Tipi di slide"
+title: "Kinds"
 weight: 40
 description: "Una slide dichiara cos'è: kind indica un insieme predefinito di direttive locali."
 tags: [kinds]
 ---
 
-Un **tipo** (*kind*) è un insieme predefinito e con nome di direttive locali: intestazione, piè di pagina,
+Un **kind** (il tipo di una slide) è un insieme predefinito e con nome di direttive locali: intestazione, piè di pagina,
 numerazione, classe, sfondo. Una slide dichiara cos'è — `title`,
 `section` — invece di ripetere che aspetto ha, e l'aspetto di una presentazione si cambia
 in un unico punto.
 
-## Usare un tipo {#using-a-kind}
+## Usare un kind {#using-a-kind}
 
 ```markdown
 <!-- kind: section -->
@@ -24,22 +24,22 @@ in un unico punto.
 
 - `kind:` si applica come una direttiva locale: a questa slide e a quelle successive.
 - `_kind:` si applica come una direttiva spot: solo a questa slide.
-- Cambiare tipo **azzera** prima ciò che il tipo precedente aveva impostato, quindi una classe o un
-  piè di pagina non passa mai da un tipo al successivo.
-- Le direttive scritte sulla slide stessa **prevalgono** sul tipo.
+- Cambiare kind **azzera** prima ciò che il kind precedente aveva impostato, quindi una classe o un
+  piè di pagina non passa mai da un kind al successivo.
+- Le direttive scritte sulla slide stessa **prevalgono** sul kind.
 
 ## Predefiniti {#built-in}
 
-| Tipo | Imposta |
+| Kind | Imposta |
 | --- | --- |
 | `title` | `class: lead`, nessun numero di pagina, nessuna intestazione, nessun piè di pagina |
 | `section` | `class: lead` |
 | `content` | nulla: i valori predefiniti della presentazione |
 | `blank` | nessun numero di pagina, nessuna intestazione, nessun piè di pagina |
 
-Qualsiasi tipo può essere ridefinito.
+Qualsiasi kind può essere ridefinito.
 
-## Definire i tipi {#defining-kinds}
+## Definire i kinds {#defining-kinds}
 
 Nel front matter:
 
@@ -57,12 +57,12 @@ kinds:
 ---
 ```
 
-`extends` fa partire un tipo dalle direttive di un altro. Un tipo accetta le
+`extends` fa partire un kind dalle direttive di un altro. Un kind accetta le
 direttive locali e `extends`.
 
-## Condividere i tipi {#sharing-kinds}
+## Condividere i kinds {#sharing-kinds}
 
-I tipi di un team vanno in un unico file che ogni presentazione nomina:
+I kinds di un team vanno in un unico file che ogni presentazione nomina:
 
 ```yaml
 # kinds.yaml
@@ -79,13 +79,13 @@ kinds: kinds.yaml        # or a list of files
 ```
 
 oppure `--kinds kinds.yaml` sulla riga di comando, oppure `kinds:` in `slides.yaml`.
-L'ordine è: i tipi predefiniti, poi la riga di comando e il
+L'ordine è: i kinds predefiniti, poi la riga di comando e il
 file di configurazione, poi i `kinds:` della presentazione stessa.
 
-`slides kinds talk.md` elenca i tipi che una presentazione può usare e cosa imposta ciascuno.
+`slides kinds talk.md` elenca i kinds che una presentazione può usare e cosa imposta ciascuno.
 
 ## Lasciare go-slides {#leaving-go-slides}
 
-`slides expand` scrive ogni tipo come le direttive spot che rappresenta,
+`slides expand` scrive ogni kind come le direttive spot che rappresenta,
 slide per slide, così il risultato è semplice Markdown Marp che qualsiasi strumento Marp
 legge.

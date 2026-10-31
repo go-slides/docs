@@ -5,7 +5,7 @@ description: "Eine Folie sagt, was sie ist: kind benennt eine Vorgabe lokaler Di
 tags: [kinds]
 ---
 
-Ein **Kind** (Folientyp) ist eine benannte Vorgabe lokaler Direktiven: Kopfzeile, Fußzeile,
+Ein **Kind** (die Art einer Folie) ist eine benannte Vorgabe lokaler Direktiven: Kopfzeile, Fußzeile,
 Seitennummerierung, Klasse, Hintergrund. Eine Folie gibt an, was sie ist – `title`,
 `section` –, statt zu wiederholen, wie sie aussieht, und das Erscheinungsbild eines Foliensatzes ändert sich
 an einer einzigen Stelle.

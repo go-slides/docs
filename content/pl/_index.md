@@ -4,7 +4,7 @@ linkTitle: "Strona główna"
 type: docs
 cascade:
   type: docs
-description: "Prezentacje zgodne z Marp w czystym Go (CGO=0), z interpolacją szablonów Go i rodzajami (kinds) slajdów."
+description: "Prezentacje zgodne z Marp w czystym Go (CGO=0), z interpolacją szablonów Go i kinds slajdów."
 ---
 
 **`slides` zamienia prezentację Marp w gotowy pokaz, w czystym Go.** Czyta ten
@@ -15,7 +15,7 @@ slajdami, tła `![bg]`, notatki prelegenta, motywy `default`, `gaia` i
 - **[szablony Go]({{< relref "templates" >}})** wewnątrz prezentacji, wyliczane
   przed parsowaniem Markdownu, dzięki czemu prezentacja może sama generować
   swoje slajdy;
-- **[rodzaje slajdów (kinds)]({{< relref "kinds" >}})**: slajd mówi, czym jest
+- **[kinds (rodzaj slajdu)]({{< relref "kinds" >}})**: slajd mówi, czym jest
   (`title`, `section`…), zamiast powtarzać, jak wygląda.
 
 {{< callout type="warning" >}}
@@ -35,11 +35,11 @@ i są publikowane pod adresem `/docs/0.14/`.
 | `slides build --pptx` | prezentacja jako plik PowerPoint z notatkami prelegenta i metadanymi prezentacji: jeden obraz na slajd w v0.4.0, jak w marp-cli; **edytowalny** od v0.5.0 — pola tekstowe, kształty, obrazy, osadzone czcionki ([Edytowalne PPTX i ODP]({{< relref "cli#editable-pptx-and-odp" >}})) |
 | `slides build --odp` | to samo jako prezentacja OpenDocument (`.odp`) |
 | dopasowane nagłówki | `# <!-- fit --> Title` wypełnia szerokość slajdu w jednej linii, na stronie i w każdym eksporcie |
-| `slides expand` | prezentacja jako zwykły Markdown Marp: szablony wyliczone, rodzaje zastąpione dyrektywami punktowymi, które reprezentują |
+| `slides expand` | prezentacja jako zwykły Markdown Marp: szablony wyliczone, kinds zastąpione dyrektywami punktowymi, które reprezentują |
 | `slides notes` | notatki prelegenta |
 | `slides kinds`, `slides themes` | to, co prezentacja może nazwać |
-| `slides.yaml` | wspólne rodzaje, motywy, dane, polityka HTML i język dla katalogu prezentacji |
-| HCL | nagłówek `---hcl`, `slides.hcl`, pliki rodzajów i danych w HCL2, z wyrażeniami i funkcjami: [HCL]({{< relref "hcl" >}}) |
+| `slides.yaml` | wspólne kinds, motywy, dane, polityka HTML i język dla katalogu prezentacji |
+| HCL | nagłówek `---hcl`, `slides.hcl`, pliki kinds i danych w HCL2, z wyrażeniami i funkcjami: [HCL]({{< relref "hcl" >}}) |
 
 ## Planowane {#planned}
 
@@ -54,7 +54,7 @@ tutaj robią to biblioteki Go.
 - [Galeria]({{< relref "gallery" >}}): dwanaście przykładowych prezentacji do otwarcia w playgroundzie
 - [Zgodność z Marp]({{< relref "marp" >}})
 - [Szablony]({{< relref "templates" >}})
-- [Rodzaje]({{< relref "kinds" >}})
+- [Kinds]({{< relref "kinds" >}})
 - [HCL]({{< relref "hcl" >}})
 - [Matematyka i kod]({{< relref "math-and-code" >}})
 - [Emoji]({{< relref "emoji" >}})

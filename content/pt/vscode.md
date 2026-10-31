@@ -17,7 +17,7 @@ preparada, mas ainda não está lá.
 A extensão é a contraparte do go-slides para o
 [Marp for VS Code](https://github.com/marp-team/marp-vscode): a apresentação
 aparece na pré-visualização de Markdown do VS Code como slides, os erros dela no
-painel Problems, e as diretivas, os kinds e as funções de template são
+painel Problems, e as diretivas, os kinds (o tipo de um slide) e as funções de template são
 autocompletados enquanto você digita.
 
 ## Instalar {#install}

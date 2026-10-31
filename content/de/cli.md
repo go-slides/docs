@@ -19,7 +19,7 @@ slides [command] [flags] deck.md
 | Befehl | Was er tut |
 | --- | --- |
 | `build` | schreibt die Präsentation als HTML oder als PDF oder Bilder (siehe unten). **Der Standard**: `slides deck.md` ist `slides build deck.md` |
-| `expand` | gibt den Foliensatz als reines Marp-Markdown aus: Vorlagen expandiert, Kinds (Folientypen) durch die Direktiven ersetzt, für die sie stehen |
+| `expand` | gibt den Foliensatz als reines Marp-Markdown aus: Vorlagen expandiert, Kinds (die Art einer Folie) durch die Direktiven ersetzt, für die sie stehen |
 | `notes` | gibt die Sprechernotizen aus |
 | `kinds` | listet die Kinds auf, die der Foliensatz verwenden kann, und was sie setzen; `--json` (in v0.6.0) schreibt sie als `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` aufgelöst |
 | `themes` | listet die Themes auf |
