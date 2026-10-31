@@ -3,9 +3,9 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;La extensión es &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;, con
-versionado propio (v0.4.0). Renderiza con go-slides v0.9.0 (el paquete &lt;code&gt;editor&lt;/code&gt;,
+versionado propio (v0.5.0). Renderiza con go-slides v0.14.0 (el paquete &lt;code&gt;editor&lt;/code&gt;,
 las líneas de origen de la sincronización del desplazamiento, y la vista general
-y la vista del presentador). Se instala desde el &lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt; adjunto a
+y la vista del presentador). Se instala desde el &lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt; adjunto a
 su versión de GitHub: su publicación en VS Code Marketplace y en Open VSX está
 preparada, pero todavía no está allí.&lt;/div&gt;
 &lt;/div&gt;
@@ -20,7 +20,7 @@ funciones de plantilla se autocompletan mientras se escribe.&lt;/p&gt;
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;versiones&lt;/a&gt; y ejecute
 &lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt;, o bien:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
@@ -148,6 +148,11 @@ escribe HTML, PDF vectorial, PPTX y ODP editables, PNG o JPEG con el comando
 &lt;a href="https://go-slides.github.io/docs/0.14/es/cli/"&gt;Línea de comandos&lt;/a&gt;. Necesita un espacio de trabajo de
 confianza. Si no se encuentra &lt;code&gt;slides&lt;/code&gt;, la extensión ofrece ejecutar en un
 terminal el &lt;code&gt;go install&lt;/code&gt; de arriba.&lt;/p&gt;
+&lt;p&gt;Desde la v0.5.0 de la extensión (go-slides v0.14.0), el PDF que escribe es
+&lt;strong&gt;accesible&lt;/strong&gt;: con &lt;code&gt;slides&lt;/code&gt; v0.12.0 o posterior, el PDF vectorial lleva etiquetas
+para lectores de pantalla y declara PDF/UA-1, con el &lt;code&gt;title&lt;/code&gt; y el &lt;code&gt;lang&lt;/code&gt; de la
+presentación y una sección por diapositiva. &lt;code&gt;slides --pdf-tags=false&lt;/code&gt; escribe el
+archivo sin etiquetas. Actualice el comando con el &lt;code&gt;go install&lt;/code&gt; de arriba.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="settings"&gt;Ajustes&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
 &lt;a href="#settings" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;

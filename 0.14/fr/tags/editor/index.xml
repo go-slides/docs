@@ -3,9 +3,9 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;L&amp;rsquo;extension est &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
-versionnée séparément (v0.4.0). Elle fait le rendu avec go-slides v0.9.0 (le paquet
+versionnée séparément (v0.5.0). Elle fait le rendu avec go-slides v0.14.0 (le paquet
 &lt;code&gt;editor&lt;/code&gt;, les lignes sources de la synchronisation du défilement, la vue d&amp;rsquo;ensemble et le
-mode présentateur). Elle s&amp;rsquo;installe à partir du fichier &lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt; joint à
+mode présentateur). Elle s&amp;rsquo;installe à partir du fichier &lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt; joint à
 sa version GitHub : sa publication sur le VS Code Marketplace et sur Open VSX est
 prête, mais elle n&amp;rsquo;y figure pas encore.&lt;/div&gt;
 &lt;/div&gt;
@@ -19,7 +19,7 @@ les directives, les types de diapositives (kinds) et les fonctions de gabarit se
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;versions publiées&lt;/a&gt;, puis lancez
 &lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt;, ou :&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copier le code"
@@ -142,6 +142,11 @@ du PDF vectoriel, du PPTX et de l&amp;rsquo;ODP modifiables, du PNG ou du JPEG a
 le ferait &lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt; ; voir &lt;a href="https://go-slides.github.io/docs/0.14/fr/cli/"&gt;Ligne de commande&lt;/a&gt;.
 Il nécessite un espace de travail approuvé. Si &lt;code&gt;slides&lt;/code&gt; est introuvable, l&amp;rsquo;extension propose de
 lancer le &lt;code&gt;go install&lt;/code&gt; ci-dessus dans un terminal.&lt;/p&gt;
+&lt;p&gt;Depuis la v0.5.0 de l&amp;rsquo;extension (go-slides v0.14.0), le PDF écrit est
+&lt;strong&gt;accessible&lt;/strong&gt; : avec &lt;code&gt;slides&lt;/code&gt; v0.12.0 ou plus récent, le PDF vectoriel est balisé
+pour les lecteurs d&amp;rsquo;écran et déclare PDF/UA-1, avec le &lt;code&gt;title&lt;/code&gt; et le &lt;code&gt;lang&lt;/code&gt; de la
+présentation et une section par diapositive. &lt;code&gt;slides --pdf-tags=false&lt;/code&gt; écrit le
+fichier sans balises. Mettez la commande à jour avec le &lt;code&gt;go install&lt;/code&gt; ci-dessus.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="settings"&gt;Paramètres&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
 &lt;a href="#settings" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;

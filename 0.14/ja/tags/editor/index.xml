@@ -3,9 +3,9 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;拡張機能は &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt; で、
-独自にバージョン管理されています（v0.4.0）。レンダリングには go-slides v0.9.0（
+独自にバージョン管理されています（v0.5.0）。レンダリングには go-slides v0.14.0（
 &lt;code&gt;editor&lt;/code&gt; パッケージ、スクロール同期用のソース行、一覧表示と
-発表者ビュー）を使います。インストールには、GitHub リリースに添付された &lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt;
+発表者ビュー）を使います。インストールには、GitHub リリースに添付された &lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt;
 を使います。VS Code Marketplace と Open VSX での公開は
 準備中で、まだ公開されていません。&lt;/div&gt;
 &lt;/div&gt;
@@ -19,7 +19,7 @@ VS Code の Markdown プレビューにスライドとして表示され、エ�
 &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; をダウンロードし、
 &lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt; を実行するか、次のコマンドを実行します。&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="コードをコピー"
@@ -142,6 +142,11 @@ Editor into New Window&lt;/em&gt; でスライドのパネルをその画面に�
 ベクター PDF、編集可能な PPTX と ODP、PNG、JPEG を書き出します。&lt;a href="https://go-slides.github.io/docs/0.14/ja/cli/"&gt;コマンドライン&lt;/a&gt; を参照してください。
 信頼されたワークスペースが必要です。&lt;code&gt;slides&lt;/code&gt; が見つからない場合、拡張機能は上記の &lt;code&gt;go install&lt;/code&gt; を
 ターミナルで実行することを提案します。&lt;/p&gt;
+&lt;p&gt;拡張機能 v0.5.0（go-slides v0.14.0）以降、書き出される PDF は&lt;strong&gt;アクセシブル&lt;/strong&gt;です。
+&lt;code&gt;slides&lt;/code&gt; v0.12.0 以降では、ベクター PDF にスクリーンリーダー用のタグが付き、
+PDF/UA-1 を宣言し、デッキの &lt;code&gt;title&lt;/code&gt; と &lt;code&gt;lang&lt;/code&gt;、スライドごとのセクションを持ちます。
+&lt;code&gt;slides --pdf-tags=false&lt;/code&gt; はタグなしのファイルを書き出します。上記の &lt;code&gt;go install&lt;/code&gt; で
+コマンドを更新してください。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="settings"&gt;設定&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
 &lt;a href="#settings" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;

@@ -3,9 +3,9 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;이 확장은 &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;이며, 버전은
-따로 관리됩니다(v0.4.0). 렌더링에는 go-slides v0.9.0을 사용합니다(&lt;code&gt;editor&lt;/code&gt;
+따로 관리됩니다(v0.5.0). 렌더링에는 go-slides v0.14.0을 사용합니다(&lt;code&gt;editor&lt;/code&gt;
 패키지, 스크롤 동기화용 소스 줄, 개요와 발표자 보기). GitHub 릴리스에 첨부된
-&lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt;로 설치합니다. VS Code Marketplace와 Open VSX 게시는
+&lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt;로 설치합니다. VS Code Marketplace와 Open VSX 게시는
 준비되어 있지만 아직 올라가 있지 않습니다.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -18,7 +18,7 @@
 &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt;를 내려받은 다음 *Extensions: Install from VSIX&amp;hellip;*를
 실행하거나, 다음 명령을 실행하십시오.&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="코드 복사"
@@ -141,6 +141,11 @@ data-copied-label="복사됨!"
 PPTX와 ODP, PNG, JPEG를 만듭니다. &lt;a href="https://go-slides.github.io/docs/0.14/ko/cli/"&gt;명령줄&lt;/a&gt;을
 참고하십시오. 신뢰할 수 있는 작업 영역이 필요합니다. &lt;code&gt;slides&lt;/code&gt;를 찾지 못하면
 확장이 위의 &lt;code&gt;go install&lt;/code&gt;을 터미널에서 실행하도록 제안합니다.&lt;/p&gt;
+&lt;p&gt;확장 v0.5.0(go-slides v0.14.0)부터 내보낸 PDF는 &lt;strong&gt;접근성&lt;/strong&gt;을 갖춥니다.
+&lt;code&gt;slides&lt;/code&gt; v0.12.0 이상에서는 벡터 PDF에 화면 낭독기용 태그가 붙고 PDF/UA-1을
+선언하며, 프레젠테이션의 &lt;code&gt;title&lt;/code&gt;과 &lt;code&gt;lang&lt;/code&gt;, 슬라이드마다 하나의 섹션을 담습니다.
+&lt;code&gt;slides --pdf-tags=false&lt;/code&gt;는 태그 없는 파일을 만듭니다. 위의 &lt;code&gt;go install&lt;/code&gt;로
+명령을 업데이트하십시오.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="settings"&gt;설정&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
 &lt;a href="#settings" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;

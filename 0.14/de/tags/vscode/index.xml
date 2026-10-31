@@ -3,10 +3,10 @@
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Die Erweiterung ist &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
-mit eigener Versionierung (v0.4.0). Sie rendert mit go-slides v0.9.0 (dem Paket
+mit eigener Versionierung (v0.5.0). Sie rendert mit go-slides v0.14.0 (dem Paket
 &lt;code&gt;editor&lt;/code&gt;, den Quellzeilen für die Scroll-Synchronisierung sowie der Übersichts- und
 Referentenansicht). Installiert wird sie über die an das GitHub-Release angehängte Datei
-&lt;code&gt;go-slides-0.4.0.vsix&lt;/code&gt;: Die Veröffentlichung im VS Code Marketplace und auf Open VSX ist
+&lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt;: Die Veröffentlichung im VS Code Marketplace und auf Open VSX ist
 vorbereitet, aber noch nicht erfolgt.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -19,7 +19,7 @@ Direktiven, Kinds (Folientypen) und Vorlagenfunktionen werden beim Tippen vervol
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;Releases&lt;/a&gt; herunter und führen Sie dann
 &lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt; aus, oder:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.4.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Code kopieren"
@@ -141,6 +141,11 @@ Vektor-PDF, editierbares PPTX und ODP, PNG oder JPEG mit dem Befehl &lt;code&gt;
 &lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt; es täte; siehe &lt;a href="https://go-slides.github.io/docs/0.14/de/cli/"&gt;Kommandozeile&lt;/a&gt;.
 Dafür ist ein vertrauenswürdiger Workspace nötig. Wird &lt;code&gt;slides&lt;/code&gt; nicht gefunden, bietet die Erweiterung an,
 das obige &lt;code&gt;go install&lt;/code&gt; in einem Terminal auszuführen.&lt;/p&gt;
+&lt;p&gt;Seit v0.5.0 der Erweiterung (go-slides v0.14.0) ist das geschriebene PDF
+&lt;strong&gt;barrierefrei&lt;/strong&gt;: Mit &lt;code&gt;slides&lt;/code&gt; ab v0.12.0 ist das Vektor-PDF für Screenreader
+getaggt und deklariert PDF/UA-1, mit &lt;code&gt;title&lt;/code&gt; und &lt;code&gt;lang&lt;/code&gt; des Foliensatzes und
+einem Abschnitt pro Folie. &lt;code&gt;slides --pdf-tags=false&lt;/code&gt; schreibt die Datei ohne Tags.
+Aktualisieren Sie den Befehl mit dem obigen &lt;code&gt;go install&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="settings"&gt;Einstellungen&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
 &lt;a href="#settings" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
