@@ -131,7 +131,7 @@ W v0.9.0 krążek i jego notatka znajdują się nawzajem na stronie HTML. Najech
 krążek lub dojście do niego klawiszem Tab podświetla jego notatkę, a notatka robi to samo dla
 swojego krążka. Tak działa `code-annotations: hover` z Quarto, ale tutaj arkusz
 stylów robi to sam, bez skryptu. Działa więc tak samo w
-piaskownicowym podglądzie playgroundu i w podglądzie VS Code, które oba ograniczają
+piaskownicowym podglądzie w Playground i w podglądzie VS Code, które oba ograniczają
 skrypty. Każdy krążek jest opisany swoją notatką, więc czytnik ekranu czyta notatkę,
 gdy dojdzie do krążka. Podświetlenie pojawia się płynnie tylko wtedy, gdy czytelnik nie prosił
 o ograniczenie ruchu. Obrazy, PDF, pliki PowerPoint i OpenDocument są

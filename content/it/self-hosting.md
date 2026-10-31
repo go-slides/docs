@@ -1,11 +1,11 @@
 ---
 title: "Self-hosting"
 weight: 58
-description: "Servire il playground e slides --server dalla propria macchina con Caddy: HTTPS automatico, gli header necessari al playground e un accesso OpenID Connect davanti."
+description: "Servire il Playground e slides --server dalla propria macchina con Caddy: HTTPS automatico, gli header necessari al Playground e un accesso OpenID Connect davanti."
 tags: [playground, server, security]
 ---
 
-Il [playground]({{< relref "playground" >}}) è fatto di file statici, e
+Il [Playground]({{< relref "playground" >}}) è fatto di file statici, e
 [`slides --server`]({{< relref "cli" >}}) è un solo processo sul loopback. Entrambi
 possono girare sulla tua macchina, con il tuo nome, per persone che accedono
 con l'account della tua organizzazione. Questa pagina lo fa con
@@ -16,9 +16,9 @@ l'accesso. Ogni file mostrato qui si trova in
 [`selfhost/`](https://github.com/go-slides/go-slides.github.io/tree/main/selfhost),
 e la sua CI controlla ogni Caddyfile con `caddy validate`.
 
-## Il playground {#the-playground}
+## Il Playground {#the-playground}
 
-Ogni release del sito allega l'intero sito, playground compreso, come
+Ogni release del sito allega l'intero sito, Playground compreso, come
 un unico tarball costruito per la radice di un dominio, con il relativo SHA-256:
 
 ```sh
@@ -56,7 +56,7 @@ slides.example.org {
 caddy run --config Caddyfile.playground
 ```
 
-Il playground si trova allora in `https://slides.example.org/playground/`.
+Il Playground si trova allora in `https://slides.example.org/playground/`.
 
 ### Cosa deve fare bene il server {#what-the-server-must-get-right}
 
@@ -68,7 +68,7 @@ Il playground si trova allora in `https://slides.example.org/playground/`.
   provider DNS), oppure un certificato proprio con `tls cert.pem key.pem`.
   Su una macchina di prova, `tls internal` usa la CA locale di Caddy.
 - **`application/wasm`.** Caddy invia questo tipo per `.wasm`; un altro server
-  potrebbe doverne essere informato. Il playground compila i propri moduli dai byte che ha
+  potrebbe doverne essere informato. Il Playground compila i propri moduli dai byte che ha
   letto (il motore di esportazione mentre scarica, in una risposta a sé
   con quel tipo), quindi parte anche da un server che invia un altro tipo;
   con `nosniff`, il tipo giusto resta comunque quello da inviare.
@@ -97,19 +97,19 @@ Il playground si trova allora in `https://slides.example.org/playground/`.
 }
 ```
 
-La policy è quella di cui il playground ha bisogno: i suoi script (il loader è
+La policy è quella di cui il Playground ha bisogno: i suoi script (il loader è
 in linea), il suo WebAssembly (`'wasm-unsafe-eval'`) e il suo worker, tutti dal
 tuo server. Immagini, fogli di stile e font di una presentazione possono provenire da qualsiasi
 indirizzo `https:`, come nell'output del comando; togli `https:` da
 `img-src`, `style-src`, `font-src`, `media-src` e `connect-src` per mantenere
 ogni richiesta sul tuo server, e le presentazioni che puntano altrove vengono mostrate senza
 quelle risorse. La presentazione stessa gira in iframe in sandbox senza la tua
-origine, sotto una policy più rigida di loro proprietà che il playground scrive
-in ogni frame: non può raggiungere il playground, la sua memoria né i tuoi
+origine, sotto una policy più rigida di loro proprietà che il Playground scrive
+in ogni frame: non può raggiungere il Playground, la sua memoria né i tuoi
 cookie, qualunque cosa dica questo header. `frame-ancestors 'self'` impedisce ad altri
-siti di incorporare il playground in un frame.
+siti di incorporare il Playground in un frame.
 
-- **Né COOP né COEP.** Il playground non usa né `SharedArrayBuffer` né
+- **Né COOP né COEP.** Il Playground non usa né `SharedArrayBuffer` né
   thread, quindi non ha bisogno di essere isolato cross-origin. Inviare
   `Cross-Origin-Embedder-Policy: require-corp` bloccherebbe le immagini di una presentazione
   provenienti da altri siti.
@@ -249,8 +249,8 @@ caddy run --config Caddyfile.oidc
 ```
 
 oauth2-proxy e `slides` ascoltano solo sul loopback: l'unico ingresso passa
-da Caddy, e quindi dall'accesso. Gli header del playground vanno
-dentro il blocco con accesso, solo sul playground: la pagina di accesso di oauth2-proxy
+da Caddy, e quindi dall'accesso. Gli header del Playground vanno
+dentro il blocco con accesso, solo sul Playground: la pagina di accesso di oauth2-proxy
 è un modulo, che il loro `form-action 'none'` bloccherebbe.
 
 L'alternativa è [caddy-security](https://github.com/greenpau/caddy-security),

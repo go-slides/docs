@@ -5,13 +5,13 @@ description: "Écrivez une présentation dans votre navigateur et regardez les d
 tags: [playground, browser]
 ---
 
-**[Ouvrir le playground →](https://go-slides.github.io/fr/playground/)**
+**[Ouvrir le Playground →](https://go-slides.github.io/fr/playground/)**
 
-Le playground, c'est go-slides lui-même, en v0.14.0, compilé en WebAssembly et
+Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.14.0, compilé en WebAssembly et
 exécuté dans votre navigateur. Tapez une présentation à gauche ; les diapositives suivent à
 droite. Rien n'est envoyé à un serveur : ni la présentation, ni un lien de partage.
 
-L'interface du playground (ruban, aide, messages) parle la langue de la page :
+L'interface du Playground (ruban, aide, messages) parle la langue de la page :
 ouvrez `/fr/playground/` pour le français, et de même pour les douze langues de
 ce site. Le sélecteur de langue de la page la change et votre choix est
 conservé dans ce navigateur ; un lien qui nomme une langue l'emporte toujours.
@@ -154,24 +154,24 @@ l'[extension VS Code]({{< relref "vscode" >}}).
 ## Sécurité {#security}
 
 La présentation s'affiche dans une iframe isolée, privée de l'origine de la page : elle ne peut
-atteindre ni le playground ni son stockage, ne soumet aucun formulaire et ne navigue
+atteindre ni le Playground ni son stockage, ne soumet aucun formulaire et ne navigue
 nulle part. Sa page porte une Content Security Policy qui n'exécute que ses propres
 scripts. Le HTML brut de la présentation suit la liste d'autorisation de Marp, comme `slides` le fait par
 défaut. Un rendu qui dure plus de 5 secondes (un gabarit qui boucle)
 est interrompu.
 
-La fenêtre du présentateur conserve ce bac à sable. Elle est ouverte par le playground
+La fenêtre du présentateur conserve ce bac à sable. Elle est ouverte par le Playground
 lui-même et affiche la présentation dans une iframe isolée de la même façon. Les deux
-iframes ne peuvent pas partager de stockage : le playground relaie donc le numéro de diapositive
+iframes ne peuvent pas partager de stockage : le Playground relaie donc le numéro de diapositive
 de l'une à l'autre par messages. Aucun cadre qui exécute la présentation ne reçoit l'origine du
-playground.
+Playground.
 
 Les médias du projet parviennent aux cadres isolés sous forme d'octets dans un message, et
 chaque cadre en fait ses propres URL `blob:`, dans sa propre origine. Une URL `blob:`
-créée par le playground ne s'y charge pas, et la politique des cadres
+créée par le Playground ne s'y charge pas, et la politique des cadres
 n'ajoute que `blob:` pour les médias et les polices.
 
-Le playground peut être servi depuis votre propre machine, derrière une
+Le Playground peut être servi depuis votre propre machine, derrière une
 authentification : voir [Auto-hébergement]({{< relref "self-hosting" >}}).
 
 ## Taille et vitesse {#size-and-speed}

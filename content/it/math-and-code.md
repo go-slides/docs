@@ -131,7 +131,7 @@ Nella v0.9.0, un cerchio e la sua nota si ritrovano a vicenda nella pagina HTML.
 un cerchio, o raggiungerlo con Tab, colora la sua nota, e una nota fa lo stesso con il suo
 cerchio. È ciò che fa `code-annotations: hover` di Quarto, ma qui il foglio di
 stile lo fa da solo, senza script. Funziona quindi allo stesso modo nell'anteprima
-isolata del playground e nell'anteprima di VS Code, che limitano entrambe gli script. Ogni cerchio è descritto dalla sua nota, quindi uno screen reader legge la nota
+isolata del Playground e nell'anteprima di VS Code, che limitano entrambe gli script. Ogni cerchio è descritto dalla sua nota, quindi uno screen reader legge la nota
 quando raggiunge il cerchio. La colorazione compare con dissolvenza solo se il lettore non ha chiesto
 di ridurre il movimento. Immagini, PDF, file PowerPoint e OpenDocument
 restano invariati, byte per byte.

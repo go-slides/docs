@@ -1,7 +1,7 @@
 ---
 title: "Self-hosting"
 weight: 58
-description: "Обслуговуйте playground і slides --server зі своєї машини за допомогою Caddy: автоматичний HTTPS, заголовки, потрібні playground, і вхід через OpenID Connect попереду."
+description: "Обслуговуйте Playground і slides --server зі своєї машини за допомогою Caddy: автоматичний HTTPS, заголовки, яких потребує Playground, і вхід через OpenID Connect попереду."
 tags: [playground, server, security]
 ---
 
@@ -18,7 +18,7 @@ tags: [playground, server, security]
 
 ## Playground {#the-playground}
 
-Кожен випуск сайту додає весь сайт, разом із playground, як один tar-архів,
+Кожен випуск сайту додає весь сайт, разом із Playground, як один tar-архів,
 зібраний для кореня домену, з його SHA-256:
 
 ```sh
@@ -55,7 +55,7 @@ slides.example.org {
 caddy run --config Caddyfile.playground
 ```
 
-Після цього playground розташований за адресою
+Після цього Playground розташований за адресою
 `https://slides.example.org/playground/`.
 
 ### Що має зробити правильно сервер {#what-the-server-must-get-right}
@@ -97,17 +97,17 @@ caddy run --config Caddyfile.playground
 }
 ```
 
-Політика — та, що потрібна playground: його скрипти (завантажувач
+Політика — та, що потрібна Playground: його скрипти (завантажувач
 вбудований), його WebAssembly (`'wasm-unsafe-eval'`) і його воркер, усе з вашого
 сервера. Зображення, таблиці стилів і шрифти презентації можуть надходити з
 будь-якої адреси `https:`, як і у виводі команди; приберіть `https:` з
 `img-src`, `style-src`, `font-src`, `media-src` і `connect-src`, щоб тримати
 кожен запит на вашому сервері, і презентації, що вказують деінде, показуватимуться
 без цих ресурсів. Сама презентація працює в iframe, ізольованих без вашого
-походження, під суворішою власною політикою, яку playground записує в кожен
-фрейм: вона не може дістатися ні до playground, ні до його сховища, ні до ваших
+походження, під суворішою власною політикою, яку Playground записує в кожен
+фрейм: вона не може дістатися ні до Playground, ні до його сховища, ні до ваших
 cookie, що б не казав цей заголовок. `frame-ancestors 'self'` не дає іншим
-сайтам вбудовувати playground у фрейми.
+сайтам вбудовувати Playground у фрейми.
 
 - **Ні COOP, ні COEP.** Playground не використовує ні `SharedArrayBuffer`, ні
   потоків, тож йому не потрібна міжджерельна ізоляція. Надсилання
@@ -249,8 +249,8 @@ caddy run --config Caddyfile.oidc
 ```
 
 oauth2-proxy і `slides` слухають лише на loopback: єдиний вхід — через Caddy, а
-отже, через авторизацію. Заголовки playground розміщено всередині блока
-signed-in, лише для playground: сторінка входу oauth2-proxy є формою, яку
+отже, через авторизацію. Заголовки Playground розміщено всередині блока
+signed-in, лише для Playground: сторінка входу oauth2-proxy є формою, яку
 зупинив би їхній `form-action 'none'`.
 
 Альтернатива — [caddy-security](https://github.com/greenpau/caddy-security),

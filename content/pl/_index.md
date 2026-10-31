@@ -48,7 +48,7 @@ tutaj robią to biblioteki Go.
 ## Strony {#pages}
 
 - [Pierwsze kroki]({{< relref "getting-started" >}})
-- [Galeria]({{< relref "gallery" >}}): dwanaście przykładowych prezentacji do otwarcia w playgroundzie
+- [Galeria]({{< relref "gallery" >}}): dwanaście przykładowych prezentacji do otwarcia w Playground
 - [Zgodność z Marp]({{< relref "marp" >}})
 - [Szablony]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})

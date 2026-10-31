@@ -5,13 +5,13 @@ description: "Scrivi una presentazione nel browser e guarda le slide seguirti: g
 tags: [playground, browser]
 ---
 
-**[Apri il playground →](https://go-slides.github.io/it/playground/)**
+**[Apri il Playground →](https://go-slides.github.io/it/playground/)**
 
-Il playground è go-slides stesso, v0.14.0, compilato in WebAssembly ed
+Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.14.0, compilato in WebAssembly ed
 eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
 destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.
 
-L'interfaccia del playground (barra multifunzione, guida, messaggi) parla la
+L'interfaccia del Playground (barra multifunzione, guida, messaggi) parla la
 lingua della pagina: apri `/it/playground/` per l'italiano, e così per le
 dodici lingue di questo sito. Il selettore di lingua della pagina la cambia e
 la tua scelta resta salvata in questo browser; un link che indica una lingua
@@ -155,24 +155,24 @@ Le immagini come file (slides `--images`) non vengono prodotte nel browser: usa 
 ## Sicurezza {#security}
 
 La presentazione è mostrata in un iframe in sandbox senza l'origine della pagina: non può
-raggiungere né il playground né la sua memoria, non può inviare moduli e non naviga
+raggiungere né il Playground né la sua memoria, non può inviare moduli e non naviga
 da nessuna parte. La sua pagina ha una Content Security Policy che esegue solo i propri
 script. L'HTML grezzo nella presentazione segue la lista consentita di Marp, come fa `slides` per
 impostazione predefinita. Un rendering che dura più di 5 secondi (un template che va in ciclo)
 viene interrotto.
 
-La finestra del relatore mantiene quella sandbox. È aperta dal playground
+La finestra del relatore mantiene quella sandbox. È aperta dal Playground
 stesso e mostra la presentazione in un iframe in sandbox allo stesso modo. I due
-iframe non possono condividere la memoria, quindi il playground inoltra il numero della slide
+iframe non possono condividere la memoria, quindi il Playground inoltra il numero della slide
 tra loro tramite messaggi. Nessun frame che esegue la presentazione ottiene l'origine
-del playground.
+del Playground.
 
 I media del progetto raggiungono i frame in sandbox come byte in un messaggio, e
 ogni frame ne crea i propri URL `blob:`, nella propria origine. Un URL `blob:`
-creato dal playground non vi si carica, e la policy dei frame
+creato dal Playground non vi si carica, e la policy dei frame
 guadagna solo `blob:` per media e font.
 
-Il playground può essere servito dalla tua macchina, dietro un accesso:
+Il Playground può essere servito dalla tua macchina, dietro un accesso:
 vedi [Self-hosting]({{< relref "self-hosting" >}}).
 
 ## Dimensione e velocità {#size-and-speed}

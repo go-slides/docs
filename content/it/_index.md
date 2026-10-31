@@ -47,7 +47,7 @@ qui lo fanno librerie Go.
 ## Pagine {#pages}
 
 - [Per iniziare]({{< relref "getting-started" >}})
-- [Galleria]({{< relref "gallery" >}}): dodici presentazioni di esempio, da aprire nel playground
+- [Galleria]({{< relref "gallery" >}}): dodici presentazioni di esempio, da aprire nel Playground
 - [Compatibilità con Marp]({{< relref "marp" >}})
 - [Template]({{< relref "templates" >}})
 - [Kinds]({{< relref "kinds" >}})

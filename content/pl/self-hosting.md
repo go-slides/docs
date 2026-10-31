@@ -1,7 +1,7 @@
 ---
 title: "Self-hosting"
 weight: 58
-description: "Serwuj playground i slides --server z własnej maszyny za pomocą Caddy: automatyczny HTTPS, nagłówki potrzebne playgroundowi i logowanie OpenID Connect z przodu."
+description: "Serwuj Playground i slides --server z własnej maszyny za pomocą Caddy: automatyczny HTTPS, nagłówki potrzebne dla Playground i logowanie OpenID Connect z przodu."
 tags: [playground, server, security]
 ---
 
@@ -18,7 +18,7 @@ a jego CI sprawdza każdy Caddyfile poleceniem `caddy validate`.
 
 ## Playground {#the-playground}
 
-Każde wydanie witryny dołącza całą witrynę, z playgroundem, jako
+Każde wydanie witryny dołącza całą witrynę, wraz z Playground, jako
 jeden tarball zbudowany dla korzenia domeny, z jego SHA-256:
 
 ```sh
@@ -97,17 +97,17 @@ Playground jest wtedy pod adresem `https://slides.example.org/playground/`.
 }
 ```
 
-Polityka jest taka, jakiej potrzebuje playground: jego skrypty (loader jest
+Polityka jest taka, jakiej potrzebuje Playground: jego skrypty (loader jest
 wbudowany), jego WebAssembly (`'wasm-unsafe-eval'`) i jego worker, wszystko z
 twojego serwera. Obrazy, arkusze stylów i czcionki prezentacji mogą pochodzić z dowolnego
 adresu `https:`, tak jak w wyniku polecenia; usuń `https:` z
 `img-src`, `style-src`, `font-src`, `media-src` i `connect-src`, by zatrzymać
 każde żądanie na twoim serwerze, a prezentacje wskazujące gdzie indziej pokażą się bez
 tych zasobów. Sama prezentacja działa w iframe z piaskownicą bez twojego
-pochodzenia, pod własną, surowszą polityką, którą playground zapisuje
-w każdej ramce: nie sięgnie do playgroundu, jego pamięci ani twoich
+pochodzenia, pod własną, surowszą polityką, którą Playground zapisuje
+w każdej ramce: nie sięgnie do Playground, jego pamięci ani twoich
 ciasteczek, cokolwiek mówi ten nagłówek. `frame-ancestors 'self'` powstrzymuje inne
-witryny przed osadzaniem playgroundu w ramce.
+witryny przed osadzaniem Playground w ramce.
 
 - **Bez COOP ani COEP.** Playground nie używa ani `SharedArrayBuffer`, ani
   wątków, więc nie musi być odizolowany między źródłami. Wysłanie
@@ -249,8 +249,8 @@ caddy run --config Caddyfile.oidc
 ```
 
 oauth2-proxy i `slides` nasłuchują tylko na pętli zwrotnej: jedyne wejście
-prowadzi przez Caddy, a więc przez logowanie. Nagłówki playgroundu idą
-do bloku signed-in, tylko dla samego playgroundu: strona logowania oauth2-proxy
+prowadzi przez Caddy, a więc przez logowanie. Nagłówki Playground idą
+do bloku signed-in, tylko dla samego Playground: strona logowania oauth2-proxy
 to formularz, który zatrzymałoby ich `form-action 'none'`.
 
 Alternatywą jest [caddy-security](https://github.com/greenpau/caddy-security),

@@ -137,7 +137,7 @@ En v0.9.0, un disco y su nota se encuentran mutuamente en la página HTML. Pasar
 el puntero por un disco, o llegar a él con Tab, tiñe su nota, y una nota hace lo
 mismo con su disco. Es lo que hace el `code-annotations: hover` de Quarto, pero
 aquí lo hace solo la hoja de estilos, sin ningún script. Por eso funciona igual
-en la vista previa aislada del playground y en la vista previa de VS Code, que
+en la vista previa aislada del Playground y en la vista previa de VS Code, que
 restringen los scripts. Cada disco se describe con su nota, de modo que un lector
 de pantalla lee la nota al llegar al disco. El tinte aparece gradualmente solo
 cuando el lector no ha pedido movimiento reducido. Las imágenes, el PDF y los
