@@ -188,6 +188,31 @@ documento.&lt;/p&gt;
 &lt;p&gt;Imagens como arquivos (slides &lt;code&gt;--images&lt;/code&gt;) não são feitas no navegador: use o
 &lt;a href="https://go-slides.github.io/docs/0.16/pt/cli/"&gt;comando&lt;/a&gt; ou a
 &lt;a href="https://go-slides.github.io/docs/0.16/pt/vscode/"&gt;extensão do VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Desfazer, refazer e versões&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; e &lt;strong&gt;Redo&lt;/strong&gt; (desfazer e refazer) ficam na aba Home e em Ctrl+Z,
+Ctrl+Shift+Z ou Ctrl+Y (Cmd no Mac). Eles desfazem a última edição do arquivo
+exibido (cada arquivo tem seu próprio histórico) e depois a última operação
+sobre o projeto inteiro: um exemplo escolhido, Reset, um .zip ou uma pasta
+aberta, um rascunho restaurado, um arquivo ou uma pasta excluído ou renomeado,
+uma versão restaurada. Redo traz tudo de volta como estava quando Undo foi
+pressionado.&lt;/p&gt;
+&lt;p&gt;As &lt;strong&gt;versões&lt;/strong&gt; guardam o projeto inteiro neste navegador, sem enviar nada para
+lugar nenhum. Uma é guardada pouco depois de você parar de digitar (no máximo a
+cada 2 minutos), antes de cada operação sobre o projeto inteiro e a cada
+exportação e link de compartilhamento. &lt;strong&gt;Save version…&lt;/strong&gt; guarda uma com um nome.
+&lt;strong&gt;Home ▸ Versions&lt;/strong&gt; abre o painel Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; mostra uma versão na visualização.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; mostra as mudanças de cada arquivo linha a linha, em
+linha ou lado a lado; F7 e Shift+F7 passam de uma mudança à outra.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; coloca uma versão de volta; Undo desfaz a restauração.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; remove uma versão.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O que é guardado: as 20 versões automáticas mais recentes, depois uma por hora
+durante um dia e uma por dia durante um mês. As versões com nome ficam até você
+excluí-las (no máximo 50). Todas as versões juntas ocupam no máximo 96 MiB, e
+os arquivos que não mudaram são armazenados uma só vez. Quando o armazenamento
+do navegador está cheio, as versões automáticas mais antigas saem primeiro.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Segurança&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A apresentação é exibida em um iframe em sandbox, sem a origem da página: ele
 não alcança nem o Playground nem o armazenamento dele, não envia nenhum

@@ -185,6 +185,31 @@ Ctrl+E; Cmd на Mac). Кнопка показується натиснутою,
 &lt;p&gt;Зображення як файли (слайди &lt;code&gt;--images&lt;/code&gt;) у браузері не створюються: скористайтеся
 &lt;a href="https://go-slides.github.io/docs/0.16/uk/cli/"&gt;командою&lt;/a&gt; або
 &lt;a href="https://go-slides.github.io/docs/0.16/uk/vscode/"&gt;розширенням VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Скасування, повтор і версії&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; і &lt;strong&gt;Redo&lt;/strong&gt; (скасування і повтор) розташовані на вкладці Home, а також
+на Ctrl+Z, Ctrl+Shift+Z і Ctrl+Y (Cmd на Mac). Вони скасовують останню правку
+показаного файлу (кожен файл має власну історію), а потім останню операцію над
+усім проєктом: вибраний приклад, Reset, відкритий .zip або теку, відновлену
+чернетку, видалений чи перейменований файл або теку, відновлену версію. Redo
+повертає все таким, яким воно було, коли натиснули Undo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Версії&lt;/strong&gt; зберігають увесь проєкт у цьому браузері, нічого нікуди не
+надсилаючи. Одна зберігається невдовзі після того, як ви перестали друкувати
+(не частіше ніж раз на 2 хвилини), перед кожною операцією над усім проєктом,
+під час кожного експорту та створення посилання для поширення. &lt;strong&gt;Save
+version…&lt;/strong&gt; зберігає одну під назвою. &lt;strong&gt;Home ▸ Versions&lt;/strong&gt; відкриває панель
+Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; показує версію в попередньому перегляді.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; показує зміни кожного файлу рядок за рядком, в одній
+колонці або поруч; F7 і Shift+F7 переходять між змінами.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; повертає версію; Undo скасовує відновлення.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; видаляє версію.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Що зберігається: 20 найновіших автоматичних версій, далі по одній на годину
+протягом доби й по одній на день протягом місяця. Іменовані версії лишаються,
+доки ви їх не видалите (не більше 50). Усі версії разом займають не більше
+96 MiB, а файли, що не змінювалися, зберігаються один раз. Коли сховище
+браузера заповнене, першими зникають найстарші автоматичні версії.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безпека&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентація показується в iframe, ізольованому без походження сторінки: він не
 може дістатися ні до Playground, ні до його сховища, не може надіслати форму й

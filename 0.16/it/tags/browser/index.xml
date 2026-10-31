@@ -183,6 +183,31 @@ temi, kinds, file di dati e media, con i media dentro il documento.&lt;/p&gt;
 &lt;p&gt;Le immagini come file (slides &lt;code&gt;--images&lt;/code&gt;) non vengono prodotte nel browser: usa il
 &lt;a href="https://go-slides.github.io/docs/0.16/it/cli/"&gt;comando&lt;/a&gt; o l'
 &lt;a href="https://go-slides.github.io/docs/0.16/it/vscode/"&gt;estensione di VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Annulla, ripristina e versioni&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; e &lt;strong&gt;Redo&lt;/strong&gt; (annulla e ripeti) si trovano nella scheda Home e su
+Ctrl+Z, Ctrl+Maiusc+Z o Ctrl+Y (Cmd su Mac). Annullano l&amp;rsquo;ultima modifica del
+file mostrato (ogni file ha la propria cronologia) e poi l&amp;rsquo;ultima operazione
+sull&amp;rsquo;intero progetto: un esempio scelto, Reset, un .zip o una cartella aperti,
+una bozza ripristinata, un file o una cartella eliminati o rinominati, una
+versione ripristinata. Redo riporta tutto com&amp;rsquo;era quando è stato premuto Undo.&lt;/p&gt;
+&lt;p&gt;Le &lt;strong&gt;versioni&lt;/strong&gt; conservano l&amp;rsquo;intero progetto in questo browser, senza inviare
+nulla da nessuna parte. Ne viene conservata una poco dopo che smetti di
+scrivere (al massimo ogni 2 minuti), prima di ogni operazione sull&amp;rsquo;intero
+progetto e a ogni esportazione e link di condivisione. &lt;strong&gt;Save version…&lt;/strong&gt; ne
+conserva una con un nome. &lt;strong&gt;Home ▸ Versions&lt;/strong&gt; apre il riquadro Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; mostra una versione nell&amp;rsquo;anteprima.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; mostra le modifiche di ogni file riga per riga, in linea
+o affiancate; F7 e Maiusc+F7 passano da una modifica all&amp;rsquo;altra.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; rimette a posto una versione; Undo annulla il ripristino.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; rimuove una versione.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cosa viene conservato: le 20 versioni automatiche più recenti, poi una all&amp;rsquo;ora
+per un giorno e una al giorno per un mese. Le versioni con nome restano finché
+non le elimini (al massimo 50). Tutte le versioni insieme occupano al massimo
+96 MiB e i file che non sono cambiati vengono memorizzati una volta sola.
+Quando la memoria del browser è piena, le versioni automatiche più vecchie
+vanno via per prime.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicurezza&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentazione è mostrata in un iframe in sandbox senza l&amp;rsquo;origine della pagina: non può
 raggiungere né il Playground né la sua memoria, non può inviare moduli e non naviga

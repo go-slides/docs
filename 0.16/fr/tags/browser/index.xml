@@ -182,6 +182,33 @@ ses thèmes, ses &lt;em&gt;kinds&lt;/em&gt;, ses fichiers de données et ses mé
 &lt;p&gt;Les images en tant que fichiers (&lt;code&gt;--images&lt;/code&gt; de slides) ne sont pas produites dans le navigateur : utilisez la
 &lt;a href="https://go-slides.github.io/docs/0.16/fr/cli/"&gt;commande&lt;/a&gt; ou
 l&amp;rsquo;&lt;a href="https://go-slides.github.io/docs/0.16/fr/vscode/"&gt;extension VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Annuler, rétablir et versions&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; et &lt;strong&gt;Redo&lt;/strong&gt; (annuler et rétablir) se trouvent dans l&amp;rsquo;onglet Home et
+sur Ctrl+Z, Ctrl+Maj+Z ou Ctrl+Y (Cmd sur Mac). Ils annulent la dernière
+modification du fichier affiché (chaque fichier a son propre historique), puis
+la dernière opération sur l&amp;rsquo;ensemble du projet : un exemple choisi, Reset,
+un .zip ou un dossier ouvert, un brouillon restauré, un fichier ou un dossier
+supprimé ou renommé, une version restaurée. Redo rétablit tout dans l&amp;rsquo;état où
+Undo l&amp;rsquo;a trouvé.&lt;/p&gt;
+&lt;p&gt;Les &lt;strong&gt;versions&lt;/strong&gt; conservent tout le projet dans ce navigateur, sans rien envoyer
+nulle part. Une version est enregistrée peu après que vous avez cessé de
+taper (au plus toutes les 2 minutes), avant chaque opération sur l&amp;rsquo;ensemble du
+projet, et à chaque export et lien de partage. &lt;strong&gt;Save version…&lt;/strong&gt; en enregistre
+une sous un nom. &lt;strong&gt;Home ▸ Versions&lt;/strong&gt; ouvre le volet Versions :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; affiche une version dans l&amp;rsquo;aperçu.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; montre les modifications de chaque fichier ligne par
+ligne, en ligne ou côte à côte ; F7 et Maj+F7 passent d&amp;rsquo;une modification à
+l&amp;rsquo;autre.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; remet une version en place ; Undo annule la restauration.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; supprime une version.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ce qui est conservé : les 20 versions automatiques les plus récentes, puis une
+par heure pendant un jour et une par jour pendant un mois. Les versions
+nommées restent jusqu&amp;rsquo;à ce que vous les supprimiez (50 au plus). L&amp;rsquo;ensemble des
+versions occupe au plus 96 MiB, et les fichiers qui n&amp;rsquo;ont pas changé ne sont
+stockés qu&amp;rsquo;une fois. Quand le stockage du navigateur est plein, les versions
+automatiques les plus anciennes partent d&amp;rsquo;abord.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sécurité&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La présentation s&amp;rsquo;affiche dans une iframe isolée, privée de l&amp;rsquo;origine de la page : elle ne peut
 atteindre ni le Playground ni son stockage, ne soumet aucun formulaire et ne navigue

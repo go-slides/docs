@@ -186,6 +186,31 @@ kinds, медиа), Share сообщает об этом и предлагает
 &lt;p&gt;Изображения в виде файлов (&lt;code&gt;--images&lt;/code&gt; у slides) в браузере не создаются:
 используйте &lt;a href="https://go-slides.github.io/docs/0.16/ru/cli/"&gt;команду&lt;/a&gt; или
 &lt;a href="https://go-slides.github.io/docs/0.16/ru/vscode/"&gt;расширение VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Отмена, повтор и версии&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; и &lt;strong&gt;Redo&lt;/strong&gt; (отмена и повтор) находятся на вкладке Home, а также на
+Ctrl+Z, Ctrl+Shift+Z и Ctrl+Y (Cmd на Mac). Они отменяют последнюю правку
+показанного файла (у каждого файла своя история), а затем последнюю операцию
+над всем проектом: выбранный пример, Reset, открытый .zip или папку,
+восстановленный черновик, удалённый или переименованный файл или папку,
+восстановленную версию. Redo возвращает всё таким, каким оно было, когда
+нажали Undo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Версии&lt;/strong&gt; хранят весь проект в этом браузере, ничего никуда не отправляя.
+Одна сохраняется вскоре после того, как вы перестали печатать (не чаще раза в
+2 минуты), перед каждой операцией над всем проектом, при каждом экспорте и
+создании ссылки для обмена. &lt;strong&gt;Save version…&lt;/strong&gt; сохраняет одну под именем.
+&lt;strong&gt;Home ▸ Versions&lt;/strong&gt; открывает панель Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; показывает версию в предпросмотре.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; показывает изменения каждого файла построчно, в одном
+столбце или рядом; F7 и Shift+F7 переходят между изменениями.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; возвращает версию; Undo отменяет восстановление.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; удаляет версию.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Что хранится: 20 новейших автоматических версий, затем по одной в час за сутки
+и по одной в день за месяц. Именованные версии хранятся, пока вы их не удалите
+(не более 50). Все версии вместе занимают не более 96 MiB, а файлы, которые не
+менялись, хранятся один раз. Когда хранилище браузера заполнено, первыми
+удаляются самые старые автоматические версии.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безопасность&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентация показывается в iframe, изолированном без источника страницы: он не
 может обратиться ни к Playground, ни к его хранилищу, не отправляет форм и никуда

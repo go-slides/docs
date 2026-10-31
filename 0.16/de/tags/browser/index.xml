@@ -182,6 +182,33 @@ Themes, Kinds, Datendateien und Medien, die Medien im Dokument.&lt;/p&gt;
 &lt;p&gt;Bilder als Dateien (&lt;code&gt;--images&lt;/code&gt; von slides) entstehen nicht im Browser: Verwenden Sie den
 &lt;a href="https://go-slides.github.io/docs/0.16/de/cli/"&gt;Befehl&lt;/a&gt; oder die
 &lt;a href="https://go-slides.github.io/docs/0.16/de/vscode/"&gt;VS-Code-Erweiterung&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Rückgängig, Wiederholen und Versionen&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; und &lt;strong&gt;Redo&lt;/strong&gt; (Rückgängig und Wiederholen) stehen im Reiter Home und
+auf Strg+Z, Strg+Umschalt+Z oder Strg+Y (Cmd auf dem Mac). Sie nehmen die
+letzte Änderung der angezeigten Datei zurück (jede Datei hat ihren eigenen
+Verlauf) und danach die letzte Operation am ganzen Projekt: ein gewähltes
+Beispiel, Reset, ein geöffnetes .zip oder ein geöffneter Ordner, ein
+wiederhergestellter Entwurf, eine gelöschte oder umbenannte Datei oder ein
+solcher Ordner, eine wiederhergestellte Version. Redo bringt alles so zurück,
+wie es war, als Undo gedrückt wurde.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Versionen&lt;/strong&gt; halten das ganze Projekt in diesem Browser fest, ohne dass etwas
+irgendwohin gesendet wird. Eine Version entsteht kurz nachdem Sie aufhören zu
+tippen (höchstens alle 2 Minuten), vor jeder Operation am ganzen Projekt und bei
+jedem Export und Teilen-Link. &lt;strong&gt;Save version…&lt;/strong&gt; hält eine unter einem Namen
+fest. &lt;strong&gt;Home ▸ Versions&lt;/strong&gt; öffnet den Bereich Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; zeigt eine Version in der Vorschau.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; zeigt die Änderungen jeder Datei Zeile für Zeile, inline
+oder nebeneinander; F7 und Umschalt+F7 springen zwischen den Änderungen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; stellt eine Version wieder her; Undo nimmt die Wiederherstellung
+zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; entfernt eine Version.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Was behalten wird: die 20 neuesten automatischen Versionen, dann eine pro Stunde
+für einen Tag und eine pro Tag für einen Monat. Benannte Versionen bleiben, bis
+Sie sie löschen (höchstens 50). Alle Versionen zusammen belegen höchstens
+96 MiB, und unveränderte Dateien werden nur einmal gespeichert. Ist der
+Speicher des Browsers voll, gehen die ältesten automatischen Versionen zuerst.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
 weder den Playground noch dessen Speicher erreichen, kein Formular absenden und
