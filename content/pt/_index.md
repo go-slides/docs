@@ -16,7 +16,7 @@ que o Marp não tem:
 - **[Templates Go]({{< relref "templates" >}})** dentro da apresentação,
   avaliados antes de o Markdown ser analisado, de modo que uma apresentação
   pode gerar os próprios slides;
-- **[kinds de slide]({{< relref "kinds" >}})**: um slide declara o que ele é
+- **[kinds de slide]({{< relref "kinds" >}})** (o tipo de um slide): um slide declara o que ele é
   (`title`, `section`…) em vez de repetir a sua aparência.
 
 {{< callout type="warning" >}}

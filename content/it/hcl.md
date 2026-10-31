@@ -1,7 +1,7 @@
 ---
 title: "HCL"
 weight: 45
-description: "HCL2 ovunque una presentazione accetti YAML: un front matter HCL, slides.hcl, file di tipi e di dati, con espressioni e funzioni."
+description: "HCL2 ovunque una presentazione accetti YAML: un front matter HCL, slides.hcl, file di kinds e di dati, con espressioni e funzioni."
 tags: [hcl, configuration]
 ---
 
@@ -17,7 +17,7 @@ le sue espressioni e le sue funzioni.
 | --- | --- | --- |
 | front matter | `---` … `---` | `---hcl` … `---` |
 | configurazione | `slides.yaml` | `slides.hcl`, cercato per primo |
-| file di tipi | `--kinds kinds.yaml`, `kinds: kinds.yaml` | qualsiasi file chiamato `*.hcl` |
+| file di kinds (il tipo di una slide) | `--kinds kinds.yaml`, `kinds: kinds.yaml` | qualsiasi file chiamato `*.hcl` |
 | file di dati | `--data data.yaml` o `.json` | qualsiasi file chiamato `*.hcl` |
 
 I commenti-direttiva (`<!-- class: invert -->`) restano YAML, come in Marp, e il
@@ -51,7 +51,7 @@ kind "chapter" {
   (`theme`, `paginate`, `header`, `footer`, `class`, `backgroundColor`…),
   i metadati (`title`, `author`…), `template`, `delims`, `kinds` (percorsi di
   file) e `data`, un oggetto.
-- I blocchi **`kind "<name>" { … }`** definiscono i [tipi]({{< relref "kinds" >}}),
+- I blocchi **`kind "<name>" { … }`** definiscono i [kinds]({{< relref "kinds" >}}),
   con le direttive locali e `extends`.
 - I **valori** arrivano alle direttive nelle forme stringa che dà loro YAML —
   `true` diventa `"true"`, un elenco di classi resta un elenco — così una direttiva si comporta
@@ -103,9 +103,9 @@ kind "quote" {
 }
 ```
 
-Un attributo sconosciuto è un errore, non un'operazione ignorata in silenzio. Un file di tipi contiene
+Un attributo sconosciuto è un errore, non un'operazione ignorata in silenzio. Un file di kinds contiene
 blocchi `kind`; i suoi altri attributi vengono ignorati, quindi `slides.hcl` può servire
-da file di tipi. Gli attributi di un file di dati sono le chiavi dei dati:
+da file di kinds. Gli attributi di un file di dati sono le chiavi dei dati:
 
 ```hcl
 # data.hcl

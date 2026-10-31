@@ -19,7 +19,7 @@ slides [command] [flags] deck.md
 | Commande | Rôle |
 | --- | --- |
 | `build` | écrit la présentation en HTML, en PDF ou en images (voir plus bas). **Commande par défaut** : `slides deck.md` équivaut à `slides build deck.md` |
-| `expand` | affiche la présentation en Markdown Marp ordinaire : gabarits développés, types de diapositives (kinds) remplacés par les directives qu'ils représentent |
+| `expand` | affiche la présentation en Markdown Marp ordinaire : gabarits développés, *kinds* (le type d'une diapositive) remplacés par les directives qu'ils représentent |
 | `notes` | affiche les notes de l'orateur |
 | `kinds` | liste les *kinds* que la présentation peut utiliser et ce qu'ils définissent ; `--json` (depuis la v0.6.0) les écrit sous la forme `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` étant résolu |
 | `themes` | liste les thèmes |

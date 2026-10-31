@@ -17,7 +17,7 @@ prête, mais elle n'y figure pas encore.
 L'extension est l'équivalent, pour go-slides, de
 [Marp for VS Code](https://github.com/marp-team/marp-vscode) : la présentation s'affiche dans
 l'aperçu Markdown de VS Code sous forme de diapositives, ses erreurs dans le panneau Problèmes, et
-les directives, les types de diapositives (kinds) et les fonctions de gabarit se complètent pendant la saisie.
+les directives, les *kinds* (le type d'une diapositive) et les fonctions de gabarit se complètent pendant la saisie.
 
 ## Installation {#install}
 

@@ -43,7 +43,7 @@ data:
 
 Il front matter è quello di Marp, più `data:`. Il corpo è un template Go: il
 `range` scrive una slide per argomento, ciascuna che inizia con `---`, e la prima
-slide è del tipo predefinito `title` (senza intestazione, senza piè di pagina, senza numero di pagina).
+slide è del kind (il tipo di una slide) predefinito `title` (senza intestazione, senza piè di pagina, senza numero di pagina).
 
 ## Compilarla {#build-it}
 
@@ -116,12 +116,12 @@ _paginate: "false"
 ```
 
 Le quattro slide generate dal `range`, il piè di pagina con il suo valore e il
-tipo `title` sostituito dalle direttive spot che rappresenta. Tutto ciò che legge Marp — marp-cli, l'estensione di VS
+kind `title` sostituito dalle direttive spot che rappresenta. Tutto ciò che legge Marp — marp-cli, l'estensione di VS
 Code — può proseguire da qui, quindi nulla di ciò che è scritto con le aggiunte di go-slides
 resta bloccato.
 
 ## Prossimi passi {#next}
 
 - [Compatibilità con Marp]({{< relref "marp" >}}): ciò che viene letto come lo legge Marp.
-- [Template]({{< relref "templates" >}}) e [Tipi di slide]({{< relref "kinds" >}}): le due aggiunte.
+- [Template]({{< relref "templates" >}}) e [Kinds]({{< relref "kinds" >}}): le due aggiunte.
 - [Riga di comando]({{< relref "cli" >}}): ogni comando e flag.

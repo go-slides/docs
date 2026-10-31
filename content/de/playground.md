@@ -27,7 +27,7 @@ folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz no
 - **Vervollständigung** beim Tippen: Direktivenschlüssel (Spot-Direktiven mit `_` in Kommentaren),
   die Werte von `kind`, `theme`, `size`, `paginate` sowie Vorlagenfunktionen
   und Datenfelder innerhalb von `{{ }}`.
-- **Hilfe** zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (Folientyp; was es setzt),
+- **Hilfe** zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (die Art einer Folie; was es setzt),
   eine Vorlagenfunktion. Der Hilfebereich verlinkt auch auf diese Seiten.
 - **Probleme** in ihrer Zeile: Fehler in Vorlagen, YAML und HCL werden im Editor hervorgehoben
   und darunter aufgelistet, und die Vorschau behält den letzten Foliensatz,

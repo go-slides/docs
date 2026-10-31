@@ -43,7 +43,7 @@ data:
 
 Front matter jest z Marp, plus `data:`. Ciało to szablon Go: `range`
 zapisuje jeden slajd na temat, każdy zaczynający się od `---`, a pierwszy
-slajd ma wbudowany rodzaj `title` (bez nagłówka, bez stopki, bez numeru strony).
+slajd ma wbudowany kind `title` (bez nagłówka, bez stopki, bez numeru strony).
 
 ## Zbuduj ją {#build-it}
 
@@ -115,7 +115,7 @@ _paginate: "false"
 # Next
 ```
 
-Cztery slajdy wygenerowane przez `range`, stopka z jej wartością i rodzaj
+Cztery slajdy wygenerowane przez `range`, stopka z jej wartością i kind
 `title` zastąpiony dyrektywami punktowymi, które reprezentuje. Wszystko, co czyta Marp — marp-cli, rozszerzenie VS
 Code — może stąd przejąć pracę, więc nic napisanego z użyciem dodatków go-slides
 nie jest uwięzione.
@@ -123,5 +123,5 @@ nie jest uwięzione.
 ## Dalej {#next}
 
 - [Zgodność z Marp]({{< relref "marp" >}}): co jest czytane tak, jak czyta Marp.
-- [Szablony]({{< relref "templates" >}}) i [Rodzaje]({{< relref "kinds" >}}): dwa dodatki.
+- [Szablony]({{< relref "templates" >}}) i [Kinds]({{< relref "kinds" >}}): dwa dodatki.
 - [Wiersz poleceń]({{< relref "cli" >}}): każde polecenie i flaga.

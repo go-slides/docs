@@ -65,8 +65,8 @@ passato con `--theme-set` o elencato sotto `themes:` in `slides.yaml`.
   [Template]({{< relref "templates" >}})). Una presentazione che mostra `{{` come testo
   fuori da un blocco di codice richiede `--no-template`, oppure il testo con l'escape come lo
   usano i template Go. I blocchi di codice e le porzioni di codice non vengono toccati.
-- **Tipi.** `kind:` e `_kind:` sono direttive che Marp non ha (vedi
-  [Tipi di slide]({{< relref "kinds" >}})). `slides expand` le sostituisce con le
+- **Kinds** (il tipo di una slide). `kind:` e `_kind:` sono direttive che Marp non ha (vedi
+  [Kinds]({{< relref "kinds" >}})). `slides expand` le sostituisce con le
   direttive che rappresentano, quindi la presentazione espansa è Marp semplice.
 - **Output.** HTML, PNG, JPEG, PDF, PPTX e ODP, tramite librerie Go anziché
   un browser headless (vedi [Riga di comando]({{< relref "cli#images-pdf-pptx-and-odp" >}})

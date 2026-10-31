@@ -4,7 +4,7 @@ linkTitle: "Accueil"
 type: docs
 cascade:
   type: docs
-description: "Des présentations compatibles Marp en pur Go (CGO=0), avec interpolation de gabarits Go et types de diapositives."
+description: "Des présentations compatibles Marp en pur Go (CGO=0), avec interpolation de gabarits Go et kinds."
 ---
 
 **`slides` fait d'une présentation Marp un diaporama, en pur Go.** Il lit le
@@ -14,7 +14,7 @@ les diapositives, les arrière-plans `![bg]`, les notes de l'orateur, les thème
 
 - des **[gabarits Go]({{< relref "templates" >}})** dans la présentation, évalués
   avant l'analyse du Markdown, si bien qu'une présentation peut générer ses propres diapositives ;
-- des **[types de diapositives (kinds)]({{< relref "kinds" >}})** : une diapositive dit ce qu'elle est
+- des **[kinds]({{< relref "kinds" >}})** (le type d'une diapositive) : une diapositive dit ce qu'elle est
   (`title`, `section`…) au lieu de répéter à quoi elle ressemble.
 
 {{< callout type="warning" >}}

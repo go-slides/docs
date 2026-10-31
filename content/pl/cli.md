@@ -19,9 +19,9 @@ slides [command] [flags] deck.md
 | Polecenie | Co robi |
 | --- | --- |
 | `build` | zapisuje prezentację jako HTML, PDF lub obrazy (zobacz niżej). **Domyślne**: `slides deck.md` to `slides build deck.md` |
-| `expand` | wypisuje prezentację jako zwykły Markdown Marp: szablony rozwinięte, rodzaje zastąpione dyrektywami, które reprezentują |
+| `expand` | wypisuje prezentację jako zwykły Markdown Marp: szablony rozwinięte, kinds zastąpione dyrektywami, które reprezentują |
 | `notes` | wypisuje notatki prelegenta |
-| `kinds` | wylicza rodzaje, z których prezentacja może korzystać, i to, co ustawiają; `--json` (w v0.6.0) zapisuje je jako `[{"name", "extends", "directives": [{"key", "value"}]}]`, z rozwiązanym `extends` |
+| `kinds` | wylicza kinds, z których prezentacja może korzystać, i to, co ustawiają; `--json` (w v0.6.0) zapisuje je jako `[{"name", "extends", "directives": [{"key", "value"}]}]`, z rozwiązanym `extends` |
 | `themes` | wylicza motywy |
 | `version` | wypisuje wersję (tak samo `slides --version`) |
 | `completion` | wypisuje skrypt uzupełniania powłoki: `bash`, `zsh`, `fish` lub `powershell` |
@@ -39,7 +39,7 @@ inaczej.
 | `-o`, `--output file` | `build`, `expand`, `notes` | plik wyjściowy; `-` dla standardowego wyjścia |
 | `-I`, `--input-dir dir` | `build` | konwertuje pliki Markdown pod `dir`, rekurencyjnie (w v0.6.0); zobacz niżej |
 | `-P`, `--parallel n` | `build` | liczba prezentacji budowanych naraz (w v0.6.0): domyślnie 5, co najwyżej liczba rdzeni; 1 buduje je jedna po drugiej |
-| `-w`, `--watch` | `build` | buduje ponownie, gdy zmieni się prezentacja, motyw, plik rodzajów lub danych albo konfiguracja, i przeładowuje otwarte strony (w v0.6.0); zobacz niżej |
+| `-w`, `--watch` | `build` | buduje ponownie, gdy zmieni się prezentacja, motyw, plik kinds lub danych albo konfiguracja, i przeładowuje otwarte strony (w v0.6.0); zobacz niżej |
 | `-s`, `--server dir` | `build` | serwuje katalog, konwertując jego prezentacje na żądanie (w v0.6.0); zobacz niżej |
 | `-p`, `--preview` | `build` | otwiera wynik w domyślnej przeglądarce (w v0.6.0): strony HTML z `--watch` (domyślnie włączonym), serwer z `--server` |
 | `--host addr` | `build` | adres, na którym nasłuchuje `--server`, domyślnie `127.0.0.1` (w v0.6.0) |
@@ -52,7 +52,7 @@ inaczej.
 | `--config file` | wszystkie | plik konfiguracyjny; domyślnie `slides.yaml` obok prezentacji, jeśli istnieje |
 | `--no-config` | wszystkie | nie czytaj pliku konfiguracyjnego |
 | `--theme-set path` | wszystkie | plik CSS motywu lub katalog z nimi (można powtarzać) |
-| `--kinds file` | wszystkie | plik YAML z rodzajami (można powtarzać) |
+| `--kinds file` | wszystkie | plik YAML z kinds (można powtarzać) |
 | `--data file` | wszystkie | plik YAML lub JSON z danymi szablonu (można powtarzać) |
 | `--set key=value` | wszystkie | jedna wartość szablonu (można powtarzać) |
 | `--no-template` | wszystkie | nie rozwijaj szablonów Go |
@@ -178,7 +178,7 @@ idzie dalej. Opcje to te z dokumentacji marp-cli, które coś tu znaczą:
 `server`, `preview`; ścieżki są względem pliku. Wiersz poleceń wygrywa.
 `engine`, `options` i `browser*` wymagają silnika Marp i przeglądarki i są
 ignorowane z ostrzeżeniem, tak jak flagi `--browser*`: skrypty napisane dla
-marp-cli nadal działają. (`slides.yaml` i `slides.hcl`, z rodzajami i
+marp-cli nadal działają. (`slides.yaml` i `slides.hcl`, z kinds i
 danymi szablonu, są osobne i czytane jak dawniej.)
 
 ## Watch, serve i podgląd {#watch-serve-and-preview}
@@ -205,7 +205,7 @@ końcowego ukośnika jest do niego przekierowywany (marp-cli serwuje tam swój i
 psuje względne odnośniki strony).
 
 **`--watch`** (`-w`) buduje prezentacje, potem buduje ponownie tę, która się zmienia, a
-gdy zmieni się plik `--theme-set`, plik rodzajów lub danych albo konfiguracja,
+gdy zmieni się plik `--theme-set`, plik kinds lub danych albo konfiguracja,
 wszystkie. Zapisywane strony otwierają gniazdo na pętli zwrotnej (port
 37717 lub następny wolny) i przeładowują się, gdy ich prezentacja jest zbudowana ponownie. Prezentacja,
 której budowa się nie powiedzie, jest zgłaszana i dalej obserwowana. **`--preview`** (`-p`) otwiera
@@ -383,7 +383,7 @@ html: false              # allow all raw HTML
 lang: en
 ```
 
-Rodzaje: własne `kinds:` prezentacji nadpisują te z pliku i z wiersza poleceń.
+Kinds: własne `kinds:` prezentacji nadpisują te z pliku i z wiersza poleceń.
 Dane: `data` z pliku i z wiersza poleceń nadpisują front matter prezentacji,
 więc jedną prezentację można zbudować z różnymi danymi.
 

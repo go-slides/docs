@@ -27,12 +27,12 @@ destra. Nulla viene inviato a un server: né la presentazione, né un link di co
 - **Completamento** durante la digitazione: chiavi delle direttive (quelle spot con `_` nei commenti),
   i valori di `kind`, `theme`, `size`, `paginate`, e le funzioni dei template e i campi dei dati
   dentro `{{ }}`.
-- **Guida** per ciò che si trova sotto il cursore: una direttiva, un tipo (cosa imposta),
+- **Guida** per ciò che si trova sotto il cursore: una direttiva, un kind (il tipo di una slide: cosa imposta),
   una funzione di template. Il riquadro della guida rimanda anche a queste pagine.
 - **Problemi** sulla loro riga: gli errori di template, YAML e HCL sono evidenziati
   nell'editor ed elencati sotto di esso, e l'anteprima conserva l'ultima presentazione
   che è stata resa.
-- **Esempi**: una presentazione di benvenuto, template che generano slide, tipi di slide,
+- **Esempi**: una presentazione di benvenuto, template che generano slide, kinds,
   un front matter HCL, temi e direttive spot, e matematica, immagini e
   sfondi (`![bg]`, un `![bg left:40%]` diviso, filtri).
 - **File**: il pannello a sinistra dell'editor è il progetto della presentazione, organizzato
@@ -42,7 +42,7 @@ destra. Nulla viene inviato a un server: né la presentazione, né un link di co
   - Fai clic su un file per modificarlo. L'editor lo colora secondo il suo linguaggio
     (Markdown, YAML, HCL, JSON, CSS) e ne segnala i problemi.
   - Clic destro (o Maiusc+F10) per Nuovo file, Nuova cartella, Rinomina (F2),
-    Elimina (chiede conferma) e Nuovo tema / Nuovo tipo. Trascina un file su una cartella
+    Elimina (chiede conferma) e Nuovo tema / Nuovo kind. Trascina un file su una cartella
     per spostarlo. La tastiera segue il pattern ad albero WAI-ARIA, compresa
     la ricerca digitando.
   - **Project ▸ New theme** crea `themes/my-gaia.css` (oppure da default,
@@ -108,7 +108,7 @@ destra. Nulla viene inviato a un server: né la presentazione, né un link di co
 - **Link di condivisione**: la presentazione viaggia nel link stesso (nella sua parte `#`,
   compressa), quindi aprire il link apre la presentazione. I link trasportano fino a
   64 KiB compressi, e solo la presentazione: quando il progetto contiene di più
-  (temi, tipi, media), Share lo dice e propone lo `.zip`.
+  (temi, kinds, media), Share lo dice e propone lo `.zip`.
 - **Save as**:
   - la pagina HTML, la stessa che scrive `slides deck.md`;
   - un **PDF** (vettoriale, con testo selezionabile, con indice);
@@ -127,7 +127,7 @@ destra. Nulla viene inviato a un server: né la presentazione, né un link di co
 - **La tua bozza viene conservata**:
   - La presentazione è salvata in questo browser mentre digiti (IndexedDB, solo per questo sito)
     e ritorna quando ricarichi. Nulla viene inviato altrove. I
-    file di testo del progetto (temi, tipi, dati, `slides.yaml`) sono conservati
+    file di testo del progetto (temi, kinds, dati, `slides.yaml`) sono conservati
     allo stesso modo, anche se chiudi la scheda subito dopo aver digitato; i media sono
     memorizzati nel momento in cui vengono trascinati.
   - Un link condiviso apre la sua presentazione e conserva la tua bozza: **Draft ▸ Restore my
@@ -138,7 +138,7 @@ destra. Nulla viene inviato a un server: né la presentazione, né un link di co
   - **Draft ▸ Forget my drafts** cancella tutto ciò che è memorizzato.
 
 Ogni esportazione rende il progetto che mostra l'anteprima: il suo `slides.yaml`,
-temi, tipi, file di dati e media, con i media dentro il documento.
+temi, kinds, file di dati e media, con i media dentro il documento.
 
 Le immagini come file (slides `--images`) non vengono prodotte nel browser: usa il
 [comando]({{< relref "cli" >}}) o l'

@@ -5,7 +5,7 @@ description: "Une diapositive dit ce qu'elle est : kind désigne un préréglag
 tags: [kinds]
 ---
 
-Un **type de diapositive (kind)** est un préréglage nommé de directives locales : en-tête, pied de page,
+Un **kind** (le type d'une diapositive) est un préréglage nommé de directives locales : en-tête, pied de page,
 pagination, classe, arrière-plan. Une diapositive dit ce qu'elle est — `title`,
 `section` — au lieu de répéter à quoi elle ressemble, et l'apparence d'une présentation se modifie
 à un seul endroit.

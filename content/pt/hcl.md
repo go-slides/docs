@@ -17,7 +17,7 @@ causa das suas expressões e das suas funções.
 | --- | --- | --- |
 | front matter | `---` … `---` | `---hcl` … `---` |
 | configuração | `slides.yaml` | `slides.hcl`, procurado primeiro |
-| arquivos de kinds | `--kinds kinds.yaml`, `kinds: kinds.yaml` | qualquer arquivo chamado `*.hcl` |
+| arquivos de kinds (o tipo de um slide) | `--kinds kinds.yaml`, `kinds: kinds.yaml` | qualquer arquivo chamado `*.hcl` |
 | arquivos de dados | `--data data.yaml` ou `.json` | qualquer arquivo chamado `*.hcl` |
 
 Os comentários de diretiva (`<!-- class: invert -->`) continuam em YAML, como no

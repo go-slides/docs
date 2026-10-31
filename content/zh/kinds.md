@@ -1,5 +1,5 @@
 ---
-title: "Kind"
+title: "Kinds"
 weight: 40
 description: "幻灯片声明自己是什么：kind 是一组命名的局部指令预设。"
 tags: [kinds]

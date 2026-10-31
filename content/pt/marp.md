@@ -68,7 +68,7 @@ seu é um arquivo CSS com o comentário `/* @theme name */` do Marp, informado c
   como texto fora de um bloco de código precisa de `--no-template`, ou do texto
   escapado como os templates Go escapam. Blocos e trechos de código são
   deixados em paz.
-- **Kinds.** `kind:` e `_kind:` são diretivas que o Marp não tem (veja
+- **Kinds (o tipo de um slide).** `kind:` e `_kind:` são diretivas que o Marp não tem (veja
   [Kinds]({{< relref "kinds" >}})). `slides expand` as substitui pelas
   diretivas que elas representam, de modo que a apresentação expandida é Marp
   simples.

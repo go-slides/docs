@@ -68,7 +68,7 @@ func main() {
 | `{lineNumbers=false}` | aucun numéro, quoi qu'indique la diapositive |
 
 Pour tous les blocs d'une diapositive et des suivantes, définissez la directive
-`<!-- lineNumbers: true -->` (`_lineNumbers` pour une seule diapositive). Un type de diapositive (kind) peut la définir
+`<!-- lineNumbers: true -->` (`_lineNumbers` pour une seule diapositive). Un *kind* (le type d'une diapositive) peut la définir
 une fois pour toute une famille de diapositives :
 
 ```yaml

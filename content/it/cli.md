@@ -19,9 +19,9 @@ slides [command] [flags] deck.md
 | Comando | Cosa fa |
 | --- | --- |
 | `build` | scrive la presentazione come HTML, o come PDF o immagini (vedi sotto). **Il predefinito**: `slides deck.md` equivale a `slides build deck.md` |
-| `expand` | stampa la presentazione come semplice Markdown Marp: template espansi, tipi sostituiti dalle direttive che rappresentano |
+| `expand` | stampa la presentazione come semplice Markdown Marp: template espansi, kinds sostituiti dalle direttive che rappresentano |
 | `notes` | stampa le note del relatore |
-| `kinds` | elenca i tipi che la presentazione può usare e cosa impostano; `--json` (nella v0.6.0) li scrive come `[{"name", "extends", "directives": [{"key", "value"}]}]`, con `extends` risolto |
+| `kinds` | elenca i kinds (il tipo di una slide) che la presentazione può usare e cosa impostano; `--json` (nella v0.6.0) li scrive come `[{"name", "extends", "directives": [{"key", "value"}]}]`, con `extends` risolto |
 | `themes` | elenca i temi |
 | `version` | stampa la versione (lo fa anche `slides --version`) |
 | `completion` | stampa uno script di completamento per la shell: `bash`, `zsh`, `fish` o `powershell` |
@@ -39,7 +39,7 @@ corto. `build` scrive `deck.html` accanto a `deck.md` salvo diversa indicazione 
 | `-o`, `--output file` | `build`, `expand`, `notes` | file di output; `-` per lo standard output |
 | `-I`, `--input-dir dir` | `build` | converte i file Markdown sotto `dir`, ricorsivamente (nella v0.6.0); vedi sotto |
 | `-P`, `--parallel n` | `build` | presentazioni compilate contemporaneamente (nella v0.6.0): 5 per impostazione predefinita, al massimo il numero di core; 1 le compila una dopo l'altra |
-| `-w`, `--watch` | `build` | compila di nuovo quando cambia una presentazione, un tema, un file di tipi o di dati o la configurazione, e ricarica le pagine aperte (nella v0.6.0); vedi sotto |
+| `-w`, `--watch` | `build` | compila di nuovo quando cambia una presentazione, un tema, un file di kinds o di dati o la configurazione, e ricarica le pagine aperte (nella v0.6.0); vedi sotto |
 | `-s`, `--server dir` | `build` | serve una cartella, convertendo le sue presentazioni su richiesta (nella v0.6.0); vedi sotto |
 | `-p`, `--preview` | `build` | apre il risultato nel browser predefinito (nella v0.6.0): le pagine HTML con `--watch` (implicito), il server con `--server` |
 | `--host addr` | `build` | l'indirizzo su cui ascolta `--server`, `127.0.0.1` per impostazione predefinita (nella v0.6.0) |
@@ -52,7 +52,7 @@ corto. `build` scrive `deck.html` accanto a `deck.md` salvo diversa indicazione 
 | `--config file` | tutti | file di configurazione; per impostazione predefinita `slides.yaml` accanto alla presentazione, se esiste |
 | `--no-config` | tutti | non legge alcun file di configurazione |
 | `--theme-set path` | tutti | un file CSS di tema, o una cartella di essi (ripetibile) |
-| `--kinds file` | tutti | un file YAML di tipi (ripetibile) |
+| `--kinds file` | tutti | un file YAML di kinds (ripetibile) |
 | `--data file` | tutti | un file YAML o JSON di dati per i template (ripetibile) |
 | `--set key=value` | tutti | un valore per i template (ripetibile) |
 | `--no-template` | tutti | non espande i template Go |
@@ -178,7 +178,7 @@ qui: `title`, `description`, `author`, `keywords`, `url`, `ogImage`, `lang`,
 `server`, `preview`; i percorsi sono relativi al file. La riga di comando prevale.
 `engine`, `options` e `browser*` richiedono il motore di Marp e un browser, e vengono
 ignorate con un avviso, come i flag `--browser*`: gli script scritti per
-marp-cli continuano a funzionare. (`slides.yaml` e `slides.hcl`, con i tipi e i
+marp-cli continuano a funzionare. (`slides.yaml` e `slides.hcl`, con i kinds e i
 dati dei template, sono separati e letti come prima.)
 
 ## Watch, server e anteprima {#watch-serve-and-preview}
@@ -205,7 +205,7 @@ la barra finale viene reindirizzata ad essa (marp-cli serve lì il suo indice, i
 rompe i link relativi della pagina).
 
 **`--watch`** (`-w`) compila le presentazioni, poi ricompila quella che cambia
-e, quando cambia un file `--theme-set`, un file di tipi o di dati o la configurazione,
+e, quando cambia un file `--theme-set`, un file di kinds o di dati o la configurazione,
 tutte. Le pagine che scrive aprono un socket sul loopback (porta
 37717, o la successiva libera) e si ricaricano quando la loro presentazione viene compilata di nuovo. Una presentazione
 che non si compila viene segnalata e continua a essere osservata. **`--preview`** (`-p`) apre
@@ -383,7 +383,7 @@ html: false              # allow all raw HTML
 lang: en
 ```
 
-Tipi: i `kinds:` della presentazione prevalgono su quelli del file e della riga di comando.
+Kinds: i `kinds:` della presentazione prevalgono su quelli del file e della riga di comando.
 Dati: i `data` del file e della riga di comando prevalgono sul front
 matter della presentazione, così una presentazione può essere compilata con dati diversi.
 

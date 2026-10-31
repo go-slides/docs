@@ -30,7 +30,7 @@ link de compartilhamento.
 - **Autocompletar** enquanto você digita: chaves de diretiva (as pontuais com
   `_`, em comentários), os valores de `kind`, `theme`, `size`, `paginate`, e as
   funções de template e os campos de dados dentro de `{{ }}`.
-- **Ajuda** sobre o que está sob o cursor: uma diretiva, um kind (o que ele
+- **Ajuda** sobre o que está sob o cursor: uma diretiva, um kind (o tipo de um slide: o que ele
   define), uma função de template. O painel de ajuda também tem links para estas
   páginas.
 - **Problemas** na própria linha: os erros de template, YAML e HCL são

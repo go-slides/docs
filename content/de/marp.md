@@ -66,7 +66,7 @@ die Sie mit `--theme-set` angeben oder in `slides.yaml` unter `themes:` aufführ
   [Vorlagen]({{< relref "templates" >}})). Ein Foliensatz, der `{{` außerhalb eines Codeblocks als Text
   zeigt, braucht `--no-template` oder den Text maskiert, so wie Go-Vorlagen
   ihn maskieren. Codeblöcke und Code-Spans bleiben unberührt.
-- **Kinds (Folientypen).** `kind:` und `_kind:` sind Direktiven, die Marp nicht kennt (siehe
+- **Kinds (die Art einer Folie).** `kind:` und `_kind:` sind Direktiven, die Marp nicht kennt (siehe
   [Kinds]({{< relref "kinds" >}})). `slides expand` ersetzt sie durch die
   Direktiven, für die sie stehen, sodass der expandierte Foliensatz reines Marp ist.
 - **Ausgaben.** HTML, PNG, JPEG, PDF, PPTX und ODP, über Go-Bibliotheken statt über

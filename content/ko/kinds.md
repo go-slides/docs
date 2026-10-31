@@ -1,5 +1,5 @@
 ---
-title: "Kind"
+title: "Kinds"
 weight: 40
 description: "슬라이드가 자신이 무엇인지 밝힙니다. kind는 로컬 디렉티브 프리셋에 붙인 이름입니다."
 tags: [kinds]

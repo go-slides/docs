@@ -68,7 +68,7 @@ func main() {
 | `{lineNumbers=false}` | bez numerów, cokolwiek mówi slajd |
 
 Dla każdego bloku slajdu i następnych ustaw dyrektywę:
-`<!-- lineNumbers: true -->` (`_lineNumbers` dla jednego slajdu). Rodzaj może ustawić ją
+`<!-- lineNumbers: true -->` (`_lineNumbers` dla jednego slajdu). Kind może ustawić ją
 raz dla rodziny slajdów:
 
 ```yaml

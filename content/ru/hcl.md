@@ -1,7 +1,7 @@
 ---
 title: "HCL"
 weight: 45
-description: "HCL2 везде, где презентация принимает YAML: front matter на HCL, slides.hcl, файлы типов и данных, с выражениями и функциями."
+description: "HCL2 везде, где презентация принимает YAML: front matter на HCL, slides.hcl, файлы kinds и данных, с выражениями и функциями."
 tags: [hcl, configuration]
 ---
 
@@ -17,7 +17,7 @@ HCL появился в v0.3.0 ([go-slides/slides#13](https://github.com/go-slid
 | --- | --- | --- |
 | front matter | `---` … `---` | `---hcl` … `---` |
 | конфигурация | `slides.yaml` | `slides.hcl`, ищется первым |
-| файлы типов | `--kinds kinds.yaml`, `kinds: kinds.yaml` | любой файл с именем `*.hcl` |
+| файлы kinds | `--kinds kinds.yaml`, `kinds: kinds.yaml` | любой файл с именем `*.hcl` |
 | файлы данных | `--data data.yaml` или `.json` | любой файл с именем `*.hcl` |
 
 Комментарии-директивы (`<!-- class: invert -->`) остаются в YAML, как в Marp, а
@@ -51,7 +51,7 @@ kind "chapter" {
   (`theme`, `paginate`, `header`, `footer`, `class`, `backgroundColor`…),
   метаданные (`title`, `author`…), `template`, `delims`, `kinds` (пути к
   файлам) и `data` — объект.
-- **Блоки `kind "<name>" { … }`** определяют [типы слайдов]({{< relref "kinds" >}})
+- **Блоки `kind "<name>" { … }`** определяют [kinds (типы слайдов)]({{< relref "kinds" >}})
   с локальными директивами и `extends`.
 - **Значения** попадают в директивы в тех строковых формах, которые им даёт
   YAML, — `true` становится `"true"`, список классов остаётся списком, — так что
@@ -105,7 +105,7 @@ kind "quote" {
 ```
 
 Неизвестный атрибут — это ошибка, а не молчаливое отсутствие действия. Файл
-типов содержит блоки `kind`; остальные его атрибуты игнорируются, поэтому
+kinds содержит блоки `kind`; остальные его атрибуты игнорируются, поэтому
 `slides.hcl` может служить и таким файлом. Атрибуты файла данных — это ключи
 данных:
 
