@@ -1,0 +1,62 @@
+# Textos do site, além dos do Hextra (themes/hextra/i18n/pt.yaml), que este arquivo
+# reescreve em português do Brasil: um arquivo do site substitui o do tema.
+copyright: "© 2026 os autores do go-slides · BSD-3-Clause"
+version: "Versão"
+outdated: "Você está lendo a documentação de uma versão antiga; o conteúdo pode não estar mais correto."
+outdatedLink: "Ir para a versão mais recente."
+
+# A página Galeria (layouts/_shortcodes/gallery.html).
+gallerySlides:
+  one: "{{ .Count }} slide"
+  other: "{{ .Count }} slides"
+galleryAlt: "Primeiro slide de «{{ .title }}»"
+galleryOpen: "Abrir no playground"
+galleryZip: "Baixar o .zip"
+gallerySource: "Código-fonte no GitHub"
+galleryNote: "Esta apresentação tem arquivos além de <code>deck.md</code> ({{ .files }}), por isso não cabe em um link: descompacte-a e execute <code>slides build --allow-local-files deck.md</code>, ou importe o .zip com <em>Import</em> no playground."
+
+# Rótulos de acessibilidade (somente para leitores de tela)
+closeBanner: "Fechar banner"
+imageGallery: "Galeria de imagens"
+menu: "Menu"
+mermaidDiagram: "Diagrama"
+nextImage: "Próxima imagem"
+pdfViewer: "Visualizador de PDF"
+permalinkLabel: "Link permanente para esta seção"
+playbackTime: "Tempo de reprodução"
+previousImage: "Imagem anterior"
+searchResults: "Resultados da pesquisa"
+skipToContent: "Pular para o conteúdo"
+tableOfContents: "Índice"
+terminalRecording: "Gravação de terminal"
+togglePageContextMenu: "Alternar o menu de contexto da página"
+toggleSection: "Alternar seção"
+
+# Texto de acessibilidade de região dinâmica/status
+resultsFound: "%d resultados encontrados"
+
+# Textos da interface
+archives: "Arquivos"
+backToTop: "Voltar ao topo"
+changeLanguage: "Mudar o idioma"
+changeTheme: "Mudar o tema"
+copy: "Copiar"
+copied: "Copiado!"
+copyAsMarkdown: "Copiar como Markdown"
+copyPage: "Copiar página"
+copyCode: "Copiar código"
+dark: "Escuro"
+editThisPage: "Editar esta página no GitHub →"
+lastUpdated: "Última modificação"
+light: "Claro"
+next: "Próximo"
+noResultsFound: "Nenhum resultado encontrado"
+onThisPage: "Nesta página"
+more: "Mais"
+poweredBy: "Feito com Hextra"
+previous: "Anterior"
+readMore: "Leia mais →"
+searchPlaceholder: "Pesquisar..."
+system: "Sistema"
+tags: "Tags"
+viewAsMarkdown: "Ver como Markdown"

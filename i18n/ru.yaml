@@ -1,0 +1,17 @@
+# Строки сайта, дополняющие строки Hextra (themes/hextra/i18n/ru.yaml).
+copyright: "© 2026 авторы go-slides · BSD-3-Clause"
+version: "Версия"
+outdated: "Вы читаете документацию устаревшей версии; её содержимое может быть уже неточным."
+outdatedLink: "Перейти к последней версии."
+
+# Страница «Галерея» (layouts/_shortcodes/gallery.html).
+gallerySlides:
+  one: "{{ .Count }} слайд"
+  few: "{{ .Count }} слайда"
+  many: "{{ .Count }} слайдов"
+  other: "{{ .Count }} слайда"
+galleryAlt: "Первый слайд презентации «{{ .title }}»"
+galleryOpen: "Открыть в песочнице"
+galleryZip: "Скачать .zip"
+gallerySource: "Исходный код на GitHub"
+galleryNote: "Помимо <code>deck.md</code> у этой презентации есть другие файлы ({{ .files }}), поэтому она не помещается в ссылку: распакуйте архив и выполните <code>slides build --allow-local-files deck.md</code> либо импортируйте .zip кнопкой <em>Import</em> в песочнице."

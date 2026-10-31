@@ -1,0 +1,15 @@
+# Stringhe del sito, in aggiunta a quelle di Hextra (themes/hextra/i18n/it.yaml).
+copyright: "© 2026 gli autori di go-slides · BSD-3-Clause"
+version: "Versione"
+outdated: "Stai leggendo la documentazione di una versione obsoleta; il suo contenuto potrebbe non essere più esatto."
+outdatedLink: "Vai all'ultima versione."
+
+# La pagina Galleria (layouts/_shortcodes/gallery.html).
+gallerySlides:
+  one: "{{ .Count }} slide"
+  other: "{{ .Count }} slide"
+galleryAlt: "Prima slide di «{{ .title }}»"
+galleryOpen: "Apri nel playground"
+galleryZip: "Scarica lo .zip"
+gallerySource: "Codice sorgente su GitHub"
+galleryNote: "Questa presentazione ha file oltre a <code>deck.md</code> ({{ .files }}), quindi non entra in un link: decomprimila ed esegui <code>slides build --allow-local-files deck.md</code>, oppure importa lo .zip con <em>Import</em> nel playground."
