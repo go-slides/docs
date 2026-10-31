@@ -1,0 +1,630 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Cli</title><link>https://go-slides.github.io/docs/0.14/uk/tags/cli/</link><description>Recent content in Cli on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.14/uk/tags/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Командний рядок</title><link>https://go-slides.github.io/docs/0.14/uk/cli/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/uk/cli/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Ця сторінка описує v0.14.0.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides [deck.md] [flags]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides [command] [flags] deck.md&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="commands"&gt;Команди&lt;span class="hx:absolute hx:-mt-20" id="commands"&gt;&lt;/span&gt;
+&lt;a href="#commands" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Команда&lt;/th&gt;
+&lt;th&gt;Що робить&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записує презентацію як HTML, PDF або зображення (див. нижче). &lt;strong&gt;Типова команда&lt;/strong&gt;: &lt;code&gt;slides deck.md&lt;/code&gt; — це &lt;code&gt;slides build deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;виводить презентацію як звичайний Markdown Marp: шаблони розгорнуто, kinds замінено на директиви, які вони означають&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;виводить нотатки доповідача&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;перелічує kinds, які може використовувати презентація, і що вони встановлюють; &lt;code&gt;--json&lt;/code&gt; (у v0.6.0) записує їх як &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, з розв&amp;rsquo;язаним &lt;code&gt;extends&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;перелічує теми&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;виводить версію (так само робить &lt;code&gt;slides --version&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;completion&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;виводить скрипт автодоповнення оболонки: &lt;code&gt;bash&lt;/code&gt;, &lt;code&gt;zsh&lt;/code&gt;, &lt;code&gt;fish&lt;/code&gt; або &lt;code&gt;powershell&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;slides &amp;lt;command&amp;gt; --help&lt;/code&gt; виводить прапорці команди. Прапорці можуть стояти
+перед презентацією або після неї: &lt;code&gt;slides deck.md -o out.html&lt;/code&gt; і &lt;code&gt;slides -o out.html deck.md&lt;/code&gt; — одне й те саме. Довгі прапорці мають два дефіси (&lt;code&gt;--html&lt;/code&gt;); &lt;code&gt;-o&lt;/code&gt; —
+єдиний короткий. &lt;code&gt;build&lt;/code&gt; записує &lt;code&gt;deck.html&lt;/code&gt; поруч із &lt;code&gt;deck.md&lt;/code&gt;, якщо &lt;code&gt;-o&lt;/code&gt; не
+каже інакше.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="flags"&gt;Прапорці&lt;span class="hx:absolute hx:-mt-20" id="flags"&gt;&lt;/span&gt;
+&lt;a href="#flags" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Прапорець&lt;/th&gt;
+&lt;th&gt;Команди&lt;/th&gt;
+&lt;th&gt;Що робить&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-o&lt;/code&gt;, &lt;code&gt;--output file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;expand&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;вихідний файл; &lt;code&gt;-&lt;/code&gt; для стандартного виводу&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-I&lt;/code&gt;, &lt;code&gt;--input-dir dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;перетворити файли Markdown у &lt;code&gt;dir&lt;/code&gt;, рекурсивно (у v0.6.0); див. нижче&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-P&lt;/code&gt;, &lt;code&gt;--parallel n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;скільки презентацій збирається одночасно (у v0.6.0): типово 5, не більше за кількість ядер; 1 збирає їх одну за одною&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;збирати знову, коли змінюється презентація, тема, файл kinds чи даних або конфігурація, і перезавантажувати відкриті сторінки (у v0.6.0); див. нижче&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;обслуговувати теку, перетворюючи її презентації на запит (у v0.6.0); див. нижче&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-p&lt;/code&gt;, &lt;code&gt;--preview&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;відкрити результат у типовому браузері (у v0.6.0): HTML-сторінки з &lt;code&gt;--watch&lt;/code&gt; (мається на увазі), сервер з &lt;code&gt;--server&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--host addr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;адреса, на якій слухає &lt;code&gt;--server&lt;/code&gt;, типово &lt;code&gt;127.0.0.1&lt;/code&gt; (у v0.6.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allowed-host name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;публічне ім&amp;rsquo;я хоста зворотного проксі, на яке відповідає &lt;code&gt;--server&lt;/code&gt;, можна повторювати (у v0.14.0); див. &lt;a href="https://go-slides.github.io/docs/0.14/uk/self-hosting/"&gt;Self-hosting&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--template bespoke|bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;шаблон HTML-сторінки (у v0.6.0): &lt;code&gt;bespoke&lt;/code&gt;, типовий, зі скриптом показу, екранним контролером і переходами, або &lt;code&gt;bare&lt;/code&gt;, слайди стосом (&lt;code&gt;--bare&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bespoke.osc&lt;/code&gt;, &lt;code&gt;--bespoke.progress&lt;/code&gt;, &lt;code&gt;--bespoke.transition&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;параметри шаблону bespoke, з типовими значеннями marp-cli (у v0.6.0): контролер увімкнено, &lt;strong&gt;смугу прогресу вимкнено&lt;/strong&gt; (раніше вона малювалася завжди), переходи ввімкнено; &lt;code&gt;--bespoke.osc=false&lt;/code&gt; вимикає один із них&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--config-file file&lt;/code&gt;, &lt;code&gt;--no-config-file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;файл конфігурації marp-cli, JSON або YAML (у v0.6.0); див. нижче. &lt;code&gt;--config&lt;/code&gt; — власний файл &lt;code&gt;slides&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--browser&lt;/code&gt;, &lt;code&gt;--browser-path&lt;/code&gt;, &lt;code&gt;--browser-protocol&lt;/code&gt;, &lt;code&gt;--browser-timeout&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;приймаються й ігноруються з попередженням (у v0.6.0): браузера немає&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-editable&lt;/code&gt;, &lt;code&gt;--no-parallel&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;написання marp-cli для &lt;code&gt;--pptx&lt;/code&gt; і &lt;code&gt;-P 1&lt;/code&gt; (у v0.6.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--config file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;файл конфігурації; типово &lt;code&gt;slides.yaml&lt;/code&gt; поруч із презентацією, якщо він є&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;не читати файл конфігурації&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;файл CSS теми або тека з ними (можна повторювати)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;файл YAML з kinds (можна повторювати)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;файл YAML або JSON з даними шаблону (можна повторювати)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--set key=value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;одне значення шаблону (можна повторювати)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;не розгортати шаблони Go&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--strict-yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;розбирати директиви як суворий YAML, як це робить звичайний Marpit (Marp Core розбирає їх вільно)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--no-emoji&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;усі&lt;/td&gt;
+&lt;td&gt;залишити &lt;code&gt;:shortcodes:&lt;/code&gt; та емодзі Unicode текстом замість малювання їх зображеннями (починаючи з v0.4.0: &lt;a href="https://go-slides.github.io/docs/0.14/uk/emoji/"&gt;Емодзі&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;дозволити весь сирий HTML; типово — білий список Marp Core&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--lang code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;lang&lt;/code&gt; сторінки, коли презентація його не задає&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--bare&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;скласти слайди стосом, без скрипта показу&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати PDF, одна сторінка на слайд, зі змістом — текст і фігури векторами (також вибирається через &lt;code&gt;-o file.pdf&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати PDF, де кожна сторінка — одне зображення слайда, як це робила v0.3.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати нотатки доповідача як текстовий файл, слайди розділено &lt;code&gt;---&lt;/code&gt;, як це робить marp-cli (у v0.6.0; також вибирається через &lt;code&gt;-o file.txt&lt;/code&gt;). Команда &lt;code&gt;notes&lt;/code&gt; виводить їх в іншому вигляді&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-notes&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;додати нотатки доповідача кожного слайда на його сторінку PDF як анотацію-примітку, як це робить marp-cli (у v0.6.0). Просить PDF, коли ніщо інше не каже, що записувати&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-outlines&lt;/code&gt;, &lt;code&gt;--pdf-outlines.pages&lt;/code&gt;, &lt;code&gt;--pdf-outlines.headings&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;закладки PDF (у v0.6.0): «Page N» на слайд і вкладені під ним заголовки. Тут увімкнено типово, на відміну від marp-cli; &lt;code&gt;=false&lt;/code&gt; вимикає одну з них. Див. нижче&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--images png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати по одному зображенню на слайд: &lt;code&gt;deck.001.png&lt;/code&gt;, …&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image png|jpeg&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати перший слайд як зображення (також вибирається через &lt;code&gt;-o file.png&lt;/code&gt; або &lt;code&gt;-o file.jpg&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати файл PowerPoint з нотатками доповідача (також вибирається через &lt;code&gt;-o file.pptx&lt;/code&gt;): редагований починаючи з v0.5.0, одна картинка на слайд у v0.4.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pptx-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати файл PowerPoint з однією картинкою на повний слайд, як це робить marp-cli (починаючи з v0.5.0); &lt;code&gt;--image-scale&lt;/code&gt; типово 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати презентацію OpenDocument з нотатками доповідача (також вибирається через &lt;code&gt;-o file.odp&lt;/code&gt;): редагована починаючи з v0.5.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--odp-raster&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записати презентацію OpenDocument з однією картинкою на слайд (починаючи з v0.5.0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--jpeg-quality n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;якість JPEG, від 1 до 100 (типово 85)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--image-scale n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;пікселів пристрою на піксель CSS для зображень і PDF (типово 1); 2 дає 2560×1440 для 16:9, текст і вектори малюються з цією щільністю, а не збільшуються&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--allow-local-files&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;дозволити зображенням і PDF читати локальні файли, лише з-під теки презентації; типово заборонено, як у marp-cli&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;перевизначити тему презентації (у v0.6.0): назва теми або файл CSS, який стає темою, який би &lt;code&gt;@theme&lt;/code&gt; він не оголошував; теку відхиляють, використовуйте &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;метадані сторінки (у v0.6.0), понад директивами презентації &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;, &lt;code&gt;keywords&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt; та &lt;code&gt;image&lt;/code&gt;; див. нижче&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="several-decks-and-a-directory"&gt;Кілька презентацій і тека&lt;span class="hx:absolute hx:-mt-20" id="several-decks-and-a-directory"&gt;&lt;/span&gt;
+&lt;a href="#several-decks-and-a-directory" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;У v0.6.0 &lt;code&gt;build&lt;/code&gt; приймає кілька презентацій, теку (презентації під нею,
+знайдені рекурсивно) або шаблон і збирає до &lt;code&gt;--parallel&lt;/code&gt; з них одночасно.
+&lt;code&gt;-&lt;/code&gt; — це стандартний ввід; на відміну від marp-cli, конвеєр не читається, якщо
+цього не вказано через &lt;code&gt;-&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Шаблон читається так, як читає glob marp-cli (&lt;code&gt;**&lt;/code&gt; та &lt;code&gt;{a,b}&lt;/code&gt; у v0.7.0;
+беріть його в лапки, щоб оболонка залишила його для &lt;code&gt;slides&lt;/code&gt;): &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;?&lt;/code&gt;,
+&lt;code&gt;[a-z]&lt;/code&gt; та &lt;code&gt;{md,txt}&lt;/code&gt; у межах імені, &lt;code&gt;**&lt;/code&gt; для будь-якої кількості тек, тож
+&lt;code&gt;'docs/**/*.md'&lt;/code&gt; бере презентації дерева. Символ підстановки не сягає імені, що
+починається з крапки, у &lt;code&gt;node_modules&lt;/code&gt; нічого не шукається, регістр має
+значення (&lt;code&gt;*.md&lt;/code&gt; не знаходить &lt;code&gt;UPPER.MD&lt;/code&gt;), і все, що збігається з шаблоном,
+перетворюється, яке б не було розширення. Шаблон, що нічому не відповідає, —
+помилка.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-I dir&lt;/code&gt;&lt;/strong&gt; знаходить файли Markdown (&lt;code&gt;.md&lt;/code&gt;, &lt;code&gt;.mdown&lt;/code&gt;, &lt;code&gt;.markdown&lt;/code&gt;,
+&lt;code&gt;.markdn&lt;/code&gt;, малими літерами) під &lt;code&gt;dir&lt;/code&gt;, як це робить marp-cli: у
+&lt;code&gt;node_modules&lt;/code&gt; і теках із крапкою не шукають. З &lt;code&gt;-o out&lt;/code&gt; кожна презентація
+записується за своїм шляхом під &lt;code&gt;dir&lt;/code&gt;, віддзеркаленим під &lt;code&gt;out&lt;/code&gt;:
+&lt;code&gt;dir/sub/b.md&lt;/code&gt; дає &lt;code&gt;out/sub/b.html&lt;/code&gt; (&lt;code&gt;b.pdf&lt;/code&gt;, &lt;code&gt;b.001.png&lt;/code&gt;, &lt;code&gt;b.txt&lt;/code&gt;, … що б не
+казали прапорці). Без &lt;code&gt;-o&lt;/code&gt; виводи йдуть поруч зі своїми презентаціями.
+Називати презентації разом з &lt;code&gt;-I&lt;/code&gt; — помилка, так само як і &lt;code&gt;-o file&lt;/code&gt; для
+кількох презентацій (&lt;code&gt;-o -&lt;/code&gt; дозволено).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-P n&lt;/code&gt;&lt;/strong&gt; збирає &lt;code&gt;n&lt;/code&gt; презентацій одночасно. Власний рендеринг презентації
+вже використовує ядра, тож &lt;code&gt;n&lt;/code&gt; обмежене їх кількістю; з &lt;code&gt;-o -&lt;/code&gt; презентації
+збираються одна за одною. Повідомлення презентації тримаються разом, і
+презентація, що зазнала невдачі, не зупиняє інші: код виходу 1, а
+повідомлення перелічує невдачі.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="transitions-and-the-presenting-page"&gt;Переходи та сторінка показу&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-the-presenting-page"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-the-presenting-page" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;У v0.6.0 працює директива &lt;code&gt;transition&lt;/code&gt; з marp-cli: &lt;code&gt;&amp;lt;!-- transition: fade 1s --&amp;gt;&lt;/code&gt;, назва й необов&amp;rsquo;язкова тривалість, для слайда й наступних за ним,
+або &lt;code&gt;&amp;lt;!-- _transition: cover --&amp;gt;&lt;/code&gt; для одного. Вбудовані назви — з marp-cli:
+&lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;counterclockwise&lt;/code&gt;, &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;coverflow&lt;/code&gt;, &lt;code&gt;cube&lt;/code&gt;, &lt;code&gt;cylinder&lt;/code&gt;,
+&lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;drop&lt;/code&gt;, &lt;code&gt;explode&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;fade-out&lt;/code&gt;, &lt;code&gt;fall&lt;/code&gt;, &lt;code&gt;flip&lt;/code&gt;, &lt;code&gt;glow&lt;/code&gt;,
+&lt;code&gt;implode&lt;/code&gt;, &lt;code&gt;in-out&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;iris-out&lt;/code&gt;, &lt;code&gt;melt&lt;/code&gt;, &lt;code&gt;overlap&lt;/code&gt;, &lt;code&gt;pivot&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;,
+&lt;code&gt;push&lt;/code&gt;, &lt;code&gt;reveal&lt;/code&gt;, &lt;code&gt;rotate&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;star&lt;/code&gt;, &lt;code&gt;swap&lt;/code&gt;, &lt;code&gt;swipe&lt;/code&gt;, &lt;code&gt;swoosh&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;,
+&lt;code&gt;wiper&lt;/code&gt; та &lt;code&gt;zoom&lt;/code&gt;; &lt;code&gt;none&lt;/code&gt; вимикає. Сторінка відтворює його за допомогою
+&lt;strong&gt;View Transition API&lt;/strong&gt; браузера, коли глядач залишає слайд, що його має,
+уперед, і коли повертається до нього; браузери без цього API міняють слайди як
+раніше, а глядач, який просить зменшити анімацію, отримує простий fade. Тема
+може принести власні keyframes з іменами &lt;code&gt;marp-transition-NAME&lt;/code&gt; (або
+&lt;code&gt;marp-outgoing-&lt;/code&gt; і &lt;code&gt;marp-incoming-&lt;/code&gt;, та &lt;code&gt;-backward&lt;/code&gt;), які використовуються
+раніше за вбудовані.&lt;/p&gt;
+&lt;p&gt;Сторінка має &lt;strong&gt;екранний контролер&lt;/strong&gt; — назад, сторінка, вперед, повний екран, —
+який показується, коли рухається вказівник або клавіша, і ховається через
+мить (&lt;code&gt;--bespoke.osc=false&lt;/code&gt; його прибирає), а з &lt;code&gt;--bespoke.progress&lt;/code&gt; — смугу
+прогресу. &lt;strong&gt;Смуга прогресу тепер типово вимкнена&lt;/strong&gt;, як у marp-cli; раніше вона
+малювалася завжди.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="presenter-view"&gt;Вигляд доповідача&lt;span class="hx:absolute hx:-mt-20" id="presenter-view"&gt;&lt;/span&gt;
+&lt;a href="#presenter-view" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;У v0.7.0 сторінка має вигляд доповідача з marp-cli. Натисніть &lt;code&gt;p&lt;/code&gt; або останню
+кнопку контролера, і відкриється вікно з поточним слайдом, кроком після нього,
+вашими нотатками доповідача, сторінкою, часом і таймером (клацніть таймер, щоб
+скинути його; &lt;code&gt;+&lt;/code&gt; і &lt;code&gt;-&lt;/code&gt; змінюють розмір нотаток; смугу між слайдами й
+нотатками можна перетягувати). Два вікна слідують одне за одним в обидва боки:
+клавіші стрілок, клацання по наступному кроку або по Previous/Next в будь-якому
+з них рухає інше, по одному фрагменту.&lt;/p&gt;
+&lt;p&gt;Воно працює так, як працює в marp-cli, за прочитаними джерелами його 4.5.1:
+вікно — це &lt;code&gt;?view=presenter&amp;amp;sync=KEY&lt;/code&gt; того самого файла, наступний крок — та
+сама сторінка як &lt;code&gt;?view=next&lt;/code&gt; у фреймі, а вікна ділять свою позицію через
+&lt;code&gt;localStorage&lt;/code&gt; (&lt;code&gt;bespoke-marp-sync-KEY&lt;/code&gt;), тож воно не потребує ні сервера, ні
+мережі і не працює в браузері без &lt;code&gt;localStorage&lt;/code&gt; (кнопка про це каже). Нотатки
+— текст: &lt;code&gt;&amp;amp;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt; і &lt;code&gt;&amp;gt;&lt;/code&gt; екрануються, тож нотатка ніколи не може бути розміткою.
+Вони є на сторінці, приховані, щоб вигляд доповідача їх узяв, що тримає їх поза
+тим, що екранний читач читає аудиторії. Сторінки &lt;code&gt;--bare&lt;/code&gt; нічого цього не
+мають. Вигляд додає до сторінки близько 10 КБ.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="overview-view"&gt;Вигляд огляду&lt;span class="hx:absolute hx:-mt-20" id="overview-view"&gt;&lt;/span&gt;
+&lt;a href="#overview-view" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;У v0.8.0 натисніть &lt;code&gt;o&lt;/code&gt; (або &lt;code&gt;Escape&lt;/code&gt;: marp-cli перемикає обома), кнопку сітки
+контролера або лічильник сторінок вигляду доповідача, і кожен слайд показується
+цілком у сітці поверх сторінки. Клавіші стрілок вибирають слайд (вгору й вниз —
+по рядках), &lt;code&gt;Home&lt;/code&gt; і &lt;code&gt;End&lt;/code&gt; ідуть до країв, а інші вікна слідують; &lt;code&gt;Enter&lt;/code&gt;,
+&lt;code&gt;Space&lt;/code&gt; або клацання вибирає слайд і, поверх сторінки, закриває огляд. Поверх
+вигляду доповідача вибір залишає його відкритим (доповідач вибирає слайд для
+показу і продовжує дивитися). Кнопка «Close overview», &lt;code&gt;o&lt;/code&gt; та &lt;code&gt;Escape&lt;/code&gt; його
+закривають. Це огляд з marp-cli: сторінка знову у фреймі за адресою
+&lt;code&gt;?view=overview&amp;amp;sync=KEY&lt;/code&gt;, що ділить позицію через &lt;code&gt;localStorage&lt;/code&gt;, без мережі.
+Слайди в сітці фокусовані й підписані «Slide N», а закритий огляд інертний, тож
+користувачі клавіатури та екранних читачів ніколи в нього не потрапляють. Обидва
+вигляди разом додають до сторінки близько 15 КБ.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="configuration-files"&gt;Файли конфігурації&lt;span class="hx:absolute hx:-mt-20" id="configuration-files"&gt;&lt;/span&gt;
+&lt;a href="#configuration-files" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;marp-cli читає свої параметри з файла в робочій теці, і &lt;code&gt;slides&lt;/code&gt; теж, коли
+файл є даними: &lt;code&gt;.marprc&lt;/code&gt; (YAML, JSON — це також YAML), &lt;code&gt;.marprc.json&lt;/code&gt;,
+&lt;code&gt;.marprc.yaml&lt;/code&gt;, &lt;code&gt;.marprc.yml&lt;/code&gt;, &lt;code&gt;.config/marprc*&lt;/code&gt; або ключ &lt;code&gt;marp&lt;/code&gt; у
+&lt;code&gt;package.json&lt;/code&gt;; &lt;code&gt;--config-file&lt;/code&gt; (&lt;code&gt;-c&lt;/code&gt;) називає будь-який файл JSON чи YAML,
+&lt;code&gt;marp.config.json&lt;/code&gt; — для одного з них. Шукається лише в робочій теці, а не в її
+батьківських, як і пошук marp-cli. Файл JavaScript чи TypeScript
+(&lt;code&gt;marp.config.js&lt;/code&gt; &amp;hellip;) є програмою, яку &lt;code&gt;slides&lt;/code&gt; не запускає: він про це каже й
+іде далі. Параметри — це ті з документації marp-cli, що мають тут сенс:
+&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;, &lt;code&gt;keywords&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;ogImage&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt;,
+&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;themeSet&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;, &lt;code&gt;allowLocalFiles&lt;/code&gt;, &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;bespoke&lt;/code&gt;,
+&lt;code&gt;inputDir&lt;/code&gt;, &lt;code&gt;output&lt;/code&gt;, &lt;code&gt;parallel&lt;/code&gt;, &lt;code&gt;pdf&lt;/code&gt;, &lt;code&gt;pptx&lt;/code&gt;, &lt;code&gt;notes&lt;/code&gt;, &lt;code&gt;pdfNotes&lt;/code&gt;,
+&lt;code&gt;pdfOutlines&lt;/code&gt;, &lt;code&gt;images&lt;/code&gt;, &lt;code&gt;image&lt;/code&gt;, &lt;code&gt;imageScale&lt;/code&gt;, &lt;code&gt;jpegQuality&lt;/code&gt;, &lt;code&gt;watch&lt;/code&gt;,
+&lt;code&gt;server&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;; шляхи відносно файла. Командний рядок має перевагу.
+&lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;options&lt;/code&gt; і &lt;code&gt;browser*&lt;/code&gt; потребують рушія Marp і браузера та
+ігноруються з попередженням, як і прапорці &lt;code&gt;--browser*&lt;/code&gt;: скрипти, написані для
+marp-cli, продовжують працювати. (&lt;code&gt;slides.yaml&lt;/code&gt; і &lt;code&gt;slides.hcl&lt;/code&gt;, з kinds і
+даними шаблону, окремі й читаються як раніше.)&lt;/p&gt;
+&lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Спостереження, сервер і попередній перегляд&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
+&lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;У v0.6.0, з маршрутами й протоколом живого перезавантаження marp-cli (прочитано
+з його джерел 4.5.1 і порівняно із запущеним &lt;code&gt;marp -s&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;slides --server dir&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-s&lt;/code&gt;) обслуговує теку за адресою
+&lt;code&gt;http://127.0.0.1:8080/&lt;/code&gt; (змінна середовища &lt;code&gt;PORT&lt;/code&gt; змінює порт; порт, який уже
+використовується, — помилка, яка про це каже):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Запит&lt;/th&gt;
+&lt;th&gt;Відповідь&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;презентація як HTML, перетворена на запит&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/deck.md?pdf&lt;/code&gt;, &lt;code&gt;?pptx&lt;/code&gt;, &lt;code&gt;?png&lt;/code&gt;, &lt;code&gt;?jpg&lt;/code&gt; (або &lt;code&gt;?jpeg&lt;/code&gt;), &lt;code&gt;?notes&lt;/code&gt; (або &lt;code&gt;?txt&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;презентація, перетворена так, як просить запит; PPTX — вкладення&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;тека&lt;/td&gt;
+&lt;td&gt;її &lt;code&gt;index.md&lt;/code&gt; або &lt;code&gt;PITCHME.md&lt;/code&gt; як сторінка, інакше індекс з посиланнями на PDF і PPTX для кожної презентації&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;будь-який інший файл&lt;/td&gt;
+&lt;td&gt;файл&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;презентація, що не перетворюється&lt;/td&gt;
+&lt;td&gt;503 з помилкою&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Сторінка відкриває WebSocket до &lt;code&gt;/.__marp-cli-watch-notifier__/&amp;lt;id&amp;gt;&lt;/code&gt;, де id — це
+SHA-256 шляху презентації; сервер надсилає &lt;code&gt;ready&lt;/code&gt;, потім &lt;code&gt;reload&lt;/code&gt;, коли
+презентація або будь-що під текою змінюється. Тека, запитана без кінцевого
+слеша, перенаправляється на нього (marp-cli віддає там свій індекс, що ламає
+відносні посилання сторінки).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-w&lt;/code&gt;) збирає презентації, потім знову збирає ту, що змінюється,
+а коли змінюється файл &lt;code&gt;--theme-set&lt;/code&gt;, файл kinds чи даних або конфігурація —
+усі. Сторінки, які він записує, відкривають сокет на loopback (порт 37717 або
+наступний вільний) і перезавантажуються, коли їхня презентація збирається
+знову. Презентація, що не збирається, повідомляється і далі спостерігається.
+&lt;strong&gt;&lt;code&gt;--preview&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-p&lt;/code&gt;) відкриває типовий браузер на сервері або на
+щойно зібраних HTML-сторінках; власного вікна немає, бо в &lt;code&gt;slides&lt;/code&gt; немає
+браузера, яким можна керувати.&lt;/p&gt;
+&lt;p&gt;Сервер — це вхід у машину, тому він суворіший за сервер marp-cli, який слухає
+на всіх інтерфейсах і нічого не перевіряє:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;він слухає на &lt;strong&gt;127.0.0.1&lt;/strong&gt;; &lt;code&gt;--host&lt;/code&gt; це змінює, з попередженням, а адреса
+із символом підстановки більше не може перевіряти заголовок &lt;code&gt;Host&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;заголовок &lt;strong&gt;&lt;code&gt;Host&lt;/code&gt;&lt;/strong&gt; має бути іменем loopback (&lt;code&gt;localhost&lt;/code&gt;, &lt;code&gt;127.0.0.1&lt;/code&gt;,
+&lt;code&gt;[::1]&lt;/code&gt;, &lt;code&gt;*.localhost&lt;/code&gt;) або хостом, на якому сервер слухає, що зупиняє DNS
+rebinding;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;Origin&lt;/code&gt;&lt;/strong&gt; WebSocket має бути власним для сервера; сокети режиму
+спостереження також приймають походження &lt;code&gt;null&lt;/code&gt; сторінки, відкритої з файла;
+запит з іншого сайту, що не є навігацією (скрипт, зображення, &lt;code&gt;fetch&lt;/code&gt;),
+відхиляється;&lt;/li&gt;
+&lt;li&gt;шлях очищується, його символічні посилання розв&amp;rsquo;язуються, і результат має
+бути всередині теки: &lt;code&gt;..&lt;/code&gt; і посилання назовні відхиляються, так само як і
+&lt;code&gt;?pdf&lt;/code&gt; презентації ззовні; імена, що починаються з крапки (&lt;code&gt;.git&lt;/code&gt;, &lt;code&gt;.env&lt;/code&gt;),
+не віддаються;&lt;/li&gt;
+&lt;li&gt;лише &lt;code&gt;GET&lt;/code&gt; і &lt;code&gt;HEAD&lt;/code&gt;; кілька перетворень одночасно; не більше 4096 тек
+спостерігається, і жодної в &lt;code&gt;node_modules&lt;/code&gt; чи під крапкою.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;За зворотним проксі &lt;code&gt;--allowed-host name&lt;/code&gt; (у v0.14.0, можна повторювати) додає
+публічне ім&amp;rsquo;я проксі до прийнятних &lt;code&gt;Host&lt;/code&gt; та &lt;code&gt;Origin&lt;/code&gt;; перевірки залишаються
+ввімкненими, а сервер лишається на loopback.
+&lt;a href="https://go-slides.github.io/docs/0.14/uk/self-hosting/"&gt;Self-hosting&lt;/a&gt; ставить його за Caddy, з HTTPS і
+входом.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="page-metadata"&gt;Метадані сторінки&lt;span class="hx:absolute hx:-mt-20" id="page-metadata"&gt;&lt;/span&gt;
+&lt;a href="#page-metadata" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Командний рядок має перевагу над презентацією, як у marp-cli, де прапорці
+додаються до презентації як останній коментар-директива. Правила прочитано з
+marp-cli 4.5.1 і закріплено тестами проти його виводу (у v0.6.0):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Презентація, що не задає &lt;code&gt;title&lt;/code&gt;, бере текст свого першого заголовка
+найнижчого рівня, як написано (&lt;code&gt;# **Bold** title&lt;/code&gt; дає &lt;code&gt;**Bold** title&lt;/code&gt;). Без
+заголовка &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt; немає.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;keywords&lt;/code&gt; розділяються за комами, обрізаються й дедуплікуються; список у
+front matter береться як є. Як і marp-cli, сторінка несе тег &lt;code&gt;keywords&lt;/code&gt;
+починаючи з другого ключового слова, а не для єдиного.&lt;/li&gt;
+&lt;li&gt;Недійсний &lt;code&gt;url&lt;/code&gt; (не абсолютний) ігнорується з попередженням, а попереднє
+значення зберігається; дійсний також записує &lt;code&gt;&amp;lt;link rel=&amp;quot;canonical&amp;quot;&amp;gt;&lt;/code&gt; і
+&lt;code&gt;og:url&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;author&lt;/code&gt; і &lt;code&gt;description&lt;/code&gt; ідуть зі своїми двійниками Open Graph; &lt;code&gt;og:image:alt&lt;/code&gt;
+і велика картка Twitter потребують і заголовка, і зображення.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="images-pdf-pptx-and-odp"&gt;Зображення, PDF, PPTX і ODP&lt;span class="hx:absolute hx:-mt-20" id="images-pdf-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#images-pdf-pptx-and-odp" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;-o&lt;/code&gt; з розширенням &lt;code&gt;.pdf&lt;/code&gt;, &lt;code&gt;.pptx&lt;/code&gt;, &lt;code&gt;.odp&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt; чи &lt;code&gt;.jpg&lt;/code&gt; вибирає формат, як
+у marp-cli. Теки виводу створюються. PDF має одну сторінку на слайд, розміру
+слайда, і зміст зі слайдів та їхніх заголовків.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="pdf-notes-and-outline"&gt;Нотатки та зміст PDF&lt;span class="hx:absolute hx:-mt-20" id="pdf-notes-and-outline"&gt;&lt;/span&gt;
+&lt;a href="#pdf-notes-and-outline" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;У v0.6.0 PDF приймає два параметри marp-cli, і їх порівняно з PDF, які
+marp-cli 4.5.1 записує для тієї самої презентації:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--pdf-notes&lt;/code&gt; кладе нотатки доповідача кожного слайда на його сторінку як
+анотацію-примітку: жовта піктограма Note унизу ліворуч, вміст якої — це
+нотатки (кілька коментарів, об&amp;rsquo;єднаних порожнім рядком), а заголовок — це
+&lt;code&gt;author&lt;/code&gt; презентації. &lt;code&gt;--pdf-notes&lt;/code&gt; сам по собі просить PDF, як у marp-cli.&lt;/li&gt;
+&lt;li&gt;Зміст містить жирну закладку «Page N» на слайд і під нею заголовки слайда,
+вкладені за рівнем (&lt;code&gt;--pdf-outlines.pages&lt;/code&gt; та &lt;code&gt;--pdf-outlines.headings&lt;/code&gt;
+вибирають ці дві частини). &lt;strong&gt;Зміст тут увімкнено типово, а в marp-cli
+вимкнено.&lt;/strong&gt; &lt;code&gt;slides&lt;/code&gt; завжди його писав; він коштує кілька сотень байтів і
+робить довгу презентацію придатною для навігації, тож типове значення
+лишається. &lt;code&gt;--pdf-outlines=false&lt;/code&gt; або &lt;code&gt;--no-pdf-outlines&lt;/code&gt; з marp-cli його
+вимикає, а &lt;code&gt;=false&lt;/code&gt; на &lt;code&gt;.pages&lt;/code&gt; чи &lt;code&gt;.headings&lt;/code&gt; відкидає цю частину. Закладка
+заголовка веде до свого слайда; marp-cli ще й прокручує до заголовка.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Рендеринг виконує &lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt;, а PDF
+пише &lt;a href="https://github.com/go-pdfkit/pdfkit" target="_blank" rel="noopener"&gt;go-pdfkit&lt;/a&gt;; шрифти, яких просять
+вбудовані теми (Lato, Roboto Mono), надходять із
+&lt;a href="https://github.com/go-opentype/fonts" target="_blank" rel="noopener"&gt;go-opentype/fonts&lt;/a&gt; і вбудовуються, тож
+жоден рендер не торкається мережі. Chrome немає.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--image-scale 2&lt;/code&gt; рендерить із двома пікселями пристрою на піксель CSS. Локальні
+зображення відхиляються, якщо не вказано &lt;code&gt;--allow-local-files&lt;/code&gt;, і навіть тоді
+читаються лише файли під текою презентації: презентація з іншого місця не
+може дістатися до &lt;code&gt;~/.ssh&lt;/code&gt;. Кілька фонів і розділені фони (&lt;code&gt;![bg left:40%]&lt;/code&gt;)
+рендеряться так, як шари Marp.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--pptx&lt;/code&gt; записує презентацію за допомогою &lt;code&gt;WritePresentation&lt;/code&gt; із
+&lt;a href="https://github.com/go-ooxml" target="_blank" rel="noopener"&gt;go-ooxml&lt;/a&gt;, з нотатками доповідача й метаданими
+презентації. Починаючи з v0.5.0 слайди редаговані (нижче); &lt;code&gt;--pptx-raster&lt;/code&gt;
+записує одну картинку на повний слайд, як це робить marp-cli, у масштабі,
+типово 2, який перевизначає &lt;code&gt;--image-scale&lt;/code&gt;. LibreOffice відкриває результат.
+Тестувався лише LibreOffice; PowerPoint і Keynote — ні.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;--odp&lt;/code&gt; записує презентацію OpenDocument через &lt;code&gt;WritePresentation&lt;/code&gt; із go-odf, з
+нотатками доповідача; &lt;code&gt;--odp-raster&lt;/code&gt; записує одну картинку на слайд.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="editable-pptx-and-odp"&gt;Редагований PPTX і ODP&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx-and-odp"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx-and-odp" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Починаючи з v0.5.0 слайди PPTX чи ODP &lt;strong&gt;редаговані&lt;/strong&gt; — PPTX у marp-cli — це
+одна картинка на слайд, а його експериментальний &lt;code&gt;--pptx-editable&lt;/code&gt;
+перетворює PDF через LibreOffice. Тут кожен слайд малюється зі свого макета, того
+самого, який малюють експорти PNG і PDF:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;кожен рядок тексту — це текстовий блок у своїй розрахованій позиції, шрифтами,
+якими слайд було розраховано, — &lt;strong&gt;вбудованими у файл&lt;/strong&gt;, тож він виглядає
+однаково на машині без Lato чи Inter (перевірено в LibreOffice 25.8), — з
+жирним, курсивом, кольорами, міжлітерним інтервалом і клікабельними
+посиланнями;&lt;/li&gt;
+&lt;li&gt;фони, рамки та закруглені блоки — це фігури; градієнти — це градієнтні
+заливки в PPTX і картинки в ODP (градієнт ODF має два кольори);&lt;/li&gt;
+&lt;li&gt;зображення зберігаються один раз, скільки б слайдів їх не показувало;&lt;/li&gt;
+&lt;li&gt;те, чого слайд не може виразити — елемент під &lt;code&gt;opacity&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, розмита
+тінь, формула, — є картинкою цього елемента, а його текст лишається над нею.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Після зворотного рендерингу LibreOffice слайд відрізняється в межах 0,04–2 %
+пікселів від експорту PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; та &lt;code&gt;--odp-raster&lt;/code&gt; зберігають одну
+картинку на слайд.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="vector-pdf"&gt;Векторний PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Починаючи з v0.4.0 PDF малюється векторами: go-webengine малює розрахований
+слайд у PDF замість пікселів. Текст — це текст, шрифтами, якими слайд було
+розраховано, вбудованими підмножиною з відображенням &lt;code&gt;/ToUnicode&lt;/code&gt; — його можна
+виділяти, шукати й копіювати. Фони, рамки та градієнти — це контури й
+заливки, зображення, показане на багатьох слайдах, вбудовується один раз, а
+посилання клікабельні. Еталонна презентація зі 100 слайдів займає 758 КіБ проти
+837 КіБ у marp-cli і 10 МіБ у зображеннєвому PDF з v0.3.0, і записується за 0,3 с.&lt;/p&gt;
+&lt;p&gt;Елемент без векторної форми тут — під &lt;code&gt;opacity&lt;/code&gt; &amp;lt; 1, з &lt;code&gt;filter&lt;/code&gt; чи поворотом,
+розмитим &lt;code&gt;box-shadow&lt;/code&gt;, градієнтом із згасанням непрозорості — малюється
+растром лише цього елемента, а його текст накладається невидимо, щоб його
+можна було виділяти. Формули поки що растрові. &lt;code&gt;--pdf-raster&lt;/code&gt; записує одне
+зображення на сторінку, як це робила v0.3.0.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="accessible-tagged-pdf"&gt;Доступний, тегований PDF&lt;span class="hx:absolute hx:-mt-20" id="accessible-tagged-pdf"&gt;&lt;/span&gt;
+&lt;a href="#accessible-tagged-pdf" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Починаючи з v0.12.0 векторний PDF тегований. Він несе свою логічну структуру,
+яку екранний читач читає по порядку, як читає веб-сторінку:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;У презентації&lt;/th&gt;
+&lt;th&gt;У PDF&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;слайд&lt;/td&gt;
+&lt;td&gt;секція (&lt;code&gt;Sect&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;#&lt;/code&gt; … &lt;code&gt;######&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;H1&lt;/code&gt; … &lt;code&gt;H6&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;абзац, список, таблиця&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;P&lt;/code&gt;; &lt;code&gt;L&lt;/code&gt; з міткою й тілом кожного елемента; &lt;code&gt;Table&lt;/code&gt;, клітинки заголовка зі своїм scope&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;посилання&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Link&lt;/code&gt;, включно з клікабельною областю, його текст як опис&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;зображення&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Figure&lt;/code&gt; зі своїм альтернативним текстом; &lt;code&gt;![](…)&lt;/code&gt; без альтернативного тексту — декорація&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$…$&lt;/code&gt;, &lt;code&gt;$$…$$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Formula&lt;/code&gt;, її джерело TeX як опис&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;код&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Code&lt;/code&gt;, без номерів рядків чи дисків-виносок&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;span lang=&amp;quot;fr&amp;quot;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;span цією мовою&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;фони, рамки, номери сторінок&lt;/td&gt;
+&lt;td&gt;артефакти, які читач пропускає&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;нотатки доповідача (&lt;code&gt;--pdf-notes&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;анотації в структурі&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Файл оголошує PDF/UA-1, стандарт доступного PDF. Він несе &lt;code&gt;title&lt;/code&gt; презентації,
+який показує переглядач, і її &lt;code&gt;lang&lt;/code&gt; (&lt;code&gt;--lang&lt;/code&gt;, коли презентація його не задає,
+інакше &lt;code&gt;en&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Презентація, перевірена veraPDF, проходить PDF/UA-1, якщо її власні заголовки
+не порушують порядок стандарту. PDF/UA вимагає, щоб перший заголовок був &lt;code&gt;H1&lt;/code&gt; і
+жоден рівень не пропускався (&lt;code&gt;#&lt;/code&gt;, потім &lt;code&gt;###&lt;/code&gt;). Виправити це може лише автор
+презентації. PDF з Chrome для тієї самої презентації, який пише marp-cli, теж
+тегований, але порушує сім правил PDF/UA, не має секції на слайд і формул.&lt;/p&gt;
+&lt;p&gt;Тегування еталонної презентації зі 100 слайдів коштує 4 % за розміром (788
+проти 757 КіБ) і не має вимірюваного часу. &lt;code&gt;--pdf-tags=false&lt;/code&gt; записує PDF без
+тегів.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slidesyaml"&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="slidesyaml"&gt;&lt;/span&gt;
+&lt;a href="#slidesyaml" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Файл конфігурації поруч із презентацією застосовується до неї, тож тека
+презентацій ділить один:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;kinds.yaml &lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# a mapping of kinds, or file(s) holding one&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;themes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# theme CSS files or directories&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;- &lt;span class="l"&gt;themes/&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# template data&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;company&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;Example Inc.&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c"&gt;# allow all raw HTML&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;en&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Kinds: власні &lt;code&gt;kinds:&lt;/code&gt; презентації перевизначають kinds файла й командного
+рядка. Дані: &lt;code&gt;data&lt;/code&gt; файла й командного рядка перевизначають front matter
+презентації, тож одну презентацію можна зібрати з різними даними.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="planned"&gt;Заплановано&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;
+&lt;a href="#planned" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ще не зроблено: формули векторами в PDF. Коли вони з&amp;rsquo;являться, це буде команда
+або прапорець тут.&lt;/p&gt;</description></item></channel></rss>

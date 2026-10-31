@@ -1,0 +1,211 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Math</title><link>https://go-slides.github.io/docs/0.14/pt/tags/math/</link><description>Recent content in Math on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pt-BR</language><atom:link href="https://go-slides.github.io/docs/0.14/pt/tags/math/index.xml" rel="self" type="application/rss+xml"/><item><title>Matemática e código</title><link>https://go-slides.github.io/docs/0.14/pt/math-and-code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/pt/math-and-code/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Matemática e código estão na v0.2.0.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="math"&gt;Matemática&lt;span class="hx:absolute hx:-mt-20" id="math"&gt;&lt;/span&gt;
+&lt;a href="#math" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;$…$&lt;/code&gt; é uma fórmula em linha e &lt;code&gt;$$…$$&lt;/code&gt; uma fórmula em destaque:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;The famous one is $E=mc^2$, and this is a display formula:
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$$
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;$$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;As regras de delimitadores são as do Marp Core, lidas do marp-core 4.4.0: um
+&lt;code&gt;$&lt;/code&gt; seguido de espaço não abre uma fórmula, e um seguido de dígito não a
+fecha, de modo que preços como &lt;code&gt;$5 and $10&lt;/code&gt; continuam texto.&lt;/li&gt;
+&lt;li&gt;O &lt;a href="https://github.com/go-tex/math" target="_blank" rel="noopener"&gt;go-tex/math&lt;/a&gt; compõe cada fórmula em um SVG
+em linha dimensionado em &lt;code&gt;em&lt;/code&gt;, de modo que ela acompanha o tamanho do texto e
+se apoia na sua linha de base. O mesmo SVG é usado na página HTML, nas imagens
+e no PDF.&lt;/li&gt;
+&lt;li&gt;Uma fórmula que não pode ser analisada continua visível como foi escrita; o
+erro é guardado no seu &lt;code&gt;title&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="code"&gt;Código&lt;span class="hx:absolute hx:-mt-20" id="code"&gt;&lt;/span&gt;
+&lt;a href="#code" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Os blocos de código delimitados são coloridos pelo
+&lt;a href="https://github.com/go-rouge/rouge" target="_blank" rel="noopener"&gt;go-rouge&lt;/a&gt;, que escreve nomes de classe do
+highlight.js, os que os temas do Marp estilizam:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Uma linguagem que o go-rouge não conhece é escrita como texto simples, como o
+Marp Core faz.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="line-numbers"&gt;Números de linha&lt;span class="hx:absolute hx:-mt-20" id="line-numbers"&gt;&lt;/span&gt;
+&lt;a href="#line-numbers" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Na v0.8.0, um bloco pode numerar suas linhas. O Marp Core não tem números de
+linha e ignora o que vem depois da linguagem de uma cerca, então as opções vão
+entre chaves ali, e uma apresentação que as usa é renderizada no Marp como seria
+sem elas:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;``&lt;span class="sb"&gt;`go {lineNumbers}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;func main() {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt; fmt.Println(&amp;#34;hello&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;`&lt;span class="sb"&gt;`
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;`&lt;span class="sb"&gt;`go {lineNumbers=10}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;// starts at 10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="sb"&gt;`&lt;/span&gt;``&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Escreva&lt;/th&gt;
+&lt;th&gt;Significa&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;numerar a partir de 1 (o &lt;code&gt;{lines:true}&lt;/code&gt; do Slidev e o &lt;code&gt;{.numberLines}&lt;/code&gt; do Pandoc também são lidos)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers=10}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;numerar a partir de 10 (também &lt;code&gt;startLine=10&lt;/code&gt;, o &lt;code&gt;startFrom=&amp;quot;10&amp;quot;&lt;/code&gt; do Pandoc)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{lineNumbers=false}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sem números, o que quer que o slide diga&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Para todos os blocos de um slide e dos slides seguintes, defina a diretiva:
+&lt;code&gt;&amp;lt;!-- lineNumbers: true --&amp;gt;&lt;/code&gt; (&lt;code&gt;_lineNumbers&lt;/code&gt; para um único slide). Um kind pode
+defini-la uma vez para uma família de slides:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;listing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;{&lt;span class="nt"&gt;lineNumbers&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Cada número inicia a sua linha dentro da caixa de código do tema, separado por
+um filete. Ele permanece na linha de base da sua linha mesmo quando a linha é
+mais alta, por exemplo com uma chamada (callout) ou um emoji. Os números são
+atenuados por uma cor misturada a partir da cor do código e do seu fundo, com
+contraste de 4,5:1 ou mais nos temas default, gaia e uncover, claros e escuros.
+Eles &lt;strong&gt;não são selecionáveis&lt;/strong&gt; na página e não são lidos por leitores de tela.
+Em um PDF, eles são desenhados mas ficam fora do texto, de modo que um
+extrator de texto lê apenas o código. Em um arquivo PowerPoint ou OpenDocument,
+são texto editável no início de cada linha. Uma apresentação que não usa a opção
+é renderizada como antes, byte a byte. Destacar linhas escolhidas ainda não é
+suportado.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="code-callouts"&gt;Chamadas no código&lt;span class="hx:absolute hx:-mt-20" id="code-callouts"&gt;&lt;/span&gt;
+&lt;a href="#code-callouts" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Na v0.8.0, uma linha de código pode terminar com um disco numerado que remete a
+uma nota abaixo do bloco. A sintaxe é a do
+&lt;a href="https://quarto.org/docs/authoring/code-annotation.html" target="_blank" rel="noopener"&gt;Quarto&lt;/a&gt;, que também é a
+forma de comentário do Asciidoctor. O marcador é um comentário na linguagem do
+próprio código, de modo que o código continua válido, e as notas são a lista
+ordenada logo após o bloco:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```go
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;func&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// &amp;lt;1&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;load&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// &amp;lt;2&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s"&gt;```&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;1.&lt;/span&gt; The entry point.
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;2. Reads the input.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Escreva&lt;/th&gt;
+&lt;th&gt;Significa&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;// &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;# &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;-- &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;; &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;% &amp;lt;1&amp;gt;&lt;/code&gt;, &lt;code&gt;' &amp;lt;1&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;um comentário de linha que contém apenas o marcador: ambos são substituídos pelo disco&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- &amp;lt;1&amp;gt; --&amp;gt;&lt;/code&gt;, &lt;code&gt;/* &amp;lt;1&amp;gt; */&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o mesmo, para linguagens com comentários delimitados&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;// &amp;lt;1&amp;gt; &amp;lt;2&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;dois discos em uma linha&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;x = 1 # count &amp;lt;1&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;o texto do comentário permanece e o disco o segue&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Os marcadores só viram discos quando a lista logo após o bloco começa em 1 e tem
+um item para cada número. Caso contrário, o bloco continua como foi escrito. Os
+discos são anéis na cor do código, nos temas default, gaia e uncover, claros ou
+escuros. Os itens da lista são numerados com os mesmos discos.&lt;/p&gt;
+&lt;p&gt;Os discos &lt;strong&gt;não são selecionáveis&lt;/strong&gt;. Copiar o código da página dá o código sem
+os marcadores. Em um PDF, eles são vetores deixados fora do texto, e em um
+arquivo PowerPoint ou OpenDocument são formas editáveis. As chamadas se combinam
+com os números de linha. O Marp Core não tem chamadas (marp-core 4.4.0), então
+no Marp os comentários e a lista numerada aparecem como foram escritos. Uma
+apresentação que não as usa é renderizada como antes, byte a byte.&lt;/p&gt;
+&lt;p&gt;Na v0.9.0, um disco e a sua nota se encontram na página HTML. Passar o mouse
+sobre um disco, ou chegar a ele com Tab, realça a sua nota, e uma nota faz o
+mesmo com o seu disco. É o que o &lt;code&gt;code-annotations: hover&lt;/code&gt; do Quarto faz, mas
+aqui a folha de estilo faz isso sozinha, sem script. Por isso funciona do mesmo
+jeito na pré-visualização em sandbox do playground e na pré-visualização do VS
+Code, que restringem scripts. Cada disco é descrito pela sua nota, então um
+leitor de tela lê a nota quando chega ao disco. O realce surge gradualmente
+somente quando o leitor não pediu movimento reduzido. Imagens, PDF e arquivos
+PowerPoint e OpenDocument permanecem inalterados, byte a byte.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="fonts"&gt;Fontes&lt;span class="hx:absolute hx:-mt-20" id="fonts"&gt;&lt;/span&gt;
+&lt;a href="#fonts" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Lato Regular, Bold, Black e itálicos e Roboto Mono Regular, Bold e itálicos
+estão incorporadas, de modo que os títulos do gaia ganham o seu peso e o texto
+em itálico é renderizado em itálico.&lt;/p&gt;</description></item></channel></rss>

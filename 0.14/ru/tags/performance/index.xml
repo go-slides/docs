@@ -1,0 +1,202 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Performance</title><link>https://go-slides.github.io/docs/0.14/ru/tags/performance/</link><description>Recent content in Performance on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.14/ru/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>Производительность</title><link>https://go-slides.github.io/docs/0.14/ru/performance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/ru/performance/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Данные по PPTX ниже относятся к v0.5.0, а данные по векторному PDF — к v0.4.0.
+Первая таблица относится к v0.3.0, предыдущему выпуску, который рисует слайды
+параллельно и разбирает шрифты один раз
+(&lt;a href="https://github.com/go-slides/slides/pull/11" target="_blank" rel="noopener"&gt;go-slides/slides#11&lt;/a&gt;).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;go-slides и &lt;a href="https://github.com/marp-team/marp-cli" target="_blank" rel="noopener"&gt;marp-cli&lt;/a&gt; 4.5.1 запускались
+как подпроцессы на одних и тех же презентациях, на Apple M4 Max (16 процессоров)
+при средней загрузке за минуту ниже 8, пять чередующихся раундов после
+прогрева. Время — медиана реального времени; память — пик всего дерева
+процессов (marp-cli управляет Chrome, процессы которого учитываются).&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Презентация&lt;/th&gt;
+&lt;th&gt;Формат&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;память go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;память marp-cli&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 слайдов&lt;/td&gt;
+&lt;td&gt;HTML&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;315 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;47 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 слайдов&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,14 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,88 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;242 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 509 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 слайдов&lt;/td&gt;
+&lt;td&gt;PNG, каждый слайд&lt;/td&gt;
+&lt;td style="text-align: right"&gt;0,97 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;5,44 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;225 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 354 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;100 слайдов&lt;/td&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td style="text-align: right"&gt;3,39 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;8,03 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;530 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 373 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 слайдов&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;283 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,57 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;154 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 315 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;математика и код, 20 слайдов&lt;/td&gt;
+&lt;td&gt;PNG, каждый слайд&lt;/td&gt;
+&lt;td style="text-align: right"&gt;250 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2,32 с&lt;/td&gt;
+&lt;td style="text-align: right"&gt;168 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 286 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="vector-pdf"&gt;Векторный PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;В v0.4.0 PDF рисуется векторами (см.
+&lt;a href="https://go-slides.github.io/docs/0.14/ru/cli/#vector-pdf"&gt;Командная строка&lt;/a&gt;). Та же машина и метод,
+2026-10-19:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Презентация&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0&lt;/th&gt;
+&lt;th style="text-align: right"&gt;размер go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;размер marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;размер v0.3.0&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 слайдов&lt;/td&gt;
+&lt;td style="text-align: right"&gt;306 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 763 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 147 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;758 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;837 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;10,0 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 слайдов&lt;/td&gt;
+&lt;td style="text-align: right"&gt;93 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 546 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;285 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;32 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;66 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;582 КиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;математика и код, 20 слайдов&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 643 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;294 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;124 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;335 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;638 КиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Память для PDF из 100 слайдов: 158 МиБ против 1 512 МиБ у marp-cli; процессорное
+время 0,9 с против 2,7 с.&lt;/p&gt;
+&lt;p&gt;Данные v0.4.0 для PDF из 100 слайдов измерены 2026-10-19 в 21:29 при средней
+загрузке за минуту 7,7, за три раунда: go-slides 306 мс, 758 КиБ и 158 МиБ;
+marp-cli 1 838 мс, 837 КиБ и 1 512 МиБ.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="editable-pptx"&gt;Редактируемый PPTX&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Начиная с v0.5.0 PPTX состоит из текстовых блоков, фигур и картинок (см.
+&lt;a href="https://go-slides.github.io/docs/0.14/ru/cli/#editable-pptx-and-odp"&gt;Командная строка&lt;/a&gt;). Измерено
+2026-10-19 в 22:51 при средней загрузке за минуту 7,1, за три раунда:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Презентация&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;размер go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;размер marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;память go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;память marp-cli&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;100 слайдов&lt;/td&gt;
+&lt;td style="text-align: right"&gt;348 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7 795 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;760 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,2 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;204 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1 370 МиБ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 20 слайдов&lt;/td&gt;
+&lt;td style="text-align: right"&gt;112 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4 608 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;893 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4,8 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;математика и код, 20 слайдов&lt;/td&gt;
+&lt;td style="text-align: right"&gt;207 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2 780 мс&lt;/td&gt;
+&lt;td style="text-align: right"&gt;842 КиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,5 МиБ&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Для презентации из 100 слайдов v0.4.0 тратил 4,7 с, 4,8 МиБ и 540 МиБ. PPTX
+у marp-cli состоит из картинок. Большая часть размера редактируемой презентации
+приходится на встроенные шрифты.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="why-it-is-fast"&gt;Почему это быстро&lt;span class="hx:absolute hx:-mt-20" id="why-it-is-fast"&gt;&lt;/span&gt;
+&lt;a href="#why-it-is-fast" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Не нужно запускать браузер.&lt;/strong&gt; marp-cli запускает Chrome для каждого экспорта
+PDF, изображений и PPTX; go-slides рисует с помощью
+&lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt; внутри собственного
+процесса.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Слайды рисуются параллельно&lt;/strong&gt;, по четыре одновременно по умолчанию, и
+каждое изображение записывается, как только подходит его очередь: длинная
+презентация никогда не хранится в памяти в виде изображений.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Шрифты разбираются один раз&lt;/strong&gt; на процесс, а не на каждый слайд.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="what-it-does-not-win"&gt;Где он не выигрывает&lt;span class="hx:absolute hx:-mt-20" id="what-it-does-not-win"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does-not-win" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Размер PDF в v0.3.0.&lt;/strong&gt; Каждый слайд был изображением в PDF: 10 МиБ против
+837 КиБ для презентации из 100 слайдов. Векторный PDF выше меньше, чем у
+marp-cli.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Процессорное время на больших презентациях.&lt;/strong&gt; Четыре рабочих потока тратят
+больше процессорного времени, чем показывает реальное: в v0.3.0 — 3,2 с против
+2,7 с у marp-cli для PDF из 100 слайдов (0,9 с для векторного PDF).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Память у marp-cli — верхняя оценка&lt;/strong&gt;: процессы Chrome делят страницы,
+которые сумма учитывает в каждом. Самый большой отдельный процесс — 220–320 МиБ.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Метод, каждая презентация и режим, а также команды для воспроизведения
+результатов приведены в
+&lt;a href="https://github.com/go-slides/slides/blob/main/BENCHMARKS.md" target="_blank" rel="noopener"&gt;BENCHMARKS.md&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>

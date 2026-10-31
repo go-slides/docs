@@ -1,0 +1,103 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Emoji</title><link>https://go-slides.github.io/docs/0.14/ru/tags/emoji/</link><description>Recent content in Emoji on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.14/ru/tags/emoji/index.xml" rel="self" type="application/rss+xml"/><item><title>Эмодзи</title><link>https://go-slides.github.io/docs/0.14/ru/emoji/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/ru/emoji/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Эмодзи появились в v0.4.0; в v0.3.0 их не было.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пишите эмодзи кодом или самим символом:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Launch :rocket: 🎉
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Shortcodes :smile: :+1: :heart_eyes: and Unicode 😄 👍🏽 👩‍💻 🇫🇷 1️⃣.&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Каждый превращается в изображение &lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;Twemoji&lt;/a&gt;,
+которое рисует Marp Core, с той же разметкой, что пишет Marp Core:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;emoji&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;draggable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;false&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;😄&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;data:image/svg+xml;base64,…&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;data-marp-twemoji&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="no-network"&gt;Без сети&lt;span class="hx:absolute hx:-mt-20" id="no-network"&gt;&lt;/span&gt;
+&lt;a href="#no-network" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;В Marp Core &lt;code&gt;src&lt;/code&gt; — это URL на CDN, поэтому презентация, показанная офлайн,
+распечатанная или превращённая в PDF на машине без подключения, показывает
+битые изображения. go-slides кладёт сам SVG в URI &lt;code&gt;data:&lt;/code&gt;. Графика (4009
+изображений, Twemoji 17.0.3, Emoji 17.0) встроена в программу из модуля на
+чистом Go &lt;a href="https://github.com/go-icons/twemoji" target="_blank" rel="noopener"&gt;go-icons/twemoji&lt;/a&gt;, занимает 2 МБ
+в сжатом виде и читается, только если в презентации есть эмодзи.&lt;/p&gt;
+&lt;p&gt;Изображения одинаково рисуют HTML-страница, &lt;code&gt;--images&lt;/code&gt;/&lt;code&gt;--image&lt;/code&gt;, &lt;code&gt;--pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; и &lt;code&gt;--odp&lt;/code&gt;: SVG растеризует go-webengine. Все 4009 изображений
+разбираются и рисуются его SVG-растеризатором; это проверяет тест. Начиная с
+v0.5.0 этот растеризатор — &lt;a href="https://github.com/go-gfx/oksvg" target="_blank" rel="noopener"&gt;go-gfx/oksvg&lt;/a&gt;
+v0.2.0: &lt;code&gt;clipPath&lt;/code&gt;, &lt;code&gt;fill-rule: evenodd&lt;/code&gt; и команды дуг теперь рисуются так же,
+как в Chrome, что изменило один Twemoji и 211 других, а SVG-логотипы больше не
+искажаются.&lt;/p&gt;
+&lt;p&gt;Правило, подгоняющее размер эмодзи под текст (&lt;code&gt;img[data-marp-twemoji]&lt;/code&gt;,
+квадрат в один &lt;code&gt;em&lt;/code&gt;, выровненный по базовой линии), добавляется к теме так же,
+как это делает Marp Core, поэтому его получает и ваша собственная тема.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-is-converted"&gt;Что преобразуется&lt;span class="hx:absolute hx:-mt-20" id="what-is-converted"&gt;&lt;/span&gt;
+&lt;a href="#what-is-converted" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Правила взяты из Marp Core; тест сравнивает их с HTML, который Marp Core 4.4.0
+пишет для презентации со всеми случаями.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:smile:&lt;/code&gt;, &lt;code&gt;:+1:&lt;/code&gt;, &lt;code&gt;:heart_eyes:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1903 имени из markdown-it-emoji — в тексте, заголовках, ссылках, таблицах, &lt;code&gt;header&lt;/code&gt; и &lt;code&gt;footer&lt;/code&gt;; не в коде, не в URL и не в alt-тексте изображения&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;😄&lt;/code&gt;, &lt;code&gt;👩‍💻&lt;/code&gt;, &lt;code&gt;🇫🇷&lt;/code&gt;, &lt;code&gt;1️⃣&lt;/code&gt;, &lt;code&gt;👍🏽&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;эмодзи Unicode — в тексте &lt;strong&gt;и в коде&lt;/strong&gt;: Marp Core переписывает отрисованный HTML кода&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;✔&lt;/code&gt;, &lt;code&gt;©&lt;/code&gt;, &lt;code&gt;™&lt;/code&gt;, &lt;code&gt;▶&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;остаются текстом: символы, у которых представление по умолчанию текстовое, становятся эмодзи только с U+FE0F (&lt;code&gt;✔️&lt;/code&gt;); &lt;code&gt;❤&lt;/code&gt; — исключение&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;☺︎&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;остаётся текстом: U+FE0E после эмодзи просит простой глиф&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;12:30:45&lt;/code&gt;, &lt;code&gt;:not_a_name:&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;остаются как написано&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;id&lt;/code&gt; заголовка и оглавление используют эмодзи, а не имя кода:
+у &lt;code&gt;# Launch :rocket:&lt;/code&gt; будет id &lt;code&gt;launch-%F0%9F%9A%80&lt;/code&gt;, как в Marp.&lt;/p&gt;
+&lt;p&gt;Там, где go-slides отличается от Marp Core, он преобразует больше: &lt;code&gt;✌️ ☝️ ✍️ 🏋️&lt;/code&gt;
+и ещё несколько символов с текстовым представлением по умолчанию, которые
+emoji-regex в Marp Core оставляет текстом, а также горстку последовательностей,
+которые рисует Twemoji, но которых нет в списке Unicode.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="turning-it-off"&gt;Отключение&lt;span class="hx:absolute hx:-mt-20" id="turning-it-off"&gt;&lt;/span&gt;
+&lt;a href="#turning-it-off" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;--no-emoji&lt;/code&gt; (в коде — &lt;code&gt;slides.Config{NoEmoji: true}&lt;/code&gt;) оставляет коды и эмодзи
+Unicode тем текстом, каким они были написаны; это &lt;code&gt;emoji: false&lt;/code&gt; из Marp Core.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="attribution"&gt;Авторство&lt;span class="hx:absolute hx:-mt-20" id="attribution"&gt;&lt;/span&gt;
+&lt;a href="#attribution" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Графика — Twemoji, Copyright 2020 Twitter, Inc и другие участники, лицензия
+&lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&gt;CC-BY 4.0&lt;/a&gt;; проект продолжает
+&lt;a href="https://github.com/jdecked/twemoji" target="_blank" rel="noopener"&gt;jdecked/twemoji&lt;/a&gt;. Презентация, которая их
+показывает, должна указывать авторство, например в нижнем колонтитуле или на
+заключительном слайде. Таблица кодов взята из markdown-it-emoji (MIT).&lt;/p&gt;</description></item></channel></rss>

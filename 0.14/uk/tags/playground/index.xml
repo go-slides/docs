@@ -1,0 +1,557 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.14/uk/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.14/uk/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/uk/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/uk/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Відкрити playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Playground — це сам go-slides, v0.14.0, скомпільований у WebAssembly і
+запущений у вашому браузері. Пишіть презентацію ліворуч; слайди з&amp;rsquo;являються
+праворуч. Нічого не надсилається на сервер: ні презентація, ні посилання для
+поширення.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Що в ньому є&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Живий попередній перегляд&lt;/strong&gt; кожного слайда, що рендериться поза потоком
+сторінки (Web Worker), тож набір тексту ніколи його не чекає. Клацніть
+слайд, щоб перемістити редактор до його рядка; перемістіть курсор — і
+попередній перегляд прокрутиться до його слайда.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Показ слайдів&lt;/strong&gt;: сама презентація, з клавіатурою, екранним
+контролером і переходами.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Вигляд доповідача&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (або &lt;code&gt;p&lt;/code&gt; у показі) відкриває його в
+другому вікні: поточний слайд, наступний крок, нотатки доповідача
+(&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt; презентації), годинник і таймер. Клавіші стрілок,
+Space, Home і End працюють у будь-якому вікні, і кожне слідує за іншим, також
+коли ви редагуєте презентацію. Якщо вікно не відкривається, дозвольте
+спливні вікна для сайту. Вигляд огляду (&lt;code&gt;o&lt;/code&gt;) є лише в завантаженій сторінці.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Автодоповнення&lt;/strong&gt; під час набору: ключі директив (spot-директиви з &lt;code&gt;_&lt;/code&gt; — у
+коментарях), значення &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, а також функції
+шаблонів і поля даних усередині &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Довідка&lt;/strong&gt; про те, що під курсором: директиву, kind (що він встановлює),
+функцію шаблону. Панель довідки також містить посилання на ці сторінки.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Проблеми&lt;/strong&gt; на своєму рядку: помилки шаблонів, YAML і HCL підсвічуються в
+редакторі та перелічуються під ним, а попередній перегляд зберігає останню
+презентацію, що відрендерилася.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Приклади&lt;/strong&gt;: вітальна презентація, шаблони, що генерують слайди, kinds
+слайдів, front matter у HCL, теми й spot-директиви, а також математика,
+зображення та фони (&lt;code&gt;![bg]&lt;/code&gt;, розділений &lt;code&gt;![bg left:40%]&lt;/code&gt;, фільтри).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Файли&lt;/strong&gt;: панель ліворуч від редактора — це проєкт презентації, розкладений
+так, як його читають &lt;a href="https://go-slides.github.io/docs/0.14/uk/cli/"&gt;команда&lt;/a&gt; і
+&lt;a href="https://go-slides.github.io/docs/0.14/uk/vscode/"&gt;розширення VS Code&lt;/a&gt;: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Клацніть файл, щоб редагувати його. Редактор розфарбовує його за мовою
+(Markdown, YAML, HCL, JSON, CSS) і позначає його проблеми.&lt;/li&gt;
+&lt;li&gt;Правий клік (або Shift+F10) — New File, New Folder, Rename (F2),
+Delete (спершу питає) і New theme / New kind. Перетягніть файл на теку,
+щоб перемістити його. Клавіатура дотримується шаблону дерева WAI-ARIA,
+включно з пошуком за набраними літерами.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; створює &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (або з default,
+uncover): &lt;code&gt;@import&lt;/code&gt; вбудованої теми та правила, які ви додаєте. Вона
+потрапляє до списку тем. &lt;strong&gt;New kind&lt;/strong&gt; і &lt;strong&gt;New data file&lt;/strong&gt; теж починаються
+із шаблонів. Кожен перелічується в &lt;code&gt;slides.yaml&lt;/code&gt;, тож &lt;code&gt;slides build deck.md&lt;/code&gt;
+його знаходить.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; зберігає все. Після розпакування
+&lt;code&gt;slides build deck.md&lt;/code&gt; його збирає. &lt;strong&gt;Open project&lt;/strong&gt; приймає &lt;code&gt;.zip&lt;/code&gt; або
+теку назад. Архів, який виходить за межі своєї теки (&lt;code&gt;..&lt;/code&gt;, абсолютні
+шляхи), містить понад 256 файлів або файл понад 8 МіБ, або розпаковується
+більш ніж у 100 разів, відхиляється.&lt;/li&gt;
+&lt;li&gt;Усе зберігається в цьому браузері разом із чернеткою. Проєкт вміщує до
+64 МіБ, а рядок під файлами показує, скільки використано.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Медіа&lt;/strong&gt;: киньте або вставте зображення, відео чи звук на редактор, і воно
+потрапляє до &lt;code&gt;media/&lt;/code&gt;, а презентація називає його: &lt;code&gt;![](media/photo.png)&lt;/code&gt;.
+Киньте файли на теку панелі, щоб покласти їх туди. Презентація залишається
+малою й читабельною, і нічого не завантажується. Пісочниця попереднього
+перегляду завантажує їх, не відкриваючись (сторінка передає їй байти).
+&lt;strong&gt;Save as ▸ HTML page&lt;/strong&gt; кладе їх у сторінку. Зображення &lt;code&gt;https:&lt;/code&gt; теж
+працюють, але браузер отримує їх зі свого сервера, який тоді бачить вашу
+адресу. Попередній перегляд не надсилає referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Панелі зі змінним розміром&lt;/strong&gt;: панель файлів, редактор, мініатюри слайдів,
+попередній перегляд і довідка розділені смугами, які можна перетягувати
+(над ними вказівник стає курсором зміни розміру). Панель біля смуги
+отримує місце, інші зберігають розмір. Двічі клацніть смугу або натисніть на
+ній Enter, щоб згорнути панель і повернути її. З клавіатури F6 переходить між
+смугами, клавіші стрілок зсувають одну на 16 px, Home і End доводять панель
+перед нею до найменшого й найбільшого розміру, а Escape повертає до
+редактора. Вкладка View, як і раніше, вимикає панелі. Розміри, які ви
+задаєте, зберігаються в цьому браузері разом із чернеткою; типові розміри
+(190, 168 і 280 px, редактор і попередній перегляд ділять решту як 6 до 5)
+ніколи не зберігаються.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Формат&lt;/strong&gt;: вкладка Format редагує Markdown за вас, і кожне натискання — це
+один крок Undo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Текст&lt;/strong&gt;: Bold, Italic, Strikethrough та Inline code працюють на виділенні
+або слові під курсором і перемикаються (Ctrl+B, Ctrl+I, Ctrl+Shift+X і
+Ctrl+E; Cmd на Mac). Кнопка показується натиснутою, коли курсор усередині її
+позначок. У Markdown немає підкреслення: Underline (Ctrl+U) обгортає текст
+у &lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;, тег, який зберігає типовий білий список HTML Marp, тож це
+працює при вимкненому сирому HTML.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Абзац&lt;/strong&gt;: Heading 1–3 (Ctrl+Alt+1..3), марковані списки (Ctrl+Shift+8),
+нумерація (Ctrl+Shift+7) і цитата працюють на виділених рядках і
+перемикаються. Горизонтальна лінія — це тег &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt; і &lt;code&gt;___&lt;/code&gt;
+кожен починав би новий слайд у Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Таблиця&lt;/strong&gt;: сітка вибирає стовпці й рядки. На курсорі в таблиці ви додаєте
+або видаляєте рядок чи стовпець і вирівнюєте стовпець (&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;,
+&lt;code&gt;--:&lt;/code&gt;); таблиця переписується вирівняною після кожної правки.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slide text&lt;/strong&gt; ліворуч, по центру чи праворуч записує блок
+&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; у поточний слайд. У Marp немає синтаксису вирівнювання, а
+атрибут &lt;code&gt;style&lt;/code&gt; не проходить типовий білий список HTML, проте блок scoped
+проходить, тож це працює при вимкненому сирому HTML і видно в попередньому
+перегляді, HTML-сторінці та PDF.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Ctrl+K) записує &lt;code&gt;[text](url)&lt;/code&gt; з виділеним url.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Підсвічування&lt;/strong&gt; ключів front matter на будь-якій глибині, у YAML (також у
+відображеннях &lt;code&gt;{a: 1}&lt;/code&gt;) і в HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Вибір &lt;strong&gt;теми&lt;/strong&gt;: default, gaia, uncover, теми проєкту (&lt;code&gt;themes/*.css&lt;/code&gt;) і теми,
+які визначає презентація (&lt;code&gt;/* @theme name */&lt;/code&gt; у &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Він записує
+&lt;code&gt;theme:&lt;/code&gt; у front matter, YAML чи HCL, тож посилання для поширення його
+зберігає, і він слідує за front matter, коли ви його редагуєте.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Попередній перегляд &lt;strong&gt;зберігає своє місце&lt;/strong&gt; під час набору: замінюються лише
+слайди, що змінилися, а зміна теми знову відкриває попередній перегляд на
+тому самому слайді.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Посилання для поширення&lt;/strong&gt;: презентація їде в самому посиланні (в його
+частині після &lt;code&gt;#&lt;/code&gt;, стиснута), тож відкриття посилання відкриває презентацію.
+Посилання вміщують до 64 КіБ у стиснутому вигляді, і лише презентацію: коли
+проєкт містить більше (теми, kinds, медіа), Share про це каже та пропонує
+&lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML-сторінка, така сама, яку пише &lt;code&gt;slides deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt; (векторний, з текстом, який можна виділяти, зі змістом);&lt;/li&gt;
+&lt;li&gt;редагована презентація &lt;strong&gt;PowerPoint&lt;/strong&gt; або &lt;strong&gt;OpenDocument&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Вони створюються у вашому браузері тим самим кодом, що й &lt;code&gt;slides --pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; та &lt;code&gt;--odp&lt;/code&gt;: PDF еталонної презентації зі 100 слайдів
+байт-в-байт збігається з PDF від команди. Перший експорт завантажує рушій
+експорту (близько 5 МіБ, один раз; браузер тримає його до наступного
+оновлення), з рядком прогресу, і компілює його в міру надходження. Потім
+завантажує лише шрифти, які малюють ваші слайди. На каналі 3 МБ/с перший PDF
+вітальної презентації готовий менш ніж за 3 секунди. Презентація зі 100
+слайдів тоді займає близько 3 секунд. Зображення &lt;code&gt;https:&lt;/code&gt; включається лише
+тоді, коли його сервер це дозволяє (CORS); зображення &lt;code&gt;data:&lt;/code&gt; — завжди.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Вашу чернетку збережено&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Презентація зберігається в цьому браузері під час набору (IndexedDB, лише
+для цього сайту) і повертається після перезавантаження. Нічого нікуди не
+надсилається. Текстові файли проєкту (теми, kinds, дані, &lt;code&gt;slides.yaml&lt;/code&gt;)
+зберігаються так само, навіть коли ви закриваєте вкладку одразу після
+набору; медіа зберігаються в мить скидання.&lt;/li&gt;
+&lt;li&gt;Посилання для поширення відкриває свою презентацію та зберігає вашу
+чернетку: &lt;strong&gt;Draft ▸ Restore my draft&lt;/strong&gt; повертає її.&lt;/li&gt;
+&lt;li&gt;Приклад, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (що спершу питає) і інша вкладка
+теж ніколи її не стирають: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; міняє її назад.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; стирає все збережене.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Кожен експорт рендерить проєкт, який показує попередній перегляд: його
+&lt;code&gt;slides.yaml&lt;/code&gt;, теми, kinds, файли даних і медіа, медіа — всередині документа.&lt;/p&gt;
+&lt;p&gt;Зображення як файли (слайди &lt;code&gt;--images&lt;/code&gt;) у браузері не створюються: скористайтеся
+&lt;a href="https://go-slides.github.io/docs/0.14/uk/cli/"&gt;командою&lt;/a&gt; або
+&lt;a href="https://go-slides.github.io/docs/0.14/uk/vscode/"&gt;розширенням VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Безпека&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентація показується в iframe, ізольованому без походження сторінки: він не
+може дістатися ні до playground, ні до його сховища, не може надіслати форму й
+нікуди перейти. Його сторінка несе Content Security Policy, що запускає лише
+власні скрипти. Сирий HTML у презентації дотримується білого списку Marp, як і
+&lt;code&gt;slides&lt;/code&gt; типово. Рендер, що триває понад 5 секунд (шаблон, який зациклюється),
+зупиняється.&lt;/p&gt;
+&lt;p&gt;Вікно доповідача зберігає цю пісочницю. Його відкриває сам playground, і воно
+показує презентацію в iframe, ізольованому так само. Два iframe не можуть
+ділити сховище, тому playground передає номер слайда між ними в повідомленнях.
+Жоден фрейм, що запускає презентацію, не отримує походження playground.&lt;/p&gt;
+&lt;p&gt;Медіа проєкту потрапляють до ізольованих фреймів як байти в повідомленні, і
+кожен фрейм створює з них власні URL &lt;code&gt;blob:&lt;/code&gt; у власному походженні. URL
+&lt;code&gt;blob:&lt;/code&gt;, створений playground, там не завантажується, а політика фреймів
+отримує лише &lt;code&gt;blob:&lt;/code&gt; для медіа та шрифтів.&lt;/p&gt;
+&lt;p&gt;Playground можна обслуговувати з вашої власної машини, за входом:
+див. &lt;a href="https://go-slides.github.io/docs/0.14/uk/self-hosting/"&gt;Self-hosting&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Розмір і швидкість&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Модуль має 8,8 МіБ у тому вигляді, як його віддає GitHub Pages (gzip; Pages не
+віддає brotli). Він завантажується один раз із індикатором прогресу, потім
+кешується браузером до наступного розгортання. На Apple M4 Max з Chrome 155,
+виміряно на живій сторінці, редактор готовий через 2,1 с після відкриття
+сторінки, з яких 1,5 с — завантаження, а перші слайди з&amp;rsquo;являються на 2,4 с.
+Зміна в еталонній презентації зі 100 слайдів доходить до попереднього перегляду
+приблизно за 30 мс: go-slides рендерить лише слайди, що змінилися, і лише вони
+замінюються в попередньому перегляді.&lt;/p&gt;</description></item><item><title>Self-hosting</title><link>https://go-slides.github.io/docs/0.14/uk/self-hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/uk/self-hosting/</guid><description>
+&lt;p&gt;&lt;a href="https://go-slides.github.io/docs/0.14/uk/playground/"&gt;Playground&lt;/a&gt; — це статичні файли, а
+&lt;a href="https://go-slides.github.io/docs/0.14/uk/cli/"&gt;&lt;code&gt;slides --server&lt;/code&gt;&lt;/a&gt; — один процес на loopback. Обидва
+можна запустити на власній машині, під власним іменем, для людей, які входять
+через обліковий запис вашої організації. Ця сторінка робить це за допомогою
+&lt;a href="https://caddyserver.com/docs/" target="_blank" rel="noopener"&gt;Caddy&lt;/a&gt; (перевірено з v2.11.7), який сам
+отримує й поновлює сертифікати HTTPS, і
+&lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/" target="_blank" rel="noopener"&gt;oauth2-proxy&lt;/a&gt; для входу. Кожен
+показаний тут файл є в
+&lt;a href="https://github.com/go-slides/go-slides.github.io/tree/main/selfhost" target="_blank" rel="noopener"&gt;&lt;code&gt;selfhost/&lt;/code&gt;&lt;/a&gt;,
+і його CI перевіряє кожен Caddyfile командою &lt;code&gt;caddy validate&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-playground"&gt;Playground&lt;span class="hx:absolute hx:-mt-20" id="the-playground"&gt;&lt;/span&gt;
+&lt;a href="#the-playground" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Кожен випуск сайту додає весь сайт, разом із playground, як один tar-архів,
+зібраний для кореня домену, з його SHA-256:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -fLO https://github.com/go-slides/go-slides.github.io/releases/download/v0.1.0/go-slides-site-v0.1.0.tar.gz.sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sha256sum -c go-slides-site-v0.1.0.tar.gz.sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tar -xzf go-slides-site-v0.1.0.tar.gz -C /srv
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mv /srv/go-slides-site-v0.1.0 /srv/go-slides-site&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Архів відтворюваний: повторне збирання того самого тега дає ті самі байти.
+Поруч із кожним файлом, що стискається (модулі WebAssembly, шрифти, сторінки,
+скрипти), він містить той самий файл, стиснутий Brotli (&lt;code&gt;.br&lt;/code&gt;) і gzip (&lt;code&gt;.gz&lt;/code&gt;),
+тож сервер надсилає їх як є й нічого не стискає на льоту.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="caddyfile"&gt;Caddyfile&lt;span class="hx:absolute hx:-mt-20" id="caddyfile"&gt;&lt;/span&gt;
+&lt;a href="#caddyfile" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;slides.example.org&lt;/code&gt; — це ваше ім&amp;rsquo;я. Його записи A і AAAA вказують на машину, а
+порти 80 і 443 досягають Caddy:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="vm"&gt;headers.caddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;slides.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;root&lt;/span&gt; &lt;span class="nd"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/srv/go-slides-site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;file_server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;precompressed&lt;/span&gt; &lt;span class="s"&gt;br&lt;/span&gt; &lt;span class="s"&gt;gzip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; playground_headers
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;caddy run --config Caddyfile.playground&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Після цього playground розташований за адресою
+&lt;code&gt;https://slides.example.org/playground/&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="what-the-server-must-get-right"&gt;Що має зробити правильно сервер&lt;span class="hx:absolute hx:-mt-20" id="what-the-server-must-get-right"&gt;&lt;/span&gt;
+&lt;a href="#what-the-server-must-get-right" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTTPS.&lt;/strong&gt; Caddy отримує сертифікат від Let&amp;rsquo;s Encrypt за допомогою ACME
+(&lt;a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener"&gt;RFC 8555&lt;/a&gt;), доводячи, що володіє
+іменем, відповіддю на порту 80 (HTTP-01) або 443 (TLS-ALPN-01), і поновлює
+його. Машина, до якої CA не може дістатися, може натомість використати
+виклик DNS-01 (запис TXT, для якого потрібен Caddy зі збіркою модуля вашого
+DNS-провайдера) або власний сертифікат через &lt;code&gt;tls cert.pem key.pem&lt;/code&gt;. На
+тестовій машині &lt;code&gt;tls internal&lt;/code&gt; використовує локальний CA Caddy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;application/wasm&lt;/code&gt;.&lt;/strong&gt; Caddy надсилає цей тип для &lt;code&gt;.wasm&lt;/code&gt;; іншому серверу
+може знадобитися це вказати. Playground компілює свої модулі з байтів, які
+прочитав (рушій експорту — у міру завантаження, у власній відповіді з цим
+типом), тож він запускається навіть із сервера, що надсилає інший тип; з
+&lt;code&gt;nosniff&lt;/code&gt; правильний тип усе ж той, який слід надсилати.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Стиснення.&lt;/strong&gt; &lt;code&gt;precompressed br gzip&lt;/code&gt; надсилає &lt;code&gt;playground.wasm.br&lt;/code&gt;
+браузеру, що приймає Brotli, &lt;code&gt;.gz&lt;/code&gt; — тому, що приймає gzip, і сам файл в
+іншому разі, з &lt;code&gt;Vary: Accept-Encoding&lt;/code&gt;. Модуль редактора має близько 7 МіБ у
+Brotli проти 33 МіБ без стиснення.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Кешування.&lt;/strong&gt; Сторінка запитує кожен модуль, воркер, шрифт і картинку з
+випуском у запиті (&lt;code&gt;playground.wasm?v=v0.1.0&lt;/code&gt;), тож їх можна зберігати рік
+(&lt;code&gt;immutable&lt;/code&gt;). Самі сторінки перевіряються повторно (&lt;code&gt;no-cache&lt;/code&gt;): новий
+випуск видно при наступному візиті.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Заголовки в &lt;code&gt;headers.caddy&lt;/code&gt;:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;(playground_headers)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Content-Security-Policy&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default-src &amp;#39;self&amp;#39;; script-src &amp;#39;self&amp;#39; &amp;#39;unsafe-inline&amp;#39; &amp;#39;wasm-unsafe-eval&amp;#39;; worker-src &amp;#39;self&amp;#39;; connect-src &amp;#39;self&amp;#39; https:; img-src &amp;#39;self&amp;#39; data: blob: https:; media-src &amp;#39;self&amp;#39; data: blob: https:; style-src &amp;#39;self&amp;#39; &amp;#39;unsafe-inline&amp;#39; https:; font-src &amp;#39;self&amp;#39; data: blob: https:; frame-src &amp;#39;self&amp;#39;; object-src &amp;#39;none&amp;#39;; base-uri &amp;#39;none&amp;#39;; form-action &amp;#39;none&amp;#39;; frame-ancestors &amp;#39;self&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;X-Content-Type-Options&lt;/span&gt; &lt;span class="s"&gt;nosniff&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Referrer-Policy&lt;/span&gt; &lt;span class="s"&gt;no-referrer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;Strict-Transport-Security&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;max-age=31536000&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@versioned&lt;/span&gt; &lt;span class="k"&gt;query&lt;/span&gt; &lt;span class="s"&gt;v=*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="nd"&gt;@versioned&lt;/span&gt; &lt;span class="s"&gt;Cache-Control&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;public, max-age=31536000, immutable&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@unversioned&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;query&lt;/span&gt; &lt;span class="s"&gt;v=*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="nd"&gt;@unversioned&lt;/span&gt; &lt;span class="s"&gt;Cache-Control&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;no-cache&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Політика — та, що потрібна playground: його скрипти (завантажувач
+вбудований), його WebAssembly (&lt;code&gt;'wasm-unsafe-eval'&lt;/code&gt;) і його воркер, усе з вашого
+сервера. Зображення, таблиці стилів і шрифти презентації можуть надходити з
+будь-якої адреси &lt;code&gt;https:&lt;/code&gt;, як і у виводі команди; приберіть &lt;code&gt;https:&lt;/code&gt; з
+&lt;code&gt;img-src&lt;/code&gt;, &lt;code&gt;style-src&lt;/code&gt;, &lt;code&gt;font-src&lt;/code&gt;, &lt;code&gt;media-src&lt;/code&gt; і &lt;code&gt;connect-src&lt;/code&gt;, щоб тримати
+кожен запит на вашому сервері, і презентації, що вказують деінде, показуватимуться
+без цих ресурсів. Сама презентація працює в iframe, ізольованих без вашого
+походження, під суворішою власною політикою, яку playground записує в кожен
+фрейм: вона не може дістатися ні до playground, ні до його сховища, ні до ваших
+cookie, що б не казав цей заголовок. &lt;code&gt;frame-ancestors 'self'&lt;/code&gt; не дає іншим
+сайтам вбудовувати playground у фрейми.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ні COOP, ні COEP.&lt;/strong&gt; Playground не використовує ні &lt;code&gt;SharedArrayBuffer&lt;/code&gt;, ні
+потоків, тож йому не потрібна міжджерельна ізоляція. Надсилання
+&lt;code&gt;Cross-Origin-Embedder-Policy: require-corp&lt;/code&gt; заблокувало б зображення
+презентації з інших сайтів.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 data-hextra-search-id="without-the-network"&gt;Без мережі&lt;span class="hx:absolute hx:-mt-20" id="without-the-network"&gt;&lt;/span&gt;
+&lt;a href="#without-the-network" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Щойно сторінку завантажено, усе відбувається в браузері: редактор, попередній
+перегляд, вигляд доповідача й експорти PDF, PPTX та ODP, шрифти яких є в
+архіві. Презентація не надсилається ні на ваш сервер, ні кудись іще. Мережі
+потребує те, що називає презентація: зображення чи таблиці стилів за адресою
+&lt;code&gt;https:&lt;/code&gt; і веб-шрифт теми &lt;code&gt;gaia&lt;/code&gt;, який вона запитує в &lt;code&gt;fonts.bunny.net&lt;/code&gt; (без
+нього слайди переходять на інший шрифт). Посилання на цю документацію ведуть за
+межі вашого сервера.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides---server-behind-the-proxy"&gt;&lt;code&gt;slides --server&lt;/code&gt; за проксі&lt;span class="hx:absolute hx:-mt-20" id="slides---server-behind-the-proxy"&gt;&lt;/span&gt;
+&lt;a href="#slides---server-behind-the-proxy" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;slides --server&lt;/code&gt; залишається на &lt;code&gt;127.0.0.1&lt;/code&gt;, а Caddy перенаправляє до нього.
+Сервер перевіряє заголовок &lt;code&gt;Host&lt;/code&gt; кожного запиту й &lt;code&gt;Origin&lt;/code&gt; WebSocket живого
+перезавантаження, проти DNS rebinding і сторінок інших сайтів, а проксі
+зберігає публічне ім&amp;rsquo;я в обох. &lt;code&gt;--allowed-host&lt;/code&gt; додає це ім&amp;rsquo;я до того, що
+приймають перевірки; вони лишаються ввімкненими:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides -s --allowed-host decks.example.org /srv/decks&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;decks.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Живе перезавантаження проходить як є (Caddy проксіює WebSocket без
+налаштування). Не використовуйте для цього &lt;code&gt;--host 0.0.0.0&lt;/code&gt;: він віддає теку
+всій мережі, в обхід проксі та його входу.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;code&gt;--allowed-host&lt;/code&gt; є у v0.14.0 і пізніших:
+&lt;code&gt;go install github.com/go-slides/slides/cmd/slides@v0.14.0&lt;/code&gt;.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="sign-in-with-openid-connect"&gt;Вхід через OpenID Connect&lt;span class="hx:absolute hx:-mt-20" id="sign-in-with-openid-connect"&gt;&lt;/span&gt;
+&lt;a href="#sign-in-with-openid-connect" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Caddy питає oauth2-proxy про кожен запит (&lt;code&gt;forward_auth&lt;/code&gt;). oauth2-proxy
+відповідає &lt;code&gt;202&lt;/code&gt; для браузера, що увійшов, і тоді Caddy його обслуговує, та
+&lt;code&gt;401&lt;/code&gt; в іншому разі, і тоді Caddy перетворює це на перенаправлення на вхід.
+Вхід — це потік коду авторизації
+&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener"&gt;OpenID Connect Core 1.0&lt;/a&gt;:
+браузер іде до вашого провайдера (Keycloak, Authentik, Entra ID, Google, Okta,
+Dex&amp;hellip;), повертається на &lt;code&gt;/oauth2/callback&lt;/code&gt; з кодом, oauth2-proxy обмінює код на
+ID Token, перевіряє його й ставить власний cookie.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Зареєструйте клієнта&lt;/strong&gt; у вашого провайдера, конфіденційного, з потоком
+коду авторизації. Його redirect URI, які мають збігатися точно:
+&lt;code&gt;https://slides.example.org/oauth2/callback&lt;/code&gt; та
+&lt;code&gt;https://decks.example.org/oauth2/callback&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Покладіть секрети у файли&lt;/strong&gt;, читані лише oauth2-proxy: секрет клієнта, без
+символу нового рядка наприкінці, і секрет cookie рівно з 32 випадкових байтів
+(&lt;code&gt;head -c 32 /dev/urandom&lt;/code&gt;). Їх записує ваше сховище секретів (облікові дані
+systemd, секрети Docker чи Kubernetes, Vault&amp;hellip;); жоден не потрапляє до файлу
+конфігурації, командного рядка чи змінної середовища, де їх показують логи
+та &lt;code&gt;ps&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Налаштуйте oauth2-proxy&lt;/strong&gt; (&lt;code&gt;oauth2-proxy.cfg&lt;/code&gt;):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;http_address&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;127.0.0.1:4180&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;reverse_proxy&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;trusted_proxy_ips&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;127.0.0.1/32&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;::1/128&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;upstreams&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;static://202&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;set_xauthrequest&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;provider&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;oidc&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;oidc_issuer_url&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://id.example.org/realms/example&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;client_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;go-slides&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;client_secret_file&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/run/secrets/oauth2-proxy-client-secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;code_challenge_method&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;S256&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;redirect_url&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/oauth2/callback&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;whitelist_domains&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;slides.example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;decks.example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;email_domains&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;example.org&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_secret_file&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;/run/secrets/oauth2-proxy-cookie-secret&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_secure&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;cookie_samesite&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lax&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;redirect_url&lt;/code&gt; без хоста повертає вхід кожного сайту на його власний callback,
+тож кожен сайт має власний cookie. &lt;code&gt;whitelist_domains&lt;/code&gt; — це те, куди вхід може
+повернутися: якщо його просять піти кудись інде, він залишається на вашому
+сайті. &lt;code&gt;trusted_proxy_ips&lt;/code&gt; вірить заголовкам &lt;code&gt;X-Forwarded-*&lt;/code&gt; лише від Caddy.
+&lt;code&gt;email_domains&lt;/code&gt; каже, хто може увійти; oauth2-proxy має також параметри для
+груп і списків адрес.&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;&lt;strong&gt;Налаштуйте Caddy&lt;/strong&gt; (&lt;code&gt;Caddyfile.oidc&lt;/code&gt;):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-caddy" data-lang="caddy"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="vm"&gt;headers.caddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;(signed_in)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle&lt;/span&gt; &lt;span class="nd"&gt;/oauth2/*&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4180&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;forward_auth&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4180&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;uri&lt;/span&gt; &lt;span class="nd"&gt;/oauth2/auth&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;copy_headers&lt;/span&gt; &lt;span class="s"&gt;X-Auth-Request-User&lt;/span&gt; &lt;span class="s"&gt;X-Auth-Request-Email&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nd"&gt;@unauthorized&lt;/span&gt; &lt;span class="k"&gt;status&lt;/span&gt; &lt;span class="mi"&gt;401&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;handle_response&lt;/span&gt; &lt;span class="nd"&gt;@unauthorized&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;redir&lt;/span&gt; &lt;span class="nd"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/oauth2/sign_in?rd=&lt;/span&gt;&lt;span class="se"&gt;{scheme}&lt;/span&gt;&lt;span class="s"&gt;://&lt;/span&gt;&lt;span class="se"&gt;{hostport}{uri}&lt;/span&gt; &lt;span class="mi"&gt;302&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;{block}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;slides.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; signed_in &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;root&lt;/span&gt; &lt;span class="s"&gt;*&lt;/span&gt; &lt;span class="s"&gt;/srv/go-slides-site&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;file_server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;precompressed&lt;/span&gt; &lt;span class="s"&gt;br&lt;/span&gt; &lt;span class="s"&gt;gzip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; playground_headers
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;decks.example.org&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;import&lt;/span&gt; signed_in &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;reverse_proxy&lt;/span&gt; &lt;span class="n"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides -s --allowed-host decks.example.org /srv/decks
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;oauth2-proxy --config /etc/oauth2-proxy/oauth2-proxy.cfg
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;caddy run --config Caddyfile.oidc&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;oauth2-proxy і &lt;code&gt;slides&lt;/code&gt; слухають лише на loopback: єдиний вхід — через Caddy, а
+отже, через авторизацію. Заголовки playground розміщено всередині блока
+signed-in, лише для playground: сторінка входу oauth2-proxy є формою, яку
+зупинив би їхній &lt;code&gt;form-action 'none'&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Альтернатива — &lt;a href="https://github.com/greenpau/caddy-security" target="_blank" rel="noopener"&gt;caddy-security&lt;/a&gt;,
+модуль Caddy, що робить вхід усередині Caddy, без другого процесу. Йому
+потрібен Caddy, зібраний із модулем (&lt;code&gt;xcaddy&lt;/code&gt;), і власна мова конфігурації.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="check-it"&gt;Перевірка&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
+&lt;a href="#check-it" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопіювати код"
+aria-label="Скопіювати код"
+data-copied-label="Скопійовано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Відповідь містить &lt;code&gt;content-type: application/wasm&lt;/code&gt;, &lt;code&gt;content-encoding: br&lt;/code&gt; і
+&lt;code&gt;cache-control: public, max-age=31536000, immutable&lt;/code&gt;, а також наведений вище
+&lt;code&gt;content-security-policy&lt;/code&gt;. Якщо попереду стоїть вхід, той самий запит без cookie
+відповідає &lt;code&gt;302&lt;/code&gt; на &lt;code&gt;/oauth2/sign_in&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="references"&gt;Джерела&lt;span class="hx:absolute hx:-mt-20" id="references"&gt;&lt;/span&gt;
+&lt;a href="#references" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Caddy: &lt;a href="https://caddyserver.com/docs/automatic-https" target="_blank" rel="noopener"&gt;automatic HTTPS&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/file_server" target="_blank" rel="noopener"&gt;&lt;code&gt;file_server&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/header" target="_blank" rel="noopener"&gt;&lt;code&gt;header&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy" target="_blank" rel="noopener"&gt;&lt;code&gt;reverse_proxy&lt;/code&gt;&lt;/a&gt;,
+&lt;a href="https://caddyserver.com/docs/caddyfile/directives/forward_auth" target="_blank" rel="noopener"&gt;&lt;code&gt;forward_auth&lt;/code&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.rfc-editor.org/rfc/rfc8555" target="_blank" rel="noopener"&gt;RFC 8555&lt;/a&gt;, ACME: HTTP-01 (8.3),
+DNS-01 (8.4).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener"&gt;OpenID Connect Core 1.0&lt;/a&gt;:
+потік коду авторизації (3.1), redirect URI (3.1.2.1), ID Token (2).&lt;/li&gt;
+&lt;li&gt;oauth2-proxy: &lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview" target="_blank" rel="noopener"&gt;configuration&lt;/a&gt;,
+&lt;a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect" target="_blank" rel="noopener"&gt;OpenID Connect provider&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
