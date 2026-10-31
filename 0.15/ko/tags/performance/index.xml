@@ -1,0 +1,202 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Performance</title><link>https://go-slides.github.io/docs/0.15/ko/tags/performance/</link><description>Recent content in Performance on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.15/ko/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>성능</title><link>https://go-slides.github.io/docs/0.15/ko/performance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.15/ko/performance/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;아래 PPTX 수치는 v0.5.0, 벡터 PDF 수치는 v0.4.0 기준입니다.
+첫 번째 표는 이전 릴리스인 v0.3.0 기준이며, 이 버전부터 슬라이드를 동시에
+렌더링하고 글꼴을 한 번만 파싱합니다
+(&lt;a href="https://github.com/go-slides/slides/pull/11" target="_blank" rel="noopener"&gt;go-slides/slides#11&lt;/a&gt;).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;go-slides와 &lt;a href="https://github.com/marp-team/marp-cli" target="_blank" rel="noopener"&gt;marp-cli&lt;/a&gt; 4.5.1을 같은
+프레젠테이션에 대해 하위 프로세스로 실행했습니다. Apple M4 Max(CPU 16개)에서
+1분 평균 부하가 8 미만인 상태로, 예열 후 5회씩 번갈아 측정했습니다. 시간은
+경과 시간(wall time)의 중앙값이고, 메모리는 전체 프로세스 트리의 최대값입니다
+(marp-cli는 Chrome을 구동하므로 그 프로세스도 포함됩니다).&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;프레젠테이션&lt;/th&gt;
+&lt;th&gt;출력&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides 메모리&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli 메모리&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;슬라이드 100장&lt;/td&gt;
+&lt;td&gt;HTML&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;315 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;47 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;슬라이드 100장&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.14 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.88 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;242 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,509 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;슬라이드 100장&lt;/td&gt;
+&lt;td&gt;PNG, 전체 슬라이드&lt;/td&gt;
+&lt;td style="text-align: right"&gt;0.97 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;5.44 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;225 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,354 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;슬라이드 100장&lt;/td&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td style="text-align: right"&gt;3.39 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;8.03 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;530 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,373 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 슬라이드 20장&lt;/td&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td style="text-align: right"&gt;283 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.57 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;154 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,315 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;수식과 코드, 슬라이드 20장&lt;/td&gt;
+&lt;td&gt;PNG, 전체 슬라이드&lt;/td&gt;
+&lt;td style="text-align: right"&gt;250 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2.32 s&lt;/td&gt;
+&lt;td style="text-align: right"&gt;168 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,286 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="vector-pdf"&gt;벡터 PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
+&lt;a href="#vector-pdf" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;v0.4.0부터 PDF는 벡터로 그려집니다
+(&lt;a href="https://go-slides.github.io/docs/0.15/ko/cli/#vector-pdf"&gt;명령줄&lt;/a&gt; 참고). 같은 컴퓨터와 같은 방법으로
+2026-10-19에 측정했습니다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;프레젠테이션&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides 크기&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli 크기&lt;/th&gt;
+&lt;th style="text-align: right"&gt;v0.3.0 크기&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;슬라이드 100장&lt;/td&gt;
+&lt;td style="text-align: right"&gt;306 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,763 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,147 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;758 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;837 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;10.0 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 슬라이드 20장&lt;/td&gt;
+&lt;td style="text-align: right"&gt;93 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,546 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;285 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;32 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;66 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;582 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;수식과 코드, 슬라이드 20장&lt;/td&gt;
+&lt;td style="text-align: right"&gt;140 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,643 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;294 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;124 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;335 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;638 KiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;슬라이드 100장 PDF의 메모리는 158 MiB로, marp-cli의 1,512 MiB와 비교됩니다.
+CPU 시간은 0.9 s 대 2.7 s입니다.&lt;/p&gt;
+&lt;p&gt;슬라이드 100장 PDF의 v0.4.0 수치는 2026-10-19 21:29에 1분 평균 부하 7.7에서
+3회 측정한 것입니다. go-slides는 306 ms, 758 KiB, 158 MiB였고 marp-cli는
+1,838 ms, 837 KiB, 1,512 MiB였습니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="editable-pptx"&gt;편집 가능한 PPTX&lt;span class="hx:absolute hx:-mt-20" id="editable-pptx"&gt;&lt;/span&gt;
+&lt;a href="#editable-pptx" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;v0.5.0부터 PPTX는 텍스트 상자, 도형, 그림으로 이루어집니다
+(&lt;a href="https://go-slides.github.io/docs/0.15/ko/cli/#editable-pptx-and-odp"&gt;명령줄&lt;/a&gt; 참고). 2026-10-19 22:51에
+1분 평균 부하 7.1에서 3회 측정했습니다.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;프레젠테이션&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides 크기&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli 크기&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides 메모리&lt;/th&gt;
+&lt;th style="text-align: right"&gt;marp-cli 메모리&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;슬라이드 100장&lt;/td&gt;
+&lt;td style="text-align: right"&gt;348 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,795 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;760 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7.2 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;204 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1,370 MiB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;gaia, 슬라이드 20장&lt;/td&gt;
+&lt;td style="text-align: right"&gt;112 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4,608 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;893 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;4.8 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;수식과 코드, 슬라이드 20장&lt;/td&gt;
+&lt;td style="text-align: right"&gt;207 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;2,780 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;842 KiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;1.5 MiB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;슬라이드 100장 프레젠테이션에서 v0.4.0은 4.7 s, 4.8 MiB, 540 MiB였습니다.
+marp-cli의 PPTX에는 그림이 들어 있습니다. 편집 가능한 프레젠테이션 크기의
+대부분은 내장 글꼴입니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="why-it-is-fast"&gt;빠른 이유&lt;span class="hx:absolute hx:-mt-20" id="why-it-is-fast"&gt;&lt;/span&gt;
+&lt;a href="#why-it-is-fast" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;시작할 브라우저가 없습니다.&lt;/strong&gt; marp-cli는 PDF, 이미지, PPTX를 내보낼 때마다
+Chrome을 실행하지만, go-slides는 자체 프로세스 안에서
+&lt;a href="https://github.com/go-webengine/engine" target="_blank" rel="noopener"&gt;go-webengine&lt;/a&gt;으로 렌더링합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;슬라이드를 병렬로 렌더링합니다.&lt;/strong&gt; 기본값은 한 번에 네 장이며, 각 이미지는
+차례가 오는 즉시 기록되므로 긴 프레젠테이션도 이미지 형태로 메모리에 쌓아 두지
+않습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;글꼴은 한 번만 파싱합니다.&lt;/strong&gt; 슬라이드마다가 아니라 프로세스당 한 번입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="what-it-does-not-win"&gt;앞서지 못하는 부분&lt;span class="hx:absolute hx:-mt-20" id="what-it-does-not-win"&gt;&lt;/span&gt;
+&lt;a href="#what-it-does-not-win" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;v0.3.0의 PDF 크기.&lt;/strong&gt; PDF 안의 각 슬라이드가 이미지였기 때문에 슬라이드
+100장 프레젠테이션에서 10 MiB로, marp-cli의 837 KiB보다 컸습니다. 위의 벡터
+PDF는 marp-cli보다 작습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;큰 프레젠테이션의 CPU 시간.&lt;/strong&gt; 워커 네 개는 경과 시간이 보여 주는 것보다 더
+많은 CPU를 씁니다. v0.3.0에서 슬라이드 100장 PDF는 3.2 s로, marp-cli의
+2.7 s보다 많았습니다(벡터 PDF는 0.9 s).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;marp-cli의 메모리는 상한값입니다.&lt;/strong&gt; Chrome 프로세스들은 페이지를 공유하는데,
+합계에서는 이를 프로세스마다 중복해 셉니다. 가장 큰 단일 프로세스는
+220–320 MiB입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;측정 방법, 모든 프레젠테이션과 모드, 수치를 재현하는 명령은
+&lt;a href="https://github.com/go-slides/slides/blob/main/BENCHMARKS.md" target="_blank" rel="noopener"&gt;BENCHMARKS.md&lt;/a&gt;에
+있습니다.&lt;/p&gt;</description></item></channel></rss>

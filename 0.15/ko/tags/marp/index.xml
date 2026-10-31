@@ -1,0 +1,86 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Marp</title><link>https://go-slides.github.io/docs/0.15/ko/tags/marp/</link><description>Recent content in Marp on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.15/ko/tags/marp/index.xml" rel="self" type="application/rss+xml"/><item><title>Marp 호환성</title><link>https://go-slides.github.io/docs/0.15/ko/marp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.15/ko/marp/</guid><description>
+&lt;p&gt;&lt;a href="https://marp.app" target="_blank" rel="noopener"&gt;Marp&lt;/a&gt;용으로 작성한 프레젠테이션은 그대로 go-slides
+프레젠테이션입니다. 아래 규칙은 &lt;a href="https://marpit.marp.app" target="_blank" rel="noopener"&gt;Marpit&lt;/a&gt;과
+&lt;a href="https://github.com/marp-team/marp-core" target="_blank" rel="noopener"&gt;Marp Core&lt;/a&gt;의 규칙이며, go-slides가
+다른 부분은 이 페이지에 따로 밝힙니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides"&gt;슬라이드&lt;span class="hx:absolute hx:-mt-20" id="slides"&gt;&lt;/span&gt;
+&lt;a href="#slides" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;수평선, 즉 Marpit이 나누는 방식대로 한 줄에 단독으로 쓴 &lt;code&gt;---&lt;/code&gt;는 새 슬라이드를
+시작합니다. &lt;code&gt;headingDivider&lt;/code&gt; 디렉티브가 지정한 수준의 제목도 마찬가지입니다.
+처음 두 &lt;code&gt;---&lt;/code&gt; 사이의 프런트 매터에는 전역 디렉티브와 프레젠테이션 데이터가
+들어갑니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="directives"&gt;디렉티브&lt;span class="hx:absolute hx:-mt-20" id="directives"&gt;&lt;/span&gt;
+&lt;a href="#directives" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;종류&lt;/th&gt;
+&lt;th&gt;위치&lt;/th&gt;
+&lt;th&gt;적용 범위&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;전역&lt;/td&gt;
+&lt;td&gt;프런트 매터, 또는 어디서나 &lt;code&gt;&amp;lt;!-- theme: gaia --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;프레젠테이션 전체: &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt;…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;로컬&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- paginate: true --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;이 슬라이드와 그 뒤의 슬라이드&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;스폿&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- _class: lead --&amp;gt;&lt;/code&gt; (밑줄)&lt;/td&gt;
+&lt;td&gt;이 슬라이드만&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;로컬 디렉티브는 Marpit의 것입니다: &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;,
+&lt;code&gt;backgroundColor&lt;/code&gt;, &lt;code&gt;backgroundImage&lt;/code&gt;, &lt;code&gt;backgroundPosition&lt;/code&gt;,
+&lt;code&gt;backgroundRepeat&lt;/code&gt;, &lt;code&gt;backgroundSize&lt;/code&gt;, &lt;code&gt;color&lt;/code&gt;. 디렉티브는 Marp Core처럼
+느슨한 YAML로 파싱하며, &lt;code&gt;--strict-yaml&lt;/code&gt;을 쓰면 순수 Marpit처럼 파싱합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="images"&gt;이미지&lt;span class="hx:absolute hx:-mt-20" id="images"&gt;&lt;/span&gt;
+&lt;a href="#images" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;![bg](image.jpg)&lt;/code&gt;는 이미지를 슬라이드 배경으로 만들며, Marp의 키워드를 그대로
+씁니다. &lt;code&gt;bg contain&lt;/code&gt;, &lt;code&gt;bg cover&lt;/code&gt;, &lt;code&gt;bg 50%&lt;/code&gt;, 화면을 나누는 배경을 위한
+&lt;code&gt;bg left&lt;/code&gt;/&lt;code&gt;bg right&lt;/code&gt;, 나란히 놓는 여러 장의 &lt;code&gt;bg&lt;/code&gt; 이미지, 그리고 이미지 필터
+(&lt;code&gt;blur&lt;/code&gt;, &lt;code&gt;sepia&lt;/code&gt;, &lt;code&gt;grayscale&lt;/code&gt;…)를 지원합니다. 인라인 이미지 크기(&lt;code&gt;w:200px&lt;/code&gt;,
+&lt;code&gt;h:&lt;/code&gt;)도 Marp와 똑같이 읽습니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="around-the-slide"&gt;슬라이드 주변 요소&lt;span class="hx:absolute hx:-mt-20" id="around-the-slide"&gt;&lt;/span&gt;
+&lt;a href="#around-the-slide" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;헤더와 푸터&lt;/strong&gt;: Markdown으로 쓰는 &lt;code&gt;header:&lt;/code&gt;와 &lt;code&gt;footer:&lt;/code&gt; 디렉티브.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;페이지 번호&lt;/strong&gt;: &lt;code&gt;paginate: true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;발표자 노트&lt;/strong&gt;: 디렉티브가 아닌 HTML 주석은 노트가 됩니다.
+&lt;code&gt;slides notes&lt;/code&gt;로 출력할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;단계별 목록&lt;/strong&gt;: &lt;code&gt;*&lt;/code&gt;(또는 &lt;code&gt;1)&lt;/code&gt;)로 쓴 목록은 Marp처럼 항목이 하나씩
+나타납니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;: 한 슬라이드에만 적용되는 CSS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;원시 HTML&lt;/strong&gt;: 기본값은 Marp Core의 허용 목록이며, &lt;code&gt;--html&lt;/code&gt;을 쓰면 모두
+허용합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;이모지&lt;/strong&gt;: &lt;code&gt;:shortcodes:&lt;/code&gt;와 Unicode 이모지는 Marp Core처럼 Twemoji 이미지가
+되지만, CDN에서 불러오지 않고 내장됩니다. &lt;a href="https://go-slides.github.io/docs/0.15/ko/emoji/"&gt;이모지&lt;/a&gt;를
+참고하십시오.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="themes"&gt;테마&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
+&lt;a href="#themes" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt;, &lt;code&gt;uncover&lt;/code&gt;가 기본 제공되며 &lt;code&gt;theme:&lt;/code&gt;로 선택합니다. 직접 만든
+테마는 Marp의 &lt;code&gt;/* @theme name */&lt;/code&gt; 주석이 들어 있는 CSS 파일이며,
+&lt;code&gt;--theme-set&lt;/code&gt;으로 지정하거나 &lt;code&gt;slides.yaml&lt;/code&gt;의 &lt;code&gt;themes:&lt;/code&gt; 아래에 나열합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="where-go-slides-differs"&gt;go-slides가 다른 점&lt;span class="hx:absolute hx:-mt-20" id="where-go-slides-differs"&gt;&lt;/span&gt;
+&lt;a href="#where-go-slides-differs" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;템플릿.&lt;/strong&gt; 본문의 &lt;code&gt;{{ }}&lt;/code&gt;는 Go 템플릿 액션입니다
+(&lt;a href="https://go-slides.github.io/docs/0.15/ko/templates/"&gt;템플릿&lt;/a&gt; 참고). 코드 블록 밖에서 &lt;code&gt;{{&lt;/code&gt;를
+텍스트로 보여 주려면 &lt;code&gt;--no-template&lt;/code&gt;을 쓰거나 Go 템플릿 방식대로 이스케이프해야
+합니다. 코드 블록과 인라인 코드는 건드리지 않습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kind.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt;와 &lt;code&gt;_kind:&lt;/code&gt;는 Marp에 없는 디렉티브입니다
+(&lt;a href="https://go-slides.github.io/docs/0.15/ko/kinds/"&gt;Kind&lt;/a&gt; 참고). &lt;code&gt;slides expand&lt;/code&gt;가 이를 해당하는
+디렉티브로 바꾸므로, 펼친 프레젠테이션은 일반 Marp입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;출력.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX, ODP를 헤드리스 브라우저가 아닌 Go
+라이브러리로 만듭니다(알려진 제한 사항은
+&lt;a href="https://go-slides.github.io/docs/0.15/ko/cli/#images-pdf-pptx-and-odp"&gt;명령줄&lt;/a&gt; 참고). v0.4.0에서는
+marp-cli처럼 PPTX에 그림이 들어갔지만, v0.5.0부터는 슬라이드가 편집 가능한
+텍스트 상자와 도형이며 &lt;code&gt;--pptx-raster&lt;/code&gt;를 쓰면 그림으로 유지됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;제목 맞춤.&lt;/strong&gt; &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt;을 지원합니다. 제목이 페이지와 모든
+내보내기 결과에서 한 줄로 슬라이드 너비를 채웁니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;수식과 코드.&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt;와 &lt;code&gt;$$…$$&lt;/code&gt;는 Marp Core의 구분자 규칙을 따르며
+go-tex/math로 조판됩니다. 펜스 코드는 go-rouge가 highlight.js 클래스 이름으로
+강조 표시합니다(&lt;a href="https://go-slides.github.io/docs/0.15/ko/math-and-code/"&gt;수식과 코드&lt;/a&gt; 참고).&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

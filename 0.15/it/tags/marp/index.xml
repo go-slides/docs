@@ -1,0 +1,85 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Marp</title><link>https://go-slides.github.io/docs/0.15/it/tags/marp/</link><description>Recent content in Marp on go-slides</description><generator>Hugo -- gohugo.io</generator><language>it</language><atom:link href="https://go-slides.github.io/docs/0.15/it/tags/marp/index.xml" rel="self" type="application/rss+xml"/><item><title>Compatibilità con Marp</title><link>https://go-slides.github.io/docs/0.15/it/marp/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.15/it/marp/</guid><description>
+&lt;p&gt;Una presentazione scritta per &lt;a href="https://marp.app" target="_blank" rel="noopener"&gt;Marp&lt;/a&gt; è una presentazione go-slides. Le regole
+qui sotto sono quelle di &lt;a href="https://marpit.marp.app" target="_blank" rel="noopener"&gt;Marpit&lt;/a&gt; e di
+&lt;a href="https://github.com/marp-team/marp-core" target="_blank" rel="noopener"&gt;Marp Core&lt;/a&gt;; dove go-slides
+differisce, questa pagina lo dice.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slides"&gt;Slide&lt;span class="hx:absolute hx:-mt-20" id="slides"&gt;&lt;/span&gt;
+&lt;a href="#slides" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Una linea orizzontale — &lt;code&gt;---&lt;/code&gt; su una riga a sé, come la divide Marpit — inizia una
+nuova slide, e lo fa anche un titolo del livello indicato dalla direttiva
+&lt;code&gt;headingDivider&lt;/code&gt;. Il front matter, tra i primi due &lt;code&gt;---&lt;/code&gt;, contiene le direttive globali
+e i dati della presentazione.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="directives"&gt;Direttive&lt;span class="hx:absolute hx:-mt-20" id="directives"&gt;&lt;/span&gt;
+&lt;a href="#directives" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tipo&lt;/th&gt;
+&lt;th&gt;Dove&lt;/th&gt;
+&lt;th&gt;Si applica a&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;globale&lt;/td&gt;
+&lt;td&gt;front matter, o &lt;code&gt;&amp;lt;!-- theme: gaia --&amp;gt;&lt;/code&gt; ovunque&lt;/td&gt;
+&lt;td&gt;l&amp;rsquo;intera presentazione: &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;, &lt;code&gt;lang&lt;/code&gt;…&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;locale&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- paginate: true --&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;questa slide e quelle successive&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;spot&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;!-- _class: lead --&amp;gt;&lt;/code&gt; (trattino basso)&lt;/td&gt;
+&lt;td&gt;solo questa slide&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Le direttive locali sono quelle di Marpit: &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;,
+&lt;code&gt;backgroundColor&lt;/code&gt;, &lt;code&gt;backgroundImage&lt;/code&gt;, &lt;code&gt;backgroundPosition&lt;/code&gt;,
+&lt;code&gt;backgroundRepeat&lt;/code&gt;, &lt;code&gt;backgroundSize&lt;/code&gt;, &lt;code&gt;color&lt;/code&gt;. Le direttive vengono analizzate come YAML
+permissivo, come fa Marp Core; &lt;code&gt;--strict-yaml&lt;/code&gt; le analizza come fa Marpit semplice.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="images"&gt;Immagini&lt;span class="hx:absolute hx:-mt-20" id="images"&gt;&lt;/span&gt;
+&lt;a href="#images" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;![bg](image.jpg)&lt;/code&gt; rende un&amp;rsquo;immagine lo sfondo della slide, con le parole chiave di Marp:
+&lt;code&gt;bg contain&lt;/code&gt;, &lt;code&gt;bg cover&lt;/code&gt;, &lt;code&gt;bg 50%&lt;/code&gt;, &lt;code&gt;bg left&lt;/code&gt;/&lt;code&gt;bg right&lt;/code&gt; per uno sfondo
+diviso, più immagini &lt;code&gt;bg&lt;/code&gt; affiancate e i filtri per immagini
+(&lt;code&gt;blur&lt;/code&gt;, &lt;code&gt;sepia&lt;/code&gt;, &lt;code&gt;grayscale&lt;/code&gt;…). Le dimensioni delle immagini in linea (&lt;code&gt;w:200px&lt;/code&gt;, &lt;code&gt;h:&lt;/code&gt;) vengono
+lette come le legge Marp.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="around-the-slide"&gt;Attorno alla slide&lt;span class="hx:absolute hx:-mt-20" id="around-the-slide"&gt;&lt;/span&gt;
+&lt;a href="#around-the-slide" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Intestazione e piè di pagina&lt;/strong&gt;: direttive &lt;code&gt;header:&lt;/code&gt; e &lt;code&gt;footer:&lt;/code&gt;, in Markdown.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Numerazione&lt;/strong&gt;: &lt;code&gt;paginate: true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Note del relatore&lt;/strong&gt;: un commento HTML che non è una direttiva è una nota.
+&lt;code&gt;slides notes&lt;/code&gt; le stampa.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Elenchi a frammenti&lt;/strong&gt;: un elenco scritto con &lt;code&gt;*&lt;/code&gt; (o &lt;code&gt;1)&lt;/code&gt;) appare voce per voce,
+come in Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;&lt;/strong&gt;: CSS per una sola slide.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HTML grezzo&lt;/strong&gt;: per impostazione predefinita la lista consentita di Marp Core; &lt;code&gt;--html&lt;/code&gt; lo consente tutto.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emoji&lt;/strong&gt;: &lt;code&gt;:shortcodes:&lt;/code&gt; ed emoji Unicode diventano immagini Twemoji, come in
+Marp Core, ma incorporate invece che caricate da una CDN: vedi
+&lt;a href="https://go-slides.github.io/docs/0.15/it/emoji/"&gt;Emoji&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="themes"&gt;Temi&lt;span class="hx:absolute hx:-mt-20" id="themes"&gt;&lt;/span&gt;
+&lt;a href="#themes" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; e &lt;code&gt;uncover&lt;/code&gt; sono integrati e si scelgono con &lt;code&gt;theme:&lt;/code&gt;. Un
+tema tutto tuo è un file CSS con il commento &lt;code&gt;/* @theme name */&lt;/code&gt; di Marp,
+passato con &lt;code&gt;--theme-set&lt;/code&gt; o elencato sotto &lt;code&gt;themes:&lt;/code&gt; in &lt;code&gt;slides.yaml&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="where-go-slides-differs"&gt;Dove go-slides differisce&lt;span class="hx:absolute hx:-mt-20" id="where-go-slides-differs"&gt;&lt;/span&gt;
+&lt;a href="#where-go-slides-differs" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Template.&lt;/strong&gt; &lt;code&gt;{{ }}&lt;/code&gt; nel corpo è un&amp;rsquo;azione di template Go (vedi
+&lt;a href="https://go-slides.github.io/docs/0.15/it/templates/"&gt;Template&lt;/a&gt;). Una presentazione che mostra &lt;code&gt;{{&lt;/code&gt; come testo
+fuori da un blocco di codice richiede &lt;code&gt;--no-template&lt;/code&gt;, oppure il testo con l&amp;rsquo;escape come lo
+usano i template Go. I blocchi di codice e le porzioni di codice non vengono toccati.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kinds&lt;/strong&gt; (il tipo di una slide). &lt;code&gt;kind:&lt;/code&gt; e &lt;code&gt;_kind:&lt;/code&gt; sono direttive che Marp non ha (vedi
+&lt;a href="https://go-slides.github.io/docs/0.15/it/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; le sostituisce con le
+direttive che rappresentano, quindi la presentazione espansa è Marp semplice.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Output.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX e ODP, tramite librerie Go anziché
+un browser headless (vedi &lt;a href="https://go-slides.github.io/docs/0.15/it/cli/#images-pdf-pptx-and-odp"&gt;Riga di comando&lt;/a&gt;
+per il limite noto). Nella v0.4.0, come in marp-cli, un PPTX contiene immagini; dalla
+v0.5.0 le sue slide sono caselle di testo e forme modificabili, con &lt;code&gt;--pptx-raster&lt;/code&gt; che mantiene
+le immagini.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Titoli adattati.&lt;/strong&gt; &lt;code&gt;# &amp;lt;!-- fit --&amp;gt; Title&lt;/code&gt; è supportato: il titolo riempie
+la larghezza della slide su una riga, nella pagina e in ogni esportazione.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Matematica e codice.&lt;/strong&gt; &lt;code&gt;$…$&lt;/code&gt; e &lt;code&gt;$$…$$&lt;/code&gt; seguono le regole sui delimitatori di Marp Core e
+sono composti da go-tex/math; il codice delimitato viene evidenziato da go-rouge con
+i nomi di classe di highlight.js (vedi &lt;a href="https://go-slides.github.io/docs/0.15/it/math-and-code/"&gt;Matematica e codice&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

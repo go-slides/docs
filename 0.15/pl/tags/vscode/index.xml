@@ -1,0 +1,250 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Vscode</title><link>https://go-slides.github.io/docs/0.15/pl/tags/vscode/</link><description>Recent content in Vscode on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pl</language><atom:link href="https://go-slides.github.io/docs/0.15/pl/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code</title><link>https://go-slides.github.io/docs/0.15/pl/vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.15/pl/vscode/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Rozszerzenie to &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
+wersjonowane osobno (v0.5.0). Renderuje przez go-slides v0.14.0 (pakiet
+&lt;code&gt;editor&lt;/code&gt;, linie źródłowe synchronizacji przewijania oraz widok przeglądu i
+prelegenta). Instaluje się je z &lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt; dołączonego do
+wydania na GitHubie: jego publikacja w VS Code Marketplace i Open VSX jest
+przygotowana, ale jeszcze jej tam nie ma.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Rozszerzenie to odpowiednik
+&lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt; w go-slides: prezentacja pokazuje się w
+podglądzie Markdown VS Code jako slajdy, jej błędy w panelu Problems, a
+dyrektywy, kinds (rodzaje slajdów) i funkcje szablonów uzupełniają się w trakcie pisania.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Instalacja&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pobierz &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; z
+&lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;wydań&lt;/a&gt;, potem uruchom
+&lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt; albo:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Kopiuj kod"
+aria-label="Kopiuj kod"
+data-copied-label="Skopiowano!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Podgląd nie potrzebuje niczego więcej. Eksport potrzebuje polecenia &lt;code&gt;slides&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install github.com/go-slides/slides/cmd/slides@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Kopiuj kod"
+aria-label="Kopiuj kod"
+data-copied-label="Skopiowano!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="preview"&gt;Podgląd&lt;span class="hx:absolute hx:-mt-20" id="preview"&gt;&lt;/span&gt;
+&lt;a href="#preview" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Otwórz prezentację i &lt;em&gt;Markdown: Open Preview to the Side&lt;/em&gt;. Prezentacja to plik Markdown,
+którego front matter mówi &lt;code&gt;slides: true&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;slides&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;who&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;World&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Hello {{ .who }}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cm"&gt;&amp;lt;!-- _kind: title --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Page {{ page }} of {{ total }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Kopiuj kod"
+aria-label="Kopiuj kod"
+data-copied-label="Skopiowano!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Pliki z &lt;code&gt;marp: true&lt;/code&gt; też są podglądane, chyba że zainstalowano Marp for VS Code:
+oba rozszerzenia renderowałyby ten sam dokument. Decyduje o tym ustawienie
+&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;: &lt;code&gt;auto&lt;/code&gt; (domyślne), &lt;code&gt;always&lt;/code&gt; lub
+&lt;code&gt;never&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Podgląd to sam go-slides, skompilowany do WebAssembly i ładowany przez
+rozszerzenie: bez pliku binarnego, działa na &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;. Czyta
+to, czego używa prezentacja, z przestrzeni roboczej — &lt;code&gt;slides.yaml&lt;/code&gt; lub &lt;code&gt;slides.hcl&lt;/code&gt; obok
+prezentacji, pliki &lt;a href="https://go-slides.github.io/docs/0.15/pl/kinds/"&gt;kinds&lt;/a&gt;, które wskazują, pliki dołączane przez
+&lt;a href="https://go-slides.github.io/docs/0.15/pl/templates/"&gt;szablon&lt;/a&gt;, CSS motywów — i tylko z
+folderu przestrzeni roboczej prezentacji.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="scroll-sync"&gt;Synchronizacja przewijania&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
+&lt;a href="#scroll-sync" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Od v0.2.0 rozszerzenia (go-slides v0.7.0) edytor i
+podgląd przewijają się razem, w obie strony, jak dla zwykłego Markdownu:
+podgląd podąża za slajdem i blokiem pod kursorem edytora, a
+przewijanie podglądu przesuwa edytor. Ustawienia to własne ustawienia VS Code,
+&lt;code&gt;markdown.preview.scrollPreviewWithEditor&lt;/code&gt; i
+&lt;code&gt;markdown.preview.scrollEditorWithPreview&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Linie są śledzone przez szablony. Slajd generowany przez &lt;code&gt;{{ range }}&lt;/code&gt;
+podąża za linią swojego szablonu, a to, co wnosi &lt;code&gt;{{ include }}&lt;/code&gt;,
+podąża za linią include. Prezentacja podzielona przez &lt;code&gt;headingDivider&lt;/code&gt; synchronizuje się po
+nagłówkach.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="presenting"&gt;Prezentowanie&lt;span class="hx:absolute hx:-mt-20" id="presenting"&gt;&lt;/span&gt;
+&lt;a href="#presenting" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Od v0.4.0 rozszerzenia (go-slides v0.9.0) prezentację można prezentować
+bez opuszczania VS Code. Mając prezentację w edytorze, z palety poleceń
+lub z menu &lt;code&gt;…&lt;/code&gt; edytora:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Polecenie&lt;/th&gt;
+&lt;th&gt;Otwiera&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Open Overview&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;panel ze wszystkimi slajdami w siatce. Wybrany slajd pokazuje swoje źródło w edytorze; &lt;code&gt;Esc&lt;/code&gt; zamyka panel&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Start Presenter View&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;slajdy, a obok nich widok prelegenta: następny krok, notatki prelegenta i stoper&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Panele stoją obok edytora i podążają jeden za drugim: zmień slajd w jednym,
+a pozostałe zmienią się razem z nim. Podążają też za twoimi zmianami w prezentacji. Klawisz
+&lt;code&gt;p&lt;/code&gt; na slajdach otwiera widok prelegenta.&lt;/p&gt;
+&lt;p&gt;Aby prezentować na innym ekranie, przenieś tam panel slajdów poleceniem &lt;em&gt;View: Move
+Editor into New Window&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Każdy panel uruchamia prezentację w ramce z piaskownicą (bez &lt;code&gt;allow-same-origin&lt;/code&gt;) pod
+polityką &lt;code&gt;default-src 'none'&lt;/code&gt;: ramka ładuje obrazy, media, style i czcionki
+i nic więcej, a uruchamia tylko skrypty, które go-slides wbudował w stronę,
+wskazane przez skrót. Skrypt napisany w prezentacji się nie uruchamia.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Problemy, uzupełnianie, podpowiedzi&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
+&lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Problems&lt;/strong&gt;: błędy szablonów, YAML i &lt;a href="https://go-slides.github.io/docs/0.15/pl/hcl/"&gt;HCL&lt;/a&gt;, w
+linii, w której są, w prezentacji lub w pliku kinds, z którego pochodzą.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Uzupełnianie&lt;/strong&gt;: klucze dyrektyw we front matter i w komentarzach &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;
+(z &lt;code&gt;_&lt;/code&gt; dla dyrektywy punktowej), wartości &lt;code&gt;kind&lt;/code&gt; i &lt;code&gt;_kind&lt;/code&gt; (z tym, co
+ustawia każdy kind), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; wewnątrz
+&lt;code&gt;{{ }}&lt;/code&gt; funkcje szablonów i pola danych.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hover&lt;/strong&gt;: co robi dyrektywa, co ustawia kind, argumenty funkcji szablonu.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="export"&gt;Eksport&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;
+&lt;a href="#export" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;go-slides: Export Slide Deck&amp;hellip;&lt;/em&gt; (także na pasku tytułu edytora) zapisuje HTML,
+wektorowy PDF, edytowalne PPTX i ODP, PNG lub JPEG poleceniem &lt;code&gt;slides&lt;/code&gt;, tak jak
+zrobiłoby &lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt;; zobacz &lt;a href="https://go-slides.github.io/docs/0.15/pl/cli/"&gt;Wiersz poleceń&lt;/a&gt;.
+Wymaga zaufanej przestrzeni roboczej. Jeśli &lt;code&gt;slides&lt;/code&gt; nie zostanie znalezione, rozszerzenie proponuje
+uruchomienie powyższego &lt;code&gt;go install&lt;/code&gt; w terminalu.&lt;/p&gt;
+&lt;p&gt;Od v0.5.0 rozszerzenia (go-slides v0.14.0) zapisywany przez nie PDF jest
+&lt;strong&gt;dostępny&lt;/strong&gt;: z &lt;code&gt;slides&lt;/code&gt; v0.12.0 lub nowszym wektorowy PDF jest otagowany dla
+czytników ekranu i deklaruje PDF/UA-1, z &lt;code&gt;title&lt;/code&gt; i &lt;code&gt;lang&lt;/code&gt; prezentacji oraz
+sekcją na slajd. &lt;code&gt;slides --pdf-tags=false&lt;/code&gt; zapisuje plik bez tagów. Zaktualizuj
+polecenie powyższym &lt;code&gt;go install&lt;/code&gt;, aby go uzyskać.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="settings"&gt;Ustawienia&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
+&lt;a href="#settings" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Ustawienie&lt;/th&gt;
+&lt;th&gt;Domyślnie&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.cliPath&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;polecenie &lt;code&gt;slides&lt;/code&gt;; puste: &lt;code&gt;slides&lt;/code&gt; w &lt;code&gt;PATH&lt;/code&gt;. Ustawienie maszyny: przestrzeń robocza nie może go ustawić&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportType&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;format, który okno eksportu proponuje jako pierwszy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportAutoOpen&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;otwórz wyeksportowany plik&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;dopuść cały surowy HTML zamiast listy dozwolonych Marp; uwzględniane tylko w zaufanej przestrzeni roboczej&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;podglądaj prezentacje &lt;code&gt;marp: true&lt;/code&gt;: &lt;code&gt;auto&lt;/code&gt;, &lt;code&gt;always&lt;/code&gt;, &lt;code&gt;never&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Bezpieczeństwo&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Prezentacja i przestrzeń robocza są niezaufane. Surowy HTML podlega liście dozwolonych Marp,
+chyba że &lt;code&gt;goSlides.html&lt;/code&gt; jest włączone w zaufanej przestrzeni roboczej (&lt;code&gt;slides.yaml&lt;/code&gt; z
+&lt;code&gt;html: true&lt;/code&gt; nie włącza go w podglądzie), a podgląd VS Code nie uruchamia żadnego
+skryptu z prezentacji. Podgląd czyta tylko pliki z folderu przestrzeni roboczej prezentacji,
+nie podąża za żadnym dowiązaniem symbolicznym, a szablony nie widzą żadnej zmiennej środowiskowej.
+Eksport uruchamia program, więc czeka na zaufanie do przestrzeni roboczej, a program
+nigdy nie jest nazywany przez przestrzeń roboczą.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="performance"&gt;Wydajność&lt;span class="hx:absolute hx:-mt-20" id="performance"&gt;&lt;/span&gt;
+&lt;a href="#performance" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Na 100-slajdowej prezentacji testowej go-slides, w VS Code 1.142 na Apple M4 Max,
+z Marp for VS Code 3.6.1 mierzonym w tej samej sesji:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;aktywacja (ładowanie modułu WebAssembly)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;189 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pierwszy podgląd&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;podgląd po edycji (mediana)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;strong&gt;19 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23–24 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.vsix&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,5 MB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36,3 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Wyniki dotyczą rozszerzenia v0.3.0 (go-slides v0.8.0) na prezentacji ze 100 slajdów,
+przy wpisaniu jednego znaku w slajdzie 50, z przeplatanych rund przy średnim obciążeniu z minuty
+poniżej 8. Pierwszy podgląd jest szybszy niż w Marp, a podgląd po
+edycji jest teraz szybszy niż w Marp.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v080-and-extension-v030"&gt;W v0.8.0 i rozszerzeniu v0.3.0&lt;span class="hx:absolute hx:-mt-20" id="in-v080-and-extension-v030"&gt;&lt;/span&gt;
+&lt;a href="#in-v080-and-extension-v030" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.8.0 zachowuje wyrenderowane slajdy każdej otwartej prezentacji i po edycji
+renderuje ponownie tylko te, których źródło lub odziedziczony stan się zmieniły (dyrektywy, numer
+strony, suma, id nagłówków, odwołania do odnośników, linie źródłowe); wynik jest
+taki sam jak przy pełnym renderowaniu, bajt w bajt. Pisanie w slajdzie 50 ze 100 renderuje ponownie jeden
+slajd: 2,5 ms natywnie, 11,5 ms w WebAssembly. Podgląd VS Code przekształca wtedy
+tylko DOM zmienionego slajdu, a test dymny rozszerzenia wpisuje jeden
+znak w slajdzie 50 między mierzonymi renderowaniami, dla obu rozszerzeń. Widok
+prelegenta rozszerzenia synchronizuje się przez okno nadrzędne (&lt;code&gt;postMessage&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v071-and-extension-v022"&gt;W v0.7.1 i rozszerzeniu v0.2.2&lt;span class="hx:absolute hx:-mt-20" id="in-v071-and-extension-v022"&gt;&lt;/span&gt;
+&lt;a href="#in-v071-and-extension-v022" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.7.1 buforuje sparsowane motywy, spakowane arkusze stylów i podświetlony kod
+między renderowaniami, oznacza linie synchronizacji przewijania bez przechodzenia bajt po bajcie i ponownie używa
+swoich zapisywaczy: renderowanie prezentacji ze 100 slajdów alokuje 5,7 MB wobec 52,7 MB
+dla rozszerzenia v0.2.0. Dzięki temu rozszerzenie v0.2.2 porzuca nadpisanie &lt;code&gt;GOGC=400&lt;/code&gt;.
+Dla porównania rozszerzenie v0.2.1 potrzebowało 72 ms na pierwszy podgląd i 44 ms
+po edycji przy domyślnym &lt;code&gt;GOGC&lt;/code&gt; (36 ms z &lt;code&gt;GOGC=400&lt;/code&gt;), a v0.2.0 potrzebowało
+47–51 ms.&lt;/p&gt;
+&lt;p&gt;Rozszerzenie v0.2.2 zmierzyło 52 ms dla pierwszego podglądu i 24 ms po edycji,
+na równi z 23 ms w Marp.&lt;/p&gt;</description></item></channel></rss>

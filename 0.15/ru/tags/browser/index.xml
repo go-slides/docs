@@ -1,0 +1,214 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.15/ru/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.15/ru/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.15/ru/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.15/ru/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/ru/playground/" target="_blank" rel="noopener"&gt;Открыть Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Playground (онлайн-редактор go-slides) — это сам go-slides v0.15.0,
+скомпилированный в WebAssembly и работающий в вашем браузере. Набирайте
+презентацию слева; слайды появляются справа. Ничего не отправляется на сервер:
+ни презентация, ни ссылка для обмена.&lt;/p&gt;
+&lt;p&gt;Интерфейс Playground (лента, справка, сообщения) говорит на языке страницы:
+откройте &lt;code&gt;/ru/playground/&lt;/code&gt; для русского, и так же для двенадцати языков этого
+сайта. Переключатель языка на странице меняет его, а ваш выбор сохраняется в
+этом браузере; ссылка, в которой указан язык, всегда главнее. Примеры
+презентаций остаются на английском. Украинский, русский, китайский, японский и
+корейский рисуются подмножеством Noto Sans (от 0,06 до 2,3 МиБ), которое
+страница загружает только для этих языков.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Что в ней есть&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Живой предпросмотр&lt;/strong&gt; каждого слайда, отрисовываемый вне потока страницы
+(Web Worker), так что набор текста никогда его не ждёт. Щёлкните слайд — и
+редактор перейдёт к его строке; переместите курсор — и предпросмотр
+прокрутится к его слайду.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Показ&lt;/strong&gt;: сама презентация, с управлением с клавиатуры, экранным пультом и
+переходами.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Режим докладчика&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (или &lt;code&gt;p&lt;/code&gt; в показе) открывает его во втором
+окне: текущий слайд, следующий шаг, заметки докладчика (&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt;
+презентации), часы и таймер. Стрелки, пробел, Home и End работают в любом из
+окон, и каждое следует за другим, в том числе когда вы правите презентацию.
+Если окно не открывается, разрешите всплывающие окна для сайта. Режим обзора
+(&lt;code&gt;o&lt;/code&gt;) есть только в скачанной странице.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Автодополнение&lt;/strong&gt; по мере набора: ключи директив (точечные &lt;code&gt;_&lt;/code&gt; — в
+комментариях), значения &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, а также функции
+шаблонов и поля данных внутри &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Справка&lt;/strong&gt; о том, что под курсором: директива, kind (что он задаёт),
+функция шаблона. Панель справки также ссылается на эти страницы.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Проблемы&lt;/strong&gt; на своей строке: ошибки шаблонов, YAML и HCL подсвечиваются в
+редакторе и перечисляются под ним, а предпросмотр сохраняет последнюю
+презентацию, которая отрисовалась.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Примеры&lt;/strong&gt;: приветственная презентация, шаблоны, порождающие слайды, kinds
+(типы слайдов), front matter на HCL, темы и точечные директивы, а также математика,
+изображения и фоны (&lt;code&gt;![bg]&lt;/code&gt;, разделённый &lt;code&gt;![bg left:40%]&lt;/code&gt;, фильтры).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Файлы&lt;/strong&gt;: панель слева от редактора — это проект презентации в том виде, в
+каком его читают &lt;a href="https://go-slides.github.io/docs/0.15/ru/cli/"&gt;команда&lt;/a&gt; и
+&lt;a href="https://go-slides.github.io/docs/0.15/ru/vscode/"&gt;расширение VS Code&lt;/a&gt;: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Щёлкните файл, чтобы править его. Редактор раскрашивает его по языку
+(Markdown, YAML, HCL, JSON, CSS) и отмечает его проблемы.&lt;/li&gt;
+&lt;li&gt;Правая кнопка мыши (или Shift+F10) — New File, New Folder, Rename (F2),
+Delete (с подтверждением) и New theme / New kind. Перетащите файл на папку,
+чтобы переместить его. Клавиатура следует шаблону дерева WAI-ARIA, включая
+поиск по набору.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; создаёт &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (или на основе default,
+uncover): &lt;code&gt;@import&lt;/code&gt; встроенной темы и добавленные вами правила. Она
+попадает в список тем. &lt;strong&gt;New kind&lt;/strong&gt; и &lt;strong&gt;New data file&lt;/strong&gt; тоже начинаются с
+шаблонов. Каждый файл перечисляется в &lt;code&gt;slides.yaml&lt;/code&gt;, так что &lt;code&gt;slides build deck.md&lt;/code&gt; его находит.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; сохраняет всё. В распакованном виде
+его собирает &lt;code&gt;slides build deck.md&lt;/code&gt;. &lt;strong&gt;Open project&lt;/strong&gt; принимает &lt;code&gt;.zip&lt;/code&gt; или
+папку обратно. Архив, выходящий за пределы своей папки (&lt;code&gt;..&lt;/code&gt;, абсолютные
+пути), содержащий больше 256 файлов, файл больше 8 МиБ или раздувающийся
+более чем в 100 раз, отклоняется.&lt;/li&gt;
+&lt;li&gt;Всё хранится в этом браузере вместе с черновиком. Проект может занимать до
+64 МиБ, а строка под файлами показывает, сколько использовано.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Медиа&lt;/strong&gt;: перетащите или вставьте изображение, видео или звук в редактор — и
+он попадёт в &lt;code&gt;media/&lt;/code&gt;, а презентация назовёт его: &lt;code&gt;![](media/photo.png)&lt;/code&gt;.
+Перетащите файлы на папку панели, чтобы положить их туда. Презентация остаётся
+маленькой и читаемой, и ничего не загружается. Изолированная среда предпросмотра
+загружает их, не открываясь шире (страница передаёт ей байты). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; кладёт их в страницу. Изображения &lt;code&gt;https:&lt;/code&gt; тоже работают, но браузер
+загружает их с их сервера, который при этом видит ваш адрес. Предпросмотр не
+отправляет referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Изменяемые панели&lt;/strong&gt;: панель файлов, редактор, миниатюры слайдов,
+предпросмотр и справка разделены полосами, которые можно перетаскивать
+(над полосой указатель превращается в курсор изменения размера). Место
+достаётся панели рядом с полосой, остальные сохраняют размер. Двойной щелчок
+по полосе или Enter на ней закрывает панель и возвращает её обратно. С
+клавиатуры F6 перемещается между полосами, стрелки сдвигают полосу на 16 px,
+Home и End доводят предыдущую панель до наименьшего и наибольшего размера, а
+Escape возвращает в редактор. Вкладка View по-прежнему отключает панели.
+Заданные вами размеры сохраняются в этом браузере вместе с черновиком;
+размеры по умолчанию (190, 168 и 280 px, остальное делят редактор и
+предпросмотр в пропорции 6 к 5) никогда не сохраняются.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;: вкладка Format правит Markdown за вас, и каждое нажатие — один
+шаг отмены.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Text&lt;/strong&gt;: Bold, Italic, Strikethrough и Inline code работают с выделением
+или словом под курсором и переключаются (Ctrl+B, Ctrl+I, Ctrl+Shift+X и
+Ctrl+E; Cmd на Mac). Кнопка показывается нажатой, когда курсор внутри её
+разметки. В Markdown нет подчёркивания: Underline (Ctrl+U) оборачивает текст
+в &lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt; — тег, который сохраняет разрешённый по умолчанию список HTML
+Marp, так что он работает и при выключенном сыром HTML.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paragraph&lt;/strong&gt;: Heading 1–3 (Ctrl+Alt+1..3), маркированный список
+(Ctrl+Shift+8), нумерованный (Ctrl+Shift+7) и цитата работают с выделенными
+строками и переключаются. Горизонтальная черта — это тег &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;,
+&lt;code&gt;***&lt;/code&gt; и &lt;code&gt;___&lt;/code&gt; в Marp каждый начинали бы новый слайд.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Table&lt;/strong&gt;: сетка выбирает столбцы и строки. С курсором в таблице вы
+добавляете или удаляете строку или столбец и выравниваете столбец (&lt;code&gt;:--&lt;/code&gt;,
+&lt;code&gt;:-:&lt;/code&gt;, &lt;code&gt;--:&lt;/code&gt;); после каждой правки таблица перезаписывается выровненной.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slide text&lt;/strong&gt; слева, по центру или справа записывает блок &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;
+в текущий слайд. В Marp нет синтаксиса выравнивания, а атрибут &lt;code&gt;style&lt;/code&gt; не
+проходит через разрешённый по умолчанию список HTML, но блок scoped
+проходит, так что это работает при выключенном сыром HTML и видно в
+предпросмотре, HTML-странице и PDF.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Ctrl+K) записывает &lt;code&gt;[text](url)&lt;/code&gt; с выделенным url.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Подсветка&lt;/strong&gt; ключей front matter на любой глубине, в YAML (в том числе в
+отображениях &lt;code&gt;{a: 1}&lt;/code&gt;) и в HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Выбор &lt;strong&gt;темы&lt;/strong&gt;: default, gaia, uncover, темы проекта (&lt;code&gt;themes/*.css&lt;/code&gt;) и темы,
+которые определяет презентация (&lt;code&gt;/* @theme name */&lt;/code&gt; в &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Он записывает
+&lt;code&gt;theme:&lt;/code&gt; в front matter, YAML или HCL, так что ссылка для обмена его
+сохраняет, и следует за front matter при её правке.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Предпросмотр &lt;strong&gt;сохраняет своё место&lt;/strong&gt; по мере набора: заменяются только
+изменившиеся слайды, а смена темы заново открывает предпросмотр на том же
+слайде.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ссылка для обмена&lt;/strong&gt;: презентация путешествует в самой ссылке (в её части
+&lt;code&gt;#&lt;/code&gt;, сжатая), так что открытие ссылки открывает презентацию. Ссылки несут до
+64 КиБ в сжатом виде, и только презентацию: когда в проекте больше (темы,
+kinds, медиа), Share сообщает об этом и предлагает &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML-страница, такая же, какую пишет &lt;code&gt;slides deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt; (векторный, с выделяемым текстом и оглавлением);&lt;/li&gt;
+&lt;li&gt;редактируемая презентация &lt;strong&gt;PowerPoint&lt;/strong&gt; или &lt;strong&gt;OpenDocument&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Они создаются в вашем браузере тем же кодом, что &lt;code&gt;slides --pdf&lt;/code&gt;, &lt;code&gt;--pptx&lt;/code&gt; и
+&lt;code&gt;--odp&lt;/code&gt;: PDF презентации из 100 слайдов в тесте производительности
+побайтно совпадает с PDF команды. Первый экспорт скачивает движок экспорта
+(около 5 МиБ, один раз; браузер хранит его до следующего обновления) с
+индикатором хода и компилирует его по мере поступления. Затем он скачивает
+только те шрифты, которые рисуют ваши слайды. При скорости 3 МБ/с первый PDF
+приветственной презентации готов менее чем за 3 секунды. Презентация из
+100 слайдов после этого занимает около 3 секунд. Изображение &lt;code&gt;https:&lt;/code&gt;
+включается, только если его сервер это позволяет (CORS); изображения &lt;code&gt;data:&lt;/code&gt;
+включаются всегда.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ваш черновик сохраняется&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Презентация сохраняется в этом браузере по мере набора (IndexedDB, только
+для этого сайта) и возвращается при перезагрузке. Ничего никуда не
+отправляется. Текстовые файлы проекта (темы, kinds, данные, &lt;code&gt;slides.yaml&lt;/code&gt;)
+сохраняются так же, даже если вы закрываете вкладку сразу после набора;
+медиа сохраняются по мере перетаскивания.&lt;/li&gt;
+&lt;li&gt;Ссылка для обмена открывает свою презентацию и сохраняет ваш черновик:
+&lt;strong&gt;Draft ▸ Restore my draft&lt;/strong&gt; возвращает его.&lt;/li&gt;
+&lt;li&gt;Пример, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (с подтверждением) и другая
+вкладка его тоже никогда не стирают: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; возвращает
+его обратно.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; стирает всё сохранённое.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Каждый экспорт отрисовывает тот проект, который показывает предпросмотр: его
+&lt;code&gt;slides.yaml&lt;/code&gt;, темы, kinds, файлы данных и медиа, причём медиа — внутри
+документа.&lt;/p&gt;
+&lt;p&gt;Изображения в виде файлов (&lt;code&gt;--images&lt;/code&gt; у slides) в браузере не создаются:
+используйте &lt;a href="https://go-slides.github.io/docs/0.15/ru/cli/"&gt;команду&lt;/a&gt; или
+&lt;a href="https://go-slides.github.io/docs/0.15/ru/vscode/"&gt;расширение VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Безопасность&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентация показывается в iframe, изолированном без источника страницы: он не
+может обратиться ни к Playground, ни к его хранилищу, не отправляет форм и никуда
+не переходит. Его страница несёт политику Content Security Policy, которая
+запускает только её собственные скрипты. Сырой HTML в презентации следует
+списку разрешённого Marp, как это по умолчанию делает &lt;code&gt;slides&lt;/code&gt;. Отрисовка,
+длящаяся дольше 5 секунд (шаблон, ушедший в цикл), останавливается.&lt;/p&gt;
+&lt;p&gt;Окно докладчика сохраняет эту изоляцию. Его открывает сам Playground, и оно
+показывает презентацию в iframe, изолированном так же. Два iframe не могут
+делить хранилище, поэтому Playground передаёт номер слайда между ними в
+сообщениях. Ни один фрейм, запускающий презентацию, не получает источник
+Playground.&lt;/p&gt;
+&lt;p&gt;Медиа проекта попадают в изолированные фреймы как байты в сообщении, и каждый
+фрейм делает из них собственные URL &lt;code&gt;blob:&lt;/code&gt; в своём источнике. URL &lt;code&gt;blob:&lt;/code&gt;,
+созданный Playground, там не загружается, а политика фреймов получает только
+&lt;code&gt;blob:&lt;/code&gt; для медиа и шрифтов.&lt;/p&gt;
+&lt;p&gt;Playground можно раздавать со своей машины за входом по паролю: см.
+&lt;a href="https://go-slides.github.io/docs/0.15/ru/self-hosting/"&gt;Самостоятельный хостинг&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Размер и скорость&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Модуль занимает 8,8 МиБ в том виде, в каком его отдаёт GitHub Pages (gzip;
+Pages не отдаёт brotli). Он скачивается один раз с индикатором хода, затем
+кэшируется браузером до следующего развёртывания. На Apple M4 Max с Chrome 155,
+измерено на живой странице, редактор готов через 2,1 с после открытия страницы,
+из которых 1,5 с — загрузка, а первые слайды появляются на 2,4 с. Изменение
+презентации из 100 слайдов в тесте производительности доходит до
+предпросмотра примерно за 30 мс: go-slides отрисовывает только изменившиеся
+слайды, и в предпросмотре заменяются только они.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,249 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Editor</title><link>https://go-slides.github.io/docs/0.15/de/tags/editor/</link><description>Recent content in Editor on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.15/de/tags/editor/index.xml" rel="self" type="application/rss+xml"/><item><title>VS Code</title><link>https://go-slides.github.io/docs/0.15/de/vscode/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.15/de/vscode/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;Die Erweiterung ist &lt;a href="https://github.com/go-slides/vscode" target="_blank" rel="noopener"&gt;go-slides/vscode&lt;/a&gt;,
+mit eigener Versionierung (v0.5.0). Sie rendert mit go-slides v0.14.0 (dem Paket
+&lt;code&gt;editor&lt;/code&gt;, den Quellzeilen für die Scroll-Synchronisierung sowie der Übersichts- und
+Referentenansicht). Installiert wird sie über die an das GitHub-Release angehängte Datei
+&lt;code&gt;go-slides-0.5.0.vsix&lt;/code&gt;: Die Veröffentlichung im VS Code Marketplace und auf Open VSX ist
+vorbereitet, aber noch nicht erfolgt.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Die Erweiterung ist das Gegenstück von go-slides zu
+&lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt;: Der Foliensatz erscheint in
+der Markdown-Vorschau von VS Code als Folien, seine Fehler im Problems-Panel, und
+Direktiven, Kinds (die Art einer Folie) und Vorlagenfunktionen werden beim Tippen vervollständigt.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="install"&gt;Installation&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
+&lt;a href="#install" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Laden Sie &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; von den
+&lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;Releases&lt;/a&gt; herunter und führen Sie dann
+&lt;em&gt;Extensions: Install from VSIX&amp;hellip;&lt;/em&gt; aus, oder:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;code --install-extension go-slides-0.5.0.vsix&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Die Vorschau braucht nichts weiter. Für den Export benötigen Sie den Befehl &lt;code&gt;slides&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;go install github.com/go-slides/slides/cmd/slides@latest&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="preview"&gt;Vorschau&lt;span class="hx:absolute hx:-mt-20" id="preview"&gt;&lt;/span&gt;
+&lt;a href="#preview" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Öffnen Sie einen Foliensatz und wählen Sie &lt;em&gt;Markdown: Open Preview to the Side&lt;/em&gt;. Ein Foliensatz ist eine Markdown-Datei,
+deren Front-Matter &lt;code&gt;slides: true&lt;/code&gt; enthält:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;slides&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;who&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l"&gt;World&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="gh"&gt;# Hello {{ .who }}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cm"&gt;&amp;lt;!-- _kind: title --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;# Page {{ page }} of {{ total }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Dateien mit &lt;code&gt;marp: true&lt;/code&gt; werden ebenfalls in der Vorschau gezeigt, es sei denn, Marp for VS Code ist installiert:
+Beide Erweiterungen würden dasselbe Dokument rendern. Die Einstellung
+&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt; entscheidet: &lt;code&gt;auto&lt;/code&gt; (der Standard), &lt;code&gt;always&lt;/code&gt; oder
+&lt;code&gt;never&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Die Vorschau ist go-slides selbst, nach WebAssembly kompiliert und von der
+Erweiterung geladen: kein Binary nötig, und sie funktioniert auf &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;. Sie liest
+aus dem Workspace, was der Foliensatz verwendet – &lt;code&gt;slides.yaml&lt;/code&gt; oder &lt;code&gt;slides.hcl&lt;/code&gt; neben
+dem Foliensatz, die &lt;a href="https://go-slides.github.io/docs/0.15/de/kinds/"&gt;Kinds&lt;/a&gt;-Dateien, die diese benennen, Dateien, die eine
+&lt;a href="https://go-slides.github.io/docs/0.15/de/templates/"&gt;Vorlage&lt;/a&gt; einbindet, Theme-CSS – und das nur aus dem
+Workspace-Ordner des Foliensatzes.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="scroll-sync"&gt;Scroll-Synchronisierung&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
+&lt;a href="#scroll-sync" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Seit v0.2.0 der Erweiterung (go-slides v0.7.0) scrollen Editor und
+Vorschau gemeinsam, in beide Richtungen, wie bei reinem Markdown: Die
+Vorschau folgt der Folie und dem Block unter dem Cursor des Editors, und
+Scrollen in der Vorschau bewegt den Editor. Die Einstellungen sind die von VS Code selbst,
+&lt;code&gt;markdown.preview.scrollPreviewWithEditor&lt;/code&gt; und
+&lt;code&gt;markdown.preview.scrollEditorWithPreview&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Zeilen werden durch Vorlagen hindurch verfolgt. Eine Folie, die ein &lt;code&gt;{{ range }}&lt;/code&gt; erzeugt,
+folgt der Zeile ihrer Vorlage, und was ein &lt;code&gt;{{ include }}&lt;/code&gt; hereinholt,
+folgt der Zeile des Includes. Ein durch &lt;code&gt;headingDivider&lt;/code&gt; aufgeteilter Foliensatz synchronisiert sich an seinen
+Überschriften.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="presenting"&gt;Präsentieren&lt;span class="hx:absolute hx:-mt-20" id="presenting"&gt;&lt;/span&gt;
+&lt;a href="#presenting" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Seit v0.4.0 der Erweiterung (go-slides v0.9.0) lässt sich ein Foliensatz präsentieren,
+ohne VS Code zu verlassen. Mit dem Foliensatz im Editor, über die Befehlspalette
+oder das &lt;code&gt;…&lt;/code&gt;-Menü des Editors:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Befehl&lt;/th&gt;
+&lt;th&gt;Öffnet&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Open Overview&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;ein Panel mit allen Folien in einem Raster. Eine gewählte Folie zeigt ihre Quelle im Editor; &lt;code&gt;Esc&lt;/code&gt; schließt das Panel&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;go-slides: Start Presenter View&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;die Folien und daneben die Referentenansicht: den nächsten Schritt, die Notizen des Vortragenden und einen Timer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Die Panels liegen neben dem Editor und folgen einander: Wechseln Sie die Folie in einem,
+wechseln die anderen mit. Sie folgen auch Ihren Änderungen am Foliensatz. Die Taste &lt;code&gt;p&lt;/code&gt;
+in den Folien öffnet die Referentenansicht.&lt;/p&gt;
+&lt;p&gt;Um auf einem anderen Bildschirm zu präsentieren, verschieben Sie das Folien-Panel mit &lt;em&gt;View: Move
+Editor into New Window&lt;/em&gt; dorthin.&lt;/p&gt;
+&lt;p&gt;Jedes Panel führt den Foliensatz in einem Sandbox-Frame aus (ohne &lt;code&gt;allow-same-origin&lt;/code&gt;) unter einer
+Richtlinie mit &lt;code&gt;default-src 'none'&lt;/code&gt;: Der Frame lädt Bilder, Medien, Stile und Schriften
+und sonst nichts und führt nur die Skripte aus, die go-slides in die Seite eingebaut hat,
+benannt per Hash. Ein Skript, das der Foliensatz selbst mitbringt, läuft nicht.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Probleme, Vervollständigung, Hover&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
+&lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Probleme&lt;/strong&gt;: Fehler in Vorlagen, YAML und &lt;a href="https://go-slides.github.io/docs/0.15/de/hcl/"&gt;HCL&lt;/a&gt;, in der
+Zeile, in der sie auftreten, im Foliensatz oder in der Kinds-Datei, aus der sie stammen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vervollständigung&lt;/strong&gt;: Direktivenschlüssel im Front-Matter und in &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;-Kommentaren
+(mit &lt;code&gt;_&lt;/code&gt; für eine Spot-Direktive), die Werte von &lt;code&gt;kind&lt;/code&gt; und &lt;code&gt;_kind&lt;/code&gt; (mit dem, was
+das jeweilige Kind setzt), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; innerhalb von
+&lt;code&gt;{{ }}&lt;/code&gt; die Vorlagenfunktionen und die Datenfelder.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hover&lt;/strong&gt;: was eine Direktive bewirkt, was ein Kind setzt, die Argumente einer Vorlagenfunktion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="export"&gt;Export&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;
+&lt;a href="#export" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;go-slides: Export Slide Deck&amp;hellip;&lt;/em&gt; (auch in der Titelleiste des Editors) schreibt HTML,
+Vektor-PDF, editierbares PPTX und ODP, PNG oder JPEG mit dem Befehl &lt;code&gt;slides&lt;/code&gt;, genau wie
+&lt;code&gt;slides -o deck.pdf deck.md&lt;/code&gt; es täte; siehe &lt;a href="https://go-slides.github.io/docs/0.15/de/cli/"&gt;Kommandozeile&lt;/a&gt;.
+Dafür ist ein vertrauenswürdiger Workspace nötig. Wird &lt;code&gt;slides&lt;/code&gt; nicht gefunden, bietet die Erweiterung an,
+das obige &lt;code&gt;go install&lt;/code&gt; in einem Terminal auszuführen.&lt;/p&gt;
+&lt;p&gt;Seit v0.5.0 der Erweiterung (go-slides v0.14.0) ist das geschriebene PDF
+&lt;strong&gt;barrierefrei&lt;/strong&gt;: Mit &lt;code&gt;slides&lt;/code&gt; ab v0.12.0 ist das Vektor-PDF für Screenreader
+getaggt und deklariert PDF/UA-1, mit &lt;code&gt;title&lt;/code&gt; und &lt;code&gt;lang&lt;/code&gt; des Foliensatzes und
+einem Abschnitt pro Folie. &lt;code&gt;slides --pdf-tags=false&lt;/code&gt; schreibt die Datei ohne Tags.
+Aktualisieren Sie den Befehl mit dem obigen &lt;code&gt;go install&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="settings"&gt;Einstellungen&lt;span class="hx:absolute hx:-mt-20" id="settings"&gt;&lt;/span&gt;
+&lt;a href="#settings" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Einstellung&lt;/th&gt;
+&lt;th&gt;Standard&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.cliPath&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;der Befehl &lt;code&gt;slides&lt;/code&gt;; leer: &lt;code&gt;slides&lt;/code&gt; im &lt;code&gt;PATH&lt;/code&gt;. Eine Maschineneinstellung: Ein Workspace kann sie nicht setzen&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportType&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pdf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;das Format, das der Exportdialog zuerst vorschlägt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.exportAutoOpen&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;die exportierte Datei öffnen&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.html&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;alles rohe HTML statt der Allowlist von Marp erlauben; wird nur in einem vertrauenswürdigen Workspace beachtet&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;goSlides.preview.marpDocuments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;marp: true&lt;/code&gt;-Foliensätze in der Vorschau zeigen: &lt;code&gt;auto&lt;/code&gt;, &lt;code&gt;always&lt;/code&gt;, &lt;code&gt;never&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Foliensatz und Workspace gelten als nicht vertrauenswürdig. Rohes HTML folgt der Allowlist von Marp,
+es sei denn, &lt;code&gt;goSlides.html&lt;/code&gt; ist in einem vertrauenswürdigen Workspace eingeschaltet (eine &lt;code&gt;slides.yaml&lt;/code&gt; mit
+&lt;code&gt;html: true&lt;/code&gt; schaltet es in der Vorschau nicht ein), und die Vorschau von VS Code führt kein
+Skript aus dem Foliensatz aus. Die Vorschau liest nur Dateien aus dem Workspace-Ordner des Foliensatzes,
+folgt keinem symbolischen Link, und Vorlagen sehen keine Umgebungsvariable.
+Der Export führt ein Programm aus, wartet daher auf die Workspace-Vertrauensstellung, und das Programm
+wird nie vom Workspace bestimmt.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="performance"&gt;Performance&lt;span class="hx:absolute hx:-mt-20" id="performance"&gt;&lt;/span&gt;
+&lt;a href="#performance" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Mit dem 100-Folien-Benchmark-Foliensatz von go-slides, in VS Code 1.142 auf einem Apple M4 Max,
+mit Marp for VS Code 3.6.1 in derselben Sitzung gemessen:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style="text-align: right"&gt;go-slides&lt;/th&gt;
+&lt;th style="text-align: right"&gt;Marp for VS Code&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Aktivierung (Laden des WebAssembly-Moduls)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;189 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;erste Vorschau&lt;/td&gt;
+&lt;td style="text-align: right"&gt;52 ms&lt;/td&gt;
+&lt;td style="text-align: right"&gt;78 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vorschau nach einer Änderung (Median)&lt;/td&gt;
+&lt;td style="text-align: right"&gt;&lt;strong&gt;19 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;23–24 ms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.vsix&lt;/code&gt;&lt;/td&gt;
+&lt;td style="text-align: right"&gt;7,5 MB&lt;/td&gt;
+&lt;td style="text-align: right"&gt;36,3 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Die Werte gelten für Erweiterung v0.3.0 (go-slides v0.8.0) mit einem Foliensatz von 100 Folien,
+bei Eingabe eines Zeichens in Folie 50, aus abwechselnd ausgeführten Durchläufen bei einem Load Average über eine Minute unter 8. Die erste Vorschau ist schneller als die von Marp, und die Vorschau nach einer
+Änderung ist es nun ebenfalls.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v080-and-extension-v030"&gt;In v0.8.0 und Erweiterung v0.3.0&lt;span class="hx:absolute hx:-mt-20" id="in-v080-and-extension-v030"&gt;&lt;/span&gt;
+&lt;a href="#in-v080-and-extension-v030" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.8.0 behält die gerenderten Folien jedes geöffneten Foliensatzes und rendert nach einer Änderung
+nur die neu, deren Quelle oder geerbter Zustand sich geändert hat (Direktiven, Seiten-
+nummer, Gesamtzahl, Überschrifts-IDs, Linkreferenzen, Quellzeilen); die Ausgabe ist
+dieselbe wie bei einem vollständigen Rendern, Byte für Byte. Tippen in Folie 50 von 100 rendert eine
+Folie neu: 2,5 ms nativ, 11,5 ms in WebAssembly. Die Vorschau von VS Code überführt dann
+nur das DOM der geänderten Folie, und der Smoke-Test der Erweiterung tippt ein
+Zeichen in Folie 50 zwischen zeitgemessenen Renderings, für beide Erweiterungen. Die
+Referentenansicht der Erweiterung synchronisiert sich über das übergeordnete Fenster (&lt;code&gt;postMessage&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 data-hextra-search-id="in-v071-and-extension-v022"&gt;In v0.7.1 und Erweiterung v0.2.2&lt;span class="hx:absolute hx:-mt-20" id="in-v071-and-extension-v022"&gt;&lt;/span&gt;
+&lt;a href="#in-v071-and-extension-v022" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;go-slides v0.7.1 hält geparste Themes, gepackte Stylesheets und hervorgehobenen Code
+zwischen Renderings im Cache, markiert Scroll-Sync-Zeilen, ohne Byte für Byte vorzugehen, und verwendet
+seine Writer wieder: Ein Rendern des Foliensatzes mit 100 Folien belegt 5,7 MB, gegenüber 52,7 MB
+bei Erweiterung v0.2.0. Damit verzichtet Erweiterung v0.2.2 auf die Überschreibung &lt;code&gt;GOGC=400&lt;/code&gt;.
+Zum Vergleich: Erweiterung v0.2.1 brauchte 72 ms für die erste Vorschau und 44 ms
+nach einer Änderung bei Standard-&lt;code&gt;GOGC&lt;/code&gt; (36 ms mit &lt;code&gt;GOGC=400&lt;/code&gt;), und v0.2.0 brauchte
+47–51 ms.&lt;/p&gt;
+&lt;p&gt;Erweiterung v0.2.2 maß 52 ms für die erste Vorschau und 24 ms nach einer Änderung,
+auf Augenhöhe mit den 23 ms von Marp.&lt;/p&gt;</description></item></channel></rss>
