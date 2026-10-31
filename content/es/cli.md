@@ -338,8 +338,10 @@ su disposición, la misma que dibujan las exportaciones a PNG y PDF:
 - las imágenes se almacenan una sola vez, por muchas diapositivas que las
   muestren;
 - lo que una diapositiva no puede expresar (un elemento bajo `opacity`, un
-  `filter`, una sombra difuminada, una fórmula) es una imagen de ese elemento, con
-  su texto conservado encima.
+  `filter`, una sombra difuminada) es una imagen de ese elemento, con
+  su texto conservado encima;
+- una fórmula, un emoji o una imagen SVG es un grupo de formas vectoriales (`p:grpSp` en el PPTX,
+  `draw:g` en el ODP) que se mueve como una sola pieza. Un SVG que necesita un recorte o un degradado radial sigue siendo una imagen.
 
 Al renderizarla de nuevo con LibreOffice, una diapositiva queda entre el 0,04 y el
 2 % de los píxeles de la exportación a PNG. `--pptx-raster` y `--odp-raster`
@@ -359,8 +361,10 @@ del PDF de imágenes de v0.3.0, y se escribe en 0,3 s.
 Un elemento sin forma vectorial aquí (bajo `opacity` < 1, con un `filter` o una
 rotación, un `box-shadow` difuminado, un degradado cuya opacidad se atenúa) se
 dibuja como un mapa de bits solo de ese elemento, con su texto superpuesto de
-forma invisible para que siga siendo seleccionable. Las fórmulas siguen siendo
-mapas de bits. `--pdf-raster` escribe una imagen por página, como hacía v0.3.0.
+forma invisible para que siga siendo seleccionable. `--pdf-raster` escribe una imagen por página, como hacía v0.3.0.
+
+Las fórmulas, los emoji y las imágenes SVG también son vectores (go-webengine v0.22.0): cada dibujo
+distinto es un XObject de formulario PDF, pintado donde se usa, nítido con cualquier zoom.
 
 ### PDF accesible y etiquetado {#accessible-tagged-pdf}
 
@@ -374,7 +378,7 @@ un lector de pantalla lee en orden, como lee una página web:
 | un párrafo, una lista, una tabla | `P`; `L` con la etiqueta y el cuerpo de cada elemento; `Table`, con celdas de encabezado y su ámbito |
 | un enlace | un `Link`, con su área clicable incluida y su texto como descripción |
 | una imagen | una `Figure` con su texto alternativo; `![](…)` sin texto alternativo es decoración |
-| `$…$`, `$$…$$` | una `Formula`, con su código fuente TeX como descripción |
+| `$…$`, `$$…$$` | una `Formula`, con su código fuente TeX como `/Alt` y `/ActualText` (sus glifos son contornos: pdftotext y mupdf no los extraen, los lectores que siguen la estructura sí) |
 | código | `Code`, sin sus números de línea ni sus círculos de llamada |
 | `<span lang="fr">` | un tramo en ese idioma |
 | fondos, bordes, números de página | artefactos, que un lector omite |
@@ -414,8 +418,3 @@ Kinds: los `kinds:` de la propia presentación prevalecen sobre los del archivo 
 los de la línea de comandos. Datos: los `data` del archivo y de la línea de
 comandos prevalecen sobre el front matter de la presentación, de modo que una
 misma presentación se puede construir con datos distintos.
-
-## Previsto {#planned}
-
-Todavía no está hecho: las fórmulas como vectores en el PDF. Cuando lleguen, será
-un comando u opción aquí.

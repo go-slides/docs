@@ -312,7 +312,9 @@ das die PNG- und PDF-Exporte zeichnen:
   Farben);
 - Bilder werden nur einmal gespeichert, egal wie viele Folien sie zeigen;
 - was eine Folie nicht ausdrücken kann – ein Element unter `opacity`, ein `filter`, ein
-  weichgezeichneter Schatten, eine Formel – ist ein Bild dieses Elements, mit seinem darüberliegenden Text.
+  weichgezeichneter Schatten – ist ein Bild dieses Elements, mit seinem darüberliegenden Text;
+- eine Formel, ein Emoji oder ein SVG-Bild ist eine Gruppe von Vektorformen (`p:grpSp` in der PPTX,
+  `draw:g` in der ODP), die sich als Ganzes bewegt. Ein SVG, das einen Zuschnitt oder einen radialen Verlauf braucht, bleibt ein Bild.
 
 Von LibreOffice zurückgerendert, liegt eine Folie 0,04–2 % von den Pixeln des
 PNG-Exports entfernt. `--pptx-raster` und `--odp-raster` behalten ein Bild pro Folie.
@@ -330,8 +332,11 @@ marp-cli und 10 MiB beim Bild-PDF von v0.3.0, und er ist in 0,3 s geschrieben.
 Ein Element ohne Vektorform – unter `opacity` < 1, mit einem `filter`
 oder einer Drehung, ein weichgezeichneter `box-shadow`, ein Verlauf mit ausblendender Deckkraft –
 wird als Bitmap nur dieses Elements gezeichnet, mit unsichtbar darübergelegtem Text, damit er
-auswählbar bleibt. Formeln sind weiterhin Bitmaps. `--pdf-raster` schreibt ein Bild
+auswählbar bleibt. `--pdf-raster` schreibt ein Bild
 pro Seite, wie es v0.3.0 tat.
+
+Formeln, Emoji und SVG-Bilder sind ebenfalls Vektoren (go-webengine v0.22.0): Jede
+verschiedene Zeichnung ist ein PDF-Form-XObject, an der Stelle gemalt, wo sie verwendet wird, bei jedem Zoom scharf.
 
 ### Barrierefreies, getaggtes PDF {#accessible-tagged-pdf}
 
@@ -345,7 +350,7 @@ Screenreader der Reihe nach liest, wie er eine Webseite liest:
 | ein Absatz, eine Liste, eine Tabelle | `P`; `L` mit Marke und Inhalt jedes Eintrags; `Table`, Kopfzellen mit ihrem Bezugsbereich |
 | ein Link | ein `Link`, einschließlich seiner anklickbaren Fläche, sein Text als Beschreibung |
 | ein Bild | eine `Figure` mit ihrem Alternativtext; `![](…)` ohne Alternativtext ist Dekoration |
-| `$…$`, `$$…$$` | eine `Formula`, ihr TeX-Quelltext als Beschreibung |
+| `$…$`, `$$…$$` | eine `Formula`, ihr TeX-Quelltext als `/Alt` und `/ActualText` (ihre Glyphen sind Umrisse: pdftotext und mupdf extrahieren sie nicht, strukturbewusste Leser schon) |
 | Code | `Code`, ohne Zeilennummern und Callout-Scheiben |
 | `<span lang="fr">` | ein Span in dieser Sprache |
 | Hintergründe, Rahmen, Seitenzahlen | Artefakte, die ein Reader überspringt |
@@ -383,8 +388,3 @@ lang: en
 Kinds: Das eigene `kinds:` des Foliensatzes überschreibt das der Datei und das der Kommandozeile.
 Daten: Das `data` der Datei und der Kommandozeile überschreibt das Front-Matter des Foliensatzes,
 sodass ein Foliensatz mit verschiedenen Daten gebaut werden kann.
-
-## Geplant {#planned}
-
-Noch nicht gebaut: Formeln als Vektoren im PDF. Sobald sie kommen, sind sie hier ein
-Befehl oder Flag.

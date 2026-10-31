@@ -315,8 +315,10 @@ che disegnano le esportazioni PNG e PDF:
   colori);
 - le immagini vengono memorizzate una volta sola, per quante slide le mostrino;
 - ciò che una slide non può esprimere — un elemento sotto `opacity`, un `filter`, un'
-  ombra sfocata, una formula — è un'immagine di quell'elemento, con il suo testo mantenuto
-  sopra.
+  ombra sfocata — è un'immagine di quell'elemento, con il suo testo mantenuto
+  sopra;
+- una formula, un'emoji o un'immagine SVG è un gruppo di forme vettoriali (`p:grpSp` nel PPTX,
+  `draw:g` nell'ODP) che si sposta come un tutt'uno. Un SVG che richiede un ritaglio o un gradiente radiale resta un'immagine.
 
 Rese di nuovo da LibreOffice, una slide è entro lo 0,04–2 % dei pixel dell'esportazione
 PNG. `--pptx-raster` e `--odp-raster` mantengono un'immagine per slide.
@@ -334,8 +336,11 @@ marp-cli e 10 MiB del PDF a immagini della v0.3.0, e viene scritta in 0,3 s.
 Un elemento senza forma vettoriale qui — sotto `opacity` < 1, con un `filter`
 o una rotazione, un `box-shadow` sfocato, un gradiente la cui opacità sfuma — è
 disegnato come bitmap di quel solo elemento, con il suo testo sovrapposto in modo invisibile perché
-resti selezionabile. Le formule sono ancora bitmap. `--pdf-raster` scrive un'immagine
+resti selezionabile. `--pdf-raster` scrive un'immagine
 per pagina, come faceva la v0.3.0.
+
+Anche formule, emoji e immagini SVG sono vettori (go-webengine v0.22.0): ogni disegno
+distinto è un form XObject PDF, dipinto dove viene usato, nitido a qualsiasi zoom.
 
 ### PDF accessibile e con tag {#accessible-tagged-pdf}
 
@@ -349,7 +354,7 @@ uno screen reader legge in ordine, come legge una pagina web:
 | un paragrafo, un elenco, una tabella | `P`; `L` con l'etichetta e il corpo di ogni voce; `Table`, celle d'intestazione con il loro scope |
 | un link | un `Link`, con la sua area cliccabile, il suo testo come descrizione |
 | un'immagine | una `Figure` con il suo testo alternativo; `![](…)` senza testo alternativo è decorazione |
-| `$…$`, `$$…$$` | una `Formula`, con il suo sorgente TeX come descrizione |
+| `$…$`, `$$…$$` | una `Formula`, con il suo sorgente TeX come `/Alt` e `/ActualText` (i suoi glifi sono contorni: pdftotext e mupdf non li estraggono, i lettori che seguono la struttura sì) |
 | codice | `Code`, senza i numeri di riga né i cerchi delle chiamate |
 | `<span lang="fr">` | uno span in quella lingua |
 | sfondi, bordi, numeri di pagina | artefatti, che un lettore salta |
@@ -386,8 +391,3 @@ lang: en
 Kinds: i `kinds:` della presentazione prevalgono su quelli del file e della riga di comando.
 Dati: i `data` del file e della riga di comando prevalgono sul front
 matter della presentazione, così una presentazione può essere compilata con dati diversi.
-
-## In programma {#planned}
-
-Non ancora realizzato: le formule come vettori nel PDF. Quando arriveranno, saranno un
-comando o un flag qui.

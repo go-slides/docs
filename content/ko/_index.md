@@ -40,10 +40,7 @@ description: "순수 Go(CGO=0)로 만드는 Marp 호환 프레젠테이션. Go �
 | `slides.yaml` | 한 폴더의 프레젠테이션들이 공유하는 kind, 테마, 데이터, HTML 정책, 언어를 정합니다 |
 | HCL | `---hcl` 프런트 매터, `slides.hcl`, HCL2로 쓴 kind와 데이터 파일을 표현식과 함수까지 지원합니다: [HCL]({{< relref "hcl" >}}) |
 
-## 계획된 기능 {#planned}
-
-아직 구현되지 않았으며, 추측할 필요가 없도록 적어 둡니다. PDF 안의 수식을
-벡터로 출력하는 기능입니다(현재는 비트맵입니다). marp-cli와의 차이는 방식에
+marp-cli와의 차이는 방식에
 있습니다. marp-cli는 헤드리스 Chrome을 구동해 이미지와 PDF를 렌더링하지만,
 여기서는 Go 라이브러리가 그 일을 합니다.
 

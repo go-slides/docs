@@ -40,10 +40,7 @@ und sind unter `/docs/0.14/` veröffentlicht.
 | `slides.yaml` | gemeinsame Kinds, Themes, Daten, HTML-Richtlinie und Sprache für einen Ordner voller Foliensätze |
 | HCL | `---hcl`-Front-Matter, `slides.hcl`, Kinds- und Datendateien in HCL2, mit Ausdrücken und Funktionen: [HCL]({{< relref "hcl" >}}) |
 
-## Geplant {#planned}
-
-Noch nicht gebaut, und hier aufgeführt, damit niemand raten muss: Formeln als Vektoren im
-PDF (dort sind sie Bitmaps). Der Unterschied zu
+Der Unterschied zu
 marp-cli liegt im Weg: Es rendert Bilder und PDF, indem es einen Headless-Chrome steuert;
 hier erledigen das Go-Bibliotheken.
 

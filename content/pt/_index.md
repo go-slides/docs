@@ -42,10 +42,7 @@ e são publicadas em `/docs/0.14/`.
 | `slides.yaml` | kinds, temas, dados, política de HTML e idioma compartilhados por uma pasta de apresentações |
 | HCL | front matter `---hcl`, `slides.hcl`, arquivos de kinds e de dados em HCL2, com expressões e funções: [HCL]({{< relref "hcl" >}}) |
 
-## Planejado {#planned}
-
-Ainda não foi feito, e está listado para que ninguém precise adivinhar: as
-fórmulas como vetores no PDF (lá elas são bitmaps). A diferença em relação ao
+A diferença em relação ao
 marp-cli está no caminho: ele renderiza imagens e PDF controlando um Chrome
 sem interface; aqui isso é feito por bibliotecas Go.
 

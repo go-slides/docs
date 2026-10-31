@@ -315,8 +315,10 @@ the PNG and PDF exports draw:
   colours);
 - pictures are stored once, however many slides show them;
 - what a slide cannot express — an element under `opacity`, a `filter`, a
-  blurred shadow, a formula — is a picture of that element, its text kept
-  over it.
+  blurred shadow — is a picture of that element, its text kept over it;
+- a formula, an emoji or an SVG image is a group of vector shapes (`p:grpSp`
+  in the PPTX, `draw:g` in the ODP) that moves as one. An SVG that needs a
+  clip or a radial gradient stays a picture.
 
 Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export's
 pixels. `--pptx-raster` and `--odp-raster` keep one picture a slide.
@@ -334,8 +336,11 @@ marp-cli and 10 MiB for the image PDF of v0.3.0, and it is written in 0.3 s.
 An element with no vector form here — under `opacity` < 1, with a `filter`
 or a rotation, a blurred `box-shadow`, a gradient whose opacity fades — is
 drawn as a bitmap of that element only, its text laid over it invisibly so it
-stays selectable. Formulas are still bitmaps. `--pdf-raster` writes one image
-per page, as v0.3.0 did.
+stays selectable. `--pdf-raster` writes one image per page, as v0.3.0 did.
+
+Formulas, emoji and SVG images are vectors too (go-webengine v0.22.0): each
+distinct drawing is one PDF form XObject, painted where it is used, and sharp
+at any zoom.
 
 ### Accessible, tagged PDF
 
@@ -349,7 +354,7 @@ a screen reader reads in order, as it reads a web page:
 | a paragraph, a list, a table | `P`; `L` with each item's label and body; `Table`, header cells with their scope |
 | a link | a `Link`, its clickable area included, its text as its description |
 | an image | a `Figure` with its alt text; `![](…)` with no alt text is decoration |
-| `$…$`, `$$…$$` | a `Formula`, its TeX source as its description |
+| `$…$`, `$$…$$` | a `Formula`, its TeX source as its `/Alt` and `/ActualText` (its glyphs are outlines, so pdftotext and mupdf do not extract them; structure-aware readers do) |
 | code | `Code`, without its line numbers or callout discs |
 | `<span lang="fr">` | a span in that language |
 | backgrounds, borders, page numbers | artifacts, which a reader skips |
@@ -386,8 +391,3 @@ lang: en
 Kinds: the deck's own `kinds:` override the file's and the command line's.
 Data: the file's and the command line's `data` override the deck's front
 matter, so one deck can be built with different data.
-
-## Planned
-
-Not built yet: formulas as vectors in the PDF. When they arrive, they are a
-command or flag here.
