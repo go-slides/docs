@@ -5,7 +5,7 @@ go-slides, ciascuna con una sola cosa ben fatta. Le miniature sono la prima slid
 ogni presentazione, resa da go-slides stesso quando questo sito viene compilato; la CI compila ogni
 presentazione in HTML e PDF, quindi nessuna si rompe.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Apri nel playground&lt;/strong&gt; carica la presentazione nel tuo browser, tramite un link che non invia
-nulla a nessun server. Una presentazione che ha file oltre a &lt;code&gt;deck.md&lt;/code&gt; (un file di tipi,
+nulla a nessun server. Una presentazione che ha file oltre a &lt;code&gt;deck.md&lt;/code&gt; (un file di kinds, cioè di tipi di slide,
 parti incluse, immagini) non può viaggiare in un link: scarica il suo &lt;strong&gt;.zip&lt;/strong&gt;
 e importalo con il pannello dei file del playground, oppure decomprimilo e compilalo con
 &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt;.&lt;/p&gt;

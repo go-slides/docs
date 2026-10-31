@@ -1,5 +1,5 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Kinds</title><link>https://go-slides.github.io/docs/0.14/pt/tags/kinds/</link><description>Recent content in Kinds on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pt-BR</language><atom:link href="https://go-slides.github.io/docs/0.14/pt/tags/kinds/index.xml" rel="self" type="application/rss+xml"/><item><title>Kinds</title><link>https://go-slides.github.io/docs/0.14/pt/kinds/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/pt/kinds/</guid><description>
-&lt;p&gt;Um &lt;strong&gt;kind&lt;/strong&gt; é um conjunto predefinido e nomeado de diretivas locais:
+&lt;p&gt;Um &lt;strong&gt;kind&lt;/strong&gt; (o tipo de um slide) é um conjunto predefinido e nomeado de diretivas locais:
 cabeçalho, rodapé, paginação, classe, fundo. Um slide diz o que ele é —
 &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;section&lt;/code&gt; — em vez de repetir a sua aparência, e o visual de uma
 apresentação muda em um único lugar.&lt;/p&gt;

@@ -35,7 +35,7 @@ les valeurs de &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &l
 et les champs de données dans &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Aide&lt;/strong&gt; sur ce qui se trouve sous le curseur : une directive, un type de diapositive (kind) (ce qu&amp;rsquo;il définit),
+&lt;p&gt;&lt;strong&gt;Aide&lt;/strong&gt; sur ce qui se trouve sous le curseur : une directive, un &lt;em&gt;kind&lt;/em&gt; (le type d&amp;rsquo;une diapositive) (ce qu&amp;rsquo;il définit),
 une fonction de gabarit. Le volet d&amp;rsquo;aide renvoie aussi vers ces pages.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;

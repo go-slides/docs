@@ -35,7 +35,7 @@ i valori di &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;c
 dentro &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Guida&lt;/strong&gt; per ciò che si trova sotto il cursore: una direttiva, un tipo (cosa imposta),
+&lt;p&gt;&lt;strong&gt;Guida&lt;/strong&gt; per ciò che si trova sotto il cursore: una direttiva, un kind (il tipo di una slide: cosa imposta),
 una funzione di template. Il riquadro della guida rimanda anche a queste pagine.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -44,7 +44,7 @@ nell&amp;rsquo;editor ed elencati sotto di esso, e l&amp;rsquo;anteprima conserv
 che è stata resa.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Esempi&lt;/strong&gt;: una presentazione di benvenuto, template che generano slide, tipi di slide,
+&lt;p&gt;&lt;strong&gt;Esempi&lt;/strong&gt;: una presentazione di benvenuto, template che generano slide, kinds,
 un front matter HCL, temi e direttive spot, e matematica, immagini e
 sfondi (&lt;code&gt;![bg]&lt;/code&gt;, un &lt;code&gt;![bg left:40%]&lt;/code&gt; diviso, filtri).&lt;/p&gt;
 &lt;/li&gt;
@@ -57,7 +57,7 @@ l&amp;rsquo;&lt;a href="https://go-slides.github.io/docs/0.14/it/vscode/"&gt;est
 &lt;li&gt;Fai clic su un file per modificarlo. L&amp;rsquo;editor lo colora secondo il suo linguaggio
 (Markdown, YAML, HCL, JSON, CSS) e ne segnala i problemi.&lt;/li&gt;
 &lt;li&gt;Clic destro (o Maiusc+F10) per Nuovo file, Nuova cartella, Rinomina (F2),
-Elimina (chiede conferma) e Nuovo tema / Nuovo tipo. Trascina un file su una cartella
+Elimina (chiede conferma) e Nuovo tema / Nuovo kind. Trascina un file su una cartella
 per spostarlo. La tastiera segue il pattern ad albero WAI-ARIA, compresa
 la ricerca digitando.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; crea &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (oppure da default,
@@ -140,7 +140,7 @@ stessa slide.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Link di condivisione&lt;/strong&gt;: la presentazione viaggia nel link stesso (nella sua parte &lt;code&gt;#&lt;/code&gt;,
 compressa), quindi aprire il link apre la presentazione. I link trasportano fino a
 64 KiB compressi, e solo la presentazione: quando il progetto contiene di più
-(temi, tipi, media), Share lo dice e propone lo &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+(temi, kinds, media), Share lo dice e propone lo &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
@@ -165,7 +165,7 @@ lo sono sempre.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;La presentazione è salvata in questo browser mentre digiti (IndexedDB, solo per questo sito)
 e ritorna quando ricarichi. Nulla viene inviato altrove. I
-file di testo del progetto (temi, tipi, dati, &lt;code&gt;slides.yaml&lt;/code&gt;) sono conservati
+file di testo del progetto (temi, kinds, dati, &lt;code&gt;slides.yaml&lt;/code&gt;) sono conservati
 allo stesso modo, anche se chiudi la scheda subito dopo aver digitato; i media sono
 memorizzati nel momento in cui vengono trascinati.&lt;/li&gt;
 &lt;li&gt;Un link condiviso apre la sua presentazione e conserva la tua bozza: &lt;strong&gt;Draft ▸ Restore my
@@ -178,7 +178,7 @@ riporta indietro.&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ogni esportazione rende il progetto che mostra l&amp;rsquo;anteprima: il suo &lt;code&gt;slides.yaml&lt;/code&gt;,
-temi, tipi, file di dati e media, con i media dentro il documento.&lt;/p&gt;
+temi, kinds, file di dati e media, con i media dentro il documento.&lt;/p&gt;
 &lt;p&gt;Le immagini come file (slides &lt;code&gt;--images&lt;/code&gt;) non vengono prodotte nel browser: usa il
 &lt;a href="https://go-slides.github.io/docs/0.14/it/cli/"&gt;comando&lt;/a&gt; o l'
 &lt;a href="https://go-slides.github.io/docs/0.14/it/vscode/"&gt;estensione di VS Code&lt;/a&gt;.&lt;/p&gt;

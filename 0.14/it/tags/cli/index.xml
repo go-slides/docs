@@ -34,7 +34,7 @@ data-copied-label="Copiato!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;stampa la presentazione come semplice Markdown Marp: template espansi, tipi sostituiti dalle direttive che rappresentano&lt;/td&gt;
+&lt;td&gt;stampa la presentazione come semplice Markdown Marp: template espansi, kinds sostituiti dalle direttive che rappresentano&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
@@ -42,7 +42,7 @@ data-copied-label="Copiato!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;elenca i tipi che la presentazione può usare e cosa impostano; &lt;code&gt;--json&lt;/code&gt; (nella v0.6.0) li scrive come &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, con &lt;code&gt;extends&lt;/code&gt; risolto&lt;/td&gt;
+&lt;td&gt;elenca i kinds (il tipo di una slide) che la presentazione può usare e cosa impostano; &lt;code&gt;--json&lt;/code&gt; (nella v0.6.0) li scrive come &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, con &lt;code&gt;extends&lt;/code&gt; risolto&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
@@ -90,7 +90,7 @@ corto. &lt;code&gt;build&lt;/code&gt; scrive &lt;code&gt;deck.html&lt;/code&gt; 
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;compila di nuovo quando cambia una presentazione, un tema, un file di tipi o di dati o la configurazione, e ricarica le pagine aperte (nella v0.6.0); vedi sotto&lt;/td&gt;
+&lt;td&gt;compila di nuovo quando cambia una presentazione, un tema, un file di kinds o di dati o la configurazione, e ricarica le pagine aperte (nella v0.6.0); vedi sotto&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
@@ -155,7 +155,7 @@ corto. &lt;code&gt;build&lt;/code&gt; scrive &lt;code&gt;deck.html&lt;/code&gt; 
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;tutti&lt;/td&gt;
-&lt;td&gt;un file YAML di tipi (ripetibile)&lt;/td&gt;
+&lt;td&gt;un file YAML di kinds (ripetibile)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
@@ -367,7 +367,7 @@ qui: &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;description&lt;/code&gt;, &lt;c
 &lt;code&gt;server&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;; i percorsi sono relativi al file. La riga di comando prevale.
 &lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;options&lt;/code&gt; e &lt;code&gt;browser*&lt;/code&gt; richiedono il motore di Marp e un browser, e vengono
 ignorate con un avviso, come i flag &lt;code&gt;--browser*&lt;/code&gt;: gli script scritti per
-marp-cli continuano a funzionare. (&lt;code&gt;slides.yaml&lt;/code&gt; e &lt;code&gt;slides.hcl&lt;/code&gt;, con i tipi e i
+marp-cli continuano a funzionare. (&lt;code&gt;slides.yaml&lt;/code&gt; e &lt;code&gt;slides.hcl&lt;/code&gt;, con i kinds e i
 dati dei template, sono separati e letti come prima.)&lt;/p&gt;
 &lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Watch, server e anteprima&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
 &lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Nella v0.6.0, con le rotte e il protocollo di ricaricamento in tempo reale di marp-cli (letti dai suoi
@@ -411,7 +411,7 @@ presentazione, o qualsiasi cosa sotto la cartella, cambia. Una cartella richiest
 la barra finale viene reindirizzata ad essa (marp-cli serve lì il suo indice, il che
 rompe i link relativi della pagina).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-w&lt;/code&gt;) compila le presentazioni, poi ricompila quella che cambia
-e, quando cambia un file &lt;code&gt;--theme-set&lt;/code&gt;, un file di tipi o di dati o la configurazione,
+e, quando cambia un file &lt;code&gt;--theme-set&lt;/code&gt;, un file di kinds o di dati o la configurazione,
 tutte. Le pagine che scrive aprono un socket sul loopback (porta
 37717, o la successiva libera) e si ricaricano quando la loro presentazione viene compilata di nuovo. Una presentazione
 che non si compila viene segnalata e continua a essere osservata. &lt;strong&gt;&lt;code&gt;--preview&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-p&lt;/code&gt;) apre
@@ -613,7 +613,7 @@ data-copied-label="Copiato!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Tipi: i &lt;code&gt;kinds:&lt;/code&gt; della presentazione prevalgono su quelli del file e della riga di comando.
+&lt;p&gt;Kinds: i &lt;code&gt;kinds:&lt;/code&gt; della presentazione prevalgono su quelli del file e della riga di comando.
 Dati: i &lt;code&gt;data&lt;/code&gt; del file e della riga di comando prevalgono sul front
 matter della presentazione, così una presentazione può essere compilata con dati diversi.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;In programma&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;

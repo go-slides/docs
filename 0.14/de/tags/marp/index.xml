@@ -70,7 +70,7 @@ die Sie mit &lt;code&gt;--theme-set&lt;/code&gt; angeben oder in &lt;code&gt;sli
 &lt;a href="https://go-slides.github.io/docs/0.14/de/templates/"&gt;Vorlagen&lt;/a&gt;). Ein Foliensatz, der &lt;code&gt;{{&lt;/code&gt; außerhalb eines Codeblocks als Text
 zeigt, braucht &lt;code&gt;--no-template&lt;/code&gt; oder den Text maskiert, so wie Go-Vorlagen
 ihn maskieren. Codeblöcke und Code-Spans bleiben unberührt.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Kinds (Folientypen).&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; und &lt;code&gt;_kind:&lt;/code&gt; sind Direktiven, die Marp nicht kennt (siehe
+&lt;li&gt;&lt;strong&gt;Kinds (die Art einer Folie).&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; und &lt;code&gt;_kind:&lt;/code&gt; sind Direktiven, die Marp nicht kennt (siehe
 &lt;a href="https://go-slides.github.io/docs/0.14/de/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; ersetzt sie durch die
 Direktiven, für die sie stehen, sodass der expandierte Foliensatz reines Marp ist.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ausgaben.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX und ODP, über Go-Bibliotheken statt über

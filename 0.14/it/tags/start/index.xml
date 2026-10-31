@@ -50,7 +50,7 @@ data-copied-label="Copiato!"
 &lt;/div&gt;
 &lt;p&gt;Il front matter è quello di Marp, più &lt;code&gt;data:&lt;/code&gt;. Il corpo è un template Go: il
 &lt;code&gt;range&lt;/code&gt; scrive una slide per argomento, ciascuna che inizia con &lt;code&gt;---&lt;/code&gt;, e la prima
-slide è del tipo predefinito &lt;code&gt;title&lt;/code&gt; (senza intestazione, senza piè di pagina, senza numero di pagina).&lt;/p&gt;
+slide è del kind (il tipo di una slide) predefinito &lt;code&gt;title&lt;/code&gt; (senza intestazione, senza piè di pagina, senza numero di pagina).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="build-it"&gt;Compilarla&lt;span class="hx:absolute hx:-mt-20" id="build-it"&gt;&lt;/span&gt;
 &lt;a href="#build-it" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md &lt;span class="c1"&gt;# writes talk.html beside the deck&lt;/span&gt;
@@ -152,12 +152,12 @@ data-copied-label="Copiato!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Le quattro slide generate dal &lt;code&gt;range&lt;/code&gt;, il piè di pagina con il suo valore e il
-tipo &lt;code&gt;title&lt;/code&gt; sostituito dalle direttive spot che rappresenta. Tutto ciò che legge Marp — marp-cli, l&amp;rsquo;estensione di VS
+kind &lt;code&gt;title&lt;/code&gt; sostituito dalle direttive spot che rappresenta. Tutto ciò che legge Marp — marp-cli, l&amp;rsquo;estensione di VS
 Code — può proseguire da qui, quindi nulla di ciò che è scritto con le aggiunte di go-slides
 resta bloccato.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="next"&gt;Prossimi passi&lt;span class="hx:absolute hx:-mt-20" id="next"&gt;&lt;/span&gt;
 &lt;a href="#next" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/it/marp/"&gt;Compatibilità con Marp&lt;/a&gt;: ciò che viene letto come lo legge Marp.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/it/templates/"&gt;Template&lt;/a&gt; e &lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;Tipi di slide&lt;/a&gt;: le due aggiunte.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/it/templates/"&gt;Template&lt;/a&gt; e &lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;Kinds&lt;/a&gt;: le due aggiunte.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/it/cli/"&gt;Riga di comando&lt;/a&gt;: ogni comando e flag.&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>

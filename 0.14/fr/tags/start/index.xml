@@ -50,7 +50,7 @@ data-copied-label="Copié !"
 &lt;/div&gt;
 &lt;p&gt;Le front matter est celui de Marp, plus &lt;code&gt;data:&lt;/code&gt;. Le corps est un gabarit Go : le
 &lt;code&gt;range&lt;/code&gt; écrit une diapositive par sujet, chacune commençant par &lt;code&gt;---&lt;/code&gt;, et la première
-diapositive est du type de diapositive (kind) intégré &lt;code&gt;title&lt;/code&gt; (ni en-tête, ni pied de page, ni numéro de page).&lt;/p&gt;
+diapositive est du &lt;em&gt;kind&lt;/em&gt; (le type d&amp;rsquo;une diapositive) intégré &lt;code&gt;title&lt;/code&gt; (ni en-tête, ni pied de page, ni numéro de page).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="build-it"&gt;Génération&lt;span class="hx:absolute hx:-mt-20" id="build-it"&gt;&lt;/span&gt;
 &lt;a href="#build-it" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md &lt;span class="c1"&gt;# writes talk.html beside the deck&lt;/span&gt;

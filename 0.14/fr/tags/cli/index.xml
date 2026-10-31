@@ -34,7 +34,7 @@ data-copied-label="Copié !"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;affiche la présentation en Markdown Marp ordinaire : gabarits développés, types de diapositives (kinds) remplacés par les directives qu&amp;rsquo;ils représentent&lt;/td&gt;
+&lt;td&gt;affiche la présentation en Markdown Marp ordinaire : gabarits développés, &lt;em&gt;kinds&lt;/em&gt; (le type d&amp;rsquo;une diapositive) remplacés par les directives qu&amp;rsquo;ils représentent&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;

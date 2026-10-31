@@ -50,7 +50,7 @@ data-copied-label="Скопировано!"
 &lt;/div&gt;
 &lt;p&gt;Front matter — из Marp, плюс &lt;code&gt;data:&lt;/code&gt;. Тело — шаблон Go: &lt;code&gt;range&lt;/code&gt; пишет по слайду
 на каждую тему, и каждый начинается с &lt;code&gt;---&lt;/code&gt;, а первый слайд относится к
-встроенному типу (kind) &lt;code&gt;title&lt;/code&gt; (без верхнего и нижнего колонтитулов, без номера
+встроенному kind (типу слайда) &lt;code&gt;title&lt;/code&gt; (без верхнего и нижнего колонтитулов, без номера
 страницы).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="build-it"&gt;Сборка&lt;span class="hx:absolute hx:-mt-20" id="build-it"&gt;&lt;/span&gt;
 &lt;a href="#build-it" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -153,13 +153,13 @@ data-copied-label="Скопировано!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Четыре слайда, которые породил &lt;code&gt;range&lt;/code&gt;, нижний колонтитул с его значением и тип
+&lt;p&gt;Четыре слайда, которые породил &lt;code&gt;range&lt;/code&gt;, нижний колонтитул с его значением и kind
 &lt;code&gt;title&lt;/code&gt;, замещённый точечными директивами, которые он обозначает. Всё, что
 читает Marp, — marp-cli, расширение VS Code — может продолжить отсюда, так что
 ничто из написанного с дополнениями go-slides не оказывается заперто в нём.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="next"&gt;Дальше&lt;span class="hx:absolute hx:-mt-20" id="next"&gt;&lt;/span&gt;
 &lt;a href="#next" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/ru/marp/"&gt;Совместимость с Marp&lt;/a&gt;: что читается так же, как читает Marp.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/ru/templates/"&gt;Шаблоны&lt;/a&gt; и &lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;Типы слайдов&lt;/a&gt;: два дополнения.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/ru/templates/"&gt;Шаблоны&lt;/a&gt; и &lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;Kinds&lt;/a&gt;: два дополнения.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/ru/cli/"&gt;Командная строка&lt;/a&gt;: каждая команда и флаг.&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>

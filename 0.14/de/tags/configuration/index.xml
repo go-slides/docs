@@ -78,7 +78,7 @@ data-copied-label="Kopiert!"
 (&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt; …),
 die Metadaten (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt; …), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (Dateipfade)
 und &lt;code&gt;data&lt;/code&gt;, ein Objekt.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt;-Blöcke definieren &lt;a href="https://go-slides.github.io/docs/0.14/de/kinds/"&gt;Kinds (Folientypen)&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt;-Blöcke definieren &lt;a href="https://go-slides.github.io/docs/0.14/de/kinds/"&gt;Kinds (die Art einer Folie)&lt;/a&gt;
 mit den lokalen Direktiven und &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Werte&lt;/strong&gt; erreichen die Direktiven in den Zeichenkettenformen, die YAML ihnen gibt –
 &lt;code&gt;true&lt;/code&gt; wird zu &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, eine Liste von Klassen bleibt eine Liste –, sodass sich eine Direktive

@@ -28,7 +28,7 @@
 &lt;td&gt;&lt;code&gt;slides.hcl&lt;/code&gt;, ищется первым&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;файлы типов&lt;/td&gt;
+&lt;td&gt;файлы kinds&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;--kinds kinds.yaml&lt;/code&gt;, &lt;code&gt;kinds: kinds.yaml&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;любой файл с именем &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -78,7 +78,7 @@ data-copied-label="Скопировано!"
 (&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt;…),
 метаданные (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;…), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (пути к
 файлам) и &lt;code&gt;data&lt;/code&gt; — объект.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Блоки &lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; определяют &lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;типы слайдов&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Блоки &lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; определяют &lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;kinds (типы слайдов)&lt;/a&gt;
 с локальными директивами и &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Значения&lt;/strong&gt; попадают в директивы в тех строковых формах, которые им даёт
 YAML, — &lt;code&gt;true&lt;/code&gt; становится &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, список классов остаётся списком, — так что
@@ -169,7 +169,7 @@ data-copied-label="Скопировано!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Неизвестный атрибут — это ошибка, а не молчаливое отсутствие действия. Файл
-типов содержит блоки &lt;code&gt;kind&lt;/code&gt;; остальные его атрибуты игнорируются, поэтому
+kinds содержит блоки &lt;code&gt;kind&lt;/code&gt;; остальные его атрибуты игнорируются, поэтому
 &lt;code&gt;slides.hcl&lt;/code&gt; может служить и таким файлом. Атрибуты файла данных — это ключи
 данных:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;

@@ -5,7 +5,7 @@
 各スライドデッキの最初のスライドで、このサイトのビルド時に go-slides 自身がレンダリングしています。CI はすべての
 スライドデッキを HTML と PDF にビルドしているので、どれも壊れることはありません。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Playground で開く&lt;/strong&gt; を押すと、サーバーに何も送信しないリンクで、スライドデッキがブラウザーに読み込まれます。
-&lt;code&gt;deck.md&lt;/code&gt; 以外のファイル（kind のファイル、インクルードする部品、画像）を含むスライドデッキはリンクでは渡せません。
+&lt;code&gt;deck.md&lt;/code&gt; 以外のファイル（kind（スライドの種類）のファイル、インクルードする部品、画像）を含むスライドデッキはリンクでは渡せません。
 その場合は &lt;strong&gt;.zip&lt;/strong&gt; をダウンロードして Playground のファイルパネルからインポートするか、展開して
 &lt;code&gt;slides build --allow-local-files deck.md&lt;/code&gt; でビルドしてください。&lt;/p&gt;
 &lt;p&gt;画像は go-slides の作者によるオリジナルの SVG で、

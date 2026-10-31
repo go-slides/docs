@@ -34,7 +34,7 @@ data-copied-label="Copiado!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;imprime a apresentação como Markdown Marp simples: templates expandidos, kinds substituídos pelas diretivas que eles representam&lt;/td&gt;
+&lt;td&gt;imprime a apresentação como Markdown Marp simples: templates expandidos, kinds (o tipo de um slide) substituídos pelas diretivas que eles representam&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;

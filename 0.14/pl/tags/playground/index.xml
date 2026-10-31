@@ -35,7 +35,7 @@ wartości &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;cod
 i pola danych wewnątrz &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Pomoc&lt;/strong&gt; dla tego, co jest pod kursorem: dyrektywa, rodzaj (co ustawia),
+&lt;p&gt;&lt;strong&gt;Pomoc&lt;/strong&gt; dla tego, co jest pod kursorem: dyrektywa, kind (co ustawia),
 funkcja szablonu. Panel pomocy odsyła też do tych stron.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -44,7 +44,7 @@ w edytorze i wypisane pod nim, a podgląd zachowuje ostatnią prezentację,
 która się wyrenderowała.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Przykłady&lt;/strong&gt;: prezentacja powitalna, szablony generujące slajdy, rodzaje slajdów,
+&lt;p&gt;&lt;strong&gt;Przykłady&lt;/strong&gt;: prezentacja powitalna, szablony generujące slajdy, kinds,
 front matter w HCL, motywy i dyrektywy punktowe oraz matematyka, obrazy i
 tła (&lt;code&gt;![bg]&lt;/code&gt;, dzielone &lt;code&gt;![bg left:40%]&lt;/code&gt;, filtry).&lt;/p&gt;
 &lt;/li&gt;
@@ -140,7 +140,7 @@ tym samym slajdzie.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Odnośnik do udostępnienia&lt;/strong&gt;: prezentacja podróżuje w samym odnośniku (w jego części &lt;code&gt;#&lt;/code&gt;,
 skompresowana), więc otwarcie odnośnika otwiera prezentację. Odnośniki niosą do
 64 KiB po kompresji, i tylko prezentację: gdy projekt zawiera więcej
-(motywy, rodzaje, media), Share o tym mówi i oferuje &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+(motywy, kinds, media), Share o tym mówi i oferuje &lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
@@ -165,7 +165,7 @@ zawsze.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Prezentacja jest zapisywana w tej przeglądarce w trakcie pisania (IndexedDB, tylko dla tej
 witryny) i wraca po przeładowaniu. Nic nie jest nigdzie wysyłane.
-Pliki tekstowe projektu (motywy, rodzaje, dane, &lt;code&gt;slides.yaml&lt;/code&gt;) są zachowywane
+Pliki tekstowe projektu (motywy, kinds, dane, &lt;code&gt;slides.yaml&lt;/code&gt;) są zachowywane
 tak samo, nawet gdy zamkniesz kartę zaraz po pisaniu; media są
 zapisywane w chwili upuszczenia.&lt;/li&gt;
 &lt;li&gt;Udostępniony odnośnik otwiera swoją prezentację i zachowuje twój szkic: &lt;strong&gt;Draft ▸ Restore my
@@ -178,7 +178,7 @@ z powrotem.&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Każdy eksport renderuje projekt, który pokazuje podgląd: jego &lt;code&gt;slides.yaml&lt;/code&gt;,
-motywy, rodzaje, pliki danych i media, z mediami wewnątrz dokumentu.&lt;/p&gt;
+motywy, kinds, pliki danych i media, z mediami wewnątrz dokumentu.&lt;/p&gt;
 &lt;p&gt;Obrazy jako pliki (slides &lt;code&gt;--images&lt;/code&gt;) nie powstają w przeglądarce: użyj
 &lt;a href="https://go-slides.github.io/docs/0.14/pl/cli/"&gt;polecenia&lt;/a&gt; lub
 &lt;a href="https://go-slides.github.io/docs/0.14/pl/vscode/"&gt;rozszerzenia VS Code&lt;/a&gt;.&lt;/p&gt;

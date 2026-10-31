@@ -101,7 +101,7 @@ data-copied-label="Copié !"
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Pour tous les blocs d&amp;rsquo;une diapositive et des suivantes, définissez la directive
-&lt;code&gt;&amp;lt;!-- lineNumbers: true --&amp;gt;&lt;/code&gt; (&lt;code&gt;_lineNumbers&lt;/code&gt; pour une seule diapositive). Un type de diapositive (kind) peut la définir
+&lt;code&gt;&amp;lt;!-- lineNumbers: true --&amp;gt;&lt;/code&gt; (&lt;code&gt;_lineNumbers&lt;/code&gt; pour une seule diapositive). Un &lt;em&gt;kind&lt;/em&gt; (le type d&amp;rsquo;une diapositive) peut la définir
 une fois pour toute une famille de diapositives :&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;kinds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;

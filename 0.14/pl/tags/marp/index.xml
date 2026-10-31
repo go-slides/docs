@@ -70,8 +70,8 @@ podany przez &lt;code&gt;--theme-set&lt;/code&gt; lub wymieniony w &lt;code&gt;t
 &lt;a href="https://go-slides.github.io/docs/0.14/pl/templates/"&gt;Szablony&lt;/a&gt;). Prezentacja, która pokazuje &lt;code&gt;{{&lt;/code&gt; jako tekst
 poza blokiem kodu, potrzebuje &lt;code&gt;--no-template&lt;/code&gt; albo tekstu z ucieczką tak, jak
 robią to szablony Go. Bloki kodu i fragmenty kodu pozostają nietknięte.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Rodzaje.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; i &lt;code&gt;_kind:&lt;/code&gt; to dyrektywy, których Marp nie ma (zobacz
-&lt;a href="https://go-slides.github.io/docs/0.14/pl/kinds/"&gt;Rodzaje&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; zastępuje je
+&lt;li&gt;&lt;strong&gt;Kinds.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; i &lt;code&gt;_kind:&lt;/code&gt; to dyrektywy, których Marp nie ma (zobacz
+&lt;a href="https://go-slides.github.io/docs/0.14/pl/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; zastępuje je
 dyrektywami, które reprezentują, więc rozwinięta prezentacja to zwykły Marp.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Formaty wyjściowe.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX i ODP, przez biblioteki Go, a nie
 przez przeglądarkę headless (znane ograniczenie opisuje &lt;a href="https://go-slides.github.io/docs/0.14/pl/cli/#images-pdf-pptx-and-odp"&gt;Wiersz poleceń&lt;/a&gt;).

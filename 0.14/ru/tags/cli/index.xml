@@ -34,7 +34,7 @@ data-copied-label="Скопировано!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;выводит презентацию как обычный Markdown для Marp: шаблоны раскрыты, типы заменены директивами, которые они обозначают&lt;/td&gt;
+&lt;td&gt;выводит презентацию как обычный Markdown для Marp: шаблоны раскрыты, kinds заменены директивами, которые они обозначают&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
@@ -42,7 +42,7 @@ data-copied-label="Скопировано!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;перечисляет типы, которые может использовать презентация, и что они задают; &lt;code&gt;--json&lt;/code&gt; (в v0.6.0) записывает их как &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, с разрешённым &lt;code&gt;extends&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;перечисляет kinds (типы слайдов), которые может использовать презентация, и что они задают; &lt;code&gt;--json&lt;/code&gt; (в v0.6.0) записывает их как &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, с разрешённым &lt;code&gt;extends&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
@@ -90,7 +90,7 @@ data-copied-label="Скопировано!"
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;пересобирать при изменении презентации, темы, файла типов или данных либо конфигурации и перезагружать открытые страницы (в v0.6.0); см. ниже&lt;/td&gt;
+&lt;td&gt;пересобирать при изменении презентации, темы, файла kinds или данных либо конфигурации и перезагружать открытые страницы (в v0.6.0); см. ниже&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
@@ -155,7 +155,7 @@ data-copied-label="Скопировано!"
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;все&lt;/td&gt;
-&lt;td&gt;файл YAML с типами (можно повторять)&lt;/td&gt;
+&lt;td&gt;файл YAML с kinds (можно повторять)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
@@ -372,7 +372,7 @@ marp-cli: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;counterclockwise&lt;/c
 &lt;code&gt;server&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;; пути отсчитываются от файла. Командная строка главнее.
 &lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;options&lt;/code&gt; и &lt;code&gt;browser*&lt;/code&gt; требуют движка Marp и браузера и игнорируются с
 предупреждением, как и флаги &lt;code&gt;--browser*&lt;/code&gt;: скрипты, написанные для marp-cli,
-продолжают работать. (&lt;code&gt;slides.yaml&lt;/code&gt; и &lt;code&gt;slides.hcl&lt;/code&gt; с типами и данными шаблонов —
+продолжают работать. (&lt;code&gt;slides.yaml&lt;/code&gt; и &lt;code&gt;slides.hcl&lt;/code&gt; с kinds и данными шаблонов —
 отдельные файлы и читаются как раньше.)&lt;/p&gt;
 &lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Watch, serve и preview&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
 &lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;В v0.6.0, с маршрутами и протоколом живой перезагрузки marp-cli (по его
@@ -416,7 +416,7 @@ SHA-256 пути презентации; сервер отправляет &lt;c
 завершающего слэша, перенаправляется на него (marp-cli отдаёт там свой индекс,
 что ломает относительные ссылки страницы).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-w&lt;/code&gt;) собирает презентации, затем пересобирает ту, что изменилась,
-а когда меняется файл &lt;code&gt;--theme-set&lt;/code&gt;, файл типов или данных либо конфигурация —
+а когда меняется файл &lt;code&gt;--theme-set&lt;/code&gt;, файл kinds или данных либо конфигурация —
 все. Записываемые им страницы открывают сокет на loopback (порт 37717 или
 следующий свободный) и перезагружаются, когда их презентация собрана заново.
 Презентация, которая не собралась, фиксируется в отчёте, и наблюдение за ней
@@ -621,7 +621,7 @@ data-copied-label="Скопировано!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Типы: собственные &lt;code&gt;kinds:&lt;/code&gt; презентации переопределяют типы файла и командной
+&lt;p&gt;Kinds: собственные &lt;code&gt;kinds:&lt;/code&gt; презентации переопределяют kinds файла и командной
 строки. Данные: &lt;code&gt;data&lt;/code&gt; файла и командной строки переопределяют front matter
 презентации, так что одну презентацию можно собрать с разными данными.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;Запланировано&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;

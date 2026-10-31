@@ -78,7 +78,7 @@ data-copied-label="Copié !"
 (&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt;…),
 les métadonnées (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;…), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (chemins de
 fichiers) et &lt;code&gt;data&lt;/code&gt;, un objet.&lt;/li&gt;
-&lt;li&gt;Les blocs &lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; définissent des &lt;a href="https://go-slides.github.io/docs/0.14/fr/kinds/"&gt;types de diapositives (kinds)&lt;/a&gt;,
+&lt;li&gt;Les blocs &lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; définissent des &lt;a href="https://go-slides.github.io/docs/0.14/fr/kinds/"&gt;&lt;em&gt;kinds&lt;/em&gt; (le type d&amp;rsquo;une diapositive)&lt;/a&gt;,
 avec les directives locales et &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Les &lt;strong&gt;valeurs&lt;/strong&gt; parviennent aux directives sous les formes textuelles que leur donne YAML —
 &lt;code&gt;true&lt;/code&gt; devient &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, une liste de classes est une liste — si bien qu&amp;rsquo;une directive se comporte

@@ -13,7 +13,7 @@ vorbereitet, aber noch nicht erfolgt.&lt;/div&gt;
 &lt;p&gt;Die Erweiterung ist das Gegenstück von go-slides zu
 &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt;: Der Foliensatz erscheint in
 der Markdown-Vorschau von VS Code als Folien, seine Fehler im Problems-Panel, und
-Direktiven, Kinds (Folientypen) und Vorlagenfunktionen werden beim Tippen vervollständigt.&lt;/p&gt;
+Direktiven, Kinds (die Art einer Folie) und Vorlagenfunktionen werden beim Tippen vervollständigt.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="install"&gt;Installation&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
 &lt;a href="#install" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Laden Sie &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; von den
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;Releases&lt;/a&gt; herunter und führen Sie dann

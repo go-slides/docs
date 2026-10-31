@@ -50,7 +50,7 @@ data-copied-label="Skopiowano!"
 &lt;/div&gt;
 &lt;p&gt;Front matter jest z Marp, plus &lt;code&gt;data:&lt;/code&gt;. Ciało to szablon Go: &lt;code&gt;range&lt;/code&gt;
 zapisuje jeden slajd na temat, każdy zaczynający się od &lt;code&gt;---&lt;/code&gt;, a pierwszy
-slajd ma wbudowany rodzaj &lt;code&gt;title&lt;/code&gt; (bez nagłówka, bez stopki, bez numeru strony).&lt;/p&gt;
+slajd ma wbudowany kind &lt;code&gt;title&lt;/code&gt; (bez nagłówka, bez stopki, bez numeru strony).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="build-it"&gt;Zbuduj ją&lt;span class="hx:absolute hx:-mt-20" id="build-it"&gt;&lt;/span&gt;
 &lt;a href="#build-it" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;slides talk.md &lt;span class="c1"&gt;# writes talk.html beside the deck&lt;/span&gt;
@@ -151,13 +151,13 @@ data-copied-label="Skopiowano!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Cztery slajdy wygenerowane przez &lt;code&gt;range&lt;/code&gt;, stopka z jej wartością i rodzaj
+&lt;p&gt;Cztery slajdy wygenerowane przez &lt;code&gt;range&lt;/code&gt;, stopka z jej wartością i kind
 &lt;code&gt;title&lt;/code&gt; zastąpiony dyrektywami punktowymi, które reprezentuje. Wszystko, co czyta Marp — marp-cli, rozszerzenie VS
 Code — może stąd przejąć pracę, więc nic napisanego z użyciem dodatków go-slides
 nie jest uwięzione.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="next"&gt;Dalej&lt;span class="hx:absolute hx:-mt-20" id="next"&gt;&lt;/span&gt;
 &lt;a href="#next" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/pl/marp/"&gt;Zgodność z Marp&lt;/a&gt;: co jest czytane tak, jak czyta Marp.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/pl/templates/"&gt;Szablony&lt;/a&gt; i &lt;a href="https://go-slides.github.io/docs/0.14/pl/kinds/"&gt;Rodzaje&lt;/a&gt;: dwa dodatki.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/pl/templates/"&gt;Szablony&lt;/a&gt; i &lt;a href="https://go-slides.github.io/docs/0.14/pl/kinds/"&gt;Kinds&lt;/a&gt;: dwa dodatki.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://go-slides.github.io/docs/0.14/pl/cli/"&gt;Wiersz poleceń&lt;/a&gt;: każde polecenie i flaga.&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>

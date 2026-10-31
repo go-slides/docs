@@ -28,7 +28,7 @@ causa das suas expressões e das suas funções.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;slides.hcl&lt;/code&gt;, procurado primeiro&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;arquivos de kinds&lt;/td&gt;
+&lt;td&gt;arquivos de kinds (o tipo de um slide)&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;--kinds kinds.yaml&lt;/code&gt;, &lt;code&gt;kinds: kinds.yaml&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;qualquer arquivo chamado &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;

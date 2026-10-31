@@ -13,7 +13,7 @@ prête, mais elle n&amp;rsquo;y figure pas encore.&lt;/div&gt;
 &lt;p&gt;L&amp;rsquo;extension est l&amp;rsquo;équivalent, pour go-slides, de
 &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt; : la présentation s&amp;rsquo;affiche dans
 l&amp;rsquo;aperçu Markdown de VS Code sous forme de diapositives, ses erreurs dans le panneau Problèmes, et
-les directives, les types de diapositives (kinds) et les fonctions de gabarit se complètent pendant la saisie.&lt;/p&gt;
+les directives, les &lt;em&gt;kinds&lt;/em&gt; (le type d&amp;rsquo;une diapositive) et les fonctions de gabarit se complètent pendant la saisie.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="install"&gt;Installation&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
 &lt;a href="#install" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Téléchargez &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; depuis les
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;versions publiées&lt;/a&gt;, puis lancez

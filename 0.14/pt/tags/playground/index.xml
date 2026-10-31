@@ -38,7 +38,7 @@ página baixada.&lt;/p&gt;
 funções de template e os campos de dados dentro de &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Ajuda&lt;/strong&gt; sobre o que está sob o cursor: uma diretiva, um kind (o que ele
+&lt;p&gt;&lt;strong&gt;Ajuda&lt;/strong&gt; sobre o que está sob o cursor: uma diretiva, um kind (o tipo de um slide: o que ele
 define), uma função de template. O painel de ajuda também tem links para estas
 páginas.&lt;/p&gt;
 &lt;/li&gt;

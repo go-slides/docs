@@ -28,7 +28,7 @@ le sue espressioni e le sue funzioni.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;slides.hcl&lt;/code&gt;, cercato per primo&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;file di tipi&lt;/td&gt;
+&lt;td&gt;file di kinds (il tipo di una slide)&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;--kinds kinds.yaml&lt;/code&gt;, &lt;code&gt;kinds: kinds.yaml&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;qualsiasi file chiamato &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -78,7 +78,7 @@ data-copied-label="Copiato!"
 (&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt;…),
 i metadati (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;…), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (percorsi di
 file) e &lt;code&gt;data&lt;/code&gt;, un oggetto.&lt;/li&gt;
-&lt;li&gt;I blocchi &lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; definiscono i &lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;tipi&lt;/a&gt;,
+&lt;li&gt;I blocchi &lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; definiscono i &lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;kinds&lt;/a&gt;,
 con le direttive locali e &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;I &lt;strong&gt;valori&lt;/strong&gt; arrivano alle direttive nelle forme stringa che dà loro YAML —
 &lt;code&gt;true&lt;/code&gt; diventa &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, un elenco di classi resta un elenco — così una direttiva si comporta
@@ -167,9 +167,9 @@ data-copied-label="Copiato!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Un attributo sconosciuto è un errore, non un&amp;rsquo;operazione ignorata in silenzio. Un file di tipi contiene
+&lt;p&gt;Un attributo sconosciuto è un errore, non un&amp;rsquo;operazione ignorata in silenzio. Un file di kinds contiene
 blocchi &lt;code&gt;kind&lt;/code&gt;; i suoi altri attributi vengono ignorati, quindi &lt;code&gt;slides.hcl&lt;/code&gt; può servire
-da file di tipi. Gli attributi di un file di dati sono le chiavi dei dati:&lt;/p&gt;
+da file di kinds. Gli attributi di un file di dati sono le chiavi dei dati:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# data.hcl
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;

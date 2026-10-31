@@ -71,8 +71,8 @@ Twemoji, как в Marp Core, но встроенными, а не загруж�
 &lt;a href="https://go-slides.github.io/docs/0.14/ru/templates/"&gt;Шаблоны&lt;/a&gt;). Презентации, которая показывает &lt;code&gt;{{&lt;/code&gt;
 как текст вне блока кода, нужен &lt;code&gt;--no-template&lt;/code&gt; либо текст, экранированный так,
 как шаблоны Go экранируют. Блоки кода и фрагменты кода остаются нетронутыми.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Типы слайдов.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; и &lt;code&gt;_kind:&lt;/code&gt; — директивы, которых в Marp нет (см.
-&lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;Типы слайдов&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; заменяет их директивами,
+&lt;li&gt;&lt;strong&gt;Kinds (типы слайдов).&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; и &lt;code&gt;_kind:&lt;/code&gt; — директивы, которых в Marp нет (см.
+&lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; заменяет их директивами,
 которые они обозначают, так что развёрнутая презентация — это обычный Marp.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Форматы вывода.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX и ODP — через библиотеки Go, а
 не через headless-браузер (известное ограничение см. в разделе

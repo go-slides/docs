@@ -36,7 +36,7 @@ die Werte von &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt
 und Datenfelder innerhalb von &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Hilfe&lt;/strong&gt; zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (Folientyp; was es setzt),
+&lt;p&gt;&lt;strong&gt;Hilfe&lt;/strong&gt; zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (die Art einer Folie; was es setzt),
 eine Vorlagenfunktion. Der Hilfebereich verlinkt auch auf diese Seiten.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;

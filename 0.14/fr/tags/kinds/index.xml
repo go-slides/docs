@@ -1,5 +1,5 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Kinds</title><link>https://go-slides.github.io/docs/0.14/fr/tags/kinds/</link><description>Recent content in Kinds on go-slides</description><generator>Hugo -- gohugo.io</generator><language>fr</language><atom:link href="https://go-slides.github.io/docs/0.14/fr/tags/kinds/index.xml" rel="self" type="application/rss+xml"/><item><title>Kinds</title><link>https://go-slides.github.io/docs/0.14/fr/kinds/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/fr/kinds/</guid><description>
-&lt;p&gt;Un &lt;strong&gt;type de diapositive (kind)&lt;/strong&gt; est un préréglage nommé de directives locales : en-tête, pied de page,
+&lt;p&gt;Un &lt;strong&gt;kind&lt;/strong&gt; (le type d&amp;rsquo;une diapositive) est un préréglage nommé de directives locales : en-tête, pied de page,
 pagination, classe, arrière-plan. Une diapositive dit ce qu&amp;rsquo;elle est — &lt;code&gt;title&lt;/code&gt;,
 &lt;code&gt;section&lt;/code&gt; — au lieu de répéter à quoi elle ressemble, et l&amp;rsquo;apparence d&amp;rsquo;une présentation se modifie
 à un seul endroit.&lt;/p&gt;

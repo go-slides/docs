@@ -69,8 +69,8 @@ passato con &lt;code&gt;--theme-set&lt;/code&gt; o elencato sotto &lt;code&gt;th
 &lt;a href="https://go-slides.github.io/docs/0.14/it/templates/"&gt;Template&lt;/a&gt;). Una presentazione che mostra &lt;code&gt;{{&lt;/code&gt; come testo
 fuori da un blocco di codice richiede &lt;code&gt;--no-template&lt;/code&gt;, oppure il testo con l&amp;rsquo;escape come lo
 usano i template Go. I blocchi di codice e le porzioni di codice non vengono toccati.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Tipi.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; e &lt;code&gt;_kind:&lt;/code&gt; sono direttive che Marp non ha (vedi
-&lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;Tipi di slide&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; le sostituisce con le
+&lt;li&gt;&lt;strong&gt;Kinds&lt;/strong&gt; (il tipo di una slide). &lt;code&gt;kind:&lt;/code&gt; e &lt;code&gt;_kind:&lt;/code&gt; sono direttive che Marp non ha (vedi
+&lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; le sostituisce con le
 direttive che rappresentano, quindi la presentazione espansa è Marp semplice.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Output.&lt;/strong&gt; HTML, PNG, JPEG, PDF, PPTX e ODP, tramite librerie Go anziché
 un browser headless (vedi &lt;a href="https://go-slides.github.io/docs/0.14/it/cli/#images-pdf-pptx-and-odp"&gt;Riga di comando&lt;/a&gt;

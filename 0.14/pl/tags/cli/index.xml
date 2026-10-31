@@ -34,7 +34,7 @@ data-copied-label="Skopiowano!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;expand&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;wypisuje prezentację jako zwykły Markdown Marp: szablony rozwinięte, rodzaje zastąpione dyrektywami, które reprezentują&lt;/td&gt;
+&lt;td&gt;wypisuje prezentację jako zwykły Markdown Marp: szablony rozwinięte, kinds zastąpione dyrektywami, które reprezentują&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;notes&lt;/code&gt;&lt;/td&gt;
@@ -42,7 +42,7 @@ data-copied-label="Skopiowano!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;kinds&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;wylicza rodzaje, z których prezentacja może korzystać, i to, co ustawiają; &lt;code&gt;--json&lt;/code&gt; (w v0.6.0) zapisuje je jako &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, z rozwiązanym &lt;code&gt;extends&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;wylicza kinds, z których prezentacja może korzystać, i to, co ustawiają; &lt;code&gt;--json&lt;/code&gt; (w v0.6.0) zapisuje je jako &lt;code&gt;[{&amp;quot;name&amp;quot;, &amp;quot;extends&amp;quot;, &amp;quot;directives&amp;quot;: [{&amp;quot;key&amp;quot;, &amp;quot;value&amp;quot;}]}]&lt;/code&gt;, z rozwiązanym &lt;code&gt;extends&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;themes&lt;/code&gt;&lt;/td&gt;
@@ -90,7 +90,7 @@ inaczej.&lt;/p&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;-w&lt;/code&gt;, &lt;code&gt;--watch&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;buduje ponownie, gdy zmieni się prezentacja, motyw, plik rodzajów lub danych albo konfiguracja, i przeładowuje otwarte strony (w v0.6.0); zobacz niżej&lt;/td&gt;
+&lt;td&gt;buduje ponownie, gdy zmieni się prezentacja, motyw, plik kinds lub danych albo konfiguracja, i przeładowuje otwarte strony (w v0.6.0); zobacz niżej&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;-s&lt;/code&gt;, &lt;code&gt;--server dir&lt;/code&gt;&lt;/td&gt;
@@ -155,7 +155,7 @@ inaczej.&lt;/p&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;wszystkie&lt;/td&gt;
-&lt;td&gt;plik YAML z rodzajami (można powtarzać)&lt;/td&gt;
+&lt;td&gt;plik YAML z kinds (można powtarzać)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--data file&lt;/code&gt;&lt;/td&gt;
@@ -367,7 +367,7 @@ idzie dalej. Opcje to te z dokumentacji marp-cli, które coś tu znaczą:
 &lt;code&gt;server&lt;/code&gt;, &lt;code&gt;preview&lt;/code&gt;; ścieżki są względem pliku. Wiersz poleceń wygrywa.
 &lt;code&gt;engine&lt;/code&gt;, &lt;code&gt;options&lt;/code&gt; i &lt;code&gt;browser*&lt;/code&gt; wymagają silnika Marp i przeglądarki i są
 ignorowane z ostrzeżeniem, tak jak flagi &lt;code&gt;--browser*&lt;/code&gt;: skrypty napisane dla
-marp-cli nadal działają. (&lt;code&gt;slides.yaml&lt;/code&gt; i &lt;code&gt;slides.hcl&lt;/code&gt;, z rodzajami i
+marp-cli nadal działają. (&lt;code&gt;slides.yaml&lt;/code&gt; i &lt;code&gt;slides.hcl&lt;/code&gt;, z kinds i
 danymi szablonu, są osobne i czytane jak dawniej.)&lt;/p&gt;
 &lt;h2 data-hextra-search-id="watch-serve-and-preview"&gt;Watch, serve i podgląd&lt;span class="hx:absolute hx:-mt-20" id="watch-serve-and-preview"&gt;&lt;/span&gt;
 &lt;a href="#watch-serve-and-preview" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;W v0.6.0, z trasami i protokołem przeładowania na żywo z marp-cli (odczytanymi z jego
@@ -411,7 +411,7 @@ prezentacja lub cokolwiek pod katalogiem się zmieni. Katalog zażądany bez
 końcowego ukośnika jest do niego przekierowywany (marp-cli serwuje tam swój indeks, co
 psuje względne odnośniki strony).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;--watch&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-w&lt;/code&gt;) buduje prezentacje, potem buduje ponownie tę, która się zmienia, a
-gdy zmieni się plik &lt;code&gt;--theme-set&lt;/code&gt;, plik rodzajów lub danych albo konfiguracja,
+gdy zmieni się plik &lt;code&gt;--theme-set&lt;/code&gt;, plik kinds lub danych albo konfiguracja,
 wszystkie. Zapisywane strony otwierają gniazdo na pętli zwrotnej (port
 37717 lub następny wolny) i przeładowują się, gdy ich prezentacja jest zbudowana ponownie. Prezentacja,
 której budowa się nie powiedzie, jest zgłaszana i dalej obserwowana. &lt;strong&gt;&lt;code&gt;--preview&lt;/code&gt;&lt;/strong&gt; (&lt;code&gt;-p&lt;/code&gt;) otwiera
@@ -613,7 +613,7 @@ data-copied-label="Skopiowano!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Rodzaje: własne &lt;code&gt;kinds:&lt;/code&gt; prezentacji nadpisują te z pliku i z wiersza poleceń.
+&lt;p&gt;Kinds: własne &lt;code&gt;kinds:&lt;/code&gt; prezentacji nadpisują te z pliku i z wiersza poleceń.
 Dane: &lt;code&gt;data&lt;/code&gt; z pliku i z wiersza poleceń nadpisują front matter prezentacji,
 więc jedną prezentację można zbudować z różnymi danymi.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="planned"&gt;Planowane&lt;span class="hx:absolute hx:-mt-20" id="planned"&gt;&lt;/span&gt;

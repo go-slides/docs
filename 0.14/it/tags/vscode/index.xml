@@ -13,7 +13,7 @@ preparata, ma non è ancora disponibile.&lt;/div&gt;
 &lt;p&gt;L&amp;rsquo;estensione è la controparte di go-slides di
 &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt;: la presentazione appare
 nell&amp;rsquo;anteprima Markdown di VS Code come slide, i suoi errori nel pannello Problemi, e
-direttive, tipi e funzioni di template vengono completati mentre digiti.&lt;/p&gt;
+direttive, kinds (i tipi di slide) e funzioni di template vengono completati mentre digiti.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="install"&gt;Installazione&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
 &lt;a href="#install" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Scarica &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; dalle
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;release&lt;/a&gt;, poi esegui
@@ -80,7 +80,7 @@ entrambe le estensioni renderebbero lo stesso documento. Lo decide l&amp;rsquo;i
 &lt;p&gt;L&amp;rsquo;anteprima è go-slides stesso, compilato in WebAssembly e caricato
 dall&amp;rsquo;estensione: nessun binario, e funziona su &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;. Legge
 ciò che la presentazione usa dall&amp;rsquo;area di lavoro — &lt;code&gt;slides.yaml&lt;/code&gt; o &lt;code&gt;slides.hcl&lt;/code&gt; accanto alla
-presentazione, i file di &lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;tipi&lt;/a&gt; che nominano, i file che un
+presentazione, i file di &lt;a href="https://go-slides.github.io/docs/0.14/it/kinds/"&gt;kinds&lt;/a&gt; che nominano, i file che un
 &lt;a href="https://go-slides.github.io/docs/0.14/it/templates/"&gt;template&lt;/a&gt; include, il CSS dei temi — e solo dalla
 cartella di lavoro della presentazione.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="scroll-sync"&gt;Sincronizzazione dello scorrimento&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
@@ -128,12 +128,12 @@ indicati per hash. Uno script scritto dalla presentazione non viene eseguito.&lt
 &lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Problemi, completamento, hover&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
 &lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Problemi&lt;/strong&gt;: errori di template, YAML e &lt;a href="https://go-slides.github.io/docs/0.14/it/hcl/"&gt;HCL&lt;/a&gt;, sulla
-riga in cui si trovano, nella presentazione o nel file di tipi da cui provengono.&lt;/li&gt;
+riga in cui si trovano, nella presentazione o nel file di kinds da cui provengono.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Completamento&lt;/strong&gt;: chiavi delle direttive nel front matter e nei commenti &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;
 (con &lt;code&gt;_&lt;/code&gt; per una direttiva spot), i valori di &lt;code&gt;kind&lt;/code&gt; e &lt;code&gt;_kind&lt;/code&gt; (con ciò che
-imposta ciascun tipo), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; dentro
+imposta ciascun kind), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; dentro
 &lt;code&gt;{{ }}&lt;/code&gt;, le funzioni dei template e i campi dei dati.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hover&lt;/strong&gt;: cosa fa una direttiva, cosa imposta un tipo, gli argomenti di una funzione
+&lt;li&gt;&lt;strong&gt;Hover&lt;/strong&gt;: cosa fa una direttiva, cosa imposta un kind, gli argomenti di una funzione
 di template.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="export"&gt;Esportazione&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;

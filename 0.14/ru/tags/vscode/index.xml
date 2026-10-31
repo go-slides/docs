@@ -12,7 +12,7 @@ go-slides v0.14.0 (пакет &lt;code&gt;editor&lt;/code&gt;, исходные 
 &lt;/div&gt;
 &lt;p&gt;Расширение — аналог &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt;
 для go-slides: презентация показывается в Markdown-превью VS Code в виде слайдов,
-её ошибки — в панели «Проблемы», а директивы, типы слайдов и функции шаблонов
+её ошибки — в панели «Проблемы», а директивы, kinds (типы слайдов) и функции шаблонов
 дополняются по мере набора.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="install"&gt;Установка&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
 &lt;a href="#install" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Скачайте &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; со страницы
@@ -80,7 +80,7 @@ for VS Code: оба расширения отрисовывали бы один 
 &lt;p&gt;Предпросмотр — это сам go-slides, скомпилированный в WebAssembly и загружаемый
 расширением: без бинарного файла, и он работает на &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;.
 Он читает из рабочей области то, что использует презентация, — &lt;code&gt;slides.yaml&lt;/code&gt; или
-&lt;code&gt;slides.hcl&lt;/code&gt; рядом с презентацией, файлы &lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;типов&lt;/a&gt;, которые
+&lt;code&gt;slides.hcl&lt;/code&gt; рядом с презентацией, файлы &lt;a href="https://go-slides.github.io/docs/0.14/ru/kinds/"&gt;kinds&lt;/a&gt;, которые
 они называют, файлы, подключаемые &lt;a href="https://go-slides.github.io/docs/0.14/ru/templates/"&gt;шаблоном&lt;/a&gt;, CSS
 тем, — и только из папки рабочей области презентации.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="scroll-sync"&gt;Синхронная прокрутка&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
@@ -129,13 +129,13 @@ for VS Code: оба расширения отрисовывали бы один 
 &lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Проблемы, автодополнение, подсказки&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
 &lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Проблемы&lt;/strong&gt;: ошибки шаблонов, YAML и &lt;a href="https://go-slides.github.io/docs/0.14/ru/hcl/"&gt;HCL&lt;/a&gt; — на той
-строке, где они находятся, в презентации или в файле типов, откуда они
+строке, где они находятся, в презентации или в файле kinds, откуда они
 происходят.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Автодополнение&lt;/strong&gt;: ключи директив в front matter и в комментариях &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;
 (с &lt;code&gt;_&lt;/code&gt; для точечной директивы), значения &lt;code&gt;kind&lt;/code&gt; и &lt;code&gt;_kind&lt;/code&gt; (с тем, что задаёт
-каждый тип), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; внутри
+каждый kind), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; внутри
 &lt;code&gt;{{ }}&lt;/code&gt; — функции шаблонов и поля данных.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Подсказки при наведении&lt;/strong&gt;: что делает директива, что задаёт тип, аргументы
+&lt;li&gt;&lt;strong&gt;Подсказки при наведении&lt;/strong&gt;: что делает директива, что задаёт kind, аргументы
 функции шаблона.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="export"&gt;Экспорт&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;

@@ -13,7 +13,7 @@ przygotowana, ale jeszcze jej tam nie ma.&lt;/div&gt;
 &lt;p&gt;Rozszerzenie to odpowiednik
 &lt;a href="https://github.com/marp-team/marp-vscode" target="_blank" rel="noopener"&gt;Marp for VS Code&lt;/a&gt; w go-slides: prezentacja pokazuje się w
 podglądzie Markdown VS Code jako slajdy, jej błędy w panelu Problems, a
-dyrektywy, rodzaje i funkcje szablonów uzupełniają się w trakcie pisania.&lt;/p&gt;
+dyrektywy, kinds (rodzaje slajdów) i funkcje szablonów uzupełniają się w trakcie pisania.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="install"&gt;Instalacja&lt;span class="hx:absolute hx:-mt-20" id="install"&gt;&lt;/span&gt;
 &lt;a href="#install" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pobierz &lt;code&gt;go-slides-&amp;lt;version&amp;gt;.vsix&lt;/code&gt; z
 &lt;a href="https://github.com/go-slides/vscode/releases" target="_blank" rel="noopener"&gt;wydań&lt;/a&gt;, potem uruchom
@@ -80,7 +80,7 @@ oba rozszerzenia renderowałyby ten sam dokument. Decyduje o tym ustawienie
 &lt;p&gt;Podgląd to sam go-slides, skompilowany do WebAssembly i ładowany przez
 rozszerzenie: bez pliku binarnego, działa na &lt;a href="https://vscode.dev" target="_blank" rel="noopener"&gt;vscode.dev&lt;/a&gt;. Czyta
 to, czego używa prezentacja, z przestrzeni roboczej — &lt;code&gt;slides.yaml&lt;/code&gt; lub &lt;code&gt;slides.hcl&lt;/code&gt; obok
-prezentacji, pliki &lt;a href="https://go-slides.github.io/docs/0.14/pl/kinds/"&gt;rodzajów&lt;/a&gt;, które wskazują, pliki dołączane przez
+prezentacji, pliki &lt;a href="https://go-slides.github.io/docs/0.14/pl/kinds/"&gt;kinds&lt;/a&gt;, które wskazują, pliki dołączane przez
 &lt;a href="https://go-slides.github.io/docs/0.14/pl/templates/"&gt;szablon&lt;/a&gt;, CSS motywów — i tylko z
 folderu przestrzeni roboczej prezentacji.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="scroll-sync"&gt;Synchronizacja przewijania&lt;span class="hx:absolute hx:-mt-20" id="scroll-sync"&gt;&lt;/span&gt;
@@ -128,12 +128,12 @@ wskazane przez skrót. Skrypt napisany w prezentacji się nie uruchamia.&lt;/p&g
 &lt;h2 data-hextra-search-id="problems-completion-hover"&gt;Problemy, uzupełnianie, podpowiedzi&lt;span class="hx:absolute hx:-mt-20" id="problems-completion-hover"&gt;&lt;/span&gt;
 &lt;a href="#problems-completion-hover" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Problems&lt;/strong&gt;: błędy szablonów, YAML i &lt;a href="https://go-slides.github.io/docs/0.14/pl/hcl/"&gt;HCL&lt;/a&gt;, w
-linii, w której są, w prezentacji lub w pliku rodzajów, z którego pochodzą.&lt;/li&gt;
+linii, w której są, w prezentacji lub w pliku kinds, z którego pochodzą.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Uzupełnianie&lt;/strong&gt;: klucze dyrektyw we front matter i w komentarzach &lt;code&gt;&amp;lt;!-- --&amp;gt;&lt;/code&gt;
 (z &lt;code&gt;_&lt;/code&gt; dla dyrektywy punktowej), wartości &lt;code&gt;kind&lt;/code&gt; i &lt;code&gt;_kind&lt;/code&gt; (z tym, co
-ustawia każdy rodzaj), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; wewnątrz
+ustawia każdy kind), &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;math&lt;/code&gt;, &lt;code&gt;headingDivider&lt;/code&gt;; wewnątrz
 &lt;code&gt;{{ }}&lt;/code&gt; funkcje szablonów i pola danych.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hover&lt;/strong&gt;: co robi dyrektywa, co ustawia rodzaj, argumenty funkcji szablonu.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hover&lt;/strong&gt;: co robi dyrektywa, co ustawia kind, argumenty funkcji szablonu.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="export"&gt;Eksport&lt;span class="hx:absolute hx:-mt-20" id="export"&gt;&lt;/span&gt;
 &lt;a href="#export" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;em&gt;go-slides: Export Slide Deck&amp;hellip;&lt;/em&gt; (także na pasku tytułu edytora) zapisuje HTML,

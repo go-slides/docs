@@ -72,7 +72,7 @@ seu é um arquivo CSS com o comentário &lt;code&gt;/* @theme name */&lt;/code&g
 como texto fora de um bloco de código precisa de &lt;code&gt;--no-template&lt;/code&gt;, ou do texto
 escapado como os templates Go escapam. Blocos e trechos de código são
 deixados em paz.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Kinds.&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; e &lt;code&gt;_kind:&lt;/code&gt; são diretivas que o Marp não tem (veja
+&lt;li&gt;&lt;strong&gt;Kinds (o tipo de um slide).&lt;/strong&gt; &lt;code&gt;kind:&lt;/code&gt; e &lt;code&gt;_kind:&lt;/code&gt; são diretivas que o Marp não tem (veja
 &lt;a href="https://go-slides.github.io/docs/0.14/pt/kinds/"&gt;Kinds&lt;/a&gt;). &lt;code&gt;slides expand&lt;/code&gt; as substitui pelas
 diretivas que elas representam, de modo que a apresentação expandida é Marp
 simples.&lt;/li&gt;
