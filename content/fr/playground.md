@@ -5,11 +5,19 @@ description: "Écrivez une présentation dans votre navigateur et regardez les d
 tags: [playground, browser]
 ---
 
-**[Ouvrir le playground →](https://go-slides.github.io/playground/)**
+**[Ouvrir le playground →](https://go-slides.github.io/fr/playground/)**
 
 Le playground, c'est go-slides lui-même, en v0.14.0, compilé en WebAssembly et
 exécuté dans votre navigateur. Tapez une présentation à gauche ; les diapositives suivent à
 droite. Rien n'est envoyé à un serveur : ni la présentation, ni un lien de partage.
+
+L'interface du playground (ruban, aide, messages) parle la langue de la page :
+ouvrez `/fr/playground/` pour le français, et de même pour les douze langues de
+ce site. Le sélecteur de langue de la page la change et votre choix est
+conservé dans ce navigateur ; un lien qui nomme une langue l'emporte toujours.
+Les présentations d'exemple restent en anglais. L'ukrainien, le russe, le
+chinois, le japonais et le coréen sont dessinés avec un sous-ensemble de Noto
+Sans (de 0,06 à 2,3 Mio) que la page ne télécharge que pour ces langues.
 
 ## Ce qu'il propose {#what-it-has}
 

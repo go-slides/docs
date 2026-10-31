@@ -5,11 +5,17 @@ description: "브라우저에서 프레젠테이션을 작성하면 슬라이드
 tags: [playground, browser]
 ---
 
-**[Playground 열기 →](https://go-slides.github.io/playground/)**
+**[Playground 열기 →](https://go-slides.github.io/ko/playground/)**
 
 Playground는 WebAssembly로 컴파일되어 브라우저에서 실행되는 go-slides v0.14.0
 그 자체입니다. 왼쪽에 프레젠테이션을 입력하면 오른쪽에 슬라이드가 따라
 나타납니다. 프레젠테이션도, 공유 링크도 서버로 전송되지 않습니다.
+
+플레이그라운드 자체의 인터페이스(리본, 도움말, 메시지)는 페이지의 언어로 표시됩니다.
+한국어는 `/ko/playground/`를 열면 되고, 이 사이트의 열두 언어 모두 마찬가지입니다.
+페이지의 언어 선택기로 바꿀 수 있으며 선택은 이 브라우저에 저장됩니다. 언어가 지정된 링크가
+항상 우선합니다. 예제 프레젠테이션은 영어로 유지됩니다. 우크라이나어, 러시아어, 중국어,
+일본어, 한국어는 페이지가 해당 언어에 한해 내려받는 Noto Sans 부분집합(0.06~2.3 MiB)으로 그려집니다.
 
 ## 제공 기능 {#what-it-has}
 

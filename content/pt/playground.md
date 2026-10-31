@@ -5,12 +5,20 @@ description: "Escreva uma apresentação no navegador e veja os slides acompanha
 tags: [playground, browser]
 ---
 
-**[Abrir o playground →](https://go-slides.github.io/playground/)**
+**[Abrir o playground →](https://go-slides.github.io/pt/playground/)**
 
 O playground é o próprio go-slides, v0.14.0, compilado para WebAssembly e
 executado no seu navegador. Digite uma apresentação à esquerda; os slides
 acompanham à direita. Nada é enviado a um servidor: nem a apresentação, nem um
 link de compartilhamento.
+
+A interface do playground (faixa de opções, ajuda, mensagens) fala o idioma da
+página: abra `/pt/playground/` para o português, e assim para os doze idiomas
+deste site. O seletor de idioma da página o altera e a sua escolha fica
+guardada neste navegador; um link que nomeia um idioma sempre prevalece. As
+apresentações de exemplo continuam em inglês. Ucraniano, russo, chinês,
+japonês e coreano são desenhados com um subconjunto do Noto Sans (de 0,06 a
+2,3 MiB) que a página baixa só para esses idiomas.
 
 ## O que ele tem {#what-it-has}
 

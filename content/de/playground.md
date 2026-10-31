@@ -5,11 +5,20 @@ description: "Schreiben Sie einen Foliensatz im Browser und sehen Sie, wie die F
 tags: [playground, browser]
 ---
 
-**[Playground öffnen →](https://go-slides.github.io/playground/)**
+**[Playground öffnen →](https://go-slides.github.io/de/playground/)**
 
 Der Playground ist go-slides selbst, v0.14.0, nach WebAssembly kompiliert und
 in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
 folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.
+
+Die Oberfläche des Playgrounds (Menüband, Hilfe, Meldungen) spricht die Sprache
+der Seite: Öffne `/de/playground/` für Deutsch, und ebenso für die zwölf
+Sprachen dieser Website. Die Sprachauswahl der Seite ändert sie, und deine Wahl
+bleibt in diesem Browser gespeichert; ein Link, der eine Sprache nennt,
+gewinnt immer. Die Beispielpräsentationen bleiben englisch. Ukrainisch,
+Russisch, Chinesisch, Japanisch und Koreanisch werden mit einer Teilmenge von
+Noto Sans (0,06 bis 2,3 MiB) dargestellt, die die Seite nur für diese Sprachen
+herunterlädt.
 
 ## Was er bietet {#what-it-has}
 
