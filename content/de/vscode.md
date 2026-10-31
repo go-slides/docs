@@ -113,7 +113,8 @@ benannt per Hash. Ein Skript, das der Foliensatz selbst mitbringt, läuft nicht.
   (mit `_` für eine Spot-Direktive), die Werte von `kind` und `_kind` (mit dem, was
   das jeweilige Kind setzt), `theme`, `size`, `paginate`, `math`, `headingDivider`; innerhalb von
   `{{ }}` die Vorlagenfunktionen und die Datenfelder.
-- **Hover**: was eine Direktive bewirkt, was ein Kind setzt, die Argumente einer Vorlagenfunktion.
+- **Hover**: was eine Direktive bewirkt, was ein Kind setzt, die Argumente einer Vorlagenfunktion. Seit v0.16.0 folgt die Hilfe zu den Direktiven
+  der Sprache der Editor-Oberfläche (der Anzeigesprache von VS Code), in 11 Sprachen.
 
 ## Export {#export}
 

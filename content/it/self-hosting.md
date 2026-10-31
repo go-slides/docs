@@ -148,7 +148,7 @@ cartella all'intera rete, aggirando il proxy e il suo accesso.
 
 {{< callout type="info" >}}
 `--allowed-host` è nella v0.14.0 e successive:
-`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Richiede Go 1.27.3 o successivo.
+`go install github.com/go-slides/slides/cmd/slides@v0.16.0`. Richiede Go 1.27.3 o successivo.
 {{< /callout >}}
 
 ## Accesso con OpenID Connect {#sign-in-with-openid-connect}

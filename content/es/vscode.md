@@ -119,7 +119,9 @@ ejecuta.
   `paginate`, `math`, `headingDivider`; dentro de `{{ }}`, las funciones de
   plantilla y los campos de datos.
 - **Información al pasar el puntero**: qué hace una directiva, qué fija un kind,
-  los argumentos de una función de plantilla.
+  los argumentos de una función de plantilla. Desde v0.16.0 la ayuda de las
+  directivas sigue el idioma de la interfaz del editor (el idioma de
+  visualización de VS Code), en 11 idiomas.
 
 ## Exportación {#export}
 

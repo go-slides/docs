@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Apri il Playground →](https://go-slides.github.io/it/playground/)**
 
-Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.15.0, compilato in WebAssembly ed
+Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.16.0, compilato in WebAssembly ed
 eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
 destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.
 
@@ -36,7 +36,8 @@ cinese, giapponese e coreano sono disegnati con un sottoinsieme di Noto Sans
   i valori di `kind`, `theme`, `size`, `paginate`, e le funzioni dei template e i campi dei dati
   dentro `{{ }}`.
 - **Guida** per ciò che si trova sotto il cursore: una direttiva, un kind (il tipo di una slide: cosa imposta),
-  una funzione di template. Il riquadro della guida rimanda anche a queste pagine.
+  una funzione di template. Il riquadro della guida rimanda anche a queste pagine. Dalla v0.16.0
+  la guida alle direttive segue la lingua dell'interfaccia, in 11 lingue.
 - **Problemi** sulla loro riga: gli errori di template, YAML e HCL sono evidenziati
   nell'editor ed elencati sotto di esso, e l'anteprima conserva l'ultima presentazione
   che è stata resa.

@@ -141,7 +141,7 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host`는 v0.14.0부터 들어 있습니다.
-`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Go 1.27.3 이상이 필요합니다.
+`go install github.com/go-slides/slides/cmd/slides@v0.16.0`. Go 1.27.3 이상이 필요합니다.
 {{< /callout >}}
 
 ## OpenID Connect로 로그인 {#sign-in-with-openid-connect}

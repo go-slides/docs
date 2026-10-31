@@ -114,7 +114,8 @@ désignés par leur empreinte. Un script écrit par la présentation ne s'exécu
   définit chaque *kind*), `theme`, `size`, `paginate`, `math`, `headingDivider` ; dans
   `{{ }}`, les fonctions de gabarit et les champs de données.
 - **Survol** : ce que fait une directive, ce que définit un *kind*, les arguments d'une
-  fonction de gabarit.
+  fonction de gabarit. Depuis la v0.16.0, l'aide sur les directives suit la langue de l'interface
+  de l'éditeur (la langue d'affichage de VS Code), en 11 langues.
 
 ## Export {#export}
 

@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Abrir el Playground →](https://go-slides.github.io/es/playground/)**
 
-El Playground es el propio go-slides, v0.15.0, compilado a WebAssembly y
+El Playground es el propio go-slides, v0.16.0, compilado a WebAssembly y
 ejecutándose en su navegador. Escriba una presentación a la izquierda; las
 diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
 presentación, ni un enlace para compartir.
@@ -41,7 +41,8 @@ chino, el japonés y el coreano se dibujan con un subconjunto de Noto Sans (de
   de `{{ }}`.
 - **Ayuda** sobre lo que hay bajo el cursor: una directiva, un kind (tipo de
   diapositiva; qué fija), una función de plantilla. El panel de ayuda enlaza
-  también con estas páginas.
+  también con estas páginas. Desde v0.16.0 la ayuda de las directivas sigue el
+  idioma de la interfaz, en 11 idiomas.
 - **Problemas** en su línea: los errores de plantilla, de YAML y de HCL se
   resaltan en el editor y se listan debajo, y la vista previa conserva la última
   presentación que se renderizó.

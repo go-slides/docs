@@ -148,7 +148,7 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host` є у v0.14.0 і пізніших:
-`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Потрібен Go 1.27.3
+`go install github.com/go-slides/slides/cmd/slides@v0.16.0`. Потрібен Go 1.27.3
 або новіший.
 {{< /callout >}}
 

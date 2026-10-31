@@ -114,7 +114,8 @@ indicati per hash. Uno script scritto dalla presentazione non viene eseguito.
   imposta ciascun kind), `theme`, `size`, `paginate`, `math`, `headingDivider`; dentro
   `{{ }}`, le funzioni dei template e i campi dei dati.
 - **Hover**: cosa fa una direttiva, cosa imposta un kind, gli argomenti di una funzione
-  di template.
+  di template. Dalla v0.16.0 la guida alle direttive segue la lingua dell'interfaccia
+  dell'editor (la lingua di visualizzazione di VS Code), in 11 lingue.
 
 ## Esportazione {#export}
 

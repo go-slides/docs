@@ -148,7 +148,7 @@ directorio a toda la red, saltándose el proxy y su inicio de sesión.
 
 {{< callout type="info" >}}
 `--allowed-host` está en v0.14.0 y posteriores:
-`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Requiere Go 1.27.3
+`go install github.com/go-slides/slides/cmd/slides@v0.16.0`. Requiere Go 1.27.3
 o posterior.
 {{< /callout >}}
 
