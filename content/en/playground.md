@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Open the playground →](https://go-slides.github.io/playground/)**
 
-The playground is go-slides itself, v0.15.0, compiled to WebAssembly and
+The playground is go-slides itself, v0.16.0, compiled to WebAssembly and
 running in your browser. Type a deck on the left; the slides follow on the
 right. Nothing is sent to a server: not the deck, not a share link.
 
@@ -36,7 +36,8 @@ those languages only.
   the values of `kind`, `theme`, `size`, `paginate`, and template functions
   and data fields inside `{{ }}`.
 - **Help** for what is under the caret: a directive, a kind (what it sets),
-  a template function. The help pane also links to these pages.
+  a template function. The help pane also links to these pages. Since v0.16.0
+  the directive help follows the interface language, in 11 languages.
 - **Problems** on their line: template, YAML and HCL errors are highlighted
   in the editor and listed under it, and the preview keeps the last deck
   that rendered.

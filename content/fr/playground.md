@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Ouvrir le Playground →](https://go-slides.github.io/fr/playground/)**
 
-Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.15.0, compilé en WebAssembly et
+Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.16.0, compilé en WebAssembly et
 exécuté dans votre navigateur. Tapez une présentation à gauche ; les diapositives suivent à
 droite. Rien n'est envoyé à un serveur : ni la présentation, ni un lien de partage.
 
@@ -36,7 +36,8 @@ Sans (de 0,06 à 2,3 Mio) que la page ne télécharge que pour ces langues.
   les valeurs de `kind`, `theme`, `size`, `paginate`, ainsi que les fonctions de gabarit
   et les champs de données dans `{{ }}`.
 - **Aide** sur ce qui se trouve sous le curseur : une directive, un *kind* (le type d'une diapositive) (ce qu'il définit),
-  une fonction de gabarit. Le volet d'aide renvoie aussi vers ces pages.
+  une fonction de gabarit. Le volet d'aide renvoie aussi vers ces pages. Depuis la v0.16.0,
+  l'aide sur les directives suit la langue de l'interface, en 11 langues.
 - **Problèmes** sur leur ligne : les erreurs de gabarit, de YAML et de HCL sont mises en évidence
   dans l'éditeur et listées en dessous, et l'aperçu conserve la dernière présentation
   rendue avec succès.

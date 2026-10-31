@@ -113,7 +113,9 @@ wskazane przez skrót. Skrypt napisany w prezentacji się nie uruchamia.
   (z `_` dla dyrektywy punktowej), wartości `kind` i `_kind` (z tym, co
   ustawia każdy kind), `theme`, `size`, `paginate`, `math`, `headingDivider`; wewnątrz
   `{{ }}` funkcje szablonów i pola danych.
-- **Hover**: co robi dyrektywa, co ustawia kind, argumenty funkcji szablonu.
+- **Hover**: co robi dyrektywa, co ustawia kind, argumenty funkcji szablonu. Od v0.16.0
+  pomoc do dyrektyw podąża za językiem interfejsu edytora (językiem wyświetlania
+  VS Code), w 11 językach.
 
 ## Eksport {#export}
 

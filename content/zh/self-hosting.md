@@ -142,7 +142,7 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host` 自 v0.14.0 起提供：
-`go install github.com/go-slides/slides/cmd/slides@v0.15.0`。它需要 Go 1.27.3 或更高版本。
+`go install github.com/go-slides/slides/cmd/slides@v0.16.0`。它需要 Go 1.27.3 或更高版本。
 {{< /callout >}}
 
 ## 使用 OpenID Connect 登录 {#sign-in-with-openid-connect}

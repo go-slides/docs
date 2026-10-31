@@ -114,7 +114,8 @@ named by hash. A script the deck wrote does not run.
   each kind sets), `theme`, `size`, `paginate`, `math`, `headingDivider`; inside
   `{{ }}`, the template functions and the data fields.
 - **Hover**: what a directive does, what a kind sets, a template function's
-  arguments.
+  arguments. Since v0.16.0 the directive help follows the editor's UI language
+  (VS Code's display language), in 11 languages.
 
 ## Export
 

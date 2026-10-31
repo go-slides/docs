@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Playground öffnen →](https://go-slides.github.io/de/playground/)**
 
-Der Playground ist go-slides selbst, v0.15.0, nach WebAssembly kompiliert und
+Der Playground ist go-slides selbst, v0.16.0, nach WebAssembly kompiliert und
 in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
 folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.
 
@@ -37,7 +37,8 @@ herunterlädt.
   die Werte von `kind`, `theme`, `size`, `paginate` sowie Vorlagenfunktionen
   und Datenfelder innerhalb von `{{ }}`.
 - **Hilfe** zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (die Art einer Folie; was es setzt),
-  eine Vorlagenfunktion. Der Hilfebereich verlinkt auch auf diese Seiten.
+  eine Vorlagenfunktion. Der Hilfebereich verlinkt auch auf diese Seiten. Seit v0.16.0
+  folgt die Hilfe zu den Direktiven der Sprache der Oberfläche, in 11 Sprachen.
 - **Probleme** in ihrer Zeile: Fehler in Vorlagen, YAML und HCL werden im Editor hervorgehoben
   und darunter aufgelistet, und die Vorschau behält den letzten Foliensatz,
   der sich rendern ließ.

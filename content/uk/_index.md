@@ -19,9 +19,9 @@ Marpit, `---` між слайдами, фони `![bg]`, нотатки допо
   (`title`, `section`…), замість того щоб повторювати, як він виглядає.
 
 {{< callout type="warning" >}}
-**v0.15.0.** Ці сторінки описують
-[go-slides/slides v0.15.0](https://github.com/go-slides/slides/releases/tag/v0.15.0)
-і опубліковані за адресою `/docs/0.15/`.
+**v0.16.0.** Ці сторінки описують
+[go-slides/slides v0.16.0](https://github.com/go-slides/slides/releases/tag/v0.16.0)
+і опубліковані за адресою `/docs/0.16/`.
 {{< /callout >}}
 
 ## Що це вміє сьогодні {#what-it-does-today}

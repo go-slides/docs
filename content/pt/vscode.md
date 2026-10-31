@@ -118,7 +118,8 @@ escreveu não é executado.
   `headingDivider`; dentro de `{{ }}`, as funções de template e os campos de
   dados.
 - **Hover**: o que uma diretiva faz, o que um kind define, os argumentos de uma
-  função de template.
+  função de template. Desde a v0.16.0, a ajuda das diretivas segue o idioma da
+  interface do editor (o idioma de exibição do VS Code), em 11 idiomas.
 
 ## Exportar {#export}
 

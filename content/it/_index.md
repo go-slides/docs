@@ -18,9 +18,9 @@ le slide, gli sfondi `![bg]`, le note del relatore, i temi `default`, `gaia` e
   (`title`, `section`…) invece di ripetere che aspetto ha.
 
 {{< callout type="warning" >}}
-**v0.15.0.** Queste pagine descrivono
-[go-slides/slides v0.15.0](https://github.com/go-slides/slides/releases/tag/v0.15.0)
-e sono pubblicate in `/docs/0.15/`.
+**v0.16.0.** Queste pagine descrivono
+[go-slides/slides v0.16.0](https://github.com/go-slides/slides/releases/tag/v0.16.0)
+e sono pubblicate in `/docs/0.16/`.
 {{< /callout >}}
 
 ## Cosa fa oggi {#what-it-does-today}

@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Otwórz Playground →](https://go-slides.github.io/pl/playground/)**
 
-Playground to sam go-slides, v0.15.0, skompilowany do WebAssembly i
+Playground to sam go-slides, v0.16.0, skompilowany do WebAssembly i
 działający w twojej przeglądarce. Pisz prezentację po lewej; slajdy podążają
 po prawej. Nic nie jest wysyłane na serwer: ani prezentacja, ani odnośnik do udostępnienia.
 
@@ -36,7 +36,8 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
   wartości `kind`, `theme`, `size`, `paginate` oraz funkcje szablonów
   i pola danych wewnątrz `{{ }}`.
 - **Pomoc** dla tego, co jest pod kursorem: dyrektywa, kind (co ustawia),
-  funkcja szablonu. Panel pomocy odsyła też do tych stron.
+  funkcja szablonu. Panel pomocy odsyła też do tych stron. Od v0.16.0
+  pomoc do dyrektyw podąża za językiem interfejsu, w 11 językach.
 - **Problemy** w ich linii: błędy szablonów, YAML i HCL są podświetlane
   w edytorze i wypisane pod nim, a podgląd zachowuje ostatnią prezentację,
   która się wyrenderowała.

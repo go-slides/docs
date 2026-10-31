@@ -149,7 +149,7 @@ rede inteira, contornando o proxy e o login dele.
 
 {{< callout type="info" >}}
 `--allowed-host` está na v0.14.0 e posteriores:
-`go install github.com/go-slides/slides/cmd/slides@v0.15.0`. Requer Go 1.27.3
+`go install github.com/go-slides/slides/cmd/slides@v0.16.0`. Requer Go 1.27.3
 ou posterior.
 {{< /callout >}}
 
