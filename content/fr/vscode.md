@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 L'extension est [go-slides/vscode](https://github.com/go-slides/vscode),
-versionnée séparément (v0.4.0). Elle fait le rendu avec go-slides v0.9.0 (le paquet
+versionnée séparément (v0.5.0). Elle fait le rendu avec go-slides v0.14.0 (le paquet
 `editor`, les lignes sources de la synchronisation du défilement, la vue d'ensemble et le
-mode présentateur). Elle s'installe à partir du fichier `go-slides-0.4.0.vsix` joint à
+mode présentateur). Elle s'installe à partir du fichier `go-slides-0.5.0.vsix` joint à
 sa version GitHub : sa publication sur le VS Code Marketplace et sur Open VSX est
 prête, mais elle n'y figure pas encore.
 {{< /callout >}}
@@ -26,7 +26,7 @@ Téléchargez `go-slides-<version>.vsix` depuis les
 *Extensions: Install from VSIX...*, ou :
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 L'aperçu n'a besoin de rien d'autre. L'export nécessite la commande `slides` :
@@ -123,6 +123,12 @@ du PDF vectoriel, du PPTX et de l'ODP modifiables, du PNG ou du JPEG avec la com
 le ferait `slides -o deck.pdf deck.md` ; voir [Ligne de commande]({{< relref "cli" >}}).
 Il nécessite un espace de travail approuvé. Si `slides` est introuvable, l'extension propose de
 lancer le `go install` ci-dessus dans un terminal.
+
+Depuis la v0.5.0 de l'extension (go-slides v0.14.0), le PDF écrit est
+**accessible** : avec `slides` v0.12.0 ou plus récent, le PDF vectoriel est balisé
+pour les lecteurs d'écran et déclare PDF/UA-1, avec le `title` et le `lang` de la
+présentation et une section par diapositive. `slides --pdf-tags=false` écrit le
+fichier sans balises. Mettez la commande à jour avec le `go install` ci-dessus.
 
 ## Paramètres {#settings}
 

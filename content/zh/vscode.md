@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 该扩展是 [go-slides/vscode](https://github.com/go-slides/vscode)，
-独立进行版本管理（v0.4.0）。它使用 go-slides v0.9.0 渲染（包括
+独立进行版本管理（v0.5.0）。它使用 go-slides v0.14.0 渲染（包括
 `editor` 包、滚动同步所用的源码行，以及概览视图和演讲者视图）。
-请从其 GitHub release 附带的 `go-slides-0.4.0.vsix` 安装：
+请从其 GitHub release 附带的 `go-slides-0.5.0.vsix` 安装：
 在 VS Code Marketplace 和 Open VSX 上的发布已在准备中，但目前尚未上架。
 {{< /callout >}}
 
@@ -25,7 +25,7 @@ VS Code 的 Markdown 预览中以幻灯片形式显示，错误会显示在“�
 *Extensions: Install from VSIX...*，或者：
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 预览不需要任何其他依赖。导出则需要 `slides` 命令：
@@ -115,6 +115,11 @@ Editor into New Window* 把幻灯片面板移过去。
 `slides -o deck.pdf deck.md` 相同；参见[命令行]({{< relref "cli" >}})。
 导出需要受信任的工作区。如果找不到 `slides`，扩展会提议在终端中运行上面的
 `go install`。
+
+从扩展 v0.5.0（go-slides v0.14.0）起，导出的 PDF 具备**无障碍**能力：
+使用 `slides` v0.12.0 或更高版本时，矢量 PDF 带有供屏幕阅读器使用的标签，
+声明 PDF/UA-1，包含演示文稿的 `title` 和 `lang`，并为每张幻灯片提供一个章节。
+`slides --pdf-tags=false` 会写出不带标签的文件。请用上面的 `go install` 更新该命令。
 
 ## 设置 {#settings}
 

@@ -7,10 +7,10 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 Die Erweiterung ist [go-slides/vscode](https://github.com/go-slides/vscode),
-mit eigener Versionierung (v0.4.0). Sie rendert mit go-slides v0.9.0 (dem Paket
+mit eigener Versionierung (v0.5.0). Sie rendert mit go-slides v0.14.0 (dem Paket
 `editor`, den Quellzeilen für die Scroll-Synchronisierung sowie der Übersichts- und
 Referentenansicht). Installiert wird sie über die an das GitHub-Release angehängte Datei
-`go-slides-0.4.0.vsix`: Die Veröffentlichung im VS Code Marketplace und auf Open VSX ist
+`go-slides-0.5.0.vsix`: Die Veröffentlichung im VS Code Marketplace und auf Open VSX ist
 vorbereitet, aber noch nicht erfolgt.
 {{< /callout >}}
 
@@ -26,7 +26,7 @@ Laden Sie `go-slides-<version>.vsix` von den
 *Extensions: Install from VSIX...* aus, oder:
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 Die Vorschau braucht nichts weiter. Für den Export benötigen Sie den Befehl `slides`:
@@ -122,6 +122,12 @@ Vektor-PDF, editierbares PPTX und ODP, PNG oder JPEG mit dem Befehl `slides`, ge
 `slides -o deck.pdf deck.md` es täte; siehe [Kommandozeile]({{< relref "cli" >}}).
 Dafür ist ein vertrauenswürdiger Workspace nötig. Wird `slides` nicht gefunden, bietet die Erweiterung an,
 das obige `go install` in einem Terminal auszuführen.
+
+Seit v0.5.0 der Erweiterung (go-slides v0.14.0) ist das geschriebene PDF
+**barrierefrei**: Mit `slides` ab v0.12.0 ist das Vektor-PDF für Screenreader
+getaggt und deklariert PDF/UA-1, mit `title` und `lang` des Foliensatzes und
+einem Abschnitt pro Folie. `slides --pdf-tags=false` schreibt die Datei ohne Tags.
+Aktualisieren Sie den Befehl mit dem obigen `go install`.
 
 ## Einstellungen {#settings}
 
