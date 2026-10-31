@@ -315,8 +315,10 @@ który rysują eksporty PNG i PDF:
   kolory);
 - obrazy są przechowywane raz, niezależnie od tego, ile slajdów je pokazuje;
 - to, czego slajd nie umie wyrazić — element pod `opacity`, `filter`,
-  rozmyty cień, wzór — jest obrazem tego elementu, z tekstem zachowanym
-  nad nim.
+  rozmyty cień — jest obrazem tego elementu, z tekstem zachowanym
+  nad nim;
+- wzór, emoji lub obraz SVG to grupa kształtów wektorowych (`p:grpSp` w PPTX,
+  `draw:g` w ODP), która przesuwa się jako całość. SVG wymagający przycinania lub gradientu radialnego pozostaje obrazem.
 
 Odrenderowany z powrotem przez LibreOffice, slajd mieści się w 0,04–2 % pikseli
 eksportu PNG. `--pptx-raster` i `--odp-raster` zachowują jeden obraz na slajd.
@@ -334,8 +336,11 @@ marp-cli i 10 MiB w PDF-ie z obrazów z v0.3.0, a zapisuje się w 0,3 s.
 Element bez formy wektorowej tutaj — pod `opacity` < 1, z `filter`
 lub obrotem, rozmyty `box-shadow`, gradient, którego przezroczystość zanika — jest
 rysowany jako bitmapa samego tego elementu, z tekstem nałożonym na nią niewidocznie, by
-pozostał zaznaczalny. Wzory są nadal bitmapami. `--pdf-raster` zapisuje jeden obraz
+pozostał zaznaczalny. `--pdf-raster` zapisuje jeden obraz
 na stronę, jak robiła v0.3.0.
+
+Wzory, emoji i obrazy SVG są również wektorami (go-webengine v0.22.0): każdy odrębny rysunek
+to jeden formularzowy XObject PDF, malowany tam, gdzie jest użyty, ostry przy każdym powiększeniu.
 
 ### Dostępny, otagowany PDF {#accessible-tagged-pdf}
 
@@ -349,7 +354,7 @@ którą czytnik ekranu czyta po kolei, tak jak czyta stronę internetową:
 | akapit, lista, tabela | `P`; `L` z etykietą i treścią każdego elementu; `Table`, komórki nagłówka z zakresem |
 | odnośnik | `Link`, razem z klikalnym obszarem, jego tekst jako opis |
 | obraz | `Figure` z tekstem alternatywnym; `![](…)` bez tekstu alternatywnego jest dekoracją |
-| `$…$`, `$$…$$` | `Formula`, jej źródło TeX jako opis |
+| `$…$`, `$$…$$` | `Formula`, jej źródło TeX jako `/Alt` i `/ActualText` (jej glify są konturami: pdftotext i mupdf ich nie wyodrębniają, czytniki uwzględniające strukturę — tak) |
 | kod | `Code`, bez numerów linii i krążków objaśnień |
 | `<span lang="fr">` | span w tym języku |
 | tła, obramowania, numery stron | artefakty, które czytnik pomija |
@@ -386,8 +391,3 @@ lang: en
 Kinds: własne `kinds:` prezentacji nadpisują te z pliku i z wiersza poleceń.
 Dane: `data` z pliku i z wiersza poleceń nadpisują front matter prezentacji,
 więc jedną prezentację można zbudować z różnymi danymi.
-
-## Planowane {#planned}
-
-Jeszcze niezbudowane: wzory jako wektory w PDF. Gdy się pojawią, będą tu
-poleceniem lub flagą.

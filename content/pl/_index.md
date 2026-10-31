@@ -41,10 +41,7 @@ i są publikowane pod adresem `/docs/0.14/`.
 | `slides.yaml` | wspólne kinds, motywy, dane, polityka HTML i język dla katalogu prezentacji |
 | HCL | nagłówek `---hcl`, `slides.hcl`, pliki kinds i danych w HCL2, z wyrażeniami i funkcjami: [HCL]({{< relref "hcl" >}}) |
 
-## Planowane {#planned}
-
-Jeszcze niezbudowane, a wymienione, by nikt nie musiał zgadywać: wzory jako
-wektory w PDF (są tam mapami bitowymi). Różnica względem
+Różnica względem
 marp-cli to droga: on renderuje obrazy i PDF, sterując headless Chrome;
 tutaj robią to biblioteki Go.
 

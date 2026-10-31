@@ -315,8 +315,10 @@ que dessinent les exports PNG et PDF :
   couleurs) ;
 - les images ne sont stockées qu'une fois, quel que soit le nombre de diapositives qui les affichent ;
 - ce qu'une diapositive ne peut pas exprimer — un élément sous `opacity`, un `filter`, une
-  ombre floue, une formule — devient une image de cet élément, son texte étant conservé
-  par-dessus.
+  ombre floue — devient une image de cet élément, son texte étant conservé
+  par-dessus ;
+- une formule, un emoji ou une image SVG est un groupe de formes vectorielles (`p:grpSp` dans le PPTX,
+  `draw:g` dans l'ODP) qui se déplace d'un bloc. Un SVG qui exige un détourage ou un dégradé radial reste une image.
 
 Rendue à nouveau par LibreOffice, une diapositive ne s'écarte que de 0,04 à 2 % des pixels de l'export
 PNG. `--pptx-raster` et `--odp-raster` conservent une image par diapositive.
@@ -334,8 +336,11 @@ marp-cli et 10 Mio pour le PDF en images de la v0.3.0, et elle est écrite en 0,
 Un élément sans forme vectorielle ici — sous `opacity` < 1, avec un `filter`
 ou une rotation, une `box-shadow` floue, un dégradé dont l'opacité s'estompe — est
 dessiné comme un bitmap de ce seul élément, son texte étant posé dessus de façon invisible pour
-rester sélectionnable. Les formules sont encore des bitmaps. `--pdf-raster` écrit une image
+rester sélectionnable. `--pdf-raster` écrit une image
 par page, comme le faisait la v0.3.0.
+
+Les formules, les emoji et les images SVG sont aussi des vecteurs (go-webengine v0.22.0) : chaque dessin
+distinct est un XObject formulaire PDF, peint là où il sert, net à tout niveau de zoom.
 
 ### PDF accessible et balisé {#accessible-tagged-pdf}
 
@@ -349,7 +354,7 @@ d'écran lit dans l'ordre, comme il lit une page web :
 | un paragraphe, une liste, un tableau | `P` ; `L` avec l'étiquette et le corps de chaque élément ; `Table`, cellules d'en-tête avec leur portée |
 | un lien | un `Link`, sa zone cliquable comprise, son texte comme description |
 | une image | une `Figure` avec son texte alternatif ; `![](…)` sans texte alternatif est décoratif |
-| `$…$`, `$$…$$` | une `Formula`, sa source TeX comme description |
+| `$…$`, `$$…$$` | une `Formula`, sa source TeX comme `/Alt` et `/ActualText` (ses glyphes sont des contours : pdftotext et mupdf ne les extraient pas, les lecteurs qui suivent la structure oui) |
 | du code | `Code`, sans ses numéros de ligne ni ses pastilles d'annotation |
 | `<span lang="fr">` | un segment dans cette langue |
 | arrière-plans, bordures, numéros de page | des artefacts, qu'un lecteur ignore |
@@ -386,8 +391,3 @@ lang: en
 *Kinds* : les `kinds:` propres à la présentation remplacent ceux du fichier et de la ligne de commande.
 Données : les `data` du fichier et de la ligne de commande remplacent celles du front
 matter de la présentation, si bien qu'une même présentation peut être générée avec des données différentes.
-
-## Prévu {#planned}
-
-Pas encore réalisé : les formules en vectoriel dans le PDF. Quand elles arriveront, elles prendront la forme d'une
-commande ou d'une option décrite ici.

@@ -40,9 +40,6 @@ Marp 没有的功能：
 | `slides.yaml` | 为一个文件夹中的演示文稿共享 kind、主题、数据、HTML 策略和语言 |
 | HCL | `---hcl` front matter、`slides.hcl`、HCL2 格式的 kind 和数据文件，支持表达式和函数：[HCL]({{< relref "hcl" >}}) |
 
-## 计划中 {#planned}
-
-尚未实现，列在这里以免大家猜测：PDF 中的公式矢量化（目前公式在 PDF 中是位图）。
 与 marp-cli 的区别在于实现途径：marp-cli 通过驱动无头 Chrome 来渲染图片和 PDF；
 这里则由 Go 库完成。
 

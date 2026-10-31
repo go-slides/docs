@@ -326,8 +326,10 @@ layout, o mesmo que as exportações para PNG e PDF desenham:
   cores);
 - as imagens são armazenadas uma única vez, por mais slides que as mostrem;
 - o que um slide não consegue expressar — um elemento sob `opacity`, um
-  `filter`, uma sombra desfocada, uma fórmula — é uma imagem desse elemento, com
-  o seu texto mantido por cima.
+  `filter`, uma sombra desfocada — é uma imagem desse elemento, com
+  o seu texto mantido por cima;
+- uma fórmula, um emoji ou uma imagem SVG é um grupo de formas vetoriais (`p:grpSp` no PPTX,
+  `draw:g` no ODP) que se move como um só. Um SVG que precisa de um recorte ou de um gradiente radial continua a ser uma imagem.
 
 Renderizado de volta pelo LibreOffice, um slide fica a 0,04–2 % dos pixels da
 exportação para PNG. `--pptx-raster` e `--odp-raster` mantêm uma imagem por
@@ -347,8 +349,10 @@ tem 758 KiB, contra 837 KiB do marp-cli e 10 MiB do PDF de imagens da v0.3.0, e
 Um elemento sem forma vetorial aqui — sob `opacity` < 1, com um `filter` ou uma
 rotação, um `box-shadow` desfocado, um gradiente cuja opacidade se desvanece — é
 desenhado como um bitmap apenas desse elemento, com o seu texto colocado por
-cima de forma invisível para que continue selecionável. As fórmulas ainda são
-bitmaps. `--pdf-raster` escreve uma imagem por página, como a v0.3.0 fazia.
+cima de forma invisível para que continue selecionável. `--pdf-raster` escreve uma imagem por página, como a v0.3.0 fazia.
+
+As fórmulas, os emoji e as imagens SVG também são vetores (go-webengine v0.22.0): cada desenho
+distinto é um XObject de formulário PDF, pintado onde é usado, nítido em qualquer zoom.
 
 ### PDF acessível e etiquetado {#accessible-tagged-pdf}
 
@@ -362,7 +366,7 @@ estrutura lógica, que um leitor de tela lê em ordem, como lê uma página web:
 | um parágrafo, uma lista, uma tabela | `P`; `L` com o rótulo e o corpo de cada item; `Table`, células de cabeçalho com o seu escopo |
 | um link | um `Link`, com a sua área clicável incluída e o seu texto como descrição |
 | uma imagem | uma `Figure` com o seu texto alternativo; `![](…)` sem texto alternativo é decoração |
-| `$…$`, `$$…$$` | uma `Formula`, com o seu código TeX como descrição |
+| `$…$`, `$$…$$` | uma `Formula`, com o seu código TeX como `/Alt` e `/ActualText` (os seus glifos são contornos: pdftotext e mupdf não os extraem, os leitores que seguem a estrutura sim) |
 | código | `Code`, sem os seus números de linha nem discos de chamada |
 | `<span lang="fr">` | um span nesse idioma |
 | fundos, bordas, números de página | artefatos, que um leitor ignora |
@@ -402,8 +406,3 @@ Kinds: o `kinds:` da própria apresentação sobrescreve o do arquivo e o da lin
 de comando. Dados: o `data` do arquivo e o da linha de comando sobrescrevem o
 front matter da apresentação, de modo que uma apresentação pode ser construída
 com dados diferentes.
-
-## Planejado {#planned}
-
-Ainda não foi feito: fórmulas como vetores no PDF. Quando chegarem, serão um
-comando ou uma flag aqui.
