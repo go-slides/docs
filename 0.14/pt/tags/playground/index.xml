@@ -1,9 +1,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.14/pt/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pt-BR</language><atom:link href="https://go-slides.github.io/docs/0.14/pt/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/pt/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/pt/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Abrir o playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/pt/playground/" target="_blank" rel="noopener"&gt;Abrir o playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;O playground é o próprio go-slides, v0.14.0, compilado para WebAssembly e
 executado no seu navegador. Digite uma apresentação à esquerda; os slides
 acompanham à direita. Nada é enviado a um servidor: nem a apresentação, nem um
 link de compartilhamento.&lt;/p&gt;
+&lt;p&gt;A interface do playground (faixa de opções, ajuda, mensagens) fala o idioma da
+página: abra &lt;code&gt;/pt/playground/&lt;/code&gt; para o português, e assim para os doze idiomas
+deste site. O seletor de idioma da página o altera e a sua escolha fica
+guardada neste navegador; um link que nomeia um idioma sempre prevalece. As
+apresentações de exemplo continuam em inglês. Ucraniano, russo, chinês,
+japonês e coreano são desenhados com um subconjunto do Noto Sans (de 0,06 a
+2,3 MiB) que a página baixa só para esses idiomas.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;O que ele tem&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

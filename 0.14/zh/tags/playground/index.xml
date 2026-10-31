@@ -1,7 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.14/zh/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.14/zh/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/zh/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/zh/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;打开 Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/zh/playground/" target="_blank" rel="noopener"&gt;打开 Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Playground 就是 go-slides 本身（v0.14.0），编译为 WebAssembly 后在你的浏览器中运行。
 在左侧输入演示文稿，右侧的幻灯片会随之更新。不会向服务器发送任何内容：演示文稿不会，分享链接也不会。&lt;/p&gt;
+&lt;p&gt;Playground 自身的界面（功能区、帮助、提示信息）使用页面所用的语言：
+打开 &lt;code&gt;/zh/playground/&lt;/code&gt; 即为简体中文，本站的十二种语言同理。页面上的语言选择器可以切换语言，
+你的选择会保存在此浏览器中；链接中指明了语言时，始终以链接为准。示例演示文稿仍为英文。
+乌克兰语、俄语、中文、日语和韩语使用 Noto Sans 的子集（0.06 至 2.3 MiB）绘制，页面只为这些语言下载它。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;功能&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

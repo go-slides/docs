@@ -1,9 +1,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.14/uk/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.14/uk/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/uk/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/uk/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Відкрити playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/uk/playground/" target="_blank" rel="noopener"&gt;Відкрити playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Playground — це сам go-slides, v0.14.0, скомпільований у WebAssembly і
 запущений у вашому браузері. Пишіть презентацію ліворуч; слайди з&amp;rsquo;являються
 праворуч. Нічого не надсилається на сервер: ні презентація, ні посилання для
 поширення.&lt;/p&gt;
+&lt;p&gt;Інтерфейс playground (стрічка, довідка, повідомлення) розмовляє мовою
+сторінки: відкрийте &lt;code&gt;/uk/playground/&lt;/code&gt; для української, і так само для
+дванадцяти мов цього сайту. Перемикач мови на сторінці змінює її, а ваш вибір
+зберігається в цьому браузері; посилання, що називає мову, завжди важливіше.
+Приклади презентацій лишаються англійською. Українську, російську, китайську,
+японську та корейську малюють підмножиною Noto Sans (від 0,06 до 2,3 МіБ), яку
+сторінка завантажує лише для цих мов.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;Що в ньому є&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

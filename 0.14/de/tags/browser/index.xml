@@ -1,8 +1,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.14/de/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.14/de/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/de/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/de/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Playground öffnen →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/de/playground/" target="_blank" rel="noopener"&gt;Playground öffnen →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Der Playground ist go-slides selbst, v0.14.0, nach WebAssembly kompiliert und
 in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
 folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.&lt;/p&gt;
+&lt;p&gt;Die Oberfläche des Playgrounds (Menüband, Hilfe, Meldungen) spricht die Sprache
+der Seite: Öffne &lt;code&gt;/de/playground/&lt;/code&gt; für Deutsch, und ebenso für die zwölf
+Sprachen dieser Website. Die Sprachauswahl der Seite ändert sie, und deine Wahl
+bleibt in diesem Browser gespeichert; ein Link, der eine Sprache nennt,
+gewinnt immer. Die Beispielpräsentationen bleiben englisch. Ukrainisch,
+Russisch, Chinesisch, Japanisch und Koreanisch werden mit einer Teilmenge von
+Noto Sans (0,06 bis 2,3 MiB) dargestellt, die die Seite nur für diese Sprachen
+herunterlädt.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;Was er bietet&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

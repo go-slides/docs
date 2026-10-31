@@ -3,6 +3,13 @@
 &lt;p&gt;The playground is go-slides itself, v0.14.0, compiled to WebAssembly and
 running in your browser. Type a deck on the left; the slides follow on the
 right. Nothing is sent to a server: not the deck, not a share link.&lt;/p&gt;
+&lt;p&gt;The playground&amp;rsquo;s own interface (ribbon, help, messages) speaks the language of
+the page: open &lt;code&gt;/fr/playground/&lt;/code&gt; for French, and so on for the twelve languages
+of this site. The language selector of the page changes it and your choice is
+kept in this browser; a link that names a language always wins. The example
+decks stay in English. Ukrainian, Russian, Chinese, Japanese and Korean are
+drawn with a subset of Noto Sans (0.06 to 2.3 MiB) that the page downloads for
+those languages only.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;What it has&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

@@ -1,9 +1,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.14/es/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>es</language><atom:link href="https://go-slides.github.io/docs/0.14/es/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/es/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/es/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Abrir el playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/es/playground/" target="_blank" rel="noopener"&gt;Abrir el playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;El playground es el propio go-slides, v0.14.0, compilado a WebAssembly y
 ejecutándose en su navegador. Escriba una presentación a la izquierda; las
 diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
 presentación, ni un enlace para compartir.&lt;/p&gt;
+&lt;p&gt;La interfaz del playground (cinta, ayuda, mensajes) habla el idioma de la
+página: abra &lt;code&gt;/es/playground/&lt;/code&gt; para el español, y así con los doce idiomas de
+este sitio. El selector de idioma de la página lo cambia y su elección se
+conserva en este navegador; un enlace que nombra un idioma siempre prevalece.
+Las presentaciones de ejemplo siguen en inglés. El ucraniano, el ruso, el
+chino, el japonés y el coreano se dibujan con un subconjunto de Noto Sans (de
+0,06 a 2,3 MiB) que la página descarga solo para esos idiomas.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;Qué ofrece&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

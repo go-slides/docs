@@ -1,8 +1,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.14/fr/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>fr</language><atom:link href="https://go-slides.github.io/docs/0.14/fr/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.14/fr/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/fr/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Ouvrir le playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/fr/playground/" target="_blank" rel="noopener"&gt;Ouvrir le playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Le playground, c&amp;rsquo;est go-slides lui-même, en v0.14.0, compilé en WebAssembly et
 exécuté dans votre navigateur. Tapez une présentation à gauche ; les diapositives suivent à
 droite. Rien n&amp;rsquo;est envoyé à un serveur : ni la présentation, ni un lien de partage.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;interface du playground (ruban, aide, messages) parle la langue de la page :
+ouvrez &lt;code&gt;/fr/playground/&lt;/code&gt; pour le français, et de même pour les douze langues de
+ce site. Le sélecteur de langue de la page la change et votre choix est
+conservé dans ce navigateur ; un lien qui nomme une langue l&amp;rsquo;emporte toujours.
+Les présentations d&amp;rsquo;exemple restent en anglais. L&amp;rsquo;ukrainien, le russe, le
+chinois, le japonais et le coréen sont dessinés avec un sous-ensemble de Noto
+Sans (de 0,06 à 2,3 Mio) que la page ne télécharge que pour ces langues.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;Ce qu&amp;rsquo;il propose&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;

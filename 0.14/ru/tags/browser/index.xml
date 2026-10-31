@@ -1,10 +1,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.14/ru/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.14/ru/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Песочница</title><link>https://go-slides.github.io/docs/0.14/ru/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.14/ru/playground/</guid><description>
-&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;Открыть песочницу →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/ru/playground/" target="_blank" rel="noopener"&gt;Открыть песочницу →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Песочница — это сам go-slides v0.14.0, скомпилированный в WebAssembly и
 работающий в вашем браузере. Набирайте презентацию слева; слайды появляются
 справа. Ничего не отправляется на сервер: ни презентация, ни ссылка для
 обмена. Интерфейс песочницы — на английском, поэтому названия кнопок и меню
 ниже приведены как есть.&lt;/p&gt;
+&lt;p&gt;Интерфейс песочницы (лента, справка, сообщения) говорит на языке страницы:
+откройте &lt;code&gt;/ru/playground/&lt;/code&gt; для русского, и так же для двенадцати языков этого
+сайта. Переключатель языка на странице меняет его, а ваш выбор сохраняется в
+этом браузере; ссылка, в которой указан язык, всегда главнее. Примеры
+презентаций остаются на английском. Украинский, русский, китайский, японский и
+корейский рисуются подмножеством Noto Sans (от 0,06 до 2,3 МиБ), которое
+страница загружает только для этих языков.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="what-it-has"&gt;Что в ней есть&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
 &lt;a href="#what-it-has" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
