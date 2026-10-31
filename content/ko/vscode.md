@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 이 확장은 [go-slides/vscode](https://github.com/go-slides/vscode)이며, 버전은
-따로 관리됩니다(v0.4.0). 렌더링에는 go-slides v0.9.0을 사용합니다(`editor`
+따로 관리됩니다(v0.5.0). 렌더링에는 go-slides v0.14.0을 사용합니다(`editor`
 패키지, 스크롤 동기화용 소스 줄, 개요와 발표자 보기). GitHub 릴리스에 첨부된
-`go-slides-0.4.0.vsix`로 설치합니다. VS Code Marketplace와 Open VSX 게시는
+`go-slides-0.5.0.vsix`로 설치합니다. VS Code Marketplace와 Open VSX 게시는
 준비되어 있지만 아직 올라가 있지 않습니다.
 {{< /callout >}}
 
@@ -25,7 +25,7 @@ tags: [vscode, editor]
 실행하거나, 다음 명령을 실행하십시오.
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 미리 보기에는 그 밖에 필요한 것이 없습니다. 내보내기에는 `slides` 명령이
@@ -122,6 +122,12 @@ data:
 PPTX와 ODP, PNG, JPEG를 만듭니다. [명령줄]({{< relref "cli" >}})을
 참고하십시오. 신뢰할 수 있는 작업 영역이 필요합니다. `slides`를 찾지 못하면
 확장이 위의 `go install`을 터미널에서 실행하도록 제안합니다.
+
+확장 v0.5.0(go-slides v0.14.0)부터 내보낸 PDF는 **접근성**을 갖춥니다.
+`slides` v0.12.0 이상에서는 벡터 PDF에 화면 낭독기용 태그가 붙고 PDF/UA-1을
+선언하며, 프레젠테이션의 `title`과 `lang`, 슬라이드마다 하나의 섹션을 담습니다.
+`slides --pdf-tags=false`는 태그 없는 파일을 만듭니다. 위의 `go install`로
+명령을 업데이트하십시오.
 
 ## 설정 {#settings}
 

@@ -7,9 +7,9 @@ tags: [vscode, editor]
 
 {{< callout type="info" >}}
 拡張機能は [go-slides/vscode](https://github.com/go-slides/vscode) で、
-独自にバージョン管理されています（v0.4.0）。レンダリングには go-slides v0.9.0（
+独自にバージョン管理されています（v0.5.0）。レンダリングには go-slides v0.14.0（
 `editor` パッケージ、スクロール同期用のソース行、一覧表示と
-発表者ビュー）を使います。インストールには、GitHub リリースに添付された `go-slides-0.4.0.vsix`
+発表者ビュー）を使います。インストールには、GitHub リリースに添付された `go-slides-0.5.0.vsix`
 を使います。VS Code Marketplace と Open VSX での公開は
 準備中で、まだ公開されていません。
 {{< /callout >}}
@@ -26,7 +26,7 @@ VS Code の Markdown プレビューにスライドとして表示され、エ�
 *Extensions: Install from VSIX...* を実行するか、次のコマンドを実行します。
 
 ```sh
-code --install-extension go-slides-0.4.0.vsix
+code --install-extension go-slides-0.5.0.vsix
 ```
 
 プレビューにはほかに何も必要ありません。エクスポートには `slides` コマンドが必要です。
@@ -123,6 +123,12 @@ Editor into New Window* でスライドのパネルをその画面に移動し�
 ベクター PDF、編集可能な PPTX と ODP、PNG、JPEG を書き出します。[コマンドライン]({{< relref "cli" >}}) を参照してください。
 信頼されたワークスペースが必要です。`slides` が見つからない場合、拡張機能は上記の `go install` を
 ターミナルで実行することを提案します。
+
+拡張機能 v0.5.0（go-slides v0.14.0）以降、書き出される PDF は**アクセシブル**です。
+`slides` v0.12.0 以降では、ベクター PDF にスクリーンリーダー用のタグが付き、
+PDF/UA-1 を宣言し、デッキの `title` と `lang`、スライドごとのセクションを持ちます。
+`slides --pdf-tags=false` はタグなしのファイルを書き出します。上記の `go install` で
+コマンドを更新してください。
 
 ## 設定 {#settings}
 
