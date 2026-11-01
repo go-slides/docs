@@ -182,6 +182,49 @@ Sie sie löschen (höchstens 50). Alle Versionen zusammen belegen höchstens
 96 MiB, und unveränderte Dateien werden nur einmal gespeichert. Ist der
 Speicher des Browsers voll, gehen die ältesten automatischen Versionen zuerst.
 
+## GitHub {#github}
+
+**Home ▸ History ▸ GitHub** öffnet einen Bereich, der den Ordner einer
+Präsentation aus einem GitHub-Repository lädt und Ihre Änderungen als
+Pull-Request zurückschlägt. Tragen Sie ein:
+
+- **Repository (Besitzer/Name)**;
+- **Branch (leer: der Standard)**;
+- **Ordner (leer: die Wurzel)**: der Ordner muss eine `deck.md` enthalten;
+- **Token**, maskiert;
+- **Auf diesem Gerät merken**.
+
+Der Token ist ein feingranularer persönlicher Zugriffstoken
+([einen erstellen](https://github.com/settings/personal-access-tokens/new)),
+beschränkt auf die gewählten Repositories, mit den Berechtigungen Contents
+Lesen/Schreiben und Pull requests Lesen/Schreiben (Metadata Lesen ist
+inbegriffen). Dann:
+
+- **Verbinden** prüft Token und Repository; **Trennen** vergisst den Token.
+- **Laden** ersetzt das Projekt durch den Ordner von GitHub. Undo nimmt es
+  zurück, und das Projekt, wie es war, bleibt als Version „Von GitHub“
+  erhalten.
+- **Änderungen vorschlagen…** fragt nach einem Titel, legt einen neuen Branch
+  `slides/<Titel>-<Datum-Uhrzeit>` an und öffnet einen Pull-Request. Es
+  schreibt nie in einen bestehenden Branch oder in den Standard-Branch.
+  **Pull-Request öffnen** führt Sie dorthin.
+- **Nach Änderungen sehen** vergleicht die neuere Version auf GitHub mit Ihrer
+  in der Ansicht Compare. **Ihre übernehmen** lädt sie.
+
+Für GitHub wird kein Proxy verwendet: Der Playground spricht direkt mit
+GitHub.
+
+Der Token bleibt nur im Speicher des Tabs und wird nur an `api.github.com`
+gesendet: Die Content Security Policy der Seite erlaubt keinen anderen Host.
+Er wird nie im Entwurf, in den Versionen, in Freigabelinks oder Exporten
+gespeichert und erreicht weder die Vorschau der Folien noch den Render-Worker.
+**Auf diesem Gerät merken** legt ihn im localStorage dieses Browsers ab, bis
+Sie **Trennen** wählen (oder Forget my drafts). Ein Risiko bleibt: Ein in die
+Playground-Seite selbst eingeschleustes Skript könnte ihn lesen. Bevorzugen
+Sie einen Token, der auf die benötigten Repositories beschränkt ist. Für Teams
+hält der selbst gehostete Servermodus (in Vorbereitung) die Token auf dem
+Server.
+
 ## Sicherheit {#security}
 
 Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
