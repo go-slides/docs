@@ -180,6 +180,44 @@ All versions together take at most 96 MiB, and files that did not change are
 stored once. When the browser's storage is full, the oldest automatic versions
 go first.
 
+## GitHub {#github}
+
+**Home ▸ History ▸ GitHub** opens a pane that loads a deck's folder from a
+GitHub repository and proposes your changes back as a pull request. Fill in:
+
+- **Repository (owner/name)**;
+- **Branch (empty: the default)**;
+- **Folder (empty: the root)**: the folder must hold a `deck.md`;
+- **Token**, masked;
+- **Remember on this device**.
+
+The token is a fine-grained personal access token
+([create one](https://github.com/settings/personal-access-tokens/new)) limited
+to the repositories you choose, with the permissions Contents read/write and
+Pull requests read/write (Metadata read is implied). Then:
+
+- **Connect** checks the token and the repository; **Disconnect** forgets the
+  token.
+- **Load** replaces the project with the folder from GitHub. Undo takes it
+  back, and the project as it was is kept as a version "From GitHub".
+- **Propose changes…** asks for a title, creates a new branch named
+  `slides/<title>-<date-time>` and opens a pull request. It never writes to an
+  existing branch or to the default branch. **Open the pull request** takes you
+  to it.
+- **Check for changes** compares the newer version on GitHub with yours in the
+  Compare view. **Take theirs** loads it.
+
+No proxy is used for GitHub: the playground talks to it directly.
+
+The token stays in the tab's memory only and is sent only to `api.github.com`:
+the page's Content Security Policy allows no other host. It is never saved in
+the draft, the versions, the share links or the exports, and it never reaches
+the slides' preview or the render worker. **Remember on this device** stores it
+in this browser's localStorage until you press **Disconnect** (or Forget my
+drafts). One risk remains: a script injected into the playground page itself
+could read it. Prefer a token limited to the repositories you need. For teams,
+the self-hosted server mode (coming) keeps tokens on the server.
+
 ## Security
 
 The deck is shown in an iframe sandboxed without the page's origin: it can
