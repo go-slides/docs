@@ -72,6 +72,15 @@ I blocchi di codice delimitati e le porzioni di codice in linea vengono messi da
 venga eseguito e ripristinati alla lettera, quindi una slide sui template Go può mostrare
 `{{ .Name }}` senza fare l'escape.
 
+## Limiti {#limits}
+
+L'esecuzione dei template ha un budget di passi, in modo che una presentazione i cui template annidano
+`range` su grandi liste di dati non possa tenere occupato il renderer per minuti. Oltre
+1.048.576 passi (iterazioni di ciclo e chiamate di template, condivisi con gli `include`
+di una stessa espansione) o 10 s, la presentazione viene rifiutata con la diagnostica
+`template.limit` invece di bloccarsi. Un passo costa circa 260 ns, quindi le presentazioni
+ordinarie restano ben al di sotto del limite. Dalla v0.17.1.
+
 ## Disattivarlo {#turning-it-off}
 
 `--no-template` legge la presentazione come Marp semplice: `{{` è testo.

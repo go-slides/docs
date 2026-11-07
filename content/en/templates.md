@@ -72,6 +72,15 @@ Fenced code blocks and inline code spans are set aside before the template
 runs and restored verbatim, so a slide about Go templates can show
 `{{ .Name }}` without escaping it.
 
+## Limits
+
+Template execution has a step budget, so that a deck whose templates nest
+`range` over large data lists cannot keep the renderer busy for minutes. Past
+1,048,576 steps (loop iterations and template calls, shared with the `include`s
+of one expansion) or 10 s, the deck is refused with the diagnostic
+`template.limit` instead of hanging. A step costs about 260 ns, so ordinary
+decks stay far below the bound. Since v0.17.1.
+
 ## Turning it off
 
 `--no-template` reads the deck as plain Marp: `{{` is text.

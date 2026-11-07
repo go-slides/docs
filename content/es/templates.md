@@ -73,6 +73,16 @@ Los bloques de código y los fragmentos de código en línea se apartan antes de
 ejecutar la plantilla y se restituyen sin cambios, de modo que una diapositiva
 sobre plantillas de Go puede mostrar `{{ .Name }}` sin escaparlo.
 
+## Límites {#limits}
+
+La ejecución de plantillas tiene un presupuesto de pasos, para que una
+presentación cuyas plantillas anidan `range` sobre listas de datos grandes no
+pueda tener ocupado el renderizador durante minutos. Pasados 1 048 576 pasos
+(iteraciones de bucle y llamadas a plantillas, compartidos con los `include` de
+una misma expansión) o 10 s, la presentación se rechaza con el diagnóstico
+`template.limit` en lugar de colgarse. Un paso cuesta unos 260 ns, así que las
+presentaciones normales quedan muy por debajo del límite. Desde v0.17.1.
+
 ## Desactivarlas {#turning-it-off}
 
 `--no-template` lee la presentación como Marp plano: `{{` es texto.

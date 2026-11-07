@@ -72,6 +72,15 @@ Les blocs de code délimités et les extraits de code en ligne sont mis de côt�
 puis restitués tels quels : une diapositive consacrée aux gabarits Go peut ainsi montrer
 `{{ .Name }}` sans l'échapper.
 
+## Limites {#limits}
+
+L'exécution des gabarits a un budget d'étapes, pour qu'une présentation dont les gabarits imbriquent
+des `range` sur de grandes listes de données ne puisse pas occuper le moteur de rendu pendant des
+minutes. Au-delà de 1 048 576 étapes (itérations de boucle et appels de gabarit, partagés avec les
+`include` d'une même expansion) ou de 10 s, la présentation est refusée avec le diagnostic
+`template.limit` au lieu de se bloquer. Une étape coûte environ 260 ns : les présentations
+ordinaires restent donc très en dessous de la borne. Depuis la v0.17.1.
+
 ## Désactivation {#turning-it-off}
 
 `--no-template` lit la présentation comme du Marp ordinaire : `{{` est du texte.
