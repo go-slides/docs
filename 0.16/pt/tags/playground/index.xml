@@ -213,6 +213,43 @@ durante um dia e uma por dia durante um mês. As versões com nome ficam até vo
 excluí-las (no máximo 50). Todas as versões juntas ocupam no máximo 96 MiB, e
 os arquivos que não mudaram são armazenados uma só vez. Quando o armazenamento
 do navegador está cheio, as versões automáticas mais antigas saem primeiro.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; abre um painel que carrega a pasta de uma
+apresentação de um repositório do GitHub e propõe suas mudanças de volta como
+um pull request. Preencha:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repositório (dono/nome)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch (vazio: o padrão)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pasta (vazia: a raiz)&lt;/strong&gt;: a pasta deve conter um &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, mascarado;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O token é um token de acesso pessoal de granularidade fina
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;criar um&lt;/a&gt;), limitado
+aos repositórios escolhidos, com as permissões Contents de leitura e escrita e
+Pull requests de leitura e escrita (Metadata de leitura está implícito). Depois:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Conectar&lt;/strong&gt; verifica o token e o repositório; &lt;strong&gt;Desconectar&lt;/strong&gt; esquece o
+token.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Carregar&lt;/strong&gt; substitui o projeto pela pasta do GitHub. Undo desfaz, e o
+projeto como estava fica guardado como versão «Do GitHub».&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Propor mudanças…&lt;/strong&gt; pede um título, cria um novo branch
+&lt;code&gt;slides/&amp;lt;título&amp;gt;-&amp;lt;data-hora&amp;gt;&lt;/code&gt; e abre um pull request. Nunca escreve em um
+branch existente nem no branch padrão. &lt;strong&gt;Abrir o pull request&lt;/strong&gt; leva você até
+ele.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Procurar mudanças&lt;/strong&gt; compara a versão mais recente no GitHub com a sua na
+vista Compare. &lt;strong&gt;Ficar com as deles&lt;/strong&gt; a carrega.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nenhum proxy é usado para o GitHub: o playground fala diretamente com ele.&lt;/p&gt;
+&lt;p&gt;O token fica apenas na memória da aba e é enviado somente a &lt;code&gt;api.github.com&lt;/code&gt;: a
+Content Security Policy da página não permite nenhum outro host. Ele nunca é
+salvo no rascunho, nas versões, nos links de compartilhamento nem nas
+exportações, e nunca chega à pré-visualização dos slides nem ao worker de
+renderização. &lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt; o guarda no localStorage deste
+navegador até &lt;strong&gt;Desconectar&lt;/strong&gt; (ou Forget my drafts). Resta um risco: um script
+injetado na própria página do playground poderia lê-lo. Prefira um token
+limitado aos repositórios de que você precisa. Para equipes, o modo servidor
+auto-hospedado (em breve) mantém os tokens no servidor.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Segurança&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A apresentação é exibida em um iframe em sandbox, sem a origem da página: ele
 não alcança nem o Playground nem o armazenamento dele, não envia nenhum

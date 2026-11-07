@@ -207,6 +207,43 @@ godzinę przez dobę i jedna na dzień przez miesiąc. Wersje nazwane zostają, 
 usuniesz (najwyżej 50). Wszystkie wersje razem zajmują najwyżej 96 MiB, a pliki,
 które się nie zmieniły, są zapisane raz. Gdy pamięć przeglądarki jest pełna,
 najpierw znikają najstarsze wersje automatyczne.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; otwiera panel, który wczytuje folder prezentacji z
+repozytorium GitHub i odsyła Twoje zmiany jako pull request. Wypełnij:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repozytorium (właściciel/nazwa)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gałąź (puste: domyślna)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Folder (puste: katalog główny)&lt;/strong&gt;: folder musi zawierać plik &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, zamaskowany;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zapamiętaj na tym urządzeniu&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Token to szczegółowy osobisty token dostępu
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;utwórz go&lt;/a&gt;),
+ograniczony do wybranych repozytoriów, z uprawnieniami Contents odczyt i zapis
+oraz Pull requests odczyt i zapis (Metadata odczyt jest domyślne). Dalej:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Połącz&lt;/strong&gt; sprawdza token i repozytorium; &lt;strong&gt;Rozłącz&lt;/strong&gt; zapomina token.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wczytaj&lt;/strong&gt; zastępuje projekt folderem z GitHuba. Cofnij (Undo) to
+przywraca, a projekt sprzed wczytania zostaje jako wersja „Z GitHuba”.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zaproponuj zmiany…&lt;/strong&gt; pyta o tytuł, tworzy nową gałąź
+&lt;code&gt;slides/&amp;lt;tytuł&amp;gt;-&amp;lt;data-godzina&amp;gt;&lt;/code&gt; i otwiera pull request. Nigdy nie zapisuje do
+istniejącej gałęzi ani do gałęzi domyślnej. &lt;strong&gt;Otwórz pull request&lt;/strong&gt;
+przenosi do niego.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sprawdź zmiany&lt;/strong&gt; porównuje nowszą wersję z GitHuba z Twoją w widoku
+Compare. &lt;strong&gt;Weź ich wersję&lt;/strong&gt; ją wczytuje.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dla GitHuba nie używa się żadnego proxy: playground łączy się z nim
+bezpośrednio.&lt;/p&gt;
+&lt;p&gt;Token pozostaje tylko w pamięci karty i jest wysyłany wyłącznie do
+&lt;code&gt;api.github.com&lt;/code&gt;: Content Security Policy strony nie dopuszcza żadnego innego
+hosta. Nigdy nie jest zapisywany w wersji roboczej, wersjach, linkach do
+udostępniania ani eksportach i nigdy nie trafia do podglądu slajdów ani do
+workera renderowania. &lt;strong&gt;Zapamiętaj na tym urządzeniu&lt;/strong&gt; zapisuje go w
+localStorage tej przeglądarki do czasu &lt;strong&gt;Rozłącz&lt;/strong&gt; (lub Forget my drafts).
+Pozostaje jedno ryzyko: skrypt wstrzyknięty do samej strony playgrounda mógłby
+go odczytać. Wybierz token ograniczony do potrzebnych repozytoriów. Dla
+zespołów tryb samodzielnie hostowanego serwera (wkrótce) trzyma tokeny na
+serwerze.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Bezpieczeństwo&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie
 sięgnie ani do Playground, ani do jego pamięci, nie wyśle żadnego formularza i nie

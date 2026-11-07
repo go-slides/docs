@@ -207,6 +207,41 @@ one a day for a month. Named versions stay until you delete them (50 at most).
 All versions together take at most 96 MiB, and files that did not change are
 stored once. When the browser&amp;rsquo;s storage is full, the oldest automatic versions
 go first.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; opens a pane that loads a deck&amp;rsquo;s folder from a
+GitHub repository and proposes your changes back as a pull request. Fill in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repository (owner/name)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch (empty: the default)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Folder (empty: the root)&lt;/strong&gt;: the folder must hold a &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, masked;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Remember on this device&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The token is a fine-grained personal access token
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;create one&lt;/a&gt;) limited
+to the repositories you choose, with the permissions Contents read/write and
+Pull requests read/write (Metadata read is implied). Then:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Connect&lt;/strong&gt; checks the token and the repository; &lt;strong&gt;Disconnect&lt;/strong&gt; forgets the
+token.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load&lt;/strong&gt; replaces the project with the folder from GitHub. Undo takes it
+back, and the project as it was is kept as a version &amp;ldquo;From GitHub&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Propose changes…&lt;/strong&gt; asks for a title, creates a new branch named
+&lt;code&gt;slides/&amp;lt;title&amp;gt;-&amp;lt;date-time&amp;gt;&lt;/code&gt; and opens a pull request. It never writes to an
+existing branch or to the default branch. &lt;strong&gt;Open the pull request&lt;/strong&gt; takes you
+to it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Check for changes&lt;/strong&gt; compares the newer version on GitHub with yours in the
+Compare view. &lt;strong&gt;Take theirs&lt;/strong&gt; loads it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No proxy is used for GitHub: the playground talks to it directly.&lt;/p&gt;
+&lt;p&gt;The token stays in the tab&amp;rsquo;s memory only and is sent only to &lt;code&gt;api.github.com&lt;/code&gt;:
+the page&amp;rsquo;s Content Security Policy allows no other host. It is never saved in
+the draft, the versions, the share links or the exports, and it never reaches
+the slides&amp;rsquo; preview or the render worker. &lt;strong&gt;Remember on this device&lt;/strong&gt; stores it
+in this browser&amp;rsquo;s localStorage until you press &lt;strong&gt;Disconnect&lt;/strong&gt; (or Forget my
+drafts). One risk remains: a script injected into the playground page itself
+could read it. Prefer a token limited to the repositories you need. For teams,
+the self-hosted server mode (coming) keeps tokens on the server.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Security&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The deck is shown in an iframe sandboxed without the page&amp;rsquo;s origin: it can
 reach neither the playground nor its storage, submit no form and navigate

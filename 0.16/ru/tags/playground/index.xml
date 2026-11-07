@@ -211,6 +211,43 @@ Ctrl+Z, Ctrl+Shift+Z и Ctrl+Y (Cmd на Mac). Они отменяют посл�
 (не более 50). Все версии вместе занимают не более 96 MiB, а файлы, которые не
 менялись, хранятся один раз. Когда хранилище браузера заполнено, первыми
 удаляются самые старые автоматические версии.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; открывает панель, которая загружает папку
+презентации из репозитория GitHub и отправляет ваши изменения обратно как
+pull request. Заполните:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Репозиторий (владелец/имя)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ветка (пусто: по умолчанию)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Папка (пусто: корень)&lt;/strong&gt;: в папке должен быть &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Токен&lt;/strong&gt;, скрыт;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Запомнить на этом устройстве&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Токен — это персональный токен доступа с тонкой настройкой
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;создать&lt;/a&gt;),
+ограниченный выбранными репозиториями, с правами Contents чтение и запись и
+Pull requests чтение и запись (Metadata чтение подразумевается). Затем:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Подключиться&lt;/strong&gt; проверяет токен и репозиторий; &lt;strong&gt;Отключиться&lt;/strong&gt; забывает
+токен.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Загрузить&lt;/strong&gt; заменяет проект папкой из GitHub. Undo возвращает всё назад, а
+проект в прежнем виде сохраняется как версия «С GitHub».&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Предложить изменения…&lt;/strong&gt; запрашивает заголовок, создаёт новую ветку
+&lt;code&gt;slides/&amp;lt;заголовок&amp;gt;-&amp;lt;дата-время&amp;gt;&lt;/code&gt; и открывает pull request. Она никогда не
+пишет в существующую ветку или в ветку по умолчанию. &lt;strong&gt;Открыть pull request&lt;/strong&gt;
+переходит к нему.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Проверить изменения&lt;/strong&gt; сравнивает более новую версию на GitHub с вашей в
+окне Compare. &lt;strong&gt;Взять их&lt;/strong&gt; загружает её.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Для GitHub прокси не используется: playground обращается к нему напрямую.&lt;/p&gt;
+&lt;p&gt;Токен остаётся только в памяти вкладки и отправляется лишь на &lt;code&gt;api.github.com&lt;/code&gt;:
+Content Security Policy страницы не разрешает никакой другой хост. Его никогда
+не сохраняют в черновике, версиях, ссылках для общего доступа и экспорте, и он
+никогда не попадает в предпросмотр слайдов и в воркер рендеринга. &lt;strong&gt;Запомнить
+на этом устройстве&lt;/strong&gt; хранит его в localStorage этого браузера до
+&lt;strong&gt;Отключиться&lt;/strong&gt; (или Forget my drafts). Остаётся один риск: скрипт, внедрённый
+в саму страницу playground, мог бы его прочитать. Выбирайте токен, ограниченный
+нужными репозиториями. Для команд режим собственного сервера (скоро) хранит
+токены на сервере.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безопасность&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентация показывается в iframe, изолированном без источника страницы: он не
 может обратиться ни к Playground, ни к его хранилищу, не отправляет форм и никуда

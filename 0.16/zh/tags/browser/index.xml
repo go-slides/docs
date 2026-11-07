@@ -174,6 +174,34 @@ F7 和 Shift+F7 在变化之间移动。&lt;/li&gt;
 &lt;p&gt;保留的内容：最新的 20 个自动版本，之后一天内每小时一个，一个月内每天一个。
 命名版本会一直保留，直到你删除（最多 50 个）。所有版本合计最多 96 MiB，
 未变化的文件只存储一次。浏览器存储已满时，最旧的自动版本最先被清除。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; 打开一个窗格，从 GitHub 仓库载入演示文稿的文件夹，
+并把你的修改以拉取请求的形式提回去。请填写：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仓库（所有者/名称）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分支（留空：默认分支）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件夹（留空：根目录）&lt;/strong&gt;：文件夹中必须有 &lt;code&gt;deck.md&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;令牌&lt;/strong&gt;，已遮蔽；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;在此设备上记住&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;令牌是细粒度个人访问令牌（&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;创建一个&lt;/a&gt;），
+仅限所选仓库，权限为 Contents 读写和 Pull requests 读写（Metadata 只读为隐含）。然后：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;连接&lt;/strong&gt; 检查令牌和仓库；&lt;strong&gt;断开&lt;/strong&gt; 忘记令牌。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;载入&lt;/strong&gt; 用 GitHub 上的文件夹替换项目。Undo 可以撤回，原来的项目会保存为
+“来自 GitHub” 版本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提出修改…&lt;/strong&gt; 询问标题，创建新分支 &lt;code&gt;slides/&amp;lt;标题&amp;gt;-&amp;lt;日期时间&amp;gt;&lt;/code&gt; 并打开拉取请求。
+它从不写入已有分支或默认分支。&lt;strong&gt;打开拉取请求&lt;/strong&gt; 会带你到那里。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检查变化&lt;/strong&gt; 在 Compare 视图中比较 GitHub 上较新的版本与你的版本。
+&lt;strong&gt;采用对方的&lt;/strong&gt; 会载入它。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub 不使用代理：playground 直接与它通信。&lt;/p&gt;
+&lt;p&gt;令牌只留在标签页的内存中，只发送到 &lt;code&gt;api.github.com&lt;/code&gt;：页面的 Content Security
+Policy 不允许任何其他主机。它从不保存到草稿、版本、分享链接或导出中，也从不
+到达幻灯片预览或渲染 worker。&lt;strong&gt;在此设备上记住&lt;/strong&gt; 会把它存入此浏览器的
+localStorage，直到 &lt;strong&gt;断开&lt;/strong&gt;（或 Forget my drafts）。仍有一项风险：注入到
+playground 页面本身的脚本可以读取它。请优先使用只限于所需仓库的令牌。对于团队，
+自托管服务器模式（即将推出）把令牌保存在服务器上。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;安全&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;演示文稿显示在一个不具有页面来源（origin）的沙盒 iframe 中：它既无法访问 Playground，
 也无法访问其存储，不能提交表单，也不能进行任何导航。其页面带有内容安全策略（Content Security Policy），

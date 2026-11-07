@@ -210,6 +210,43 @@ Versions:&lt;/p&gt;
 доки ви їх не видалите (не більше 50). Усі версії разом займають не більше
 96 MiB, а файли, що не змінювалися, зберігаються один раз. Коли сховище
 браузера заповнене, першими зникають найстарші автоматичні версії.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; відкриває панель, яка завантажує теку презентації
+з репозиторію GitHub і надсилає ваші зміни назад як pull request. Заповніть:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Репозиторій (власник/назва)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Гілка (порожньо: типова)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Тека (порожньо: корінь)&lt;/strong&gt;: у теці має бути &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Токен&lt;/strong&gt;, приховано;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Запам’ятати на цьому пристрої&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Токен — це дрібнозернистий персональний токен доступу
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;створити&lt;/a&gt;),
+обмежений обраними репозиторіями, з дозволами Contents читання й запис та Pull
+requests читання й запис (Metadata читання мається на увазі). Далі:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Під’єднатися&lt;/strong&gt; перевіряє токен і репозиторій; &lt;strong&gt;Від’єднатися&lt;/strong&gt; забуває
+токен.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Завантажити&lt;/strong&gt; замінює проєкт текою з GitHub. Undo це скасовує, а проєкт, як
+він був, зберігається як версія «З GitHub».&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Запропонувати зміни…&lt;/strong&gt; запитує заголовок, створює нову гілку
+&lt;code&gt;slides/&amp;lt;заголовок&amp;gt;-&amp;lt;дата-час&amp;gt;&lt;/code&gt; і відкриває pull request. Вона ніколи не
+пише в наявну гілку чи в типову гілку. &lt;strong&gt;Відкрити pull request&lt;/strong&gt; веде до
+нього.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Перевірити зміни&lt;/strong&gt; порівнює новішу версію з GitHub з вашою у вікні Compare.
+&lt;strong&gt;Взяти їхні&lt;/strong&gt; завантажує її.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Для GitHub проксі не використовується: playground звертається до нього
+напряму.&lt;/p&gt;
+&lt;p&gt;Токен залишається лише в пам’яті вкладки й надсилається тільки на
+&lt;code&gt;api.github.com&lt;/code&gt;: Content Security Policy сторінки не дозволяє жодного іншого
+хоста. Його ніколи не зберігають у чернетці, версіях, посиланнях для
+поширення чи експорті, і він ніколи не потрапляє до попереднього перегляду
+слайдів або воркера рендерингу. &lt;strong&gt;Запам’ятати на цьому пристрої&lt;/strong&gt; зберігає
+його в localStorage цього браузера до &lt;strong&gt;Від’єднатися&lt;/strong&gt; (або Forget my drafts).
+Залишається один ризик: скрипт, упроваджений у саму сторінку playground, міг
+би його прочитати. Обирайте токен, обмежений потрібними репозиторіями. Для
+команд режим власного сервера (незабаром) тримає токени на сервері.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безпека&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентація показується в iframe, ізольованому без походження сторінки: він не
 може дістатися ні до Playground, ні до його сховища, не може надіслати форму й

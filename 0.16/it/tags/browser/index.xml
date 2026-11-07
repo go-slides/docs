@@ -208,6 +208,44 @@ non le elimini (al massimo 50). Tutte le versioni insieme occupano al massimo
 96 MiB e i file che non sono cambiati vengono memorizzati una volta sola.
 Quando la memoria del browser è piena, le versioni automatiche più vecchie
 vanno via per prime.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; apre un riquadro che carica la cartella di una
+presentazione da un repository GitHub e rimanda le vostre modifiche come pull
+request. Compilate:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repository (proprietario/nome)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch (vuoto: quello predefinito)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cartella (vuota: la radice)&lt;/strong&gt;: la cartella deve contenere un &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, mascherato;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ricorda su questo dispositivo&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Il token è un token di accesso personale a granularità fine
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;crearne uno&lt;/a&gt;),
+limitato ai repository scelti, con i permessi Contents in lettura e scrittura e
+Pull requests in lettura e scrittura (Metadata in lettura è implicito). Poi:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Connetti&lt;/strong&gt; verifica il token e il repository; &lt;strong&gt;Disconnetti&lt;/strong&gt; dimentica il
+token.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Carica&lt;/strong&gt; sostituisce il progetto con la cartella di GitHub. Undo lo
+annulla, e il progetto com&amp;rsquo;era resta come versione «Da GitHub».&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Proponi le modifiche…&lt;/strong&gt; chiede un titolo, crea un nuovo branch
+&lt;code&gt;slides/&amp;lt;titolo&amp;gt;-&amp;lt;data-ora&amp;gt;&lt;/code&gt; e apre una pull request. Non scrive mai in un
+branch esistente né nel branch predefinito. &lt;strong&gt;Apri la pull request&lt;/strong&gt; vi ci
+porta.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cerca modifiche&lt;/strong&gt; confronta la versione più recente su GitHub con la
+vostra nella vista Compare. &lt;strong&gt;Prendi le loro&lt;/strong&gt; la carica.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Per GitHub non si usa alcun proxy: il playground gli parla direttamente.&lt;/p&gt;
+&lt;p&gt;Il token resta solo nella memoria della scheda e viene inviato solo a
+&lt;code&gt;api.github.com&lt;/code&gt;: la Content Security Policy della pagina non consente alcun
+altro host. Non viene mai salvato nella bozza, nelle versioni, nei link di
+condivisione o nelle esportazioni, e non raggiunge mai l&amp;rsquo;anteprima delle slide
+né il worker di rendering. &lt;strong&gt;Ricorda su questo dispositivo&lt;/strong&gt; lo conserva nel
+localStorage di questo browser fino a &lt;strong&gt;Disconnetti&lt;/strong&gt; (o Forget my drafts).
+Resta un rischio: uno script iniettato nella pagina stessa del playground
+potrebbe leggerlo. Preferite un token limitato ai repository che vi servono.
+Per i team, la modalità server self-hosted (in arrivo) tiene i token sul
+server.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicurezza&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentazione è mostrata in un iframe in sandbox senza l&amp;rsquo;origine della pagina: non può
 raggiungere né il Playground né la sua memoria, non può inviare moduli e non naviga

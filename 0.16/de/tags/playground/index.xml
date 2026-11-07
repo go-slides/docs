@@ -209,6 +209,46 @@ für einen Tag und eine pro Tag für einen Monat. Benannte Versionen bleiben, bi
 Sie sie löschen (höchstens 50). Alle Versionen zusammen belegen höchstens
 96 MiB, und unveränderte Dateien werden nur einmal gespeichert. Ist der
 Speicher des Browsers voll, gehen die ältesten automatischen Versionen zuerst.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; öffnet einen Bereich, der den Ordner einer
+Präsentation aus einem GitHub-Repository lädt und Ihre Änderungen als
+Pull-Request zurückschlägt. Tragen Sie ein:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repository (Besitzer/Name)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch (leer: der Standard)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ordner (leer: die Wurzel)&lt;/strong&gt;: der Ordner muss eine &lt;code&gt;deck.md&lt;/code&gt; enthalten;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, maskiert;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Auf diesem Gerät merken&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Der Token ist ein feingranularer persönlicher Zugriffstoken
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;einen erstellen&lt;/a&gt;),
+beschränkt auf die gewählten Repositories, mit den Berechtigungen Contents
+Lesen/Schreiben und Pull requests Lesen/Schreiben (Metadata Lesen ist
+inbegriffen). Dann:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Verbinden&lt;/strong&gt; prüft Token und Repository; &lt;strong&gt;Trennen&lt;/strong&gt; vergisst den Token.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Laden&lt;/strong&gt; ersetzt das Projekt durch den Ordner von GitHub. Undo nimmt es
+zurück, und das Projekt, wie es war, bleibt als Version „Von GitHub“
+erhalten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Änderungen vorschlagen…&lt;/strong&gt; fragt nach einem Titel, legt einen neuen Branch
+&lt;code&gt;slides/&amp;lt;Titel&amp;gt;-&amp;lt;Datum-Uhrzeit&amp;gt;&lt;/code&gt; an und öffnet einen Pull-Request. Es
+schreibt nie in einen bestehenden Branch oder in den Standard-Branch.
+&lt;strong&gt;Pull-Request öffnen&lt;/strong&gt; führt Sie dorthin.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nach Änderungen sehen&lt;/strong&gt; vergleicht die neuere Version auf GitHub mit Ihrer
+in der Ansicht Compare. &lt;strong&gt;Ihre übernehmen&lt;/strong&gt; lädt sie.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Für GitHub wird kein Proxy verwendet: Der Playground spricht direkt mit
+GitHub.&lt;/p&gt;
+&lt;p&gt;Der Token bleibt nur im Speicher des Tabs und wird nur an &lt;code&gt;api.github.com&lt;/code&gt;
+gesendet: Die Content Security Policy der Seite erlaubt keinen anderen Host.
+Er wird nie im Entwurf, in den Versionen, in Freigabelinks oder Exporten
+gespeichert und erreicht weder die Vorschau der Folien noch den Render-Worker.
+&lt;strong&gt;Auf diesem Gerät merken&lt;/strong&gt; legt ihn im localStorage dieses Browsers ab, bis
+Sie &lt;strong&gt;Trennen&lt;/strong&gt; wählen (oder Forget my drafts). Ein Risiko bleibt: Ein in die
+Playground-Seite selbst eingeschleustes Skript könnte ihn lesen. Bevorzugen
+Sie einen Token, der auf die benötigten Repositories beschränkt ist. Für Teams
+hält der selbst gehostete Servermodus (in Vorbereitung) die Token auf dem
+Server.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
 weder den Playground noch dessen Speicher erreichen, kein Formular absenden und

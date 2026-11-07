@@ -209,6 +209,45 @@ nommées restent jusqu&amp;rsquo;à ce que vous les supprimiez (50 au plus). L&a
 versions occupe au plus 96 MiB, et les fichiers qui n&amp;rsquo;ont pas changé ne sont
 stockés qu&amp;rsquo;une fois. Quand le stockage du navigateur est plein, les versions
 automatiques les plus anciennes partent d&amp;rsquo;abord.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; ouvre un volet qui charge le dossier d&amp;rsquo;une
+présentation depuis un dépôt GitHub et propose vos changements en retour sous
+forme de pull request. Renseignez :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dépôt (propriétaire/nom)&lt;/strong&gt; ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branche (vide: celle par défaut)&lt;/strong&gt; ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dossier (vide: la racine)&lt;/strong&gt; : le dossier doit contenir un &lt;code&gt;deck.md&lt;/code&gt; ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Jeton&lt;/strong&gt;, masqué ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mémoriser sur cet appareil&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le jeton est un jeton d&amp;rsquo;accès personnel à granularité fine
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;en créer un&lt;/a&gt;), limité
+aux dépôts choisis, avec les permissions Contents en lecture/écriture et Pull
+requests en lecture/écriture (Metadata en lecture est implicite). Ensuite :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Se connecter&lt;/strong&gt; vérifie le jeton et le dépôt ; &lt;strong&gt;Se déconnecter&lt;/strong&gt; oublie le
+jeton.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Charger&lt;/strong&gt; remplace le projet par le dossier de GitHub. Undo le reprend, et
+le projet tel qu&amp;rsquo;il était est conservé comme version « Depuis GitHub ».&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Proposer les changements…&lt;/strong&gt; demande un titre, crée une nouvelle branche
+&lt;code&gt;slides/&amp;lt;titre&amp;gt;-&amp;lt;date-heure&amp;gt;&lt;/code&gt; et ouvre une pull request. Il n&amp;rsquo;écrit jamais
+dans une branche existante ni dans la branche par défaut. &lt;strong&gt;Ouvrir la pull
+request&lt;/strong&gt; vous y conduit.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chercher des changements&lt;/strong&gt; compare la version plus récente de GitHub à la
+vôtre dans la vue Compare. &lt;strong&gt;Prendre les leurs&lt;/strong&gt; la charge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Aucun proxy n&amp;rsquo;est utilisé pour GitHub : le playground s&amp;rsquo;adresse directement à
+lui.&lt;/p&gt;
+&lt;p&gt;Le jeton reste dans la mémoire de l&amp;rsquo;onglet seulement et n&amp;rsquo;est envoyé qu&amp;rsquo;à
+&lt;code&gt;api.github.com&lt;/code&gt; : la Content Security Policy de la page n&amp;rsquo;autorise aucun autre
+hôte. Il n&amp;rsquo;est jamais enregistré dans le brouillon, les versions, les liens de
+partage ni les exports, et n&amp;rsquo;atteint jamais l&amp;rsquo;aperçu des diapositives ni le
+worker de rendu. &lt;strong&gt;Mémoriser sur cet appareil&lt;/strong&gt; le garde dans le localStorage de
+ce navigateur jusqu&amp;rsquo;à &lt;strong&gt;Se déconnecter&lt;/strong&gt; (ou Forget my drafts). Un risque
+subsiste : un script injecté dans la page du playground elle-même pourrait le
+lire. Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les
+équipes, le mode serveur auto-hébergé (à venir) garde les jetons sur le
+serveur.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sécurité&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La présentation s&amp;rsquo;affiche dans une iframe isolée, privée de l&amp;rsquo;origine de la page : elle ne peut
 atteindre ni le Playground ni son stockage, ne soumet aucun formulaire et ne navigue
