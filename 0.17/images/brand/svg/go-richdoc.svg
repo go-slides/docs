@@ -1,0 +1,13 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="go-richdoc">
+  <defs><linearGradient id="richdoc" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#1E1B4B"/></linearGradient></defs>
+  <rect width="256" height="256" rx="56" fill="url(#richdoc)"/>
+  <!-- One document model that every format converts INTO: arrows converge on the page. -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="94" y="94" width="68" height="68" rx="12"/>
+    <path d="M30 128 H74"/><path d="M74 128 L60 118"/><path d="M74 128 L60 138"/>
+    <path d="M226 128 H182"/><path d="M182 128 L196 118"/><path d="M182 128 L196 138"/>
+    <path d="M128 30 V74"/><path d="M128 74 L118 60"/><path d="M128 74 L138 60"/>
+    <path d="M128 226 V182"/><path d="M128 182 L118 196"/><path d="M128 182 L138 196"/>
+  </g>
+</svg>
