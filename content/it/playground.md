@@ -222,6 +222,23 @@ potrebbe leggerlo. Preferite un token limitato ai repository che vi servono.
 Per i team, la modalità server self-hosted (in arrivo) tiene i token sul
 server.
 
+### GitLab.com {#gitlab}
+
+Il riquadro ha un elenco di forge: **GitHub** e **GitLab.com**. Per GitLab,
+fornite un token di accesso personale con lo scope `api`, oppure premete
+**Accedi con GitLab** (codice di autorizzazione OAuth con PKCE, senza segreto).
+L'accesso porta la pagina su gitlab.com e la riporta indietro, e l'indirizzo
+viene ripulito subito. I suoi token restano solo nella memoria di questa scheda
+(mai ricordati sul dispositivo, nemmeno con **Ricorda su questo dispositivo**),
+si rinnovano da soli prima di scadere, e **Disconnetti** li revoca presso
+GitLab. Un accesso avviato in un'altra scheda, o un link riutilizzato, viene
+rifiutato. L'accesso è disponibile quando l'applicazione GitLab del sito è
+registrata; fino ad allora usate un token di accesso personale.
+
+Le richieste vanno solo a `api.github.com` e `gitlab.com`: la Content Security
+Policy della pagina non consente alcun altro host, e la pagina non invia il
+referrer.
+
 ## Sicurezza {#security}
 
 La presentazione è mostrata in un iframe in sandbox senza l'origine della pagina: non può

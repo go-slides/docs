@@ -224,6 +224,23 @@ lire. Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les
 équipes, le mode serveur auto-hébergé (à venir) garde les jetons sur le
 serveur.
 
+### GitLab.com {#gitlab}
+
+Le volet a une liste de forges : **GitHub** et **GitLab.com**. Pour GitLab,
+donnez soit un jeton d'accès personnel de portée `api`, soit cliquez sur **Se
+connecter avec GitLab** (code d'autorisation OAuth avec PKCE, sans secret). La
+connexion envoie la page sur gitlab.com puis la ramène, et l'adresse est
+nettoyée aussitôt. Ses jetons restent dans la mémoire de cet onglet seulement
+(jamais mémorisés sur l'appareil, même avec **Mémoriser sur cet appareil**), se
+renouvellent avant d'expirer, et **Se déconnecter** les révoque chez GitLab. Une
+connexion lancée dans un autre onglet, ou un lien réutilisé, est refusée. La
+connexion est disponible dès que l'application GitLab du site est enregistrée ;
+d'ici là, utilisez un jeton d'accès personnel.
+
+Les requêtes ne vont qu'à `api.github.com` et `gitlab.com` : la Content Security
+Policy de la page n'autorise aucun autre hôte, et la page n'envoie pas de
+referrer.
+
 ## Sécurité {#security}
 
 La présentation s'affiche dans une iframe isolée, privée de l'origine de la page : elle ne peut

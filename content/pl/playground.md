@@ -220,6 +220,22 @@ go odczytać. Wybierz token ograniczony do potrzebnych repozytoriów. Dla
 zespołów tryb samodzielnie hostowanego serwera (wkrótce) trzyma tokeny na
 serwerze.
 
+### GitLab.com {#gitlab}
+
+Panel ma listę forge: **GitHub** i **GitLab.com**. Dla GitLaba podaj osobisty
+token dostępu z zakresem `api` albo naciśnij **Zaloguj się przez GitLab** (kod
+autoryzacji OAuth z PKCE, bez sekretu). Logowanie przenosi stronę do gitlab.com
+i z powrotem, a adres jest od razu czyszczony. Jego tokeny zostają tylko w
+pamięci tej karty (nigdy nie są zapamiętywane na urządzeniu, nawet z opcją
+**Zapamiętaj na tym urządzeniu**), odnawiają się same przed wygaśnięciem, a
+**Rozłącz** unieważnia je w GitLabie. Logowanie rozpoczęte w innej karcie lub
+ponownie użyty link zostaje odrzucone. Logowanie jest dostępne, gdy aplikacja
+GitLab tej strony jest zarejestrowana; do tego czasu użyj osobistego tokenu
+dostępu.
+
+Żądania trafiają tylko do `api.github.com` i `gitlab.com`: Content Security
+Policy strony nie dopuszcza żadnego innego hosta, a strona nie wysyła referrera.
+
 ## Bezpieczeństwo {#security}
 
 Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie

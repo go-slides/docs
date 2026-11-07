@@ -225,6 +225,23 @@ Sie einen Token, der auf die benötigten Repositories beschränkt ist. Für Team
 hält der selbst gehostete Servermodus (in Vorbereitung) die Token auf dem
 Server.
 
+### GitLab.com {#gitlab}
+
+Der Bereich hat eine Liste der Forges: **GitHub** und **GitLab.com**. Für
+GitLab geben Sie entweder einen persönlichen Zugriffstoken mit dem Scope `api`
+an oder wählen **Mit GitLab anmelden** (OAuth-Autorisierungscode mit PKCE, ohne
+Geheimnis). Die Anmeldung führt die Seite zu gitlab.com und zurück, und die
+Adresse wird sofort bereinigt. Ihre Tokens bleiben nur im Speicher dieses Tabs
+(nie auf dem Gerät gemerkt, auch nicht mit **Auf diesem Gerät merken**),
+erneuern sich vor dem Ablauf selbst, und **Trennen** widerruft sie bei GitLab.
+Eine in einem anderen Tab begonnene Anmeldung oder ein wiederverwendeter Link
+wird abgelehnt. Die Anmeldung steht bereit, sobald die GitLab-Anwendung der
+Seite registriert ist; bis dahin nutzen Sie einen persönlichen Zugriffstoken.
+
+Anfragen gehen nur an `api.github.com` und `gitlab.com`: Die Content Security
+Policy der Seite erlaubt keinen anderen Host, und die Seite sendet keinen
+Referrer.
+
 ## Sicherheit {#security}
 
 Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
