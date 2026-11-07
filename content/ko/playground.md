@@ -217,6 +217,14 @@ localStorage에 저장됩니다. 위험이 하나 남습니다. playground 페�
 요청은 `api.github.com`과 `gitlab.com`으로만 갑니다. 페이지의 Content Security Policy가
 다른 호스트를 허용하지 않으며, 페이지는 referrer를 보내지 않습니다.
 
+왜 `api`인가요? GitLab의 [범위 표](https://docs.gitlab.com/security/tokens/access_token_scopes/)는
+`write_repository`를 “Does not support API authentication”이라고 적고 있습니다. 이는 HTTP를 통한
+git 전용이며 GitLab이 CORS 없이 제공하므로 브라우저에서는 쓸 수 없습니다. 변경 제안은 REST API를
+쓰고, 여기에는 `api`(“complete read and write access to the API”)가 필요합니다. 도난당한 `api`
+토큰은 그 사용자가 API로 할 수 있는 모든 일을, 그 사용자가 닿는 모든 프로젝트에서 할 수 있습니다.
+발표 자료 저장소로 제한한 프로젝트 또는 그룹 액세스 토큰, 또는 발표 자료 프로젝트의 구성원일
+뿐인 전용 GitLab 계정을 쓰세요.
+
 ## 보안 {#security}
 
 프레젠테이션은 페이지의 출처(origin)를 갖지 않는 샌드박스 iframe에 표시됩니다.
