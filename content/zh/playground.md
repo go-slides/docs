@@ -178,6 +178,18 @@ localStorage，直到 **断开**（或 Forget my drafts）。仍有一项风险�
 playground 页面本身的脚本可以读取它。请优先使用只限于所需仓库的令牌。对于团队，
 自托管服务器模式（即将推出）把令牌保存在服务器上。
 
+### GitLab.com {#gitlab}
+
+窗格中有一个 forge 列表：**GitHub** 和 **GitLab.com**。使用 GitLab 时，可以提供范围为
+`api` 的个人访问令牌，或点击 **用 GitLab 登录**（带 PKCE 的 OAuth 授权码，无需密钥）。
+登录会把页面带到 gitlab.com 再返回，地址会立刻被清理。登录得到的令牌只留在此标签页的
+内存中（即使选了 **在此设备上记住** 也不会记在设备上），会在过期前自动刷新，
+**断开** 会在 GitLab 撤销它们。在另一个标签页发起的登录，或重复使用的链接，都会被拒绝。
+本站的 GitLab 应用注册后即可使用登录；在此之前请使用个人访问令牌。
+
+请求只发往 `api.github.com` 和 `gitlab.com`：页面的 Content Security Policy 不允许任何
+其他主机，页面也不发送 referrer。
+
 ## 安全 {#security}
 
 演示文稿显示在一个不具有页面来源（origin）的沙盒 iframe 中：它既无法访问 Playground，

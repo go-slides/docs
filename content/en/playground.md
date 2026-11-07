@@ -218,6 +218,21 @@ drafts). One risk remains: a script injected into the playground page itself
 could read it. Prefer a token limited to the repositories you need. For teams,
 the self-hosted server mode (coming) keeps tokens on the server.
 
+### GitLab.com {#gitlab}
+
+The pane has a forge list: **GitHub** and **GitLab.com**. For GitLab, give
+either a personal access token with the scope `api`, or press **Sign in with
+GitLab** (OAuth authorization code with PKCE, no secret). Sign-in takes the
+page to gitlab.com and back, and the address is cleaned at once. Its tokens
+stay in this tab's memory only (never remembered on the device, even with
+**Remember on this device**), refresh themselves before they expire, and
+**Disconnect** revokes them at GitLab. A sign-in started in another tab, or a
+reused link, is refused. Sign-in is available once the site's GitLab
+application is registered; until then, use a personal access token.
+
+Requests go only to `api.github.com` and `gitlab.com`: the page's Content
+Security Policy allows no other host, and the page sends no referrer.
+
 ## Security
 
 The deck is shown in an iframe sandboxed without the page's origin: it can

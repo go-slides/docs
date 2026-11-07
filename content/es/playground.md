@@ -233,6 +233,22 @@ playground podría leerlo. Prefiera un token limitado a los repositorios que
 necesite. Para equipos, el modo servidor autoalojado (próximamente) mantiene
 los tokens en el servidor.
 
+### GitLab.com {#gitlab}
+
+El panel tiene una lista de forjas: **GitHub** y **GitLab.com**. Para GitLab,
+indique un token de acceso personal con el alcance `api`, o pulse **Iniciar
+sesión con GitLab** (código de autorización OAuth con PKCE, sin secreto). El
+inicio de sesión lleva la página a gitlab.com y la devuelve, y la dirección se
+limpia de inmediato. Sus tokens quedan solo en la memoria de esta pestaña (nunca
+se recuerdan en el dispositivo, ni siquiera con **Recordar en este
+dispositivo**), se renuevan solos antes de caducar, y **Desconectar** los revoca
+en GitLab. Un inicio de sesión empezado en otra pestaña, o un enlace reutilizado,
+se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
+del sitio está registrada; mientras tanto, use un token de acceso personal.
+
+Las peticiones van solo a `api.github.com` y `gitlab.com`: la Content Security
+Policy de la página no permite ningún otro host, y la página no envía referrer.
+
 ## Seguridad {#security}
 
 La presentación se muestra en un iframe aislado, sin el origen de la página: no

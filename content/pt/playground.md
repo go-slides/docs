@@ -226,6 +226,21 @@ injetado na própria página do playground poderia lê-lo. Prefira um token
 limitado aos repositórios de que você precisa. Para equipes, o modo servidor
 auto-hospedado (em breve) mantém os tokens no servidor.
 
+### GitLab.com {#gitlab}
+
+O painel tem uma lista de forjas: **GitHub** e **GitLab.com**. Para o GitLab,
+informe um token de acesso pessoal com o escopo `api`, ou clique em **Entrar com
+o GitLab** (código de autorização OAuth com PKCE, sem segredo). O login leva a
+página ao gitlab.com e a traz de volta, e o endereço é limpo na hora. Seus
+tokens ficam só na memória desta aba (nunca lembrados no dispositivo, mesmo com
+**Lembrar neste dispositivo**), se renovam sozinhos antes de expirar, e
+**Desconectar** os revoga no GitLab. Um login iniciado em outra aba, ou um link
+reutilizado, é recusado. O login fica disponível quando o aplicativo GitLab do
+site estiver registrado; até lá, use um token de acesso pessoal.
+
+As requisições vão só para `api.github.com` e `gitlab.com`: a Content Security
+Policy da página não permite nenhum outro host, e a página não envia referrer.
+
 ## Segurança {#security}
 
 A apresentação é exibida em um iframe em sandbox, sem a origem da página: ele
