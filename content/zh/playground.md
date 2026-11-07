@@ -190,6 +190,13 @@ playground 页面本身的脚本可以读取它。请优先使用只限于所需
 请求只发往 `api.github.com` 和 `gitlab.com`：页面的 Content Security Policy 不允许任何
 其他主机，页面也不发送 referrer。
 
+为什么需要 `api`？GitLab 的[范围表](https://docs.gitlab.com/security/tokens/access_token_scopes/)
+对 `write_repository` 写的是 “Does not support API authentication”：它只用于基于 HTTP 的
+git，而 GitLab 提供该服务时不带 CORS，浏览器无法使用。提出修改走 REST API，需要 `api`，
+即 “complete read and write access to the API”。被盗的 `api` 令牌可以做其用户通过 API
+能做的一切，涉及该用户能访问的所有项目。请优先使用只限于演示文稿仓库的项目或群组访问令牌，
+或只作为演示文稿项目成员的专用 GitLab 账号。
+
 ## 安全 {#security}
 
 演示文稿显示在一个不具有页面来源（origin）的沙盒 iframe 中：它既无法访问 Playground，

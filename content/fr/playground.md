@@ -241,6 +241,17 @@ Les requêtes ne vont qu'à `api.github.com` et `gitlab.com` : la Content Securi
 Policy de la page n'autorise aucun autre hôte, et la page n'envoie pas de
 referrer.
 
+Pourquoi `api` ? La
+[table des portées](https://docs.gitlab.com/security/tokens/access_token_scopes/)
+de GitLab indique que `write_repository` « Does not support API authentication » :
+elle ne sert qu'à git sur HTTP, que GitLab sert sans CORS, donc un navigateur ne
+peut pas l'utiliser. Les propositions passent par l'API REST, qui exige `api`,
+« complete read and write access to the API ». Un jeton `api` volé peut faire
+tout ce que son utilisateur peut faire par l'API, sur tous les projets que cet
+utilisateur atteint. Préférez un jeton d'accès de projet ou de groupe limité
+aux dépôts des présentations, ou un compte GitLab dédié, membre seulement des
+projets des présentations.
+
 ## Sécurité {#security}
 
 La présentation s'affiche dans une iframe isolée, privée de l'origine de la page : elle ne peut

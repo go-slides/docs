@@ -233,6 +233,16 @@ application is registered; until then, use a personal access token.
 Requests go only to `api.github.com` and `gitlab.com`: the page's Content
 Security Policy allows no other host, and the page sends no referrer.
 
+Why `api`? GitLab's
+[scope table](https://docs.gitlab.com/security/tokens/access_token_scopes/)
+says `write_repository` "Does not support API authentication": it is for git
+over HTTP only, which GitLab serves without CORS, so a browser cannot use it.
+Proposals use the REST API, which needs `api`, "complete read and write access
+to the API". A stolen `api` token can do anything its user can do through the
+API, on every project that user reaches. Prefer a project or group access
+token limited to the deck repositories, or a dedicated GitLab account that is
+only a member of the deck projects.
+
 ## Security
 
 The deck is shown in an iframe sandboxed without the page's origin: it can

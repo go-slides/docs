@@ -219,6 +219,14 @@ gitlab.com へ移動して戻り、アドレスはすぐに消去されます。
 リクエストの送信先は `api.github.com` と `gitlab.com` だけです。ページの Content Security
 Policy は他のホストを許可せず、ページは referrer を送りません。
 
+なぜ `api` が必要か。GitLab の[スコープ表](https://docs.gitlab.com/security/tokens/access_token_scopes/)は
+`write_repository` を “Does not support API authentication” としています。これは HTTP 経由の git
+専用で、GitLab は CORS なしで提供するため、ブラウザーからは使えません。変更の提案は REST API を
+使い、そこでは `api`（“complete read and write access to the API”）が必要です。盗まれた `api`
+トークンは、そのユーザーが API でできることをすべて、そのユーザーが届くすべてのプロジェクトで
+行えます。スライドのリポジトリに限定したプロジェクトまたはグループのアクセストークン、
+あるいはスライドのプロジェクトのメンバーにだけなっている専用の GitLab アカウントを使ってください。
+
 ## セキュリティ {#security}
 
 スライドデッキは、ページのオリジンを持たないサンドボックス化された iframe に表示されます。

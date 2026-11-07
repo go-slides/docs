@@ -242,6 +242,17 @@ Anfragen gehen nur an `api.github.com` und `gitlab.com`: Die Content Security
 Policy der Seite erlaubt keinen anderen Host, und die Seite sendet keinen
 Referrer.
 
+Warum `api`? Die
+[Scope-Tabelle](https://docs.gitlab.com/security/tokens/access_token_scopes/)
+von GitLab sagt zu `write_repository` „Does not support API authentication“:
+Er gilt nur für Git über HTTP, das GitLab ohne CORS ausliefert, ein Browser kann
+ihn also nicht nutzen. Vorschläge laufen über die REST-API, die `api` verlangt,
+„complete read and write access to the API“. Ein gestohlener `api`-Token kann
+alles, was sein Benutzer über die API tun kann, in jedem Projekt, das dieser
+Benutzer erreicht. Bevorzugen Sie einen Projekt- oder Gruppen-Zugriffstoken, der
+auf die Präsentations-Repositories beschränkt ist, oder ein eigenes GitLab-Konto,
+das nur Mitglied der Präsentationsprojekte ist.
+
 ## Sicherheit {#security}
 
 Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
