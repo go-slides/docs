@@ -211,6 +211,12 @@ playground 页面本身的脚本可以读取它。请优先使用只限于所需
 本站的 GitLab 应用注册后即可使用登录；在此之前请使用个人访问令牌。&lt;/p&gt;
 &lt;p&gt;请求只发往 &lt;code&gt;api.github.com&lt;/code&gt; 和 &lt;code&gt;gitlab.com&lt;/code&gt;：页面的 Content Security Policy 不允许任何
 其他主机，页面也不发送 referrer。&lt;/p&gt;
+&lt;p&gt;为什么需要 &lt;code&gt;api&lt;/code&gt;？GitLab 的&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;范围表&lt;/a&gt;
+对 &lt;code&gt;write_repository&lt;/code&gt; 写的是 “Does not support API authentication”：它只用于基于 HTTP 的
+git，而 GitLab 提供该服务时不带 CORS，浏览器无法使用。提出修改走 REST API，需要 &lt;code&gt;api&lt;/code&gt;，
+即 “complete read and write access to the API”。被盗的 &lt;code&gt;api&lt;/code&gt; 令牌可以做其用户通过 API
+能做的一切，涉及该用户能访问的所有项目。请优先使用只限于演示文稿仓库的项目或群组访问令牌，
+或只作为演示文稿项目成员的专用 GitLab 账号。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;安全&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;演示文稿显示在一个不具有页面来源（origin）的沙盒 iframe 中：它既无法访问 Playground，
 也无法访问其存储，不能提交表单，也不能进行任何导航。其页面带有内容安全策略（Content Security Policy），

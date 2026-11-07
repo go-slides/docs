@@ -270,6 +270,16 @@ se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLa
 del sitio está registrada; mientras tanto, use un token de acceso personal.&lt;/p&gt;
 &lt;p&gt;Las peticiones van solo a &lt;code&gt;api.github.com&lt;/code&gt; y &lt;code&gt;gitlab.com&lt;/code&gt;: la Content Security
 Policy de la página no permite ningún otro host, y la página no envía referrer.&lt;/p&gt;
+&lt;p&gt;¿Por qué &lt;code&gt;api&lt;/code&gt;? La
+&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;tabla de alcances&lt;/a&gt;
+de GitLab dice de &lt;code&gt;write_repository&lt;/code&gt; «Does not support API authentication»: sirve
+solo para git sobre HTTP, que GitLab ofrece sin CORS, así que un navegador no
+puede usarlo. Las propuestas usan la API REST, que exige &lt;code&gt;api&lt;/code&gt;, «complete read
+and write access to the API». Un token &lt;code&gt;api&lt;/code&gt; robado puede hacer todo lo que su
+usuario puede hacer por la API, en todos los proyectos a los que ese usuario
+llega. Prefiera un token de acceso de proyecto o de grupo limitado a los
+repositorios de las presentaciones, o una cuenta de GitLab dedicada que sea solo
+miembro de los proyectos de las presentaciones.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Seguridad&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentación se muestra en un iframe aislado, sin el origen de la página: no
 puede alcanzar ni el Playground ni su almacenamiento, no puede enviar ningún

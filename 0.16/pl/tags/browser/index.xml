@@ -257,6 +257,15 @@ GitLab tej strony jest zarejestrowana; do tego czasu użyj osobistego tokenu
 dostępu.&lt;/p&gt;
 &lt;p&gt;Żądania trafiają tylko do &lt;code&gt;api.github.com&lt;/code&gt; i &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security
 Policy strony nie dopuszcza żadnego innego hosta, a strona nie wysyła referrera.&lt;/p&gt;
+&lt;p&gt;Dlaczego &lt;code&gt;api&lt;/code&gt;? &lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;Tabela zakresów&lt;/a&gt;
+GitLaba mówi o &lt;code&gt;write_repository&lt;/code&gt;: „Does not support API authentication”. Służy
+tylko do gita przez HTTP, który GitLab udostępnia bez CORS, więc przeglądarka
+nie może go użyć. Propozycje korzystają z REST API, które wymaga &lt;code&gt;api&lt;/code&gt;,
+„complete read and write access to the API”. Skradziony token &lt;code&gt;api&lt;/code&gt; może zrobić
+wszystko, co jego użytkownik może zrobić przez API, w każdym projekcie, do
+którego ten użytkownik ma dostęp. Wybierz token dostępu projektu lub grupy
+ograniczony do repozytoriów prezentacji albo osobne konto GitLab, które jest
+tylko członkiem projektów prezentacji.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Bezpieczeństwo&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie
 sięgnie ani do Playground, ani do jego pamięci, nie wyśle żadnego formularza i nie

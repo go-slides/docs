@@ -262,6 +262,16 @@ d&amp;rsquo;ici là, utilisez un jeton d&amp;rsquo;accès personnel.&lt;/p&gt;
 &lt;p&gt;Les requêtes ne vont qu&amp;rsquo;à &lt;code&gt;api.github.com&lt;/code&gt; et &lt;code&gt;gitlab.com&lt;/code&gt; : la Content Security
 Policy de la page n&amp;rsquo;autorise aucun autre hôte, et la page n&amp;rsquo;envoie pas de
 referrer.&lt;/p&gt;
+&lt;p&gt;Pourquoi &lt;code&gt;api&lt;/code&gt; ? La
+&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;table des portées&lt;/a&gt;
+de GitLab indique que &lt;code&gt;write_repository&lt;/code&gt; « Does not support API authentication » :
+elle ne sert qu&amp;rsquo;à git sur HTTP, que GitLab sert sans CORS, donc un navigateur ne
+peut pas l&amp;rsquo;utiliser. Les propositions passent par l&amp;rsquo;API REST, qui exige &lt;code&gt;api&lt;/code&gt;,
+« complete read and write access to the API ». Un jeton &lt;code&gt;api&lt;/code&gt; volé peut faire
+tout ce que son utilisateur peut faire par l&amp;rsquo;API, sur tous les projets que cet
+utilisateur atteint. Préférez un jeton d&amp;rsquo;accès de projet ou de groupe limité
+aux dépôts des présentations, ou un compte GitLab dédié, membre seulement des
+projets des présentations.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sécurité&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La présentation s&amp;rsquo;affiche dans une iframe isolée, privée de l&amp;rsquo;origine de la page : elle ne peut
 atteindre ni le Playground ni son stockage, ne soumet aucun formulaire et ne navigue

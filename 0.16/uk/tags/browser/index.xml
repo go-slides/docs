@@ -260,6 +260,15 @@ GitLab&lt;/strong&gt; (код авторизації OAuth з PKCE, без се�
 користуйтеся персональним токеном доступу.&lt;/p&gt;
 &lt;p&gt;Запити йдуть лише до &lt;code&gt;api.github.com&lt;/code&gt; і &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security Policy
 сторінки не дозволяє жодного іншого хоста, а сторінка не надсилає referrer.&lt;/p&gt;
+&lt;p&gt;Чому &lt;code&gt;api&lt;/code&gt;? &lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;Таблиця областей&lt;/a&gt;
+GitLab каже про &lt;code&gt;write_repository&lt;/code&gt;: «Does not support API authentication». Вона
+призначена лише для git через HTTP, який GitLab віддає без CORS, тож браузер не
+може нею скористатися. Пропозиції використовують REST API, якому потрібна &lt;code&gt;api&lt;/code&gt;,
+«complete read and write access to the API». Викрадений токен &lt;code&gt;api&lt;/code&gt; може все, що
+його користувач може робити через API, у кожному проєкті, до якого цей
+користувач має доступ. Обирайте токен доступу проєкту або групи, обмежений
+репозиторіями презентацій, або окремий обліковий запис GitLab, що є лише
+учасником проєктів презентацій.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безпека&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентація показується в iframe, ізольованому без походження сторінки: він не
 може дістатися ні до Playground, ні до його сховища, не може надіслати форму й

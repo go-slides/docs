@@ -254,6 +254,15 @@ reused link, is refused. Sign-in is available once the site&amp;rsquo;s GitLab
 application is registered; until then, use a personal access token.&lt;/p&gt;
 &lt;p&gt;Requests go only to &lt;code&gt;api.github.com&lt;/code&gt; and &lt;code&gt;gitlab.com&lt;/code&gt;: the page&amp;rsquo;s Content
 Security Policy allows no other host, and the page sends no referrer.&lt;/p&gt;
+&lt;p&gt;Why &lt;code&gt;api&lt;/code&gt;? GitLab&amp;rsquo;s
+&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;scope table&lt;/a&gt;
+says &lt;code&gt;write_repository&lt;/code&gt; &amp;ldquo;Does not support API authentication&amp;rdquo;: it is for git
+over HTTP only, which GitLab serves without CORS, so a browser cannot use it.
+Proposals use the REST API, which needs &lt;code&gt;api&lt;/code&gt;, &amp;ldquo;complete read and write access
+to the API&amp;rdquo;. A stolen &lt;code&gt;api&lt;/code&gt; token can do anything its user can do through the
+API, on every project that user reaches. Prefer a project or group access
+token limited to the deck repositories, or a dedicated GitLab account that is
+only a member of the deck projects.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Security&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The deck is shown in an iframe sandboxed without the page&amp;rsquo;s origin: it can
 reach neither the playground nor its storage, submit no form and navigate

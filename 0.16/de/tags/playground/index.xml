@@ -263,6 +263,16 @@ Seite registriert ist; bis dahin nutzen Sie einen persönlichen Zugriffstoken.&l
 &lt;p&gt;Anfragen gehen nur an &lt;code&gt;api.github.com&lt;/code&gt; und &lt;code&gt;gitlab.com&lt;/code&gt;: Die Content Security
 Policy der Seite erlaubt keinen anderen Host, und die Seite sendet keinen
 Referrer.&lt;/p&gt;
+&lt;p&gt;Warum &lt;code&gt;api&lt;/code&gt;? Die
+&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;Scope-Tabelle&lt;/a&gt;
+von GitLab sagt zu &lt;code&gt;write_repository&lt;/code&gt; „Does not support API authentication“:
+Er gilt nur für Git über HTTP, das GitLab ohne CORS ausliefert, ein Browser kann
+ihn also nicht nutzen. Vorschläge laufen über die REST-API, die &lt;code&gt;api&lt;/code&gt; verlangt,
+„complete read and write access to the API“. Ein gestohlener &lt;code&gt;api&lt;/code&gt;-Token kann
+alles, was sein Benutzer über die API tun kann, in jedem Projekt, das dieser
+Benutzer erreicht. Bevorzugen Sie einen Projekt- oder Gruppen-Zugriffstoken, der
+auf die Präsentations-Repositories beschränkt ist, oder ein eigenes GitLab-Konto,
+das nur Mitglied der Präsentationsprojekte ist.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
 weder den Playground noch dessen Speicher erreichen, kein Formular absenden und

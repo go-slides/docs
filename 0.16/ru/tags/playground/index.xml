@@ -261,6 +261,15 @@ GitLab этого сайта зарегистрировано; до тех по�
 токеном доступа.&lt;/p&gt;
 &lt;p&gt;Запросы идут только на &lt;code&gt;api.github.com&lt;/code&gt; и &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security Policy
 страницы не разрешает никакой другой хост, а страница не отправляет referrer.&lt;/p&gt;
+&lt;p&gt;Почему &lt;code&gt;api&lt;/code&gt;? &lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;Таблица областей&lt;/a&gt;
+GitLab говорит о &lt;code&gt;write_repository&lt;/code&gt;: «Does not support API authentication». Она
+нужна только для git по HTTP, который GitLab отдаёт без CORS, поэтому браузер не
+может ею пользоваться. Предложения идут через REST API, которому нужна &lt;code&gt;api&lt;/code&gt;,
+«complete read and write access to the API». Украденный токен &lt;code&gt;api&lt;/code&gt; может всё,
+что его пользователь может делать через API, во всех проектах, до которых этот
+пользователь дотягивается. Выбирайте токен доступа проекта или группы,
+ограниченный репозиториями презентаций, или отдельную учётную запись GitLab,
+которая лишь участник проектов презентаций.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безопасность&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентация показывается в iframe, изолированном без источника страницы: он не
 может обратиться ни к Playground, ни к его хранилищу, не отправляет форм и никуда
