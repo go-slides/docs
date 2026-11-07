@@ -182,6 +182,48 @@ versions occupe au plus 96 MiB, et les fichiers qui n'ont pas changé ne sont
 stockés qu'une fois. Quand le stockage du navigateur est plein, les versions
 automatiques les plus anciennes partent d'abord.
 
+## GitHub {#github}
+
+**Home ▸ History ▸ GitHub** ouvre un volet qui charge le dossier d'une
+présentation depuis un dépôt GitHub et propose vos changements en retour sous
+forme de pull request. Renseignez :
+
+- **Dépôt (propriétaire/nom)** ;
+- **Branche (vide: celle par défaut)** ;
+- **Dossier (vide: la racine)** : le dossier doit contenir un `deck.md` ;
+- **Jeton**, masqué ;
+- **Mémoriser sur cet appareil**.
+
+Le jeton est un jeton d'accès personnel à granularité fine
+([en créer un](https://github.com/settings/personal-access-tokens/new)), limité
+aux dépôts choisis, avec les permissions Contents en lecture/écriture et Pull
+requests en lecture/écriture (Metadata en lecture est implicite). Ensuite :
+
+- **Se connecter** vérifie le jeton et le dépôt ; **Se déconnecter** oublie le
+  jeton.
+- **Charger** remplace le projet par le dossier de GitHub. Undo le reprend, et
+  le projet tel qu'il était est conservé comme version « Depuis GitHub ».
+- **Proposer les changements…** demande un titre, crée une nouvelle branche
+  `slides/<titre>-<date-heure>` et ouvre une pull request. Il n'écrit jamais
+  dans une branche existante ni dans la branche par défaut. **Ouvrir la pull
+  request** vous y conduit.
+- **Chercher des changements** compare la version plus récente de GitHub à la
+  vôtre dans la vue Compare. **Prendre les leurs** la charge.
+
+Aucun proxy n'est utilisé pour GitHub : le playground s'adresse directement à
+lui.
+
+Le jeton reste dans la mémoire de l'onglet seulement et n'est envoyé qu'à
+`api.github.com` : la Content Security Policy de la page n'autorise aucun autre
+hôte. Il n'est jamais enregistré dans le brouillon, les versions, les liens de
+partage ni les exports, et n'atteint jamais l'aperçu des diapositives ni le
+worker de rendu. **Mémoriser sur cet appareil** le garde dans le localStorage de
+ce navigateur jusqu'à **Se déconnecter** (ou Forget my drafts). Un risque
+subsiste : un script injecté dans la page du playground elle-même pourrait le
+lire. Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les
+équipes, le mode serveur auto-hébergé (à venir) garde les jetons sur le
+serveur.
+
 ## Sécurité {#security}
 
 La présentation s'affiche dans une iframe isolée, privée de l'origine de la page : elle ne peut

@@ -181,6 +181,47 @@ non le elimini (al massimo 50). Tutte le versioni insieme occupano al massimo
 Quando la memoria del browser è piena, le versioni automatiche più vecchie
 vanno via per prime.
 
+## GitHub {#github}
+
+**Home ▸ History ▸ GitHub** apre un riquadro che carica la cartella di una
+presentazione da un repository GitHub e rimanda le vostre modifiche come pull
+request. Compilate:
+
+- **Repository (proprietario/nome)**;
+- **Branch (vuoto: quello predefinito)**;
+- **Cartella (vuota: la radice)**: la cartella deve contenere un `deck.md`;
+- **Token**, mascherato;
+- **Ricorda su questo dispositivo**.
+
+Il token è un token di accesso personale a granularità fine
+([crearne uno](https://github.com/settings/personal-access-tokens/new)),
+limitato ai repository scelti, con i permessi Contents in lettura e scrittura e
+Pull requests in lettura e scrittura (Metadata in lettura è implicito). Poi:
+
+- **Connetti** verifica il token e il repository; **Disconnetti** dimentica il
+  token.
+- **Carica** sostituisce il progetto con la cartella di GitHub. Undo lo
+  annulla, e il progetto com'era resta come versione «Da GitHub».
+- **Proponi le modifiche…** chiede un titolo, crea un nuovo branch
+  `slides/<titolo>-<data-ora>` e apre una pull request. Non scrive mai in un
+  branch esistente né nel branch predefinito. **Apri la pull request** vi ci
+  porta.
+- **Cerca modifiche** confronta la versione più recente su GitHub con la
+  vostra nella vista Compare. **Prendi le loro** la carica.
+
+Per GitHub non si usa alcun proxy: il playground gli parla direttamente.
+
+Il token resta solo nella memoria della scheda e viene inviato solo a
+`api.github.com`: la Content Security Policy della pagina non consente alcun
+altro host. Non viene mai salvato nella bozza, nelle versioni, nei link di
+condivisione o nelle esportazioni, e non raggiunge mai l'anteprima delle slide
+né il worker di rendering. **Ricorda su questo dispositivo** lo conserva nel
+localStorage di questo browser fino a **Disconnetti** (o Forget my drafts).
+Resta un rischio: uno script iniettato nella pagina stessa del playground
+potrebbe leggerlo. Preferite un token limitato ai repository che vi servono.
+Per i team, la modalità server self-hosted (in arrivo) tiene i token sul
+server.
+
 ## Sicurezza {#security}
 
 La presentazione è mostrata in un iframe in sandbox senza l'origine della pagina: non può

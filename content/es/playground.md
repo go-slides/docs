@@ -192,6 +192,47 @@ máximo 96 MiB, y los archivos que no cambiaron se almacenan una sola vez. Cuand
 el almacenamiento del navegador está lleno, las versiones automáticas más
 antiguas se van primero.
 
+## GitHub {#github}
+
+**Home ▸ History ▸ GitHub** abre un panel que carga la carpeta de una
+presentación desde un repositorio de GitHub y propone sus cambios de vuelta
+como una pull request. Rellene:
+
+- **Repositorio (propietario/nombre)**;
+- **Rama (vacía: la predeterminada)**;
+- **Carpeta (vacía: la raíz)**: la carpeta debe contener un `deck.md`;
+- **Token**, enmascarado;
+- **Recordar en este dispositivo**.
+
+El token es un token de acceso personal de grano fino
+([crear uno](https://github.com/settings/personal-access-tokens/new)), limitado
+a los repositorios elegidos, con los permisos Contents de lectura y escritura y
+Pull requests de lectura y escritura (Metadata de lectura va implícito). Después:
+
+- **Conectar** comprueba el token y el repositorio; **Desconectar** olvida el
+  token.
+- **Cargar** sustituye el proyecto por la carpeta de GitHub. Undo lo deshace, y
+  el proyecto tal como estaba se conserva como versión «Desde GitHub».
+- **Proponer cambios…** pide un título, crea una rama nueva
+  `slides/<título>-<fecha-hora>` y abre una pull request. Nunca escribe en una
+  rama existente ni en la rama predeterminada. **Abrir la pull request** le
+  lleva a ella.
+- **Buscar cambios** compara la versión más reciente de GitHub con la suya en
+  la vista Compare. **Tomar los suyos** la carga.
+
+No se usa ningún proxy para GitHub: el playground habla directamente con él.
+
+El token queda solo en la memoria de la pestaña y se envía únicamente a
+`api.github.com`: la Content Security Policy de la página no permite ningún
+otro host. Nunca se guarda en el borrador, las versiones, los enlaces para
+compartir ni las exportaciones, y nunca llega a la vista previa de las
+diapositivas ni al worker de renderizado. **Recordar en este dispositivo** lo
+guarda en el localStorage de este navegador hasta **Desconectar** (o Forget my
+drafts). Queda un riesgo: un script inyectado en la propia página del
+playground podría leerlo. Prefiera un token limitado a los repositorios que
+necesite. Para equipos, el modo servidor autoalojado (próximamente) mantiene
+los tokens en el servidor.
+
 ## Seguridad {#security}
 
 La presentación se muestra en un iframe aislado, sin el origen de la página: no

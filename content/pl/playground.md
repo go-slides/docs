@@ -180,6 +180,46 @@ usuniesz (najwyżej 50). Wszystkie wersje razem zajmują najwyżej 96 MiB, a pli
 które się nie zmieniły, są zapisane raz. Gdy pamięć przeglądarki jest pełna,
 najpierw znikają najstarsze wersje automatyczne.
 
+## GitHub {#github}
+
+**Home ▸ History ▸ GitHub** otwiera panel, który wczytuje folder prezentacji z
+repozytorium GitHub i odsyła Twoje zmiany jako pull request. Wypełnij:
+
+- **Repozytorium (właściciel/nazwa)**;
+- **Gałąź (puste: domyślna)**;
+- **Folder (puste: katalog główny)**: folder musi zawierać plik `deck.md`;
+- **Token**, zamaskowany;
+- **Zapamiętaj na tym urządzeniu**.
+
+Token to szczegółowy osobisty token dostępu
+([utwórz go](https://github.com/settings/personal-access-tokens/new)),
+ograniczony do wybranych repozytoriów, z uprawnieniami Contents odczyt i zapis
+oraz Pull requests odczyt i zapis (Metadata odczyt jest domyślne). Dalej:
+
+- **Połącz** sprawdza token i repozytorium; **Rozłącz** zapomina token.
+- **Wczytaj** zastępuje projekt folderem z GitHuba. Cofnij (Undo) to
+  przywraca, a projekt sprzed wczytania zostaje jako wersja „Z GitHuba”.
+- **Zaproponuj zmiany…** pyta o tytuł, tworzy nową gałąź
+  `slides/<tytuł>-<data-godzina>` i otwiera pull request. Nigdy nie zapisuje do
+  istniejącej gałęzi ani do gałęzi domyślnej. **Otwórz pull request**
+  przenosi do niego.
+- **Sprawdź zmiany** porównuje nowszą wersję z GitHuba z Twoją w widoku
+  Compare. **Weź ich wersję** ją wczytuje.
+
+Dla GitHuba nie używa się żadnego proxy: playground łączy się z nim
+bezpośrednio.
+
+Token pozostaje tylko w pamięci karty i jest wysyłany wyłącznie do
+`api.github.com`: Content Security Policy strony nie dopuszcza żadnego innego
+hosta. Nigdy nie jest zapisywany w wersji roboczej, wersjach, linkach do
+udostępniania ani eksportach i nigdy nie trafia do podglądu slajdów ani do
+workera renderowania. **Zapamiętaj na tym urządzeniu** zapisuje go w
+localStorage tej przeglądarki do czasu **Rozłącz** (lub Forget my drafts).
+Pozostaje jedno ryzyko: skrypt wstrzyknięty do samej strony playgrounda mógłby
+go odczytać. Wybierz token ograniczony do potrzebnych repozytoriów. Dla
+zespołów tryb samodzielnie hostowanego serwera (wkrótce) trzyma tokeny na
+serwerze.
+
 ## Bezpieczeństwo {#security}
 
 Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie
