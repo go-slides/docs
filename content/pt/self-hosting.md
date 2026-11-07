@@ -261,6 +261,92 @@ um módulo do Caddy que faz o login dentro do próprio Caddy, sem um segundo
 processo. Ele exige um Caddy construído com o módulo (`xcaddy`) e tem a sua
 própria linguagem de configuração.
 
+## slides-gitd: as credenciais ficam no servidor {#slides-gitd}
+
+O [slides-gitd](https://github.com/go-slides/gitd) (v0.1.0) é o backend de git
+de um Playground auto-hospedado. Ele carrega a pasta de uma apresentação de uma
+forja, propõe as mudanças em um novo branch com um pull (merge) request e
+procura mudanças a montante, enquanto as credenciais da forja **ficam no
+servidor**: o navegador só tem um cookie de sessão HttpOnly. Fica atrás do Caddy
+e do oauth2-proxy (OIDC), escuta em `127.0.0.1:8091`, toma a identidade do
+usuário só do proxy e só escreve em branches chamados
+`slides/<usuário>/<título>-<hora>` que o próprio servidor nomeia.
+
+**Ainda não disponível:** o modo servidor do Playground, que fala com o
+slides-gitd em vez de o navegador guardar um token, é a próxima versão. Hoje o
+slides-gitd roda e pode ser verificado, mas o Playground não o usa.
+
+Configuração (os segredos são caminhos de arquivo, nunca valores; cada arquivo
+só deve ser legível pelo dono):
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+Um usuário só alcança as entradas `forja:dono/nome` listadas para o seu sujeito
+OIDC (negado por padrão). Crie a chave mestra com
+`head -c 32 /dev/urandom > master.key && chmod 600 master.key`, depois execute
+`slides-gitd check -c config.json`, que carrega todos os arquivos de segredos e
+sai, e `slides-gitd serve -c config.json`.
+
+O lado do Caddy, com o oauth2-proxy iniciado com `--set-xauthrequest`:
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+As linhas `request_header -…` apagam qualquer cabeçalho de identidade enviado pelo
+cliente, que assim não pode escolher quem é; o Caddy recente faz isso sozinho
+antes de `copy_headers`, as versões antigas não. `{file.*}` lê o segredo do
+proxy de um arquivo, então ele não fica em uma variável de ambiente.
+
+O **GitHub** usa um App. Crie-o em Settings ▸ Developer settings ▸ GitHub Apps
+com as permissões Contents de leitura e escrita, Pull requests de leitura e
+escrita e Metadata de leitura, sem webhook; instale-o só nos repositórios das
+apresentações. O slides-gitd emite um token de instalação para o único
+repositório de cada chamada, válido por uma hora.
+
+**GitLab:** cada usuário guarda um token de acesso pessoal ou de projeto com o
+escopo `api`. Por que `api` e não `write_repository`, e o que um token roubado
+pode fazer, está explicado [na página do Playground]({{< relref "playground#gitlab" >}});
+prefira um token de acesso de projeto ou de grupo limitado aos repositórios das
+apresentações, ou uma conta dedicada.
+
 ## Verificar {#check-it}
 
 ```sh

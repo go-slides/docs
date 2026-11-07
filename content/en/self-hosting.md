@@ -259,6 +259,92 @@ a Caddy module that does the sign-in inside Caddy, with no second process.
 It needs a Caddy built with the module (`xcaddy`), and its own
 configuration language.
 
+## slides-gitd: the credentials stay on the server {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd) (v0.1.0) is the git backend
+for a self-hosted playground. It loads a deck's folder from a forge, proposes
+changes as a new branch and a pull (merge) request, and checks for upstream
+changes, while the forge credentials **stay on the server**: the browser holds
+only an HttpOnly session cookie. It sits behind Caddy and oauth2-proxy (OIDC),
+listens on `127.0.0.1:8091`, takes the user's identity from the proxy only,
+and writes only to branches named `slides/<user>/<title>-<time>` that the
+server names itself.
+
+**Not available yet:** the playground's server mode, which talks to
+slides-gitd instead of the browser holding a token, is the next release.
+Today slides-gitd runs and can be checked, but the playground does not use it.
+
+Configuration (secrets are file paths, never values; each file must be
+readable by its owner only):
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+A user reaches only the `forge:owner/name` entries listed for their OIDC
+subject (deny by default). Create the master key with
+`head -c 32 /dev/urandom > master.key && chmod 600 master.key`, then run
+`slides-gitd check -c config.json`, which loads every secret file and exits,
+and `slides-gitd serve -c config.json`.
+
+The Caddy side, with oauth2-proxy started with `--set-xauthrequest`:
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+The `request_header -…` lines delete any identity header the client sent, so
+a client cannot choose who it is; recent Caddy does this itself before
+`copy_headers`, older versions did not. `{file.*}` reads the proxy secret from
+a file, so it is not in an environment variable.
+
+**GitHub** uses an App. Create it under Settings ▸ Developer settings ▸
+GitHub Apps with the permissions Contents read & write, Pull requests read &
+write and Metadata read, and no webhook; install it on the deck repositories
+only. slides-gitd mints an installation token for the one repository of each
+call, which lives an hour.
+
+**GitLab:** each user stores a personal or project access token with the scope
+`api`. Why `api` and not `write_repository`, and what a stolen token can do, is
+explained [on the playground page]({{< relref "playground#gitlab" >}}); prefer
+a project or group access token limited to the deck repositories, or a
+dedicated account.
+
 ## Check it
 
 ```sh

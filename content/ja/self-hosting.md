@@ -251,6 +251,88 @@ Playground にだけ適用します。oauth2-proxy のサインインページ�
 これは Caddy の中でサインインを行う Caddy モジュールで、2 つ目のプロセスは要りません。
 ただし、このモジュールを組み込んだ Caddy（`xcaddy`）と、独自の設定言語が必要です。
 
+## slides-gitd：認証情報はサーバーに残る {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd)（v0.1.0）は、セルフホストした
+Playground の git バックエンドです。forge からスライドのフォルダーを読み込み、変更を
+新しいブランチとプル（マージ）リクエストで提案し、上流の変更を確認します。forge の認証情報は
+**サーバーに残り**、ブラウザーが持つのは HttpOnly のセッション cookie だけです。Caddy と
+oauth2-proxy（OIDC）の背後に置き、`127.0.0.1:8091` で待ち受け、ユーザーの身元はプロキシからだけ
+受け取り、サーバー自身が名付けた `slides/<ユーザー>/<タイトル>-<時刻>` というブランチにしか
+書き込みません。
+
+**まだ利用できません：** ブラウザーがトークンを持つ代わりに slides-gitd と通信する
+Playground のサーバーモードは、次のリリースです。現時点では slides-gitd は動かして確認できますが、
+Playground はそれを使いません。
+
+設定（秘密はファイルパスで、値そのものは書きません。各ファイルは所有者だけが読める必要があります）：
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+ユーザーが届くのは、その OIDC サブジェクトに列挙された `forge:所有者/名前` だけです
+（既定で拒否）。マスターキーは
+`head -c 32 /dev/urandom > master.key && chmod 600 master.key` で作り、
+`slides-gitd check -c config.json`（すべての秘密ファイルを読み込んで終了します）を実行してから
+`slides-gitd serve -c config.json` を起動します。
+
+Caddy 側です。oauth2-proxy は `--set-xauthrequest` で起動します。
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+`request_header -…` の行は、クライアントが送った身元ヘッダーをすべて削除するので、
+クライアントは自分が誰かを選べません。新しい Caddy は `copy_headers` の前に自分で削除しますが、
+古いバージョンはしません。`{file.*}` はプロキシの秘密をファイルから読むので、環境変数には
+置かれません。
+
+**GitHub** は App を使います。Settings ▸ Developer settings ▸ GitHub Apps で、
+Contents の読み取りと書き込み、Pull requests の読み取りと書き込み、Metadata の読み取りの
+権限で作成し（webhook なし）、スライドのリポジトリにだけインストールします。slides-gitd は
+呼び出しごとにその 1 つのリポジトリ向けのインストールトークンを発行し、有効期間は 1 時間です。
+
+**GitLab：** 各ユーザーはスコープ `api` の個人またはプロジェクトのアクセストークンを保存します。
+`write_repository` ではなく `api` が必要な理由と、盗まれたトークンでできることは
+[Playground のページ]({{< relref "playground#gitlab" >}})で説明しています。スライドの
+リポジトリに限定したプロジェクトまたはグループのアクセストークン、または専用アカウントを使ってください。
+
 ## 確認する {#check-it}
 
 ```sh

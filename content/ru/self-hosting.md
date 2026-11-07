@@ -258,6 +258,92 @@ oauth2-proxy и `slides` слушают только loopback: единстве�
 модуль Caddy, выполняющий вход внутри Caddy, без второго процесса. Ему нужен
 Caddy, собранный с модулем (`xcaddy`), и собственный язык конфигурации.
 
+## slides-gitd: учётные данные остаются на сервере {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd) (v0.1.0) — это git-бэкенд
+собственного Playground. Он загружает папку презентации из forge, предлагает
+изменения в новой ветке с pull (merge) request и проверяет изменения в
+первоисточнике, а учётные данные forge **остаются на сервере**: у браузера есть
+только сессионный cookie HttpOnly. Он стоит за Caddy и oauth2-proxy (OIDC),
+слушает `127.0.0.1:8091`, личность пользователя берёт только у прокси и пишет
+только в ветки с именем `slides/<пользователь>/<заголовок>-<время>`, которые
+называет сам сервер.
+
+**Пока недоступно:** серверный режим Playground, который обращается к
+slides-gitd вместо того, чтобы браузер хранил токен, — следующий выпуск.
+Сегодня slides-gitd работает и проверяется, но Playground его не использует.
+
+Конфигурация (секреты — это пути к файлам, никогда не значения; каждый файл
+должен читаться только владельцем):
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+Пользователь достаёт только записи `forge:владелец/имя`, перечисленные для его
+субъекта OIDC (по умолчанию запрещено). Создайте главный ключ командой
+`head -c 32 /dev/urandom > master.key && chmod 600 master.key`, затем запустите
+`slides-gitd check -c config.json`, который загружает все файлы секретов и
+завершается, и `slides-gitd serve -c config.json`.
+
+Сторона Caddy, с oauth2-proxy, запущенным с `--set-xauthrequest`:
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+Строки `request_header -…` удаляют любой заголовок личности, присланный клиентом,
+так что клиент не может выбрать, кто он; свежий Caddy делает это сам перед
+`copy_headers`, старые версии — нет. `{file.*}` читает секрет прокси из файла,
+поэтому его нет в переменной окружения.
+
+**GitHub** использует App. Создайте её в Settings ▸ Developer settings ▸ GitHub
+Apps с правами Contents чтение и запись, Pull requests чтение и запись и
+Metadata чтение, без webhook; установите её только на репозитории презентаций.
+slides-gitd выпускает токен установки для единственного репозитория каждого
+вызова, действующий один час.
+
+**GitLab:** каждый пользователь сохраняет персональный токен доступа или токен
+проекта с областью `api`. Почему `api`, а не `write_repository`, и что может
+украденный токен, объяснено [на странице Playground]({{< relref "playground#gitlab" >}});
+выбирайте токен доступа проекта или группы, ограниченный репозиториями
+презентаций, или отдельную учётную запись.
+
 ## Проверка {#check-it}
 
 ```sh

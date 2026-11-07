@@ -249,6 +249,85 @@ Playground에만 둡니다. oauth2-proxy의 로그인 페이지는 폼인데,
 Caddy 안에서 로그인을 처리하는 Caddy 모듈로, 두 번째 프로세스가 필요 없습니다.
 다만 이 모듈을 넣어 빌드한 Caddy(`xcaddy`)와 자체 설정 언어가 필요합니다.
 
+## slides-gitd: 자격 증명은 서버에 남습니다 {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd)(v0.1.0)는 자체 호스팅 Playground의 git
+백엔드입니다. forge에서 발표 자료 폴더를 불러오고, 변경 사항을 새 브랜치와 풀(머지) 리퀘스트로
+제안하며, 업스트림 변경을 확인합니다. forge 자격 증명은 **서버에 남고**, 브라우저가 가지는 것은
+HttpOnly 세션 쿠키뿐입니다. Caddy와 oauth2-proxy(OIDC) 뒤에 두며 `127.0.0.1:8091`에서
+수신하고, 사용자 신원은 프록시에서만 받으며, 서버가 직접 이름을 붙인
+`slides/<사용자>/<제목>-<시각>` 브랜치에만 씁니다.
+
+**아직 사용할 수 없습니다:** 브라우저가 토큰을 가지는 대신 slides-gitd와 통신하는 Playground의
+서버 모드는 다음 릴리스입니다. 지금은 slides-gitd를 실행하고 점검할 수 있지만 Playground는
+그것을 쓰지 않습니다.
+
+설정(비밀은 파일 경로이며 값이 아닙니다. 각 파일은 소유자만 읽을 수 있어야 합니다):
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+사용자는 자신의 OIDC 주체에 나열된 `forge:소유자/이름` 항목에만 접근합니다(기본 거부).
+마스터 키는 `head -c 32 /dev/urandom > master.key && chmod 600 master.key`로 만들고,
+`slides-gitd check -c config.json`(모든 비밀 파일을 읽고 종료)을 실행한 다음
+`slides-gitd serve -c config.json`을 실행합니다.
+
+Caddy 쪽입니다. oauth2-proxy는 `--set-xauthrequest`로 시작합니다.
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+`request_header -…` 줄은 클라이언트가 보낸 신원 헤더를 모두 지우므로 클라이언트가 자신이
+누구인지 고를 수 없습니다. 최신 Caddy는 `copy_headers` 전에 스스로 지우지만 오래된 버전은
+그렇지 않습니다. `{file.*}`는 프록시 비밀을 파일에서 읽으므로 환경 변수에 두지 않습니다.
+
+**GitHub**는 App을 씁니다. Settings ▸ Developer settings ▸ GitHub Apps에서 Contents 읽기/쓰기,
+Pull requests 읽기/쓰기, Metadata 읽기 권한으로 만들고(webhook 없음) 발표 자료 저장소에만
+설치합니다. slides-gitd는 호출마다 그 하나의 저장소에 대한 설치 토큰을 발급하며 유효 시간은
+한 시간입니다.
+
+**GitLab:** 각 사용자는 범위 `api`의 개인 또는 프로젝트 액세스 토큰을 저장합니다.
+`write_repository`가 아니라 `api`여야 하는 이유와 도난당한 토큰으로 할 수 있는 일은
+[Playground 페이지]({{< relref "playground#gitlab" >}})에서 설명합니다. 발표 자료 저장소로 제한한
+프로젝트 또는 그룹 액세스 토큰이나 전용 계정을 쓰세요.
+
 ## 확인하기 {#check-it}
 
 ```sh

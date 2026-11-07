@@ -259,6 +259,93 @@ un módulo de Caddy que hace el inicio de sesión dentro de Caddy, sin un segund
 Necesita un Caddy compilado con el módulo (`xcaddy`) y su propio lenguaje
 de configuración.
 
+## slides-gitd: las credenciales se quedan en el servidor {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd) (v0.1.0) es el backend de git
+de un Playground autoalojado. Carga la carpeta de una presentación desde una
+forja, propone los cambios en una rama nueva con una pull (merge) request y
+busca cambios en origen, mientras las credenciales de la forja **se quedan en
+el servidor**: el navegador solo tiene una cookie de sesión HttpOnly. Va detrás
+de Caddy y oauth2-proxy (OIDC), escucha en `127.0.0.1:8091`, toma la identidad
+del usuario solo del proxy y solo escribe en ramas llamadas
+`slides/<usuario>/<título>-<hora>` que el propio servidor nombra.
+
+**Todavía no disponible:** el modo servidor del Playground, que habla con
+slides-gitd en lugar de que el navegador guarde un token, es la próxima
+versión. Hoy slides-gitd funciona y se puede comprobar, pero el Playground no
+lo usa.
+
+Configuración (los secretos son rutas de archivo, nunca valores; cada archivo
+solo debe ser legible por su propietario):
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+Un usuario solo llega a las entradas `forja:propietario/nombre` listadas para su
+sujeto OIDC (denegado por defecto). Cree la clave maestra con
+`head -c 32 /dev/urandom > master.key && chmod 600 master.key`, luego ejecute
+`slides-gitd check -c config.json`, que carga todos los archivos de secretos y
+termina, y `slides-gitd serve -c config.json`.
+
+El lado de Caddy, con oauth2-proxy iniciado con `--set-xauthrequest`:
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+Las líneas `request_header -…` borran cualquier cabecera de identidad que envíe el
+cliente, así que un cliente no puede elegir quién es; el Caddy reciente lo hace
+solo antes de `copy_headers`, las versiones antiguas no. `{file.*}` lee el
+secreto del proxy desde un archivo, así que no está en una variable de entorno.
+
+**GitHub** usa una App. Créela en Settings ▸ Developer settings ▸ GitHub Apps
+con los permisos Contents de lectura y escritura, Pull requests de lectura y
+escritura y Metadata de lectura, sin webhook; instálela solo en los
+repositorios de las presentaciones. slides-gitd emite un token de instalación
+para el único repositorio de cada llamada, válido una hora.
+
+**GitLab:** cada usuario guarda un token de acceso personal o de proyecto con el
+alcance `api`. Por qué `api` y no `write_repository`, y qué puede hacer un token
+robado, se explica [en la página del Playground]({{< relref "playground#gitlab" >}});
+prefiera un token de acceso de proyecto o de grupo limitado a los repositorios
+de las presentaciones, o una cuenta dedicada.
+
 ## Compruébelo {#check-it}
 
 ```sh

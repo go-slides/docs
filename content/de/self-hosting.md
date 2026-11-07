@@ -259,6 +259,94 @@ ein Caddy-Modul, das die Anmeldung innerhalb von Caddy erledigt, ohne zweiten Pr
 Es braucht einen Caddy, der mit dem Modul gebaut wurde (`xcaddy`), und eine eigene
 Konfigurationssprache.
 
+## slides-gitd: die Zugangsdaten bleiben auf dem Server {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd) (v0.1.0) ist das Git-Backend
+eines selbst gehosteten Playgrounds. Es lädt den Ordner einer Präsentation aus
+einer Forge, schlägt Änderungen als neuen Branch mit Pull-(Merge-)Request vor
+und prüft auf Änderungen im Upstream, während die Zugangsdaten der Forge **auf
+dem Server bleiben**: Der Browser hält nur ein HttpOnly-Sitzungscookie. Es sitzt
+hinter Caddy und oauth2-proxy (OIDC), lauscht auf `127.0.0.1:8091`, übernimmt
+die Identität des Benutzers nur vom Proxy und schreibt nur in Branches namens
+`slides/<Benutzer>/<Titel>-<Zeit>`, die der Server selbst benennt.
+
+**Noch nicht verfügbar:** Der Servermodus des Playgrounds, der mit slides-gitd
+spricht, statt dass der Browser einen Token hält, ist die nächste Version. Heute
+läuft slides-gitd und lässt sich prüfen, der Playground nutzt es aber nicht.
+
+Konfiguration (Geheimnisse sind Dateipfade, nie Werte; jede Datei darf nur für
+ihren Besitzer lesbar sein):
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+Ein Benutzer erreicht nur die Einträge `forge:Besitzer/Name`, die für sein
+OIDC-Subjekt aufgeführt sind (standardmäßig verboten). Erzeugen Sie den
+Hauptschlüssel mit `head -c 32 /dev/urandom > master.key && chmod 600 master.key`,
+starten Sie dann `slides-gitd check -c config.json`, das alle Geheimnisdateien
+lädt und endet, und `slides-gitd serve -c config.json`.
+
+Die Caddy-Seite, mit oauth2-proxy gestartet mit `--set-xauthrequest`:
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+Die Zeilen `request_header -…` löschen jeden vom Client gesendeten
+Identitäts-Header, sodass ein Client nicht wählen kann, wer er ist; neueres
+Caddy tut das vor `copy_headers` selbst, ältere Versionen nicht. `{file.*}`
+liest das Proxy-Geheimnis aus einer Datei, es steht also nicht in einer
+Umgebungsvariablen.
+
+**GitHub** nutzt eine App. Legen Sie sie unter Settings ▸ Developer settings ▸
+GitHub Apps an, mit den Berechtigungen Contents Lesen/Schreiben, Pull requests
+Lesen/Schreiben und Metadata Lesen, ohne Webhook; installieren Sie sie nur auf
+den Präsentations-Repositories. slides-gitd erzeugt für jeden Aufruf einen
+Installations-Token für genau das eine Repository, eine Stunde gültig.
+
+**GitLab:** Jeder Benutzer hinterlegt einen persönlichen oder Projekt-Zugriffstoken
+mit dem Scope `api`. Warum `api` und nicht `write_repository` und was ein
+gestohlener Token anrichten kann, steht
+[auf der Playground-Seite]({{< relref "playground#gitlab" >}}); bevorzugen Sie
+einen Projekt- oder Gruppen-Zugriffstoken, der auf die Präsentations-Repositories
+beschränkt ist, oder ein eigenes Konto.
+
 ## Prüfen {#check-it}
 
 ```sh
