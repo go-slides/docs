@@ -72,6 +72,15 @@ Bloki kodu i fragmenty kodu w tekście są odkładane na bok przed uruchomieniem
 szablonu i przywracane bez zmian, więc slajd o szablonach Go może pokazać
 `{{ .Name }}` bez ucieczki znaków.
 
+## Limity {#limits}
+
+Wykonanie szablonu ma budżet kroków, aby prezentacja, której szablony zagnieżdżają
+`range` nad dużymi listami danych, nie mogła zajmować renderera przez minuty.
+Po przekroczeniu 1 048 576 kroków (iteracje pętli i wywołania szablonów, wspólne dla
+`include` jednego rozwinięcia) lub 10 s prezentacja jest odrzucana z diagnostyką
+`template.limit` zamiast się zawieszać. Krok kosztuje około 260 ns, więc zwykłe
+prezentacje pozostają daleko poniżej tej granicy. Od v0.17.1.
+
 ## Wyłączanie {#turning-it-off}
 
 `--no-template` czyta prezentację jako zwykły Marp: `{{` jest tekstem.

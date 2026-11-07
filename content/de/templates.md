@@ -72,6 +72,16 @@ Codeblöcke und Inline-Code-Spans werden beiseitegelegt, bevor die Vorlage
 läuft, und unverändert wiederhergestellt, sodass eine Folie über Go-Vorlagen
 `{{ .Name }}` zeigen kann, ohne es zu maskieren.
 
+## Grenzen {#limits}
+
+Die Ausführung einer Vorlage hat ein Schrittbudget, damit ein Foliensatz, dessen
+Vorlagen `range` über große Datenlisten verschachteln, den Renderer nicht
+minutenlang beschäftigen kann. Jenseits von 1.048.576 Schritten (Schleifendurchläufe
+und Vorlagenaufrufe, gemeinsam mit den `include`s einer Expansion) oder 10 s wird der
+Foliensatz mit der Diagnose `template.limit` abgelehnt, statt zu hängen. Ein Schritt
+kostet etwa 260 ns, sodass gewöhnliche Foliensätze weit unter der Grenze bleiben.
+Seit v0.17.1.
+
 ## Abschalten {#turning-it-off}
 
 `--no-template` liest den Foliensatz als reines Marp: `{{` ist Text.
