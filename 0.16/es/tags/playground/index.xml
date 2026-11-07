@@ -257,6 +257,19 @@ drafts). Queda un riesgo: un script inyectado en la propia página del
 playground podría leerlo. Prefiera un token limitado a los repositorios que
 necesite. Para equipos, el modo servidor autoalojado (próximamente) mantiene
 los tokens en el servidor.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;El panel tiene una lista de forjas: &lt;strong&gt;GitHub&lt;/strong&gt; y &lt;strong&gt;GitLab.com&lt;/strong&gt;. Para GitLab,
+indique un token de acceso personal con el alcance &lt;code&gt;api&lt;/code&gt;, o pulse &lt;strong&gt;Iniciar
+sesión con GitLab&lt;/strong&gt; (código de autorización OAuth con PKCE, sin secreto). El
+inicio de sesión lleva la página a gitlab.com y la devuelve, y la dirección se
+limpia de inmediato. Sus tokens quedan solo en la memoria de esta pestaña (nunca
+se recuerdan en el dispositivo, ni siquiera con &lt;strong&gt;Recordar en este
+dispositivo&lt;/strong&gt;), se renuevan solos antes de caducar, y &lt;strong&gt;Desconectar&lt;/strong&gt; los revoca
+en GitLab. Un inicio de sesión empezado en otra pestaña, o un enlace reutilizado,
+se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
+del sitio está registrada; mientras tanto, use un token de acceso personal.&lt;/p&gt;
+&lt;p&gt;Las peticiones van solo a &lt;code&gt;api.github.com&lt;/code&gt; y &lt;code&gt;gitlab.com&lt;/code&gt;: la Content Security
+Policy de la página no permite ningún otro host, y la página no envía referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Seguridad&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentación se muestra en un iframe aislado, sin el origen de la página: no
 puede alcanzar ni el Playground ni su almacenamiento, no puede enviar ningún

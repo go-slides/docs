@@ -249,6 +249,20 @@ Playground-Seite selbst eingeschleustes Skript könnte ihn lesen. Bevorzugen
 Sie einen Token, der auf die benötigten Repositories beschränkt ist. Für Teams
 hält der selbst gehostete Servermodus (in Vorbereitung) die Token auf dem
 Server.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Der Bereich hat eine Liste der Forges: &lt;strong&gt;GitHub&lt;/strong&gt; und &lt;strong&gt;GitLab.com&lt;/strong&gt;. Für
+GitLab geben Sie entweder einen persönlichen Zugriffstoken mit dem Scope &lt;code&gt;api&lt;/code&gt;
+an oder wählen &lt;strong&gt;Mit GitLab anmelden&lt;/strong&gt; (OAuth-Autorisierungscode mit PKCE, ohne
+Geheimnis). Die Anmeldung führt die Seite zu gitlab.com und zurück, und die
+Adresse wird sofort bereinigt. Ihre Tokens bleiben nur im Speicher dieses Tabs
+(nie auf dem Gerät gemerkt, auch nicht mit &lt;strong&gt;Auf diesem Gerät merken&lt;/strong&gt;),
+erneuern sich vor dem Ablauf selbst, und &lt;strong&gt;Trennen&lt;/strong&gt; widerruft sie bei GitLab.
+Eine in einem anderen Tab begonnene Anmeldung oder ein wiederverwendeter Link
+wird abgelehnt. Die Anmeldung steht bereit, sobald die GitLab-Anwendung der
+Seite registriert ist; bis dahin nutzen Sie einen persönlichen Zugriffstoken.&lt;/p&gt;
+&lt;p&gt;Anfragen gehen nur an &lt;code&gt;api.github.com&lt;/code&gt; und &lt;code&gt;gitlab.com&lt;/code&gt;: Die Content Security
+Policy der Seite erlaubt keinen anderen Host, und die Seite sendet keinen
+Referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
 weder den Playground noch dessen Speicher erreichen, kein Formular absenden und

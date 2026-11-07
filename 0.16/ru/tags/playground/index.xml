@@ -248,6 +248,19 @@ Content Security Policy страницы не разрешает никакой 
 в саму страницу playground, мог бы его прочитать. Выбирайте токен, ограниченный
 нужными репозиториями. Для команд режим собственного сервера (скоро) хранит
 токены на сервере.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;В панели есть список forge: &lt;strong&gt;GitHub&lt;/strong&gt; и &lt;strong&gt;GitLab.com&lt;/strong&gt;. Для GitLab укажите
+персональный токен доступа с областью &lt;code&gt;api&lt;/code&gt; или нажмите &lt;strong&gt;Войти через GitLab&lt;/strong&gt;
+(код авторизации OAuth с PKCE, без секрета). Вход переводит страницу на
+gitlab.com и возвращает обратно, а адрес сразу очищается. Его токены остаются
+только в памяти этой вкладки (никогда не запоминаются на устройстве, даже с
+&lt;strong&gt;Запомнить на этом устройстве&lt;/strong&gt;), сами обновляются до истечения срока, а
+&lt;strong&gt;Отключиться&lt;/strong&gt; отзывает их в GitLab. Вход, начатый в другой вкладке, или
+повторно использованная ссылка отклоняется. Вход доступен, когда приложение
+GitLab этого сайта зарегистрировано; до тех пор пользуйтесь персональным
+токеном доступа.&lt;/p&gt;
+&lt;p&gt;Запросы идут только на &lt;code&gt;api.github.com&lt;/code&gt; и &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security Policy
+страницы не разрешает никакой другой хост, а страница не отправляет referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безопасность&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентация показывается в iframe, изолированном без источника страницы: он не
 может обратиться ни к Playground, ни к его хранилищу, не отправляет форм и никуда

@@ -242,6 +242,18 @@ in this browser&amp;rsquo;s localStorage until you press &lt;strong&gt;Disconnec
 drafts). One risk remains: a script injected into the playground page itself
 could read it. Prefer a token limited to the repositories you need. For teams,
 the self-hosted server mode (coming) keeps tokens on the server.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The pane has a forge list: &lt;strong&gt;GitHub&lt;/strong&gt; and &lt;strong&gt;GitLab.com&lt;/strong&gt;. For GitLab, give
+either a personal access token with the scope &lt;code&gt;api&lt;/code&gt;, or press &lt;strong&gt;Sign in with
+GitLab&lt;/strong&gt; (OAuth authorization code with PKCE, no secret). Sign-in takes the
+page to gitlab.com and back, and the address is cleaned at once. Its tokens
+stay in this tab&amp;rsquo;s memory only (never remembered on the device, even with
+&lt;strong&gt;Remember on this device&lt;/strong&gt;), refresh themselves before they expire, and
+&lt;strong&gt;Disconnect&lt;/strong&gt; revokes them at GitLab. A sign-in started in another tab, or a
+reused link, is refused. Sign-in is available once the site&amp;rsquo;s GitLab
+application is registered; until then, use a personal access token.&lt;/p&gt;
+&lt;p&gt;Requests go only to &lt;code&gt;api.github.com&lt;/code&gt; and &lt;code&gt;gitlab.com&lt;/code&gt;: the page&amp;rsquo;s Content
+Security Policy allows no other host, and the page sends no referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Security&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The deck is shown in an iframe sandboxed without the page&amp;rsquo;s origin: it can
 reach neither the playground nor its storage, submit no form and navigate

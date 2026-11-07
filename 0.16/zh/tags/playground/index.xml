@@ -202,6 +202,15 @@ Policy 不允许任何其他主机。它从不保存到草稿、版本、分享�
 localStorage，直到 &lt;strong&gt;断开&lt;/strong&gt;（或 Forget my drafts）。仍有一项风险：注入到
 playground 页面本身的脚本可以读取它。请优先使用只限于所需仓库的令牌。对于团队，
 自托管服务器模式（即将推出）把令牌保存在服务器上。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;窗格中有一个 forge 列表：&lt;strong&gt;GitHub&lt;/strong&gt; 和 &lt;strong&gt;GitLab.com&lt;/strong&gt;。使用 GitLab 时，可以提供范围为
+&lt;code&gt;api&lt;/code&gt; 的个人访问令牌，或点击 &lt;strong&gt;用 GitLab 登录&lt;/strong&gt;（带 PKCE 的 OAuth 授权码，无需密钥）。
+登录会把页面带到 gitlab.com 再返回，地址会立刻被清理。登录得到的令牌只留在此标签页的
+内存中（即使选了 &lt;strong&gt;在此设备上记住&lt;/strong&gt; 也不会记在设备上），会在过期前自动刷新，
+&lt;strong&gt;断开&lt;/strong&gt; 会在 GitLab 撤销它们。在另一个标签页发起的登录，或重复使用的链接，都会被拒绝。
+本站的 GitLab 应用注册后即可使用登录；在此之前请使用个人访问令牌。&lt;/p&gt;
+&lt;p&gt;请求只发往 &lt;code&gt;api.github.com&lt;/code&gt; 和 &lt;code&gt;gitlab.com&lt;/code&gt;：页面的 Content Security Policy 不允许任何
+其他主机，页面也不发送 referrer。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;安全&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;演示文稿显示在一个不具有页面来源（origin）的沙盒 iframe 中：它既无法访问 Playground，
 也无法访问其存储，不能提交表单，也不能进行任何导航。其页面带有内容安全策略（Content Security Policy），

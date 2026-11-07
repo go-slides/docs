@@ -247,6 +247,19 @@ requests читання й запис (Metadata читання мається н
 Залишається один ризик: скрипт, упроваджений у саму сторінку playground, міг
 би його прочитати. Обирайте токен, обмежений потрібними репозиторіями. Для
 команд режим власного сервера (незабаром) тримає токени на сервері.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Панель має список forge: &lt;strong&gt;GitHub&lt;/strong&gt; і &lt;strong&gt;GitLab.com&lt;/strong&gt;. Для GitLab вкажіть
+персональний токен доступу з областю &lt;code&gt;api&lt;/code&gt; або натисніть &lt;strong&gt;Увійти через
+GitLab&lt;/strong&gt; (код авторизації OAuth з PKCE, без секрету). Вхід переводить сторінку
+на gitlab.com і повертає назад, а адресу одразу очищають. Його токени
+залишаються лише в пам’яті цієї вкладки (ніколи не запам’ятовуються на
+пристрої, навіть із &lt;strong&gt;Запам’ятати на цьому пристрої&lt;/strong&gt;), самі оновлюються до
+завершення строку дії, а &lt;strong&gt;Від’єднатися&lt;/strong&gt; відкликає їх у GitLab. Вхід,
+розпочатий в іншій вкладці, або повторно використане посилання відхиляється.
+Вхід доступний, щойно застосунок GitLab цього сайту зареєстровано; до того
+користуйтеся персональним токеном доступу.&lt;/p&gt;
+&lt;p&gt;Запити йдуть лише до &lt;code&gt;api.github.com&lt;/code&gt; і &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security Policy
+сторінки не дозволяє жодного іншого хоста, а сторінка не надсилає referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Безпека&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Презентація показується в iframe, ізольованому без походження сторінки: він не
 може дістатися ні до Playground, ні до його сховища, не може надіслати форму й

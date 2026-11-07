@@ -227,6 +227,17 @@ Security Policy가 다른 호스트를 허용하지 않기 때문입니다. 초�
 localStorage에 저장됩니다. 위험이 하나 남습니다. playground 페이지 자체에 주입된
 스크립트가 토큰을 읽을 수 있다는 점입니다. 필요한 저장소로 제한한 토큰을 쓰세요.
 팀에는 토큰을 서버에 두는 자체 호스팅 서버 모드(곧 제공)가 있습니다.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;창에는 forge 목록이 있으며 &lt;strong&gt;GitHub&lt;/strong&gt;와 &lt;strong&gt;GitLab.com&lt;/strong&gt; 중에서 고릅니다. GitLab에서는
+범위 &lt;code&gt;api&lt;/code&gt;의 개인 액세스 토큰을 입력하거나 &lt;strong&gt;GitLab으로 로그인&lt;/strong&gt;(PKCE를 쓰는 OAuth
+인증 코드, 시크릿 없음)을 누릅니다. 로그인하면 페이지가 gitlab.com으로 갔다가
+돌아오며 주소는 즉시 정리됩니다. 그 토큰은 이 탭의 메모리에만 있고(&lt;strong&gt;이 기기에 기억&lt;/strong&gt;을
+선택해도 기기에 기억되지 않음), 만료 전에 스스로 갱신되며, &lt;strong&gt;연결 해제&lt;/strong&gt;가 GitLab에서
+토큰을 취소합니다. 다른 탭에서 시작한 로그인이나 재사용한 링크는 거부됩니다. 로그인은
+사이트의 GitLab 애플리케이션이 등록된 뒤에 쓸 수 있으며, 그전에는 개인 액세스 토큰을
+사용하세요.&lt;/p&gt;
+&lt;p&gt;요청은 &lt;code&gt;api.github.com&lt;/code&gt;과 &lt;code&gt;gitlab.com&lt;/code&gt;으로만 갑니다. 페이지의 Content Security Policy가
+다른 호스트를 허용하지 않으며, 페이지는 referrer를 보내지 않습니다.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;보안&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;프레젠테이션은 페이지의 출처(origin)를 갖지 않는 샌드박스 iframe에 표시됩니다.
 따라서 Playground에도, 그 저장소에도 접근할 수 없고, 양식을 제출하거나 페이지를

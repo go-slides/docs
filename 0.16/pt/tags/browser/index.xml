@@ -250,6 +250,18 @@ navegador até &lt;strong&gt;Desconectar&lt;/strong&gt; (ou Forget my drafts). R
 injetado na própria página do playground poderia lê-lo. Prefira um token
 limitado aos repositórios de que você precisa. Para equipes, o modo servidor
 auto-hospedado (em breve) mantém os tokens no servidor.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O painel tem uma lista de forjas: &lt;strong&gt;GitHub&lt;/strong&gt; e &lt;strong&gt;GitLab.com&lt;/strong&gt;. Para o GitLab,
+informe um token de acesso pessoal com o escopo &lt;code&gt;api&lt;/code&gt;, ou clique em &lt;strong&gt;Entrar com
+o GitLab&lt;/strong&gt; (código de autorização OAuth com PKCE, sem segredo). O login leva a
+página ao gitlab.com e a traz de volta, e o endereço é limpo na hora. Seus
+tokens ficam só na memória desta aba (nunca lembrados no dispositivo, mesmo com
+&lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt;), se renovam sozinhos antes de expirar, e
+&lt;strong&gt;Desconectar&lt;/strong&gt; os revoga no GitLab. Um login iniciado em outra aba, ou um link
+reutilizado, é recusado. O login fica disponível quando o aplicativo GitLab do
+site estiver registrado; até lá, use um token de acesso pessoal.&lt;/p&gt;
+&lt;p&gt;As requisições vão só para &lt;code&gt;api.github.com&lt;/code&gt; e &lt;code&gt;gitlab.com&lt;/code&gt;: a Content Security
+Policy da página não permite nenhum outro host, e a página não envia referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Segurança&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A apresentação é exibida em um iframe em sandbox, sem a origem da página: ele
 não alcança nem o Playground nem o armazenamento dele, não envia nenhum

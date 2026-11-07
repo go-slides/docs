@@ -244,6 +244,19 @@ Pozostaje jedno ryzyko: skrypt wstrzyknięty do samej strony playgrounda mógłb
 go odczytać. Wybierz token ograniczony do potrzebnych repozytoriów. Dla
 zespołów tryb samodzielnie hostowanego serwera (wkrótce) trzyma tokeny na
 serwerze.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Panel ma listę forge: &lt;strong&gt;GitHub&lt;/strong&gt; i &lt;strong&gt;GitLab.com&lt;/strong&gt;. Dla GitLaba podaj osobisty
+token dostępu z zakresem &lt;code&gt;api&lt;/code&gt; albo naciśnij &lt;strong&gt;Zaloguj się przez GitLab&lt;/strong&gt; (kod
+autoryzacji OAuth z PKCE, bez sekretu). Logowanie przenosi stronę do gitlab.com
+i z powrotem, a adres jest od razu czyszczony. Jego tokeny zostają tylko w
+pamięci tej karty (nigdy nie są zapamiętywane na urządzeniu, nawet z opcją
+&lt;strong&gt;Zapamiętaj na tym urządzeniu&lt;/strong&gt;), odnawiają się same przed wygaśnięciem, a
+&lt;strong&gt;Rozłącz&lt;/strong&gt; unieważnia je w GitLabie. Logowanie rozpoczęte w innej karcie lub
+ponownie użyty link zostaje odrzucone. Logowanie jest dostępne, gdy aplikacja
+GitLab tej strony jest zarejestrowana; do tego czasu użyj osobistego tokenu
+dostępu.&lt;/p&gt;
+&lt;p&gt;Żądania trafiają tylko do &lt;code&gt;api.github.com&lt;/code&gt; i &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security
+Policy strony nie dopuszcza żadnego innego hosta, a strona nie wysyła referrera.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Bezpieczeństwo&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Prezentacja jest pokazywana w iframe z piaskownicą bez pochodzenia strony: nie
 sięgnie ani do Playground, ani do jego pamięci, nie wyśle żadnego formularza i nie

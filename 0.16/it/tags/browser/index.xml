@@ -246,6 +246,20 @@ Resta un rischio: uno script iniettato nella pagina stessa del playground
 potrebbe leggerlo. Preferite un token limitato ai repository che vi servono.
 Per i team, la modalità server self-hosted (in arrivo) tiene i token sul
 server.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Il riquadro ha un elenco di forge: &lt;strong&gt;GitHub&lt;/strong&gt; e &lt;strong&gt;GitLab.com&lt;/strong&gt;. Per GitLab,
+fornite un token di accesso personale con lo scope &lt;code&gt;api&lt;/code&gt;, oppure premete
+&lt;strong&gt;Accedi con GitLab&lt;/strong&gt; (codice di autorizzazione OAuth con PKCE, senza segreto).
+L&amp;rsquo;accesso porta la pagina su gitlab.com e la riporta indietro, e l&amp;rsquo;indirizzo
+viene ripulito subito. I suoi token restano solo nella memoria di questa scheda
+(mai ricordati sul dispositivo, nemmeno con &lt;strong&gt;Ricorda su questo dispositivo&lt;/strong&gt;),
+si rinnovano da soli prima di scadere, e &lt;strong&gt;Disconnetti&lt;/strong&gt; li revoca presso
+GitLab. Un accesso avviato in un&amp;rsquo;altra scheda, o un link riutilizzato, viene
+rifiutato. L&amp;rsquo;accesso è disponibile quando l&amp;rsquo;applicazione GitLab del sito è
+registrata; fino ad allora usate un token di accesso personale.&lt;/p&gt;
+&lt;p&gt;Le richieste vanno solo a &lt;code&gt;api.github.com&lt;/code&gt; e &lt;code&gt;gitlab.com&lt;/code&gt;: la Content Security
+Policy della pagina non consente alcun altro host, e la pagina non invia il
+referrer.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="security"&gt;Sicurezza&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
 &lt;a href="#security" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentazione è mostrata in un iframe in sandbox senza l&amp;rsquo;origine della pagina: non può
 raggiungere né il Playground né la sua memoria, non può inviare moduli e non naviga
