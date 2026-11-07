@@ -251,6 +251,82 @@ Caddy，因而必须经过登录。Playground 的响应头放在
 它需要内置了该模块的 Caddy（`xcaddy`），以及它自己的
 配置语言。
 
+## slides-gitd：凭据留在服务器上 {#slides-gitd}
+
+[slides-gitd](https://github.com/go-slides/gitd)（v0.1.0）是自托管 Playground 的 git
+后端。它从 forge 载入演示文稿的文件夹，以新分支和拉取（合并）请求提出修改，并检查上游
+变化，而 forge 的凭据**留在服务器上**：浏览器只持有一个 HttpOnly 会话 cookie。它位于
+Caddy 和 oauth2-proxy（OIDC）之后，监听 `127.0.0.1:8091`，只从代理获取用户身份，并且只
+写入名为 `slides/<用户>/<标题>-<时间>` 的分支，分支名由服务器自己决定。
+
+**尚不可用：** Playground 的服务器模式（与 slides-gitd 通信，而不是由浏览器持有令牌）
+将在下一个版本提供。目前 slides-gitd 可以运行和检查，但 Playground 并不使用它。
+
+配置（机密是文件路径，绝不是值；每个文件只能由其所有者读取）：
+
+```json
+{
+  "listen": "127.0.0.1:8091",
+  "origin": "https://slides.example.org",
+  "proxy_secret_file": "/etc/slides-gitd/proxy.secret",
+  "master_key_file": "/etc/slides-gitd/master.key",
+  "data_dir": "/var/lib/slides-gitd",
+  "audit_file": "/var/log/slides-gitd/audit.log",
+  "forges": {
+    "github": {"kind": "github", "api": "https://api.github.com", "auth": "github-app",
+               "app_client_id": "Iv1.…", "installation_id": 12345678,
+               "app_key_file": "/etc/slides-gitd/github-app.pem"},
+    "gitlab": {"kind": "gitlab", "api": "https://gitlab.example.org/api/v4", "auth": "user-token"}
+  },
+  "users": {
+    "3f2b…-oidc-sub": {"slug": "ada", "repos": ["github:lab/talks", "gitlab:team/slides"]}
+  }
+}
+```
+
+用户只能访问为其 OIDC 主体列出的 `forge:所有者/名称` 条目（默认拒绝）。用
+`head -c 32 /dev/urandom > master.key && chmod 600 master.key` 创建主密钥，然后运行
+`slides-gitd check -c config.json`（它载入所有机密文件后退出），再运行
+`slides-gitd serve -c config.json`。
+
+Caddy 一侧，oauth2-proxy 以 `--set-xauthrequest` 启动：
+
+```caddyfile
+slides.example.org {
+    handle /oauth2/* {
+        reverse_proxy 127.0.0.1:4180
+    }
+    handle /api/git/* {
+        # never let a client choose its identity, whatever Caddy's version does
+        request_header -X-Auth-Request-User
+        request_header -X-Auth-Request-Email
+        request_header -X-Gitd-Proxy-Secret
+        forward_auth 127.0.0.1:4180 {
+            uri /oauth2/auth
+            copy_headers X-Auth-Request-User X-Auth-Request-Email
+        }
+        request_body { max_size 64MB }
+        reverse_proxy 127.0.0.1:8091 {
+            header_up X-Gitd-Proxy-Secret {file./etc/caddy/gitd-proxy.secret}
+        }
+    }
+    handle { root * /srv/slides; file_server }
+}
+```
+
+`request_header -…` 这几行会删除客户端发来的任何身份头，因此客户端无法自选身份；新版
+Caddy 会在 `copy_headers` 之前自行删除，旧版不会。`{file.*}` 从文件读取代理密钥，所以它
+不在环境变量中。
+
+**GitHub** 使用 App。在 Settings ▸ Developer settings ▸ GitHub Apps 中创建，权限为
+Contents 读写、Pull requests 读写和 Metadata 只读，不设 webhook；只安装到演示文稿仓库。
+slides-gitd 为每次调用的那一个仓库签发安装令牌，有效期一小时。
+
+**GitLab：** 每个用户保存范围为 `api` 的个人或项目访问令牌。为什么是 `api` 而不是
+`write_repository`，以及被盗令牌能做什么，见
+[Playground 页面]({{< relref "playground#gitlab" >}})；请优先使用只限于演示文稿仓库的
+项目或群组访问令牌，或专用账号。
+
 ## 检查 {#check-it}
 
 ```sh
