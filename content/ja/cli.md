@@ -23,6 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | スピーカーノートを出力します |
 | `kinds` | スライドデッキで使える kind と、それぞれが設定する内容を一覧表示します。`--json`（v0.6.0）を指定すると `[{"name", "extends", "directives": [{"key", "value"}]}]` の形式で書き出し、`extends` は解決済みになります |
 | `themes` | テーマを一覧表示します |
+| `theme pack`、`verify`、`install`、`list`、`remove` | テーマパッケージ `*.slidestheme`（v0.17.1 より後）：[テーマパッケージ]({{< relref "themes" >}}) |
 | `version` | バージョンを出力します（`slides --version` でも同じです） |
 | `completion` | シェル補完スクリプトを出力します：`bash`、`zsh`、`fish`、`powershell` |
 
@@ -50,7 +51,7 @@ deck.md` は同じです。長い形式のフラグはダッシュ 2 つ（`--ht
 | `--pptx-editable`, `--no-parallel` | `build` | marp-cli での `--pptx` と `-P 1` の書き方です（v0.6.0） |
 | `--config file` | すべて | 設定ファイル。デフォルトでは、スライドデッキと同じ場所に `slides.yaml` があればそれを使います |
 | `--no-config` | すべて | 設定ファイルを読み込みません |
-| `--theme-set path` | すべて | テーマの CSS ファイル、またはそれを含むディレクトリ（複数回指定可） |
+| `--theme-set path` | すべて | テーマの CSS ファイル、テーマパッケージ（`*.slidestheme`、v0.17.1 より後）、またはそれらを含むディレクトリ（複数回指定可） |
 | `--kinds file` | すべて | kind を記述した YAML ファイル（複数回指定可） |
 | `--data file` | すべて | テンプレートのデータを記述した YAML または JSON ファイル（複数回指定可） |
 | `--set key=value` | すべて | テンプレートの値 1 つ（複数回指定可） |
@@ -74,7 +75,7 @@ deck.md` は同じです。長い形式のフラグはダッシュ 2 つ（`--ht
 | `--jpeg-quality n` | `build` | JPEG の品質。1〜100（デフォルトは 85） |
 | `--image-scale n` | `build` | 画像と PDF での、CSS ピクセルあたりのデバイスピクセル数（デフォルトは 1）。2 を指定すると 16:9 で 2560×1440 になり、テキストとベクターは拡大されるのではなく、その密度で描画されます |
 | `--allow-local-files` | `build` | 画像と PDF がローカルファイルを読み込むことを許可します。ただし、スライドデッキのディレクトリ以下にあるファイルだけです。marp-cli と同じく、デフォルトでは拒否されます |
-| `--theme name\|file.css` | `build` | スライドデッキのテーマを上書きします（v0.6.0）。テーマ名か CSS ファイルを指定します。CSS ファイルは、宣言している `@theme` にかかわらずそのテーマになります。ディレクトリは拒否されるので、`--theme-set` を使ってください |
+| `--theme name\|file.css\|file.slidestheme` | `build` | スライドデッキのテーマを上書きします（v0.6.0）。テーマ名（組み込み、または v0.17.1 より後ではインストール済みのパッケージ）、CSS ファイル（宣言している `@theme` にかかわらずそのテーマになります）、または[テーマパッケージ]({{< relref "themes" >}})を指定します。ディレクトリは拒否されるので、`--theme-set` を使ってください |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | ページのメタデータ（v0.6.0）。スライドデッキの `title`、`description`、`author`、`keywords`、`url`、`image` ディレクティブより優先されます。後述 |
 
 ## 複数のスライドデッキとディレクトリ {#several-decks-and-a-directory}
