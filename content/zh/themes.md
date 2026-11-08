@@ -1,17 +1,16 @@
 ---
-title: "Theme packages"
+title: "主题包"
 weight: 42
-description: "A theme as one file: a .slidestheme archive with a theme.hcl, its CSS, fonts, assets and kinds, checked as untrusted input."
+description: "把主题装进一个文件：包含 theme.hcl、CSS、字体、资源和 kind 的 .slidestheme 归档，按不可信输入进行检查。"
 tags: [themes, hcl]
 ---
 
-A **theme package** is one file, `<name>.slidestheme`: a ZIP archive
-(deflate) with `theme.hcl` at its root and the files it declares. It carries a
-theme's CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.
+**主题包**是一个文件 `<name>.slidestheme`：一个 ZIP 归档（deflate 压缩），
+根目录下有 `theme.hcl`，以及它声明的各个文件。它携带主题的 CSS、字体、徽标和背景，
+还可以按需带上幻灯片 kind，并附有名称、版本和许可证，因此主题可以被传递和安装。
+主题包在 v0.17.1 之后提供。
 
-## The theme.hcl file {#the-themehcl-file}
+## theme.hcl 文件 {#the-themehcl-file}
 
 ```hcl
 # theme.hcl
@@ -43,22 +42,18 @@ kind "acme-title" {                     # optional slide kinds
 }
 ```
 
-`theme.hcl` is HCL's native syntax with literal values only: no function, no
-variable, no `file()` or `env()`. A name is lower-case letters, digits and
-dashes, and is not `default`, `gaia` or `uncover`. `extends` names the base
-theme; every `css` block adds a sheet, in order; every `font` and `asset` block
-names a file of the package; every `kind` block is a [kind]({{< relref "kinds" >}}).
-A `sha256` on a `css`, `font` or `asset` block is checked when the package is
-read.
+`theme.hcl` 使用 HCL 的原生语法，且只允许字面量：没有函数，没有变量，
+没有 `file()` 或 `env()`。名称由小写字母、数字和连字符组成，且不能是 `default`、
+`gaia` 或 `uncover`。`extends` 指明基础主题；每个 `css` 块按顺序添加一个样式表；
+每个 `font` 和 `asset` 块都指向包中的一个文件；每个 `kind` 块就是一个 [kind]({{< relref "kinds" >}})。
+`css`、`font` 或 `asset` 块上的 `sha256` 会在读取主题包时校验。
 
-The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: `background: url(assets/logo.svg)`. When the package is loaded,
-each such reference becomes a `data:` URL, so that the page is self-contained,
-and a `font` block becomes an `@font-face`. A package may also carry `LICENSE`,
-`NOTICE` and `README` files; any other file that `theme.hcl` does not declare is
-refused.
+CSS 通过文件在包中的路径引用字体和资源，路径相对于该 CSS 文件：
+`background: url(assets/logo.svg)`。加载主题包时，每个这样的引用都会变成 `data:` URL，
+使页面自成一体，而 `font` 块会变成 `@font-face`。主题包还可以带有 `LICENSE`、
+`NOTICE` 和 `README` 文件；`theme.hcl` 没有声明的其他任何文件都会被拒绝。
 
-## Packing, installing and using {#packing-installing-and-using}
+## 打包、安装和使用 {#packing-installing-and-using}
 
 ```
 slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
@@ -68,9 +63,9 @@ slides theme list           the installed packages
 slides theme remove name
 ```
 
-Installed packages live in `go-slides/themes` under the user's configuration
-directory (`os.UserConfigDir()`: `~/Library/Application Support`,
-`$XDG_CONFIG_HOME` or `~/.config`, `%AppData%`). In a deck:
+已安装的主题包位于用户配置目录下的 `go-slides/themes`
+（`os.UserConfigDir()`：`~/Library/Application Support`、`$XDG_CONFIG_HOME` 或
+`~/.config`、`%AppData%`）。在演示文稿中：
 
 ```markdown
 ---
@@ -78,36 +73,32 @@ theme: acme
 ---
 ```
 
-finds an installed package, after the built-in themes and `--theme-set`.
-`--theme acme.slidestheme` and `--theme-set acme.slidestheme` use a file
-directly, without installing it; see [Command line]({{< relref "cli" >}}).
+会查找已安装的主题包，顺序在内置主题和 `--theme-set` 之后。
+`--theme acme.slidestheme` 和 `--theme-set acme.slidestheme` 直接使用文件，无需安装；
+见[命令行]({{< relref "cli" >}})。
 
-The kinds of a package apply with `--theme file.slidestheme`, or with
-`--theme name` for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with `--kinds`.
+主题包中的 kind 通过 `--theme file.slidestheme` 生效，对已安装的主题包则用
+`--theme name`。只在 front matter 中指定主题的演示文稿会得到它的外观，而不会得到它的 kind，
+可以用 `--kinds` 来指定这些 kind。
 
-## A package is untrusted input {#a-package-is-untrusted-input}
+## 主题包是不可信输入 {#a-package-is-untrusted-input}
 
-A theme package can come from anywhere, so every reader (`pack`, `verify`,
-`install`, `--theme`, a build) checks it the same way, and refuses with an error
-that has a code (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
-`theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
+主题包可能来自任何地方，因此每一个读取者（`pack`、`verify`、`install`、`--theme`、
+构建）都以同样的方式检查它，并以带有错误码的错误拒绝
+（`theme.archive`、`theme.limit`、`theme.meta`、`theme.css`、`theme.svg`、`theme.font`、
+`theme.checksum`、`theme.version`）：
 
-- **Archive.** No `..`, absolute path, drive letter or backslash in a name; no
-  symbolic link or special file; no duplicate name (compared without case); no
-  encryption and no method but stored and deflate. Sizes are what is read, not
-  what the archive declares.
-- **Bounds.** At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-  inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-  `theme.hcl` at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-  font or an image.
-- **CSS.** No `@import`, no `@import-theme` (use `extends`), no `image-set()`,
-  `src()` or other function that loads a resource, no backslash escape outside a
-  string, no `</style`. A `url()` is a `#fragment`, a `data:` image or font, or
-  a declared file of the package, never one that leaves it.
-- **SVG.** No `script`, `foreignObject`, frame, embed, `set`, DOCTYPE or event
-  handler; an `href` is a `#fragment`; no `url()` that leaves the file.
-- **Fonts and images** are parsed: a font must be a font, an image must match
-  its extension, and each has a size bound.
+- **归档。** 名称中不得有 `..`、绝对路径、盘符或反斜杠；不得有符号链接或特殊文件；
+  不得有重复名称（比较时不区分大小写）；不得加密，除存储和 deflate 之外不得使用其他压缩方法。
+  大小以实际读取的为准，而不是归档所声明的。
+- **上限。** 归档最大 16 MiB，最多 256 个条目，每个条目最大 8 MiB，解压后共 24 MiB，
+  64 KiB 及以上的条目压缩比不得超过 100 比 1，`theme.hcl` 最大 64 KiB、嵌套括号最深 32 层，
+  每个 CSS 文件最大 1 MiB，每个字体或图像最大 4 MiB。
+- **CSS。** 不得有 `@import`，不得有 `@import-theme`（请用 `extends`），不得有 `image-set()`、
+  `src()` 或其他加载资源的函数，字符串之外不得有反斜杠转义，不得有 `</style`。
+  `url()` 只能是 `#fragment`、`data:` 图像或字体，或包中已声明的文件，绝不能指向包外。
+- **SVG。** 不得有 `script`、`foreignObject`、frame、embed、`set`、DOCTYPE 或事件处理器；
+  `href` 只能是 `#fragment`；不得有指向文件之外的 `url()`。
+- **字体和图像**会被解析：字体必须是字体，图像必须与其扩展名相符，且各有大小上限。
 
-The repository's `testdata/themes/acme` is a small example.
+仓库中的 `testdata/themes/acme` 是一个小示例。
