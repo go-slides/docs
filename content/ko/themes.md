@@ -1,17 +1,16 @@
 ---
-title: "Theme packages"
+title: "테마 패키지"
 weight: 42
-description: "A theme as one file: a .slidestheme archive with a theme.hcl, its CSS, fonts, assets and kinds, checked as untrusted input."
+description: "파일 하나로 된 테마: theme.hcl, CSS, 글꼴, 에셋, kind를 담은 .slidestheme 아카이브이며, 신뢰할 수 없는 입력으로 검사합니다."
 tags: [themes, hcl]
 ---
 
-A **theme package** is one file, `<name>.slidestheme`: a ZIP archive
-(deflate) with `theme.hcl` at its root and the files it declares. It carries a
-theme's CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.
+**테마 패키지**는 `<name>.slidestheme`라는 파일 하나입니다. 루트에 `theme.hcl`이
+있고 그 파일이 선언한 파일들을 담은 ZIP 아카이브(deflate)입니다. 테마의 CSS, 글꼴,
+로고, 배경을 담으며, 원하면 슬라이드 kind도 담을 수 있고, 이름, 버전, 라이선스가
+붙어 있어 테마를 주고받고 설치할 수 있습니다. 테마 패키지는 v0.17.1 이후에 제공됩니다.
 
-## The theme.hcl file {#the-themehcl-file}
+## theme.hcl 파일 {#the-themehcl-file}
 
 ```hcl
 # theme.hcl
@@ -43,22 +42,20 @@ kind "acme-title" {                     # optional slide kinds
 }
 ```
 
-`theme.hcl` is HCL's native syntax with literal values only: no function, no
-variable, no `file()` or `env()`. A name is lower-case letters, digits and
-dashes, and is not `default`, `gaia` or `uncover`. `extends` names the base
-theme; every `css` block adds a sheet, in order; every `font` and `asset` block
-names a file of the package; every `kind` block is a [kind]({{< relref "kinds" >}}).
-A `sha256` on a `css`, `font` or `asset` block is checked when the package is
-read.
+`theme.hcl`은 리터럴 값만 쓰는 HCL의 기본 문법입니다. 함수도, 변수도, `file()`이나
+`env()`도 없습니다. 이름은 소문자, 숫자, 대시로 이루어지며 `default`, `gaia`,
+`uncover`는 쓸 수 없습니다. `extends`는 기반 테마를 지정하고, `css` 블록은 하나
+추가될 때마다 순서대로 스타일시트를 더하며, `font`와 `asset` 블록은 각각 패키지
+안의 파일을 가리키고, `kind` 블록은 하나하나가 [kind]({{< relref "kinds" >}})입니다.
+`css`, `font`, `asset` 블록의 `sha256`은 패키지를 읽을 때 검사합니다.
 
-The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: `background: url(assets/logo.svg)`. When the package is loaded,
-each such reference becomes a `data:` URL, so that the page is self-contained,
-and a `font` block becomes an `@font-face`. A package may also carry `LICENSE`,
-`NOTICE` and `README` files; any other file that `theme.hcl` does not declare is
-refused.
+CSS는 글꼴과 에셋을 패키지 안의 경로로, CSS 파일 기준 상대 경로로 참조합니다.
+`background: url(assets/logo.svg)`처럼요. 패키지를 불러올 때 이런 참조는 모두
+`data:` URL로 바뀌어 페이지가 그 자체로 완결되고, `font` 블록은 `@font-face`가
+됩니다. 패키지에는 `LICENSE`, `NOTICE`, `README` 파일도 넣을 수 있으며,
+`theme.hcl`이 선언하지 않은 다른 파일은 거부됩니다.
 
-## Packing, installing and using {#packing-installing-and-using}
+## 패키징, 설치, 사용 {#packing-installing-and-using}
 
 ```
 slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
@@ -68,9 +65,9 @@ slides theme list           the installed packages
 slides theme remove name
 ```
 
-Installed packages live in `go-slides/themes` under the user's configuration
-directory (`os.UserConfigDir()`: `~/Library/Application Support`,
-`$XDG_CONFIG_HOME` or `~/.config`, `%AppData%`). In a deck:
+설치된 패키지는 사용자 설정 디렉터리 아래의 `go-slides/themes`에 있습니다
+(`os.UserConfigDir()`: `~/Library/Application Support`, `$XDG_CONFIG_HOME` 또는
+`~/.config`, `%AppData%`). 프레젠테이션에서 다음과 같이 쓰면:
 
 ```markdown
 ---
@@ -78,36 +75,35 @@ theme: acme
 ---
 ```
 
-finds an installed package, after the built-in themes and `--theme-set`.
-`--theme acme.slidestheme` and `--theme-set acme.slidestheme` use a file
-directly, without installing it; see [Command line]({{< relref "cli" >}}).
+내장 테마와 `--theme-set` 다음 순서로 설치된 패키지를 찾습니다.
+`--theme acme.slidestheme`와 `--theme-set acme.slidestheme`는 설치하지 않고 파일을
+바로 사용합니다. [명령줄]({{< relref "cli" >}})을 참고하십시오.
 
-The kinds of a package apply with `--theme file.slidestheme`, or with
-`--theme name` for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with `--kinds`.
+패키지의 kind는 `--theme file.slidestheme`로 적용되며, 설치된 패키지라면
+`--theme name`으로 적용됩니다. 프런트 매터에 테마 이름만 적은 프레젠테이션은 그
+외관만 얻고 kind는 얻지 못하며, kind는 `--kinds`로 지정할 수 있습니다.
 
-## A package is untrusted input {#a-package-is-untrusted-input}
+## 패키지는 신뢰할 수 없는 입력입니다 {#a-package-is-untrusted-input}
 
-A theme package can come from anywhere, so every reader (`pack`, `verify`,
-`install`, `--theme`, a build) checks it the same way, and refuses with an error
-that has a code (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
-`theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
+테마 패키지는 어디에서든 올 수 있으므로, 패키지를 읽는 모든 경로(`pack`, `verify`,
+`install`, `--theme`, 빌드)가 똑같이 검사하고, 코드가 붙은 오류로 거부합니다
+(`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`, `theme.svg`, `theme.font`,
+`theme.checksum`, `theme.version`).
 
-- **Archive.** No `..`, absolute path, drive letter or backslash in a name; no
-  symbolic link or special file; no duplicate name (compared without case); no
-  encryption and no method but stored and deflate. Sizes are what is read, not
-  what the archive declares.
-- **Bounds.** At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-  inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-  `theme.hcl` at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-  font or an image.
-- **CSS.** No `@import`, no `@import-theme` (use `extends`), no `image-set()`,
-  `src()` or other function that loads a resource, no backslash escape outside a
-  string, no `</style`. A `url()` is a `#fragment`, a `data:` image or font, or
-  a declared file of the package, never one that leaves it.
-- **SVG.** No `script`, `foreignObject`, frame, embed, `set`, DOCTYPE or event
-  handler; an `href` is a `#fragment`; no `url()` that leaves the file.
-- **Fonts and images** are parsed: a font must be a font, an image must match
-  its extension, and each has a size bound.
+- **아카이브.** 이름에 `..`, 절대 경로, 드라이브 문자, 백슬래시가 없어야 하고,
+  심볼릭 링크나 특수 파일이 없어야 하며, 중복된 이름이 없어야 합니다(대소문자를
+  구분하지 않고 비교). 암호화는 안 되며, 저장(stored)과 deflate 외의 방식은 쓸 수
+  없습니다. 크기는 아카이브가 선언한 값이 아니라 실제로 읽은 값입니다.
+- **한도.** 아카이브는 최대 16 MiB, 항목은 256개, 항목당 8 MiB, 압축을 푼 뒤 24 MiB,
+  64 KiB 이상인 항목의 압축률은 100 대 1, `theme.hcl`은 최대 64 KiB에 괄호 중첩 32단계,
+  CSS는 파일당 1 MiB, 글꼴이나 이미지는 4 MiB까지입니다.
+- **CSS.** `@import`도, `@import-theme`도(`extends`를 쓰십시오), `image-set()`,
+  `src()` 등 리소스를 불러오는 함수도, 문자열 밖의 백슬래시 이스케이프도,
+  `</style`도 안 됩니다. `url()`은 `#fragment`, `data:` 이미지나 글꼴, 또는 패키지에
+  선언된 파일이어야 하며, 패키지 밖으로 나가는 것은 안 됩니다.
+- **SVG.** `script`, `foreignObject`, 프레임, embed, `set`, DOCTYPE, 이벤트 핸들러는
+  안 됩니다. `href`는 `#fragment`여야 하고, 파일 밖으로 나가는 `url()`도 안 됩니다.
+- **글꼴과 이미지**는 파싱합니다. 글꼴은 글꼴이어야 하고, 이미지는 확장자와
+  일치해야 하며, 각각 크기 한도가 있습니다.
 
-The repository's `testdata/themes/acme` is a small example.
+저장소의 `testdata/themes/acme`가 작은 예제입니다.

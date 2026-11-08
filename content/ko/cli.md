@@ -23,6 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | 발표자 노트를 출력합니다 |
 | `kinds` | 프레젠테이션에서 쓸 수 있는 kind와 각각이 설정하는 내용을 나열합니다. `--json`(v0.6.0부터)을 쓰면 `extends`를 해석한 상태로 `[{"name", "extends", "directives": [{"key", "value"}]}]` 형식으로 씁니다 |
 | `themes` | 테마를 나열합니다 |
+| `theme pack`, `verify`, `install`, `list`, `remove` | 테마 패키지 `*.slidestheme`(v0.17.1 이후): [테마 패키지]({{< relref "themes" >}}) |
 | `version` | 버전을 출력합니다(`slides --version`도 같음) |
 | `completion` | 셸 자동 완성 스크립트를 출력합니다: `bash`, `zsh`, `fish`, `powershell` |
 
@@ -51,7 +52,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `--pptx-editable`, `--no-parallel` | `build` | `--pptx`와 `-P 1`의 marp-cli식 표기(v0.6.0부터) |
 | `--config file` | 모두 | 설정 파일. 기본값은 프레젠테이션 옆에 있는 `slides.yaml`(있을 경우) |
 | `--no-config` | 모두 | 설정 파일을 읽지 않습니다 |
-| `--theme-set path` | 모두 | 테마 CSS 파일 또는 그런 파일이 든 디렉터리(여러 번 지정 가능) |
+| `--theme-set path` | 모두 | 테마 CSS 파일, 테마 패키지(`*.slidestheme`, v0.17.1 이후), 또는 그런 파일이 든 디렉터리(여러 번 지정 가능) |
 | `--kinds file` | 모두 | kind를 정의한 YAML 파일(여러 번 지정 가능) |
 | `--data file` | 모두 | 템플릿 데이터를 담은 YAML 또는 JSON 파일(여러 번 지정 가능) |
 | `--set key=value` | 모두 | 템플릿 값 하나(여러 번 지정 가능) |
@@ -75,7 +76,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `--jpeg-quality n` | `build` | JPEG 품질, 1~100(기본값 85) |
 | `--image-scale n` | `build` | 이미지와 PDF에서 CSS 픽셀당 장치 픽셀 수(기본값 1). 2이면 16:9에서 2560×1440이 되며, 텍스트와 벡터는 확대되지 않고 그 밀도로 그려집니다 |
 | `--allow-local-files` | `build` | 이미지와 PDF가 로컬 파일을 읽도록 허용하되, 프레젠테이션 디렉터리 아래의 파일만 허용합니다. marp-cli와 마찬가지로 기본값은 거부입니다 |
-| `--theme name\|file.css` | `build` | 프레젠테이션의 테마를 재정의합니다(v0.6.0부터). 테마 이름이나 CSS 파일을 지정하며, CSS 파일은 어떤 `@theme`을 선언하든 그 테마가 됩니다. 디렉터리는 거부되므로 `--theme-set`을 쓰십시오 |
+| `--theme name\|file.css\|file.slidestheme` | `build` | 프레젠테이션의 테마를 재정의합니다(v0.6.0부터). 테마 이름(내장 테마, 또는 v0.17.1 이후 설치된 패키지), CSS 파일(어떤 `@theme`을 선언하든 그 테마가 됩니다), 또는 [테마 패키지]({{< relref "themes" >}})를 지정합니다. 디렉터리는 거부되므로 `--theme-set`을 쓰십시오 |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | 페이지 메타데이터(v0.6.0부터). 프레젠테이션의 `title`, `description`, `author`, `keywords`, `url`, `image` 디렉티브보다 우선합니다. 아래 참고 |
 
 ## 여러 프레젠테이션과 디렉터리 {#several-decks-and-a-directory}
