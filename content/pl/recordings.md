@@ -9,7 +9,7 @@ tags: [asciinema, terminal]
 Nagrania terminala są w gałęzi głównej po wersji v0.17.1 i w żadnym wydaniu.
 {{< /callout >}}
 
-Nagranie [asciinema](https://asciinema.org) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) lub [v3](https://docs.asciinema.org/manual/asciicast/v3/)) to obraz, którego plik kończy się na `.cast`:
+Nagranie [asciinema](https://docs.asciinema.org/) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) lub [v3](https://docs.asciinema.org/manual/asciicast/v3/)) to obraz, którego plik kończy się na `.cast`:
 
 ```markdown
 ![cast](demo.cast)

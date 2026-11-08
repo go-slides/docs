@@ -9,7 +9,7 @@ tags: [asciinema, terminal]
 Записи термінала є в основній гілці після v0.17.1 і ще в жодному випуску.
 {{< /callout >}}
 
-Запис [asciinema](https://asciinema.org) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) або [v3](https://docs.asciinema.org/manual/asciicast/v3/)) — це зображення, файл якого закінчується на `.cast`:
+Запис [asciinema](https://docs.asciinema.org/) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) або [v3](https://docs.asciinema.org/manual/asciicast/v3/)) — це зображення, файл якого закінчується на `.cast`:
 
 ```markdown
 ![cast](demo.cast)

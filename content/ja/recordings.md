@@ -9,7 +9,7 @@ tags: [asciinema, terminal]
 ターミナルの録画は v0.17.1 より後のメインブランチにあり、まだどのリリースにも入っていません。
 {{< /callout >}}
 
-[asciinema](https://asciinema.org) の録画（[asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) または [v3](https://docs.asciinema.org/manual/asciicast/v3/)）は、ファイル名が `.cast` で終わる画像です。
+[asciinema](https://docs.asciinema.org/) の録画（[asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) または [v3](https://docs.asciinema.org/manual/asciicast/v3/)）は、ファイル名が `.cast` で終わる画像です。
 
 ```markdown
 ![cast](demo.cast)

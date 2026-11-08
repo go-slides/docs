@@ -9,7 +9,7 @@ tags: [asciinema, terminal]
 터미널 녹화는 v0.17.1 이후의 메인 브랜치에 있으며 아직 어떤 릴리스에도 들어 있지 않습니다.
 {{< /callout >}}
 
-[asciinema](https://asciinema.org) 녹화([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) 또는 [v3](https://docs.asciinema.org/manual/asciicast/v3/))는 파일이 `.cast`로 끝나는 이미지입니다.
+[asciinema](https://docs.asciinema.org/) 녹화([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) 또는 [v3](https://docs.asciinema.org/manual/asciicast/v3/))는 파일이 `.cast`로 끝나는 이미지입니다.
 
 ```markdown
 ![cast](demo.cast)

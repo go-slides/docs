@@ -9,7 +9,7 @@ tags: [asciinema, terminal]
 Terminal recordings are in the main branch after v0.17.1 and in no release yet.
 {{< /callout >}}
 
-An [asciinema](https://asciinema.org) recording ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) or [v3](https://docs.asciinema.org/manual/asciicast/v3/)) is an image whose file ends in `.cast`:
+An [asciinema](https://docs.asciinema.org/) recording ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) or [v3](https://docs.asciinema.org/manual/asciicast/v3/)) is an image whose file ends in `.cast`:
 
 ```markdown
 ![cast](demo.cast)

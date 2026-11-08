@@ -9,7 +9,7 @@ tags: [asciinema, terminal]
 终端录制位于 v0.17.1 之后的主分支，尚未包含在任何发布版本中。
 {{< /callout >}}
 
-[asciinema](https://asciinema.org) 录制（[asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) 或 [v3](https://docs.asciinema.org/manual/asciicast/v3/)）是文件以 `.cast` 结尾的图像：
+[asciinema](https://docs.asciinema.org/) 录制（[asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) 或 [v3](https://docs.asciinema.org/manual/asciicast/v3/)）是文件以 `.cast` 结尾的图像：
 
 ```markdown
 ![cast](demo.cast)
