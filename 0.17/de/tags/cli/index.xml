@@ -212,6 +212,11 @@ angibt.&lt;/p&gt;
 &lt;td&gt;das PDF schreiben, wobei jede Seite ein Bild der Folie ist, wie es v0.3.0 tat&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;für jeden Fragmentschritt einer Folie eine PDF-Seite schreiben, wie die Overlays von Beamer (noch nicht veröffentlicht). Standardmäßig aus, damit das PDF dem von marp-cli entspricht; nicht zusammen mit &lt;code&gt;--pdf-raster&lt;/code&gt;. Siehe &lt;a href="#transitions-and-fragments-in-the-exports"&gt;unten&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;die Sprechernotizen als Textdatei schreiben, Folien durch &lt;code&gt;---&lt;/code&gt; getrennt wie bei marp-cli (in v0.6.0; auch durch &lt;code&gt;-o file.txt&lt;/code&gt; gewählt). Der Befehl &lt;code&gt;notes&lt;/code&gt; gibt sie in einem anderen Layout aus&lt;/td&gt;
@@ -517,6 +522,52 @@ weichgezeichneter Schatten – ist ein Bild dieses Elements, mit seinem darüber
 &lt;/ul&gt;
 &lt;p&gt;Von LibreOffice zurückgerendert, liegt eine Folie 0,04–2 % von den Pixeln des
 PNG-Exports entfernt. &lt;code&gt;--pptx-raster&lt;/code&gt; und &lt;code&gt;--odp-raster&lt;/code&gt; behalten ein Bild pro Folie.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Übergänge und Fragmente in PDF, PPTX und ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Noch nicht veröffentlicht: Das kommt mit der nächsten Version nach v0.17.1.&lt;/p&gt;
+&lt;p&gt;PDF, PPTX und ODP übernehmen, was die HTML-Seite abspielt. Die
+&lt;code&gt;transition&lt;/code&gt;-Direktive einer Folie wird auf die &lt;strong&gt;nächste&lt;/strong&gt; Folie geschrieben,
+auf der sie einläuft (marp-cli spielt die Direktive einer Folie beim Verlassen
+ab), und zwar als der nächstliegende Effekt, den das Format kennt. Von den 33
+eingebauten Übergängen von marp-cli:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Format&lt;/th&gt;
+&lt;th&gt;Exakt&lt;/th&gt;
+&lt;th&gt;Näherungsweise&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ein eigener Übergang (die Keyframes eines Themes oder einer Folie) wird zu einem
+&lt;code&gt;fade&lt;/code&gt;. Pro Export listet eine Warnung die Ersetzungen auf. Die Dauern behalten
+im PPTX die nächstliegende der drei Geschwindigkeiten von PowerPoint; ein PDF
+(&lt;code&gt;/D&lt;/code&gt;) und das Timing eines ODP behalten die genauen Sekunden.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fragmente&lt;/strong&gt; sind Einblendungen in den editierbaren Foliensätzen, &lt;code&gt;--pptx&lt;/code&gt; und
+&lt;code&gt;--odp&lt;/code&gt;: Eine fragmentierte Liste (Einträge mit &lt;code&gt;*&lt;/code&gt; geschrieben) läuft per
+Klick, ein Klick pro Fragment, der Reihe nach, wobei jeder Eintrag eingeblendet
+wird (Fade). Im PDF werden sie nur mit &lt;code&gt;--pdf-fragments&lt;/code&gt; zu Seiten: eine
+PDF-Seite pro Fragmentschritt, wie die Overlays von Beamer. Das ist standardmäßig
+aus, damit das PDF dem von marp-cli entspricht, und lässt sich nicht mit
+&lt;code&gt;--pdf-raster&lt;/code&gt; kombinieren.&lt;/p&gt;
+&lt;p&gt;Das wurde nur in LibreOffice geprüft. Es ist &lt;strong&gt;nicht in PowerPoint selbst
+verifiziert&lt;/strong&gt;; verlassen Sie sich dort nicht darauf.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;Vektor-PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Seit v0.4.0 wird das PDF als Vektoren gezeichnet: go-webengine malt die berechnete
 Folie in das PDF statt in Pixel. Der Text ist Text, in den Schriften, mit denen die

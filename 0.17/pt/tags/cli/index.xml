@@ -212,6 +212,11 @@ antes ou depois da apresentação: &lt;code&gt;slides deck.md -o out.html&lt;/co
 &lt;td&gt;escreve o PDF com cada página sendo uma imagem do slide, como a v0.3.0 fazia&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;escreve uma página de PDF para cada passo de fragmento de um slide, como as sobreposições do Beamer (ainda não lançado). Desativado por padrão, para que o PDF seja igual ao do marp-cli; não combina com &lt;code&gt;--pdf-raster&lt;/code&gt;. Veja &lt;a href="#transitions-and-fragments-in-the-exports"&gt;abaixo&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;escreve as notas do apresentador como um arquivo de texto, com os slides separados por &lt;code&gt;---&lt;/code&gt; como o marp-cli faz (na v0.6.0; também escolhido por &lt;code&gt;-o file.txt&lt;/code&gt;). O comando &lt;code&gt;notes&lt;/code&gt; as imprime em outro formato&lt;/td&gt;
@@ -534,6 +539,51 @@ que precisa de um recorte ou de um gradiente radial continua sendo uma imagem.&l
 &lt;p&gt;Renderizado de volta pelo LibreOffice, um slide fica a 0,04–2 % dos pixels da
 exportação para PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; e &lt;code&gt;--odp-raster&lt;/code&gt; mantêm uma imagem por
 slide.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Transições e fragmentos no PDF, no PPTX e no ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Ainda não lançado: virá na próxima versão depois da v0.17.1.&lt;/p&gt;
+&lt;p&gt;O PDF, o PPTX e o ODP levam o que a página HTML reproduz. A diretiva
+&lt;code&gt;transition&lt;/code&gt; de um slide é escrita no &lt;strong&gt;próximo&lt;/strong&gt; slide, aquele em que ela
+entra (o marp-cli reproduz a diretiva de um slide ao sair dele), como o efeito
+mais próximo que o formato tem. Das 33 transições embutidas do marp-cli:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Formato&lt;/th&gt;
+&lt;th&gt;Exatamente&lt;/th&gt;
+&lt;th&gt;Aproximadamente&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Uma transição personalizada (os keyframes próprios de um tema ou de um slide)
+vira um &lt;code&gt;fade&lt;/code&gt;. Um único aviso por exportação lista as substituições. As
+durações mantêm a mais próxima das três velocidades do PowerPoint em um PPTX; um
+PDF (&lt;code&gt;/D&lt;/code&gt;) e a temporização de um ODP mantêm os segundos exatos.&lt;/p&gt;
+&lt;p&gt;Os &lt;strong&gt;fragmentos&lt;/strong&gt; são animações nas apresentações editáveis, &lt;code&gt;--pptx&lt;/code&gt; e
+&lt;code&gt;--odp&lt;/code&gt;: uma lista fragmentada (itens escritos com &lt;code&gt;*&lt;/code&gt;) é reproduzida por
+cliques, um clique por fragmento, em ordem, e cada um faz o seu item aparecer
+com um esmaecimento. No PDF eles só viram páginas com &lt;code&gt;--pdf-fragments&lt;/code&gt;: uma
+página de PDF para cada passo de fragmento, como as sobreposições do Beamer. Vem
+desativado por padrão, para que o PDF seja igual ao do marp-cli, e não pode ser
+combinado com &lt;code&gt;--pdf-raster&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Isto foi verificado apenas no LibreOffice. &lt;strong&gt;Não foi verificado no próprio
+PowerPoint&lt;/strong&gt;, então não conte com isso lá.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;PDF vetorial&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Desde a v0.4.0, o PDF é desenhado como vetores: o go-webengine pinta o slide
 diagramado no PDF em vez de em pixels. O texto é texto, nas fontes com que o

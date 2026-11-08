@@ -211,6 +211,11 @@ data-copied-label="コピーしました！"
 &lt;td&gt;v0.3.0 と同じく、各ページをスライドの画像 1 枚にした PDF を書き出します&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;スライドのフラグメントのステップごとに PDF の 1 ページを書き出します。Beamer のオーバーレイと同じ考え方です（未リリース）。既定ではオフで、PDF は marp-cli のものと同じになります。&lt;code&gt;--pdf-raster&lt;/code&gt; とは併用できません。&lt;a href="#transitions-and-fragments-in-the-exports"&gt;後述&lt;/a&gt;を参照&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;スピーカーノートをテキストファイルとして書き出します。marp-cli と同じく、スライド間は &lt;code&gt;---&lt;/code&gt; で区切られます（v0.6.0。&lt;code&gt;-o file.txt&lt;/code&gt; でも選択されます）。&lt;code&gt;notes&lt;/code&gt; コマンドは別のレイアウトで出力します&lt;/td&gt;
@@ -515,6 +520,50 @@ ODP では画像になります（ODF のグラデーションは 2 色までの
 &lt;/ul&gt;
 &lt;p&gt;LibreOffice でレンダリングし直すと、スライドは PNG エクスポートのピクセルとの差が 0.04〜2 % に収まります。
 &lt;code&gt;--pptx-raster&lt;/code&gt; と &lt;code&gt;--odp-raster&lt;/code&gt; では、スライドごとに 1 枚の画像のままです。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;PDF、PPTX、ODP のトランジションとフラグメント&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;未リリースです。v0.17.1 の次のリリースに入ります。&lt;/p&gt;
+&lt;p&gt;PDF、PPTX、ODP は、HTML ページが再生する内容を引き継ぎます。スライドの &lt;code&gt;transition&lt;/code&gt;
+ディレクティブは、そのスライドが切り替わって入ってくる&lt;strong&gt;次の&lt;/strong&gt;スライドに書き込まれ
+（marp-cli はスライドを離れるときにそのスライドのディレクティブを再生します）、
+各形式にある最も近い効果に対応づけられます。marp-cli の組み込みトランジション 33 種のうち:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;形式&lt;/th&gt;
+&lt;th&gt;正確に対応&lt;/th&gt;
+&lt;th&gt;近似で対応&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8 種: &lt;code&gt;clockwise&lt;/code&gt;、&lt;code&gt;diamond&lt;/code&gt;、&lt;code&gt;fade&lt;/code&gt;、&lt;code&gt;iris-in&lt;/code&gt;、&lt;code&gt;pull&lt;/code&gt;、&lt;code&gt;push&lt;/code&gt;、&lt;code&gt;slide&lt;/code&gt;、&lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25 種&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11 種&lt;/td&gt;
+&lt;td&gt;22 種&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2 種: &lt;code&gt;fade&lt;/code&gt;、&lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31 種&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;独自のトランジション（テーマやスライド自身の keyframes）は &lt;code&gt;fade&lt;/code&gt; になります。
+エクスポートごとに警告が 1 件出て、置き換えた内容を一覧します。長さは、PPTX では
+PowerPoint の 3 段階の速度のうち最も近いものになり、PDF（&lt;code&gt;/D&lt;/code&gt;）と ODP のタイミングでは
+正確な秒数が保たれます。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;フラグメント&lt;/strong&gt;は、編集可能なデッキ（&lt;code&gt;--pptx&lt;/code&gt; と &lt;code&gt;--odp&lt;/code&gt;）ではビルドになります。
+フラグメント化されたリスト（&lt;code&gt;*&lt;/code&gt; で書いた項目）はクリックで再生され、フラグメントごとに
+1 クリック、順番に、各クリックでその項目がフェードインします。PDF でフラグメントがページに
+なるのは &lt;code&gt;--pdf-fragments&lt;/code&gt; を付けたときだけで、フラグメントのステップごとに PDF の 1 ページに
+なります（Beamer のオーバーレイと同じです）。既定ではオフで、PDF は marp-cli のものと同じに
+なり、&lt;code&gt;--pdf-raster&lt;/code&gt; とは併用できません。&lt;/p&gt;
+&lt;p&gt;これは LibreOffice でのみ確認しています。&lt;strong&gt;PowerPoint 自体では検証していません&lt;/strong&gt;ので、
+PowerPoint での動作は当てにしないでください。&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;ベクター PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;v0.4.0 以降、PDF はベクターで描画されます：go-webengine は、レイアウトされた
 スライドをピクセルではなく PDF に描画します。テキストはテキストのままで、スライドのレイアウトに使われた

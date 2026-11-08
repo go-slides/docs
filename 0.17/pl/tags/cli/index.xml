@@ -212,6 +212,11 @@ inaczej.&lt;/p&gt;
 &lt;td&gt;zapisz PDF, w którym każda strona to jeden obraz slajdu, jak robiła v0.3.0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;zapisz jedną stronę PDF dla każdego kroku fragmentu slajdu, jak nakładki Beamera (jeszcze niewydane). Domyślnie wyłączone, aby PDF zgadzał się z PDF-em marp-cli; nie z &lt;code&gt;--pdf-raster&lt;/code&gt;. Zobacz &lt;a href="#transitions-and-fragments-in-the-exports"&gt;niżej&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;zapisz notatki prelegenta jako plik tekstowy, slajdy rozdzielone &lt;code&gt;---&lt;/code&gt; jak w marp-cli (w v0.6.0; wybierane także przez &lt;code&gt;-o file.txt&lt;/code&gt;). Polecenie &lt;code&gt;notes&lt;/code&gt; wypisuje je w innym układzie&lt;/td&gt;
@@ -521,6 +526,50 @@ nad nim;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Odrenderowany z powrotem przez LibreOffice, slajd mieści się w 0,04–2 % pikseli
 eksportu PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; i &lt;code&gt;--odp-raster&lt;/code&gt; zachowują jeden obraz na slajd.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Przejścia i fragmenty w PDF, PPTX i ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Jeszcze niewydane: pojawi się w następnym wydaniu po v0.17.1.&lt;/p&gt;
+&lt;p&gt;PDF, PPTX i ODP zawierają to, co odtwarza strona HTML. Dyrektywa &lt;code&gt;transition&lt;/code&gt;
+slajdu jest zapisywana na &lt;strong&gt;następnym&lt;/strong&gt; slajdzie, na który wchodzi (marp-cli
+odtwarza dyrektywę slajdu przy jego opuszczaniu), jako najbliższy efekt, jaki
+ma dany format. Z 33 wbudowanych przejść marp-cli:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Format&lt;/th&gt;
+&lt;th&gt;Dokładnie&lt;/th&gt;
+&lt;th&gt;W przybliżeniu&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Własne przejście (keyframes motywu lub slajdu) staje się &lt;code&gt;fade&lt;/code&gt;. Jedno
+ostrzeżenie na eksport wymienia zamiany. Czasy trwania zachowują w PPTX
+najbliższą z trzech prędkości PowerPointa; PDF (&lt;code&gt;/D&lt;/code&gt;) i czas w ODP zachowują
+dokładne sekundy.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fragmenty&lt;/strong&gt; to animacje w edytowalnych prezentacjach, &lt;code&gt;--pptx&lt;/code&gt; i &lt;code&gt;--odp&lt;/code&gt;:
+lista z fragmentami (elementy zapisane z &lt;code&gt;*&lt;/code&gt;) odtwarza się kliknięciami, jedno
+kliknięcie na fragment, po kolei, a każde pojawia swój element zanikaniem
+(fade). W PDF stają się stronami tylko z &lt;code&gt;--pdf-fragments&lt;/code&gt;: jedna strona PDF na
+każdy krok fragmentu, jak nakładki Beamera. Domyślnie jest wyłączone, aby PDF
+zgadzał się z PDF-em marp-cli, i nie łączy się z &lt;code&gt;--pdf-raster&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sprawdzono to tylko w LibreOffice. &lt;strong&gt;Nie zweryfikowano tego w samym
+PowerPoincie&lt;/strong&gt;, więc nie należy tam na tym polegać.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;PDF wektorowy&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Od v0.4.0 PDF jest rysowany jako wektory: go-webengine maluje złożony
 slajd do PDF zamiast do pikseli. Tekst jest tekstem, w czcionkach, w których

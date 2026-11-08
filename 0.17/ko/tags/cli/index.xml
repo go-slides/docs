@@ -212,6 +212,11 @@ data-copied-label="복사됨!"
 &lt;td&gt;v0.3.0처럼 각 페이지가 슬라이드 이미지 한 장인 PDF를 씁니다&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;슬라이드의 프래그먼트 단계마다 PDF 페이지 하나를 씁니다. Beamer의 오버레이와 같습니다(아직 릴리스되지 않음). 기본값은 꺼짐이라 PDF가 marp-cli의 PDF와 같으며, &lt;code&gt;--pdf-raster&lt;/code&gt;와는 함께 쓸 수 없습니다. &lt;a href="#transitions-and-fragments-in-the-exports"&gt;아래&lt;/a&gt; 참조&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;marp-cli처럼 슬라이드를 &lt;code&gt;---&lt;/code&gt;로 구분한 텍스트 파일로 발표자 노트를 씁니다(v0.6.0부터, &lt;code&gt;-o file.txt&lt;/code&gt;로도 선택됨). &lt;code&gt;notes&lt;/code&gt; 명령은 다른 형식으로 출력합니다&lt;/td&gt;
@@ -528,6 +533,48 @@ marp-cli에서는 꺼져 있습니다.&lt;/strong&gt; &lt;code&gt;slides&lt;/cod
 &lt;p&gt;LibreOffice로 다시 렌더링하면 슬라이드는 PNG 내보내기와 픽셀 기준 0.04–2 %
 이내로 일치합니다. &lt;code&gt;--pptx-raster&lt;/code&gt;와 &lt;code&gt;--odp-raster&lt;/code&gt;는 슬라이드당 그림 한 장을
 유지합니다.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;PDF, PPTX, ODP의 전환 효과와 프래그먼트&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;아직 릴리스되지 않았습니다. v0.17.1 다음 릴리스에 들어갑니다.&lt;/p&gt;
+&lt;p&gt;PDF, PPTX, ODP는 HTML 페이지가 재생하는 것을 담습니다. 슬라이드의 &lt;code&gt;transition&lt;/code&gt;
+지시문은 그 슬라이드가 들어오는 &lt;strong&gt;다음&lt;/strong&gt; 슬라이드에 기록되며(marp-cli는 슬라이드를
+떠날 때 그 슬라이드의 지시문을 재생합니다), 형식이 가진 가장 가까운 효과로 대응됩니다.
+marp-cli의 내장 전환 효과 33개 중:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;형식&lt;/th&gt;
+&lt;th&gt;정확히&lt;/th&gt;
+&lt;th&gt;근사적으로&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8개: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25개&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11개&lt;/td&gt;
+&lt;td&gt;22개&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2개: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31개&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;사용자 정의 전환 효과(테마나 슬라이드 자체의 keyframes)는 &lt;code&gt;fade&lt;/code&gt;가 됩니다. 내보내기마다
+경고 하나가 대체된 항목을 나열합니다. PPTX에서는 지속 시간이 PowerPoint의 세 가지 속도 중
+가장 가까운 것으로 유지되고, PDF(&lt;code&gt;/D&lt;/code&gt;)와 ODP의 타이밍은 정확한 초 단위를 유지합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;프래그먼트&lt;/strong&gt;는 편집 가능한 프레젠테이션(&lt;code&gt;--pptx&lt;/code&gt;, &lt;code&gt;--odp&lt;/code&gt;)에서 단계별 빌드가 됩니다.
+프래그먼트 목록(&lt;code&gt;*&lt;/code&gt;로 쓴 항목)은 클릭으로 재생되며, 프래그먼트마다 클릭 한 번씩 순서대로
+진행되고 클릭할 때마다 해당 항목이 페이드 인합니다. PDF에서는 &lt;code&gt;--pdf-fragments&lt;/code&gt;를 줄 때만
+페이지가 됩니다. 프래그먼트 단계마다 PDF 페이지 하나이며 Beamer의 오버레이와 같습니다.
+기본값은 꺼짐이라 PDF가 marp-cli의 PDF와 같고, &lt;code&gt;--pdf-raster&lt;/code&gt;와는 함께 쓸 수 없습니다.&lt;/p&gt;
+&lt;p&gt;이는 LibreOffice에서만 확인했습니다. &lt;strong&gt;PowerPoint 자체에서는 검증하지 않았으므로&lt;/strong&gt;
+그곳에서는 이에 의존하지 마세요.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;벡터 PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;v0.4.0부터 PDF는 벡터로 그려집니다. go-webengine이 레이아웃된 슬라이드를 픽셀
 대신 PDF에 직접 그립니다. 텍스트는 슬라이드 레이아웃에 쓰인 글꼴의 텍스트로,

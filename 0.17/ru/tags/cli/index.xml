@@ -212,6 +212,11 @@ data-copied-label="Скопировано!"
 &lt;td&gt;записать PDF, где каждая страница — одно изображение слайда, как в v0.3.0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;записать одну страницу PDF на каждый шаг фрагмента слайда, как наложения Beamer (ещё не выпущено). По умолчанию выключено, чтобы PDF совпадал с PDF marp-cli; не сочетается с &lt;code&gt;--pdf-raster&lt;/code&gt;. См. &lt;a href="#transitions-and-fragments-in-the-exports"&gt;ниже&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;записать заметки докладчика в текстовый файл, слайды разделены &lt;code&gt;---&lt;/code&gt;, как у marp-cli (в v0.6.0; выбирается также через &lt;code&gt;-o file.txt&lt;/code&gt;). Команда &lt;code&gt;notes&lt;/code&gt; выводит их в другом виде&lt;/td&gt;
@@ -526,6 +531,50 @@ PDF через LibreOffice. Здесь каждый слайд рисуется 
 &lt;/ul&gt;
 &lt;p&gt;При обратной отрисовке LibreOffice слайд отличается от пикселей экспорта в PNG на
 0,04–2 %. &lt;code&gt;--pptx-raster&lt;/code&gt; и &lt;code&gt;--odp-raster&lt;/code&gt; сохраняют по одной картинке на слайд.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Переходы и фрагменты в PDF, PPTX и ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Ещё не выпущено: появится в следующей версии после v0.17.1.&lt;/p&gt;
+&lt;p&gt;PDF, PPTX и ODP несут то, что проигрывает HTML-страница. Директива &lt;code&gt;transition&lt;/code&gt;
+слайда записывается на &lt;strong&gt;следующем&lt;/strong&gt; слайде, на который он переходит (marp-cli
+проигрывает директиву слайда при уходе с него), в виде ближайшего эффекта,
+который есть в формате. Из 33 встроенных переходов marp-cli:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Формат&lt;/th&gt;
+&lt;th&gt;Точно&lt;/th&gt;
+&lt;th&gt;Приближённо&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Собственный переход (keyframes темы или слайда) становится &lt;code&gt;fade&lt;/code&gt;. Одно
+предупреждение на экспорт перечисляет замены. Длительности в PPTX сохраняют
+ближайшую из трёх скоростей PowerPoint; PDF (&lt;code&gt;/D&lt;/code&gt;) и тайминг ODP сохраняют
+точные секунды.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Фрагменты&lt;/strong&gt; — это построения в редактируемых презентациях, &lt;code&gt;--pptx&lt;/code&gt; и
+&lt;code&gt;--odp&lt;/code&gt;: список с фрагментами (пункты, написанные через &lt;code&gt;*&lt;/code&gt;) проигрывается по
+щелчкам, один щелчок на фрагмент, по порядку, и каждый плавно проявляет свой
+пункт (fade). В PDF они становятся страницами только с &lt;code&gt;--pdf-fragments&lt;/code&gt;: одна
+страница PDF на каждый шаг фрагмента, как наложения Beamer. По умолчанию это
+выключено, чтобы PDF совпадал с PDF marp-cli, и не сочетается с &lt;code&gt;--pdf-raster&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Это проверено только в LibreOffice. &lt;strong&gt;В самом PowerPoint это не проверялось&lt;/strong&gt;,
+поэтому не полагайтесь на это там.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;Векторный PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Начиная с v0.4.0 PDF рисуется векторами: go-webengine рисует рассчитанный слайд
 в PDF вместо пикселей. Текст — это текст, шрифтами, которыми слайд был

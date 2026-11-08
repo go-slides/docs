@@ -49,6 +49,10 @@ data-copied-label="Copiato!"
 &lt;td&gt;elenca i temi&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;i pacchetti di tema, &lt;code&gt;*.slidestheme&lt;/code&gt; (dopo la v0.17.1): &lt;a href="https://go-slides.github.io/docs/0.17/it/themes/"&gt;Pacchetti di tema&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;stampa la versione (lo fa anche &lt;code&gt;slides --version&lt;/code&gt;)&lt;/td&gt;
 &lt;/tr&gt;
@@ -150,7 +154,7 @@ corto. &lt;code&gt;build&lt;/code&gt; scrive &lt;code&gt;deck.html&lt;/code&gt; 
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;tutti&lt;/td&gt;
-&lt;td&gt;un file CSS di tema, o una cartella di essi (ripetibile)&lt;/td&gt;
+&lt;td&gt;un file CSS di tema, un pacchetto di tema (&lt;code&gt;*.slidestheme&lt;/code&gt;, dopo la v0.17.1) o una cartella di essi (ripetibile)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -206,6 +210,11 @@ corto. &lt;code&gt;build&lt;/code&gt; scrive &lt;code&gt;deck.html&lt;/code&gt; 
 &lt;td&gt;&lt;code&gt;--pdf-raster&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;scrive il PDF con ogni pagina come un&amp;rsquo;unica immagine della slide, come faceva la v0.3.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;scrive una pagina PDF per ogni passo di frammento di una slide, come le sovrapposizioni di Beamer (non ancora rilasciato). Disattivato per impostazione predefinita, perché il PDF coincida con quello di marp-cli; non insieme a &lt;code&gt;--pdf-raster&lt;/code&gt;. Vedi &lt;a href="#transitions-and-fragments-in-the-exports"&gt;sotto&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
@@ -268,9 +277,9 @@ corto. &lt;code&gt;build&lt;/code&gt; scrive &lt;code&gt;deck.html&lt;/code&gt; 
 &lt;td&gt;permette a immagini e PDF di leggere file locali, solo da sotto la cartella della presentazione; rifiutato per impostazione predefinita, come con marp-cli&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;sostituisce il tema della presentazione (nella v0.6.0): un nome di tema, o un file CSS, che diventa il tema qualunque &lt;code&gt;@theme&lt;/code&gt; dichiari; una cartella viene rifiutata, usa &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sostituisce il tema della presentazione (nella v0.6.0): un nome di tema (integrato, o di un pacchetto installato dopo la v0.17.1), un file CSS, che diventa il tema qualunque &lt;code&gt;@theme&lt;/code&gt; dichiari, o un &lt;a href="https://go-slides.github.io/docs/0.17/it/themes/"&gt;pacchetto di tema&lt;/a&gt;; una cartella viene rifiutata, usa &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;
@@ -517,6 +526,52 @@ sopra;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Rese di nuovo da LibreOffice, una slide è entro lo 0,04–2 % dei pixel dell&amp;rsquo;esportazione
 PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; e &lt;code&gt;--odp-raster&lt;/code&gt; mantengono un&amp;rsquo;immagine per slide.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Transizioni e frammenti nel PDF, nel PPTX e nell&amp;rsquo;ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Non ancora rilasciato: arriverà nella prossima versione dopo la v0.17.1.&lt;/p&gt;
+&lt;p&gt;Il PDF, il PPTX e l&amp;rsquo;ODP portano con sé ciò che la pagina HTML riproduce. La
+direttiva &lt;code&gt;transition&lt;/code&gt; di una slide viene scritta sulla slide &lt;strong&gt;successiva&lt;/strong&gt;,
+quella su cui entra (marp-cli riproduce la direttiva di una slide quando la
+lascia), come l&amp;rsquo;effetto più vicino che il formato possiede. Delle 33 transizioni
+integrate di marp-cli:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Formato&lt;/th&gt;
+&lt;th&gt;Esattamente&lt;/th&gt;
+&lt;th&gt;Approssimativamente&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Una transizione personalizzata (i keyframe propri di un tema o di una slide)
+diventa un &lt;code&gt;fade&lt;/code&gt;. Un solo avviso per esportazione elenca le sostituzioni. Le
+durate mantengono la più vicina delle tre velocità di PowerPoint in un PPTX; un
+PDF (&lt;code&gt;/D&lt;/code&gt;) e la temporizzazione di un ODP mantengono i secondi esatti.&lt;/p&gt;
+&lt;p&gt;I &lt;strong&gt;frammenti&lt;/strong&gt; sono animazioni nelle presentazioni modificabili, &lt;code&gt;--pptx&lt;/code&gt; e
+&lt;code&gt;--odp&lt;/code&gt;: un elenco a frammenti (voci scritte con &lt;code&gt;*&lt;/code&gt;) si riproduce con i clic,
+un clic per frammento, in ordine, e ognuno fa comparire la sua voce in
+dissolvenza. Nel PDF diventano pagine solo con &lt;code&gt;--pdf-fragments&lt;/code&gt;: una pagina PDF
+per ogni passo di frammento, come le sovrapposizioni di Beamer. È disattivato
+per impostazione predefinita, perché il PDF coincida con quello di marp-cli, e
+non si combina con &lt;code&gt;--pdf-raster&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Questo è stato verificato solo in LibreOffice. &lt;strong&gt;Non è stato verificato in
+PowerPoint stesso&lt;/strong&gt;, quindi non ci si faccia affidamento lì.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;PDF vettoriale&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Dalla v0.4.0 il PDF è disegnato in vettoriale: go-webengine dipinge la slide
 impaginata nel PDF invece che in pixel. Il testo è testo, nei font con cui la

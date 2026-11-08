@@ -211,6 +211,11 @@ data-copied-label="已复制！"
 &lt;td&gt;写出每页为一张幻灯片图片的 PDF，与 v0.3.0 相同&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;为幻灯片的每个片段步骤写出一页 PDF，类似 Beamer 的叠加层（尚未发布）。默认关闭，使 PDF 与 marp-cli 的一致；不能与 &lt;code&gt;--pdf-raster&lt;/code&gt; 同用。见&lt;a href="#transitions-and-fragments-in-the-exports"&gt;下文&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;将演讲者备注写为文本文件，幻灯片之间以 &lt;code&gt;---&lt;/code&gt; 分隔，与 marp-cli 相同（v0.6.0 起；也可由 &lt;code&gt;-o file.txt&lt;/code&gt; 选择）。&lt;code&gt;notes&lt;/code&gt; 命令以另一种格式输出备注&lt;/td&gt;
@@ -481,6 +486,45 @@ v0.5.0 起幻灯片可编辑（见下文）；&lt;code&gt;--pptx-raster&lt;/code
 &lt;/ul&gt;
 &lt;p&gt;经 LibreOffice 重新渲染后，幻灯片与 PNG 导出结果的像素差异在 0.04–2 % 之间。
 &lt;code&gt;--pptx-raster&lt;/code&gt; 和 &lt;code&gt;--odp-raster&lt;/code&gt; 仍然每张幻灯片一张图片。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;PDF、PPTX 和 ODP 中的过渡效果与片段&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;尚未发布：将随 v0.17.1 之后的下一个版本发布。&lt;/p&gt;
+&lt;p&gt;PDF、PPTX 和 ODP 会带上 HTML 页面所播放的内容。幻灯片的 &lt;code&gt;transition&lt;/code&gt; 指令写在
+&lt;strong&gt;下一张&lt;/strong&gt;幻灯片上，也就是它切入的那一张（marp-cli 在离开一张幻灯片时播放它的指令），
+并映射为该格式中最接近的效果。在 marp-cli 的 33 种内置过渡效果中：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;格式&lt;/th&gt;
+&lt;th&gt;完全对应&lt;/th&gt;
+&lt;th&gt;近似对应&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8 种：&lt;code&gt;clockwise&lt;/code&gt;、&lt;code&gt;diamond&lt;/code&gt;、&lt;code&gt;fade&lt;/code&gt;、&lt;code&gt;iris-in&lt;/code&gt;、&lt;code&gt;pull&lt;/code&gt;、&lt;code&gt;push&lt;/code&gt;、&lt;code&gt;slide&lt;/code&gt;、&lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25 种&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11 种&lt;/td&gt;
+&lt;td&gt;22 种&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2 种：&lt;code&gt;fade&lt;/code&gt;、&lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31 种&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;自定义过渡效果（主题或幻灯片自带的 keyframes）会变成 &lt;code&gt;fade&lt;/code&gt;。每次导出只给出一条警告，
+列出所做的替换。在 PPTX 中，时长取 PowerPoint 三种速度中最接近的一种；PDF（&lt;code&gt;/D&lt;/code&gt;）和
+ODP 的计时则保留精确的秒数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;片段&lt;/strong&gt;是可编辑演示文稿（&lt;code&gt;--pptx&lt;/code&gt; 和 &lt;code&gt;--odp&lt;/code&gt;）中的逐步构建：分片列表（用 &lt;code&gt;*&lt;/code&gt; 写的列表项）
+通过点击播放，每个片段一次点击，按顺序进行，每次点击让对应的列表项淡入。在 PDF 中，只有使用
+&lt;code&gt;--pdf-fragments&lt;/code&gt; 时它们才会成为页面：每个片段步骤一页 PDF，类似 Beamer 的叠加层。它默认关闭，
+使 PDF 与 marp-cli 的一致，并且不能与 &lt;code&gt;--pdf-raster&lt;/code&gt; 同用。&lt;/p&gt;
+&lt;p&gt;这只在 LibreOffice 中检查过，&lt;strong&gt;尚未在 PowerPoint 本身中验证&lt;/strong&gt;，因此请不要在那里依赖它。&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;矢量 PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;自 v0.4.0 起，PDF 以矢量方式绘制：go-webengine 将排好版的幻灯片绘制到 PDF 中，而不是绘制成像素。
 文本就是文本，使用幻灯片排版时所用的字体，以子集方式内嵌并带有 &lt;code&gt;/ToUnicode&lt;/code&gt; 映射，

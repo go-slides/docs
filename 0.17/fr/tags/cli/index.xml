@@ -212,6 +212,11 @@ autrement.&lt;/p&gt;
 &lt;td&gt;écrit le PDF avec, pour chaque page, une seule image de la diapositive, comme le faisait la v0.3.0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;écrit une page PDF pour chaque étape de fragment d&amp;rsquo;une diapositive, comme les surcouches de Beamer (pas encore publié). Désactivé par défaut, pour que le PDF reste identique à celui de marp-cli ; incompatible avec &lt;code&gt;--pdf-raster&lt;/code&gt;. Voir &lt;a href="#transitions-and-fragments-in-the-exports"&gt;plus bas&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;écrit les notes de l&amp;rsquo;orateur dans un fichier texte, les diapositives séparées par &lt;code&gt;---&lt;/code&gt;, comme marp-cli (depuis la v0.6.0 ; également choisi par &lt;code&gt;-o file.txt&lt;/code&gt;). La commande &lt;code&gt;notes&lt;/code&gt; les affiche dans une autre mise en forme&lt;/td&gt;
@@ -521,6 +526,52 @@ par-dessus ;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Rendue à nouveau par LibreOffice, une diapositive ne s&amp;rsquo;écarte que de 0,04 à 2 % des pixels de l&amp;rsquo;export
 PNG. &lt;code&gt;--pptx-raster&lt;/code&gt; et &lt;code&gt;--odp-raster&lt;/code&gt; conservent une image par diapositive.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Transitions et fragments dans le PDF, le PPTX et l&amp;rsquo;ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Pas encore publié : cela viendra dans la prochaine version après la v0.17.1.&lt;/p&gt;
+&lt;p&gt;Le PDF, le PPTX et l&amp;rsquo;ODP reprennent ce que joue la page HTML. La directive
+&lt;code&gt;transition&lt;/code&gt; d&amp;rsquo;une diapositive est écrite sur la diapositive &lt;strong&gt;suivante&lt;/strong&gt;, celle
+sur laquelle elle arrive (marp-cli joue la directive d&amp;rsquo;une diapositive en la
+quittant), sous la forme de l&amp;rsquo;effet le plus proche que le format possède. Sur les
+33 transitions intégrées de marp-cli :&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Format&lt;/th&gt;
+&lt;th&gt;Exactement&lt;/th&gt;
+&lt;th&gt;Approximativement&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8 : &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2 : &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Une transition personnalisée (les keyframes propres d&amp;rsquo;un thème ou d&amp;rsquo;une
+diapositive) devient un &lt;code&gt;fade&lt;/code&gt;. Un seul avertissement par export liste les
+substitutions. Les durées gardent la plus proche des trois vitesses de PowerPoint
+dans un PPTX ; un PDF (&lt;code&gt;/D&lt;/code&gt;) et le minutage d&amp;rsquo;un ODP gardent les secondes exactes.&lt;/p&gt;
+&lt;p&gt;Les &lt;strong&gt;fragments&lt;/strong&gt; sont des animations dans les présentations modifiables,
+&lt;code&gt;--pptx&lt;/code&gt; et &lt;code&gt;--odp&lt;/code&gt; : une liste fragmentée (éléments écrits avec &lt;code&gt;*&lt;/code&gt;) se joue au
+clic, un clic par fragment, dans l&amp;rsquo;ordre, chacun faisant apparaître son élément
+en fondu. Dans le PDF, ils ne deviennent des pages qu&amp;rsquo;avec &lt;code&gt;--pdf-fragments&lt;/code&gt; :
+une page PDF par étape de fragment, comme les surcouches de Beamer. C&amp;rsquo;est
+désactivé par défaut, pour que le PDF reste identique à celui de marp-cli, et
+incompatible avec &lt;code&gt;--pdf-raster&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Cela n&amp;rsquo;a été vérifié que dans LibreOffice. Ce n&amp;rsquo;est &lt;strong&gt;pas vérifié dans PowerPoint
+lui-même&lt;/strong&gt; : ne comptez pas dessus.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;PDF vectoriel&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Depuis la v0.4.0, le PDF est dessiné en vectoriel : go-webengine peint la diapositive mise en page
 dans le PDF au lieu de la peindre en pixels. Le texte reste du texte, dans les polices avec lesquelles la

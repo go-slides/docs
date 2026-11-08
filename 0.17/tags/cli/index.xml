@@ -212,6 +212,11 @@ otherwise.&lt;/p&gt;
 &lt;td&gt;write the PDF with each page one image of the slide, as v0.3.0 did&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--pdf-fragments&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;write one PDF page for each fragment step of a slide, like Beamer overlays (unreleased). Off by default, so the PDF matches marp-cli&amp;rsquo;s; not with &lt;code&gt;--pdf-raster&lt;/code&gt;. See &lt;a href="#transitions-and-fragments-in-the-exports"&gt;below&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--notes&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;write the speaker notes as a text file, slides separated by &lt;code&gt;---&lt;/code&gt; as marp-cli does (in v0.6.0; also chosen by &lt;code&gt;-o file.txt&lt;/code&gt;). The &lt;code&gt;notes&lt;/code&gt; command prints them in another layout&lt;/td&gt;
@@ -521,6 +526,50 @@ clip or a radial gradient stays a picture.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export&amp;rsquo;s
 pixels. &lt;code&gt;--pptx-raster&lt;/code&gt; and &lt;code&gt;--odp-raster&lt;/code&gt; keep one picture a slide.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="transitions-and-fragments-in-the-exports"&gt;Transitions and fragments in the PDF, PPTX and ODP&lt;span class="hx:absolute hx:-mt-20" id="transitions-and-fragments-in-the-exports"&gt;&lt;/span&gt;
+&lt;a href="#transitions-and-fragments-in-the-exports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Not yet released: this comes in the next release after v0.17.1.&lt;/p&gt;
+&lt;p&gt;The PDF, PPTX and ODP carry what the HTML page plays. A slide&amp;rsquo;s &lt;code&gt;transition&lt;/code&gt;
+directive is written on the &lt;strong&gt;next&lt;/strong&gt; slide, the one it comes in on (marp-cli
+plays a slide&amp;rsquo;s directive when leaving it), as the nearest effect the format has.
+Of marp-cli&amp;rsquo;s 33 built-in transitions:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Format&lt;/th&gt;
+&lt;th&gt;Exactly&lt;/th&gt;
+&lt;th&gt;Approximately&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PPTX&lt;/td&gt;
+&lt;td&gt;8: &lt;code&gt;clockwise&lt;/code&gt;, &lt;code&gt;diamond&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;iris-in&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;, &lt;code&gt;push&lt;/code&gt;, &lt;code&gt;slide&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ODP&lt;/td&gt;
+&lt;td&gt;11&lt;/td&gt;
+&lt;td&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PDF&lt;/td&gt;
+&lt;td&gt;2: &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;wipe&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A custom transition (a theme&amp;rsquo;s or a slide&amp;rsquo;s own keyframes) becomes a &lt;code&gt;fade&lt;/code&gt;. One
+warning per export lists the substitutions. Durations keep the nearest of
+PowerPoint&amp;rsquo;s three speeds in a PPTX; a PDF (&lt;code&gt;/D&lt;/code&gt;) and an ODP&amp;rsquo;s timing keep the
+exact seconds.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fragments&lt;/strong&gt; are builds in the editable decks, &lt;code&gt;--pptx&lt;/code&gt; and &lt;code&gt;--odp&lt;/code&gt;: a
+fragmented list (items written with &lt;code&gt;*&lt;/code&gt;) is played by clicks, one click for each
+fragment, in order, each fading in that item. In the PDF they are pages only
+with &lt;code&gt;--pdf-fragments&lt;/code&gt;: one PDF page for each fragment step, like Beamer
+overlays. It is off by default, so that the PDF matches marp-cli&amp;rsquo;s, and it
+cannot be combined with &lt;code&gt;--pdf-raster&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This was checked in LibreOffice only. It has &lt;strong&gt;not been verified in PowerPoint
+itself&lt;/strong&gt;, so do not rely on it there.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="vector-pdf"&gt;Vector PDF&lt;span class="hx:absolute hx:-mt-20" id="vector-pdf"&gt;&lt;/span&gt;
 &lt;a href="#vector-pdf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Since v0.4.0 the PDF is drawn as vectors: go-webengine paints the laid-out
 slide into the PDF instead of into pixels. The text is text, in the fonts the
