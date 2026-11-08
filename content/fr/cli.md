@@ -23,6 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | affiche les notes de l'orateur |
 | `kinds` | liste les *kinds* que la présentation peut utiliser et ce qu'ils définissent ; `--json` (depuis la v0.6.0) les écrit sous la forme `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` étant résolu |
 | `themes` | liste les thèmes |
+| `theme pack`, `verify`, `install`, `list`, `remove` | les paquets de thème, `*.slidestheme` (après la v0.17.1) : [Paquets de thème]({{< relref "themes" >}}) |
 | `version` | affiche la version (tout comme `slides --version`) |
 | `completion` | affiche un script de complétion pour le shell : `bash`, `zsh`, `fish` ou `powershell` |
 
@@ -51,7 +52,7 @@ autrement.
 | `--pptx-editable`, `--no-parallel` | `build` | les équivalents marp-cli de `--pptx` et de `-P 1` (depuis la v0.6.0) |
 | `--config file` | toutes | fichier de configuration ; par défaut, `slides.yaml` à côté de la présentation, s'il existe |
 | `--no-config` | toutes | ne lit aucun fichier de configuration |
-| `--theme-set path` | toutes | un fichier CSS de thème, ou un répertoire qui en contient (répétable) |
+| `--theme-set path` | toutes | un fichier CSS de thème, un paquet de thème (`*.slidestheme`, après la v0.17.1), ou un répertoire qui en contient (répétable) |
 | `--kinds file` | toutes | un fichier YAML de *kinds* (répétable) |
 | `--data file` | toutes | un fichier YAML ou JSON de données de gabarit (répétable) |
 | `--set key=value` | toutes | une valeur de gabarit (répétable) |
@@ -75,7 +76,7 @@ autrement.
 | `--jpeg-quality n` | `build` | qualité JPEG, de 1 à 100 (85 par défaut) |
 | `--image-scale n` | `build` | pixels physiques par pixel CSS pour les images et le PDF (1 par défaut) ; 2 donne 2560×1440 en 16:9, texte et vecteurs étant dessinés à cette densité, et non agrandis |
 | `--allow-local-files` | `build` | permet aux images et au PDF de lire des fichiers locaux, uniquement sous le répertoire de la présentation ; refusé par défaut, comme avec marp-cli |
-| `--theme name\|file.css` | `build` | remplace le thème de la présentation (depuis la v0.6.0) : un nom de thème, ou un fichier CSS, qui devient le thème quel que soit le `@theme` qu'il déclare ; un répertoire est refusé, utilisez `--theme-set` |
+| `--theme name\|file.css\|file.slidestheme` | `build` | remplace le thème de la présentation (depuis la v0.6.0) : un nom de thème (intégré, ou d'un paquet installé après la v0.17.1), un fichier CSS, qui devient le thème quel que soit le `@theme` qu'il déclare, ou un [paquet de thème]({{< relref "themes" >}}) ; un répertoire est refusé, utilisez `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | les métadonnées de la page (depuis la v0.6.0), prioritaires sur les directives `title`, `description`, `author`, `keywords`, `url` et `image` de la présentation ; voir plus bas |
 
 ## Plusieurs présentations, et un répertoire {#several-decks-and-a-directory}
