@@ -1,15 +1,15 @@
 ---
-title: "Theme packages"
+title: "Пакети тем"
 weight: 42
-description: "A theme as one file: a .slidestheme archive with a theme.hcl, its CSS, fonts, assets and kinds, checked as untrusted input."
+description: "Тема в одному файлі: архів .slidestheme з theme.hcl, її CSS, шрифтами, ресурсами та kinds, який перевіряють як недовірений вхід."
 tags: [themes, hcl]
 ---
 
-A **theme package** is one file, `<name>.slidestheme`: a ZIP archive
-(deflate) with `theme.hcl` at its root and the files it declares. It carries a
-theme's CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.
+**Пакет теми** — це один файл, `<name>.slidestheme`: ZIP-архів (deflate)
+з файлом `theme.hcl` у корені та файлами, які той оголошує. Він містить CSS
+теми, шрифти, логотипи та тла і, якщо потрібно, типи слайдів (kinds), а також
+назву, версію та ліцензію, щоб тему можна було передавати й встановлювати.
+Пакети тем з'явилися після v0.17.1.
 
 ## The theme.hcl file {#the-themehcl-file}
 
@@ -43,20 +43,19 @@ kind "acme-title" {                     # optional slide kinds
 }
 ```
 
-`theme.hcl` is HCL's native syntax with literal values only: no function, no
-variable, no `file()` or `env()`. A name is lower-case letters, digits and
-dashes, and is not `default`, `gaia` or `uncover`. `extends` names the base
-theme; every `css` block adds a sheet, in order; every `font` and `asset` block
-names a file of the package; every `kind` block is a [kind]({{< relref "kinds" >}}).
-A `sha256` on a `css`, `font` or `asset` block is checked when the package is
-read.
+`theme.hcl` використовує рідний синтаксис HCL лише з літеральними значеннями:
+жодних функцій, змінних, `file()` чи `env()`. Назва складається з малих літер,
+цифр і дефісів і не може бути `default`, `gaia` чи `uncover`. `extends`
+називає базову тему; кожен блок `css` додає таблицю стилів за порядком;
+кожен блок `font` і `asset` називає файл пакета; кожен блок `kind` — це
+[kind]({{< relref "kinds" >}}). `sha256` у блоці `css`, `font` чи `asset`
+перевіряють під час читання пакета.
 
-The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: `background: url(assets/logo.svg)`. When the package is loaded,
-each such reference becomes a `data:` URL, so that the page is self-contained,
-and a `font` block becomes an `@font-face`. A package may also carry `LICENSE`,
-`NOTICE` and `README` files; any other file that `theme.hcl` does not declare is
-refused.
+CSS посилається на шрифти й ресурси за їхнім шляхом у пакеті, відносно файлу
+CSS: `background: url(assets/logo.svg)`. Під час завантаження пакета кожне таке
+посилання стає URL `data:`, щоб сторінка була самодостатньою, а блок `font`
+стає `@font-face`. Пакет може також містити файли `LICENSE`, `NOTICE`
+і `README`; будь-який інший файл, якого `theme.hcl` не оголошує, відхиляють.
 
 ## Packing, installing and using {#packing-installing-and-using}
 
@@ -68,9 +67,9 @@ slides theme list           the installed packages
 slides theme remove name
 ```
 
-Installed packages live in `go-slides/themes` under the user's configuration
-directory (`os.UserConfigDir()`: `~/Library/Application Support`,
-`$XDG_CONFIG_HOME` or `~/.config`, `%AppData%`). In a deck:
+Встановлені пакети лежать у `go-slides/themes` у теці конфігурації користувача
+(`os.UserConfigDir()`: `~/Library/Application Support`,
+`$XDG_CONFIG_HOME` або `~/.config`, `%AppData%`). У презентації:
 
 ```markdown
 ---
@@ -78,36 +77,40 @@ theme: acme
 ---
 ```
 
-finds an installed package, after the built-in themes and `--theme-set`.
-`--theme acme.slidestheme` and `--theme-set acme.slidestheme` use a file
-directly, without installing it; see [Command line]({{< relref "cli" >}}).
+знаходить встановлений пакет, після вбудованих тем і `--theme-set`.
+`--theme acme.slidestheme` і `--theme-set acme.slidestheme` використовують файл
+безпосередньо, без встановлення; див. [Командний рядок]({{< relref "cli" >}}).
 
-The kinds of a package apply with `--theme file.slidestheme`, or with
-`--theme name` for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with `--kinds`.
+Kinds пакета застосовуються з `--theme file.slidestheme` або з `--theme name`
+для встановленого пакета. Презентація, яка лише називає тему у своєму
+front matter, отримує її вигляд, але не її kinds, і може назвати їх через
+`--kinds`.
 
 ## A package is untrusted input {#a-package-is-untrusted-input}
 
-A theme package can come from anywhere, so every reader (`pack`, `verify`,
-`install`, `--theme`, a build) checks it the same way, and refuses with an error
-that has a code (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
+Пакет теми може прийти звідки завгодно, тож кожен читач (`pack`, `verify`,
+`install`, `--theme`, збірка) перевіряє його однаково і відхиляє з помилкою,
+що має код (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
 `theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
 
-- **Archive.** No `..`, absolute path, drive letter or backslash in a name; no
-  symbolic link or special file; no duplicate name (compared without case); no
-  encryption and no method but stored and deflate. Sizes are what is read, not
-  what the archive declares.
-- **Bounds.** At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-  inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-  `theme.hcl` at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-  font or an image.
-- **CSS.** No `@import`, no `@import-theme` (use `extends`), no `image-set()`,
-  `src()` or other function that loads a resource, no backslash escape outside a
-  string, no `</style`. A `url()` is a `#fragment`, a `data:` image or font, or
-  a declared file of the package, never one that leaves it.
-- **SVG.** No `script`, `foreignObject`, frame, embed, `set`, DOCTYPE or event
-  handler; an `href` is a `#fragment`; no `url()` that leaves the file.
-- **Fonts and images** are parsed: a font must be a font, an image must match
-  its extension, and each has a size bound.
+- **Архів.** Жодних `..`, абсолютного шляху, літери диска чи зворотної косої
+  риски в назві; жодних символічних посилань і спеціальних файлів; жодних
+  повторюваних назв (порівняння без урахування регістру); жодного шифрування
+  і жодного методу, окрім stored і deflate. Розміри — це те, що прочитано,
+  а не те, що заявляє архів.
+- **Межі.** Щонайбільше 16 МіБ архіву, 256 записів, 8 МіБ на запис, 24 МіБ
+  після розпакування, коефіцієнт стиснення 100 до 1 для запису від 64 КіБ,
+  `theme.hcl` не більше 64 КіБ і 32 рівнів вкладеності дужок, 1 МіБ CSS
+  на файл, 4 МіБ на шрифт чи зображення.
+- **CSS.** Жодних `@import`, жодних `@import-theme` (використовуйте `extends`),
+  жодних `image-set()`, `src()` чи інших функцій, що завантажують ресурс,
+  жодних екранувань зворотною косою рискою поза рядком, жодних `</style`.
+  `url()` — це `#fragment`, зображення чи шрифт `data:` або оголошений файл
+  пакета, але ніколи не той, що виходить за його межі.
+- **SVG.** Жодних `script`, `foreignObject`, фреймів, embed, `set`, DOCTYPE
+  і обробників подій; `href` — це `#fragment`; жодних `url()`, що виходять
+  за межі файлу.
+- **Шрифти та зображення** розбирають: шрифт має бути шрифтом, зображення має
+  відповідати своєму розширенню, і кожне має межу розміру.
 
-The repository's `testdata/themes/acme` is a small example.
+Тека `testdata/themes/acme` у репозиторії — невеликий приклад.
