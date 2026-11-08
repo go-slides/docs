@@ -1,9 +1,9 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.17/uk/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.17/uk/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Theme packages</title><link>https://go-slides.github.io/docs/0.17/uk/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/uk/themes/</guid><description>
-&lt;p&gt;A &lt;strong&gt;theme package&lt;/strong&gt; is one file, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: a ZIP archive
-(deflate) with &lt;code&gt;theme.hcl&lt;/code&gt; at its root and the files it declares. It carries a
-theme&amp;rsquo;s CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.17/uk/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>uk</language><atom:link href="https://go-slides.github.io/docs/0.17/uk/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Пакети тем</title><link>https://go-slides.github.io/docs/0.17/uk/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/uk/themes/</guid><description>
+&lt;p&gt;&lt;strong&gt;Пакет теми&lt;/strong&gt; — це один файл, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: ZIP-архів (deflate)
+з файлом &lt;code&gt;theme.hcl&lt;/code&gt; у корені та файлами, які той оголошує. Він містить CSS
+теми, шрифти, логотипи та тла і, якщо потрібно, типи слайдів (kinds), а також
+назву, версію та ліцензію, щоб тему можна було передавати й встановлювати.
+Пакети тем з&amp;rsquo;явилися після v0.17.1.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="the-themehcl-file"&gt;The theme.hcl file&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
 &lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
@@ -44,19 +44,18 @@ data-copied-label="Скопійовано!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; is HCL&amp;rsquo;s native syntax with literal values only: no function, no
-variable, no &lt;code&gt;file()&lt;/code&gt; or &lt;code&gt;env()&lt;/code&gt;. A name is lower-case letters, digits and
-dashes, and is not &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; or &lt;code&gt;uncover&lt;/code&gt;. &lt;code&gt;extends&lt;/code&gt; names the base
-theme; every &lt;code&gt;css&lt;/code&gt; block adds a sheet, in order; every &lt;code&gt;font&lt;/code&gt; and &lt;code&gt;asset&lt;/code&gt; block
-names a file of the package; every &lt;code&gt;kind&lt;/code&gt; block is a &lt;a href="https://go-slides.github.io/docs/0.17/uk/kinds/"&gt;kind&lt;/a&gt;.
-A &lt;code&gt;sha256&lt;/code&gt; on a &lt;code&gt;css&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt; or &lt;code&gt;asset&lt;/code&gt; block is checked when the package is
-read.&lt;/p&gt;
-&lt;p&gt;The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: &lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. When the package is loaded,
-each such reference becomes a &lt;code&gt;data:&lt;/code&gt; URL, so that the page is self-contained,
-and a &lt;code&gt;font&lt;/code&gt; block becomes an &lt;code&gt;@font-face&lt;/code&gt;. A package may also carry &lt;code&gt;LICENSE&lt;/code&gt;,
-&lt;code&gt;NOTICE&lt;/code&gt; and &lt;code&gt;README&lt;/code&gt; files; any other file that &lt;code&gt;theme.hcl&lt;/code&gt; does not declare is
-refused.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; використовує рідний синтаксис HCL лише з літеральними значеннями:
+жодних функцій, змінних, &lt;code&gt;file()&lt;/code&gt; чи &lt;code&gt;env()&lt;/code&gt;. Назва складається з малих літер,
+цифр і дефісів і не може бути &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; чи &lt;code&gt;uncover&lt;/code&gt;. &lt;code&gt;extends&lt;/code&gt;
+називає базову тему; кожен блок &lt;code&gt;css&lt;/code&gt; додає таблицю стилів за порядком;
+кожен блок &lt;code&gt;font&lt;/code&gt; і &lt;code&gt;asset&lt;/code&gt; називає файл пакета; кожен блок &lt;code&gt;kind&lt;/code&gt; — це
+&lt;a href="https://go-slides.github.io/docs/0.17/uk/kinds/"&gt;kind&lt;/a&gt;. &lt;code&gt;sha256&lt;/code&gt; у блоці &lt;code&gt;css&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt; чи &lt;code&gt;asset&lt;/code&gt;
+перевіряють під час читання пакета.&lt;/p&gt;
+&lt;p&gt;CSS посилається на шрифти й ресурси за їхнім шляхом у пакеті, відносно файлу
+CSS: &lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. Під час завантаження пакета кожне таке
+посилання стає URL &lt;code&gt;data:&lt;/code&gt;, щоб сторінка була самодостатньою, а блок &lt;code&gt;font&lt;/code&gt;
+стає &lt;code&gt;@font-face&lt;/code&gt;. Пакет може також містити файли &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt;
+і &lt;code&gt;README&lt;/code&gt;; будь-який інший файл, якого &lt;code&gt;theme.hcl&lt;/code&gt; не оголошує, відхиляють.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
@@ -75,9 +74,9 @@ data-copied-label="Скопійовано!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Installed packages live in &lt;code&gt;go-slides/themes&lt;/code&gt; under the user&amp;rsquo;s configuration
-directory (&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
-&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; or &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). In a deck:&lt;/p&gt;
+&lt;p&gt;Встановлені пакети лежать у &lt;code&gt;go-slides/themes&lt;/code&gt; у теці конфігурації користувача
+(&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
+&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; або &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). У презентації:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
@@ -93,33 +92,37 @@ data-copied-label="Скопійовано!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;finds an installed package, after the built-in themes and &lt;code&gt;--theme-set&lt;/code&gt;.
-&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; and &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; use a file
-directly, without installing it; see &lt;a href="https://go-slides.github.io/docs/0.17/uk/cli/"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The kinds of a package apply with &lt;code&gt;--theme file.slidestheme&lt;/code&gt;, or with
-&lt;code&gt;--theme name&lt;/code&gt; for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with &lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;знаходить встановлений пакет, після вбудованих тем і &lt;code&gt;--theme-set&lt;/code&gt;.
+&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; і &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; використовують файл
+безпосередньо, без встановлення; див. &lt;a href="https://go-slides.github.io/docs/0.17/uk/cli/"&gt;Командний рядок&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Kinds пакета застосовуються з &lt;code&gt;--theme file.slidestheme&lt;/code&gt; або з &lt;code&gt;--theme name&lt;/code&gt;
+для встановленого пакета. Презентація, яка лише називає тему у своєму
+front matter, отримує її вигляд, але не її kinds, і може назвати їх через
+&lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
-&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A theme package can come from anywhere, so every reader (&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
-&lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, a build) checks it the same way, and refuses with an error
-that has a code (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;,
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Пакет теми може прийти звідки завгодно, тож кожен читач (&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
+&lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, збірка) перевіряє його однаково і відхиляє з помилкою,
+що має код (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;,
 &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Archive.&lt;/strong&gt; No &lt;code&gt;..&lt;/code&gt;, absolute path, drive letter or backslash in a name; no
-symbolic link or special file; no duplicate name (compared without case); no
-encryption and no method but stored and deflate. Sizes are what is read, not
-what the archive declares.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bounds.&lt;/strong&gt; At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-&lt;code&gt;theme.hcl&lt;/code&gt; at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-font or an image.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; No &lt;code&gt;@import&lt;/code&gt;, no &lt;code&gt;@import-theme&lt;/code&gt; (use &lt;code&gt;extends&lt;/code&gt;), no &lt;code&gt;image-set()&lt;/code&gt;,
-&lt;code&gt;src()&lt;/code&gt; or other function that loads a resource, no backslash escape outside a
-string, no &lt;code&gt;&amp;lt;/style&lt;/code&gt;. A &lt;code&gt;url()&lt;/code&gt; is a &lt;code&gt;#fragment&lt;/code&gt;, a &lt;code&gt;data:&lt;/code&gt; image or font, or
-a declared file of the package, never one that leaves it.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; No &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, frame, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE or event
-handler; an &lt;code&gt;href&lt;/code&gt; is a &lt;code&gt;#fragment&lt;/code&gt;; no &lt;code&gt;url()&lt;/code&gt; that leaves the file.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Fonts and images&lt;/strong&gt; are parsed: a font must be a font, an image must match
-its extension, and each has a size bound.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Архів.&lt;/strong&gt; Жодних &lt;code&gt;..&lt;/code&gt;, абсолютного шляху, літери диска чи зворотної косої
+риски в назві; жодних символічних посилань і спеціальних файлів; жодних
+повторюваних назв (порівняння без урахування регістру); жодного шифрування
+і жодного методу, окрім stored і deflate. Розміри — це те, що прочитано,
+а не те, що заявляє архів.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Межі.&lt;/strong&gt; Щонайбільше 16 МіБ архіву, 256 записів, 8 МіБ на запис, 24 МіБ
+після розпакування, коефіцієнт стиснення 100 до 1 для запису від 64 КіБ,
+&lt;code&gt;theme.hcl&lt;/code&gt; не більше 64 КіБ і 32 рівнів вкладеності дужок, 1 МіБ CSS
+на файл, 4 МіБ на шрифт чи зображення.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Жодних &lt;code&gt;@import&lt;/code&gt;, жодних &lt;code&gt;@import-theme&lt;/code&gt; (використовуйте &lt;code&gt;extends&lt;/code&gt;),
+жодних &lt;code&gt;image-set()&lt;/code&gt;, &lt;code&gt;src()&lt;/code&gt; чи інших функцій, що завантажують ресурс,
+жодних екранувань зворотною косою рискою поза рядком, жодних &lt;code&gt;&amp;lt;/style&lt;/code&gt;.
+&lt;code&gt;url()&lt;/code&gt; — це &lt;code&gt;#fragment&lt;/code&gt;, зображення чи шрифт &lt;code&gt;data:&lt;/code&gt; або оголошений файл
+пакета, але ніколи не той, що виходить за його межі.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; Жодних &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, фреймів, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE
+і обробників подій; &lt;code&gt;href&lt;/code&gt; — це &lt;code&gt;#fragment&lt;/code&gt;; жодних &lt;code&gt;url()&lt;/code&gt;, що виходять
+за межі файлу.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Шрифти та зображення&lt;/strong&gt; розбирають: шрифт має бути шрифтом, зображення має
+відповідати своєму розширенню, і кожне має межу розміру.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The repository&amp;rsquo;s &lt;code&gt;testdata/themes/acme&lt;/code&gt; is a small example.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Тека &lt;code&gt;testdata/themes/acme&lt;/code&gt; у репозиторії — невеликий приклад.&lt;/p&gt;</description></item></channel></rss>

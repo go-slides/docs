@@ -49,6 +49,10 @@ data-copied-label="Скопировано!"
 &lt;td&gt;перечисляет темы&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;пакеты тем, &lt;code&gt;*.slidestheme&lt;/code&gt; (после v0.17.1): &lt;a href="https://go-slides.github.io/docs/0.17/ru/themes/"&gt;Пакеты тем&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;выводит версию (так же делает &lt;code&gt;slides --version&lt;/code&gt;)&lt;/td&gt;
 &lt;/tr&gt;
@@ -150,7 +154,7 @@ data-copied-label="Скопировано!"
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;все&lt;/td&gt;
-&lt;td&gt;файл CSS темы или каталог с ними (можно повторять)&lt;/td&gt;
+&lt;td&gt;файл CSS темы, пакет темы (&lt;code&gt;*.slidestheme&lt;/code&gt;, после v0.17.1) или каталог с ними (можно повторять)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -268,9 +272,9 @@ data-copied-label="Скопировано!"
 &lt;td&gt;разрешить изображениям и PDF читать локальные файлы, только из каталога презентации и ниже; по умолчанию запрещено, как у marp-cli&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;переопределить тему презентации (в v0.6.0): имя темы или файл CSS, который становится темой независимо от объявленного в нём &lt;code&gt;@theme&lt;/code&gt;; каталог отклоняется, используйте &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;переопределить тему презентации (в v0.6.0): имя темы (встроенной или из установленного пакета после v0.17.1), файл CSS, который становится темой независимо от объявленного в нём &lt;code&gt;@theme&lt;/code&gt;, или &lt;a href="https://go-slides.github.io/docs/0.17/ru/themes/"&gt;пакет темы&lt;/a&gt;; каталог отклоняется, используйте &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;

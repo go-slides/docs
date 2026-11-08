@@ -1,10 +1,10 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.17/es/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>es</language><atom:link href="https://go-slides.github.io/docs/0.17/es/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Theme packages</title><link>https://go-slides.github.io/docs/0.17/es/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/es/themes/</guid><description>
-&lt;p&gt;A &lt;strong&gt;theme package&lt;/strong&gt; is one file, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: a ZIP archive
-(deflate) with &lt;code&gt;theme.hcl&lt;/code&gt; at its root and the files it declares. It carries a
-theme&amp;rsquo;s CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;The theme.hcl file&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.17/es/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>es</language><atom:link href="https://go-slides.github.io/docs/0.17/es/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Paquetes de tema</title><link>https://go-slides.github.io/docs/0.17/es/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/es/themes/</guid><description>
+&lt;p&gt;Un &lt;strong&gt;paquete de tema&lt;/strong&gt; es un solo archivo, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: un archivo
+ZIP (deflate) con &lt;code&gt;theme.hcl&lt;/code&gt; en su raíz y los archivos que declara. Lleva el
+CSS de un tema, sus fuentes, logotipos y fondos y, si se quiere, kinds de
+diapositivas, con un nombre, una versión y una licencia, de modo que un tema
+pueda circular e instalarse. Los paquetes de tema existen después de v0.17.1.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;El archivo theme.hcl&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
 &lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
@@ -44,20 +44,20 @@ data-copied-label="¡Copiado!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; is HCL&amp;rsquo;s native syntax with literal values only: no function, no
-variable, no &lt;code&gt;file()&lt;/code&gt; or &lt;code&gt;env()&lt;/code&gt;. A name is lower-case letters, digits and
-dashes, and is not &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; or &lt;code&gt;uncover&lt;/code&gt;. &lt;code&gt;extends&lt;/code&gt; names the base
-theme; every &lt;code&gt;css&lt;/code&gt; block adds a sheet, in order; every &lt;code&gt;font&lt;/code&gt; and &lt;code&gt;asset&lt;/code&gt; block
-names a file of the package; every &lt;code&gt;kind&lt;/code&gt; block is a &lt;a href="https://go-slides.github.io/docs/0.17/es/kinds/"&gt;kind&lt;/a&gt;.
-A &lt;code&gt;sha256&lt;/code&gt; on a &lt;code&gt;css&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt; or &lt;code&gt;asset&lt;/code&gt; block is checked when the package is
-read.&lt;/p&gt;
-&lt;p&gt;The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: &lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. When the package is loaded,
-each such reference becomes a &lt;code&gt;data:&lt;/code&gt; URL, so that the page is self-contained,
-and a &lt;code&gt;font&lt;/code&gt; block becomes an &lt;code&gt;@font-face&lt;/code&gt;. A package may also carry &lt;code&gt;LICENSE&lt;/code&gt;,
-&lt;code&gt;NOTICE&lt;/code&gt; and &lt;code&gt;README&lt;/code&gt; files; any other file that &lt;code&gt;theme.hcl&lt;/code&gt; does not declare is
-refused.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; usa la sintaxis nativa de HCL con valores literales solamente: sin
+funciones, sin variables, sin &lt;code&gt;file()&lt;/code&gt; ni &lt;code&gt;env()&lt;/code&gt;. Un nombre se compone de
+letras minúsculas, dígitos y guiones, y no es &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; ni &lt;code&gt;uncover&lt;/code&gt;.
+&lt;code&gt;extends&lt;/code&gt; nombra el tema base; cada bloque &lt;code&gt;css&lt;/code&gt; añade una hoja de estilo, en
+orden; cada bloque &lt;code&gt;font&lt;/code&gt; y &lt;code&gt;asset&lt;/code&gt; nombra un archivo del paquete; cada bloque
+&lt;code&gt;kind&lt;/code&gt; es un &lt;a href="https://go-slides.github.io/docs/0.17/es/kinds/"&gt;kind&lt;/a&gt;. Un &lt;code&gt;sha256&lt;/code&gt; en un bloque &lt;code&gt;css&lt;/code&gt;,
+&lt;code&gt;font&lt;/code&gt; o &lt;code&gt;asset&lt;/code&gt; se comprueba cuando se lee el paquete.&lt;/p&gt;
+&lt;p&gt;El CSS se refiere a las fuentes y a los recursos por su ruta en el paquete,
+relativa al archivo CSS: &lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. Cuando se carga el
+paquete, cada una de esas referencias se convierte en una URL &lt;code&gt;data:&lt;/code&gt;, de modo
+que la página es autónoma, y un bloque &lt;code&gt;font&lt;/code&gt; se convierte en una &lt;code&gt;@font-face&lt;/code&gt;.
+Un paquete también puede llevar archivos &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt; y &lt;code&gt;README&lt;/code&gt;; se
+rechaza cualquier otro archivo que &lt;code&gt;theme.hcl&lt;/code&gt; no declare.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Empaquetar, instalar y usar&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
 slides theme verify file run every check on a package
@@ -75,9 +75,9 @@ data-copied-label="¡Copiado!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Installed packages live in &lt;code&gt;go-slides/themes&lt;/code&gt; under the user&amp;rsquo;s configuration
-directory (&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
-&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; or &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). In a deck:&lt;/p&gt;
+&lt;p&gt;Los paquetes instalados están en &lt;code&gt;go-slides/themes&lt;/code&gt;, dentro del directorio de
+configuración del usuario (&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
+&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; o &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). En una presentación:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
@@ -93,33 +93,37 @@ data-copied-label="¡Copiado!"
 &lt;/button&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;finds an installed package, after the built-in themes and &lt;code&gt;--theme-set&lt;/code&gt;.
-&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; and &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; use a file
-directly, without installing it; see &lt;a href="https://go-slides.github.io/docs/0.17/es/cli/"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The kinds of a package apply with &lt;code&gt;--theme file.slidestheme&lt;/code&gt;, or with
-&lt;code&gt;--theme name&lt;/code&gt; for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with &lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
-&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A theme package can come from anywhere, so every reader (&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
-&lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, a build) checks it the same way, and refuses with an error
-that has a code (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;,
-&lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
+&lt;p&gt;encuentra un paquete instalado, después de los temas integrados y de
+&lt;code&gt;--theme-set&lt;/code&gt;. &lt;code&gt;--theme acme.slidestheme&lt;/code&gt; y &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt;
+usan un archivo directamente, sin instalarlo; véase &lt;a href="https://go-slides.github.io/docs/0.17/es/cli/"&gt;Línea de comandos&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Los kinds de un paquete se aplican con &lt;code&gt;--theme file.slidestheme&lt;/code&gt;, o con
+&lt;code&gt;--theme name&lt;/code&gt; para un paquete instalado. Una presentación que solo nombra el
+tema en su front matter obtiene su aspecto, no sus kinds, y puede nombrarlos
+con &lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;Un paquete es una entrada no fiable&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Un paquete de tema puede venir de cualquier parte, así que cada lector (&lt;code&gt;pack&lt;/code&gt;,
+&lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, una construcción) lo comprueba de la misma
+manera y lo rechaza con un error que lleva un código (&lt;code&gt;theme.archive&lt;/code&gt;,
+&lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;,
+&lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Archive.&lt;/strong&gt; No &lt;code&gt;..&lt;/code&gt;, absolute path, drive letter or backslash in a name; no
-symbolic link or special file; no duplicate name (compared without case); no
-encryption and no method but stored and deflate. Sizes are what is read, not
-what the archive declares.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bounds.&lt;/strong&gt; At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-&lt;code&gt;theme.hcl&lt;/code&gt; at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-font or an image.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; No &lt;code&gt;@import&lt;/code&gt;, no &lt;code&gt;@import-theme&lt;/code&gt; (use &lt;code&gt;extends&lt;/code&gt;), no &lt;code&gt;image-set()&lt;/code&gt;,
-&lt;code&gt;src()&lt;/code&gt; or other function that loads a resource, no backslash escape outside a
-string, no &lt;code&gt;&amp;lt;/style&lt;/code&gt;. A &lt;code&gt;url()&lt;/code&gt; is a &lt;code&gt;#fragment&lt;/code&gt;, a &lt;code&gt;data:&lt;/code&gt; image or font, or
-a declared file of the package, never one that leaves it.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; No &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, frame, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE or event
-handler; an &lt;code&gt;href&lt;/code&gt; is a &lt;code&gt;#fragment&lt;/code&gt;; no &lt;code&gt;url()&lt;/code&gt; that leaves the file.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Fonts and images&lt;/strong&gt; are parsed: a font must be a font, an image must match
-its extension, and each has a size bound.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Archivo.&lt;/strong&gt; Ni &lt;code&gt;..&lt;/code&gt;, ni ruta absoluta, ni letra de unidad, ni barra
+invertida en un nombre; ni enlace simbólico ni archivo especial; ni nombre
+duplicado (comparado sin distinguir mayúsculas); ni cifrado ni otro método
+que stored y deflate. Los tamaños son los que se leen, no los que declara el
+archivo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Límites.&lt;/strong&gt; Como máximo 16 MiB de archivo, 256 entradas, 8 MiB por entrada,
+24 MiB descomprimidos, una razón de compresión de 100 a 1 para una entrada de
+64 KiB o más, &lt;code&gt;theme.hcl&lt;/code&gt; de como máximo 64 KiB y 32 niveles de anidamiento,
+1 MiB de CSS por archivo, 4 MiB por fuente o imagen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Ni &lt;code&gt;@import&lt;/code&gt;, ni &lt;code&gt;@import-theme&lt;/code&gt; (use &lt;code&gt;extends&lt;/code&gt;), ni &lt;code&gt;image-set()&lt;/code&gt;,
+&lt;code&gt;src()&lt;/code&gt; u otra función que cargue un recurso, ni escapes con barra invertida
+fuera de una cadena, ni &lt;code&gt;&amp;lt;/style&lt;/code&gt;. Un &lt;code&gt;url()&lt;/code&gt; es un &lt;code&gt;#fragment&lt;/code&gt;, una imagen o
+fuente &lt;code&gt;data:&lt;/code&gt;, o un archivo declarado del paquete, nunca uno que salga de él.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; Ni &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, marcos, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE ni
+manejadores de eventos; un &lt;code&gt;href&lt;/code&gt; es un &lt;code&gt;#fragment&lt;/code&gt;; ni &lt;code&gt;url()&lt;/code&gt; que salga del
+archivo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fuentes e imágenes&lt;/strong&gt; se analizan: una fuente debe ser una fuente, una
+imagen debe coincidir con su extensión, y cada una tiene un límite de tamaño.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The repository&amp;rsquo;s &lt;code&gt;testdata/themes/acme&lt;/code&gt; is a small example.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;El directorio &lt;code&gt;testdata/themes/acme&lt;/code&gt; del repositorio es un pequeño ejemplo.&lt;/p&gt;</description></item></channel></rss>

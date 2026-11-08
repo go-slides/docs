@@ -49,6 +49,10 @@ data-copied-label="¡Copiado!"
 &lt;td&gt;lista los temas&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;paquetes de tema, &lt;code&gt;*.slidestheme&lt;/code&gt; (después de v0.17.1): &lt;a href="https://go-slides.github.io/docs/0.17/es/themes/"&gt;Paquetes de tema&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;imprime la versión (también lo hace &lt;code&gt;slides --version&lt;/code&gt;)&lt;/td&gt;
 &lt;/tr&gt;
@@ -151,7 +155,7 @@ pueden ir antes o después de la presentación: &lt;code&gt;slides deck.md -o ou
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;todos&lt;/td&gt;
-&lt;td&gt;un archivo CSS de tema, o un directorio de ellos (repetible)&lt;/td&gt;
+&lt;td&gt;un archivo CSS de tema, un paquete de tema (&lt;code&gt;*.slidestheme&lt;/code&gt;, después de v0.17.1) o un directorio de ellos (repetible)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -269,9 +273,9 @@ pueden ir antes o después de la presentación: &lt;code&gt;slides deck.md -o ou
 &lt;td&gt;permite que las imágenes y el PDF lean archivos locales, solo desde el directorio de la presentación; se rechaza por defecto, como en marp-cli&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;sustituye el tema de la presentación (en v0.6.0): un nombre de tema o un archivo CSS, que pasa a ser el tema sea cual sea el &lt;code&gt;@theme&lt;/code&gt; que declare; un directorio se rechaza, use &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;sustituye el tema de la presentación (en v0.6.0): un nombre de tema (integrado, o de un paquete instalado después de v0.17.1), un archivo CSS, que pasa a ser el tema sea cual sea el &lt;code&gt;@theme&lt;/code&gt; que declare, o un &lt;a href="https://go-slides.github.io/docs/0.17/es/themes/"&gt;paquete de tema&lt;/a&gt;; un directorio se rechaza, use &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;

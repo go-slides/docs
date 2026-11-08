@@ -49,6 +49,10 @@ data-copied-label="Скопійовано!"
 &lt;td&gt;перелічує теми&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;пакети тем, &lt;code&gt;*.slidestheme&lt;/code&gt; (після v0.17.1): &lt;a href="https://go-slides.github.io/docs/0.17/uk/themes/"&gt;Пакети тем&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;виводить версію (так само робить &lt;code&gt;slides --version&lt;/code&gt;)&lt;/td&gt;
 &lt;/tr&gt;
@@ -150,7 +154,7 @@ data-copied-label="Скопійовано!"
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;усі&lt;/td&gt;
-&lt;td&gt;файл CSS теми або тека з ними (можна повторювати)&lt;/td&gt;
+&lt;td&gt;файл CSS теми, пакет теми (&lt;code&gt;*.slidestheme&lt;/code&gt;, після v0.17.1) або тека з ними (можна повторювати)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -268,9 +272,9 @@ data-copied-label="Скопійовано!"
 &lt;td&gt;дозволити зображенням і PDF читати локальні файли, лише з-під теки презентації; типово заборонено, як у marp-cli&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;перевизначити тему презентації (у v0.6.0): назва теми або файл CSS, який стає темою, який би &lt;code&gt;@theme&lt;/code&gt; він не оголошував; теку відхиляють, використовуйте &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;перевизначити тему презентації (у v0.6.0): назва теми (вбудованої або зі встановленого пакета після v0.17.1), файл CSS, який стає темою, який би &lt;code&gt;@theme&lt;/code&gt; він не оголошував, або &lt;a href="https://go-slides.github.io/docs/0.17/uk/themes/"&gt;пакет теми&lt;/a&gt;; теку відхиляють, використовуйте &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--title&lt;/code&gt;, &lt;code&gt;--description&lt;/code&gt;, &lt;code&gt;--author&lt;/code&gt;, &lt;code&gt;--keywords&lt;/code&gt;, &lt;code&gt;--url&lt;/code&gt;, &lt;code&gt;--og-image&lt;/code&gt;&lt;/td&gt;
