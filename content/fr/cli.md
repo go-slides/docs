@@ -63,6 +63,7 @@ autrement.
 | `--bare` | `build` | empile les diapositives, sans le script de présentation |
 | `--pdf` | `build` | écrit un PDF, une page par diapositive, avec un plan — texte et formes en vectoriel (également choisi par `-o file.pdf`) |
 | `--pdf-raster` | `build` | écrit le PDF avec, pour chaque page, une seule image de la diapositive, comme le faisait la v0.3.0 |
+| `--pdf-fragments` | `build` | écrit une page PDF pour chaque étape de fragment d'une diapositive, comme les surcouches de Beamer (pas encore publié). Désactivé par défaut, pour que le PDF reste identique à celui de marp-cli ; incompatible avec `--pdf-raster`. Voir [plus bas](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | écrit les notes de l'orateur dans un fichier texte, les diapositives séparées par `---`, comme marp-cli (depuis la v0.6.0 ; également choisi par `-o file.txt`). La commande `notes` les affiche dans une autre mise en forme |
 | `--pdf-notes` | `build` | ajoute les notes de l'orateur de chaque diapositive à sa page PDF sous forme d'annotation de type note, comme marp-cli (depuis la v0.6.0). Demande un PDF quand rien d'autre n'indique quoi écrire |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | les signets du PDF (depuis la v0.6.0) : « Page N » pour chaque diapositive et les titres imbriqués dessous. Activés par défaut ici, contrairement à marp-cli ; `=false` en désactive un. Voir plus bas |
@@ -322,6 +323,38 @@ que dessinent les exports PNG et PDF :
 
 Rendue à nouveau par LibreOffice, une diapositive ne s'écarte que de 0,04 à 2 % des pixels de l'export
 PNG. `--pptx-raster` et `--odp-raster` conservent une image par diapositive.
+
+### Transitions et fragments dans le PDF, le PPTX et l'ODP {#transitions-and-fragments-in-the-exports}
+
+Pas encore publié : cela viendra dans la prochaine version après la v0.17.1.
+
+Le PDF, le PPTX et l'ODP reprennent ce que joue la page HTML. La directive
+`transition` d'une diapositive est écrite sur la diapositive **suivante**, celle
+sur laquelle elle arrive (marp-cli joue la directive d'une diapositive en la
+quittant), sous la forme de l'effet le plus proche que le format possède. Sur les
+33 transitions intégrées de marp-cli :
+
+| Format | Exactement | Approximativement |
+| --- | --- | --- |
+| PPTX | 8 : `clockwise`, `diamond`, `fade`, `iris-in`, `pull`, `push`, `slide`, `wipe` | 25 |
+| ODP | 11 | 22 |
+| PDF | 2 : `fade`, `wipe` | 31 |
+
+Une transition personnalisée (les keyframes propres d'un thème ou d'une
+diapositive) devient un `fade`. Un seul avertissement par export liste les
+substitutions. Les durées gardent la plus proche des trois vitesses de PowerPoint
+dans un PPTX ; un PDF (`/D`) et le minutage d'un ODP gardent les secondes exactes.
+
+Les **fragments** sont des animations dans les présentations modifiables,
+`--pptx` et `--odp` : une liste fragmentée (éléments écrits avec `*`) se joue au
+clic, un clic par fragment, dans l'ordre, chacun faisant apparaître son élément
+en fondu. Dans le PDF, ils ne deviennent des pages qu'avec `--pdf-fragments` :
+une page PDF par étape de fragment, comme les surcouches de Beamer. C'est
+désactivé par défaut, pour que le PDF reste identique à celui de marp-cli, et
+incompatible avec `--pdf-raster`.
+
+Cela n'a été vérifié que dans LibreOffice. Ce n'est **pas vérifié dans PowerPoint
+lui-même** : ne comptez pas dessus.
 
 ### PDF vectoriel {#vector-pdf}
 

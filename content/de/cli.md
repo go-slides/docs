@@ -63,6 +63,7 @@ angibt.
 | `--bare` | `build` | die Folien untereinander stellen, ohne Präsentationsskript |
 | `--pdf` | `build` | ein PDF schreiben, eine Seite pro Folie, mit Gliederung – Text und Formen als Vektoren (auch durch `-o file.pdf` gewählt) |
 | `--pdf-raster` | `build` | das PDF schreiben, wobei jede Seite ein Bild der Folie ist, wie es v0.3.0 tat |
+| `--pdf-fragments` | `build` | für jeden Fragmentschritt einer Folie eine PDF-Seite schreiben, wie die Overlays von Beamer (noch nicht veröffentlicht). Standardmäßig aus, damit das PDF dem von marp-cli entspricht; nicht zusammen mit `--pdf-raster`. Siehe [unten](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | die Sprechernotizen als Textdatei schreiben, Folien durch `---` getrennt wie bei marp-cli (in v0.6.0; auch durch `-o file.txt` gewählt). Der Befehl `notes` gibt sie in einem anderen Layout aus |
 | `--pdf-notes` | `build` | die Sprechernotizen jeder Folie als Notizanmerkung auf ihre PDF-Seite setzen, wie es marp-cli tut (in v0.6.0). Verlangt ein PDF, wenn nichts anderes sagt, was geschrieben werden soll |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | die Lesezeichen des PDFs (in v0.6.0): „Page N“ pro Folie und darunter verschachtelt die Überschriften. Hier standardmäßig an, anders als bei marp-cli; `=false` schaltet eines ab. Siehe unten |
@@ -318,6 +319,38 @@ das die PNG- und PDF-Exporte zeichnen:
 
 Von LibreOffice zurückgerendert, liegt eine Folie 0,04–2 % von den Pixeln des
 PNG-Exports entfernt. `--pptx-raster` und `--odp-raster` behalten ein Bild pro Folie.
+
+### Übergänge und Fragmente in PDF, PPTX und ODP {#transitions-and-fragments-in-the-exports}
+
+Noch nicht veröffentlicht: Das kommt mit der nächsten Version nach v0.17.1.
+
+PDF, PPTX und ODP übernehmen, was die HTML-Seite abspielt. Die
+`transition`-Direktive einer Folie wird auf die **nächste** Folie geschrieben,
+auf der sie einläuft (marp-cli spielt die Direktive einer Folie beim Verlassen
+ab), und zwar als der nächstliegende Effekt, den das Format kennt. Von den 33
+eingebauten Übergängen von marp-cli:
+
+| Format | Exakt | Näherungsweise |
+| --- | --- | --- |
+| PPTX | 8: `clockwise`, `diamond`, `fade`, `iris-in`, `pull`, `push`, `slide`, `wipe` | 25 |
+| ODP | 11 | 22 |
+| PDF | 2: `fade`, `wipe` | 31 |
+
+Ein eigener Übergang (die Keyframes eines Themes oder einer Folie) wird zu einem
+`fade`. Pro Export listet eine Warnung die Ersetzungen auf. Die Dauern behalten
+im PPTX die nächstliegende der drei Geschwindigkeiten von PowerPoint; ein PDF
+(`/D`) und das Timing eines ODP behalten die genauen Sekunden.
+
+**Fragmente** sind Einblendungen in den editierbaren Foliensätzen, `--pptx` und
+`--odp`: Eine fragmentierte Liste (Einträge mit `*` geschrieben) läuft per
+Klick, ein Klick pro Fragment, der Reihe nach, wobei jeder Eintrag eingeblendet
+wird (Fade). Im PDF werden sie nur mit `--pdf-fragments` zu Seiten: eine
+PDF-Seite pro Fragmentschritt, wie die Overlays von Beamer. Das ist standardmäßig
+aus, damit das PDF dem von marp-cli entspricht, und lässt sich nicht mit
+`--pdf-raster` kombinieren.
+
+Das wurde nur in LibreOffice geprüft. Es ist **nicht in PowerPoint selbst
+verifiziert**; verlassen Sie sich dort nicht darauf.
 
 ### Vektor-PDF {#vector-pdf}
 

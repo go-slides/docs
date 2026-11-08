@@ -62,6 +62,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `--bare` | `build` | 堆叠幻灯片，不带演示脚本 |
 | `--pdf` | `build` | 写出 PDF，每张幻灯片一页，带书签大纲；文本和形状为矢量（也可由 `-o file.pdf` 选择） |
 | `--pdf-raster` | `build` | 写出每页为一张幻灯片图片的 PDF，与 v0.3.0 相同 |
+| `--pdf-fragments` | `build` | 为幻灯片的每个片段步骤写出一页 PDF，类似 Beamer 的叠加层（尚未发布）。默认关闭，使 PDF 与 marp-cli 的一致；不能与 `--pdf-raster` 同用。见[下文](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | 将演讲者备注写为文本文件，幻灯片之间以 `---` 分隔，与 marp-cli 相同（v0.6.0 起；也可由 `-o file.txt` 选择）。`notes` 命令以另一种格式输出备注 |
 | `--pdf-notes` | `build` | 将每张幻灯片的演讲者备注作为注释批注加到对应的 PDF 页面上，与 marp-cli 相同（v0.6.0 起）。未指定其他输出格式时，会写出 PDF |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | PDF 的书签（v0.6.0 起）：每张幻灯片一个 “Page N”，其下嵌套该幻灯片的标题。与 marp-cli 不同，这里默认开启；`=false` 可关闭其中一项。见下文 |
@@ -282,6 +283,31 @@ v0.5.0 起幻灯片可编辑（见下文）；`--pptx-raster` 则与 marp-cli �
 
 经 LibreOffice 重新渲染后，幻灯片与 PNG 导出结果的像素差异在 0.04–2 % 之间。
 `--pptx-raster` 和 `--odp-raster` 仍然每张幻灯片一张图片。
+
+### PDF、PPTX 和 ODP 中的过渡效果与片段 {#transitions-and-fragments-in-the-exports}
+
+尚未发布：将随 v0.17.1 之后的下一个版本发布。
+
+PDF、PPTX 和 ODP 会带上 HTML 页面所播放的内容。幻灯片的 `transition` 指令写在
+**下一张**幻灯片上，也就是它切入的那一张（marp-cli 在离开一张幻灯片时播放它的指令），
+并映射为该格式中最接近的效果。在 marp-cli 的 33 种内置过渡效果中：
+
+| 格式 | 完全对应 | 近似对应 |
+| --- | --- | --- |
+| PPTX | 8 种：`clockwise`、`diamond`、`fade`、`iris-in`、`pull`、`push`、`slide`、`wipe` | 25 种 |
+| ODP | 11 种 | 22 种 |
+| PDF | 2 种：`fade`、`wipe` | 31 种 |
+
+自定义过渡效果（主题或幻灯片自带的 keyframes）会变成 `fade`。每次导出只给出一条警告，
+列出所做的替换。在 PPTX 中，时长取 PowerPoint 三种速度中最接近的一种；PDF（`/D`）和
+ODP 的计时则保留精确的秒数。
+
+**片段**是可编辑演示文稿（`--pptx` 和 `--odp`）中的逐步构建：分片列表（用 `*` 写的列表项）
+通过点击播放，每个片段一次点击，按顺序进行，每次点击让对应的列表项淡入。在 PDF 中，只有使用
+`--pdf-fragments` 时它们才会成为页面：每个片段步骤一页 PDF，类似 Beamer 的叠加层。它默认关闭，
+使 PDF 与 marp-cli 的一致，并且不能与 `--pdf-raster` 同用。
+
+这只在 LibreOffice 中检查过，**尚未在 PowerPoint 本身中验证**，因此请不要在那里依赖它。
 
 ### 矢量 PDF {#vector-pdf}
 
