@@ -64,6 +64,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `--bare` | `build` | 발표 스크립트 없이 슬라이드를 쌓아 놓습니다 |
 | `--pdf` | `build` | 슬라이드당 한 페이지, 개요가 포함된 PDF를 씁니다. 텍스트와 도형은 벡터입니다(`-o file.pdf`로도 선택됨) |
 | `--pdf-raster` | `build` | v0.3.0처럼 각 페이지가 슬라이드 이미지 한 장인 PDF를 씁니다 |
+| `--pdf-fragments` | `build` | 슬라이드의 프래그먼트 단계마다 PDF 페이지 하나를 씁니다. Beamer의 오버레이와 같습니다(아직 릴리스되지 않음). 기본값은 꺼짐이라 PDF가 marp-cli의 PDF와 같으며, `--pdf-raster`와는 함께 쓸 수 없습니다. [아래](#transitions-and-fragments-in-the-exports) 참조 |
 | `--notes` | `build` | marp-cli처럼 슬라이드를 `---`로 구분한 텍스트 파일로 발표자 노트를 씁니다(v0.6.0부터, `-o file.txt`로도 선택됨). `notes` 명령은 다른 형식으로 출력합니다 |
 | `--pdf-notes` | `build` | marp-cli처럼 각 슬라이드의 발표자 노트를 PDF 페이지에 노트 주석으로 추가합니다(v0.6.0부터). 출력 형식을 따로 지정하지 않으면 PDF를 만듭니다 |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | PDF 책갈피(v0.6.0부터): 슬라이드마다 "Page N"과 그 아래에 중첩된 제목. marp-cli와 달리 여기서는 기본적으로 켜져 있으며, `=false`로 하나씩 끌 수 있습니다. 아래 참고 |
@@ -330,6 +331,34 @@ v0.5.0부터 PPTX와 ODP의 슬라이드는 **편집할 수 있습니다**. marp
 LibreOffice로 다시 렌더링하면 슬라이드는 PNG 내보내기와 픽셀 기준 0.04–2 %
 이내로 일치합니다. `--pptx-raster`와 `--odp-raster`는 슬라이드당 그림 한 장을
 유지합니다.
+
+### PDF, PPTX, ODP의 전환 효과와 프래그먼트 {#transitions-and-fragments-in-the-exports}
+
+아직 릴리스되지 않았습니다. v0.17.1 다음 릴리스에 들어갑니다.
+
+PDF, PPTX, ODP는 HTML 페이지가 재생하는 것을 담습니다. 슬라이드의 `transition`
+지시문은 그 슬라이드가 들어오는 **다음** 슬라이드에 기록되며(marp-cli는 슬라이드를
+떠날 때 그 슬라이드의 지시문을 재생합니다), 형식이 가진 가장 가까운 효과로 대응됩니다.
+marp-cli의 내장 전환 효과 33개 중:
+
+| 형식 | 정확히 | 근사적으로 |
+| --- | --- | --- |
+| PPTX | 8개: `clockwise`, `diamond`, `fade`, `iris-in`, `pull`, `push`, `slide`, `wipe` | 25개 |
+| ODP | 11개 | 22개 |
+| PDF | 2개: `fade`, `wipe` | 31개 |
+
+사용자 정의 전환 효과(테마나 슬라이드 자체의 keyframes)는 `fade`가 됩니다. 내보내기마다
+경고 하나가 대체된 항목을 나열합니다. PPTX에서는 지속 시간이 PowerPoint의 세 가지 속도 중
+가장 가까운 것으로 유지되고, PDF(`/D`)와 ODP의 타이밍은 정확한 초 단위를 유지합니다.
+
+**프래그먼트**는 편집 가능한 프레젠테이션(`--pptx`, `--odp`)에서 단계별 빌드가 됩니다.
+프래그먼트 목록(`*`로 쓴 항목)은 클릭으로 재생되며, 프래그먼트마다 클릭 한 번씩 순서대로
+진행되고 클릭할 때마다 해당 항목이 페이드 인합니다. PDF에서는 `--pdf-fragments`를 줄 때만
+페이지가 됩니다. 프래그먼트 단계마다 PDF 페이지 하나이며 Beamer의 오버레이와 같습니다.
+기본값은 꺼짐이라 PDF가 marp-cli의 PDF와 같고, `--pdf-raster`와는 함께 쓸 수 없습니다.
+
+이는 LibreOffice에서만 확인했습니다. **PowerPoint 자체에서는 검증하지 않았으므로**
+그곳에서는 이에 의존하지 마세요.
 
 ### 벡터 PDF {#vector-pdf}
 

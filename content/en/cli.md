@@ -64,6 +64,7 @@ otherwise.
 | `--bare` | `build` | stack the slides, without the presenting script |
 | `--pdf` | `build` | write a PDF, one page per slide, with an outline — text and shapes as vectors (also chosen by `-o file.pdf`) |
 | `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
+| `--pdf-fragments` | `build` | write one PDF page for each fragment step of a slide, like Beamer overlays (unreleased). Off by default, so the PDF matches marp-cli's; not with `--pdf-raster`. See [below](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | write the speaker notes as a text file, slides separated by `---` as marp-cli does (in v0.6.0; also chosen by `-o file.txt`). The `notes` command prints them in another layout |
 | `--pdf-notes` | `build` | add each slide's speaker notes to its PDF page as a note annotation, as marp-cli does (in v0.6.0). Asks for a PDF when nothing else says what to write |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | the PDF's bookmarks (in v0.6.0): "Page N" per slide and the headings nested under it. On by default here, unlike marp-cli; `=false` turns one off. See below |
@@ -323,6 +324,36 @@ the PNG and PDF exports draw:
 
 Rendered back by LibreOffice, a slide is within 0.04–2 % of the PNG export's
 pixels. `--pptx-raster` and `--odp-raster` keep one picture a slide.
+
+### Transitions and fragments in the PDF, PPTX and ODP {#transitions-and-fragments-in-the-exports}
+
+Not yet released: this comes in the next release after v0.17.1.
+
+The PDF, PPTX and ODP carry what the HTML page plays. A slide's `transition`
+directive is written on the **next** slide, the one it comes in on (marp-cli
+plays a slide's directive when leaving it), as the nearest effect the format has.
+Of marp-cli's 33 built-in transitions:
+
+| Format | Exactly | Approximately |
+| --- | --- | --- |
+| PPTX | 8: `clockwise`, `diamond`, `fade`, `iris-in`, `pull`, `push`, `slide`, `wipe` | 25 |
+| ODP | 11 | 22 |
+| PDF | 2: `fade`, `wipe` | 31 |
+
+A custom transition (a theme's or a slide's own keyframes) becomes a `fade`. One
+warning per export lists the substitutions. Durations keep the nearest of
+PowerPoint's three speeds in a PPTX; a PDF (`/D`) and an ODP's timing keep the
+exact seconds.
+
+**Fragments** are builds in the editable decks, `--pptx` and `--odp`: a
+fragmented list (items written with `*`) is played by clicks, one click for each
+fragment, in order, each fading in that item. In the PDF they are pages only
+with `--pdf-fragments`: one PDF page for each fragment step, like Beamer
+overlays. It is off by default, so that the PDF matches marp-cli's, and it
+cannot be combined with `--pdf-raster`.
+
+This was checked in LibreOffice only. It has **not been verified in PowerPoint
+itself**, so do not rely on it there.
 
 ### Vector PDF
 

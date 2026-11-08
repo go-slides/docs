@@ -64,6 +64,7 @@ inaczej.
 | `--bare` | `build` | ułóż slajdy jeden pod drugim, bez skryptu prezentacji |
 | `--pdf` | `build` | zapisz PDF, jedna strona na slajd, ze spisem treści — tekst i kształty jako wektory (wybierane także przez `-o file.pdf`) |
 | `--pdf-raster` | `build` | zapisz PDF, w którym każda strona to jeden obraz slajdu, jak robiła v0.3.0 |
+| `--pdf-fragments` | `build` | zapisz jedną stronę PDF dla każdego kroku fragmentu slajdu, jak nakładki Beamera (jeszcze niewydane). Domyślnie wyłączone, aby PDF zgadzał się z PDF-em marp-cli; nie z `--pdf-raster`. Zobacz [niżej](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | zapisz notatki prelegenta jako plik tekstowy, slajdy rozdzielone `---` jak w marp-cli (w v0.6.0; wybierane także przez `-o file.txt`). Polecenie `notes` wypisuje je w innym układzie |
 | `--pdf-notes` | `build` | dodaj notatki prelegenta każdego slajdu do jego strony PDF jako adnotację notatki, jak robi marp-cli (w v0.6.0). Prosi o PDF, gdy nic innego nie mówi, co zapisać |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | zakładki PDF (w v0.6.0): „Page N" na slajd i zagnieżdżone pod nim nagłówki. Tu domyślnie włączone, inaczej niż w marp-cli; `=false` wyłącza jedną z nich. Zobacz niżej |
@@ -323,6 +324,36 @@ który rysują eksporty PNG i PDF:
 
 Odrenderowany z powrotem przez LibreOffice, slajd mieści się w 0,04–2 % pikseli
 eksportu PNG. `--pptx-raster` i `--odp-raster` zachowują jeden obraz na slajd.
+
+### Przejścia i fragmenty w PDF, PPTX i ODP {#transitions-and-fragments-in-the-exports}
+
+Jeszcze niewydane: pojawi się w następnym wydaniu po v0.17.1.
+
+PDF, PPTX i ODP zawierają to, co odtwarza strona HTML. Dyrektywa `transition`
+slajdu jest zapisywana na **następnym** slajdzie, na który wchodzi (marp-cli
+odtwarza dyrektywę slajdu przy jego opuszczaniu), jako najbliższy efekt, jaki
+ma dany format. Z 33 wbudowanych przejść marp-cli:
+
+| Format | Dokładnie | W przybliżeniu |
+| --- | --- | --- |
+| PPTX | 8: `clockwise`, `diamond`, `fade`, `iris-in`, `pull`, `push`, `slide`, `wipe` | 25 |
+| ODP | 11 | 22 |
+| PDF | 2: `fade`, `wipe` | 31 |
+
+Własne przejście (keyframes motywu lub slajdu) staje się `fade`. Jedno
+ostrzeżenie na eksport wymienia zamiany. Czasy trwania zachowują w PPTX
+najbliższą z trzech prędkości PowerPointa; PDF (`/D`) i czas w ODP zachowują
+dokładne sekundy.
+
+**Fragmenty** to animacje w edytowalnych prezentacjach, `--pptx` i `--odp`:
+lista z fragmentami (elementy zapisane z `*`) odtwarza się kliknięciami, jedno
+kliknięcie na fragment, po kolei, a każde pojawia swój element zanikaniem
+(fade). W PDF stają się stronami tylko z `--pdf-fragments`: jedna strona PDF na
+każdy krok fragmentu, jak nakładki Beamera. Domyślnie jest wyłączone, aby PDF
+zgadzał się z PDF-em marp-cli, i nie łączy się z `--pdf-raster`.
+
+Sprawdzono to tylko w LibreOffice. **Nie zweryfikowano tego w samym
+PowerPoincie**, więc nie należy tam na tym polegać.
 
 ### PDF wektorowy {#vector-pdf}
 
