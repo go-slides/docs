@@ -1,17 +1,18 @@
 ---
-title: "Theme packages"
+title: "Theme-Pakete"
 weight: 42
-description: "A theme as one file: a .slidestheme archive with a theme.hcl, its CSS, fonts, assets and kinds, checked as untrusted input."
+description: "Ein Theme als eine Datei: ein .slidestheme-Archiv mit einer theme.hcl, ihrem CSS, Schriften, Ressourcen und Kinds, geprüft wie nicht vertrauenswürdige Eingaben."
 tags: [themes, hcl]
 ---
 
-A **theme package** is one file, `<name>.slidestheme`: a ZIP archive
-(deflate) with `theme.hcl` at its root and the files it declares. It carries a
-theme's CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.
+Ein **Theme-Paket** ist eine einzige Datei, `<name>.slidestheme`: ein
+ZIP-Archiv (deflate) mit `theme.hcl` im Wurzelverzeichnis und den Dateien, die
+es deklariert. Es enthält das CSS eines Themes, Schriften, Logos und
+Hintergründe und, wenn gewünscht, Folien-Kinds, mit einem Namen, einer Version
+und einer Lizenz, sodass ein Theme weitergegeben und installiert werden kann.
+Theme-Pakete gibt es nach v0.17.1.
 
-## The theme.hcl file {#the-themehcl-file}
+## Die Datei theme.hcl {#the-themehcl-file}
 
 ```hcl
 # theme.hcl
@@ -43,22 +44,23 @@ kind "acme-title" {                     # optional slide kinds
 }
 ```
 
-`theme.hcl` is HCL's native syntax with literal values only: no function, no
-variable, no `file()` or `env()`. A name is lower-case letters, digits and
-dashes, and is not `default`, `gaia` or `uncover`. `extends` names the base
-theme; every `css` block adds a sheet, in order; every `font` and `asset` block
-names a file of the package; every `kind` block is a [kind]({{< relref "kinds" >}}).
-A `sha256` on a `css`, `font` or `asset` block is checked when the package is
-read.
+`theme.hcl` verwendet die native Syntax von HCL, nur mit Literalwerten: keine
+Funktion, keine Variable, kein `file()` und kein `env()`. Ein Name besteht aus
+Kleinbuchstaben, Ziffern und Bindestrichen und ist weder `default` noch `gaia`
+noch `uncover`. `extends` nennt das Basis-Theme; jeder `css`-Block fügt der
+Reihe nach ein Stylesheet hinzu; jeder `font`- und `asset`-Block nennt eine
+Datei des Pakets; jeder `kind`-Block ist ein [Kind]({{< relref "kinds" >}}).
+Ein `sha256` an einem `css`-, `font`- oder `asset`-Block wird beim Lesen des
+Pakets geprüft.
 
-The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: `background: url(assets/logo.svg)`. When the package is loaded,
-each such reference becomes a `data:` URL, so that the page is self-contained,
-and a `font` block becomes an `@font-face`. A package may also carry `LICENSE`,
-`NOTICE` and `README` files; any other file that `theme.hcl` does not declare is
-refused.
+Das CSS verweist auf Schriften und Ressourcen über ihren Pfad im Paket,
+relativ zur CSS-Datei: `background: url(assets/logo.svg)`. Beim Laden des
+Pakets wird jeder solche Verweis zu einer `data:`-URL, sodass die Seite in sich
+geschlossen ist, und ein `font`-Block wird zu einer `@font-face`. Ein Paket
+kann außerdem die Dateien `LICENSE`, `NOTICE` und `README` enthalten; jede
+andere Datei, die `theme.hcl` nicht deklariert, wird abgelehnt.
 
-## Packing, installing and using {#packing-installing-and-using}
+## Packen, installieren und verwenden {#packing-installing-and-using}
 
 ```
 slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
@@ -68,9 +70,9 @@ slides theme list           the installed packages
 slides theme remove name
 ```
 
-Installed packages live in `go-slides/themes` under the user's configuration
-directory (`os.UserConfigDir()`: `~/Library/Application Support`,
-`$XDG_CONFIG_HOME` or `~/.config`, `%AppData%`). In a deck:
+Installierte Pakete liegen in `go-slides/themes` im Konfigurationsverzeichnis
+des Benutzers (`os.UserConfigDir()`: `~/Library/Application Support`,
+`$XDG_CONFIG_HOME` oder `~/.config`, `%AppData%`). In einem Foliensatz:
 
 ```markdown
 ---
@@ -78,36 +80,42 @@ theme: acme
 ---
 ```
 
-finds an installed package, after the built-in themes and `--theme-set`.
-`--theme acme.slidestheme` and `--theme-set acme.slidestheme` use a file
-directly, without installing it; see [Command line]({{< relref "cli" >}}).
+findet ein installiertes Paket, nach den eingebauten Themes und `--theme-set`.
+`--theme acme.slidestheme` und `--theme-set acme.slidestheme` verwenden eine
+Datei direkt, ohne sie zu installieren; siehe [Befehlszeile]({{< relref "cli" >}}).
 
-The kinds of a package apply with `--theme file.slidestheme`, or with
-`--theme name` for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with `--kinds`.
+Die Kinds eines Pakets gelten mit `--theme file.slidestheme` oder mit
+`--theme name` für ein installiertes Paket. Ein Foliensatz, der das Theme nur
+in seinem Front Matter nennt, erhält dessen Aussehen, nicht dessen Kinds, und
+kann sie mit `--kinds` angeben.
 
-## A package is untrusted input {#a-package-is-untrusted-input}
+## Ein Paket ist eine nicht vertrauenswürdige Eingabe {#a-package-is-untrusted-input}
 
-A theme package can come from anywhere, so every reader (`pack`, `verify`,
-`install`, `--theme`, a build) checks it the same way, and refuses with an error
-that has a code (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
-`theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
+Ein Theme-Paket kann von überall stammen; deshalb prüft jeder Leser (`pack`,
+`verify`, `install`, `--theme`, ein Build) es auf dieselbe Weise und lehnt es
+mit einem Fehler ab, der einen Code trägt (`theme.archive`, `theme.limit`,
+`theme.meta`, `theme.css`, `theme.svg`, `theme.font`, `theme.checksum`,
+`theme.version`):
 
-- **Archive.** No `..`, absolute path, drive letter or backslash in a name; no
-  symbolic link or special file; no duplicate name (compared without case); no
-  encryption and no method but stored and deflate. Sizes are what is read, not
-  what the archive declares.
-- **Bounds.** At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-  inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-  `theme.hcl` at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-  font or an image.
-- **CSS.** No `@import`, no `@import-theme` (use `extends`), no `image-set()`,
-  `src()` or other function that loads a resource, no backslash escape outside a
-  string, no `</style`. A `url()` is a `#fragment`, a `data:` image or font, or
-  a declared file of the package, never one that leaves it.
-- **SVG.** No `script`, `foreignObject`, frame, embed, `set`, DOCTYPE or event
-  handler; an `href` is a `#fragment`; no `url()` that leaves the file.
-- **Fonts and images** are parsed: a font must be a font, an image must match
-  its extension, and each has a size bound.
+- **Archiv.** Kein `..`, kein absoluter Pfad, kein Laufwerksbuchstabe und kein
+  Backslash in einem Namen; kein symbolischer Link und keine Spezialdatei; kein
+  doppelter Name (ohne Beachtung der Groß- und Kleinschreibung verglichen); keine
+  Verschlüsselung und keine andere Methode als stored und deflate. Größen sind
+  das, was gelesen wird, nicht das, was das Archiv angibt.
+- **Grenzen.** Höchstens 16 MiB Archiv, 256 Einträge, 8 MiB je Eintrag, 24 MiB
+  entpackt, ein Kompressionsverhältnis von 100 zu 1 für einen Eintrag ab 64 KiB,
+  `theme.hcl` höchstens 64 KiB und 32 Klammern tief, 1 MiB CSS je Datei, 4 MiB je
+  Schrift oder Bild.
+- **CSS.** Kein `@import`, kein `@import-theme` (verwenden Sie `extends`), kein
+  `image-set()`, `src()` oder eine andere Funktion, die eine Ressource lädt,
+  keine Backslash-Escape-Sequenz außerhalb eines Strings, kein `</style`. Ein
+  `url()` ist ein `#fragment`, ein Bild oder eine Schrift mit `data:` oder
+  eine deklarierte Datei des Pakets, nie eine Adresse, die das Paket verlässt.
+- **SVG.** Kein `script`, kein `foreignObject`, kein Frame, kein embed, kein
+  `set`, kein DOCTYPE und kein Event-Handler; ein `href` ist ein `#fragment`;
+  kein `url()`, das die Datei verlässt.
+- **Schriften und Bilder** werden geparst: Eine Schrift muss eine Schrift sein,
+  ein Bild muss zu seiner Dateiendung passen, und für beide gilt eine
+  Größengrenze.
 
-The repository's `testdata/themes/acme` is a small example.
+Das Verzeichnis `testdata/themes/acme` des Repositorys ist ein kleines Beispiel.
