@@ -1,17 +1,17 @@
 ---
-title: "Theme packages"
+title: "テーマパッケージ"
 weight: 42
-description: "A theme as one file: a .slidestheme archive with a theme.hcl, its CSS, fonts, assets and kinds, checked as untrusted input."
+description: "テーマを 1 つのファイルに：theme.hcl、CSS、フォント、アセット、kind を収めた .slidestheme アーカイブ。信頼できない入力として検査されます。"
 tags: [themes, hcl]
 ---
 
-A **theme package** is one file, `<name>.slidestheme`: a ZIP archive
-(deflate) with `theme.hcl` at its root and the files it declares. It carries a
-theme's CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.
+**テーマパッケージ**は `<name>.slidestheme` という 1 つのファイルです。ルートに
+`theme.hcl` があり、それが宣言したファイルを収めた ZIP アーカイブ（deflate）です。
+テーマの CSS、フォント、ロゴ、背景を収め、必要ならスライドの kind も収めることができ、
+名前、バージョン、ライセンスが付くので、テーマを受け渡してインストールできます。
+テーマパッケージは v0.17.1 より後で使えます。
 
-## The theme.hcl file {#the-themehcl-file}
+## theme.hcl ファイル {#the-themehcl-file}
 
 ```hcl
 # theme.hcl
@@ -43,22 +43,20 @@ kind "acme-title" {                     # optional slide kinds
 }
 ```
 
-`theme.hcl` is HCL's native syntax with literal values only: no function, no
-variable, no `file()` or `env()`. A name is lower-case letters, digits and
-dashes, and is not `default`, `gaia` or `uncover`. `extends` names the base
-theme; every `css` block adds a sheet, in order; every `font` and `asset` block
-names a file of the package; every `kind` block is a [kind]({{< relref "kinds" >}}).
-A `sha256` on a `css`, `font` or `asset` block is checked when the package is
-read.
+`theme.hcl` は、リテラル値だけを使う HCL のネイティブ構文です。関数も変数もなく、
+`file()` や `env()` も使えません。名前は小文字、数字、ダッシュで構成し、`default`、
+`gaia`、`uncover` は使えません。`extends` はベースとなるテーマを指定し、`css` ブロックは
+1 つにつき 1 枚のスタイルシートを順に追加し、`font` と `asset` ブロックはそれぞれ
+パッケージ内のファイルを指し、`kind` ブロックはそれぞれ [kind]({{< relref "kinds" >}}) です。
+`css`、`font`、`asset` ブロックの `sha256` は、パッケージを読み込むときに検査されます。
 
-The CSS refers to fonts and assets by their path in the package, relative to
-the CSS file: `background: url(assets/logo.svg)`. When the package is loaded,
-each such reference becomes a `data:` URL, so that the page is self-contained,
-and a `font` block becomes an `@font-face`. A package may also carry `LICENSE`,
-`NOTICE` and `README` files; any other file that `theme.hcl` does not declare is
-refused.
+CSS は、フォントとアセットをパッケージ内のパスで、CSS ファイルからの相対パスで参照します。
+`background: url(assets/logo.svg)` のようにです。パッケージを読み込むとき、こうした参照は
+すべて `data:` URL になってページが自己完結し、`font` ブロックは `@font-face` になります。
+パッケージには `LICENSE`、`NOTICE`、`README` ファイルを含めることもできます。
+`theme.hcl` が宣言していないそれ以外のファイルは拒否されます。
 
-## Packing, installing and using {#packing-installing-and-using}
+## パッケージ化、インストール、使い方 {#packing-installing-and-using}
 
 ```
 slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
@@ -68,9 +66,9 @@ slides theme list           the installed packages
 slides theme remove name
 ```
 
-Installed packages live in `go-slides/themes` under the user's configuration
-directory (`os.UserConfigDir()`: `~/Library/Application Support`,
-`$XDG_CONFIG_HOME` or `~/.config`, `%AppData%`). In a deck:
+インストールされたパッケージは、ユーザーの設定ディレクトリの下の `go-slides/themes` に
+あります（`os.UserConfigDir()`：`~/Library/Application Support`、`$XDG_CONFIG_HOME` または
+`~/.config`、`%AppData%`）。スライドデッキで次のように書くと：
 
 ```markdown
 ---
@@ -78,36 +76,35 @@ theme: acme
 ---
 ```
 
-finds an installed package, after the built-in themes and `--theme-set`.
-`--theme acme.slidestheme` and `--theme-set acme.slidestheme` use a file
-directly, without installing it; see [Command line]({{< relref "cli" >}}).
+組み込みテーマと `--theme-set` の次に、インストール済みのパッケージを探します。
+`--theme acme.slidestheme` と `--theme-set acme.slidestheme` は、インストールせずに
+ファイルを直接使います。[コマンドライン]({{< relref "cli" >}})を参照してください。
 
-The kinds of a package apply with `--theme file.slidestheme`, or with
-`--theme name` for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with `--kinds`.
+パッケージの kind は `--theme file.slidestheme` で適用され、インストール済みのパッケージなら
+`--theme name` で適用されます。フロントマターでテーマ名を指定しただけのスライドデッキには
+その見た目だけが適用され、kind は適用されません。kind は `--kinds` で指定できます。
 
-## A package is untrusted input {#a-package-is-untrusted-input}
+## パッケージは信頼できない入力 {#a-package-is-untrusted-input}
 
-A theme package can come from anywhere, so every reader (`pack`, `verify`,
-`install`, `--theme`, a build) checks it the same way, and refuses with an error
-that has a code (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
-`theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
+テーマパッケージはどこからでも来る可能性があるため、パッケージを読むすべての経路
+（`pack`、`verify`、`install`、`--theme`、ビルド）が同じように検査し、コード付きの
+エラーで拒否します（`theme.archive`、`theme.limit`、`theme.meta`、`theme.css`、
+`theme.svg`、`theme.font`、`theme.checksum`、`theme.version`）。
 
-- **Archive.** No `..`, absolute path, drive letter or backslash in a name; no
-  symbolic link or special file; no duplicate name (compared without case); no
-  encryption and no method but stored and deflate. Sizes are what is read, not
-  what the archive declares.
-- **Bounds.** At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-  inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-  `theme.hcl` at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-  font or an image.
-- **CSS.** No `@import`, no `@import-theme` (use `extends`), no `image-set()`,
-  `src()` or other function that loads a resource, no backslash escape outside a
-  string, no `</style`. A `url()` is a `#fragment`, a `data:` image or font, or
-  a declared file of the package, never one that leaves it.
-- **SVG.** No `script`, `foreignObject`, frame, embed, `set`, DOCTYPE or event
-  handler; an `href` is a `#fragment`; no `url()` that leaves the file.
-- **Fonts and images** are parsed: a font must be a font, an image must match
-  its extension, and each has a size bound.
+- **アーカイブ。** 名前に `..`、絶対パス、ドライブ文字、バックスラッシュを含めない。
+  シンボリックリンクや特殊ファイルは不可。名前の重複も不可（大文字小文字を区別せず比較）。
+  暗号化は不可で、stored と deflate 以外の方式も不可。サイズはアーカイブが宣言した値ではなく、
+  実際に読み取った値です。
+- **上限。** アーカイブは最大 16 MiB、エントリは 256 個、1 エントリあたり 8 MiB、展開後 24 MiB、
+  64 KiB 以上のエントリでは圧縮率 100 対 1、`theme.hcl` は最大 64 KiB でかっこの入れ子は
+  32 段まで、CSS は 1 ファイルあたり 1 MiB、フォントや画像は 4 MiB までです。
+- **CSS。** `@import` も `@import-theme` も不可（`extends` を使ってください）。`image-set()`、
+  `src()` などリソースを読み込む関数も、文字列の外のバックスラッシュエスケープも、
+  `</style` も不可です。`url()` は `#fragment`、`data:` の画像またはフォント、あるいは
+  パッケージ内の宣言済みファイルに限り、パッケージの外に出るものは認められません。
+- **SVG。** `script`、`foreignObject`、フレーム、embed、`set`、DOCTYPE、イベントハンドラーは
+  不可。`href` は `#fragment` でなければならず、ファイルの外に出る `url()` も不可です。
+- **フォントと画像**は解析されます。フォントはフォントでなければならず、画像は拡張子と
+  一致しなければならず、それぞれにサイズの上限があります。
 
-The repository's `testdata/themes/acme` is a small example.
+リポジトリの `testdata/themes/acme` が小さな例です。
