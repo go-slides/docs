@@ -1,12 +1,13 @@
 ---
 title: "テーマパッケージ"
 weight: 42
-description: "テーマを 1 つのファイルに：theme.hcl、CSS、フォント、アセット、kind を収めた .slidestheme アーカイブ。信頼できない入力として検査されます。"
+description: "テーマを 1 つのファイルに：theme.hcl、CSS、フォント、アセット、kind を収めた .gsta.xz アーカイブ。信頼できない入力として検査されます。"
 tags: [themes, hcl]
 ---
 
-**テーマパッケージ**は `<name>.slidestheme` という 1 つのファイルです。ルートに
-`theme.hcl` があり、それが宣言したファイルを収めた ZIP アーカイブ（deflate）です。
+**テーマパッケージ**は `<name>.gsta.xz`（Go-Slides Theme Archive）という 1 つのファイルです。
+ルートに `theme.hcl` があり、それが宣言したファイルを収めた、xz で圧縮した tar アーカイブ
+（ustar または pax）です。
 テーマの CSS、フォント、ロゴ、背景を収め、必要ならスライドの kind も収めることができ、
 名前、バージョン、ライセンスが付くので、テーマを受け渡してインストールできます。
 テーマパッケージは v0.17.1 より後で使えます。
@@ -23,7 +24,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -59,7 +60,7 @@ CSS は、フォントとアセットをパッケージ内のパスで、CSS フ
 ## パッケージ化、インストール、使い方 {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -77,12 +78,12 @@ theme: acme
 ```
 
 組み込みテーマと `--theme-set` の次に、インストール済みのパッケージを探します。
-`--theme acme.slidestheme` と `--theme-set acme.slidestheme` は、インストールせずに
+`--theme acme.gsta.xz` と `--theme-set acme.gsta.xz` は、インストールせずに
 ファイルを直接使います。[コマンドライン]({{< relref "cli" >}})を参照してください。
 
-パッケージの kind は `--theme file.slidestheme` で適用され、インストール済みのパッケージなら
-`--theme name` で適用されます。フロントマターでテーマ名を指定しただけのスライドデッキには
-その見た目だけが適用され、kind は適用されません。kind は `--kinds` で指定できます。
+パッケージの kind は `--theme file.gsta.xz` で適用され、インストール済みのパッケージなら
+`--theme name` で、またはスライドデッキのフロントマターに `theme: name` と書いても適用されます。
+スライドデッキ自身の kind が優先されます。
 
 ## パッケージは信頼できない入力 {#a-package-is-untrusted-input}
 
@@ -91,12 +92,15 @@ theme: acme
 エラーで拒否します（`theme.archive`、`theme.limit`、`theme.meta`、`theme.css`、
 `theme.svg`、`theme.font`、`theme.checksum`、`theme.version`）。
 
-- **アーカイブ。** 名前に `..`、絶対パス、ドライブ文字、バックスラッシュを含めない。
-  シンボリックリンクや特殊ファイルは不可。名前の重複も不可（大文字小文字を区別せず比較）。
-  暗号化は不可で、stored と deflate 以外の方式も不可。サイズはアーカイブが宣言した値ではなく、
+- **アーカイブ。** xz ストリームは 1 つだけで、辞書には上限があり、ウィンドウはデータに
+  応じて広がる。tar の中では、名前に `..`、絶対パス、ドライブ文字、バックスラッシュを含めない。
+  通常ファイルとディレクトリのみ（シンボリックリンク、ハードリンク、デバイス、FIFO は不可）。
+  名前の重複も不可（大文字小文字を区別せず比較）。ustar と pax のヘッダーのみ（GNU 拡張も
+  スパースファイルも不可）で、pax ヘッダーは最大 8 KiB。サイズはヘッダーが宣言した値ではなく、
   実際に読み取った値です。
 - **上限。** アーカイブは最大 16 MiB、エントリは 256 個、1 エントリあたり 8 MiB、展開後 24 MiB、
-  64 KiB 以上のエントリでは圧縮率 100 対 1、`theme.hcl` は最大 64 KiB でかっこの入れ子は
+  xz の辞書は 16 MiB、展開したストリームはアーカイブの大きさの 100 倍まで（64 KiB 以上の場合）、
+  `theme.hcl` は最大 64 KiB でかっこの入れ子は
   32 段まで、CSS は 1 ファイルあたり 1 MiB、フォントや画像は 4 MiB までです。
 - **CSS。** `@import` も `@import-theme` も不可（`extends` を使ってください）。`image-set()`、
   `src()` などリソースを読み込む関数も、文字列の外のバックスラッシュエスケープも、
