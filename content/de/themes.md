@@ -1,16 +1,16 @@
 ---
 title: "Theme-Pakete"
 weight: 42
-description: "Ein Theme als eine Datei: ein .slidestheme-Archiv mit einer theme.hcl, ihrem CSS, Schriften, Ressourcen und Kinds, geprüft wie nicht vertrauenswürdige Eingaben."
+description: "Ein Theme als eine Datei: ein .gsta.xz-Archiv mit einer theme.hcl, ihrem CSS, Schriften, Ressourcen und Kinds, geprüft wie nicht vertrauenswürdige Eingaben."
 tags: [themes, hcl]
 ---
 
-Ein **Theme-Paket** ist eine einzige Datei, `<name>.slidestheme`: ein
-ZIP-Archiv (deflate) mit `theme.hcl` im Wurzelverzeichnis und den Dateien, die
-es deklariert. Es enthält das CSS eines Themes, Schriften, Logos und
-Hintergründe und, wenn gewünscht, Folien-Kinds, mit einem Namen, einer Version
-und einer Lizenz, sodass ein Theme weitergegeben und installiert werden kann.
-Theme-Pakete gibt es nach v0.17.1.
+Ein **Theme-Paket** ist eine einzige Datei, `<name>.gsta.xz` (Go-Slides Theme
+Archive): ein mit xz komprimiertes tar-Archiv (ustar oder pax) mit `theme.hcl`
+im Wurzelverzeichnis und den Dateien, die es deklariert. Es enthält das CSS
+eines Themes, Schriften, Logos und Hintergründe und, wenn gewünscht,
+Folien-Kinds, mit einem Namen, einer Version und einer Lizenz, sodass ein Theme
+weitergegeben und installiert werden kann. Theme-Pakete gibt es nach v0.17.1.
 
 ## Die Datei theme.hcl {#the-themehcl-file}
 
@@ -24,7 +24,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -63,7 +63,7 @@ andere Datei, die `theme.hcl` nicht deklariert, wird abgelehnt.
 ## Packen, installieren und verwenden {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -81,13 +81,12 @@ theme: acme
 ```
 
 findet ein installiertes Paket, nach den eingebauten Themes und `--theme-set`.
-`--theme acme.slidestheme` und `--theme-set acme.slidestheme` verwenden eine
+`--theme acme.gsta.xz` und `--theme-set acme.gsta.xz` verwenden eine
 Datei direkt, ohne sie zu installieren; siehe [Befehlszeile]({{< relref "cli" >}}).
 
-Die Kinds eines Pakets gelten mit `--theme file.slidestheme` oder mit
-`--theme name` für ein installiertes Paket. Ein Foliensatz, der das Theme nur
-in seinem Front Matter nennt, erhält dessen Aussehen, nicht dessen Kinds, und
-kann sie mit `--kinds` angeben.
+Die Kinds eines Pakets gelten mit `--theme file.gsta.xz`, mit `--theme name`
+für ein installiertes Paket oder mit `theme: name` im Front Matter eines
+Foliensatzes; die eigenen Kinds des Foliensatzes haben Vorrang.
 
 ## Ein Paket ist eine nicht vertrauenswürdige Eingabe {#a-package-is-untrusted-input}
 
@@ -97,15 +96,18 @@ mit einem Fehler ab, der einen Code trägt (`theme.archive`, `theme.limit`,
 `theme.meta`, `theme.css`, `theme.svg`, `theme.font`, `theme.checksum`,
 `theme.version`):
 
-- **Archiv.** Kein `..`, kein absoluter Pfad, kein Laufwerksbuchstabe und kein
-  Backslash in einem Namen; kein symbolischer Link und keine Spezialdatei; kein
-  doppelter Name (ohne Beachtung der Groß- und Kleinschreibung verglichen); keine
-  Verschlüsselung und keine andere Methode als stored und deflate. Größen sind
-  das, was gelesen wird, nicht das, was das Archiv angibt.
+- **Archiv.** Ein xz-Stream, dessen Wörterbuch begrenzt ist und dessen Fenster
+  mit den Daten wächst. Im tar: kein `..`, kein absoluter Pfad, kein
+  Laufwerksbuchstabe und kein Backslash in einem Namen; nur reguläre Dateien und
+  Verzeichnisse (kein symbolischer oder harter Link, kein Gerät, keine FIFO);
+  kein doppelter Name (ohne Beachtung der Groß- und Kleinschreibung verglichen);
+  nur ustar- und pax-Header (keine GNU-Erweiterung, keine Sparse-Datei), ein
+  pax-Header von höchstens 8 KiB. Größen sind das, was gelesen wird, nicht das,
+  was ein Header angibt.
 - **Grenzen.** Höchstens 16 MiB Archiv, 256 Einträge, 8 MiB je Eintrag, 24 MiB
-  entpackt, ein Kompressionsverhältnis von 100 zu 1 für einen Eintrag ab 64 KiB,
-  `theme.hcl` höchstens 64 KiB und 32 Klammern tief, 1 MiB CSS je Datei, 4 MiB je
-  Schrift oder Bild.
+  entpackt, ein xz-Wörterbuch von 16 MiB, ein entpackter Stream von höchstens
+  dem 100-Fachen der Archivgröße (ab 64 KiB), `theme.hcl` höchstens 64 KiB und
+  32 Klammern tief, 1 MiB CSS je Datei, 4 MiB je Schrift oder Bild.
 - **CSS.** Kein `@import`, kein `@import-theme` (verwenden Sie `extends`), kein
   `image-set()`, `src()` oder eine andere Funktion, die eine Ressource lädt,
   keine Backslash-Escape-Sequenz außerhalb eines Strings, kein `</style`. Ein
