@@ -1,9 +1,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.17/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://go-slides.github.io/docs/0.17/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>Theme packages</title><link>https://go-slides.github.io/docs/0.17/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/themes/</guid><description>
-&lt;p&gt;A &lt;strong&gt;theme package&lt;/strong&gt; is one file, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: a ZIP archive
-(deflate) with &lt;code&gt;theme.hcl&lt;/code&gt; at its root and the files it declares. It carries a
-theme&amp;rsquo;s CSS, fonts, logos and backgrounds and, if it likes, slide kinds, with a
-name, a version and a licence, so that a theme can be passed around and
-installed. Theme packages come after v0.17.1.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;theme package&lt;/strong&gt; is one file, &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt; (Go-Slides Theme Archive): a
+tar archive (ustar or pax) compressed with xz, with &lt;code&gt;theme.hcl&lt;/code&gt; at its root and
+the files it declares. It carries a theme&amp;rsquo;s CSS, fonts, logos and backgrounds
+and, if it likes, slide kinds, with a name, a version and a licence, so that a
+theme can be passed around and installed. Theme packages come after v0.17.1.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="the-themehcl-file"&gt;The theme.hcl file&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
 &lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
@@ -15,7 +15,7 @@ installed. Theme packages come after v0.17.1.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.17.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
@@ -59,7 +59,7 @@ and a &lt;code&gt;font&lt;/code&gt; block becomes an &lt;code&gt;@font-face&lt;/
 refused.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
 slides theme verify file run every check on a package
 slides theme install file check it, then install it for the current user
 slides theme list the installed packages
@@ -94,25 +94,27 @@ data-copied-label="Copied!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;finds an installed package, after the built-in themes and &lt;code&gt;--theme-set&lt;/code&gt;.
-&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; and &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; use a file
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; and &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; use a file
 directly, without installing it; see &lt;a href="https://go-slides.github.io/docs/0.17/cli/"&gt;Command line&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The kinds of a package apply with &lt;code&gt;--theme file.slidestheme&lt;/code&gt;, or with
-&lt;code&gt;--theme name&lt;/code&gt; for an installed package. A deck that only names the theme in its
-front matter gets its look, not its kinds, and can name them with &lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The kinds of a package apply with &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, with &lt;code&gt;--theme name&lt;/code&gt;
+for an installed package, or with &lt;code&gt;theme: name&lt;/code&gt; in a deck&amp;rsquo;s front matter; the
+deck&amp;rsquo;s own kinds win over them.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A theme package can come from anywhere, so every reader (&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
 &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, a build) checks it the same way, and refuses with an error
 that has a code (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;,
 &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Archive.&lt;/strong&gt; No &lt;code&gt;..&lt;/code&gt;, absolute path, drive letter or backslash in a name; no
-symbolic link or special file; no duplicate name (compared without case); no
-encryption and no method but stored and deflate. Sizes are what is read, not
-what the archive declares.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Archive.&lt;/strong&gt; One xz stream, whose dictionary is bounded and whose window
+grows with the data. In the tar: no &lt;code&gt;..&lt;/code&gt;, absolute path, drive letter or
+backslash in a name; only regular files and directories (no symbolic or hard
+link, device or FIFO); no duplicate name (compared without case); only ustar
+and pax headers (no GNU extension, no sparse file), a pax header of at most
+8 KiB. Sizes are what is read, not what a header declares.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Bounds.&lt;/strong&gt; At most 16 MiB of archive, 256 entries, 8 MiB an entry, 24 MiB
-inflated, a compression ratio of 100 to 1 for an entry of 64 KiB or more,
-&lt;code&gt;theme.hcl&lt;/code&gt; at most 64 KiB and 32 brackets deep, 1 MiB of CSS a file, 4 MiB a
-font or an image.&lt;/li&gt;
+inflated, an xz dictionary of 16 MiB, an inflated stream of at most 100 times
+the archive&amp;rsquo;s size (64 KiB or more), &lt;code&gt;theme.hcl&lt;/code&gt; at most 64 KiB and 32
+brackets deep, 1 MiB of CSS a file, 4 MiB a font or an image.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; No &lt;code&gt;@import&lt;/code&gt;, no &lt;code&gt;@import-theme&lt;/code&gt; (use &lt;code&gt;extends&lt;/code&gt;), no &lt;code&gt;image-set()&lt;/code&gt;,
 &lt;code&gt;src()&lt;/code&gt; or other function that loads a resource, no backslash escape outside a
 string, no &lt;code&gt;&amp;lt;/style&lt;/code&gt;. A &lt;code&gt;url()&lt;/code&gt; is a &lt;code&gt;#fragment&lt;/code&gt;, a &lt;code&gt;data:&lt;/code&gt; image or font, or
