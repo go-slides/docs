@@ -87,6 +87,8 @@ I kinds di un pacchetto si applicano con `--theme file.gsta.xz`, con
 `--theme name` per un pacchetto installato, o con `theme: name` nel front matter
 di una presentazione; i kinds propri della presentazione prevalgono su di essi.
 
+L'`extends` di un pacchetto nomina il suo tema di base, cercato in quest'ordine: integrato (o indicato con `--theme-set`), poi installato, poi un `<base>.gsta.xz` fratello nella stessa directory del file del pacchetto, in modo che una famiglia di temi (una base, diversi piccoli figli) possa essere provata direttamente dai suoi file. L'errore nomina i tre luoghi cercati. Una catena di pacchetti è lunga al massimo 8 e un ciclo viene rifiutato (`theme.meta`).
+
 ## Un pacchetto è un input non attendibile {#a-package-is-untrusted-input}
 
 Un pacchetto di tema può arrivare da qualsiasi parte, quindi ogni lettore
