@@ -1,12 +1,13 @@
 ---
 title: "테마 패키지"
 weight: 42
-description: "파일 하나로 된 테마: theme.hcl, CSS, 글꼴, 에셋, kind를 담은 .slidestheme 아카이브이며, 신뢰할 수 없는 입력으로 검사합니다."
+description: "파일 하나로 된 테마: theme.hcl, CSS, 글꼴, 에셋, kind를 담은 .gsta.xz 아카이브이며, 신뢰할 수 없는 입력으로 검사합니다."
 tags: [themes, hcl]
 ---
 
-**테마 패키지**는 `<name>.slidestheme`라는 파일 하나입니다. 루트에 `theme.hcl`이
-있고 그 파일이 선언한 파일들을 담은 ZIP 아카이브(deflate)입니다. 테마의 CSS, 글꼴,
+**테마 패키지**는 `<name>.gsta.xz`(Go-Slides Theme Archive)라는 파일 하나입니다.
+루트에 `theme.hcl`이 있고 그 파일이 선언한 파일들을 담은, xz로 압축한 tar
+아카이브(ustar 또는 pax)입니다. 테마의 CSS, 글꼴,
 로고, 배경을 담으며, 원하면 슬라이드 kind도 담을 수 있고, 이름, 버전, 라이선스가
 붙어 있어 테마를 주고받고 설치할 수 있습니다. 테마 패키지는 v0.17.1 이후에 제공됩니다.
 
@@ -22,7 +23,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -58,7 +59,7 @@ CSS는 글꼴과 에셋을 패키지 안의 경로로, CSS 파일 기준 상대 
 ## 패키징, 설치, 사용 {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -76,12 +77,12 @@ theme: acme
 ```
 
 내장 테마와 `--theme-set` 다음 순서로 설치된 패키지를 찾습니다.
-`--theme acme.slidestheme`와 `--theme-set acme.slidestheme`는 설치하지 않고 파일을
+`--theme acme.gsta.xz`와 `--theme-set acme.gsta.xz`는 설치하지 않고 파일을
 바로 사용합니다. [명령줄]({{< relref "cli" >}})을 참고하십시오.
 
-패키지의 kind는 `--theme file.slidestheme`로 적용되며, 설치된 패키지라면
-`--theme name`으로 적용됩니다. 프런트 매터에 테마 이름만 적은 프레젠테이션은 그
-외관만 얻고 kind는 얻지 못하며, kind는 `--kinds`로 지정할 수 있습니다.
+패키지의 kind는 `--theme file.gsta.xz`로 적용되며, 설치된 패키지라면
+`--theme name`으로, 또는 프레젠테이션의 프런트 매터에 `theme: name`을 적어서
+적용됩니다. 프레젠테이션 자신의 kind가 이들보다 우선합니다.
 
 ## 패키지는 신뢰할 수 없는 입력입니다 {#a-package-is-untrusted-input}
 
@@ -90,12 +91,15 @@ theme: acme
 (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`, `theme.svg`, `theme.font`,
 `theme.checksum`, `theme.version`).
 
-- **아카이브.** 이름에 `..`, 절대 경로, 드라이브 문자, 백슬래시가 없어야 하고,
-  심볼릭 링크나 특수 파일이 없어야 하며, 중복된 이름이 없어야 합니다(대소문자를
-  구분하지 않고 비교). 암호화는 안 되며, 저장(stored)과 deflate 외의 방식은 쓸 수
-  없습니다. 크기는 아카이브가 선언한 값이 아니라 실제로 읽은 값입니다.
+- **아카이브.** xz 스트림은 하나뿐이며, 사전(dictionary)에는 한도가 있고 윈도는
+  데이터에 따라 커집니다. tar 안에서는 이름에 `..`, 절대 경로, 드라이브 문자,
+  백슬래시가 없어야 하고, 일반 파일과 디렉터리만 허용되며(심볼릭 링크, 하드 링크,
+  장치, FIFO는 안 됨), 중복된 이름이 없어야 합니다(대소문자를 구분하지 않고 비교).
+  ustar와 pax 헤더만 허용되며(GNU 확장도, 스파스 파일도 안 됨), pax 헤더는 최대
+  8 KiB입니다. 크기는 헤더가 선언한 값이 아니라 실제로 읽은 값입니다.
 - **한도.** 아카이브는 최대 16 MiB, 항목은 256개, 항목당 8 MiB, 압축을 푼 뒤 24 MiB,
-  64 KiB 이상인 항목의 압축률은 100 대 1, `theme.hcl`은 최대 64 KiB에 괄호 중첩 32단계,
+  xz 사전은 16 MiB, 압축을 푼 스트림은 아카이브 크기의 100배 이하(64 KiB 이상일 때),
+  `theme.hcl`은 최대 64 KiB에 괄호 중첩 32단계,
   CSS는 파일당 1 MiB, 글꼴이나 이미지는 4 MiB까지입니다.
 - **CSS.** `@import`도, `@import-theme`도(`extends`를 쓰십시오), `image-set()`,
   `src()` 등 리소스를 불러오는 함수도, 문자열 밖의 백슬래시 이스케이프도,
