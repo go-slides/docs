@@ -98,6 +98,7 @@ data-copied-label="コピーしました！"
 &lt;p&gt;パッケージの kind は &lt;code&gt;--theme file.gsta.xz&lt;/code&gt; で適用され、インストール済みのパッケージなら
 &lt;code&gt;--theme name&lt;/code&gt; で、またはスライドデッキのフロントマターに &lt;code&gt;theme: name&lt;/code&gt; と書いても適用されます。
 スライドデッキ自身の kind が優先されます。&lt;/p&gt;
+&lt;p&gt;パッケージの &lt;code&gt;extends&lt;/code&gt; はベーステーマを指定し、次の順で探されます。まず組み込み（または &lt;code&gt;--theme-set&lt;/code&gt; で指定されたもの）、次にインストール済みのもの、最後にパッケージファイルと同じディレクトリにある兄弟の &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; です。これにより、テーマのファミリー（1 つのベースと複数の小さな子）を、ファイルだけでそのまま試せます。エラーには探した 3 か所が示されます。パッケージのチェーンは最長 8 で、循環は拒否されます（&lt;code&gt;theme.meta&lt;/code&gt;）。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;パッケージは信頼できない入力&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;テーマパッケージはどこからでも来る可能性があるため、パッケージを読むすべての経路
 （&lt;code&gt;pack&lt;/code&gt;、&lt;code&gt;verify&lt;/code&gt;、&lt;code&gt;install&lt;/code&gt;、&lt;code&gt;--theme&lt;/code&gt;、ビルド）が同じように検査し、コード付きの

@@ -99,6 +99,7 @@ bezpośrednio, bez instalowania; zobacz &lt;a href="https://go-slides.github.io/
 &lt;p&gt;Kinds pakietu stosują się z &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, z &lt;code&gt;--theme name&lt;/code&gt;
 dla zainstalowanego pakietu lub z &lt;code&gt;theme: name&lt;/code&gt; w front matter prezentacji;
 własne kinds prezentacji mają pierwszeństwo przed nimi.&lt;/p&gt;
+&lt;p&gt;Pole &lt;code&gt;extends&lt;/code&gt; pakietu wskazuje jego motyw bazowy, wyszukiwany w tej kolejności: wbudowany (lub podany przez &lt;code&gt;--theme-set&lt;/code&gt;), następnie zainstalowany, a potem sąsiedni &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; w tym samym katalogu co plik pakietu, dzięki czemu rodzinę motywów (jedna baza, kilka małych pochodnych) można wypróbować wprost z jej plików. Błąd wymienia trzy przeszukane miejsca. Łańcuch pakietów ma co najwyżej 8 ogniw, a cykl jest odrzucany (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pakiet motywu może pochodzić skądkolwiek, więc każdy czytnik (&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
 &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, budowanie) sprawdza go tak samo i odrzuca go błędem
