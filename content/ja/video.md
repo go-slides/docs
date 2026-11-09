@@ -23,7 +23,7 @@ tags: [video]
 
 - **HTML** (ページと playground のプレビュー): `<video controls playsinline preload="metadata" poster=...>` 要素。ポスターはデコードしたフレームで、JPEG の data URI として埋め込まれます。ビデオが自分から音を出して再生されることはありません。ブラウザーが動きの軽減を求めると (`prefers-reduced-motion`)、`autoplay` と `loop` は取り除かれ、ビデオは一時停止されます。自動再生される (ミュートの) ビデオは、半分以上が見えている間だけ再生され、そのスライドが表示されていないときは一時停止します。
 - **PDF** (`--pdf`): ポスターフレームを画像として入れ、ビデオファイルへのリンクを付けます。リンクは、プレゼンテーションに書いた相対パス、または `http` か `https` のソースなら URL です。再生はリンクを開いたときだけ行われます。PDF には `RichMedia` 注釈を入れません。それは Acrobat でしか再生できないため、あえて使いません。
-- **PowerPoint** (`--pptx`): ビデオはメディアパート (`ppt/media/slidesvideoN.mp4|webm`) としてポスターとともに埋め込まれ、`a:videoFile` に `p14:media` 拡張を加えた形になります。PowerPoint で再生されます。PowerPoint と Keynote での再生は確認していません。`autoplay`、`loop`、`muted` キーワードは PowerPoint と OpenDocument には引き継がれません。
+- **PowerPoint** (`--pptx`): ビデオはメディアパート (`ppt/media/slidesvideoN.mp4|webm`) としてポスターとともに埋め込まれ、`a:videoFile` に `p14:media` 拡張を加えた形になります。Keynote: ムービーとして読み込み、再生します (確認済み)。PowerPoint: まだ確認していません。`autoplay`、`loop`、`muted` キーワードは PowerPoint と OpenDocument には引き継がれません。
 - **OpenDocument** (`--odp`): ビデオは `Video/` の下に `draw:plugin` (ODF 1.3 パート 3、10.4.8) として、ポスターの `draw:image` の前に埋め込まれ、マニフェストに列挙されます。メディアバックエンドがそのコーデックに対応している Impress で再生されます (未確認)。
 - **URL ソース**: HTML ページは URL からビデオをストリーミングします。エクスポートでは URL へのリンク付きの中立的なカードが表示されます。ビルド時には何も取得せず、PowerPoint や OpenDocument にも何も埋め込まれません。
 
