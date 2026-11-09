@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Esta página descreve a v0.18.0.
+Esta página descreve a v0.19.0.
 {{< /callout >}}
 
 ```text

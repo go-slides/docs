@@ -14,7 +14,7 @@ go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` é um único binário Go estático, sem cgo: nada mais a instalar, sem
-Node, sem Chrome. Esta página descreve a v0.18.0.
+Node, sem Chrome. Esta página descreve a v0.19.0.
 
 ## Uma primeira apresentação {#a-first-deck}
 
