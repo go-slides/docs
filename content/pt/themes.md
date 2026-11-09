@@ -1,12 +1,12 @@
 ---
 title: "Pacotes de tema"
 weight: 42
-description: "Um tema em um só arquivo: um arquivo .slidestheme com um theme.hcl, seu CSS, fontes, recursos e kinds, verificado como entrada não confiável."
+description: "Um tema em um só arquivo: um arquivo .gsta.xz com um theme.hcl, seu CSS, fontes, recursos e kinds, verificado como entrada não confiável."
 tags: [themes, hcl]
 ---
 
-Um **pacote de tema** é um único arquivo, `<name>.slidestheme`: um arquivo ZIP
-(deflate) com `theme.hcl` na raiz e os arquivos que ele declara. Ele leva o CSS
+Um **pacote de tema** é um único arquivo, `<name>.gsta.xz` (Go-Slides Theme
+Archive): um arquivo tar (ustar ou pax) compactado com xz, com `theme.hcl` na raiz e os arquivos que ele declara. Ele leva o CSS
 de um tema, fontes, logotipos e fundos e, se quiser, kinds de slide, com um
 nome, uma versão e uma licença, para que um tema possa ser repassado e
 instalado. Os pacotes de tema chegam depois da v0.17.1.
@@ -23,7 +23,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -61,7 +61,7 @@ levar arquivos `LICENSE`, `NOTICE` e `README`; qualquer outro arquivo que o
 ## Packing, installing and using {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -79,13 +79,12 @@ theme: acme
 ```
 
 encontra um pacote instalado, depois dos temas embutidos e do `--theme-set`.
-`--theme acme.slidestheme` e `--theme-set acme.slidestheme` usam um arquivo
+`--theme acme.gsta.xz` e `--theme-set acme.gsta.xz` usam um arquivo
 diretamente, sem instalá-lo; veja [Linha de comando]({{< relref "cli" >}}).
 
-Os kinds de um pacote se aplicam com `--theme file.slidestheme`, ou com
-`--theme name` para um pacote instalado. Uma apresentação que apenas nomeia o
-tema em seu front matter recebe a aparência dele, não os kinds, e pode
-nomeá-los com `--kinds`.
+Os kinds de um pacote se aplicam com `--theme file.gsta.xz`, com `--theme name`
+para um pacote instalado, ou com `theme: name` no front matter de uma
+apresentação; os kinds da própria apresentação prevalecem sobre eles.
 
 ## A package is untrusted input {#a-package-is-untrusted-input}
 
@@ -95,15 +94,18 @@ recusa com um erro que tem um código (`theme.archive`, `theme.limit`,
 `theme.meta`, `theme.css`, `theme.svg`, `theme.font`, `theme.checksum`,
 `theme.version`):
 
-- **Arquivo.** Sem `..`, caminho absoluto, letra de unidade nem barra invertida
-  em um nome; sem link simbólico nem arquivo especial; sem nome duplicado
-  (comparado sem diferenciar maiúsculas de minúsculas); sem criptografia e sem
-  método além de stored e deflate. Os tamanhos são os que foram lidos, não os
-  que o arquivo declara.
+- **Arquivo.** Um único fluxo xz, cujo dicionário é limitado e cuja janela
+  cresce com os dados. No tar: sem `..`, caminho absoluto, letra de unidade nem
+  barra invertida em um nome; apenas arquivos regulares e diretórios (sem link
+  simbólico nem físico, dispositivo ou FIFO); sem nome duplicado (comparado sem
+  diferenciar maiúsculas de minúsculas); apenas cabeçalhos ustar e pax (sem
+  extensão GNU, sem arquivo esparso), com um cabeçalho pax de no máximo 8 KiB.
+  Os tamanhos são os que foram lidos, não os que um cabeçalho declara.
 - **Limites.** No máximo 16 MiB de arquivo, 256 entradas, 8 MiB por entrada,
-  24 MiB descompactados, uma razão de compressão de 100 para 1 em uma entrada de
-  64 KiB ou mais, `theme.hcl` com no máximo 64 KiB e 32 níveis de colchetes,
-  1 MiB de CSS por arquivo, 4 MiB por fonte ou imagem.
+  24 MiB descompactados, um dicionário xz de 16 MiB, um fluxo descompactado de
+  no máximo 100 vezes o tamanho do arquivo (a partir de 64 KiB), `theme.hcl` com
+  no máximo 64 KiB e 32 níveis de colchetes, 1 MiB de CSS por arquivo, 4 MiB por
+  fonte ou imagem.
 - **CSS.** Sem `@import`, sem `@import-theme` (use `extends`), sem
   `image-set()`, `src()` nem outra função que carregue um recurso, sem escape
   com barra invertida fora de uma string, sem `</style`. Um `url()` é um
