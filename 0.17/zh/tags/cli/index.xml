@@ -50,7 +50,7 @@ data-copied-label="已复制！"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;、&lt;code&gt;verify&lt;/code&gt;、&lt;code&gt;install&lt;/code&gt;、&lt;code&gt;list&lt;/code&gt;、&lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;主题包，&lt;code&gt;*.gsta.xz&lt;/code&gt;（v0.17.1 之后）：&lt;a href="https://go-slides.github.io/docs/0.17/zh/themes/"&gt;主题包&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;主题包，&lt;code&gt;*.slidestheme&lt;/code&gt;（v0.17.1 之后）：&lt;a href="https://go-slides.github.io/docs/0.17/zh/themes/"&gt;主题包&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
@@ -153,7 +153,7 @@ data-copied-label="已复制！"
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;全部&lt;/td&gt;
-&lt;td&gt;一个主题 CSS 文件、一个主题包（&lt;code&gt;*.gsta.xz&lt;/code&gt;，v0.17.1 之后），或包含这些文件的目录（可重复）&lt;/td&gt;
+&lt;td&gt;一个主题 CSS 文件、一个主题包（&lt;code&gt;*.slidestheme&lt;/code&gt;，v0.17.1 之后），或包含这些文件的目录（可重复）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -276,7 +276,7 @@ data-copied-label="已复制！"
 &lt;td&gt;允许图片和 PDF 读取本地文件，且仅限演示文稿所在目录之下；默认拒绝，与 marp-cli 相同&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css|file.gsta.xz&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;覆盖演示文稿的主题（v0.6.0 起）：主题名（内置的，或 v0.17.1 之后已安装的主题包）、一个 CSS 文件（无论其声明的 &lt;code&gt;@theme&lt;/code&gt; 是什么，都会成为当前主题），或一个&lt;a href="https://go-slides.github.io/docs/0.17/zh/themes/"&gt;主题包&lt;/a&gt;；不接受目录，目录请用 &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;

@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.17/ru/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.17/ru/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>Пакеты тем</title><link>https://go-slides.github.io/docs/0.17/ru/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/ru/themes/</guid><description>
-&lt;p&gt;&lt;strong&gt;Пакет темы&lt;/strong&gt; — это один файл, &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt; (Go-Slides Theme Archive):
-tar-архив (ustar или pax), сжатый xz, с файлом &lt;code&gt;theme.hcl&lt;/code&gt; в корне и файлами, которые тот объявляет. Он несёт CSS
+&lt;p&gt;&lt;strong&gt;Пакет темы&lt;/strong&gt; — это один файл, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: ZIP-архив (deflate)
+с файлом &lt;code&gt;theme.hcl&lt;/code&gt; в корне и файлами, которые тот объявляет. Он несёт CSS
 темы, шрифты, логотипы и фоны и, если нужно, типы слайдов (kinds), а также имя,
 версию и лицензию, чтобы тему можно было передавать и устанавливать. Пакеты тем
 появились после v0.17.1.&lt;/p&gt;
@@ -15,7 +15,7 @@ tar-архив (ustar или pax), сжатый xz, с файлом &lt;code&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.17.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
@@ -58,7 +58,7 @@ data-copied-label="Скопировано!"
 и &lt;code&gt;README&lt;/code&gt;; любой другой файл, который &lt;code&gt;theme.hcl&lt;/code&gt; не объявляет, отклоняется.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
 slides theme verify file run every check on a package
 slides theme install file check it, then install it for the current user
 slides theme list the installed packages
@@ -93,28 +93,27 @@ data-copied-label="Скопировано!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;находит установленный пакет, после встроенных тем и &lt;code&gt;--theme-set&lt;/code&gt;.
-&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; и &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; используют файл
+&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; и &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; используют файл
 напрямую, без установки; см. &lt;a href="https://go-slides.github.io/docs/0.17/ru/cli/"&gt;Командная строка&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Kinds пакета применяются с &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, с &lt;code&gt;--theme name&lt;/code&gt;
-для установленного пакета или с &lt;code&gt;theme: name&lt;/code&gt; в front matter презентации;
-собственные kinds презентации имеют над ними приоритет.&lt;/p&gt;
+&lt;p&gt;Kinds пакета применяются с &lt;code&gt;--theme file.slidestheme&lt;/code&gt; или с &lt;code&gt;--theme name&lt;/code&gt;
+для установленного пакета. Презентация, которая лишь называет тему в своём
+front matter, получает её внешний вид, но не её kinds, и может назвать их через
+&lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Пакет темы может прийти откуда угодно, поэтому каждый читатель (&lt;code&gt;pack&lt;/code&gt;,
 &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, сборка) проверяет его одинаково и отклоняет
 с ошибкой, у которой есть код (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;,
 &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Архив.&lt;/strong&gt; Один поток xz, словарь которого ограничен, а окно растёт вместе
-с данными. В tar: никаких &lt;code&gt;..&lt;/code&gt;, абсолютного пути, буквы диска или обратной
-косой черты в имени; только обычные файлы и каталоги (никаких символических
-или жёстких ссылок, устройств и FIFO); никаких повторяющихся имён (сравнение
-без учёта регистра); только заголовки ustar и pax (никаких расширений GNU,
-никаких разреженных файлов), заголовок pax не более 8 КиБ. Размеры — те, что
-прочитаны, а не те, что заявляет заголовок.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Архив.&lt;/strong&gt; Никаких &lt;code&gt;..&lt;/code&gt;, абсолютного пути, буквы диска или обратной косой
+черты в имени; никаких символических ссылок и специальных файлов; никаких
+повторяющихся имён (сравнение без учёта регистра); никакого шифрования
+и никакого метода, кроме stored и deflate. Размеры — те, что прочитаны,
+а не те, что заявляет архив.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Границы.&lt;/strong&gt; Не более 16 МиБ архива, 256 записей, 8 МиБ на запись, 24 МиБ
-после распаковки, словарь xz 16 МиБ, распакованный поток не более чем в 100
-раз больше архива (от 64 КиБ), &lt;code&gt;theme.hcl&lt;/code&gt; не более 64 КиБ и 32 уровней
-вложенности скобок, 1 МиБ CSS на файл, 4 МиБ на шрифт или изображение.&lt;/li&gt;
+после распаковки, степень сжатия 100 к 1 для записи от 64 КиБ, &lt;code&gt;theme.hcl&lt;/code&gt;
+не более 64 КиБ и 32 уровней вложенности скобок, 1 МиБ CSS на файл, 4 МиБ
+на шрифт или изображение.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Никаких &lt;code&gt;@import&lt;/code&gt;, никаких &lt;code&gt;@import-theme&lt;/code&gt; (используйте &lt;code&gt;extends&lt;/code&gt;),
 никаких &lt;code&gt;image-set()&lt;/code&gt;, &lt;code&gt;src()&lt;/code&gt; и других функций, загружающих ресурс, никаких
 экранирований обратной косой чертой вне строки, никаких &lt;code&gt;&amp;lt;/style&lt;/code&gt;. &lt;code&gt;url()&lt;/code&gt; —
