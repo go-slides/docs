@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | wypisuje notatki prelegenta |
 | `kinds` | wylicza kinds, z których prezentacja może korzystać, i to, co ustawiają; `--json` (w v0.6.0) zapisuje je jako `[{"name", "extends", "directives": [{"key", "value"}]}]`, z rozwiązanym `extends` |
 | `themes` | wylicza motywy |
-| `theme pack`, `verify`, `install`, `list`, `remove` | pakiety motywów, `*.slidestheme` (po v0.17.1): [Pakiety motywów]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | pakiety motywów, `*.gsta.xz` (po v0.17.1): [Pakiety motywów]({{< relref "themes" >}}) |
 | `version` | wypisuje wersję (tak samo `slides --version`) |
 | `completion` | wypisuje skrypt uzupełniania powłoki: `bash`, `zsh`, `fish` lub `powershell` |
 
@@ -52,7 +52,7 @@ inaczej.
 | `--pptx-editable`, `--no-parallel` | `build` | zapisy marp-cli dla `--pptx` i `-P 1` (w v0.6.0) |
 | `--config file` | wszystkie | plik konfiguracyjny; domyślnie `slides.yaml` obok prezentacji, jeśli istnieje |
 | `--no-config` | wszystkie | nie czytaj pliku konfiguracyjnego |
-| `--theme-set path` | wszystkie | plik CSS motywu, pakiet motywu (`*.slidestheme`, po v0.17.1) lub katalog z nimi (można powtarzać) |
+| `--theme-set path` | wszystkie | plik CSS motywu, pakiet motywu (`*.gsta.xz`, po v0.17.1) lub katalog z nimi (można powtarzać) |
 | `--kinds file` | wszystkie | plik YAML z kinds (można powtarzać) |
 | `--data file` | wszystkie | plik YAML lub JSON z danymi szablonu (można powtarzać) |
 | `--set key=value` | wszystkie | jedna wartość szablonu (można powtarzać) |
@@ -77,7 +77,7 @@ inaczej.
 | `--jpeg-quality n` | `build` | jakość JPEG, od 1 do 100 (domyślnie 85) |
 | `--image-scale n` | `build` | piksele urządzenia na piksel CSS dla obrazów i PDF (domyślnie 1); 2 daje 2560×1440 dla 16:9, z tekstem i wektorami rysowanymi w tej gęstości, a nie powiększanymi |
 | `--allow-local-files` | `build` | pozwól obrazom i PDF czytać pliki lokalne, tylko spod katalogu prezentacji; domyślnie odrzucane, jak w marp-cli |
-| `--theme name\|file.css\|file.slidestheme` | `build` | nadpisz motyw prezentacji (w v0.6.0): nazwa motywu (wbudowanego lub zainstalowanego pakietu po v0.17.1), plik CSS, który staje się motywem, jakikolwiek `@theme` deklaruje, lub [pakiet motywu]({{< relref "themes" >}}); katalog jest odrzucany, użyj `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | nadpisz motyw prezentacji (w v0.6.0): nazwa motywu (wbudowanego lub zainstalowanego pakietu po v0.17.1), plik CSS, który staje się motywem, jakikolwiek `@theme` deklaruje, lub [pakiet motywu]({{< relref "themes" >}}); katalog jest odrzucany, użyj `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | metadane strony (w v0.6.0), nad dyrektywami prezentacji `title`, `description`, `author`, `keywords`, `url` i `image`; zobacz niżej |
 
 ## Wiele prezentacji i katalog {#several-decks-and-a-directory}
