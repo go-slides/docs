@@ -80,6 +80,8 @@ theme: acme
 主题包中的 kind 通过 `--theme file.gsta.xz` 生效，对已安装的主题包则用
 `--theme name`，也可以在演示文稿的 front matter 中写 `theme: name`；演示文稿自己的 kind 优先于它们。
 
+主题包的 `extends` 指明其基础主题，按以下顺序查找：先是内置的（或用 `--theme-set` 给出的），然后是已安装的，最后是与主题包文件位于同一目录下的同级 `<base>.gsta.xz`，这样一个主题系列（一个基础主题加若干小的子主题）就可以直接从它们的文件中试用。错误信息会列出所查找的三个位置。主题包链最长为 8 层，循环会被拒绝（`theme.meta`）。
+
 ## 主题包是不可信输入 {#a-package-is-untrusted-input}
 
 主题包可能来自任何地方，因此每一个读取者（`pack`、`verify`、`install`、`--theme`、
