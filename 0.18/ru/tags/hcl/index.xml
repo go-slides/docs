@@ -98,6 +98,7 @@ data-copied-label="Скопировано!"
 &lt;p&gt;Kinds пакета применяются с &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, с &lt;code&gt;--theme name&lt;/code&gt;
 для установленного пакета или с &lt;code&gt;theme: name&lt;/code&gt; в front matter презентации;
 собственные kinds презентации имеют над ними приоритет.&lt;/p&gt;
+&lt;p&gt;Поле &lt;code&gt;extends&lt;/code&gt; пакета называет его базовую тему, которая ищется в таком порядке: встроенная (или заданная через &lt;code&gt;--theme-set&lt;/code&gt;), затем установленная, затем соседний &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; в том же каталоге, что и файл пакета, так что семейство тем (одну базу и несколько небольших потомков) можно попробовать прямо из его файлов. Ошибка называет три места поиска. Цепочка пакетов содержит не более 8 звеньев, а цикл отвергается (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Пакет темы может прийти откуда угодно, поэтому каждый читатель (&lt;code&gt;pack&lt;/code&gt;,
 &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, сборка) проверяет его одинаково и отклоняет
