@@ -99,7 +99,6 @@ diretamente, sem instalá-lo; veja &lt;a href="https://go-slides.github.io/docs/
 &lt;p&gt;Os kinds de um pacote se aplicam com &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, com &lt;code&gt;--theme name&lt;/code&gt;
 para um pacote instalado, ou com &lt;code&gt;theme: name&lt;/code&gt; no front matter de uma
 apresentação; os kinds da própria apresentação prevalecem sobre eles.&lt;/p&gt;
-&lt;p&gt;O &lt;code&gt;extends&lt;/code&gt; de um pacote nomeia seu tema base, procurado nesta ordem: embutido (ou informado com &lt;code&gt;--theme-set&lt;/code&gt;), depois instalado, depois um &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; irmão no mesmo diretório do arquivo do pacote, de modo que uma família de temas (uma base, vários pequenos filhos) possa ser testada diretamente a partir de seus arquivos. O erro nomeia os três lugares pesquisados. Uma cadeia de pacotes tem no máximo 8 de comprimento, e um ciclo é recusado (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Um pacote de tema pode vir de qualquer lugar, então todo leitor (&lt;code&gt;pack&lt;/code&gt;,
 &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, uma construção) o verifica da mesma forma e o
