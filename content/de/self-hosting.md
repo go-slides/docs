@@ -148,7 +148,7 @@ Verzeichnis dem ganzen Netzwerk bereit, am Proxy und seiner Anmeldung vorbei.
 
 {{< callout type="info" >}}
 `--allowed-host` gibt es ab v0.14.0:
-`go install github.com/go-slides/slides/cmd/slides@v0.18.0`. Dafür ist Go 1.27.3
+`go install github.com/go-slides/slides/cmd/slides@v0.19.0`. Dafür ist Go 1.27.3
 oder neuer nötig.
 {{< /callout >}}
 

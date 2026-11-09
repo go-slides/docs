@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Открыть Playground →](https://go-slides.github.io/ru/playground/)**
 
-Playground (онлайн-редактор go-slides) — это сам go-slides v0.18.0,
+Playground (онлайн-редактор go-slides) — это сам go-slides v0.19.0,
 скомпилированный в WebAssembly и работающий в вашем браузере. Набирайте
 презентацию слева; слайды появляются справа. Ничего не отправляется на сервер:
 ни презентация, ни ссылка для обмена.
