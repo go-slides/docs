@@ -9,7 +9,7 @@ tags: [themes, hcl]
 archiwum tar (ustar lub pax) skompresowane xz, z plikiem `theme.hcl` w katalogu głównym i plikami, które ten deklaruje.
 Zawiera CSS motywu, czcionki, logotypy i tła oraz, jeśli trzeba, rodzaje
 slajdów (kinds), a także nazwę, wersję i licencję, dzięki czemu motyw można
-przekazywać dalej i instalować. Pakiety motywów pojawiają się po v0.17.1.
+przekazywać dalej i instalować. Pakiety motywów są w v0.18.0 i nowszych.
 
 ## The theme.hcl file {#the-themehcl-file}
 

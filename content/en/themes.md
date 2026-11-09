@@ -9,7 +9,7 @@ A **theme package** is one file, `<name>.gsta.xz` (Go-Slides Theme Archive): a
 tar archive (ustar or pax) compressed with xz, with `theme.hcl` at its root and
 the files it declares. It carries a theme's CSS, fonts, logos and backgrounds
 and, if it likes, slide kinds, with a name, a version and a licence, so that a
-theme can be passed around and installed. Theme packages come after v0.17.1.
+theme can be passed around and installed. Theme packages are in v0.18.0 and later.
 
 ## The theme.hcl file
 

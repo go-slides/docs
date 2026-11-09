@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Esta página descreve a v0.17.1.
+Esta página descreve a v0.18.0.
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | imprime as notas do apresentador |
 | `kinds` | lista os kinds que a apresentação pode usar e o que eles definem; `--json` (na v0.6.0) os escreve como `[{"name", "extends", "directives": [{"key", "value"}]}]`, com `extends` resolvido |
 | `themes` | lista os temas |
-| `theme pack`, `verify`, `install`, `list`, `remove` | pacotes de tema, `*.gsta.xz` (depois da v0.17.1): [Pacotes de tema]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | pacotes de tema, `*.gsta.xz` (desde a v0.18.0): [Pacotes de tema]({{< relref "themes" >}}) |
 | `version` | imprime a versão (assim como `slides --version`) |
 | `completion` | imprime um script de autocompletar do shell: `bash`, `zsh`, `fish` ou `powershell` |
 
@@ -52,7 +52,7 @@ out.html deck.md` são a mesma coisa. As flags longas levam dois hifens
 | `--pptx-editable`, `--no-parallel` | `build` | as grafias do marp-cli para `--pptx` e `-P 1` (na v0.6.0) |
 | `--config file` | todos | arquivo de configuração; por padrão `slides.yaml` ao lado da apresentação, se houver |
 | `--no-config` | todos | não lê um arquivo de configuração |
-| `--theme-set path` | todos | um arquivo CSS de tema, um pacote de tema (`*.gsta.xz`, depois da v0.17.1) ou um diretório deles (repetível) |
+| `--theme-set path` | todos | um arquivo CSS de tema, um pacote de tema (`*.gsta.xz`, desde a v0.18.0) ou um diretório deles (repetível) |
 | `--kinds file` | todos | um arquivo YAML de kinds (repetível) |
 | `--data file` | todos | um arquivo YAML ou JSON de dados de template (repetível) |
 | `--set key=value` | todos | um valor de template (repetível) |
@@ -64,7 +64,7 @@ out.html deck.md` são a mesma coisa. As flags longas levam dois hifens
 | `--bare` | `build` | empilha os slides, sem o script de apresentação |
 | `--pdf` | `build` | escreve um PDF, uma página por slide, com sumário — texto e formas como vetores (também escolhido por `-o file.pdf`) |
 | `--pdf-raster` | `build` | escreve o PDF com cada página sendo uma imagem do slide, como a v0.3.0 fazia |
-| `--pdf-fragments` | `build` | escreve uma página de PDF para cada passo de fragmento de um slide, como as sobreposições do Beamer (ainda não lançado). Desativado por padrão, para que o PDF seja igual ao do marp-cli; não combina com `--pdf-raster`. Veja [abaixo](#transitions-and-fragments-in-the-exports) |
+| `--pdf-fragments` | `build` | escreve uma página de PDF para cada passo de fragmento de um slide, como as sobreposições do Beamer (desde a v0.18.0). Desativado por padrão, para que o PDF seja igual ao do marp-cli; não combina com `--pdf-raster`. Veja [abaixo](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | escreve as notas do apresentador como um arquivo de texto, com os slides separados por `---` como o marp-cli faz (na v0.6.0; também escolhido por `-o file.txt`). O comando `notes` as imprime em outro formato |
 | `--pdf-notes` | `build` | acrescenta as notas do apresentador de cada slide à sua página do PDF como uma anotação de nota, como o marp-cli faz (na v0.6.0). Pede um PDF quando nada mais diz o que escrever |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | os marcadores do PDF (na v0.6.0): "Page N" por slide e os títulos aninhados sob ele. Ligado por padrão aqui, diferente do marp-cli; `=false` desliga uma parte. Veja abaixo |
@@ -77,7 +77,7 @@ out.html deck.md` são a mesma coisa. As flags longas levam dois hifens
 | `--jpeg-quality n` | `build` | qualidade do JPEG, de 1 a 100 (padrão 85) |
 | `--image-scale n` | `build` | pixels do dispositivo por pixel CSS para imagens e PDF (padrão 1); 2 dá 2560×1440 para 16:9, com texto e vetores desenhados nessa densidade, não ampliados |
 | `--allow-local-files` | `build` | deixa imagens e PDF lerem arquivos locais, somente de dentro do diretório da apresentação; recusado por padrão, como no marp-cli |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | substitui o tema da apresentação (na v0.6.0): um nome de tema (embutido, ou de um pacote instalado depois da v0.17.1), um arquivo CSS, que se torna o tema qualquer que seja o `@theme` que ele declare, ou um [pacote de tema]({{< relref "themes" >}}); um diretório é recusado, use `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | substitui o tema da apresentação (na v0.6.0): um nome de tema (embutido, ou de um pacote instalado, desde a v0.18.0), um arquivo CSS, que se torna o tema qualquer que seja o `@theme` que ele declare, ou um [pacote de tema]({{< relref "themes" >}}); um diretório é recusado, use `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | os metadados da página (na v0.6.0), sobre as diretivas `title`, `description`, `author`, `keywords`, `url` e `image` da apresentação; veja abaixo |
 
 ## Várias apresentações, e um diretório {#several-decks-and-a-directory}
@@ -340,7 +340,7 @@ slide.
 
 ### Transições e fragmentos no PDF, no PPTX e no ODP {#transitions-and-fragments-in-the-exports}
 
-Ainda não lançado: virá na próxima versão depois da v0.17.1.
+Desde a v0.18.0.
 
 O PDF, o PPTX e o ODP levam o que a página HTML reproduz. A diretiva
 `transition` de um slide é escrita no **próximo** slide, aquele em que ela

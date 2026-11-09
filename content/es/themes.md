@@ -10,7 +10,7 @@ Archive): un archivo tar (ustar o pax) comprimido con xz, con `theme.hcl` en su
 raíz y los archivos que declara. Lleva el CSS de un tema, sus fuentes,
 logotipos y fondos y, si se quiere, kinds de diapositivas, con un nombre, una
 versión y una licencia, de modo que un tema pueda circular e instalarse. Los
-paquetes de tema existen después de v0.17.1.
+paquetes de tema están en v0.18.0 y posteriores.
 
 ## El archivo theme.hcl {#the-themehcl-file}
 

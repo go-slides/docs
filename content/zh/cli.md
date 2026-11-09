@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-本页描述的是 v0.17.1。
+本页描述的是 v0.18.0。
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | 输出演讲者备注 |
 | `kinds` | 列出演示文稿可用的 kind 及其设置的内容；`--json`（v0.6.0 起）将其写为 `[{"name", "extends", "directives": [{"key", "value"}]}]`，其中 `extends` 已解析 |
 | `themes` | 列出主题 |
-| `theme pack`、`verify`、`install`、`list`、`remove` | 主题包，`*.gsta.xz`（v0.17.1 之后）：[主题包]({{< relref "themes" >}}) |
+| `theme pack`、`verify`、`install`、`list`、`remove` | 主题包，`*.gsta.xz`（自 v0.18.0 起）：[主题包]({{< relref "themes" >}}) |
 | `version` | 输出版本号（`slides --version` 亦可） |
 | `completion` | 输出 shell 自动补全脚本：`bash`、`zsh`、`fish` 或 `powershell` |
 
@@ -51,7 +51,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `--pptx-editable`, `--no-parallel` | `build` | marp-cli 中 `--pptx` 和 `-P 1` 的写法（v0.6.0 起） |
 | `--config file` | 全部 | 配置文件；默认为演示文稿旁边的 `slides.yaml`（如果存在） |
 | `--no-config` | 全部 | 不读取配置文件 |
-| `--theme-set path` | 全部 | 一个主题 CSS 文件、一个主题包（`*.gsta.xz`，v0.17.1 之后），或包含这些文件的目录（可重复） |
+| `--theme-set path` | 全部 | 一个主题 CSS 文件、一个主题包（`*.gsta.xz`，自 v0.18.0 起），或包含这些文件的目录（可重复） |
 | `--kinds file` | 全部 | 一个定义 kind 的 YAML 文件（可重复） |
 | `--data file` | 全部 | 一个提供模板数据的 YAML 或 JSON 文件（可重复） |
 | `--set key=value` | 全部 | 一个模板值（可重复） |
@@ -63,7 +63,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `--bare` | `build` | 堆叠幻灯片，不带演示脚本 |
 | `--pdf` | `build` | 写出 PDF，每张幻灯片一页，带书签大纲；文本和形状为矢量（也可由 `-o file.pdf` 选择） |
 | `--pdf-raster` | `build` | 写出每页为一张幻灯片图片的 PDF，与 v0.3.0 相同 |
-| `--pdf-fragments` | `build` | 为幻灯片的每个片段步骤写出一页 PDF，类似 Beamer 的叠加层（尚未发布）。默认关闭，使 PDF 与 marp-cli 的一致；不能与 `--pdf-raster` 同用。见[下文](#transitions-and-fragments-in-the-exports) |
+| `--pdf-fragments` | `build` | 为幻灯片的每个片段步骤写出一页 PDF，类似 Beamer 的叠加层（自 v0.18.0 起）。默认关闭，使 PDF 与 marp-cli 的一致；不能与 `--pdf-raster` 同用。见[下文](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | 将演讲者备注写为文本文件，幻灯片之间以 `---` 分隔，与 marp-cli 相同（v0.6.0 起；也可由 `-o file.txt` 选择）。`notes` 命令以另一种格式输出备注 |
 | `--pdf-notes` | `build` | 将每张幻灯片的演讲者备注作为注释批注加到对应的 PDF 页面上，与 marp-cli 相同（v0.6.0 起）。未指定其他输出格式时，会写出 PDF |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | PDF 的书签（v0.6.0 起）：每张幻灯片一个 “Page N”，其下嵌套该幻灯片的标题。与 marp-cli 不同，这里默认开启；`=false` 可关闭其中一项。见下文 |
@@ -76,7 +76,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `--jpeg-quality n` | `build` | JPEG 质量，1 到 100（默认 85） |
 | `--image-scale n` | `build` | 图片和 PDF 中每个 CSS 像素对应的设备像素数（默认 1）；为 2 时 16:9 幻灯片的尺寸为 2560×1440，文本和矢量图形按该密度绘制，而不是放大 |
 | `--allow-local-files` | `build` | 允许图片和 PDF 读取本地文件，且仅限演示文稿所在目录之下；默认拒绝，与 marp-cli 相同 |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | 覆盖演示文稿的主题（v0.6.0 起）：主题名（内置的，或 v0.17.1 之后已安装的主题包）、一个 CSS 文件（无论其声明的 `@theme` 是什么，都会成为当前主题），或一个[主题包]({{< relref "themes" >}})；不接受目录，目录请用 `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | 覆盖演示文稿的主题（v0.6.0 起）：主题名（内置的，或自 v0.18.0 起已安装的主题包）、一个 CSS 文件（无论其声明的 `@theme` 是什么，都会成为当前主题），或一个[主题包]({{< relref "themes" >}})；不接受目录，目录请用 `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | 页面的元数据（v0.6.0 起），优先于演示文稿的 `title`、`description`、`author`、`keywords`、`url` 和 `image` 指令；见下文 |
 
 ## 多个演示文稿与目录 {#several-decks-and-a-directory}
@@ -287,7 +287,7 @@ v0.5.0 起幻灯片可编辑（见下文）；`--pptx-raster` 则与 marp-cli �
 
 ### PDF、PPTX 和 ODP 中的过渡效果与片段 {#transitions-and-fragments-in-the-exports}
 
-尚未发布：将随 v0.17.1 之后的下一个版本发布。
+自 v0.18.0 起。
 
 PDF、PPTX 和 ODP 会带上 HTML 页面所播放的内容。幻灯片的 `transition` 指令写在
 **下一张**幻灯片上，也就是它切入的那一张（marp-cli 在离开一张幻灯片时播放它的指令），

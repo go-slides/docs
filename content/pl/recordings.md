@@ -5,8 +5,8 @@ description: "Nagranie asciinema w prezentacji: odtwarzane w małym odtwarzaczu 
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-Nagrania terminala są w gałęzi głównej po wersji v0.17.1 i w żadnym wydaniu.
+{{< callout type="info" >}}
+Nagrania terminala są w v0.18.0 i nowszych.
 {{< /callout >}}
 
 Nagranie [asciinema](https://docs.asciinema.org/) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) lub [v3](https://docs.asciinema.org/manual/asciicast/v3/)) to obraz, którego plik kończy się na `.cast`:

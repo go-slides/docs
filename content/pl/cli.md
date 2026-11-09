@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Ta strona opisuje v0.17.1.
+Ta strona opisuje v0.18.0.
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | wypisuje notatki prelegenta |
 | `kinds` | wylicza kinds, z których prezentacja może korzystać, i to, co ustawiają; `--json` (w v0.6.0) zapisuje je jako `[{"name", "extends", "directives": [{"key", "value"}]}]`, z rozwiązanym `extends` |
 | `themes` | wylicza motywy |
-| `theme pack`, `verify`, `install`, `list`, `remove` | pakiety motywów, `*.gsta.xz` (po v0.17.1): [Pakiety motywów]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | pakiety motywów, `*.gsta.xz` (od v0.18.0): [Pakiety motywów]({{< relref "themes" >}}) |
 | `version` | wypisuje wersję (tak samo `slides --version`) |
 | `completion` | wypisuje skrypt uzupełniania powłoki: `bash`, `zsh`, `fish` lub `powershell` |
 
@@ -52,7 +52,7 @@ inaczej.
 | `--pptx-editable`, `--no-parallel` | `build` | zapisy marp-cli dla `--pptx` i `-P 1` (w v0.6.0) |
 | `--config file` | wszystkie | plik konfiguracyjny; domyślnie `slides.yaml` obok prezentacji, jeśli istnieje |
 | `--no-config` | wszystkie | nie czytaj pliku konfiguracyjnego |
-| `--theme-set path` | wszystkie | plik CSS motywu, pakiet motywu (`*.gsta.xz`, po v0.17.1) lub katalog z nimi (można powtarzać) |
+| `--theme-set path` | wszystkie | plik CSS motywu, pakiet motywu (`*.gsta.xz`, od v0.18.0) lub katalog z nimi (można powtarzać) |
 | `--kinds file` | wszystkie | plik YAML z kinds (można powtarzać) |
 | `--data file` | wszystkie | plik YAML lub JSON z danymi szablonu (można powtarzać) |
 | `--set key=value` | wszystkie | jedna wartość szablonu (można powtarzać) |
@@ -64,7 +64,7 @@ inaczej.
 | `--bare` | `build` | ułóż slajdy jeden pod drugim, bez skryptu prezentacji |
 | `--pdf` | `build` | zapisz PDF, jedna strona na slajd, ze spisem treści — tekst i kształty jako wektory (wybierane także przez `-o file.pdf`) |
 | `--pdf-raster` | `build` | zapisz PDF, w którym każda strona to jeden obraz slajdu, jak robiła v0.3.0 |
-| `--pdf-fragments` | `build` | zapisz jedną stronę PDF dla każdego kroku fragmentu slajdu, jak nakładki Beamera (jeszcze niewydane). Domyślnie wyłączone, aby PDF zgadzał się z PDF-em marp-cli; nie z `--pdf-raster`. Zobacz [niżej](#transitions-and-fragments-in-the-exports) |
+| `--pdf-fragments` | `build` | zapisz jedną stronę PDF dla każdego kroku fragmentu slajdu, jak nakładki Beamera (od v0.18.0). Domyślnie wyłączone, aby PDF zgadzał się z PDF-em marp-cli; nie z `--pdf-raster`. Zobacz [niżej](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | zapisz notatki prelegenta jako plik tekstowy, slajdy rozdzielone `---` jak w marp-cli (w v0.6.0; wybierane także przez `-o file.txt`). Polecenie `notes` wypisuje je w innym układzie |
 | `--pdf-notes` | `build` | dodaj notatki prelegenta każdego slajdu do jego strony PDF jako adnotację notatki, jak robi marp-cli (w v0.6.0). Prosi o PDF, gdy nic innego nie mówi, co zapisać |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | zakładki PDF (w v0.6.0): „Page N" na slajd i zagnieżdżone pod nim nagłówki. Tu domyślnie włączone, inaczej niż w marp-cli; `=false` wyłącza jedną z nich. Zobacz niżej |
@@ -77,7 +77,7 @@ inaczej.
 | `--jpeg-quality n` | `build` | jakość JPEG, od 1 do 100 (domyślnie 85) |
 | `--image-scale n` | `build` | piksele urządzenia na piksel CSS dla obrazów i PDF (domyślnie 1); 2 daje 2560×1440 dla 16:9, z tekstem i wektorami rysowanymi w tej gęstości, a nie powiększanymi |
 | `--allow-local-files` | `build` | pozwól obrazom i PDF czytać pliki lokalne, tylko spod katalogu prezentacji; domyślnie odrzucane, jak w marp-cli |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | nadpisz motyw prezentacji (w v0.6.0): nazwa motywu (wbudowanego lub zainstalowanego pakietu po v0.17.1), plik CSS, który staje się motywem, jakikolwiek `@theme` deklaruje, lub [pakiet motywu]({{< relref "themes" >}}); katalog jest odrzucany, użyj `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | nadpisz motyw prezentacji (w v0.6.0): nazwa motywu (wbudowanego lub zainstalowanego pakietu od v0.18.0), plik CSS, który staje się motywem, jakikolwiek `@theme` deklaruje, lub [pakiet motywu]({{< relref "themes" >}}); katalog jest odrzucany, użyj `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | metadane strony (w v0.6.0), nad dyrektywami prezentacji `title`, `description`, `author`, `keywords`, `url` i `image`; zobacz niżej |
 
 ## Wiele prezentacji i katalog {#several-decks-and-a-directory}
@@ -327,7 +327,7 @@ eksportu PNG. `--pptx-raster` i `--odp-raster` zachowują jeden obraz na slajd.
 
 ### Przejścia i fragmenty w PDF, PPTX i ODP {#transitions-and-fragments-in-the-exports}
 
-Jeszcze niewydane: pojawi się w następnym wydaniu po v0.17.1.
+Od v0.18.0.
 
 PDF, PPTX i ODP zawierają to, co odtwarza strona HTML. Dyrektywa `transition`
 slajdu jest zapisywana na **następnym** slajdzie, na który wchodzi (marp-cli

@@ -8,7 +8,7 @@ tags: [themes, hcl]
 **主题包**是一个文件 `<name>.gsta.xz`（Go-Slides Theme Archive）：一个用 xz 压缩的
 tar 归档（ustar 或 pax），根目录下有 `theme.hcl`，以及它声明的各个文件。它携带主题的 CSS、字体、徽标和背景，
 还可以按需带上幻灯片 kind，并附有名称、版本和许可证，因此主题可以被传递和安装。
-主题包在 v0.17.1 之后提供。
+主题包自 v0.18.0 起提供。
 
 ## theme.hcl 文件 {#the-themehcl-file}
 

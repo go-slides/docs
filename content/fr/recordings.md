@@ -5,8 +5,8 @@ description: "Un enregistrement asciinema dans une présentation : rejoué dans 
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-Les enregistrements de terminal sont dans la branche principale après la v0.17.1 et dans aucune version publiée.
+{{< callout type="info" >}}
+Les enregistrements de terminal sont dans la v0.18.0 et les suivantes.
 {{< /callout >}}
 
 Un enregistrement [asciinema](https://docs.asciinema.org/) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) ou [v3](https://docs.asciinema.org/manual/asciicast/v3/)) est une image dont le fichier se termine par `.cast` :

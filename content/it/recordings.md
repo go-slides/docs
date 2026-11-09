@@ -5,8 +5,8 @@ description: "Una registrazione asciinema in una presentazione: riprodotta in un
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-Le registrazioni del terminale sono nel ramo principale dopo la v0.17.1 e in nessuna versione pubblicata.
+{{< callout type="info" >}}
+Le registrazioni del terminale sono presenti dalla v0.18.0 in poi.
 {{< /callout >}}
 
 Una registrazione [asciinema](https://docs.asciinema.org/) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) o [v3](https://docs.asciinema.org/manual/asciicast/v3/)) è un'immagine il cui file termina con `.cast`:

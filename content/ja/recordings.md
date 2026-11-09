@@ -5,8 +5,8 @@ description: "デッキの中の asciinema 録画: HTML ページの小さなプ
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-ターミナルの録画は v0.17.1 より後のメインブランチにあり、まだどのリリースにも入っていません。
+{{< callout type="info" >}}
+ターミナルの録画は v0.18.0 以降で使えます。
 {{< /callout >}}
 
 [asciinema](https://docs.asciinema.org/) の録画（[asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) または [v3](https://docs.asciinema.org/manual/asciicast/v3/)）は、ファイル名が `.cast` で終わる画像です。

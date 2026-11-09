@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.17.1.
+This page describes v0.18.0.
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | prints the speaker notes |
 | `kinds` | lists the kinds the deck can use and what they set; `--json` (in v0.6.0) writes them as `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` resolved |
 | `themes` | lists the themes |
-| `theme pack`, `verify`, `install`, `list`, `remove` | theme packages, `*.gsta.xz` (after v0.17.1): [Theme packages]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | theme packages, `*.gsta.xz` (since v0.18.0): [Theme packages]({{< relref "themes" >}}) |
 | `version` | prints the version (so does `slides --version`) |
 | `completion` | prints a shell completion script: `bash`, `zsh`, `fish` or `powershell` |
 
@@ -52,7 +52,7 @@ otherwise.
 | `--pptx-editable`, `--no-parallel` | `build` | marp-cli's spellings of `--pptx` and `-P 1` (in v0.6.0) |
 | `--config file` | all | configuration file; by default `slides.yaml` next to the deck, if there is one |
 | `--no-config` | all | do not read a configuration file |
-| `--theme-set path` | all | a theme CSS file, a theme package (`*.gsta.xz`, after v0.17.1), or a directory of them (repeatable) |
+| `--theme-set path` | all | a theme CSS file, a theme package (`*.gsta.xz`, since v0.18.0), or a directory of them (repeatable) |
 | `--kinds file` | all | a YAML file of kinds (repeatable) |
 | `--data file` | all | a YAML or JSON file of template data (repeatable) |
 | `--set key=value` | all | one template value (repeatable) |
@@ -64,7 +64,7 @@ otherwise.
 | `--bare` | `build` | stack the slides, without the presenting script |
 | `--pdf` | `build` | write a PDF, one page per slide, with an outline — text and shapes as vectors (also chosen by `-o file.pdf`) |
 | `--pdf-raster` | `build` | write the PDF with each page one image of the slide, as v0.3.0 did |
-| `--pdf-fragments` | `build` | write one PDF page for each fragment step of a slide, like Beamer overlays (unreleased). Off by default, so the PDF matches marp-cli's; not with `--pdf-raster`. See [below](#transitions-and-fragments-in-the-exports) |
+| `--pdf-fragments` | `build` | write one PDF page for each fragment step of a slide, like Beamer overlays (since v0.18.0). Off by default, so the PDF matches marp-cli's; not with `--pdf-raster`. See [below](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | write the speaker notes as a text file, slides separated by `---` as marp-cli does (in v0.6.0; also chosen by `-o file.txt`). The `notes` command prints them in another layout |
 | `--pdf-notes` | `build` | add each slide's speaker notes to its PDF page as a note annotation, as marp-cli does (in v0.6.0). Asks for a PDF when nothing else says what to write |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | the PDF's bookmarks (in v0.6.0): "Page N" per slide and the headings nested under it. On by default here, unlike marp-cli; `=false` turns one off. See below |
@@ -77,7 +77,7 @@ otherwise.
 | `--jpeg-quality n` | `build` | JPEG quality, 1 to 100 (default 85) |
 | `--image-scale n` | `build` | device pixels per CSS pixel for images and PDF (default 1); 2 gives 2560×1440 for 16:9, with text and vectors drawn at that density, not enlarged |
 | `--allow-local-files` | `build` | let images and PDF read local files, from under the deck's directory only; refused by default, as with marp-cli |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | override the deck's theme (in v0.6.0): a theme name (built in, or an installed package after v0.17.1), a CSS file, which becomes the theme whatever `@theme` it declares, or a [theme package]({{< relref "themes" >}}); a directory is refused, use `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | override the deck's theme (in v0.6.0): a theme name (built in, or an installed package since v0.18.0), a CSS file, which becomes the theme whatever `@theme` it declares, or a [theme package]({{< relref "themes" >}}); a directory is refused, use `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | the page's metadata (in v0.6.0), over the deck's `title`, `description`, `author`, `keywords`, `url` and `image` directives; see below |
 
 ## Several decks, and a directory
@@ -327,7 +327,7 @@ pixels. `--pptx-raster` and `--odp-raster` keep one picture a slide.
 
 ### Transitions and fragments in the PDF, PPTX and ODP {#transitions-and-fragments-in-the-exports}
 
-Not yet released: this comes in the next release after v0.17.1.
+Since v0.18.0.
 
 The PDF, PPTX and ODP carry what the HTML page plays. A slide's `transition`
 directive is written on the **next** slide, the one it comes in on (marp-cli

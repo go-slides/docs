@@ -5,8 +5,8 @@ description: "An asciinema recording in a deck: replayed in a small player in th
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-Terminal recordings are in the main branch after v0.17.1 and in no release yet.
+{{< callout type="info" >}}
+Terminal recordings are in v0.18.0 and later.
 {{< /callout >}}
 
 An [asciinema](https://docs.asciinema.org/) recording ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) or [v3](https://docs.asciinema.org/manual/asciicast/v3/)) is an image whose file ends in `.cast`:
