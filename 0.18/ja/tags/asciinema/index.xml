@@ -1,0 +1,35 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Asciinema</title><link>https://go-slides.github.io/docs/0.18/ja/tags/asciinema/</link><description>Recent content in Asciinema on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.18/ja/tags/asciinema/index.xml" rel="self" type="application/rss+xml"/><item><title>ターミナルの録画</title><link>https://go-slides.github.io/docs/0.18/ja/recordings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.18/ja/recordings/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;ターミナルの録画は v0.18.0 以降で使えます。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://docs.asciinema.org/" target="_blank" rel="noopener"&gt;asciinema&lt;/a&gt; の録画（&lt;a href="https://docs.asciinema.org/manual/asciicast/v2/" target="_blank" rel="noopener"&gt;asciicast v2&lt;/a&gt; または &lt;a href="https://docs.asciinema.org/manual/asciicast/v3/" target="_blank" rel="noopener"&gt;v3&lt;/a&gt;）は、ファイル名が &lt;code&gt;.cast&lt;/code&gt; で終わる画像です。&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;cast&lt;/span&gt;](&lt;span class="na"&gt;demo.cast&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;The failing build&lt;/span&gt;](&lt;span class="na"&gt;demo.cast#t=12.5&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="syntax"&gt;構文&lt;span class="hx:absolute hx:-mt-20" id="syntax"&gt;&lt;/span&gt;
+&lt;a href="#syntax" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ファイルはデッキのフォルダーから読み込まれます。URL、絶対パス、フォルダーの外に出るパスは拒否されます。代替テキストはスクリーンリーダー向けに録画の名前になります。&lt;code&gt;cast&lt;/code&gt; だけの場合は録画自身のタイトルを意味します。&lt;code&gt;#t=12.5&lt;/code&gt;（分と秒なら &lt;code&gt;#t=1:23&lt;/code&gt;）は、動かせない出力が示す瞬間を選びます。省略すると録画の最後です。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="outputs"&gt;出力ごとに表示されるもの&lt;span class="hx:absolute hx:-mt-20" id="outputs"&gt;&lt;/span&gt;
+&lt;a href="#outputs" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTML&lt;/strong&gt;（ページと playground のプレビュー）: 録画は、ページに埋め込まれた go-slides の小さなプレーヤーで再生されます。再生と一時停止、速度ボタン、位置バーがあります。どこからもスクリプトを読み込まず、ネットワークも使いません。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF、PowerPoint、OpenDocument&lt;/strong&gt;（&lt;code&gt;--pdf&lt;/code&gt;、&lt;code&gt;--pptx&lt;/code&gt;、&lt;code&gt;--odp&lt;/code&gt;）: &lt;code&gt;#t=&lt;/code&gt; が指す瞬間のターミナルを、テーマの等幅フォントのベクターテキストとして描きます。16 色、256 色、直接指定の色、太字、斜体、下線、反転テキストに対応します。テキストは選択して検索でき、画像になることはありません。太字と斜体は、テーマの等幅フォントにある場合に描かれます（gaia テーマの Roboto Mono）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="player"&gt;プレーヤー&lt;span class="hx:absolute hx:-mt-20" id="player"&gt;&lt;/span&gt;
+&lt;a href="#player" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;録画が初めて画面に現れたときに一度だけ再生します。ブラウザーが動きの軽減を求めている場合（&lt;code&gt;prefers-reduced-motion&lt;/code&gt;）は、一時停止の状態で始まり、&lt;code&gt;#t=&lt;/code&gt; が指す瞬間を表示し、再生を押すと再生します。ボタンやキーでスライドが切り替わることはありません。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="limits"&gt;制限&lt;span class="hx:absolute hx:-mt-20" id="limits"&gt;&lt;/span&gt;
+&lt;a href="#limits" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;録画は信頼できない入力なので、上限があります。ファイル（16 MiB）、イベント（500,000 件）、長さ（3 時間）、ターミナル（400 × 200 セル）、エミュレーターが行える処理量です。上限を超える録画や、正しい形式の asciicast ファイルではない録画は拒否されます。ビルドは続行し、スライドにはその場所に注記が表示され、問題はコード付きの警告になります: &lt;code&gt;cast.syntax&lt;/code&gt;、&lt;code&gt;cast.limit&lt;/code&gt;、&lt;code&gt;cast.version&lt;/code&gt;、&lt;code&gt;cast.path&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="playground"&gt;playground では&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
+&lt;a href="#playground" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ファイルパネルからドロップするか、ファイル選択で、プロジェクトに &lt;code&gt;.cast&lt;/code&gt; ファイルを追加します。ファイルは &lt;code&gt;media/&lt;/code&gt; に入り、画像として挿入されます。デッキが読むテキストなので、プロジェクトのほかのテキストファイルと合わせて数えられ、上限は 2 MiB です。&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; で試してみてください。&lt;/p&gt;</description></item></channel></rss>

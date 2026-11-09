@@ -1,0 +1,126 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.18/ja/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.18/ja/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>テーマパッケージ</title><link>https://go-slides.github.io/docs/0.18/ja/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.18/ja/themes/</guid><description>
+&lt;p&gt;&lt;strong&gt;テーマパッケージ&lt;/strong&gt;は &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt;（Go-Slides Theme Archive）という 1 つのファイルです。
+ルートに &lt;code&gt;theme.hcl&lt;/code&gt; があり、それが宣言したファイルを収めた、xz で圧縮した tar アーカイブ
+（ustar または pax）です。
+テーマの CSS、フォント、ロゴ、背景を収め、必要ならスライドの kind も収めることができ、
+名前、バージョン、ライセンスが付くので、テーマを受け渡してインストールできます。
+テーマパッケージは v0.18.0 以降で使えます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;theme.hcl ファイル&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+&lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # semantic version
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Example theme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; authors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;go-slides contributors&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;font&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Roboto Mono&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;400&lt;/span&gt;&lt;span class="c1"&gt; # or &amp;#34;100 900&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;normal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;fonts/RobotoMono-Regular.ttf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;OFL-1.1&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # required for a font
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;asset &amp;#34;logo&amp;#34; { file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;assets/logo.svg&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme-title&amp;#34;&lt;/span&gt; {&lt;span class="c1"&gt; # optional slide kinds
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lead&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; は、リテラル値だけを使う HCL のネイティブ構文です。関数も変数もなく、
+&lt;code&gt;file()&lt;/code&gt; や &lt;code&gt;env()&lt;/code&gt; も使えません。名前は小文字、数字、ダッシュで構成し、&lt;code&gt;default&lt;/code&gt;、
+&lt;code&gt;gaia&lt;/code&gt;、&lt;code&gt;uncover&lt;/code&gt; は使えません。&lt;code&gt;extends&lt;/code&gt; はベースとなるテーマを指定し、&lt;code&gt;css&lt;/code&gt; ブロックは
+1 つにつき 1 枚のスタイルシートを順に追加し、&lt;code&gt;font&lt;/code&gt; と &lt;code&gt;asset&lt;/code&gt; ブロックはそれぞれ
+パッケージ内のファイルを指し、&lt;code&gt;kind&lt;/code&gt; ブロックはそれぞれ &lt;a href="https://go-slides.github.io/docs/0.18/ja/kinds/"&gt;kind&lt;/a&gt; です。
+&lt;code&gt;css&lt;/code&gt;、&lt;code&gt;font&lt;/code&gt;、&lt;code&gt;asset&lt;/code&gt; ブロックの &lt;code&gt;sha256&lt;/code&gt; は、パッケージを読み込むときに検査されます。&lt;/p&gt;
+&lt;p&gt;CSS は、フォントとアセットをパッケージ内のパスで、CSS ファイルからの相対パスで参照します。
+&lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt; のようにです。パッケージを読み込むとき、こうした参照は
+すべて &lt;code&gt;data:&lt;/code&gt; URL になってページが自己完結し、&lt;code&gt;font&lt;/code&gt; ブロックは &lt;code&gt;@font-face&lt;/code&gt; になります。
+パッケージには &lt;code&gt;LICENSE&lt;/code&gt;、&lt;code&gt;NOTICE&lt;/code&gt;、&lt;code&gt;README&lt;/code&gt; ファイルを含めることもできます。
+&lt;code&gt;theme.hcl&lt;/code&gt; が宣言していないそれ以外のファイルは拒否されます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;パッケージ化、インストール、使い方&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+slides theme verify file run every check on a package
+slides theme install file check it, then install it for the current user
+slides theme list the installed packages
+slides theme remove name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;インストールされたパッケージは、ユーザーの設定ディレクトリの下の &lt;code&gt;go-slides/themes&lt;/code&gt; に
+あります（&lt;code&gt;os.UserConfigDir()&lt;/code&gt;：&lt;code&gt;~/Library/Application Support&lt;/code&gt;、&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; または
+&lt;code&gt;~/.config&lt;/code&gt;、&lt;code&gt;%AppData%&lt;/code&gt;）。スライドデッキで次のように書くと：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;組み込みテーマと &lt;code&gt;--theme-set&lt;/code&gt; の次に、インストール済みのパッケージを探します。
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; と &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; は、インストールせずに
+ファイルを直接使います。&lt;a href="https://go-slides.github.io/docs/0.18/ja/cli/"&gt;コマンドライン&lt;/a&gt;を参照してください。&lt;/p&gt;
+&lt;p&gt;パッケージの kind は &lt;code&gt;--theme file.gsta.xz&lt;/code&gt; で適用され、インストール済みのパッケージなら
+&lt;code&gt;--theme name&lt;/code&gt; で、またはスライドデッキのフロントマターに &lt;code&gt;theme: name&lt;/code&gt; と書いても適用されます。
+スライドデッキ自身の kind が優先されます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;パッケージは信頼できない入力&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;テーマパッケージはどこからでも来る可能性があるため、パッケージを読むすべての経路
+（&lt;code&gt;pack&lt;/code&gt;、&lt;code&gt;verify&lt;/code&gt;、&lt;code&gt;install&lt;/code&gt;、&lt;code&gt;--theme&lt;/code&gt;、ビルド）が同じように検査し、コード付きの
+エラーで拒否します（&lt;code&gt;theme.archive&lt;/code&gt;、&lt;code&gt;theme.limit&lt;/code&gt;、&lt;code&gt;theme.meta&lt;/code&gt;、&lt;code&gt;theme.css&lt;/code&gt;、
+&lt;code&gt;theme.svg&lt;/code&gt;、&lt;code&gt;theme.font&lt;/code&gt;、&lt;code&gt;theme.checksum&lt;/code&gt;、&lt;code&gt;theme.version&lt;/code&gt;）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;アーカイブ。&lt;/strong&gt; xz ストリームは 1 つだけで、辞書には上限があり、ウィンドウはデータに
+応じて広がる。tar の中では、名前に &lt;code&gt;..&lt;/code&gt;、絶対パス、ドライブ文字、バックスラッシュを含めない。
+通常ファイルとディレクトリのみ（シンボリックリンク、ハードリンク、デバイス、FIFO は不可）。
+名前の重複も不可（大文字小文字を区別せず比較）。ustar と pax のヘッダーのみ（GNU 拡張も
+スパースファイルも不可）で、pax ヘッダーは最大 8 KiB。サイズはヘッダーが宣言した値ではなく、
+実際に読み取った値です。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上限。&lt;/strong&gt; アーカイブは最大 16 MiB、エントリは 256 個、1 エントリあたり 8 MiB、展開後 24 MiB、
+xz の辞書は 16 MiB、展開したストリームはアーカイブの大きさの 100 倍まで（64 KiB 以上の場合）、
+&lt;code&gt;theme.hcl&lt;/code&gt; は最大 64 KiB でかっこの入れ子は
+32 段まで、CSS は 1 ファイルあたり 1 MiB、フォントや画像は 4 MiB までです。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS。&lt;/strong&gt; &lt;code&gt;@import&lt;/code&gt; も &lt;code&gt;@import-theme&lt;/code&gt; も不可（&lt;code&gt;extends&lt;/code&gt; を使ってください）。&lt;code&gt;image-set()&lt;/code&gt;、
+&lt;code&gt;src()&lt;/code&gt; などリソースを読み込む関数も、文字列の外のバックスラッシュエスケープも、
+&lt;code&gt;&amp;lt;/style&lt;/code&gt; も不可です。&lt;code&gt;url()&lt;/code&gt; は &lt;code&gt;#fragment&lt;/code&gt;、&lt;code&gt;data:&lt;/code&gt; の画像またはフォント、あるいは
+パッケージ内の宣言済みファイルに限り、パッケージの外に出るものは認められません。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG。&lt;/strong&gt; &lt;code&gt;script&lt;/code&gt;、&lt;code&gt;foreignObject&lt;/code&gt;、フレーム、embed、&lt;code&gt;set&lt;/code&gt;、DOCTYPE、イベントハンドラーは
+不可。&lt;code&gt;href&lt;/code&gt; は &lt;code&gt;#fragment&lt;/code&gt; でなければならず、ファイルの外に出る &lt;code&gt;url()&lt;/code&gt; も不可です。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;フォントと画像&lt;/strong&gt;は解析されます。フォントはフォントでなければならず、画像は拡張子と
+一致しなければならず、それぞれにサイズの上限があります。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリの &lt;code&gt;testdata/themes/acme&lt;/code&gt; が小さな例です。&lt;/p&gt;</description></item></channel></rss>

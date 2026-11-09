@@ -1,0 +1,125 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.18/ko/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.18/ko/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>테마 패키지</title><link>https://go-slides.github.io/docs/0.18/ko/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.18/ko/themes/</guid><description>
+&lt;p&gt;&lt;strong&gt;테마 패키지&lt;/strong&gt;는 &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt;(Go-Slides Theme Archive)라는 파일 하나입니다.
+루트에 &lt;code&gt;theme.hcl&lt;/code&gt;이 있고 그 파일이 선언한 파일들을 담은, xz로 압축한 tar
+아카이브(ustar 또는 pax)입니다. 테마의 CSS, 글꼴,
+로고, 배경을 담으며, 원하면 슬라이드 kind도 담을 수 있고, 이름, 버전, 라이선스가
+붙어 있어 테마를 주고받고 설치할 수 있습니다. 테마 패키지는 v0.18.0 이후 버전에서 제공됩니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;theme.hcl 파일&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+&lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # semantic version
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Example theme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; authors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;go-slides contributors&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;font&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Roboto Mono&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;400&lt;/span&gt;&lt;span class="c1"&gt; # or &amp;#34;100 900&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;normal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;fonts/RobotoMono-Regular.ttf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;OFL-1.1&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # required for a font
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;asset &amp;#34;logo&amp;#34; { file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;assets/logo.svg&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme-title&amp;#34;&lt;/span&gt; {&lt;span class="c1"&gt; # optional slide kinds
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lead&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt;은 리터럴 값만 쓰는 HCL의 기본 문법입니다. 함수도, 변수도, &lt;code&gt;file()&lt;/code&gt;이나
+&lt;code&gt;env()&lt;/code&gt;도 없습니다. 이름은 소문자, 숫자, 대시로 이루어지며 &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt;,
+&lt;code&gt;uncover&lt;/code&gt;는 쓸 수 없습니다. &lt;code&gt;extends&lt;/code&gt;는 기반 테마를 지정하고, &lt;code&gt;css&lt;/code&gt; 블록은 하나
+추가될 때마다 순서대로 스타일시트를 더하며, &lt;code&gt;font&lt;/code&gt;와 &lt;code&gt;asset&lt;/code&gt; 블록은 각각 패키지
+안의 파일을 가리키고, &lt;code&gt;kind&lt;/code&gt; 블록은 하나하나가 &lt;a href="https://go-slides.github.io/docs/0.18/ko/kinds/"&gt;kind&lt;/a&gt;입니다.
+&lt;code&gt;css&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt;, &lt;code&gt;asset&lt;/code&gt; 블록의 &lt;code&gt;sha256&lt;/code&gt;은 패키지를 읽을 때 검사합니다.&lt;/p&gt;
+&lt;p&gt;CSS는 글꼴과 에셋을 패키지 안의 경로로, CSS 파일 기준 상대 경로로 참조합니다.
+&lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;처럼요. 패키지를 불러올 때 이런 참조는 모두
+&lt;code&gt;data:&lt;/code&gt; URL로 바뀌어 페이지가 그 자체로 완결되고, &lt;code&gt;font&lt;/code&gt; 블록은 &lt;code&gt;@font-face&lt;/code&gt;가
+됩니다. 패키지에는 &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt;, &lt;code&gt;README&lt;/code&gt; 파일도 넣을 수 있으며,
+&lt;code&gt;theme.hcl&lt;/code&gt;이 선언하지 않은 다른 파일은 거부됩니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;패키징, 설치, 사용&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+slides theme verify file run every check on a package
+slides theme install file check it, then install it for the current user
+slides theme list the installed packages
+slides theme remove name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;설치된 패키지는 사용자 설정 디렉터리 아래의 &lt;code&gt;go-slides/themes&lt;/code&gt;에 있습니다
+(&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;, &lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; 또는
+&lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). 프레젠테이션에서 다음과 같이 쓰면:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;내장 테마와 &lt;code&gt;--theme-set&lt;/code&gt; 다음 순서로 설치된 패키지를 찾습니다.
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt;와 &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt;는 설치하지 않고 파일을
+바로 사용합니다. &lt;a href="https://go-slides.github.io/docs/0.18/ko/cli/"&gt;명령줄&lt;/a&gt;을 참고하십시오.&lt;/p&gt;
+&lt;p&gt;패키지의 kind는 &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;로 적용되며, 설치된 패키지라면
+&lt;code&gt;--theme name&lt;/code&gt;으로, 또는 프레젠테이션의 프런트 매터에 &lt;code&gt;theme: name&lt;/code&gt;을 적어서
+적용됩니다. 프레젠테이션 자신의 kind가 이들보다 우선합니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;패키지는 신뢰할 수 없는 입력입니다&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;테마 패키지는 어디에서든 올 수 있으므로, 패키지를 읽는 모든 경로(&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
+&lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, 빌드)가 똑같이 검사하고, 코드가 붙은 오류로 거부합니다
+(&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;,
+&lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;아카이브.&lt;/strong&gt; xz 스트림은 하나뿐이며, 사전(dictionary)에는 한도가 있고 윈도는
+데이터에 따라 커집니다. tar 안에서는 이름에 &lt;code&gt;..&lt;/code&gt;, 절대 경로, 드라이브 문자,
+백슬래시가 없어야 하고, 일반 파일과 디렉터리만 허용되며(심볼릭 링크, 하드 링크,
+장치, FIFO는 안 됨), 중복된 이름이 없어야 합니다(대소문자를 구분하지 않고 비교).
+ustar와 pax 헤더만 허용되며(GNU 확장도, 스파스 파일도 안 됨), pax 헤더는 최대
+8 KiB입니다. 크기는 헤더가 선언한 값이 아니라 실제로 읽은 값입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;한도.&lt;/strong&gt; 아카이브는 최대 16 MiB, 항목은 256개, 항목당 8 MiB, 압축을 푼 뒤 24 MiB,
+xz 사전은 16 MiB, 압축을 푼 스트림은 아카이브 크기의 100배 이하(64 KiB 이상일 때),
+&lt;code&gt;theme.hcl&lt;/code&gt;은 최대 64 KiB에 괄호 중첩 32단계,
+CSS는 파일당 1 MiB, 글꼴이나 이미지는 4 MiB까지입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; &lt;code&gt;@import&lt;/code&gt;도, &lt;code&gt;@import-theme&lt;/code&gt;도(&lt;code&gt;extends&lt;/code&gt;를 쓰십시오), &lt;code&gt;image-set()&lt;/code&gt;,
+&lt;code&gt;src()&lt;/code&gt; 등 리소스를 불러오는 함수도, 문자열 밖의 백슬래시 이스케이프도,
+&lt;code&gt;&amp;lt;/style&lt;/code&gt;도 안 됩니다. &lt;code&gt;url()&lt;/code&gt;은 &lt;code&gt;#fragment&lt;/code&gt;, &lt;code&gt;data:&lt;/code&gt; 이미지나 글꼴, 또는 패키지에
+선언된 파일이어야 하며, 패키지 밖으로 나가는 것은 안 됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, 프레임, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE, 이벤트 핸들러는
+안 됩니다. &lt;code&gt;href&lt;/code&gt;는 &lt;code&gt;#fragment&lt;/code&gt;여야 하고, 파일 밖으로 나가는 &lt;code&gt;url()&lt;/code&gt;도 안 됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;글꼴과 이미지&lt;/strong&gt;는 파싱합니다. 글꼴은 글꼴이어야 하고, 이미지는 확장자와
+일치해야 하며, 각각 크기 한도가 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;저장소의 &lt;code&gt;testdata/themes/acme&lt;/code&gt;가 작은 예제입니다.&lt;/p&gt;</description></item></channel></rss>

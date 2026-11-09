@@ -1,0 +1,117 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.18/zh/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.18/zh/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>主题包</title><link>https://go-slides.github.io/docs/0.18/zh/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.18/zh/themes/</guid><description>
+&lt;p&gt;&lt;strong&gt;主题包&lt;/strong&gt;是一个文件 &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt;（Go-Slides Theme Archive）：一个用 xz 压缩的
+tar 归档（ustar 或 pax），根目录下有 &lt;code&gt;theme.hcl&lt;/code&gt;，以及它声明的各个文件。它携带主题的 CSS、字体、徽标和背景，
+还可以按需带上幻灯片 kind，并附有名称、版本和许可证，因此主题可以被传递和安装。
+主题包自 v0.18.0 起提供。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;theme.hcl 文件&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+&lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # semantic version
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Example theme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; authors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;go-slides contributors&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;font&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Roboto Mono&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;400&lt;/span&gt;&lt;span class="c1"&gt; # or &amp;#34;100 900&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;normal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;fonts/RobotoMono-Regular.ttf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;OFL-1.1&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # required for a font
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;asset &amp;#34;logo&amp;#34; { file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;assets/logo.svg&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme-title&amp;#34;&lt;/span&gt; {&lt;span class="c1"&gt; # optional slide kinds
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lead&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; 使用 HCL 的原生语法，且只允许字面量：没有函数，没有变量，
+没有 &lt;code&gt;file()&lt;/code&gt; 或 &lt;code&gt;env()&lt;/code&gt;。名称由小写字母、数字和连字符组成，且不能是 &lt;code&gt;default&lt;/code&gt;、
+&lt;code&gt;gaia&lt;/code&gt; 或 &lt;code&gt;uncover&lt;/code&gt;。&lt;code&gt;extends&lt;/code&gt; 指明基础主题；每个 &lt;code&gt;css&lt;/code&gt; 块按顺序添加一个样式表；
+每个 &lt;code&gt;font&lt;/code&gt; 和 &lt;code&gt;asset&lt;/code&gt; 块都指向包中的一个文件；每个 &lt;code&gt;kind&lt;/code&gt; 块就是一个 &lt;a href="https://go-slides.github.io/docs/0.18/zh/kinds/"&gt;kind&lt;/a&gt;。
+&lt;code&gt;css&lt;/code&gt;、&lt;code&gt;font&lt;/code&gt; 或 &lt;code&gt;asset&lt;/code&gt; 块上的 &lt;code&gt;sha256&lt;/code&gt; 会在读取主题包时校验。&lt;/p&gt;
+&lt;p&gt;CSS 通过文件在包中的路径引用字体和资源，路径相对于该 CSS 文件：
+&lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;。加载主题包时，每个这样的引用都会变成 &lt;code&gt;data:&lt;/code&gt; URL，
+使页面自成一体，而 &lt;code&gt;font&lt;/code&gt; 块会变成 &lt;code&gt;@font-face&lt;/code&gt;。主题包还可以带有 &lt;code&gt;LICENSE&lt;/code&gt;、
+&lt;code&gt;NOTICE&lt;/code&gt; 和 &lt;code&gt;README&lt;/code&gt; 文件；&lt;code&gt;theme.hcl&lt;/code&gt; 没有声明的其他任何文件都会被拒绝。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;打包、安装和使用&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+slides theme verify file run every check on a package
+slides theme install file check it, then install it for the current user
+slides theme list the installed packages
+slides theme remove name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;已安装的主题包位于用户配置目录下的 &lt;code&gt;go-slides/themes&lt;/code&gt;
+（&lt;code&gt;os.UserConfigDir()&lt;/code&gt;：&lt;code&gt;~/Library/Application Support&lt;/code&gt;、&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; 或
+&lt;code&gt;~/.config&lt;/code&gt;、&lt;code&gt;%AppData%&lt;/code&gt;）。在演示文稿中：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;会查找已安装的主题包，顺序在内置主题和 &lt;code&gt;--theme-set&lt;/code&gt; 之后。
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; 和 &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; 直接使用文件，无需安装；
+见&lt;a href="https://go-slides.github.io/docs/0.18/zh/cli/"&gt;命令行&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;主题包中的 kind 通过 &lt;code&gt;--theme file.gsta.xz&lt;/code&gt; 生效，对已安装的主题包则用
+&lt;code&gt;--theme name&lt;/code&gt;，也可以在演示文稿的 front matter 中写 &lt;code&gt;theme: name&lt;/code&gt;；演示文稿自己的 kind 优先于它们。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;主题包是不可信输入&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;主题包可能来自任何地方，因此每一个读取者（&lt;code&gt;pack&lt;/code&gt;、&lt;code&gt;verify&lt;/code&gt;、&lt;code&gt;install&lt;/code&gt;、&lt;code&gt;--theme&lt;/code&gt;、
+构建）都以同样的方式检查它，并以带有错误码的错误拒绝
+（&lt;code&gt;theme.archive&lt;/code&gt;、&lt;code&gt;theme.limit&lt;/code&gt;、&lt;code&gt;theme.meta&lt;/code&gt;、&lt;code&gt;theme.css&lt;/code&gt;、&lt;code&gt;theme.svg&lt;/code&gt;、&lt;code&gt;theme.font&lt;/code&gt;、
+&lt;code&gt;theme.checksum&lt;/code&gt;、&lt;code&gt;theme.version&lt;/code&gt;）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;归档。&lt;/strong&gt; 只有一个 xz 流，其字典有上限，窗口随数据增长。tar 中：名称里不得有 &lt;code&gt;..&lt;/code&gt;、
+绝对路径、盘符或反斜杠；只允许普通文件和目录（不得有符号链接、硬链接、设备或 FIFO）；
+不得有重复名称（比较时不区分大小写）；只允许 ustar 和 pax 头（不得有 GNU 扩展，不得有稀疏文件），
+pax 头最大 8 KiB。大小以实际读取的为准，而不是头部所声明的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上限。&lt;/strong&gt; 归档最大 16 MiB，最多 256 个条目，每个条目最大 8 MiB，解压后共 24 MiB，
+xz 字典 16 MiB，解压后的数据流最大为归档大小的 100 倍（64 KiB 及以上），
+&lt;code&gt;theme.hcl&lt;/code&gt; 最大 64 KiB、嵌套括号最深 32 层，
+每个 CSS 文件最大 1 MiB，每个字体或图像最大 4 MiB。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS。&lt;/strong&gt; 不得有 &lt;code&gt;@import&lt;/code&gt;，不得有 &lt;code&gt;@import-theme&lt;/code&gt;（请用 &lt;code&gt;extends&lt;/code&gt;），不得有 &lt;code&gt;image-set()&lt;/code&gt;、
+&lt;code&gt;src()&lt;/code&gt; 或其他加载资源的函数，字符串之外不得有反斜杠转义，不得有 &lt;code&gt;&amp;lt;/style&lt;/code&gt;。
+&lt;code&gt;url()&lt;/code&gt; 只能是 &lt;code&gt;#fragment&lt;/code&gt;、&lt;code&gt;data:&lt;/code&gt; 图像或字体，或包中已声明的文件，绝不能指向包外。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG。&lt;/strong&gt; 不得有 &lt;code&gt;script&lt;/code&gt;、&lt;code&gt;foreignObject&lt;/code&gt;、frame、embed、&lt;code&gt;set&lt;/code&gt;、DOCTYPE 或事件处理器；
+&lt;code&gt;href&lt;/code&gt; 只能是 &lt;code&gt;#fragment&lt;/code&gt;；不得有指向文件之外的 &lt;code&gt;url()&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字体和图像&lt;/strong&gt;会被解析：字体必须是字体，图像必须与其扩展名相符，且各有大小上限。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;仓库中的 &lt;code&gt;testdata/themes/acme&lt;/code&gt; 是一个小示例。&lt;/p&gt;</description></item></channel></rss>
