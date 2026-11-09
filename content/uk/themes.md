@@ -1,12 +1,12 @@
 ---
 title: "Пакети тем"
 weight: 42
-description: "Тема в одному файлі: архів .slidestheme з theme.hcl, її CSS, шрифтами, ресурсами та kinds, який перевіряють як недовірений вхід."
+description: "Тема в одному файлі: архів .gsta.xz з theme.hcl, її CSS, шрифтами, ресурсами та kinds, який перевіряють як недовірений вхід."
 tags: [themes, hcl]
 ---
 
-**Пакет теми** — це один файл, `<name>.slidestheme`: ZIP-архів (deflate)
-з файлом `theme.hcl` у корені та файлами, які той оголошує. Він містить CSS
+**Пакет теми** — це один файл, `<name>.gsta.xz` (Go-Slides Theme Archive):
+tar-архів (ustar або pax), стиснений xz, з файлом `theme.hcl` у корені та файлами, які той оголошує. Він містить CSS
 теми, шрифти, логотипи та тла і, якщо потрібно, типи слайдів (kinds), а також
 назву, версію та ліцензію, щоб тему можна було передавати й встановлювати.
 Пакети тем з'явилися після v0.17.1.
@@ -23,7 +23,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -60,7 +60,7 @@ CSS: `background: url(assets/logo.svg)`. Під час завантаження 
 ## Packing, installing and using {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -78,13 +78,12 @@ theme: acme
 ```
 
 знаходить встановлений пакет, після вбудованих тем і `--theme-set`.
-`--theme acme.slidestheme` і `--theme-set acme.slidestheme` використовують файл
+`--theme acme.gsta.xz` і `--theme-set acme.gsta.xz` використовують файл
 безпосередньо, без встановлення; див. [Командний рядок]({{< relref "cli" >}}).
 
-Kinds пакета застосовуються з `--theme file.slidestheme` або з `--theme name`
-для встановленого пакета. Презентація, яка лише називає тему у своєму
-front matter, отримує її вигляд, але не її kinds, і може назвати їх через
-`--kinds`.
+Kinds пакета застосовуються з `--theme file.gsta.xz`, з `--theme name`
+для встановленого пакета або з `theme: name` у front matter презентації;
+власні kinds презентації мають над ними пріоритет.
 
 ## A package is untrusted input {#a-package-is-untrusted-input}
 
@@ -93,15 +92,17 @@ front matter, отримує її вигляд, але не її kinds, і мо�
 що має код (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
 `theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
 
-- **Архів.** Жодних `..`, абсолютного шляху, літери диска чи зворотної косої
-  риски в назві; жодних символічних посилань і спеціальних файлів; жодних
-  повторюваних назв (порівняння без урахування регістру); жодного шифрування
-  і жодного методу, окрім stored і deflate. Розміри — це те, що прочитано,
-  а не те, що заявляє архів.
+- **Архів.** Один потік xz, словник якого обмежений, а вікно росте разом
+  з даними. У tar: жодних `..`, абсолютного шляху, літери диска чи зворотної
+  косої риски в назві; лише звичайні файли й каталоги (жодних символічних чи
+  жорстких посилань, пристроїв і FIFO); жодних повторюваних назв (порівняння
+  без урахування регістру); лише заголовки ustar і pax (жодних розширень GNU,
+  жодних розріджених файлів), заголовок pax не більше 8 КіБ. Розміри — це те,
+  що прочитано, а не те, що заявляє заголовок.
 - **Межі.** Щонайбільше 16 МіБ архіву, 256 записів, 8 МіБ на запис, 24 МіБ
-  після розпакування, коефіцієнт стиснення 100 до 1 для запису від 64 КіБ,
-  `theme.hcl` не більше 64 КіБ і 32 рівнів вкладеності дужок, 1 МіБ CSS
-  на файл, 4 МіБ на шрифт чи зображення.
+  після розпакування, словник xz 16 МіБ, розпакований потік щонайбільше в 100
+  разів більший за архів (від 64 КіБ), `theme.hcl` не більше 64 КіБ і 32 рівнів
+  вкладеності дужок, 1 МіБ CSS на файл, 4 МіБ на шрифт чи зображення.
 - **CSS.** Жодних `@import`, жодних `@import-theme` (використовуйте `extends`),
   жодних `image-set()`, `src()` чи інших функцій, що завантажують ресурс,
   жодних екранувань зворотною косою рискою поза рядком, жодних `</style`.
