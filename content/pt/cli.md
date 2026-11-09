@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | imprime as notas do apresentador |
 | `kinds` | lista os kinds que a apresentação pode usar e o que eles definem; `--json` (na v0.6.0) os escreve como `[{"name", "extends", "directives": [{"key", "value"}]}]`, com `extends` resolvido |
 | `themes` | lista os temas |
-| `theme pack`, `verify`, `install`, `list`, `remove` | pacotes de tema, `*.slidestheme` (depois da v0.17.1): [Pacotes de tema]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | pacotes de tema, `*.gsta.xz` (depois da v0.17.1): [Pacotes de tema]({{< relref "themes" >}}) |
 | `version` | imprime a versão (assim como `slides --version`) |
 | `completion` | imprime um script de autocompletar do shell: `bash`, `zsh`, `fish` ou `powershell` |
 
@@ -52,7 +52,7 @@ out.html deck.md` são a mesma coisa. As flags longas levam dois hifens
 | `--pptx-editable`, `--no-parallel` | `build` | as grafias do marp-cli para `--pptx` e `-P 1` (na v0.6.0) |
 | `--config file` | todos | arquivo de configuração; por padrão `slides.yaml` ao lado da apresentação, se houver |
 | `--no-config` | todos | não lê um arquivo de configuração |
-| `--theme-set path` | todos | um arquivo CSS de tema, um pacote de tema (`*.slidestheme`, depois da v0.17.1) ou um diretório deles (repetível) |
+| `--theme-set path` | todos | um arquivo CSS de tema, um pacote de tema (`*.gsta.xz`, depois da v0.17.1) ou um diretório deles (repetível) |
 | `--kinds file` | todos | um arquivo YAML de kinds (repetível) |
 | `--data file` | todos | um arquivo YAML ou JSON de dados de template (repetível) |
 | `--set key=value` | todos | um valor de template (repetível) |
@@ -77,7 +77,7 @@ out.html deck.md` são a mesma coisa. As flags longas levam dois hifens
 | `--jpeg-quality n` | `build` | qualidade do JPEG, de 1 a 100 (padrão 85) |
 | `--image-scale n` | `build` | pixels do dispositivo por pixel CSS para imagens e PDF (padrão 1); 2 dá 2560×1440 para 16:9, com texto e vetores desenhados nessa densidade, não ampliados |
 | `--allow-local-files` | `build` | deixa imagens e PDF lerem arquivos locais, somente de dentro do diretório da apresentação; recusado por padrão, como no marp-cli |
-| `--theme name\|file.css\|file.slidestheme` | `build` | substitui o tema da apresentação (na v0.6.0): um nome de tema (embutido, ou de um pacote instalado depois da v0.17.1), um arquivo CSS, que se torna o tema qualquer que seja o `@theme` que ele declare, ou um [pacote de tema]({{< relref "themes" >}}); um diretório é recusado, use `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | substitui o tema da apresentação (na v0.6.0): um nome de tema (embutido, ou de um pacote instalado depois da v0.17.1), um arquivo CSS, que se torna o tema qualquer que seja o `@theme` que ele declare, ou um [pacote de tema]({{< relref "themes" >}}); um diretório é recusado, use `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | os metadados da página (na v0.6.0), sobre as diretivas `title`, `description`, `author`, `keywords`, `url` e `image` da apresentação; veja abaixo |
 
 ## Várias apresentações, e um diretório {#several-decks-and-a-directory}
