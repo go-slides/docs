@@ -1,6 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.17/ko/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.17/ko/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>테마 패키지</title><link>https://go-slides.github.io/docs/0.17/ko/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/ko/themes/</guid><description>
-&lt;p&gt;&lt;strong&gt;테마 패키지&lt;/strong&gt;는 &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;라는 파일 하나입니다. 루트에 &lt;code&gt;theme.hcl&lt;/code&gt;이
-있고 그 파일이 선언한 파일들을 담은 ZIP 아카이브(deflate)입니다. 테마의 CSS, 글꼴,
+&lt;p&gt;&lt;strong&gt;테마 패키지&lt;/strong&gt;는 &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt;(Go-Slides Theme Archive)라는 파일 하나입니다.
+루트에 &lt;code&gt;theme.hcl&lt;/code&gt;이 있고 그 파일이 선언한 파일들을 담은, xz로 압축한 tar
+아카이브(ustar 또는 pax)입니다. 테마의 CSS, 글꼴,
 로고, 배경을 담으며, 원하면 슬라이드 kind도 담을 수 있고, 이름, 버전, 라이선스가
 붙어 있어 테마를 주고받고 설치할 수 있습니다. 테마 패키지는 v0.17.1 이후에 제공됩니다.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="the-themehcl-file"&gt;theme.hcl 파일&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
@@ -14,7 +15,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.17.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
@@ -56,7 +57,7 @@ data-copied-label="복사됨!"
 &lt;code&gt;theme.hcl&lt;/code&gt;이 선언하지 않은 다른 파일은 거부됩니다.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;패키징, 설치, 사용&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
 slides theme verify file run every check on a package
 slides theme install file check it, then install it for the current user
 slides theme list the installed packages
@@ -91,23 +92,26 @@ data-copied-label="복사됨!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;내장 테마와 &lt;code&gt;--theme-set&lt;/code&gt; 다음 순서로 설치된 패키지를 찾습니다.
-&lt;code&gt;--theme acme.slidestheme&lt;/code&gt;와 &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt;는 설치하지 않고 파일을
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt;와 &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt;는 설치하지 않고 파일을
 바로 사용합니다. &lt;a href="https://go-slides.github.io/docs/0.17/ko/cli/"&gt;명령줄&lt;/a&gt;을 참고하십시오.&lt;/p&gt;
-&lt;p&gt;패키지의 kind는 &lt;code&gt;--theme file.slidestheme&lt;/code&gt;로 적용되며, 설치된 패키지라면
-&lt;code&gt;--theme name&lt;/code&gt;으로 적용됩니다. 프런트 매터에 테마 이름만 적은 프레젠테이션은 그
-외관만 얻고 kind는 얻지 못하며, kind는 &lt;code&gt;--kinds&lt;/code&gt;로 지정할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;패키지의 kind는 &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;로 적용되며, 설치된 패키지라면
+&lt;code&gt;--theme name&lt;/code&gt;으로, 또는 프레젠테이션의 프런트 매터에 &lt;code&gt;theme: name&lt;/code&gt;을 적어서
+적용됩니다. 프레젠테이션 자신의 kind가 이들보다 우선합니다.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;패키지는 신뢰할 수 없는 입력입니다&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;테마 패키지는 어디에서든 올 수 있으므로, 패키지를 읽는 모든 경로(&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
 &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, 빌드)가 똑같이 검사하고, 코드가 붙은 오류로 거부합니다
 (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;,
 &lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;).&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;아카이브.&lt;/strong&gt; 이름에 &lt;code&gt;..&lt;/code&gt;, 절대 경로, 드라이브 문자, 백슬래시가 없어야 하고,
-심볼릭 링크나 특수 파일이 없어야 하며, 중복된 이름이 없어야 합니다(대소문자를
-구분하지 않고 비교). 암호화는 안 되며, 저장(stored)과 deflate 외의 방식은 쓸 수
-없습니다. 크기는 아카이브가 선언한 값이 아니라 실제로 읽은 값입니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;아카이브.&lt;/strong&gt; xz 스트림은 하나뿐이며, 사전(dictionary)에는 한도가 있고 윈도는
+데이터에 따라 커집니다. tar 안에서는 이름에 &lt;code&gt;..&lt;/code&gt;, 절대 경로, 드라이브 문자,
+백슬래시가 없어야 하고, 일반 파일과 디렉터리만 허용되며(심볼릭 링크, 하드 링크,
+장치, FIFO는 안 됨), 중복된 이름이 없어야 합니다(대소문자를 구분하지 않고 비교).
+ustar와 pax 헤더만 허용되며(GNU 확장도, 스파스 파일도 안 됨), pax 헤더는 최대
+8 KiB입니다. 크기는 헤더가 선언한 값이 아니라 실제로 읽은 값입니다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;한도.&lt;/strong&gt; 아카이브는 최대 16 MiB, 항목은 256개, 항목당 8 MiB, 압축을 푼 뒤 24 MiB,
-64 KiB 이상인 항목의 압축률은 100 대 1, &lt;code&gt;theme.hcl&lt;/code&gt;은 최대 64 KiB에 괄호 중첩 32단계,
+xz 사전은 16 MiB, 압축을 푼 스트림은 아카이브 크기의 100배 이하(64 KiB 이상일 때),
+&lt;code&gt;theme.hcl&lt;/code&gt;은 최대 64 KiB에 괄호 중첩 32단계,
 CSS는 파일당 1 MiB, 글꼴이나 이미지는 4 MiB까지입니다.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; &lt;code&gt;@import&lt;/code&gt;도, &lt;code&gt;@import-theme&lt;/code&gt;도(&lt;code&gt;extends&lt;/code&gt;를 쓰십시오), &lt;code&gt;image-set()&lt;/code&gt;,
 &lt;code&gt;src()&lt;/code&gt; 등 리소스를 불러오는 함수도, 문자열 밖의 백슬래시 이스케이프도,

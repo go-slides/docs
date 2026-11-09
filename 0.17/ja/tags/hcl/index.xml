@@ -1,6 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.17/ja/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.17/ja/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>テーマパッケージ</title><link>https://go-slides.github.io/docs/0.17/ja/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/ja/themes/</guid><description>
-&lt;p&gt;&lt;strong&gt;テーマパッケージ&lt;/strong&gt;は &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt; という 1 つのファイルです。ルートに
-&lt;code&gt;theme.hcl&lt;/code&gt; があり、それが宣言したファイルを収めた ZIP アーカイブ（deflate）です。
+&lt;p&gt;&lt;strong&gt;テーマパッケージ&lt;/strong&gt;は &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt;（Go-Slides Theme Archive）という 1 つのファイルです。
+ルートに &lt;code&gt;theme.hcl&lt;/code&gt; があり、それが宣言したファイルを収めた、xz で圧縮した tar アーカイブ
+（ustar または pax）です。
 テーマの CSS、フォント、ロゴ、背景を収め、必要ならスライドの kind も収めることができ、
 名前、バージョン、ライセンスが付くので、テーマを受け渡してインストールできます。
 テーマパッケージは v0.17.1 より後で使えます。&lt;/p&gt;
@@ -15,7 +16,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.17.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
@@ -57,7 +58,7 @@ data-copied-label="コピーしました！"
 &lt;code&gt;theme.hcl&lt;/code&gt; が宣言していないそれ以外のファイルは拒否されます。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;パッケージ化、インストール、使い方&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
 slides theme verify file run every check on a package
 slides theme install file check it, then install it for the current user
 slides theme list the installed packages
@@ -92,23 +93,26 @@ data-copied-label="コピーしました！"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;組み込みテーマと &lt;code&gt;--theme-set&lt;/code&gt; の次に、インストール済みのパッケージを探します。
-&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; と &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; は、インストールせずに
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; と &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; は、インストールせずに
 ファイルを直接使います。&lt;a href="https://go-slides.github.io/docs/0.17/ja/cli/"&gt;コマンドライン&lt;/a&gt;を参照してください。&lt;/p&gt;
-&lt;p&gt;パッケージの kind は &lt;code&gt;--theme file.slidestheme&lt;/code&gt; で適用され、インストール済みのパッケージなら
-&lt;code&gt;--theme name&lt;/code&gt; で適用されます。フロントマターでテーマ名を指定しただけのスライドデッキには
-その見た目だけが適用され、kind は適用されません。kind は &lt;code&gt;--kinds&lt;/code&gt; で指定できます。&lt;/p&gt;
+&lt;p&gt;パッケージの kind は &lt;code&gt;--theme file.gsta.xz&lt;/code&gt; で適用され、インストール済みのパッケージなら
+&lt;code&gt;--theme name&lt;/code&gt; で、またはスライドデッキのフロントマターに &lt;code&gt;theme: name&lt;/code&gt; と書いても適用されます。
+スライドデッキ自身の kind が優先されます。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;パッケージは信頼できない入力&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;テーマパッケージはどこからでも来る可能性があるため、パッケージを読むすべての経路
 （&lt;code&gt;pack&lt;/code&gt;、&lt;code&gt;verify&lt;/code&gt;、&lt;code&gt;install&lt;/code&gt;、&lt;code&gt;--theme&lt;/code&gt;、ビルド）が同じように検査し、コード付きの
 エラーで拒否します（&lt;code&gt;theme.archive&lt;/code&gt;、&lt;code&gt;theme.limit&lt;/code&gt;、&lt;code&gt;theme.meta&lt;/code&gt;、&lt;code&gt;theme.css&lt;/code&gt;、
 &lt;code&gt;theme.svg&lt;/code&gt;、&lt;code&gt;theme.font&lt;/code&gt;、&lt;code&gt;theme.checksum&lt;/code&gt;、&lt;code&gt;theme.version&lt;/code&gt;）。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;アーカイブ。&lt;/strong&gt; 名前に &lt;code&gt;..&lt;/code&gt;、絶対パス、ドライブ文字、バックスラッシュを含めない。
-シンボリックリンクや特殊ファイルは不可。名前の重複も不可（大文字小文字を区別せず比較）。
-暗号化は不可で、stored と deflate 以外の方式も不可。サイズはアーカイブが宣言した値ではなく、
+&lt;li&gt;&lt;strong&gt;アーカイブ。&lt;/strong&gt; xz ストリームは 1 つだけで、辞書には上限があり、ウィンドウはデータに
+応じて広がる。tar の中では、名前に &lt;code&gt;..&lt;/code&gt;、絶対パス、ドライブ文字、バックスラッシュを含めない。
+通常ファイルとディレクトリのみ（シンボリックリンク、ハードリンク、デバイス、FIFO は不可）。
+名前の重複も不可（大文字小文字を区別せず比較）。ustar と pax のヘッダーのみ（GNU 拡張も
+スパースファイルも不可）で、pax ヘッダーは最大 8 KiB。サイズはヘッダーが宣言した値ではなく、
 実際に読み取った値です。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;上限。&lt;/strong&gt; アーカイブは最大 16 MiB、エントリは 256 個、1 エントリあたり 8 MiB、展開後 24 MiB、
-64 KiB 以上のエントリでは圧縮率 100 対 1、&lt;code&gt;theme.hcl&lt;/code&gt; は最大 64 KiB でかっこの入れ子は
+xz の辞書は 16 MiB、展開したストリームはアーカイブの大きさの 100 倍まで（64 KiB 以上の場合）、
+&lt;code&gt;theme.hcl&lt;/code&gt; は最大 64 KiB でかっこの入れ子は
 32 段まで、CSS は 1 ファイルあたり 1 MiB、フォントや画像は 4 MiB までです。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CSS。&lt;/strong&gt; &lt;code&gt;@import&lt;/code&gt; も &lt;code&gt;@import-theme&lt;/code&gt; も不可（&lt;code&gt;extends&lt;/code&gt; を使ってください）。&lt;code&gt;image-set()&lt;/code&gt;、
 &lt;code&gt;src()&lt;/code&gt; などリソースを読み込む関数も、文字列の外のバックスラッシュエスケープも、

@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.17/pt/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pt-BR</language><atom:link href="https://go-slides.github.io/docs/0.17/pt/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>Pacotes de tema</title><link>https://go-slides.github.io/docs/0.17/pt/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.17/pt/themes/</guid><description>
-&lt;p&gt;Um &lt;strong&gt;pacote de tema&lt;/strong&gt; é um único arquivo, &lt;code&gt;&amp;lt;name&amp;gt;.slidestheme&lt;/code&gt;: um arquivo ZIP
-(deflate) com &lt;code&gt;theme.hcl&lt;/code&gt; na raiz e os arquivos que ele declara. Ele leva o CSS
+&lt;p&gt;Um &lt;strong&gt;pacote de tema&lt;/strong&gt; é um único arquivo, &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt; (Go-Slides Theme
+Archive): um arquivo tar (ustar ou pax) compactado com xz, com &lt;code&gt;theme.hcl&lt;/code&gt; na raiz e os arquivos que ele declara. Ele leva o CSS
 de um tema, fontes, logotipos e fundos e, se quiser, kinds de slide, com um
 nome, uma versão e uma licença, para que um tema possa ser repassado e
 instalado. Os pacotes de tema chegam depois da v0.17.1.&lt;/p&gt;
@@ -15,7 +15,7 @@ instalado. Os pacotes de tema chegam depois da v0.17.1.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.17.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
@@ -59,7 +59,7 @@ levar arquivos &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt;
 &lt;code&gt;theme.hcl&lt;/code&gt; não declare é recusado.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
 &lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
-&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.slidestheme
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
 slides theme verify file run every check on a package
 slides theme install file check it, then install it for the current user
 slides theme list the installed packages
@@ -94,12 +94,11 @@ data-copied-label="Copiado!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;encontra um pacote instalado, depois dos temas embutidos e do &lt;code&gt;--theme-set&lt;/code&gt;.
-&lt;code&gt;--theme acme.slidestheme&lt;/code&gt; e &lt;code&gt;--theme-set acme.slidestheme&lt;/code&gt; usam um arquivo
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; e &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; usam um arquivo
 diretamente, sem instalá-lo; veja &lt;a href="https://go-slides.github.io/docs/0.17/pt/cli/"&gt;Linha de comando&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Os kinds de um pacote se aplicam com &lt;code&gt;--theme file.slidestheme&lt;/code&gt;, ou com
-&lt;code&gt;--theme name&lt;/code&gt; para um pacote instalado. Uma apresentação que apenas nomeia o
-tema em seu front matter recebe a aparência dele, não os kinds, e pode
-nomeá-los com &lt;code&gt;--kinds&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Os kinds de um pacote se aplicam com &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, com &lt;code&gt;--theme name&lt;/code&gt;
+para um pacote instalado, ou com &lt;code&gt;theme: name&lt;/code&gt; no front matter de uma
+apresentação; os kinds da própria apresentação prevalecem sobre eles.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Um pacote de tema pode vir de qualquer lugar, então todo leitor (&lt;code&gt;pack&lt;/code&gt;,
 &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, uma construção) o verifica da mesma forma e o
@@ -107,15 +106,18 @@ recusa com um erro que tem um código (&lt;code&gt;theme.archive&lt;/code&gt;, &
 &lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;,
 &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Arquivo.&lt;/strong&gt; Sem &lt;code&gt;..&lt;/code&gt;, caminho absoluto, letra de unidade nem barra invertida
-em um nome; sem link simbólico nem arquivo especial; sem nome duplicado
-(comparado sem diferenciar maiúsculas de minúsculas); sem criptografia e sem
-método além de stored e deflate. Os tamanhos são os que foram lidos, não os
-que o arquivo declara.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Arquivo.&lt;/strong&gt; Um único fluxo xz, cujo dicionário é limitado e cuja janela
+cresce com os dados. No tar: sem &lt;code&gt;..&lt;/code&gt;, caminho absoluto, letra de unidade nem
+barra invertida em um nome; apenas arquivos regulares e diretórios (sem link
+simbólico nem físico, dispositivo ou FIFO); sem nome duplicado (comparado sem
+diferenciar maiúsculas de minúsculas); apenas cabeçalhos ustar e pax (sem
+extensão GNU, sem arquivo esparso), com um cabeçalho pax de no máximo 8 KiB.
+Os tamanhos são os que foram lidos, não os que um cabeçalho declara.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Limites.&lt;/strong&gt; No máximo 16 MiB de arquivo, 256 entradas, 8 MiB por entrada,
-24 MiB descompactados, uma razão de compressão de 100 para 1 em uma entrada de
-64 KiB ou mais, &lt;code&gt;theme.hcl&lt;/code&gt; com no máximo 64 KiB e 32 níveis de colchetes,
-1 MiB de CSS por arquivo, 4 MiB por fonte ou imagem.&lt;/li&gt;
+24 MiB descompactados, um dicionário xz de 16 MiB, um fluxo descompactado de
+no máximo 100 vezes o tamanho do arquivo (a partir de 64 KiB), &lt;code&gt;theme.hcl&lt;/code&gt; com
+no máximo 64 KiB e 32 níveis de colchetes, 1 MiB de CSS por arquivo, 4 MiB por
+fonte ou imagem.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Sem &lt;code&gt;@import&lt;/code&gt;, sem &lt;code&gt;@import-theme&lt;/code&gt; (use &lt;code&gt;extends&lt;/code&gt;), sem
 &lt;code&gt;image-set()&lt;/code&gt;, &lt;code&gt;src()&lt;/code&gt; nem outra função que carregue um recurso, sem escape
 com barra invertida fora de uma string, sem &lt;code&gt;&amp;lt;/style&lt;/code&gt;. Um &lt;code&gt;url()&lt;/code&gt; é um

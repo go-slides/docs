@@ -50,7 +50,7 @@ data-copied-label="コピーしました！"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;、&lt;code&gt;verify&lt;/code&gt;、&lt;code&gt;install&lt;/code&gt;、&lt;code&gt;list&lt;/code&gt;、&lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;テーマパッケージ &lt;code&gt;*.slidestheme&lt;/code&gt;（v0.17.1 より後）：&lt;a href="https://go-slides.github.io/docs/0.17/ja/themes/"&gt;テーマパッケージ&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;テーマパッケージ &lt;code&gt;*.gsta.xz&lt;/code&gt;（v0.17.1 より後）：&lt;a href="https://go-slides.github.io/docs/0.17/ja/themes/"&gt;テーマパッケージ&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
@@ -153,7 +153,7 @@ data-copied-label="コピーしました！"
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;すべて&lt;/td&gt;
-&lt;td&gt;テーマの CSS ファイル、テーマパッケージ（&lt;code&gt;*.slidestheme&lt;/code&gt;、v0.17.1 より後）、またはそれらを含むディレクトリ（複数回指定可）&lt;/td&gt;
+&lt;td&gt;テーマの CSS ファイル、テーマパッケージ（&lt;code&gt;*.gsta.xz&lt;/code&gt;、v0.17.1 より後）、またはそれらを含むディレクトリ（複数回指定可）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -276,7 +276,7 @@ data-copied-label="コピーしました！"
 &lt;td&gt;画像と PDF がローカルファイルを読み込むことを許可します。ただし、スライドデッキのディレクトリ以下にあるファイルだけです。marp-cli と同じく、デフォルトでは拒否されます&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.gsta.xz&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;スライドデッキのテーマを上書きします（v0.6.0）。テーマ名（組み込み、または v0.17.1 より後ではインストール済みのパッケージ）、CSS ファイル（宣言している &lt;code&gt;@theme&lt;/code&gt; にかかわらずそのテーマになります）、または&lt;a href="https://go-slides.github.io/docs/0.17/ja/themes/"&gt;テーマパッケージ&lt;/a&gt;を指定します。ディレクトリは拒否されるので、&lt;code&gt;--theme-set&lt;/code&gt; を使ってください&lt;/td&gt;
 &lt;/tr&gt;

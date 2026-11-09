@@ -50,7 +50,7 @@ data-copied-label="Copiado!"
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;theme pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;remove&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;pacotes de tema, &lt;code&gt;*.slidestheme&lt;/code&gt; (depois da v0.17.1): &lt;a href="https://go-slides.github.io/docs/0.17/pt/themes/"&gt;Pacotes de tema&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;pacotes de tema, &lt;code&gt;*.gsta.xz&lt;/code&gt; (depois da v0.17.1): &lt;a href="https://go-slides.github.io/docs/0.17/pt/themes/"&gt;Pacotes de tema&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
@@ -154,7 +154,7 @@ antes ou depois da apresentação: &lt;code&gt;slides deck.md -o out.html&lt;/co
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--theme-set path&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;todos&lt;/td&gt;
-&lt;td&gt;um arquivo CSS de tema, um pacote de tema (&lt;code&gt;*.slidestheme&lt;/code&gt;, depois da v0.17.1) ou um diretório deles (repetível)&lt;/td&gt;
+&lt;td&gt;um arquivo CSS de tema, um pacote de tema (&lt;code&gt;*.gsta.xz&lt;/code&gt;, depois da v0.17.1) ou um diretório deles (repetível)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;--kinds file&lt;/code&gt;&lt;/td&gt;
@@ -277,7 +277,7 @@ antes ou depois da apresentação: &lt;code&gt;slides deck.md -o out.html&lt;/co
 &lt;td&gt;deixa imagens e PDF lerem arquivos locais, somente de dentro do diretório da apresentação; recusado por padrão, como no marp-cli&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;--theme name|file.css|file.slidestheme&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--theme name|file.css|file.gsta.xz&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;build&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;substitui o tema da apresentação (na v0.6.0): um nome de tema (embutido, ou de um pacote instalado depois da v0.17.1), um arquivo CSS, que se torna o tema qualquer que seja o &lt;code&gt;@theme&lt;/code&gt; que ele declare, ou um &lt;a href="https://go-slides.github.io/docs/0.17/pt/themes/"&gt;pacote de tema&lt;/a&gt;; um diretório é recusado, use &lt;code&gt;--theme-set&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
