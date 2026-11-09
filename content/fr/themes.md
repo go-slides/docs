@@ -90,6 +90,14 @@ Les *kinds* d'un paquet s'appliquent avec `--theme file.gsta.xz`, avec
 matter d'une présentation ; les *kinds* propres à la présentation l'emportent
 sur eux.
 
+Le `extends` d'un paquet désigne son thème de base, cherché dans cet ordre :
+intégré (ou donné avec `--theme-set`), puis installé, puis un `<base>.gsta.xz`
+voisin dans le même répertoire que le fichier du paquet, de sorte qu'une
+famille de thèmes (une base, plusieurs petits enfants) puisse être essayée
+directement à partir de ses fichiers. L'erreur nomme les trois endroits
+cherchés. Une chaîne de paquets compte au plus 8 maillons, et un cycle est
+refusé (`theme.meta`).
+
 ## Un paquet est une entrée non fiable {#a-package-is-untrusted-input}
 
 Un paquet de thème peut venir de n'importe où ; chaque lecteur (`pack`, `verify`,
