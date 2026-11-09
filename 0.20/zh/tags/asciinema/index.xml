@@ -1,0 +1,35 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Asciinema</title><link>https://go-slides.github.io/docs/0.20/zh/tags/asciinema/</link><description>Recent content in Asciinema on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.20/zh/tags/asciinema/index.xml" rel="self" type="application/rss+xml"/><item><title>终端录制</title><link>https://go-slides.github.io/docs/0.20/zh/recordings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/zh/recordings/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;终端录制自 v0.18.0 起提供。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://docs.asciinema.org/" target="_blank" rel="noopener"&gt;asciinema&lt;/a&gt; 录制（&lt;a href="https://docs.asciinema.org/manual/asciicast/v2/" target="_blank" rel="noopener"&gt;asciicast v2&lt;/a&gt; 或 &lt;a href="https://docs.asciinema.org/manual/asciicast/v3/" target="_blank" rel="noopener"&gt;v3&lt;/a&gt;）是文件以 &lt;code&gt;.cast&lt;/code&gt; 结尾的图像：&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;cast&lt;/span&gt;](&lt;span class="na"&gt;demo.cast&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;The failing build&lt;/span&gt;](&lt;span class="na"&gt;demo.cast#t=12.5&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="复制代码"
+aria-label="复制代码"
+data-copied-label="已复制！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="syntax"&gt;语法&lt;span class="hx:absolute hx:-mt-20" id="syntax"&gt;&lt;/span&gt;
+&lt;a href="#syntax" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;文件从演示文稿所在的文件夹读取：URL、绝对路径或离开该文件夹的路径都会被拒绝。替代文本为屏幕阅读器命名这段录制；单独的 &lt;code&gt;cast&lt;/code&gt; 表示录制本身的标题。&lt;code&gt;#t=12.5&lt;/code&gt;（或以分秒表示的 &lt;code&gt;#t=1:23&lt;/code&gt;）选择无法动起来的输出所显示的时刻；不写时，就是录制的结尾。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="outputs"&gt;各输出显示什么&lt;span class="hx:absolute hx:-mt-20" id="outputs"&gt;&lt;/span&gt;
+&lt;a href="#outputs" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTML&lt;/strong&gt;（页面和 playground 的预览）：录制在嵌入页面的 go-slides 小型播放器中回放：播放与暂停、速度按钮和位置条。它不会从任何地方加载脚本，也不使用网络。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF、PowerPoint 和 OpenDocument&lt;/strong&gt;（&lt;code&gt;--pdf&lt;/code&gt;、&lt;code&gt;--pptx&lt;/code&gt;、&lt;code&gt;--odp&lt;/code&gt;）：&lt;code&gt;#t=&lt;/code&gt; 所指时刻的终端，以主题等宽字体的矢量文本绘制，含 16 色、256 色和直接色、粗体、斜体、下划线和反色文本。文本可以选择和搜索，绝不是图片。主题的等宽字体有粗体和斜体时才会绘制它们（gaia 主题的 Roboto Mono）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="player"&gt;播放器&lt;span class="hx:absolute hx:-mt-20" id="player"&gt;&lt;/span&gt;
+&lt;a href="#player" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;录制第一次出现在屏幕上时，它播放一次。当浏览器要求减少动态效果（&lt;code&gt;prefers-reduced-motion&lt;/code&gt;）时，它以暂停状态开始，显示 &lt;code&gt;#t=&lt;/code&gt; 所指的时刻，按下播放后才播放。它的按钮和按键不会翻动幻灯片。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="limits"&gt;限制&lt;span class="hx:absolute hx:-mt-20" id="limits"&gt;&lt;/span&gt;
+&lt;a href="#limits" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;录制是不受信任的输入，因此有上限：文件（16 MiB）、事件（500,000 个）、时长（3 小时）、终端（400 × 200 个单元格）以及模拟器可做的工作量。超出上限或不是格式正确的 asciicast 文件的录制会被拒绝：构建继续，幻灯片在原处显示一条说明，问题则成为带代码的警告：&lt;code&gt;cast.syntax&lt;/code&gt;、&lt;code&gt;cast.limit&lt;/code&gt;、&lt;code&gt;cast.version&lt;/code&gt; 或 &lt;code&gt;cast.path&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="playground"&gt;在 playground 中&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
+&lt;a href="#playground" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;从“文件”面板把 &lt;code&gt;.cast&lt;/code&gt; 文件添加到项目，可拖放或使用文件选择器。它会进入 &lt;code&gt;media/&lt;/code&gt; 并作为图像插入。它是演示文稿读取的文本，因此与项目的其他文本文件一同计算，上限为 2 MiB。请在 &lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; 中试一试。&lt;/p&gt;</description></item></channel></rss>

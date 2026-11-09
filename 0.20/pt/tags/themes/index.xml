@@ -1,0 +1,134 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Themes</title><link>https://go-slides.github.io/docs/0.20/pt/tags/themes/</link><description>Recent content in Themes on go-slides</description><generator>Hugo -- gohugo.io</generator><language>pt-BR</language><atom:link href="https://go-slides.github.io/docs/0.20/pt/tags/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Pacotes de tema</title><link>https://go-slides.github.io/docs/0.20/pt/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/pt/themes/</guid><description>
+&lt;p&gt;Um &lt;strong&gt;pacote de tema&lt;/strong&gt; é um único arquivo, &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt; (Go-Slides Theme
+Archive): um arquivo tar (ustar ou pax) compactado com xz, com &lt;code&gt;theme.hcl&lt;/code&gt; na raiz e os arquivos que ele declara. Ele leva o CSS
+de um tema, fontes, logotipos e fundos e, se quiser, kinds de slide, com um
+nome, uma versão e uma licença, para que um tema possa ser repassado e
+instalado. Os pacotes de tema estão na v0.18.0 e posteriores.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;The theme.hcl file&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+&lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # semantic version
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Example theme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; authors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;go-slides contributors&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;font&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Roboto Mono&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;400&lt;/span&gt;&lt;span class="c1"&gt; # or &amp;#34;100 900&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;normal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;fonts/RobotoMono-Regular.ttf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;OFL-1.1&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # required for a font
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;asset &amp;#34;logo&amp;#34; { file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;assets/logo.svg&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme-title&amp;#34;&lt;/span&gt; {&lt;span class="c1"&gt; # optional slide kinds
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lead&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; usa a sintaxe nativa do HCL, apenas com valores literais: sem
+função, sem variável, sem &lt;code&gt;file()&lt;/code&gt; nem &lt;code&gt;env()&lt;/code&gt;. Um nome é feito de letras
+minúsculas, dígitos e hifens, e não é &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; nem &lt;code&gt;uncover&lt;/code&gt;.
+&lt;code&gt;extends&lt;/code&gt; nomeia o tema base; cada bloco &lt;code&gt;css&lt;/code&gt; acrescenta uma folha, em ordem;
+cada bloco &lt;code&gt;font&lt;/code&gt; e &lt;code&gt;asset&lt;/code&gt; nomeia um arquivo do pacote; cada bloco &lt;code&gt;kind&lt;/code&gt; é um
+&lt;a href="https://go-slides.github.io/docs/0.20/pt/kinds/"&gt;kind&lt;/a&gt;. Um &lt;code&gt;sha256&lt;/code&gt; em um bloco &lt;code&gt;css&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt; ou &lt;code&gt;asset&lt;/code&gt; é
+verificado quando o pacote é lido.&lt;/p&gt;
+&lt;p&gt;O CSS se refere a fontes e recursos pelo caminho deles no pacote, relativo ao
+arquivo CSS: &lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. Quando o pacote é carregado,
+cada referência desse tipo vira uma URL &lt;code&gt;data:&lt;/code&gt;, para que a página seja
+autossuficiente, e um bloco &lt;code&gt;font&lt;/code&gt; vira um &lt;code&gt;@font-face&lt;/code&gt;. Um pacote também pode
+levar arquivos &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt; e &lt;code&gt;README&lt;/code&gt;; qualquer outro arquivo que o
+&lt;code&gt;theme.hcl&lt;/code&gt; não declare é recusado.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+slides theme verify file run every check on a package
+slides theme install file check it, then install it for the current user
+slides theme list the installed packages
+slides theme remove name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Os pacotes instalados ficam em &lt;code&gt;go-slides/themes&lt;/code&gt;, no diretório de configuração
+do usuário (&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
+&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; ou &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). Em uma apresentação:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;encontra um pacote instalado, depois dos temas embutidos e do &lt;code&gt;--theme-set&lt;/code&gt;.
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; e &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; usam um arquivo
+diretamente, sem instalá-lo; veja &lt;a href="https://go-slides.github.io/docs/0.20/pt/cli/"&gt;Linha de comando&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Os kinds de um pacote se aplicam com &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, com &lt;code&gt;--theme name&lt;/code&gt;
+para um pacote instalado, ou com &lt;code&gt;theme: name&lt;/code&gt; no front matter de uma
+apresentação; os kinds da própria apresentação prevalecem sobre eles.&lt;/p&gt;
+&lt;p&gt;O &lt;code&gt;extends&lt;/code&gt; de um pacote nomeia seu tema base, procurado nesta ordem: embutido (ou informado com &lt;code&gt;--theme-set&lt;/code&gt;), depois instalado, depois um &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; irmão no mesmo diretório do arquivo do pacote, de modo que uma família de temas (uma base, vários pequenos filhos) possa ser testada diretamente a partir de seus arquivos. O erro nomeia os três lugares pesquisados. Uma cadeia de pacotes tem no máximo 8 de comprimento, e um ciclo é recusado (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Um pacote de tema pode vir de qualquer lugar, então todo leitor (&lt;code&gt;pack&lt;/code&gt;,
+&lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, uma construção) o verifica da mesma forma e o
+recusa com um erro que tem um código (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;,
+&lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;,
+&lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Arquivo.&lt;/strong&gt; Um único fluxo xz, cujo dicionário é limitado e cuja janela
+cresce com os dados. No tar: sem &lt;code&gt;..&lt;/code&gt;, caminho absoluto, letra de unidade nem
+barra invertida em um nome; apenas arquivos regulares e diretórios (sem link
+simbólico nem físico, dispositivo ou FIFO); sem nome duplicado (comparado sem
+diferenciar maiúsculas de minúsculas); apenas cabeçalhos ustar e pax (sem
+extensão GNU, sem arquivo esparso), com um cabeçalho pax de no máximo 8 KiB.
+Os tamanhos são os que foram lidos, não os que um cabeçalho declara.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limites.&lt;/strong&gt; No máximo 16 MiB de arquivo, 256 entradas, 8 MiB por entrada,
+24 MiB descompactados, um dicionário xz de 16 MiB, um fluxo descompactado de
+no máximo 100 vezes o tamanho do arquivo (a partir de 64 KiB), &lt;code&gt;theme.hcl&lt;/code&gt; com
+no máximo 64 KiB e 32 níveis de colchetes, 1 MiB de CSS por arquivo, 4 MiB por
+fonte ou imagem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Sem &lt;code&gt;@import&lt;/code&gt;, sem &lt;code&gt;@import-theme&lt;/code&gt; (use &lt;code&gt;extends&lt;/code&gt;), sem
+&lt;code&gt;image-set()&lt;/code&gt;, &lt;code&gt;src()&lt;/code&gt; nem outra função que carregue um recurso, sem escape
+com barra invertida fora de uma string, sem &lt;code&gt;&amp;lt;/style&lt;/code&gt;. Um &lt;code&gt;url()&lt;/code&gt; é um
+&lt;code&gt;#fragment&lt;/code&gt;, uma imagem ou fonte &lt;code&gt;data:&lt;/code&gt;, ou um arquivo declarado do pacote,
+nunca um que saia dele.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; Sem &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, frame, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE nem
+tratador de evento; um &lt;code&gt;href&lt;/code&gt; é um &lt;code&gt;#fragment&lt;/code&gt;; sem &lt;code&gt;url()&lt;/code&gt; que saia do
+arquivo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fontes e imagens&lt;/strong&gt; são analisadas: uma fonte precisa ser uma fonte, uma
+imagem precisa corresponder à sua extensão, e cada uma tem um limite de
+tamanho.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O diretório &lt;code&gt;testdata/themes/acme&lt;/code&gt; do repositório é um pequeno exemplo.&lt;/p&gt;</description></item></channel></rss>
