@@ -1,12 +1,12 @@
 ---
 title: "Pakiety motywów"
 weight: 42
-description: "Motyw w jednym pliku: archiwum .slidestheme z theme.hcl, jego CSS, czcionkami, zasobami i kinds, sprawdzane jak niezaufane dane wejściowe."
+description: "Motyw w jednym pliku: archiwum .gsta.xz z theme.hcl, jego CSS, czcionkami, zasobami i kinds, sprawdzane jak niezaufane dane wejściowe."
 tags: [themes, hcl]
 ---
 
-**Pakiet motywu** to jeden plik, `<name>.slidestheme`: archiwum ZIP (deflate)
-z plikiem `theme.hcl` w katalogu głównym i plikami, które ten deklaruje.
+**Pakiet motywu** to jeden plik, `<name>.gsta.xz` (Go-Slides Theme Archive):
+archiwum tar (ustar lub pax) skompresowane xz, z plikiem `theme.hcl` w katalogu głównym i plikami, które ten deklaruje.
 Zawiera CSS motywu, czcionki, logotypy i tła oraz, jeśli trzeba, rodzaje
 slajdów (kinds), a także nazwę, wersję i licencję, dzięki czemu motyw można
 przekazywać dalej i instalować. Pakiety motywów pojawiają się po v0.17.1.
@@ -23,7 +23,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -61,7 +61,7 @@ deklaruje, jest odrzucany.
 ## Packing, installing and using {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -79,13 +79,12 @@ theme: acme
 ```
 
 znajduje zainstalowany pakiet, po motywach wbudowanych i `--theme-set`.
-`--theme acme.slidestheme` i `--theme-set acme.slidestheme` używają pliku
+`--theme acme.gsta.xz` i `--theme-set acme.gsta.xz` używają pliku
 bezpośrednio, bez instalowania; zobacz [Wiersz poleceń]({{< relref "cli" >}}).
 
-Kinds pakietu stosują się z `--theme file.slidestheme` lub z `--theme name`
-dla zainstalowanego pakietu. Prezentacja, która tylko nazywa motyw w swoim
-front matter, dostaje jego wygląd, ale nie jego kinds; może je wskazać przez
-`--kinds`.
+Kinds pakietu stosują się z `--theme file.gsta.xz`, z `--theme name`
+dla zainstalowanego pakietu lub z `theme: name` w front matter prezentacji;
+własne kinds prezentacji mają pierwszeństwo przed nimi.
 
 ## A package is untrusted input {#a-package-is-untrusted-input}
 
@@ -94,15 +93,18 @@ Pakiet motywu może pochodzić skądkolwiek, więc każdy czytnik (`pack`, `veri
 z kodem (`theme.archive`, `theme.limit`, `theme.meta`, `theme.css`,
 `theme.svg`, `theme.font`, `theme.checksum`, `theme.version`):
 
-- **Archiwum.** Bez `..`, ścieżki bezwzględnej, litery dysku ani odwrotnego
-  ukośnika w nazwie; bez dowiązania symbolicznego ani pliku specjalnego; bez
-  zduplikowanej nazwy (porównywanej bez rozróżniania wielkości liter); bez
-  szyfrowania i bez metody innej niż stored i deflate. Rozmiary to to, co
-  faktycznie odczytano, a nie to, co archiwum deklaruje.
+- **Archiwum.** Jeden strumień xz, którego słownik jest ograniczony, a okno
+  rośnie wraz z danymi. W tar: bez `..`, ścieżki bezwzględnej, litery dysku ani
+  odwrotnego ukośnika w nazwie; tylko zwykłe pliki i katalogi (bez dowiązania
+  symbolicznego ani twardego, urządzenia ani FIFO); bez zduplikowanej nazwy
+  (porównywanej bez rozróżniania wielkości liter); tylko nagłówki ustar i pax
+  (bez rozszerzeń GNU, bez plików rzadkich), nagłówek pax co najwyżej 8 KiB.
+  Rozmiary to to, co faktycznie odczytano, a nie to, co deklaruje nagłówek.
 - **Limity.** Co najwyżej 16 MiB archiwum, 256 wpisów, 8 MiB na wpis, 24 MiB
-  po rozpakowaniu, współczynnik kompresji 100 do 1 dla wpisu od 64 KiB,
-  `theme.hcl` co najwyżej 64 KiB i 32 poziomy zagnieżdżenia nawiasów, 1 MiB CSS
-  na plik, 4 MiB na czcionkę lub obraz.
+  po rozpakowaniu, słownik xz 16 MiB, strumień po rozpakowaniu co najwyżej 100
+  razy większy od archiwum (od 64 KiB), `theme.hcl` co najwyżej 64 KiB i 32
+  poziomy zagnieżdżenia nawiasów, 1 MiB CSS na plik, 4 MiB na czcionkę lub
+  obraz.
 - **CSS.** Bez `@import`, bez `@import-theme` (użyj `extends`), bez
   `image-set()`, `src()` ani innej funkcji ładującej zasób, bez sekwencji
   z odwrotnym ukośnikiem poza łańcuchem znaków, bez `</style`. `url()` to
