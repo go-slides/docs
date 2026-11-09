@@ -5,10 +5,6 @@ description: "Wideo w prezentacji: odtwarzane przez przeglądarkę na stronie HT
 tags: [video]
 ---
 
-{{< callout type="warning" >}}
-Wideo nie jest jeszcze w żadnym wydaniu.
-{{< /callout >}}
-
 Wideo to obraz, którego plik kończy się na `.mp4`, `.m4v` lub `.webm`:
 
 ```markdown

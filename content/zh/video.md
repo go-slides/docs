@@ -5,10 +5,6 @@ description: "演示文稿中的视频：在 HTML 页面中由浏览器播放，
 tags: [video]
 ---
 
-{{< callout type="warning" >}}
-视频尚未包含在任何发行版中。
-{{< /callout >}}
-
 视频是文件以 `.mp4`、`.m4v` 或 `.webm` 结尾的图片：
 
 ```markdown

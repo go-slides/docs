@@ -5,10 +5,6 @@ description: "プレゼンテーション内のビデオ: HTML ページでは�
 tags: [video]
 ---
 
-{{< callout type="warning" >}}
-ビデオはまだどのリリースにも含まれていません。
-{{< /callout >}}
-
 ビデオは、ファイル名が `.mp4`、`.m4v`、`.webm` で終わる画像です:
 
 ```markdown
