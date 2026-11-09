@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | stampa le note del relatore |
 | `kinds` | elenca i kinds (il tipo di una slide) che la presentazione può usare e cosa impostano; `--json` (nella v0.6.0) li scrive come `[{"name", "extends", "directives": [{"key", "value"}]}]`, con `extends` risolto |
 | `themes` | elenca i temi |
-| `theme pack`, `verify`, `install`, `list`, `remove` | i pacchetti di tema, `*.slidestheme` (dopo la v0.17.1): [Pacchetti di tema]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | i pacchetti di tema, `*.gsta.xz` (dopo la v0.17.1): [Pacchetti di tema]({{< relref "themes" >}}) |
 | `version` | stampa la versione (lo fa anche `slides --version`) |
 | `completion` | stampa uno script di completamento per la shell: `bash`, `zsh`, `fish` o `powershell` |
 
@@ -52,7 +52,7 @@ corto. `build` scrive `deck.html` accanto a `deck.md` salvo diversa indicazione 
 | `--pptx-editable`, `--no-parallel` | `build` | le grafie di marp-cli per `--pptx` e `-P 1` (nella v0.6.0) |
 | `--config file` | tutti | file di configurazione; per impostazione predefinita `slides.yaml` accanto alla presentazione, se esiste |
 | `--no-config` | tutti | non legge alcun file di configurazione |
-| `--theme-set path` | tutti | un file CSS di tema, un pacchetto di tema (`*.slidestheme`, dopo la v0.17.1) o una cartella di essi (ripetibile) |
+| `--theme-set path` | tutti | un file CSS di tema, un pacchetto di tema (`*.gsta.xz`, dopo la v0.17.1) o una cartella di essi (ripetibile) |
 | `--kinds file` | tutti | un file YAML di kinds (ripetibile) |
 | `--data file` | tutti | un file YAML o JSON di dati per i template (ripetibile) |
 | `--set key=value` | tutti | un valore per i template (ripetibile) |
@@ -77,7 +77,7 @@ corto. `build` scrive `deck.html` accanto a `deck.md` salvo diversa indicazione 
 | `--jpeg-quality n` | `build` | qualità JPEG, da 1 a 100 (predefinito 85) |
 | `--image-scale n` | `build` | pixel del dispositivo per pixel CSS per immagini e PDF (predefinito 1); 2 dà 2560×1440 per il 16:9, con testo e vettori disegnati a quella densità, non ingranditi |
 | `--allow-local-files` | `build` | permette a immagini e PDF di leggere file locali, solo da sotto la cartella della presentazione; rifiutato per impostazione predefinita, come con marp-cli |
-| `--theme name\|file.css\|file.slidestheme` | `build` | sostituisce il tema della presentazione (nella v0.6.0): un nome di tema (integrato, o di un pacchetto installato dopo la v0.17.1), un file CSS, che diventa il tema qualunque `@theme` dichiari, o un [pacchetto di tema]({{< relref "themes" >}}); una cartella viene rifiutata, usa `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | sostituisce il tema della presentazione (nella v0.6.0): un nome di tema (integrato, o di un pacchetto installato dopo la v0.17.1), un file CSS, che diventa il tema qualunque `@theme` dichiari, o un [pacchetto di tema]({{< relref "themes" >}}); una cartella viene rifiutata, usa `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | i metadati della pagina (nella v0.6.0), al posto delle direttive `title`, `description`, `author`, `keywords`, `url` e `image` della presentazione; vedi sotto |
 
 ## Più presentazioni, e una cartella {#several-decks-and-a-directory}

@@ -1,15 +1,16 @@
 ---
 title: "Pacchetti di tema"
 weight: 42
-description: "Un tema in un solo file: un archivio .slidestheme con un theme.hcl, il suo CSS, font, risorse e kinds, controllato come input non attendibile."
+description: "Un tema in un solo file: un archivio .gsta.xz con un theme.hcl, il suo CSS, font, risorse e kinds, controllato come input non attendibile."
 tags: [themes, hcl]
 ---
 
-Un **pacchetto di tema** è un solo file, `<name>.slidestheme`: un archivio ZIP
-(deflate) con `theme.hcl` alla radice e i file che dichiara. Porta con sé il
-CSS di un tema, i font, i loghi e gli sfondi e, se si vuole, kinds di slide, con
-un nome, una versione e una licenza, in modo che un tema possa essere
-distribuito e installato. I pacchetti di tema esistono dopo la v0.17.1.
+Un **pacchetto di tema** è un solo file, `<name>.gsta.xz` (Go-Slides Theme
+Archive): un archivio tar (ustar o pax) compresso con xz, con `theme.hcl` alla
+radice e i file che dichiara. Porta con sé il CSS di un tema, i font, i loghi e
+gli sfondi e, se si vuole, kinds di slide, con un nome, una versione e una
+licenza, in modo che un tema possa essere distribuito e installato. I pacchetti
+di tema esistono dopo la v0.17.1.
 
 ## Il file theme.hcl {#the-themehcl-file}
 
@@ -23,7 +24,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -61,7 +62,7 @@ altro file che `theme.hcl` non dichiara viene rifiutato.
 ## Impacchettare, installare e usare {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -79,13 +80,12 @@ theme: acme
 ```
 
 trova un pacchetto installato, dopo i temi integrati e `--theme-set`.
-`--theme acme.slidestheme` e `--theme-set acme.slidestheme` usano direttamente
+`--theme acme.gsta.xz` e `--theme-set acme.gsta.xz` usano direttamente
 un file, senza installarlo; vedi [Riga di comando]({{< relref "cli" >}}).
 
-I kinds di un pacchetto si applicano con `--theme file.slidestheme`, o con
-`--theme name` per un pacchetto installato. Una presentazione che nomina il tema
-solo nel suo front matter ne ottiene l'aspetto, non i kinds, e può nominarli con
-`--kinds`.
+I kinds di un pacchetto si applicano con `--theme file.gsta.xz`, con
+`--theme name` per un pacchetto installato, o con `theme: name` nel front matter
+di una presentazione; i kinds propri della presentazione prevalgono su di essi.
 
 ## Un pacchetto è un input non attendibile {#a-package-is-untrusted-input}
 
@@ -95,15 +95,19 @@ stesso modo e lo rifiuta con un errore che ha un codice (`theme.archive`,
 `theme.limit`, `theme.meta`, `theme.css`, `theme.svg`, `theme.font`,
 `theme.checksum`, `theme.version`):
 
-- **Archivio.** Niente `..`, percorso assoluto, lettera di unità o barra
-  rovesciata in un nome; niente collegamento simbolico né file speciale; niente
-  nome duplicato (confrontato senza distinguere maiuscole e minuscole); niente
-  cifratura e nessun metodo se non stored e deflate. Le dimensioni sono quelle
-  lette, non quelle dichiarate dall'archivio.
+- **Archivio.** Un solo flusso xz, il cui dizionario è limitato e la cui
+  finestra cresce con i dati. Nel tar: niente `..`, percorso assoluto, lettera
+  di unità o barra rovesciata in un nome; solo file regolari e cartelle (niente
+  collegamento simbolico o fisico, dispositivo o FIFO); niente nome duplicato
+  (confrontato senza distinguere maiuscole e minuscole); solo intestazioni ustar
+  e pax (niente estensione GNU, niente file sparso), un'intestazione pax di al
+  massimo 8 KiB. Le dimensioni sono quelle lette, non quelle dichiarate da
+  un'intestazione.
 - **Limiti.** Al massimo 16 MiB di archivio, 256 voci, 8 MiB per voce, 24 MiB
-  decompressi, un rapporto di compressione di 100 a 1 per una voce di 64 KiB o
-  più, `theme.hcl` di al massimo 64 KiB e 32 livelli di annidamento, 1 MiB di
-  CSS per file, 4 MiB per font o immagine.
+  decompressi, un dizionario xz di 16 MiB, un flusso decompresso di al massimo
+  100 volte la dimensione dell'archivio (di 64 KiB o più), `theme.hcl` di al
+  massimo 64 KiB e 32 livelli di annidamento, 1 MiB di CSS per file, 4 MiB per
+  font o immagine.
 - **CSS.** Niente `@import`, niente `@import-theme` (usa `extends`), niente
   `image-set()`, `src()` o altra funzione che carichi una risorsa, niente
   escape con barra rovesciata fuori da una stringa, niente `</style`. Un
