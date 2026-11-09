@@ -88,6 +88,14 @@ Die Kinds eines Pakets gelten mit `--theme file.gsta.xz`, mit `--theme name`
 für ein installiertes Paket oder mit `theme: name` im Front Matter eines
 Foliensatzes; die eigenen Kinds des Foliensatzes haben Vorrang.
 
+Das `extends` eines Pakets benennt sein Basis-Theme, das in dieser Reihenfolge
+gesucht wird: eingebaut (oder mit `--theme-set` angegeben), dann installiert,
+dann ein danebenliegendes `<base>.gsta.xz` im selben Verzeichnis wie die
+Paketdatei, sodass eine Familie von Themes (eine Basis, mehrere kleine Kinder)
+direkt aus ihren Dateien ausprobiert werden kann. Der Fehler nennt die drei
+durchsuchten Orte. Eine Kette von Paketen ist höchstens 8 lang, und ein Zyklus
+wird abgelehnt (`theme.meta`).
+
 ## Ein Paket ist eine nicht vertrauenswürdige Eingabe {#a-package-is-untrusted-input}
 
 Ein Theme-Paket kann von überall stammen; deshalb prüft jeder Leser (`pack`,
