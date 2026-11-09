@@ -86,6 +86,8 @@ Os kinds de um pacote se aplicam com `--theme file.gsta.xz`, com `--theme name`
 para um pacote instalado, ou com `theme: name` no front matter de uma
 apresentação; os kinds da própria apresentação prevalecem sobre eles.
 
+O `extends` de um pacote nomeia seu tema base, procurado nesta ordem: embutido (ou informado com `--theme-set`), depois instalado, depois um `<base>.gsta.xz` irmão no mesmo diretório do arquivo do pacote, de modo que uma família de temas (uma base, vários pequenos filhos) possa ser testada diretamente a partir de seus arquivos. O erro nomeia os três lugares pesquisados. Uma cadeia de pacotes tem no máximo 8 de comprimento, e um ciclo é recusado (`theme.meta`).
+
 ## A package is untrusted input {#a-package-is-untrusted-input}
 
 Um pacote de tema pode vir de qualquer lugar, então todo leitor (`pack`,
