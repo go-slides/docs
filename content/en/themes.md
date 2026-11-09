@@ -86,6 +86,13 @@ The kinds of a package apply with `--theme file.gsta.xz`, with `--theme name`
 for an installed package, or with `theme: name` in a deck's front matter; the
 deck's own kinds win over them.
 
+A package's `extends` names its base theme, looked for in this order: built in
+(or given with `--theme-set`), then installed, then a sibling `<base>.gsta.xz`
+in the same directory as the package file, so that a family of themes (one
+base, several small children) can be tried straight from its files. The error
+names the three places searched. A chain of packages is at most 8 long, and a
+cycle is refused (`theme.meta`).
+
 ## A package is untrusted input
 
 A theme package can come from anywhere, so every reader (`pack`, `verify`,
