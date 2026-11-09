@@ -23,8 +23,8 @@ tags: [video]
 
 - **HTML** (페이지와 playground 미리보기): `<video controls playsinline preload="metadata" poster=...>` 요소. 포스터는 디코딩한 프레임이며 JPEG 데이터 URI로 포함됩니다. 비디오는 스스로 소리를 내며 재생되지 않습니다. 브라우저가 움직임 감소를 요청하면(`prefers-reduced-motion`) `autoplay`와 `loop`가 제거되고 비디오는 일시정지됩니다. 자동 재생되는(음소거) 비디오는 절반 이상이 보이는 동안에만 재생되고, 슬라이드가 표시되지 않으면 일시정지됩니다.
 - **PDF** (`--pdf`): 포스터 프레임이 그림으로 들어가며 비디오 파일로의 링크가 붙습니다. 링크는 프레젠테이션에 쓴 상대 경로이거나, `http` 또는 `https` 소스라면 URL입니다. 링크를 열어야만 재생됩니다. PDF에는 `RichMedia` 주석이 없습니다. 그것은 Acrobat에서만 재생되므로 일부러 사용하지 않습니다.
-- **PowerPoint** (`--pptx`): 비디오는 미디어 파트(`ppt/media/slidesvideoN.mp4|webm`)로 포스터와 함께 포함되며, `a:videoFile`에 `p14:media` 확장을 더한 형태입니다. Keynote: 동영상으로 가져와 재생합니다(확인함). PowerPoint: 아직 확인하지 않았습니다. `autoplay`, `loop`, `muted` 키워드는 PowerPoint와 OpenDocument로 옮겨지지 않습니다.
-- **OpenDocument** (`--odp`): 비디오는 `Video/` 아래에 `draw:plugin`(ODF 1.3 파트 3, 10.4.8)으로, 포스터 `draw:image` 앞에 포함되고 매니페스트에 나열됩니다. 미디어 백엔드가 코덱을 지원하는 Impress에서 재생됩니다(확인하지 않음).
+- **PowerPoint** (`--pptx`): 비디오는 미디어 파트(`ppt/media/slidesvideoN.mp4|webm`)로 포스터와 함께 포함되며, `a:videoFile`에 `p14:media` 확장을 더한 형태입니다. Keynote: 동영상으로 가져와 재생합니다(확인함). LibreOffice Impress: PowerPoint와 OpenDocument 파일을 비디오로 가져와 디코딩합니다(확인함). PowerPoint: 아직 확인하지 않았습니다. `autoplay`, `loop`, `muted` 키워드는 PowerPoint와 OpenDocument로 옮겨지지 않습니다.
+- **OpenDocument** (`--odp`): 비디오는 `Video/` 아래에 `draw:plugin`(ODF 1.3 파트 3, 10.4.8)으로, 포스터 `draw:image` 앞에 포함되고 매니페스트에 나열됩니다. LibreOffice Impress는 이를 비디오로 가져와 디코딩합니다(확인함). 슬라이드 쇼 재생은 미디어 백엔드와 코덱에 따라 달라집니다.
 - **URL 소스**: HTML 페이지는 URL에서 비디오를 스트리밍합니다. 내보내기에서는 URL로 연결되는 중립 카드가 보입니다. 빌드할 때 아무것도 가져오지 않으며, PowerPoint나 OpenDocument에도 아무것도 포함되지 않습니다.
 
 ## 컨테이너와 포스터 {#codecs}

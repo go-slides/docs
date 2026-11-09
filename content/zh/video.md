@@ -23,8 +23,8 @@ tags: [video]
 
 - **HTML**（页面和 playground 的预览）：一个 `<video controls playsinline preload="metadata" poster=...>` 元素。封面是解码后的帧，以 JPEG data URI 嵌入。视频从不自行带声音播放。当浏览器请求减少动态效果（`prefers-reduced-motion`）时，会移除 `autoplay` 和 `loop`，并暂停视频。自动播放（静音）的视频只在至少一半可见时播放，其幻灯片未显示时暂停。
 - **PDF**（`--pdf`）：封面帧作为图片，并带有指向视频文件的链接：演示文稿中所写的相对路径，或 `http`、`https` 来源的 URL。只有打开链接才会播放。PDF 不含 `RichMedia` 注释：它只能在 Acrobat 中播放，因此特意不使用。
-- **PowerPoint**（`--pptx`）：视频作为媒体部件（`ppt/media/slidesvideoN.mp4|webm`）连同封面嵌入，形式为 `a:videoFile` 加 `p14:media` 扩展。Keynote：将其导入为影片并播放（已验证）。PowerPoint：尚未验证。`autoplay`、`loop` 和 `muted` 关键字不会带入 PowerPoint 或 OpenDocument。
-- **OpenDocument**（`--odp`）：视频作为 `draw:plugin`（ODF 1.3 第 3 部分，10.4.8）嵌入 `Video/` 下，位于封面 `draw:image` 之前，并列入清单。在其媒体后端支持该编解码器的 Impress 中可播放（未验证）。
+- **PowerPoint**（`--pptx`）：视频作为媒体部件（`ppt/media/slidesvideoN.mp4|webm`）连同封面嵌入，形式为 `a:videoFile` 加 `p14:media` 扩展。Keynote：将其导入为影片并播放（已验证）。LibreOffice Impress：将 PowerPoint 和 OpenDocument 文件作为视频导入并解码（已验证）。PowerPoint：尚未验证。`autoplay`、`loop` 和 `muted` 关键字不会带入 PowerPoint 或 OpenDocument。
+- **OpenDocument**（`--odp`）：视频作为 `draw:plugin`（ODF 1.3 第 3 部分，10.4.8）嵌入 `Video/` 下，位于封面 `draw:image` 之前，并列入清单。LibreOffice Impress 将其作为视频导入并解码（已验证）；幻灯片放映中的播放取决于其媒体后端和编解码器。
 - **URL 来源**：HTML 页面从该 URL 流式播放视频。导出显示一张链接到该 URL 的中性卡片。构建时不会获取任何内容，也不会在 PowerPoint 或 OpenDocument 中嵌入任何内容。
 
 ## 容器与封面 {#codecs}
