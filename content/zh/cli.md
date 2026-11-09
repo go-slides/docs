@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | 输出演讲者备注 |
 | `kinds` | 列出演示文稿可用的 kind 及其设置的内容；`--json`（v0.6.0 起）将其写为 `[{"name", "extends", "directives": [{"key", "value"}]}]`，其中 `extends` 已解析 |
 | `themes` | 列出主题 |
-| `theme pack`、`verify`、`install`、`list`、`remove` | 主题包，`*.slidestheme`（v0.17.1 之后）：[主题包]({{< relref "themes" >}}) |
+| `theme pack`、`verify`、`install`、`list`、`remove` | 主题包，`*.gsta.xz`（v0.17.1 之后）：[主题包]({{< relref "themes" >}}) |
 | `version` | 输出版本号（`slides --version` 亦可） |
 | `completion` | 输出 shell 自动补全脚本：`bash`、`zsh`、`fish` 或 `powershell` |
 
@@ -51,7 +51,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `--pptx-editable`, `--no-parallel` | `build` | marp-cli 中 `--pptx` 和 `-P 1` 的写法（v0.6.0 起） |
 | `--config file` | 全部 | 配置文件；默认为演示文稿旁边的 `slides.yaml`（如果存在） |
 | `--no-config` | 全部 | 不读取配置文件 |
-| `--theme-set path` | 全部 | 一个主题 CSS 文件、一个主题包（`*.slidestheme`，v0.17.1 之后），或包含这些文件的目录（可重复） |
+| `--theme-set path` | 全部 | 一个主题 CSS 文件、一个主题包（`*.gsta.xz`，v0.17.1 之后），或包含这些文件的目录（可重复） |
 | `--kinds file` | 全部 | 一个定义 kind 的 YAML 文件（可重复） |
 | `--data file` | 全部 | 一个提供模板数据的 YAML 或 JSON 文件（可重复） |
 | `--set key=value` | 全部 | 一个模板值（可重复） |
@@ -76,7 +76,7 @@ deck.md` 等价。长参数使用两个短横线（`--html`）；`-o` 是唯一�
 | `--jpeg-quality n` | `build` | JPEG 质量，1 到 100（默认 85） |
 | `--image-scale n` | `build` | 图片和 PDF 中每个 CSS 像素对应的设备像素数（默认 1）；为 2 时 16:9 幻灯片的尺寸为 2560×1440，文本和矢量图形按该密度绘制，而不是放大 |
 | `--allow-local-files` | `build` | 允许图片和 PDF 读取本地文件，且仅限演示文稿所在目录之下；默认拒绝，与 marp-cli 相同 |
-| `--theme name\|file.css\|file.slidestheme` | `build` | 覆盖演示文稿的主题（v0.6.0 起）：主题名（内置的，或 v0.17.1 之后已安装的主题包）、一个 CSS 文件（无论其声明的 `@theme` 是什么，都会成为当前主题），或一个[主题包]({{< relref "themes" >}})；不接受目录，目录请用 `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | 覆盖演示文稿的主题（v0.6.0 起）：主题名（内置的，或 v0.17.1 之后已安装的主题包）、一个 CSS 文件（无论其声明的 `@theme` 是什么，都会成为当前主题），或一个[主题包]({{< relref "themes" >}})；不接受目录，目录请用 `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | 页面的元数据（v0.6.0 起），优先于演示文稿的 `title`、`description`、`author`、`keywords`、`url` 和 `image` 指令；见下文 |
 
 ## 多个演示文稿与目录 {#several-decks-and-a-directory}
