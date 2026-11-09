@@ -1,0 +1,48 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Video</title><link>https://go-slides.github.io/docs/0.18/ja/tags/video/</link><description>Recent content in Video on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://go-slides.github.io/docs/0.18/ja/tags/video/index.xml" rel="self" type="application/rss+xml"/><item><title>ビデオ</title><link>https://go-slides.github.io/docs/0.18/ja/video/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.18/ja/video/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;ビデオはまだどのリリースにも含まれていません。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;ビデオは、ファイル名が &lt;code&gt;.mp4&lt;/code&gt;、&lt;code&gt;.m4v&lt;/code&gt;、&lt;code&gt;.webm&lt;/code&gt; で終わる画像です:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;video&lt;/span&gt;](&lt;span class="na"&gt;clip.mp4&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;The demo&lt;/span&gt;](&lt;span class="na"&gt;clip.mp4#t=12.5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;demo loop muted&lt;/span&gt;](&lt;span class="na"&gt;clip.mp4&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="コードをコピー"
+aria-label="コードをコピー"
+data-copied-label="コピーしました！"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="syntax"&gt;構文&lt;span class="hx:absolute hx:-mt-20" id="syntax"&gt;&lt;/span&gt;
+&lt;a href="#syntax" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ファイルはプレゼンテーションのフォルダー、または &lt;code&gt;http&lt;/code&gt; か &lt;code&gt;https&lt;/code&gt; の URL から読み込まれます。絶対パス、フォルダーの外に出るパス、その他のスキームは拒否されます。&lt;code&gt;#t=12.5&lt;/code&gt;、または分と秒で書く &lt;code&gt;#t=1:23&lt;/code&gt; は、ポスターフレームを選びます。再生前と、ビデオを再生できない出力で表示される画像です。メディアフラグメント形式の &lt;code&gt;#t=10,20&lt;/code&gt; も受け付け、その開始値が使われます。指定がなければ、ポスターは最初のフレームです。&lt;/p&gt;
+&lt;p&gt;代替テキスト内のキーワードは、Marp の画像キーワードのように書きますが go-slides 独自のもので、再生方法を決めます: &lt;code&gt;autoplay&lt;/code&gt;、&lt;code&gt;loop&lt;/code&gt;、&lt;code&gt;muted&lt;/code&gt;。&lt;code&gt;autoplay&lt;/code&gt; は &lt;code&gt;muted&lt;/code&gt; と併用したときだけ有効で、そうでなければ警告とともに無視されます。代替テキストのそれ以外の語は、アクセシブルなラベルです。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="outputs"&gt;出力ごとの表示&lt;span class="hx:absolute hx:-mt-20" id="outputs"&gt;&lt;/span&gt;
+&lt;a href="#outputs" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTML&lt;/strong&gt; (ページと playground のプレビュー): &lt;code&gt;&amp;lt;video controls playsinline preload=&amp;quot;metadata&amp;quot; poster=...&amp;gt;&lt;/code&gt; 要素。ポスターはデコードしたフレームで、JPEG の data URI として埋め込まれます。ビデオが自分から音を出して再生されることはありません。ブラウザーが動きの軽減を求めると (&lt;code&gt;prefers-reduced-motion&lt;/code&gt;)、&lt;code&gt;autoplay&lt;/code&gt; と &lt;code&gt;loop&lt;/code&gt; は取り除かれ、ビデオは一時停止されます。自動再生される (ミュートの) ビデオは、半分以上が見えている間だけ再生され、そのスライドが表示されていないときは一時停止します。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt; (&lt;code&gt;--pdf&lt;/code&gt;): ポスターフレームを画像として入れ、ビデオファイルへのリンクを付けます。リンクは、プレゼンテーションに書いた相対パス、または &lt;code&gt;http&lt;/code&gt; か &lt;code&gt;https&lt;/code&gt; のソースなら URL です。再生はリンクを開いたときだけ行われます。PDF には &lt;code&gt;RichMedia&lt;/code&gt; 注釈を入れません。それは Acrobat でしか再生できないため、あえて使いません。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PowerPoint&lt;/strong&gt; (&lt;code&gt;--pptx&lt;/code&gt;): ビデオはメディアパート (&lt;code&gt;ppt/media/slidesvideoN.mp4|webm&lt;/code&gt;) としてポスターとともに埋め込まれ、&lt;code&gt;a:videoFile&lt;/code&gt; に &lt;code&gt;p14:media&lt;/code&gt; 拡張を加えた形になります。PowerPoint で再生されます。PowerPoint と Keynote での再生は確認していません。&lt;code&gt;autoplay&lt;/code&gt;、&lt;code&gt;loop&lt;/code&gt;、&lt;code&gt;muted&lt;/code&gt; キーワードは PowerPoint と OpenDocument には引き継がれません。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OpenDocument&lt;/strong&gt; (&lt;code&gt;--odp&lt;/code&gt;): ビデオは &lt;code&gt;Video/&lt;/code&gt; の下に &lt;code&gt;draw:plugin&lt;/code&gt; (ODF 1.3 パート 3、10.4.8) として、ポスターの &lt;code&gt;draw:image&lt;/code&gt; の前に埋め込まれ、マニフェストに列挙されます。メディアバックエンドがそのコーデックに対応している Impress で再生されます (未確認)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL ソース&lt;/strong&gt;: HTML ページは URL からビデオをストリーミングします。エクスポートでは URL へのリンク付きの中立的なカードが表示されます。ビルド時には何も取得せず、PowerPoint や OpenDocument にも何も埋め込まれません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="codecs"&gt;コンテナーとポスター&lt;span class="hx:absolute hx:-mt-20" id="codecs"&gt;&lt;/span&gt;
+&lt;a href="#codecs" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;MP4 (ISO BMFF) と WebM (Matroska) のファイルは Go で読み込まれ、ffmpeg は実行されません。ポスターは H.264 (&lt;code&gt;avc1&lt;/code&gt; または &lt;code&gt;avc3&lt;/code&gt;) についてのみデコードされます。これは go-avkit が持つ唯一のビデオデコーダーです。ほかのコーデック (H.265、VP8、VP9、AV1) も HTML では再生され、PowerPoint と OpenDocument に埋め込まれますが、ポスターは再生三角形の付いた中立的な暗いカードになり、警告 &lt;code&gt;video.codec&lt;/code&gt; が出力されます。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="limits"&gt;上限&lt;span class="hx:absolute hx:-mt-20" id="limits"&gt;&lt;/span&gt;
+&lt;a href="#limits" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ビデオは信頼できない入力なので、上限があります: ファイル (64 MiB)、ボックスまたは要素 (262,144 個) とその入れ子 (16 段)、フレーム (4096 × 4096)、ポスターのデコード (直前のキーフレームから最大 600 サンプル、1 サンプル 8 MiB)。キーフレームから遠すぎるポスターは、カードと警告 &lt;code&gt;video.limit&lt;/code&gt; になります。&lt;/p&gt;
+&lt;p&gt;拒否されたビデオは、スライド内で &lt;code&gt;[video not shown: ...]&lt;/code&gt; というメモに置き換えられます。ビルドは続行され、問題はコード付きの警告になります:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;video.syntax&lt;/code&gt;: MP4 や WebM のファイルではない、ビデオトラックがない、または時刻が無効;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;video.limit&lt;/code&gt;: 上記の上限のいずれかを超えた;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;video.codec&lt;/code&gt;: このコーデックのポスターをデコードできない;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;video.path&lt;/code&gt;: 絶対パス、プレゼンテーションのフォルダーの外に出るパス、または &lt;code&gt;http&lt;/code&gt; と &lt;code&gt;https&lt;/code&gt; 以外のスキーム;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;file.missing&lt;/code&gt;: ファイルが存在しない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="playground"&gt;playground では&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
+&lt;a href="#playground" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;リリース後は、ほかのファイルと同じようにプロジェクトにビデオを追加できます。そのバイトは blob URL としてブラウザー内にとどまり、アップロードされません。&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; で試してください。&lt;/p&gt;</description></item></channel></rss>
