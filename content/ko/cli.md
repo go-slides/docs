@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-이 페이지는 v0.17.1을 기준으로 설명합니다.
+이 페이지는 v0.18.0을 기준으로 설명합니다.
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | 발표자 노트를 출력합니다 |
 | `kinds` | 프레젠테이션에서 쓸 수 있는 kind와 각각이 설정하는 내용을 나열합니다. `--json`(v0.6.0부터)을 쓰면 `extends`를 해석한 상태로 `[{"name", "extends", "directives": [{"key", "value"}]}]` 형식으로 씁니다 |
 | `themes` | 테마를 나열합니다 |
-| `theme pack`, `verify`, `install`, `list`, `remove` | 테마 패키지 `*.gsta.xz`(v0.17.1 이후): [테마 패키지]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | 테마 패키지 `*.gsta.xz`(v0.18.0부터): [테마 패키지]({{< relref "themes" >}}) |
 | `version` | 버전을 출력합니다(`slides --version`도 같음) |
 | `completion` | 셸 자동 완성 스크립트를 출력합니다: `bash`, `zsh`, `fish`, `powershell` |
 
@@ -52,7 +52,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `--pptx-editable`, `--no-parallel` | `build` | `--pptx`와 `-P 1`의 marp-cli식 표기(v0.6.0부터) |
 | `--config file` | 모두 | 설정 파일. 기본값은 프레젠테이션 옆에 있는 `slides.yaml`(있을 경우) |
 | `--no-config` | 모두 | 설정 파일을 읽지 않습니다 |
-| `--theme-set path` | 모두 | 테마 CSS 파일, 테마 패키지(`*.gsta.xz`, v0.17.1 이후), 또는 그런 파일이 든 디렉터리(여러 번 지정 가능) |
+| `--theme-set path` | 모두 | 테마 CSS 파일, 테마 패키지(`*.gsta.xz`, v0.18.0부터), 또는 그런 파일이 든 디렉터리(여러 번 지정 가능) |
 | `--kinds file` | 모두 | kind를 정의한 YAML 파일(여러 번 지정 가능) |
 | `--data file` | 모두 | 템플릿 데이터를 담은 YAML 또는 JSON 파일(여러 번 지정 가능) |
 | `--set key=value` | 모두 | 템플릿 값 하나(여러 번 지정 가능) |
@@ -64,7 +64,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `--bare` | `build` | 발표 스크립트 없이 슬라이드를 쌓아 놓습니다 |
 | `--pdf` | `build` | 슬라이드당 한 페이지, 개요가 포함된 PDF를 씁니다. 텍스트와 도형은 벡터입니다(`-o file.pdf`로도 선택됨) |
 | `--pdf-raster` | `build` | v0.3.0처럼 각 페이지가 슬라이드 이미지 한 장인 PDF를 씁니다 |
-| `--pdf-fragments` | `build` | 슬라이드의 프래그먼트 단계마다 PDF 페이지 하나를 씁니다. Beamer의 오버레이와 같습니다(아직 릴리스되지 않음). 기본값은 꺼짐이라 PDF가 marp-cli의 PDF와 같으며, `--pdf-raster`와는 함께 쓸 수 없습니다. [아래](#transitions-and-fragments-in-the-exports) 참조 |
+| `--pdf-fragments` | `build` | 슬라이드의 프래그먼트 단계마다 PDF 페이지 하나를 씁니다. Beamer의 오버레이와 같습니다(v0.18.0부터). 기본값은 꺼짐이라 PDF가 marp-cli의 PDF와 같으며, `--pdf-raster`와는 함께 쓸 수 없습니다. [아래](#transitions-and-fragments-in-the-exports) 참조 |
 | `--notes` | `build` | marp-cli처럼 슬라이드를 `---`로 구분한 텍스트 파일로 발표자 노트를 씁니다(v0.6.0부터, `-o file.txt`로도 선택됨). `notes` 명령은 다른 형식으로 출력합니다 |
 | `--pdf-notes` | `build` | marp-cli처럼 각 슬라이드의 발표자 노트를 PDF 페이지에 노트 주석으로 추가합니다(v0.6.0부터). 출력 형식을 따로 지정하지 않으면 PDF를 만듭니다 |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | PDF 책갈피(v0.6.0부터): 슬라이드마다 "Page N"과 그 아래에 중첩된 제목. marp-cli와 달리 여기서는 기본적으로 켜져 있으며, `=false`로 하나씩 끌 수 있습니다. 아래 참고 |
@@ -77,7 +77,7 @@ deck.md`는 같습니다. 긴 플래그는 대시 두 개(`--html`)로 쓰며, �
 | `--jpeg-quality n` | `build` | JPEG 품질, 1~100(기본값 85) |
 | `--image-scale n` | `build` | 이미지와 PDF에서 CSS 픽셀당 장치 픽셀 수(기본값 1). 2이면 16:9에서 2560×1440이 되며, 텍스트와 벡터는 확대되지 않고 그 밀도로 그려집니다 |
 | `--allow-local-files` | `build` | 이미지와 PDF가 로컬 파일을 읽도록 허용하되, 프레젠테이션 디렉터리 아래의 파일만 허용합니다. marp-cli와 마찬가지로 기본값은 거부입니다 |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | 프레젠테이션의 테마를 재정의합니다(v0.6.0부터). 테마 이름(내장 테마, 또는 v0.17.1 이후 설치된 패키지), CSS 파일(어떤 `@theme`을 선언하든 그 테마가 됩니다), 또는 [테마 패키지]({{< relref "themes" >}})를 지정합니다. 디렉터리는 거부되므로 `--theme-set`을 쓰십시오 |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | 프레젠테이션의 테마를 재정의합니다(v0.6.0부터). 테마 이름(내장 테마, 또는 v0.18.0부터 설치된 패키지), CSS 파일(어떤 `@theme`을 선언하든 그 테마가 됩니다), 또는 [테마 패키지]({{< relref "themes" >}})를 지정합니다. 디렉터리는 거부되므로 `--theme-set`을 쓰십시오 |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | 페이지 메타데이터(v0.6.0부터). 프레젠테이션의 `title`, `description`, `author`, `keywords`, `url`, `image` 디렉티브보다 우선합니다. 아래 참고 |
 
 ## 여러 프레젠테이션과 디렉터리 {#several-decks-and-a-directory}
@@ -334,7 +334,7 @@ LibreOffice로 다시 렌더링하면 슬라이드는 PNG 내보내기와 픽셀
 
 ### PDF, PPTX, ODP의 전환 효과와 프래그먼트 {#transitions-and-fragments-in-the-exports}
 
-아직 릴리스되지 않았습니다. v0.17.1 다음 릴리스에 들어갑니다.
+v0.18.0부터.
 
 PDF, PPTX, ODP는 HTML 페이지가 재생하는 것을 담습니다. 슬라이드의 `transition`
 지시문은 그 슬라이드가 들어오는 **다음** 슬라이드에 기록되며(marp-cli는 슬라이드를

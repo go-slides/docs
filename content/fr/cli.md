@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Cette page décrit la v0.17.1.
+Cette page décrit la v0.18.0.
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | affiche les notes de l'orateur |
 | `kinds` | liste les *kinds* que la présentation peut utiliser et ce qu'ils définissent ; `--json` (depuis la v0.6.0) les écrit sous la forme `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` étant résolu |
 | `themes` | liste les thèmes |
-| `theme pack`, `verify`, `install`, `list`, `remove` | les paquets de thème, `*.gsta.xz` (après la v0.17.1) : [Paquets de thème]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | les paquets de thème, `*.gsta.xz` (depuis la v0.18.0) : [Paquets de thème]({{< relref "themes" >}}) |
 | `version` | affiche la version (tout comme `slides --version`) |
 | `completion` | affiche un script de complétion pour le shell : `bash`, `zsh`, `fish` ou `powershell` |
 
@@ -52,7 +52,7 @@ autrement.
 | `--pptx-editable`, `--no-parallel` | `build` | les équivalents marp-cli de `--pptx` et de `-P 1` (depuis la v0.6.0) |
 | `--config file` | toutes | fichier de configuration ; par défaut, `slides.yaml` à côté de la présentation, s'il existe |
 | `--no-config` | toutes | ne lit aucun fichier de configuration |
-| `--theme-set path` | toutes | un fichier CSS de thème, un paquet de thème (`*.gsta.xz`, après la v0.17.1), ou un répertoire qui en contient (répétable) |
+| `--theme-set path` | toutes | un fichier CSS de thème, un paquet de thème (`*.gsta.xz`, depuis la v0.18.0), ou un répertoire qui en contient (répétable) |
 | `--kinds file` | toutes | un fichier YAML de *kinds* (répétable) |
 | `--data file` | toutes | un fichier YAML ou JSON de données de gabarit (répétable) |
 | `--set key=value` | toutes | une valeur de gabarit (répétable) |
@@ -64,7 +64,7 @@ autrement.
 | `--bare` | `build` | empile les diapositives, sans le script de présentation |
 | `--pdf` | `build` | écrit un PDF, une page par diapositive, avec un plan — texte et formes en vectoriel (également choisi par `-o file.pdf`) |
 | `--pdf-raster` | `build` | écrit le PDF avec, pour chaque page, une seule image de la diapositive, comme le faisait la v0.3.0 |
-| `--pdf-fragments` | `build` | écrit une page PDF pour chaque étape de fragment d'une diapositive, comme les surcouches de Beamer (pas encore publié). Désactivé par défaut, pour que le PDF reste identique à celui de marp-cli ; incompatible avec `--pdf-raster`. Voir [plus bas](#transitions-and-fragments-in-the-exports) |
+| `--pdf-fragments` | `build` | écrit une page PDF pour chaque étape de fragment d'une diapositive, comme les surcouches de Beamer (depuis la v0.18.0). Désactivé par défaut, pour que le PDF reste identique à celui de marp-cli ; incompatible avec `--pdf-raster`. Voir [plus bas](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | écrit les notes de l'orateur dans un fichier texte, les diapositives séparées par `---`, comme marp-cli (depuis la v0.6.0 ; également choisi par `-o file.txt`). La commande `notes` les affiche dans une autre mise en forme |
 | `--pdf-notes` | `build` | ajoute les notes de l'orateur de chaque diapositive à sa page PDF sous forme d'annotation de type note, comme marp-cli (depuis la v0.6.0). Demande un PDF quand rien d'autre n'indique quoi écrire |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | les signets du PDF (depuis la v0.6.0) : « Page N » pour chaque diapositive et les titres imbriqués dessous. Activés par défaut ici, contrairement à marp-cli ; `=false` en désactive un. Voir plus bas |
@@ -77,7 +77,7 @@ autrement.
 | `--jpeg-quality n` | `build` | qualité JPEG, de 1 à 100 (85 par défaut) |
 | `--image-scale n` | `build` | pixels physiques par pixel CSS pour les images et le PDF (1 par défaut) ; 2 donne 2560×1440 en 16:9, texte et vecteurs étant dessinés à cette densité, et non agrandis |
 | `--allow-local-files` | `build` | permet aux images et au PDF de lire des fichiers locaux, uniquement sous le répertoire de la présentation ; refusé par défaut, comme avec marp-cli |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | remplace le thème de la présentation (depuis la v0.6.0) : un nom de thème (intégré, ou d'un paquet installé après la v0.17.1), un fichier CSS, qui devient le thème quel que soit le `@theme` qu'il déclare, ou un [paquet de thème]({{< relref "themes" >}}) ; un répertoire est refusé, utilisez `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | remplace le thème de la présentation (depuis la v0.6.0) : un nom de thème (intégré, ou d'un paquet installé depuis la v0.18.0), un fichier CSS, qui devient le thème quel que soit le `@theme` qu'il déclare, ou un [paquet de thème]({{< relref "themes" >}}) ; un répertoire est refusé, utilisez `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | les métadonnées de la page (depuis la v0.6.0), prioritaires sur les directives `title`, `description`, `author`, `keywords`, `url` et `image` de la présentation ; voir plus bas |
 
 ## Plusieurs présentations, et un répertoire {#several-decks-and-a-directory}
@@ -327,7 +327,7 @@ PNG. `--pptx-raster` et `--odp-raster` conservent une image par diapositive.
 
 ### Transitions et fragments dans le PDF, le PPTX et l'ODP {#transitions-and-fragments-in-the-exports}
 
-Pas encore publié : cela viendra dans la prochaine version après la v0.17.1.
+Depuis la v0.18.0.
 
 Le PDF, le PPTX et l'ODP reprennent ce que joue la page HTML. La directive
 `transition` d'une diapositive est écrite sur la diapositive **suivante**, celle

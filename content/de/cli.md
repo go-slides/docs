@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Diese Seite beschreibt v0.17.1.
+Diese Seite beschreibt v0.18.0.
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | gibt die Sprechernotizen aus |
 | `kinds` | listet die Kinds auf, die der Foliensatz verwenden kann, und was sie setzen; `--json` (in v0.6.0) schreibt sie als `[{"name", "extends", "directives": [{"key", "value"}]}]`, `extends` aufgelöst |
 | `themes` | listet die Themes auf |
-| `theme pack`, `verify`, `install`, `list`, `remove` | Theme-Pakete, `*.gsta.xz` (nach v0.17.1): [Theme-Pakete]({{< relref "themes" >}}) |
+| `theme pack`, `verify`, `install`, `list`, `remove` | Theme-Pakete, `*.gsta.xz` (seit v0.18.0): [Theme-Pakete]({{< relref "themes" >}}) |
 | `version` | gibt die Version aus (ebenso `slides --version`) |
 | `completion` | gibt ein Shell-Vervollständigungsskript aus: `bash`, `zsh`, `fish` oder `powershell` |
 
@@ -52,7 +52,7 @@ angibt.
 | `--pptx-editable`, `--no-parallel` | `build` | die Schreibweisen von marp-cli für `--pptx` und `-P 1` (in v0.6.0) |
 | `--config file` | alle | Konfigurationsdatei; standardmäßig `slides.yaml` neben dem Foliensatz, falls vorhanden |
 | `--no-config` | alle | keine Konfigurationsdatei lesen |
-| `--theme-set path` | alle | eine Theme-CSS-Datei, ein Theme-Paket (`*.gsta.xz`, nach v0.17.1) oder ein Verzeichnis davon (wiederholbar) |
+| `--theme-set path` | alle | eine Theme-CSS-Datei, ein Theme-Paket (`*.gsta.xz`, seit v0.18.0) oder ein Verzeichnis davon (wiederholbar) |
 | `--kinds file` | alle | eine YAML-Datei mit Kinds (wiederholbar) |
 | `--data file` | alle | eine YAML- oder JSON-Datei mit Vorlagendaten (wiederholbar) |
 | `--set key=value` | alle | ein Vorlagenwert (wiederholbar) |
@@ -64,7 +64,7 @@ angibt.
 | `--bare` | `build` | die Folien untereinander stellen, ohne Präsentationsskript |
 | `--pdf` | `build` | ein PDF schreiben, eine Seite pro Folie, mit Gliederung – Text und Formen als Vektoren (auch durch `-o file.pdf` gewählt) |
 | `--pdf-raster` | `build` | das PDF schreiben, wobei jede Seite ein Bild der Folie ist, wie es v0.3.0 tat |
-| `--pdf-fragments` | `build` | für jeden Fragmentschritt einer Folie eine PDF-Seite schreiben, wie die Overlays von Beamer (noch nicht veröffentlicht). Standardmäßig aus, damit das PDF dem von marp-cli entspricht; nicht zusammen mit `--pdf-raster`. Siehe [unten](#transitions-and-fragments-in-the-exports) |
+| `--pdf-fragments` | `build` | für jeden Fragmentschritt einer Folie eine PDF-Seite schreiben, wie die Overlays von Beamer (seit v0.18.0). Standardmäßig aus, damit das PDF dem von marp-cli entspricht; nicht zusammen mit `--pdf-raster`. Siehe [unten](#transitions-and-fragments-in-the-exports) |
 | `--notes` | `build` | die Sprechernotizen als Textdatei schreiben, Folien durch `---` getrennt wie bei marp-cli (in v0.6.0; auch durch `-o file.txt` gewählt). Der Befehl `notes` gibt sie in einem anderen Layout aus |
 | `--pdf-notes` | `build` | die Sprechernotizen jeder Folie als Notizanmerkung auf ihre PDF-Seite setzen, wie es marp-cli tut (in v0.6.0). Verlangt ein PDF, wenn nichts anderes sagt, was geschrieben werden soll |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | die Lesezeichen des PDFs (in v0.6.0): „Page N“ pro Folie und darunter verschachtelt die Überschriften. Hier standardmäßig an, anders als bei marp-cli; `=false` schaltet eines ab. Siehe unten |
@@ -77,7 +77,7 @@ angibt.
 | `--jpeg-quality n` | `build` | JPEG-Qualität, 1 bis 100 (Standard 85) |
 | `--image-scale n` | `build` | Geräte-Pixel pro CSS-Pixel für Bilder und PDF (Standard 1); 2 ergibt 2560×1440 bei 16:9, wobei Text und Vektoren in dieser Dichte gezeichnet und nicht vergrößert werden |
 | `--allow-local-files` | `build` | Bildern und PDF das Lesen lokaler Dateien erlauben, nur unterhalb des Verzeichnisses des Foliensatzes; standardmäßig abgelehnt, wie bei marp-cli |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | das Theme des Foliensatzes überschreiben (in v0.6.0): ein Theme-Name (eingebaut oder ein installiertes Paket nach v0.17.1), eine CSS-Datei, die zum Theme wird, welches `@theme` sie auch deklariert, oder ein [Theme-Paket]({{< relref "themes" >}}); ein Verzeichnis wird abgelehnt, verwenden Sie `--theme-set` |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | das Theme des Foliensatzes überschreiben (in v0.6.0): ein Theme-Name (eingebaut oder ein installiertes Paket seit v0.18.0), eine CSS-Datei, die zum Theme wird, welches `@theme` sie auch deklariert, oder ein [Theme-Paket]({{< relref "themes" >}}); ein Verzeichnis wird abgelehnt, verwenden Sie `--theme-set` |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | die Metadaten der Seite (in v0.6.0), vor den Direktiven `title`, `description`, `author`, `keywords`, `url` und `image` des Foliensatzes; siehe unten |
 
 ## Mehrere Foliensätze und ein Verzeichnis {#several-decks-and-a-directory}
@@ -323,7 +323,7 @@ PNG-Exports entfernt. `--pptx-raster` und `--odp-raster` behalten ein Bild pro F
 
 ### Übergänge und Fragmente in PDF, PPTX und ODP {#transitions-and-fragments-in-the-exports}
 
-Noch nicht veröffentlicht: Das kommt mit der nächsten Version nach v0.17.1.
+Seit v0.18.0.
 
 PDF, PPTX und ODP übernehmen, was die HTML-Seite abspielt. Die
 `transition`-Direktive einer Folie wird auf die **nächste** Folie geschrieben,

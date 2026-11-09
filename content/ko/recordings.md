@@ -5,8 +5,8 @@ description: "프레젠테이션 속 asciinema 녹화: HTML 페이지의 작은 
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-터미널 녹화는 v0.17.1 이후의 메인 브랜치에 있으며 아직 어떤 릴리스에도 들어 있지 않습니다.
+{{< callout type="info" >}}
+터미널 녹화는 v0.18.0 이후 버전에서 제공됩니다.
 {{< /callout >}}
 
 [asciinema](https://docs.asciinema.org/) 녹화([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) 또는 [v3](https://docs.asciinema.org/manual/asciicast/v3/))는 파일이 `.cast`로 끝나는 이미지입니다.

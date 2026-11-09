@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-このページは v0.17.1 について説明しています。
+このページは v0.18.0 について説明しています。
 {{< /callout >}}
 
 ```text
@@ -23,7 +23,7 @@ slides [command] [flags] deck.md
 | `notes` | スピーカーノートを出力します |
 | `kinds` | スライドデッキで使える kind と、それぞれが設定する内容を一覧表示します。`--json`（v0.6.0）を指定すると `[{"name", "extends", "directives": [{"key", "value"}]}]` の形式で書き出し、`extends` は解決済みになります |
 | `themes` | テーマを一覧表示します |
-| `theme pack`、`verify`、`install`、`list`、`remove` | テーマパッケージ `*.gsta.xz`（v0.17.1 より後）：[テーマパッケージ]({{< relref "themes" >}}) |
+| `theme pack`、`verify`、`install`、`list`、`remove` | テーマパッケージ `*.gsta.xz`（v0.18.0 以降）：[テーマパッケージ]({{< relref "themes" >}}) |
 | `version` | バージョンを出力します（`slides --version` でも同じです） |
 | `completion` | シェル補完スクリプトを出力します：`bash`、`zsh`、`fish`、`powershell` |
 
@@ -51,7 +51,7 @@ deck.md` は同じです。長い形式のフラグはダッシュ 2 つ（`--ht
 | `--pptx-editable`, `--no-parallel` | `build` | marp-cli での `--pptx` と `-P 1` の書き方です（v0.6.0） |
 | `--config file` | すべて | 設定ファイル。デフォルトでは、スライドデッキと同じ場所に `slides.yaml` があればそれを使います |
 | `--no-config` | すべて | 設定ファイルを読み込みません |
-| `--theme-set path` | すべて | テーマの CSS ファイル、テーマパッケージ（`*.gsta.xz`、v0.17.1 より後）、またはそれらを含むディレクトリ（複数回指定可） |
+| `--theme-set path` | すべて | テーマの CSS ファイル、テーマパッケージ（`*.gsta.xz`、v0.18.0 以降）、またはそれらを含むディレクトリ（複数回指定可） |
 | `--kinds file` | すべて | kind を記述した YAML ファイル（複数回指定可） |
 | `--data file` | すべて | テンプレートのデータを記述した YAML または JSON ファイル（複数回指定可） |
 | `--set key=value` | すべて | テンプレートの値 1 つ（複数回指定可） |
@@ -63,7 +63,7 @@ deck.md` は同じです。長い形式のフラグはダッシュ 2 つ（`--ht
 | `--bare` | `build` | 発表用スクリプトなしで、スライドを縦に並べます |
 | `--pdf` | `build` | スライドごとに 1 ページの、アウトライン付き PDF を書き出します。テキストと図形はベクターです（`-o file.pdf` でも選択されます） |
 | `--pdf-raster` | `build` | v0.3.0 と同じく、各ページをスライドの画像 1 枚にした PDF を書き出します |
-| `--pdf-fragments` | `build` | スライドのフラグメントのステップごとに PDF の 1 ページを書き出します。Beamer のオーバーレイと同じ考え方です（未リリース）。既定ではオフで、PDF は marp-cli のものと同じになります。`--pdf-raster` とは併用できません。[後述](#transitions-and-fragments-in-the-exports)を参照 |
+| `--pdf-fragments` | `build` | スライドのフラグメントのステップごとに PDF の 1 ページを書き出します。Beamer のオーバーレイと同じ考え方です（v0.18.0 以降）。既定ではオフで、PDF は marp-cli のものと同じになります。`--pdf-raster` とは併用できません。[後述](#transitions-and-fragments-in-the-exports)を参照 |
 | `--notes` | `build` | スピーカーノートをテキストファイルとして書き出します。marp-cli と同じく、スライド間は `---` で区切られます（v0.6.0。`-o file.txt` でも選択されます）。`notes` コマンドは別のレイアウトで出力します |
 | `--pdf-notes` | `build` | marp-cli と同じく、各スライドのスピーカーノートを、その PDF ページにノート注釈として追加します（v0.6.0）。出力形式がほかに指定されていなければ PDF を書き出します |
 | `--pdf-outlines`, `--pdf-outlines.pages`, `--pdf-outlines.headings` | `build` | PDF のしおり（v0.6.0）。スライドごとの「Page N」と、その下に入れ子になった見出しです。marp-cli と異なり、ここではデフォルトでオンです。`=false` で個別にオフにします。後述 |
@@ -76,7 +76,7 @@ deck.md` は同じです。長い形式のフラグはダッシュ 2 つ（`--ht
 | `--jpeg-quality n` | `build` | JPEG の品質。1〜100（デフォルトは 85） |
 | `--image-scale n` | `build` | 画像と PDF での、CSS ピクセルあたりのデバイスピクセル数（デフォルトは 1）。2 を指定すると 16:9 で 2560×1440 になり、テキストとベクターは拡大されるのではなく、その密度で描画されます |
 | `--allow-local-files` | `build` | 画像と PDF がローカルファイルを読み込むことを許可します。ただし、スライドデッキのディレクトリ以下にあるファイルだけです。marp-cli と同じく、デフォルトでは拒否されます |
-| `--theme name\|file.css\|file.gsta.xz` | `build` | スライドデッキのテーマを上書きします（v0.6.0）。テーマ名（組み込み、または v0.17.1 より後ではインストール済みのパッケージ）、CSS ファイル（宣言している `@theme` にかかわらずそのテーマになります）、または[テーマパッケージ]({{< relref "themes" >}})を指定します。ディレクトリは拒否されるので、`--theme-set` を使ってください |
+| `--theme name\|file.css\|file.gsta.xz` | `build` | スライドデッキのテーマを上書きします（v0.6.0）。テーマ名（組み込み、または v0.18.0 以降ではインストール済みのパッケージ）、CSS ファイル（宣言している `@theme` にかかわらずそのテーマになります）、または[テーマパッケージ]({{< relref "themes" >}})を指定します。ディレクトリは拒否されるので、`--theme-set` を使ってください |
 | `--title`, `--description`, `--author`, `--keywords`, `--url`, `--og-image` | `build` | ページのメタデータ（v0.6.0）。スライドデッキの `title`、`description`、`author`、`keywords`、`url`、`image` ディレクティブより優先されます。後述 |
 
 ## 複数のスライドデッキとディレクトリ {#several-decks-and-a-directory}
@@ -321,7 +321,7 @@ LibreOffice でレンダリングし直すと、スライドは PNG エクスポ
 
 ### PDF、PPTX、ODP のトランジションとフラグメント {#transitions-and-fragments-in-the-exports}
 
-未リリースです。v0.17.1 の次のリリースに入ります。
+v0.18.0 以降。
 
 PDF、PPTX、ODP は、HTML ページが再生する内容を引き継ぎます。スライドの `transition`
 ディレクティブは、そのスライドが切り替わって入ってくる**次の**スライドに書き込まれ

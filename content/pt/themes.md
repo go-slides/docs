@@ -9,7 +9,7 @@ Um **pacote de tema** é um único arquivo, `<name>.gsta.xz` (Go-Slides Theme
 Archive): um arquivo tar (ustar ou pax) compactado com xz, com `theme.hcl` na raiz e os arquivos que ele declara. Ele leva o CSS
 de um tema, fontes, logotipos e fundos e, se quiser, kinds de slide, com um
 nome, uma versão e uma licença, para que um tema possa ser repassado e
-instalado. Os pacotes de tema chegam depois da v0.17.1.
+instalado. Os pacotes de tema estão na v0.18.0 e posteriores.
 
 ## The theme.hcl file {#the-themehcl-file}
 

@@ -5,8 +5,8 @@ description: "Eine asciinema-Aufnahme in einer Präsentation: in einem kleinen P
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-Terminal-Aufnahmen sind im Hauptzweig nach v0.17.1 enthalten, aber noch in keinem Release.
+{{< callout type="info" >}}
+Terminal-Aufnahmen gibt es ab v0.18.0.
 {{< /callout >}}
 
 Eine [asciinema](https://docs.asciinema.org/)-Aufnahme ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) oder [v3](https://docs.asciinema.org/manual/asciicast/v3/)) ist ein Bild, dessen Datei auf `.cast` endet:

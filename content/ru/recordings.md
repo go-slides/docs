@@ -5,8 +5,8 @@ description: "Запись asciinema в презентации: воспроиз
 tags: [asciinema, terminal]
 ---
 
-{{< callout type="warning" >}}
-Записи терминала есть в основной ветке после v0.17.1 и пока ни в одном выпуске.
+{{< callout type="info" >}}
+Записи терминала есть в v0.18.0 и позже.
 {{< /callout >}}
 
 Запись [asciinema](https://docs.asciinema.org/) ([asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) или [v3](https://docs.asciinema.org/manual/asciicast/v3/)) — это изображение, файл которого оканчивается на `.cast`:
