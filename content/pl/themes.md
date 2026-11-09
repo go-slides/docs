@@ -86,6 +86,8 @@ Kinds pakietu stosują się z `--theme file.gsta.xz`, z `--theme name`
 dla zainstalowanego pakietu lub z `theme: name` w front matter prezentacji;
 własne kinds prezentacji mają pierwszeństwo przed nimi.
 
+Pole `extends` pakietu wskazuje jego motyw bazowy, wyszukiwany w tej kolejności: wbudowany (lub podany przez `--theme-set`), następnie zainstalowany, a potem sąsiedni `<base>.gsta.xz` w tym samym katalogu co plik pakietu, dzięki czemu rodzinę motywów (jedna baza, kilka małych pochodnych) można wypróbować wprost z jej plików. Błąd wymienia trzy przeszukane miejsca. Łańcuch pakietów ma co najwyżej 8 ogniw, a cykl jest odrzucany (`theme.meta`).
+
 ## A package is untrusted input {#a-package-is-untrusted-input}
 
 Pakiet motywu może pochodzić skądkolwiek, więc każdy czytnik (`pack`, `verify`,
