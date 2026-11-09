@@ -259,8 +259,8 @@ Caddy，因而必须经过登录。Playground 的响应头放在
 Caddy 和 oauth2-proxy（OIDC）之后，监听 `127.0.0.1:8091`，只从代理获取用户身份，并且只
 写入名为 `slides/<用户>/<标题>-<时间>` 的分支，分支名由服务器自己决定。
 
-**尚不可用：** Playground 的服务器模式（与 slides-gitd 通信，而不是由浏览器持有令牌）
-将在下一个版本提供。目前 slides-gitd 可以运行和检查，但 Playground 并不使用它。
+Playground 的服务器模式（与 slides-gitd 通信，而不是由浏览器持有令牌）见
+[slides-gitd 之后的 Playground](#playground-server-mode)。
 
 配置（机密是文件路径，绝不是值；每个文件只能由其所有者读取）：
 
@@ -326,6 +326,39 @@ slides-gitd 为每次调用的那一个仓库签发安装令牌，有效期一�
 `write_repository`，以及被盗令牌能做什么，见
 [Playground 页面]({{< relref "playground#gitlab" >}})；请优先使用只限于演示文稿仓库的
 项目或群组访问令牌，或专用账号。
+
+### slides-gitd 之后的 Playground（服务器模式） {#playground-server-mode}
+
+当 Playground 在 slides-gitd 之后以自己的源（origin）提供服务时，它会向该源请求
+`GET /api/git/session` 来检测。`401` 表示服务器存在但无人登录：窗格显示 **登录**。
+返回 JSON 会话表示已登录。其他任何结果，例如静态主机的 `404`，都表示没有服务器，
+此时窗格的工作方式与 go-slides.github.io 上完全相同：令牌保存在标签页中，或使用 GitLab 登录。
+
+在服务器模式下，窗格会隐藏令牌和 OAuth 字段，显示 `Signed in as <identity>`（登录身份）
+以及服务器授权的仓库列表。**载入**、**提出修改…**（分支 `slides/<readable>-<hash>/…`
+由服务器命名，页面无法自行选择）、**检查变化** 和 **采用对方的** 都发往同一源的
+`/api/git/*`。浏览器不会联系任何 forge 主机。
+
+什么留在哪里：
+
+- 令牌保存在服务器上，存放在 AES-GCM 保险库中，每个用户一把密钥。
+- 浏览器只持有 `__Host-gitd` cookie（`HttpOnly`、`Secure`、`SameSite=Strict`），脚本无法读取。
+- CSRF 令牌只保存在页面的内存中，从不存储。
+- 每次写入都带有精确的 `Origin`、`X-Requested-With: slides-gitd`、JSON 请求体和
+  `X-CSRF-Token`。
+
+登录已过期或缺失时（HTTP `401`），窗格显示“您的登录已结束”和一个 **登录** 按钮
+（oauth2-proxy 的 `/oauth2/sign_in?rd=<this page>`）。它绝不会回退到在浏览器中输入的令牌。
+
+要提供服务，请使用 go-slides/go-slides.github.io 中的 `selfhost/Caddyfile.gitd`。其
+Content-Security-Policy 为 `connect-src 'self'`；站点保持公开，只有 `/api/git/*` 位于
+oauth2-proxy 之后。slides-gitd 的 `origin` 设置必须等于 Playground 的源。`auth` 为
+`user-token` 的 forge（例如 GitLab）需要把每个用户自己的令牌通过
+`POST /api/git/credential` 存放在服务器上。窗格不提供对应的字段，所以由管理员或用户在页面之外完成。
+
+有一项限制：Playground 仍像以前一样，把草稿和最后使用的仓库名保存在浏览器配置文件
+（IndexedDB 和 localStorage）中。在共用的浏览器配置文件上，请使用 **Draft ▸ Forget my drafts**
+或分开的配置文件。在服务器模式下，已记住但用户未获授权的仓库会被丢弃。
 
 ## 检查 {#check-it}
 

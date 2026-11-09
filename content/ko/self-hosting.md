@@ -258,9 +258,8 @@ HttpOnly 세션 쿠키뿐입니다. Caddy와 oauth2-proxy(OIDC) 뒤에 두며 `1
 수신하고, 사용자 신원은 프록시에서만 받으며, 서버가 직접 이름을 붙인
 `slides/<사용자>/<제목>-<시각>` 브랜치에만 씁니다.
 
-**아직 사용할 수 없습니다:** 브라우저가 토큰을 가지는 대신 slides-gitd와 통신하는 Playground의
-서버 모드는 다음 릴리스입니다. 지금은 slides-gitd를 실행하고 점검할 수 있지만 Playground는
-그것을 쓰지 않습니다.
+브라우저가 토큰을 가지는 대신 slides-gitd와 통신하는 Playground의 서버 모드는
+[slides-gitd 뒤의 Playground](#playground-server-mode)에서 설명합니다.
 
 설정(비밀은 파일 경로이며 값이 아닙니다. 각 파일은 소유자만 읽을 수 있어야 합니다):
 
@@ -327,6 +326,42 @@ Pull requests 읽기/쓰기, Metadata 읽기 권한으로 만들고(webhook 없�
 `write_repository`가 아니라 `api`여야 하는 이유와 도난당한 토큰으로 할 수 있는 일은
 [Playground 페이지]({{< relref "playground#gitlab" >}})에서 설명합니다. 발표 자료 저장소로 제한한
 프로젝트 또는 그룹 액세스 토큰이나 전용 계정을 쓰세요.
+
+### slides-gitd 뒤의 Playground (서버 모드) {#playground-server-mode}
+
+Playground를 slides-gitd 뒤에서 자체 오리진으로 제공하면, Playground는 그 오리진에
+`GET /api/git/session`을 요청해 이를 알아냅니다. `401`은 서버가 있지만 아직 아무도
+로그인하지 않았다는 뜻이며, 창에 **로그인**이 표시됩니다. JSON 세션이 오면 로그인한 상태입니다.
+그 밖의 응답, 예컨대 정적 호스트의 `404`는 서버가 없다는 뜻이며, 창은 go-slides.github.io에서와
+똑같이 동작합니다. 즉 탭에 보관한 토큰을 쓰거나 GitLab 로그인을 씁니다.
+
+서버 모드에서는 창이 토큰과 OAuth 입력란을 숨기고, `Signed in as <identity>`(로그인한 사용자)와
+서버가 허용한 저장소 목록을 보여 줍니다. **불러오기**, **변경 제안…**(브랜치
+`slides/<readable>-<hash>/…`는 서버가 이름을 붙이며 페이지는 고를 수 없습니다), **변경 확인**,
+**상대 것 받기**는 모두 같은 오리진의 `/api/git/*`로 갑니다. 브라우저는 forge 호스트에 접속하지 않습니다.
+
+무엇이 어디에 남는가:
+
+- 토큰은 사용자마다 키가 하나인 AES-GCM 보관소에 담겨 서버에 있습니다.
+- 브라우저가 가지는 것은 `__Host-gitd` 쿠키(`HttpOnly`, `Secure`, `SameSite=Strict`)뿐이며,
+  스크립트는 이것을 읽을 수 없습니다.
+- CSRF 토큰은 페이지의 메모리에만 있고 저장되지 않습니다.
+- 모든 쓰기 요청은 정확한 `Origin`, `X-Requested-With: slides-gitd`, JSON 본문,
+  `X-CSRF-Token`을 함께 보냅니다.
+
+로그인이 만료되었거나 없으면(HTTP `401`) 창에 "로그인이 종료되었습니다"와 **로그인** 버튼
+(oauth2-proxy의 `/oauth2/sign_in?rd=<this page>`)이 표시됩니다. 브라우저에 입력한 토큰으로
+대체하는 일은 절대 없습니다.
+
+제공하려면 go-slides/go-slides.github.io의 `selfhost/Caddyfile.gitd`를 쓰세요. 그
+Content-Security-Policy는 `connect-src 'self'`이고, 사이트는 공개 상태로 두며 oauth2-proxy 뒤에
+두는 것은 `/api/git/*`뿐입니다. slides-gitd의 `origin` 설정은 Playground의 오리진과 같아야 합니다.
+`auth`가 `user-token`인 forge(예: GitLab)는 각 사용자의 자체 토큰을 `POST /api/git/credential`로
+서버에 저장해야 합니다. 창에는 이를 위한 입력란이 없으므로 관리자나 사용자가 페이지 밖에서 처리합니다.
+
+한 가지 제한이 있습니다. Playground는 이전처럼 초안과 마지막 저장소 이름을 브라우저 프로필
+(IndexedDB와 localStorage)에 보관합니다. 공유 브라우저 프로필에서는 **Draft ▸ Forget my drafts**를
+쓰거나 프로필을 분리하세요. 서버 모드에서는 기억된 저장소 중 사용자에게 허용되지 않은 것은 버려집니다.
 
 ## 확인하기 {#check-it}
 

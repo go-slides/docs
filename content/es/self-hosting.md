@@ -270,10 +270,9 @@ de Caddy y oauth2-proxy (OIDC), escucha en `127.0.0.1:8091`, toma la identidad
 del usuario solo del proxy y solo escribe en ramas llamadas
 `slides/<usuario>/<título>-<hora>` que el propio servidor nombra.
 
-**Todavía no disponible:** el modo servidor del Playground, que habla con
-slides-gitd en lugar de que el navegador guarde un token, es la próxima
-versión. Hoy slides-gitd funciona y se puede comprobar, pero el Playground no
-lo usa.
+El modo servidor del Playground, que habla con slides-gitd en lugar de que el
+navegador guarde un token, se describe en
+[El Playground detrás de slides-gitd](#playground-server-mode).
 
 Configuración (los secretos son rutas de archivo, nunca valores; cada archivo
 solo debe ser legible por su propietario):
@@ -345,6 +344,53 @@ alcance `api`. Por qué `api` y no `write_repository`, y qué puede hacer un tok
 robado, se explica [en la página del Playground]({{< relref "playground#gitlab" >}});
 prefiera un token de acceso de proyecto o de grupo limitado a los repositorios
 de las presentaciones, o una cuenta dedicada.
+
+### El Playground detrás de slides-gitd (modo servidor) {#playground-server-mode}
+
+Cuando el Playground se sirve detrás de slides-gitd en su propio origen, lo
+detecta preguntando `GET /api/git/session` en ese origen. `401` significa que
+hay un servidor y nadie ha iniciado sesión: el panel muestra **Iniciar
+sesión**. Una sesión JSON significa que la sesión está iniciada. Cualquier otra
+cosa, como el `404` de un alojamiento estático, significa que no hay servidor, y
+el panel funciona exactamente como en go-slides.github.io: un token guardado en
+la pestaña o el inicio de sesión de GitLab.
+
+En modo servidor el panel oculta los campos del token y de OAuth. Muestra
+`Signed in as <identity>` (sesión iniciada como) y la lista de repositorios que
+el servidor concede. **Cargar**, **Proponer cambios…** (el servidor nombra la
+rama `slides/<readable>-<hash>/…`; la página no puede elegir una),
+**Buscar cambios** y **Tomar los suyos** van todos a `/api/git/*` en el mismo
+origen. El navegador no contacta con ningún host de la forja.
+
+Qué queda dónde:
+
+- Los tokens viven en el servidor, en una bóveda AES-GCM con una clave por
+  usuario.
+- El navegador solo guarda la cookie `__Host-gitd` (`HttpOnly`, `Secure`,
+  `SameSite=Strict`), que los scripts no pueden leer.
+- El token CSRF se guarda solo en la memoria de la página y nunca se almacena.
+- Toda escritura lleva el `Origin` exacto, `X-Requested-With: slides-gitd`, un
+  cuerpo JSON y `X-CSRF-Token`.
+
+Cuando el inicio de sesión ha caducado o falta (HTTP `401`), el panel muestra
+«Su sesión ha terminado» con un botón **Iniciar sesión**
+(`/oauth2/sign_in?rd=<this page>` de oauth2-proxy). Nunca recurre a un token
+escrito en el navegador.
+
+Para servirlo, use `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
+Su Content-Security-Policy es `connect-src 'self'`; el sitio sigue siendo
+público y solo `/api/git/*` queda detrás de oauth2-proxy. El ajuste `origin` de
+slides-gitd debe ser igual al origen del Playground. Una forja cuyo `auth` es
+`user-token` (GitLab, por ejemplo) necesita el token propio de cada usuario
+guardado en el servidor mediante `POST /api/git/credential`. El panel no ofrece
+un campo para ello, así que lo hace el administrador o el usuario fuera de la
+página.
+
+Un límite: el Playground guarda los borradores y el último nombre de repositorio
+en el perfil del navegador (IndexedDB y localStorage), como antes. En un perfil
+de navegador compartido, use **Draft ▸ Forget my drafts** o perfiles separados.
+En modo servidor, un repositorio recordado al que el usuario no tiene acceso se
+descarta.
 
 ## Compruébelo {#check-it}
 
