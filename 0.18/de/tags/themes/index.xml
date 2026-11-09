@@ -101,13 +101,6 @@ Datei direkt, ohne sie zu installieren; siehe &lt;a href="https://go-slides.gith
 &lt;p&gt;Die Kinds eines Pakets gelten mit &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, mit &lt;code&gt;--theme name&lt;/code&gt;
 für ein installiertes Paket oder mit &lt;code&gt;theme: name&lt;/code&gt; im Front Matter eines
 Foliensatzes; die eigenen Kinds des Foliensatzes haben Vorrang.&lt;/p&gt;
-&lt;p&gt;Das &lt;code&gt;extends&lt;/code&gt; eines Pakets benennt sein Basis-Theme, das in dieser Reihenfolge
-gesucht wird: eingebaut (oder mit &lt;code&gt;--theme-set&lt;/code&gt; angegeben), dann installiert,
-dann ein danebenliegendes &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; im selben Verzeichnis wie die
-Paketdatei, sodass eine Familie von Themes (eine Basis, mehrere kleine Kinder)
-direkt aus ihren Dateien ausprobiert werden kann. Der Fehler nennt die drei
-durchsuchten Orte. Eine Kette von Paketen ist höchstens 8 lang, und ein Zyklus
-wird abgelehnt (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;Ein Paket ist eine nicht vertrauenswürdige Eingabe&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ein Theme-Paket kann von überall stammen; deshalb prüft jeder Leser (&lt;code&gt;pack&lt;/code&gt;,
 &lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, ein Build) es auf dieselbe Weise und lehnt es
