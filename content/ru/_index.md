@@ -18,9 +18,9 @@ Markdown, который читает [Marp](https://marp.app): директив
   (`title`, `section`…), вместо того чтобы повторять, как он выглядит.
 
 {{< callout type="warning" >}}
-**v0.19.0.** Эти страницы описывают
-[go-slides/slides v0.19.0](https://github.com/go-slides/slides/releases/tag/v0.19.0)
-и опубликованы по адресу `/docs/0.19/`.
+**v0.20.0.** Эти страницы описывают
+[go-slides/slides v0.20.0](https://github.com/go-slides/slides/releases/tag/v0.20.0)
+и опубликованы по адресу `/docs/0.20/`.
 {{< /callout >}}
 
 ## Что он умеет сегодня {#what-it-does-today}

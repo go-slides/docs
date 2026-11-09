@@ -18,9 +18,9 @@ Marp 没有的功能：
   （`title`、`section`…），而不必反复描述自己的外观。
 
 {{< callout type="warning" >}}
-**v0.19.0。** 本文档描述的是
-[go-slides/slides v0.19.0](https://github.com/go-slides/slides/releases/tag/v0.19.0)，
-发布于 `/docs/0.19/` 下。
+**v0.20.0。** 本文档描述的是
+[go-slides/slides v0.20.0](https://github.com/go-slides/slides/releases/tag/v0.20.0)，
+发布于 `/docs/0.20/` 下。
 {{< /callout >}}
 
 ## 现有功能 {#what-it-does-today}
