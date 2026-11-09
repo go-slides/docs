@@ -331,10 +331,9 @@ qu&amp;rsquo;un cookie de session HttpOnly. Il se place derrière Caddy et oauth
 (OIDC), écoute sur &lt;code&gt;127.0.0.1:8091&lt;/code&gt;, ne prend l&amp;rsquo;identité de l&amp;rsquo;utilisateur que
 du proxy, et n&amp;rsquo;écrit que dans des branches nommées
 &lt;code&gt;slides/&amp;lt;utilisateur&amp;gt;/&amp;lt;titre&amp;gt;-&amp;lt;heure&amp;gt;&lt;/code&gt; que le serveur nomme lui-même.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Pas encore disponible :&lt;/strong&gt; le mode serveur du Playground, qui parle à
-slides-gitd au lieu que le navigateur détienne un jeton, est la prochaine
-version. Aujourd&amp;rsquo;hui slides-gitd tourne et se vérifie, mais le Playground ne
-l&amp;rsquo;utilise pas.&lt;/p&gt;
+&lt;p&gt;Le mode serveur du Playground, qui parle à slides-gitd au lieu que le
+navigateur détienne un jeton, est décrit dans
+&lt;a href="#playground-server-mode"&gt;Le Playground derrière slides-gitd&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Configuration (les secrets sont des chemins de fichiers, jamais des valeurs ;
 chaque fichier ne doit être lisible que par son propriétaire) :&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -420,6 +419,48 @@ qu&amp;rsquo;un jeton volé peut faire, est expliqué
 &lt;a href="https://go-slides.github.io/docs/0.18/fr/playground/#gitlab"&gt;sur la page du Playground&lt;/a&gt; ; préférez un
 jeton d&amp;rsquo;accès de projet ou de groupe limité aux dépôts des présentations, ou
 un compte dédié.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;Le Playground derrière slides-gitd (mode serveur)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Lorsque le Playground est servi derrière slides-gitd sur sa propre origine, il
+le détecte en interrogeant &lt;code&gt;GET /api/git/session&lt;/code&gt; sur cette origine. &lt;code&gt;401&lt;/code&gt;
+signifie qu&amp;rsquo;un serveur est là et que personne n&amp;rsquo;est connecté : le panneau
+affiche &lt;strong&gt;Se connecter&lt;/strong&gt;. Une session JSON signifie connecté. Tout le reste, par
+exemple le &lt;code&gt;404&lt;/code&gt; d&amp;rsquo;un hébergeur statique, signifie qu&amp;rsquo;il n&amp;rsquo;y a pas de serveur, et
+le panneau fonctionne exactement comme sur go-slides.github.io : un jeton gardé
+dans l&amp;rsquo;onglet, ou la connexion GitLab.&lt;/p&gt;
+&lt;p&gt;En mode serveur, le panneau masque les champs du jeton et d&amp;rsquo;OAuth. Il affiche
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt; (connecté en tant que) et la liste des dépôts que le
+serveur accorde. &lt;strong&gt;Charger&lt;/strong&gt;, &lt;strong&gt;Proposer les changements…&lt;/strong&gt; (le serveur nomme la
+branche &lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt; ; la page ne peut pas en choisir une),
+&lt;strong&gt;Chercher des changements&lt;/strong&gt; et &lt;strong&gt;Prendre les leurs&lt;/strong&gt; vont tous à &lt;code&gt;/api/git/*&lt;/code&gt;
+sur la même origine. Le navigateur ne contacte aucun hôte de forge.&lt;/p&gt;
+&lt;p&gt;Ce qui reste où :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Les jetons vivent sur le serveur, dans un coffre AES-GCM avec une clé par
+utilisateur.&lt;/li&gt;
+&lt;li&gt;Le navigateur ne détient que le cookie &lt;code&gt;__Host-gitd&lt;/code&gt; (&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;,
+&lt;code&gt;SameSite=Strict&lt;/code&gt;), que les scripts ne peuvent pas lire.&lt;/li&gt;
+&lt;li&gt;Le jeton CSRF n&amp;rsquo;est gardé que dans la mémoire de la page et n&amp;rsquo;est jamais
+stocké.&lt;/li&gt;
+&lt;li&gt;Toute écriture porte l&amp;rsquo;&lt;code&gt;Origin&lt;/code&gt; exacte, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, un
+corps JSON et &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quand la connexion a expiré ou manque (HTTP &lt;code&gt;401&lt;/code&gt;), le panneau affiche
+« Votre connexion a pris fin » avec un bouton &lt;strong&gt;Se connecter&lt;/strong&gt;
+(&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; d&amp;rsquo;oauth2-proxy). Il ne se rabat jamais sur un
+jeton saisi dans le navigateur.&lt;/p&gt;
+&lt;p&gt;Pour le servir, utilisez &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
+Sa Content-Security-Policy est &lt;code&gt;connect-src 'self'&lt;/code&gt; ; le site reste public et
+seul &lt;code&gt;/api/git/*&lt;/code&gt; se trouve derrière oauth2-proxy. Le réglage &lt;code&gt;origin&lt;/code&gt; de
+slides-gitd doit être égal à l&amp;rsquo;origine du Playground. Une forge dont l&amp;rsquo;&lt;code&gt;auth&lt;/code&gt;
+est &lt;code&gt;user-token&lt;/code&gt; (GitLab, par exemple) exige le jeton propre de chaque
+utilisateur, enregistré sur le serveur par &lt;code&gt;POST /api/git/credential&lt;/code&gt;. Le
+panneau n&amp;rsquo;offre aucun champ pour cela : l&amp;rsquo;administrateur ou l&amp;rsquo;utilisateur le fait
+en dehors de la page.&lt;/p&gt;
+&lt;p&gt;Une limite : le Playground garde les brouillons et le dernier nom de dépôt dans
+le profil du navigateur (IndexedDB et localStorage), comme auparavant. Sur un
+profil de navigateur partagé, utilisez &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; ou des
+profils séparés. En mode serveur, un dépôt mémorisé auquel l&amp;rsquo;utilisateur n&amp;rsquo;a pas
+accès est abandonné.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;Vérifier&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

@@ -319,8 +319,8 @@ Caddy，因而必须经过登录。Playground 的响应头放在
 变化，而 forge 的凭据&lt;strong&gt;留在服务器上&lt;/strong&gt;：浏览器只持有一个 HttpOnly 会话 cookie。它位于
 Caddy 和 oauth2-proxy（OIDC）之后，监听 &lt;code&gt;127.0.0.1:8091&lt;/code&gt;，只从代理获取用户身份，并且只
 写入名为 &lt;code&gt;slides/&amp;lt;用户&amp;gt;/&amp;lt;标题&amp;gt;-&amp;lt;时间&amp;gt;&lt;/code&gt; 的分支，分支名由服务器自己决定。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;尚不可用：&lt;/strong&gt; Playground 的服务器模式（与 slides-gitd 通信，而不是由浏览器持有令牌）
-将在下一个版本提供。目前 slides-gitd 可以运行和检查，但 Playground 并不使用它。&lt;/p&gt;
+&lt;p&gt;Playground 的服务器模式（与 slides-gitd 通信，而不是由浏览器持有令牌）见
+&lt;a href="#playground-server-mode"&gt;slides-gitd 之后的 Playground&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;配置（机密是文件路径，绝不是值；每个文件只能由其所有者读取）：&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -398,6 +398,33 @@ slides-gitd 为每次调用的那一个仓库签发安装令牌，有效期一�
 &lt;code&gt;write_repository&lt;/code&gt;，以及被盗令牌能做什么，见
 &lt;a href="https://go-slides.github.io/docs/0.18/zh/playground/#gitlab"&gt;Playground 页面&lt;/a&gt;；请优先使用只限于演示文稿仓库的
 项目或群组访问令牌，或专用账号。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;slides-gitd 之后的 Playground（服务器模式）&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;当 Playground 在 slides-gitd 之后以自己的源（origin）提供服务时，它会向该源请求
+&lt;code&gt;GET /api/git/session&lt;/code&gt; 来检测。&lt;code&gt;401&lt;/code&gt; 表示服务器存在但无人登录：窗格显示 &lt;strong&gt;登录&lt;/strong&gt;。
+返回 JSON 会话表示已登录。其他任何结果，例如静态主机的 &lt;code&gt;404&lt;/code&gt;，都表示没有服务器，
+此时窗格的工作方式与 go-slides.github.io 上完全相同：令牌保存在标签页中，或使用 GitLab 登录。&lt;/p&gt;
+&lt;p&gt;在服务器模式下，窗格会隐藏令牌和 OAuth 字段，显示 &lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt;（登录身份）
+以及服务器授权的仓库列表。&lt;strong&gt;载入&lt;/strong&gt;、&lt;strong&gt;提出修改…&lt;/strong&gt;（分支 &lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt;
+由服务器命名，页面无法自行选择）、&lt;strong&gt;检查变化&lt;/strong&gt; 和 &lt;strong&gt;采用对方的&lt;/strong&gt; 都发往同一源的
+&lt;code&gt;/api/git/*&lt;/code&gt;。浏览器不会联系任何 forge 主机。&lt;/p&gt;
+&lt;p&gt;什么留在哪里：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;令牌保存在服务器上，存放在 AES-GCM 保险库中，每个用户一把密钥。&lt;/li&gt;
+&lt;li&gt;浏览器只持有 &lt;code&gt;__Host-gitd&lt;/code&gt; cookie（&lt;code&gt;HttpOnly&lt;/code&gt;、&lt;code&gt;Secure&lt;/code&gt;、&lt;code&gt;SameSite=Strict&lt;/code&gt;），脚本无法读取。&lt;/li&gt;
+&lt;li&gt;CSRF 令牌只保存在页面的内存中，从不存储。&lt;/li&gt;
+&lt;li&gt;每次写入都带有精确的 &lt;code&gt;Origin&lt;/code&gt;、&lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;、JSON 请求体和
+&lt;code&gt;X-CSRF-Token&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;登录已过期或缺失时（HTTP &lt;code&gt;401&lt;/code&gt;），窗格显示“您的登录已结束”和一个 &lt;strong&gt;登录&lt;/strong&gt; 按钮
+（oauth2-proxy 的 &lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt;）。它绝不会回退到在浏览器中输入的令牌。&lt;/p&gt;
+&lt;p&gt;要提供服务，请使用 go-slides/go-slides.github.io 中的 &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt;。其
+Content-Security-Policy 为 &lt;code&gt;connect-src 'self'&lt;/code&gt;；站点保持公开，只有 &lt;code&gt;/api/git/*&lt;/code&gt; 位于
+oauth2-proxy 之后。slides-gitd 的 &lt;code&gt;origin&lt;/code&gt; 设置必须等于 Playground 的源。&lt;code&gt;auth&lt;/code&gt; 为
+&lt;code&gt;user-token&lt;/code&gt; 的 forge（例如 GitLab）需要把每个用户自己的令牌通过
+&lt;code&gt;POST /api/git/credential&lt;/code&gt; 存放在服务器上。窗格不提供对应的字段，所以由管理员或用户在页面之外完成。&lt;/p&gt;
+&lt;p&gt;有一项限制：Playground 仍像以前一样，把草稿和最后使用的仓库名保存在浏览器配置文件
+（IndexedDB 和 localStorage）中。在共用的浏览器配置文件上，请使用 &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;
+或分开的配置文件。在服务器模式下，已记住但用户未获授权的仓库会被丢弃。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;检查&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

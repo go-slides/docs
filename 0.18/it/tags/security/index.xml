@@ -329,9 +329,9 @@ browser ha solo un cookie di sessione HttpOnly. Sta dietro Caddy e oauth2-proxy
 (OIDC), ascolta su &lt;code&gt;127.0.0.1:8091&lt;/code&gt;, prende l&amp;rsquo;identità dell&amp;rsquo;utente solo dal
 proxy e scrive solo in branch chiamati &lt;code&gt;slides/&amp;lt;utente&amp;gt;/&amp;lt;titolo&amp;gt;-&amp;lt;ora&amp;gt;&lt;/code&gt; che il
 server nomina da sé.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Non ancora disponibile:&lt;/strong&gt; la modalità server del Playground, che parla con
-slides-gitd invece di far tenere un token al browser, è la prossima versione.
-Oggi slides-gitd funziona e si può verificare, ma il Playground non lo usa.&lt;/p&gt;
+&lt;p&gt;La modalità server del Playground, che parla con slides-gitd invece di far
+tenere un token al browser, è descritta in
+&lt;a href="#playground-server-mode"&gt;Il Playground dietro slides-gitd&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Configurazione (i segreti sono percorsi di file, mai valori; ogni file deve
 essere leggibile solo dal proprietario):&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -415,6 +415,47 @@ lo scope &lt;code&gt;api&lt;/code&gt;. Perché &lt;code&gt;api&lt;/code&gt; e no
 token rubato, è spiegato &lt;a href="https://go-slides.github.io/docs/0.18/it/playground/#gitlab"&gt;nella pagina del Playground&lt;/a&gt;;
 preferite un token di accesso di progetto o di gruppo limitato ai repository
 delle presentazioni, o un account dedicato.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;Il Playground dietro slides-gitd (modalità server)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Quando il Playground è servito dietro slides-gitd sulla propria origine, lo
+rileva chiedendo &lt;code&gt;GET /api/git/session&lt;/code&gt; su quell&amp;rsquo;origine. &lt;code&gt;401&lt;/code&gt; significa che un
+server c&amp;rsquo;è e nessuno ha effettuato l&amp;rsquo;accesso: il pannello mostra &lt;strong&gt;Accedi&lt;/strong&gt;. Una
+sessione JSON significa accesso effettuato. Qualsiasi altra risposta, come il
+&lt;code&gt;404&lt;/code&gt; di un host statico, significa che non c&amp;rsquo;è nessun server, e il pannello
+funziona esattamente come su go-slides.github.io: un token tenuto nella scheda,
+oppure l&amp;rsquo;accesso a GitLab.&lt;/p&gt;
+&lt;p&gt;In modalità server il pannello nasconde i campi del token e di OAuth. Mostra
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt; (accesso effettuato come) e l&amp;rsquo;elenco dei repository
+che il server concede. &lt;strong&gt;Carica&lt;/strong&gt;, &lt;strong&gt;Proponi le modifiche…&lt;/strong&gt; (il server nomina
+il branch &lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt;; la pagina non può sceglierne uno),
+&lt;strong&gt;Cerca modifiche&lt;/strong&gt; e &lt;strong&gt;Prendi le loro&lt;/strong&gt; vanno tutti a &lt;code&gt;/api/git/*&lt;/code&gt; sulla stessa
+origine. Il browser non contatta nessun host della forge.&lt;/p&gt;
+&lt;p&gt;Cosa resta dove:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I token vivono sul server, in una cassaforte AES-GCM con una chiave per
+utente.&lt;/li&gt;
+&lt;li&gt;Il browser tiene solo il cookie &lt;code&gt;__Host-gitd&lt;/code&gt; (&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;,
+&lt;code&gt;SameSite=Strict&lt;/code&gt;), che gli script non possono leggere.&lt;/li&gt;
+&lt;li&gt;Il token CSRF è tenuto solo nella memoria della pagina e non viene mai
+salvato.&lt;/li&gt;
+&lt;li&gt;Ogni scrittura porta l&amp;rsquo;&lt;code&gt;Origin&lt;/code&gt; esatta, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, un
+corpo JSON e &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quando l&amp;rsquo;accesso è scaduto o manca (HTTP &lt;code&gt;401&lt;/code&gt;), il pannello mostra «La tua
+sessione è terminata» con un pulsante &lt;strong&gt;Accedi&lt;/strong&gt;
+(&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; di oauth2-proxy). Non ripiega mai su un token
+digitato nel browser.&lt;/p&gt;
+&lt;p&gt;Per servirlo, usa &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; di go-slides/go-slides.github.io. La
+sua Content-Security-Policy è &lt;code&gt;connect-src 'self'&lt;/code&gt;; il sito resta pubblico e solo
+&lt;code&gt;/api/git/*&lt;/code&gt; sta dietro oauth2-proxy. L&amp;rsquo;impostazione &lt;code&gt;origin&lt;/code&gt; di slides-gitd deve
+essere uguale all&amp;rsquo;origine del Playground. Una forge il cui &lt;code&gt;auth&lt;/code&gt; è &lt;code&gt;user-token&lt;/code&gt;
+(GitLab, per esempio) richiede il token personale di ogni utente, salvato sul
+server con &lt;code&gt;POST /api/git/credential&lt;/code&gt;. Il pannello non offre un campo per
+questo: lo fa l&amp;rsquo;amministratore o l&amp;rsquo;utente fuori dalla pagina.&lt;/p&gt;
+&lt;p&gt;Un limite: il Playground conserva le bozze e l&amp;rsquo;ultimo nome di repository nel
+profilo del browser (IndexedDB e localStorage), come prima. Su un profilo del
+browser condiviso usa &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; o profili separati. In
+modalità server, un repository ricordato a cui l&amp;rsquo;utente non ha accesso viene
+scartato.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;Verificarlo&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

@@ -103,6 +103,13 @@ directement un fichier, sans l&amp;rsquo;installer ; voir &lt;a href="https://go
 &lt;code&gt;--theme name&lt;/code&gt; pour un paquet installé, ou avec &lt;code&gt;theme: name&lt;/code&gt; dans le front
 matter d&amp;rsquo;une présentation ; les &lt;em&gt;kinds&lt;/em&gt; propres à la présentation l&amp;rsquo;emportent
 sur eux.&lt;/p&gt;
+&lt;p&gt;Le &lt;code&gt;extends&lt;/code&gt; d&amp;rsquo;un paquet désigne son thème de base, cherché dans cet ordre :
+intégré (ou donné avec &lt;code&gt;--theme-set&lt;/code&gt;), puis installé, puis un &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt;
+voisin dans le même répertoire que le fichier du paquet, de sorte qu&amp;rsquo;une
+famille de thèmes (une base, plusieurs petits enfants) puisse être essayée
+directement à partir de ses fichiers. L&amp;rsquo;erreur nomme les trois endroits
+cherchés. Une chaîne de paquets compte au plus 8 maillons, et un cycle est
+refusé (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;Un paquet est une entrée non fiable&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
 &lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Un paquet de thème peut venir de n&amp;rsquo;importe où ; chaque lecteur (&lt;code&gt;pack&lt;/code&gt;, &lt;code&gt;verify&lt;/code&gt;,
 &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, une génération) le vérifie donc de la même façon, et le

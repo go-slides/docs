@@ -633,9 +633,9 @@ servidor&lt;/strong&gt;: o navegador só tem um cookie de sessão HttpOnly. Fica
 e do oauth2-proxy (OIDC), escuta em &lt;code&gt;127.0.0.1:8091&lt;/code&gt;, toma a identidade do
 usuário só do proxy e só escreve em branches chamados
 &lt;code&gt;slides/&amp;lt;usuário&amp;gt;/&amp;lt;título&amp;gt;-&amp;lt;hora&amp;gt;&lt;/code&gt; que o próprio servidor nomeia.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Ainda não disponível:&lt;/strong&gt; o modo servidor do Playground, que fala com o
-slides-gitd em vez de o navegador guardar um token, é a próxima versão. Hoje o
-slides-gitd roda e pode ser verificado, mas o Playground não o usa.&lt;/p&gt;
+&lt;p&gt;O modo servidor do Playground, que fala com o slides-gitd em vez de o navegador
+guardar um token, é descrito em
+&lt;a href="#playground-server-mode"&gt;O Playground atrás do slides-gitd&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Configuração (os segredos são caminhos de arquivo, nunca valores; cada arquivo
 só deve ser legível pelo dono):&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -719,6 +719,43 @@ escopo &lt;code&gt;api&lt;/code&gt;. Por que &lt;code&gt;api&lt;/code&gt; e não
 pode fazer, está explicado &lt;a href="https://go-slides.github.io/docs/0.18/pt/playground/#gitlab"&gt;na página do Playground&lt;/a&gt;;
 prefira um token de acesso de projeto ou de grupo limitado aos repositórios das
 apresentações, ou uma conta dedicada.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;O Playground atrás do slides-gitd (modo servidor)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Quando o Playground é servido atrás do slides-gitd em sua própria origem, ele
+detecta isso perguntando &lt;code&gt;GET /api/git/session&lt;/code&gt; nessa origem. &lt;code&gt;401&lt;/code&gt; significa
+que há um servidor e ninguém fez login: o painel mostra &lt;strong&gt;Entrar&lt;/strong&gt;. Uma sessão
+JSON significa que o login foi feito. Qualquer outra coisa, como o &lt;code&gt;404&lt;/code&gt; de um
+host estático, significa que não há servidor, e o painel funciona exatamente
+como em go-slides.github.io: um token guardado na aba, ou o login do GitLab.&lt;/p&gt;
+&lt;p&gt;No modo servidor, o painel esconde os campos de token e de OAuth. Ele mostra
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt; (logado como) e a lista de repositórios que o servidor
+concede. &lt;strong&gt;Carregar&lt;/strong&gt;, &lt;strong&gt;Propor mudanças…&lt;/strong&gt; (o servidor nomeia o branch
+&lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt;; a página não pode escolher um),
+&lt;strong&gt;Procurar mudanças&lt;/strong&gt; e &lt;strong&gt;Ficar com as deles&lt;/strong&gt; vão todos para &lt;code&gt;/api/git/*&lt;/code&gt; na
+mesma origem. O navegador não contata nenhum host da forja.&lt;/p&gt;
+&lt;p&gt;O que fica onde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Os tokens vivem no servidor, em um cofre AES-GCM com uma chave por usuário.&lt;/li&gt;
+&lt;li&gt;O navegador guarda apenas o cookie &lt;code&gt;__Host-gitd&lt;/code&gt; (&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;,
+&lt;code&gt;SameSite=Strict&lt;/code&gt;), que os scripts não conseguem ler.&lt;/li&gt;
+&lt;li&gt;O token CSRF fica só na memória da página e nunca é armazenado.&lt;/li&gt;
+&lt;li&gt;Toda escrita leva o &lt;code&gt;Origin&lt;/code&gt; exato, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, um corpo
+JSON e &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Quando o login expirou ou não existe (HTTP &lt;code&gt;401&lt;/code&gt;), o painel mostra &amp;ldquo;Seu login
+terminou&amp;rdquo; com um botão &lt;strong&gt;Entrar&lt;/strong&gt; (&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; do
+oauth2-proxy). Ele nunca recorre a um token digitado no navegador.&lt;/p&gt;
+&lt;p&gt;Para servi-lo, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
+A sua Content-Security-Policy é &lt;code&gt;connect-src 'self'&lt;/code&gt;; o site continua público e
+só &lt;code&gt;/api/git/*&lt;/code&gt; fica atrás do oauth2-proxy. A configuração &lt;code&gt;origin&lt;/code&gt; do
+slides-gitd deve ser igual à origem do Playground. Uma forja cujo &lt;code&gt;auth&lt;/code&gt; é
+&lt;code&gt;user-token&lt;/code&gt; (GitLab, por exemplo) precisa do token próprio de cada usuário,
+guardado no servidor por &lt;code&gt;POST /api/git/credential&lt;/code&gt;. O painel não oferece um
+campo para isso, então o administrador ou o usuário o faz fora da página.&lt;/p&gt;
+&lt;p&gt;Um limite: o Playground guarda os rascunhos e o último nome de repositório no
+perfil do navegador (IndexedDB e localStorage), como antes. Em um perfil de
+navegador compartilhado, use &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; ou perfis separados.
+No modo servidor, um repositório lembrado ao qual o usuário não tem acesso é
+descartado.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;Verificar&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

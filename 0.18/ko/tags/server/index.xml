@@ -318,9 +318,8 @@ Caddy 안에서 로그인을 처리하는 Caddy 모듈로, 두 번째 프로세�
 HttpOnly 세션 쿠키뿐입니다. Caddy와 oauth2-proxy(OIDC) 뒤에 두며 &lt;code&gt;127.0.0.1:8091&lt;/code&gt;에서
 수신하고, 사용자 신원은 프록시에서만 받으며, 서버가 직접 이름을 붙인
 &lt;code&gt;slides/&amp;lt;사용자&amp;gt;/&amp;lt;제목&amp;gt;-&amp;lt;시각&amp;gt;&lt;/code&gt; 브랜치에만 씁니다.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;아직 사용할 수 없습니다:&lt;/strong&gt; 브라우저가 토큰을 가지는 대신 slides-gitd와 통신하는 Playground의
-서버 모드는 다음 릴리스입니다. 지금은 slides-gitd를 실행하고 점검할 수 있지만 Playground는
-그것을 쓰지 않습니다.&lt;/p&gt;
+&lt;p&gt;브라우저가 토큰을 가지는 대신 slides-gitd와 통신하는 Playground의 서버 모드는
+&lt;a href="#playground-server-mode"&gt;slides-gitd 뒤의 Playground&lt;/a&gt;에서 설명합니다.&lt;/p&gt;
 &lt;p&gt;설정(비밀은 파일 경로이며 값이 아닙니다. 각 파일은 소유자만 읽을 수 있어야 합니다):&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -399,6 +398,36 @@ Pull requests 읽기/쓰기, Metadata 읽기 권한으로 만들고(webhook 없�
 &lt;code&gt;write_repository&lt;/code&gt;가 아니라 &lt;code&gt;api&lt;/code&gt;여야 하는 이유와 도난당한 토큰으로 할 수 있는 일은
 &lt;a href="https://go-slides.github.io/docs/0.18/ko/playground/#gitlab"&gt;Playground 페이지&lt;/a&gt;에서 설명합니다. 발표 자료 저장소로 제한한
 프로젝트 또는 그룹 액세스 토큰이나 전용 계정을 쓰세요.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;slides-gitd 뒤의 Playground (서버 모드)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Playground를 slides-gitd 뒤에서 자체 오리진으로 제공하면, Playground는 그 오리진에
+&lt;code&gt;GET /api/git/session&lt;/code&gt;을 요청해 이를 알아냅니다. &lt;code&gt;401&lt;/code&gt;은 서버가 있지만 아직 아무도
+로그인하지 않았다는 뜻이며, 창에 &lt;strong&gt;로그인&lt;/strong&gt;이 표시됩니다. JSON 세션이 오면 로그인한 상태입니다.
+그 밖의 응답, 예컨대 정적 호스트의 &lt;code&gt;404&lt;/code&gt;는 서버가 없다는 뜻이며, 창은 go-slides.github.io에서와
+똑같이 동작합니다. 즉 탭에 보관한 토큰을 쓰거나 GitLab 로그인을 씁니다.&lt;/p&gt;
+&lt;p&gt;서버 모드에서는 창이 토큰과 OAuth 입력란을 숨기고, &lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt;(로그인한 사용자)와
+서버가 허용한 저장소 목록을 보여 줍니다. &lt;strong&gt;불러오기&lt;/strong&gt;, &lt;strong&gt;변경 제안…&lt;/strong&gt;(브랜치
+&lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt;는 서버가 이름을 붙이며 페이지는 고를 수 없습니다), &lt;strong&gt;변경 확인&lt;/strong&gt;,
+&lt;strong&gt;상대 것 받기&lt;/strong&gt;는 모두 같은 오리진의 &lt;code&gt;/api/git/*&lt;/code&gt;로 갑니다. 브라우저는 forge 호스트에 접속하지 않습니다.&lt;/p&gt;
+&lt;p&gt;무엇이 어디에 남는가:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;토큰은 사용자마다 키가 하나인 AES-GCM 보관소에 담겨 서버에 있습니다.&lt;/li&gt;
+&lt;li&gt;브라우저가 가지는 것은 &lt;code&gt;__Host-gitd&lt;/code&gt; 쿠키(&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;, &lt;code&gt;SameSite=Strict&lt;/code&gt;)뿐이며,
+스크립트는 이것을 읽을 수 없습니다.&lt;/li&gt;
+&lt;li&gt;CSRF 토큰은 페이지의 메모리에만 있고 저장되지 않습니다.&lt;/li&gt;
+&lt;li&gt;모든 쓰기 요청은 정확한 &lt;code&gt;Origin&lt;/code&gt;, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, JSON 본문,
+&lt;code&gt;X-CSRF-Token&lt;/code&gt;을 함께 보냅니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;로그인이 만료되었거나 없으면(HTTP &lt;code&gt;401&lt;/code&gt;) 창에 &amp;ldquo;로그인이 종료되었습니다&amp;quot;와 &lt;strong&gt;로그인&lt;/strong&gt; 버튼
+(oauth2-proxy의 &lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt;)이 표시됩니다. 브라우저에 입력한 토큰으로
+대체하는 일은 절대 없습니다.&lt;/p&gt;
+&lt;p&gt;제공하려면 go-slides/go-slides.github.io의 &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt;를 쓰세요. 그
+Content-Security-Policy는 &lt;code&gt;connect-src 'self'&lt;/code&gt;이고, 사이트는 공개 상태로 두며 oauth2-proxy 뒤에
+두는 것은 &lt;code&gt;/api/git/*&lt;/code&gt;뿐입니다. slides-gitd의 &lt;code&gt;origin&lt;/code&gt; 설정은 Playground의 오리진과 같아야 합니다.
+&lt;code&gt;auth&lt;/code&gt;가 &lt;code&gt;user-token&lt;/code&gt;인 forge(예: GitLab)는 각 사용자의 자체 토큰을 &lt;code&gt;POST /api/git/credential&lt;/code&gt;로
+서버에 저장해야 합니다. 창에는 이를 위한 입력란이 없으므로 관리자나 사용자가 페이지 밖에서 처리합니다.&lt;/p&gt;
+&lt;p&gt;한 가지 제한이 있습니다. Playground는 이전처럼 초안과 마지막 저장소 이름을 브라우저 프로필
+(IndexedDB와 localStorage)에 보관합니다. 공유 브라우저 프로필에서는 &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;를
+쓰거나 프로필을 분리하세요. 서버 모드에서는 기억된 저장소 중 사용자에게 허용되지 않은 것은 버려집니다.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;확인하기&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

@@ -328,9 +328,9 @@ signed-in, лише для Playground: сторінка входу oauth2-proxy 
 Він стоїть за Caddy і oauth2-proxy (OIDC), слухає &lt;code&gt;127.0.0.1:8091&lt;/code&gt;, особу
 користувача бере лише від проксі й пише лише в гілки з назвою
 &lt;code&gt;slides/&amp;lt;користувач&amp;gt;/&amp;lt;заголовок&amp;gt;-&amp;lt;час&amp;gt;&lt;/code&gt;, які називає сам сервер.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Ще недоступно:&lt;/strong&gt; серверний режим Playground, який звертається до slides-gitd
-замість того, щоб браузер тримав токен, — це наступний випуск. Сьогодні
-slides-gitd працює й перевіряється, але Playground його не використовує.&lt;/p&gt;
+&lt;p&gt;Серверний режим Playground, який звертається до slides-gitd замість того, щоб
+браузер тримав токен, описано в розділі
+&lt;a href="#playground-server-mode"&gt;Playground за slides-gitd&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Конфігурація (секрети — це шляхи до файлів, ніколи не значення; кожен файл має
 читатися лише власником):&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -414,6 +414,43 @@ slides-gitd видає токен інсталяції для єдиного р�
 токен, пояснено &lt;a href="https://go-slides.github.io/docs/0.18/uk/playground/#gitlab"&gt;на сторінці Playground&lt;/a&gt;;
 обирайте токен доступу проєкту або групи, обмежений репозиторіями презентацій,
 або окремий обліковий запис.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;Playground за slides-gitd (серверний режим)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Коли Playground віддається за slides-gitd зі свого origin, він виявляє це,
+запитуючи &lt;code&gt;GET /api/git/session&lt;/code&gt; на цьому origin. &lt;code&gt;401&lt;/code&gt; означає, що сервер є,
+але ніхто не ввійшов: панель показує &lt;strong&gt;Увійти&lt;/strong&gt;. JSON-сесія означає, що вхід
+виконано. Усе інше, наприклад &lt;code&gt;404&lt;/code&gt; статичного хоста, означає, що сервера немає,
+і панель працює достеменно як на go-slides.github.io: з токеном у вкладці або зі
+входом через GitLab.&lt;/p&gt;
+&lt;p&gt;У серверному режимі панель ховає поля токена й OAuth. Вона показує
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt; (ви ввійшли як) і список репозиторіїв, які надає
+сервер. &lt;strong&gt;Завантажити&lt;/strong&gt;, &lt;strong&gt;Запропонувати зміни…&lt;/strong&gt; (гілку
+&lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt; називає сервер; сторінка не може вибрати свою),
+&lt;strong&gt;Перевірити зміни&lt;/strong&gt; та &lt;strong&gt;Взяти їхні&lt;/strong&gt; звертаються до &lt;code&gt;/api/git/*&lt;/code&gt; на тому самому
+origin. Браузер не звертається до жодного хоста forge.&lt;/p&gt;
+&lt;p&gt;Що де лишається:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Токени живуть на сервері, у сховищі AES-GCM з одним ключем на користувача.&lt;/li&gt;
+&lt;li&gt;Браузер тримає лише cookie &lt;code&gt;__Host-gitd&lt;/code&gt; (&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;,
+&lt;code&gt;SameSite=Strict&lt;/code&gt;), яку скрипти прочитати не можуть.&lt;/li&gt;
+&lt;li&gt;Токен CSRF зберігається лише в пам’яті сторінки й ніколи не записується.&lt;/li&gt;
+&lt;li&gt;Кожен запис несе точний &lt;code&gt;Origin&lt;/code&gt;, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, тіло JSON і
+&lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Якщо вхід минув або його немає (HTTP &lt;code&gt;401&lt;/code&gt;), панель показує «Ваш вхід
+завершено» з кнопкою &lt;strong&gt;Увійти&lt;/strong&gt; (&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; з
+oauth2-proxy). Вона ніколи не повертається до токена, введеного в браузері.&lt;/p&gt;
+&lt;p&gt;Щоб віддавати його, використайте &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; з
+go-slides/go-slides.github.io. Його Content-Security-Policy — &lt;code&gt;connect-src 'self'&lt;/code&gt;; сайт лишається публічним, і лише &lt;code&gt;/api/git/*&lt;/code&gt; стоїть за oauth2-proxy.
+Параметр &lt;code&gt;origin&lt;/code&gt; у slides-gitd має збігатися з origin Playground. Forge, у якого
+&lt;code&gt;auth&lt;/code&gt; дорівнює &lt;code&gt;user-token&lt;/code&gt; (наприклад, GitLab), вимагає власний токен кожного
+користувача, збережений на сервері через &lt;code&gt;POST /api/git/credential&lt;/code&gt;. Поля для
+цього на панелі немає, тож адміністратор або користувач робить це поза
+сторінкою.&lt;/p&gt;
+&lt;p&gt;Одне обмеження: Playground, як і раніше, зберігає чернетки й останню назву
+репозиторію в профілі браузера (IndexedDB і localStorage). У спільному профілі
+браузера користуйтеся &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; або окремими профілями. У
+серверному режимі запам’ятаний репозиторій, до якого користувач не має доступу,
+відкидається.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;Перевірка&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="Постійне посилання на цей розділ"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

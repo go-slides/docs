@@ -639,10 +639,9 @@ el servidor&lt;/strong&gt;: el navegador solo tiene una cookie de sesión HttpOn
 de Caddy y oauth2-proxy (OIDC), escucha en &lt;code&gt;127.0.0.1:8091&lt;/code&gt;, toma la identidad
 del usuario solo del proxy y solo escribe en ramas llamadas
 &lt;code&gt;slides/&amp;lt;usuario&amp;gt;/&amp;lt;título&amp;gt;-&amp;lt;hora&amp;gt;&lt;/code&gt; que el propio servidor nombra.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Todavía no disponible:&lt;/strong&gt; el modo servidor del Playground, que habla con
-slides-gitd en lugar de que el navegador guarde un token, es la próxima
-versión. Hoy slides-gitd funciona y se puede comprobar, pero el Playground no
-lo usa.&lt;/p&gt;
+&lt;p&gt;El modo servidor del Playground, que habla con slides-gitd en lugar de que el
+navegador guarde un token, se describe en
+&lt;a href="#playground-server-mode"&gt;El Playground detrás de slides-gitd&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Configuración (los secretos son rutas de archivo, nunca valores; cada archivo
 solo debe ser legible por su propietario):&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -726,6 +725,47 @@ alcance &lt;code&gt;api&lt;/code&gt;. Por qué &lt;code&gt;api&lt;/code&gt; y no
 robado, se explica &lt;a href="https://go-slides.github.io/docs/0.18/es/playground/#gitlab"&gt;en la página del Playground&lt;/a&gt;;
 prefiera un token de acceso de proyecto o de grupo limitado a los repositorios
 de las presentaciones, o una cuenta dedicada.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;El Playground detrás de slides-gitd (modo servidor)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Cuando el Playground se sirve detrás de slides-gitd en su propio origen, lo
+detecta preguntando &lt;code&gt;GET /api/git/session&lt;/code&gt; en ese origen. &lt;code&gt;401&lt;/code&gt; significa que
+hay un servidor y nadie ha iniciado sesión: el panel muestra &lt;strong&gt;Iniciar
+sesión&lt;/strong&gt;. Una sesión JSON significa que la sesión está iniciada. Cualquier otra
+cosa, como el &lt;code&gt;404&lt;/code&gt; de un alojamiento estático, significa que no hay servidor, y
+el panel funciona exactamente como en go-slides.github.io: un token guardado en
+la pestaña o el inicio de sesión de GitLab.&lt;/p&gt;
+&lt;p&gt;En modo servidor el panel oculta los campos del token y de OAuth. Muestra
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt; (sesión iniciada como) y la lista de repositorios que
+el servidor concede. &lt;strong&gt;Cargar&lt;/strong&gt;, &lt;strong&gt;Proponer cambios…&lt;/strong&gt; (el servidor nombra la
+rama &lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt;; la página no puede elegir una),
+&lt;strong&gt;Buscar cambios&lt;/strong&gt; y &lt;strong&gt;Tomar los suyos&lt;/strong&gt; van todos a &lt;code&gt;/api/git/*&lt;/code&gt; en el mismo
+origen. El navegador no contacta con ningún host de la forja.&lt;/p&gt;
+&lt;p&gt;Qué queda dónde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Los tokens viven en el servidor, en una bóveda AES-GCM con una clave por
+usuario.&lt;/li&gt;
+&lt;li&gt;El navegador solo guarda la cookie &lt;code&gt;__Host-gitd&lt;/code&gt; (&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;,
+&lt;code&gt;SameSite=Strict&lt;/code&gt;), que los scripts no pueden leer.&lt;/li&gt;
+&lt;li&gt;El token CSRF se guarda solo en la memoria de la página y nunca se almacena.&lt;/li&gt;
+&lt;li&gt;Toda escritura lleva el &lt;code&gt;Origin&lt;/code&gt; exacto, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, un
+cuerpo JSON y &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cuando el inicio de sesión ha caducado o falta (HTTP &lt;code&gt;401&lt;/code&gt;), el panel muestra
+«Su sesión ha terminado» con un botón &lt;strong&gt;Iniciar sesión&lt;/strong&gt;
+(&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; de oauth2-proxy). Nunca recurre a un token
+escrito en el navegador.&lt;/p&gt;
+&lt;p&gt;Para servirlo, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
+Su Content-Security-Policy es &lt;code&gt;connect-src 'self'&lt;/code&gt;; el sitio sigue siendo
+público y solo &lt;code&gt;/api/git/*&lt;/code&gt; queda detrás de oauth2-proxy. El ajuste &lt;code&gt;origin&lt;/code&gt; de
+slides-gitd debe ser igual al origen del Playground. Una forja cuyo &lt;code&gt;auth&lt;/code&gt; es
+&lt;code&gt;user-token&lt;/code&gt; (GitLab, por ejemplo) necesita el token propio de cada usuario
+guardado en el servidor mediante &lt;code&gt;POST /api/git/credential&lt;/code&gt;. El panel no ofrece
+un campo para ello, así que lo hace el administrador o el usuario fuera de la
+página.&lt;/p&gt;
+&lt;p&gt;Un límite: el Playground guarda los borradores y el último nombre de repositorio
+en el perfil del navegador (IndexedDB y localStorage), como antes. En un perfil
+de navegador compartido, use &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; o perfiles separados.
+En modo servidor, un repositorio recordado al que el usuario no tiene acceso se
+descarta.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;Compruébelo&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

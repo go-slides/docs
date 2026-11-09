@@ -330,9 +330,9 @@ only an HttpOnly session cookie. It sits behind Caddy and oauth2-proxy (OIDC),
 listens on &lt;code&gt;127.0.0.1:8091&lt;/code&gt;, takes the user&amp;rsquo;s identity from the proxy only,
 and writes only to branches named &lt;code&gt;slides/&amp;lt;user&amp;gt;/&amp;lt;title&amp;gt;-&amp;lt;time&amp;gt;&lt;/code&gt; that the
 server names itself.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Not available yet:&lt;/strong&gt; the playground&amp;rsquo;s server mode, which talks to
-slides-gitd instead of the browser holding a token, is the next release.
-Today slides-gitd runs and can be checked, but the playground does not use it.&lt;/p&gt;
+&lt;p&gt;The playground&amp;rsquo;s server mode, which talks to slides-gitd instead of the
+browser holding a token, is described in
+&lt;a href="#playground-server-mode"&gt;The playground behind slides-gitd&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Configuration (secrets are file paths, never values; each file must be
 readable by its owner only):&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
@@ -416,6 +416,43 @@ call, which lives an hour.&lt;/p&gt;
 explained &lt;a href="https://go-slides.github.io/docs/0.18/playground/#gitlab"&gt;on the playground page&lt;/a&gt;; prefer
 a project or group access token limited to the deck repositories, or a
 dedicated account.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;The playground behind slides-gitd (server mode)&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;When the playground is served behind slides-gitd on its own origin, it asks
+&lt;code&gt;GET /api/git/session&lt;/code&gt; on that origin to find out. &lt;code&gt;401&lt;/code&gt; means a server is
+there and nobody is signed in: the pane shows &lt;strong&gt;Sign in&lt;/strong&gt;. A JSON session means
+signed in. Anything else, such as the &lt;code&gt;404&lt;/code&gt; of a static host, means there is no
+server, and the pane works exactly as on go-slides.github.io: a token kept in
+the tab, or the GitLab sign-in.&lt;/p&gt;
+&lt;p&gt;In server mode the pane hides the token and OAuth fields. It shows
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt; and the list of repositories the server grants.
+&lt;strong&gt;Load&lt;/strong&gt;, &lt;strong&gt;Propose changes…&lt;/strong&gt; (the server names the branch
+&lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt;; the page cannot choose one),
+&lt;strong&gt;Check for changes&lt;/strong&gt; and &lt;strong&gt;Take theirs&lt;/strong&gt; all go to &lt;code&gt;/api/git/*&lt;/code&gt; on the same
+origin. The browser contacts no forge host.&lt;/p&gt;
+&lt;p&gt;What stays where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tokens live on the server, in an AES-GCM vault with one key per user.&lt;/li&gt;
+&lt;li&gt;The browser holds only the &lt;code&gt;__Host-gitd&lt;/code&gt; cookie (&lt;code&gt;HttpOnly&lt;/code&gt;, &lt;code&gt;Secure&lt;/code&gt;,
+&lt;code&gt;SameSite=Strict&lt;/code&gt;), which scripts cannot read.&lt;/li&gt;
+&lt;li&gt;The CSRF token is kept in the page&amp;rsquo;s memory only and is never stored.&lt;/li&gt;
+&lt;li&gt;Every write carries the exact &lt;code&gt;Origin&lt;/code&gt;, &lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;, a
+JSON body and &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When the sign-in has expired or is missing (HTTP &lt;code&gt;401&lt;/code&gt;), the pane shows &amp;ldquo;Your
+sign-in has ended&amp;rdquo; with a &lt;strong&gt;Sign in&lt;/strong&gt; button
+(oauth2-proxy&amp;rsquo;s &lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt;). It never falls back to a
+token typed in the browser.&lt;/p&gt;
+&lt;p&gt;To serve it, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; of go-slides/go-slides.github.io.
+Its Content-Security-Policy is &lt;code&gt;connect-src 'self'&lt;/code&gt;; the site stays public and
+only &lt;code&gt;/api/git/*&lt;/code&gt; sits behind oauth2-proxy. slides-gitd&amp;rsquo;s &lt;code&gt;origin&lt;/code&gt; setting must
+equal the playground&amp;rsquo;s origin. A forge whose &lt;code&gt;auth&lt;/code&gt; is &lt;code&gt;user-token&lt;/code&gt; (GitLab,
+for example) needs each user&amp;rsquo;s own token stored on the server through
+&lt;code&gt;POST /api/git/credential&lt;/code&gt;. The pane offers no field for it, so the
+administrator or the user does it outside the page.&lt;/p&gt;
+&lt;p&gt;One limit: the playground keeps drafts and the last repository name in the
+browser profile (IndexedDB and localStorage), as before. On a shared browser
+profile, use &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; or separate profiles. In server mode,
+a remembered repository the user is not granted is dropped.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;Check it&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;

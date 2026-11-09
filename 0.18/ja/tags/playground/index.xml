@@ -594,9 +594,8 @@ Playground の git バックエンドです。forge からスライドのフォ�
 oauth2-proxy（OIDC）の背後に置き、&lt;code&gt;127.0.0.1:8091&lt;/code&gt; で待ち受け、ユーザーの身元はプロキシからだけ
 受け取り、サーバー自身が名付けた &lt;code&gt;slides/&amp;lt;ユーザー&amp;gt;/&amp;lt;タイトル&amp;gt;-&amp;lt;時刻&amp;gt;&lt;/code&gt; というブランチにしか
 書き込みません。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;まだ利用できません：&lt;/strong&gt; ブラウザーがトークンを持つ代わりに slides-gitd と通信する
-Playground のサーバーモードは、次のリリースです。現時点では slides-gitd は動かして確認できますが、
-Playground はそれを使いません。&lt;/p&gt;
+&lt;p&gt;ブラウザーがトークンを持つ代わりに slides-gitd と通信する Playground のサーバーモードは、
+&lt;a href="#playground-server-mode"&gt;slides-gitd の背後の Playground&lt;/a&gt;で説明します。&lt;/p&gt;
 &lt;p&gt;設定（秘密はファイルパスで、値そのものは書きません。各ファイルは所有者だけが読める必要があります）：&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -677,6 +676,40 @@ Contents の読み取りと書き込み、Pull requests の読み取りと書き
 &lt;code&gt;write_repository&lt;/code&gt; ではなく &lt;code&gt;api&lt;/code&gt; が必要な理由と、盗まれたトークンでできることは
 &lt;a href="https://go-slides.github.io/docs/0.18/ja/playground/#gitlab"&gt;Playground のページ&lt;/a&gt;で説明しています。スライドの
 リポジトリに限定したプロジェクトまたはグループのアクセストークン、または専用アカウントを使ってください。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="playground-server-mode"&gt;slides-gitd の背後の Playground（サーバーモード）&lt;span class="hx:absolute hx:-mt-20" id="playground-server-mode"&gt;&lt;/span&gt;
+&lt;a href="#playground-server-mode" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Playground を slides-gitd の背後で独自のオリジンから配信すると、Playground はそのオリジンに
+&lt;code&gt;GET /api/git/session&lt;/code&gt; を問い合わせて、そのことを検出します。&lt;code&gt;401&lt;/code&gt; はサーバーがあってまだ誰も
+サインインしていないことを意味し、ペインには &lt;strong&gt;サインイン&lt;/strong&gt; が表示されます。JSON のセッションが
+返ればサインイン済みです。それ以外、たとえば静的ホストの &lt;code&gt;404&lt;/code&gt; は、サーバーがないことを意味し、
+ペインは go-slides.github.io とまったく同じように動作します。つまり、タブに保持するトークン、
+または GitLab サインインを使います。&lt;/p&gt;
+&lt;p&gt;サーバーモードでは、ペインはトークンと OAuth のフィールドを隠します。代わりに
+&lt;code&gt;Signed in as &amp;lt;identity&amp;gt;&lt;/code&gt;（サインイン中のユーザー）と、サーバーが許可したリポジトリの一覧を表示します。
+&lt;strong&gt;読み込む&lt;/strong&gt;、&lt;strong&gt;変更を提案…&lt;/strong&gt;（ブランチ &lt;code&gt;slides/&amp;lt;readable&amp;gt;-&amp;lt;hash&amp;gt;/…&lt;/code&gt; はサーバーが名付け、ページからは選べません）、
+&lt;strong&gt;変更を確認&lt;/strong&gt;、&lt;strong&gt;向こうを採用&lt;/strong&gt; は、すべて同じオリジンの &lt;code&gt;/api/git/*&lt;/code&gt; に送られます。
+ブラウザーが forge のホストに接続することはありません。&lt;/p&gt;
+&lt;p&gt;何がどこに残るか：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;トークンはサーバー上の、ユーザーごとに 1 つの鍵を持つ AES-GCM の保管庫にあります。&lt;/li&gt;
+&lt;li&gt;ブラウザーが持つのは &lt;code&gt;__Host-gitd&lt;/code&gt; cookie（&lt;code&gt;HttpOnly&lt;/code&gt;、&lt;code&gt;Secure&lt;/code&gt;、&lt;code&gt;SameSite=Strict&lt;/code&gt;）だけで、
+スクリプトからは読めません。&lt;/li&gt;
+&lt;li&gt;CSRF トークンはページのメモリ内にのみ保持され、保存されません。&lt;/li&gt;
+&lt;li&gt;すべての書き込みは、正確な &lt;code&gt;Origin&lt;/code&gt;、&lt;code&gt;X-Requested-With: slides-gitd&lt;/code&gt;、JSON の本文、
+&lt;code&gt;X-CSRF-Token&lt;/code&gt; を伴います。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;サインインの期限が切れている、またはない場合（HTTP &lt;code&gt;401&lt;/code&gt;）、ペインは「サインインが終了しました」と
+&lt;strong&gt;サインイン&lt;/strong&gt; ボタン（oauth2-proxy の &lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt;）を表示します。
+ブラウザーに入力したトークンにフォールバックすることは決してありません。&lt;/p&gt;
+&lt;p&gt;配信には go-slides/go-slides.github.io の &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; を使います。その
+Content-Security-Policy は &lt;code&gt;connect-src 'self'&lt;/code&gt; で、サイトは公開のままにし、oauth2-proxy の背後に置くのは
+&lt;code&gt;/api/git/*&lt;/code&gt; だけです。slides-gitd の &lt;code&gt;origin&lt;/code&gt; 設定は Playground のオリジンと一致させる必要があります。
+&lt;code&gt;auth&lt;/code&gt; が &lt;code&gt;user-token&lt;/code&gt; の forge（たとえば GitLab）では、各ユーザー自身のトークンを
+&lt;code&gt;POST /api/git/credential&lt;/code&gt; でサーバーに保存する必要があります。ペインにはそのためのフィールドがないので、
+管理者またはユーザーがページの外で行います。&lt;/p&gt;
+&lt;p&gt;制限が 1 つあります。Playground は、これまでどおり下書きと最後のリポジトリ名をブラウザープロファイル
+（IndexedDB と localStorage）に保持します。共有のブラウザープロファイルでは、&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;
+を使うか、プロファイルを分けてください。サーバーモードでは、記憶されているリポジトリのうち
+ユーザーに許可されていないものは破棄されます。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="check-it"&gt;確認する&lt;span class="hx:absolute hx:-mt-20" id="check-it"&gt;&lt;/span&gt;
 &lt;a href="#check-it" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
 &lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl -sI -H &lt;span class="s1"&gt;&amp;#39;Accept-Encoding: br&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://slides.example.org/playground/playground.wasm?v=v0.1.0&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
