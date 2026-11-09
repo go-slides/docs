@@ -261,9 +261,8 @@ oauth2-proxy（OIDC）の背後に置き、`127.0.0.1:8091` で待ち受け、�
 受け取り、サーバー自身が名付けた `slides/<ユーザー>/<タイトル>-<時刻>` というブランチにしか
 書き込みません。
 
-**まだ利用できません：** ブラウザーがトークンを持つ代わりに slides-gitd と通信する
-Playground のサーバーモードは、次のリリースです。現時点では slides-gitd は動かして確認できますが、
-Playground はそれを使いません。
+ブラウザーがトークンを持つ代わりに slides-gitd と通信する Playground のサーバーモードは、
+[slides-gitd の背後の Playground](#playground-server-mode)で説明します。
 
 設定（秘密はファイルパスで、値そのものは書きません。各ファイルは所有者だけが読める必要があります）：
 
@@ -332,6 +331,46 @@ Contents の読み取りと書き込み、Pull requests の読み取りと書き
 `write_repository` ではなく `api` が必要な理由と、盗まれたトークンでできることは
 [Playground のページ]({{< relref "playground#gitlab" >}})で説明しています。スライドの
 リポジトリに限定したプロジェクトまたはグループのアクセストークン、または専用アカウントを使ってください。
+
+### slides-gitd の背後の Playground（サーバーモード） {#playground-server-mode}
+
+Playground を slides-gitd の背後で独自のオリジンから配信すると、Playground はそのオリジンに
+`GET /api/git/session` を問い合わせて、そのことを検出します。`401` はサーバーがあってまだ誰も
+サインインしていないことを意味し、ペインには **サインイン** が表示されます。JSON のセッションが
+返ればサインイン済みです。それ以外、たとえば静的ホストの `404` は、サーバーがないことを意味し、
+ペインは go-slides.github.io とまったく同じように動作します。つまり、タブに保持するトークン、
+または GitLab サインインを使います。
+
+サーバーモードでは、ペインはトークンと OAuth のフィールドを隠します。代わりに
+`Signed in as <identity>`（サインイン中のユーザー）と、サーバーが許可したリポジトリの一覧を表示します。
+**読み込む**、**変更を提案…**（ブランチ `slides/<readable>-<hash>/…` はサーバーが名付け、ページからは選べません）、
+**変更を確認**、**向こうを採用** は、すべて同じオリジンの `/api/git/*` に送られます。
+ブラウザーが forge のホストに接続することはありません。
+
+何がどこに残るか：
+
+- トークンはサーバー上の、ユーザーごとに 1 つの鍵を持つ AES-GCM の保管庫にあります。
+- ブラウザーが持つのは `__Host-gitd` cookie（`HttpOnly`、`Secure`、`SameSite=Strict`）だけで、
+  スクリプトからは読めません。
+- CSRF トークンはページのメモリ内にのみ保持され、保存されません。
+- すべての書き込みは、正確な `Origin`、`X-Requested-With: slides-gitd`、JSON の本文、
+  `X-CSRF-Token` を伴います。
+
+サインインの期限が切れている、またはない場合（HTTP `401`）、ペインは「サインインが終了しました」と
+**サインイン** ボタン（oauth2-proxy の `/oauth2/sign_in?rd=<this page>`）を表示します。
+ブラウザーに入力したトークンにフォールバックすることは決してありません。
+
+配信には go-slides/go-slides.github.io の `selfhost/Caddyfile.gitd` を使います。その
+Content-Security-Policy は `connect-src 'self'` で、サイトは公開のままにし、oauth2-proxy の背後に置くのは
+`/api/git/*` だけです。slides-gitd の `origin` 設定は Playground のオリジンと一致させる必要があります。
+`auth` が `user-token` の forge（たとえば GitLab）では、各ユーザー自身のトークンを
+`POST /api/git/credential` でサーバーに保存する必要があります。ペインにはそのためのフィールドがないので、
+管理者またはユーザーがページの外で行います。
+
+制限が 1 つあります。Playground は、これまでどおり下書きと最後のリポジトリ名をブラウザープロファイル
+（IndexedDB と localStorage）に保持します。共有のブラウザープロファイルでは、**Draft ▸ Forget my drafts**
+を使うか、プロファイルを分けてください。サーバーモードでは、記憶されているリポジトリのうち
+ユーザーに許可されていないものは破棄されます。
 
 ## 確認する {#check-it}
 

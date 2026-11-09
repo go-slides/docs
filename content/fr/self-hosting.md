@@ -271,10 +271,9 @@ qu'un cookie de session HttpOnly. Il se place derrière Caddy et oauth2-proxy
 du proxy, et n'écrit que dans des branches nommées
 `slides/<utilisateur>/<titre>-<heure>` que le serveur nomme lui-même.
 
-**Pas encore disponible :** le mode serveur du Playground, qui parle à
-slides-gitd au lieu que le navigateur détienne un jeton, est la prochaine
-version. Aujourd'hui slides-gitd tourne et se vérifie, mais le Playground ne
-l'utilise pas.
+Le mode serveur du Playground, qui parle à slides-gitd au lieu que le
+navigateur détienne un jeton, est décrit dans
+[Le Playground derrière slides-gitd](#playground-server-mode).
 
 Configuration (les secrets sont des chemins de fichiers, jamais des valeurs ;
 chaque fichier ne doit être lisible que par son propriétaire) :
@@ -348,6 +347,54 @@ qu'un jeton volé peut faire, est expliqué
 [sur la page du Playground]({{< relref "playground#gitlab" >}}) ; préférez un
 jeton d'accès de projet ou de groupe limité aux dépôts des présentations, ou
 un compte dédié.
+
+### Le Playground derrière slides-gitd (mode serveur) {#playground-server-mode}
+
+Lorsque le Playground est servi derrière slides-gitd sur sa propre origine, il
+le détecte en interrogeant `GET /api/git/session` sur cette origine. `401`
+signifie qu'un serveur est là et que personne n'est connecté : le panneau
+affiche **Se connecter**. Une session JSON signifie connecté. Tout le reste, par
+exemple le `404` d'un hébergeur statique, signifie qu'il n'y a pas de serveur, et
+le panneau fonctionne exactement comme sur go-slides.github.io : un jeton gardé
+dans l'onglet, ou la connexion GitLab.
+
+En mode serveur, le panneau masque les champs du jeton et d'OAuth. Il affiche
+`Signed in as <identity>` (connecté en tant que) et la liste des dépôts que le
+serveur accorde. **Charger**, **Proposer les changements…** (le serveur nomme la
+branche `slides/<readable>-<hash>/…` ; la page ne peut pas en choisir une),
+**Chercher des changements** et **Prendre les leurs** vont tous à `/api/git/*`
+sur la même origine. Le navigateur ne contacte aucun hôte de forge.
+
+Ce qui reste où :
+
+- Les jetons vivent sur le serveur, dans un coffre AES-GCM avec une clé par
+  utilisateur.
+- Le navigateur ne détient que le cookie `__Host-gitd` (`HttpOnly`, `Secure`,
+  `SameSite=Strict`), que les scripts ne peuvent pas lire.
+- Le jeton CSRF n'est gardé que dans la mémoire de la page et n'est jamais
+  stocké.
+- Toute écriture porte l'`Origin` exacte, `X-Requested-With: slides-gitd`, un
+  corps JSON et `X-CSRF-Token`.
+
+Quand la connexion a expiré ou manque (HTTP `401`), le panneau affiche
+« Votre connexion a pris fin » avec un bouton **Se connecter**
+(`/oauth2/sign_in?rd=<this page>` d'oauth2-proxy). Il ne se rabat jamais sur un
+jeton saisi dans le navigateur.
+
+Pour le servir, utilisez `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
+Sa Content-Security-Policy est `connect-src 'self'` ; le site reste public et
+seul `/api/git/*` se trouve derrière oauth2-proxy. Le réglage `origin` de
+slides-gitd doit être égal à l'origine du Playground. Une forge dont l'`auth`
+est `user-token` (GitLab, par exemple) exige le jeton propre de chaque
+utilisateur, enregistré sur le serveur par `POST /api/git/credential`. Le
+panneau n'offre aucun champ pour cela : l'administrateur ou l'utilisateur le fait
+en dehors de la page.
+
+Une limite : le Playground garde les brouillons et le dernier nom de dépôt dans
+le profil du navigateur (IndexedDB et localStorage), comme auparavant. Sur un
+profil de navigateur partagé, utilisez **Draft ▸ Forget my drafts** ou des
+profils séparés. En mode serveur, un dépôt mémorisé auquel l'utilisateur n'a pas
+accès est abandonné.
 
 ## Vérifier {#check-it}
 
