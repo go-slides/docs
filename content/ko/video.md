@@ -5,10 +5,6 @@ description: "프레젠테이션 속 비디오: HTML 페이지에서는 브라�
 tags: [video]
 ---
 
-{{< callout type="warning" >}}
-비디오는 아직 어떤 릴리스에도 포함되어 있지 않습니다.
-{{< /callout >}}
-
 비디오는 파일이 `.mp4`, `.m4v` 또는 `.webm`으로 끝나는 이미지입니다:
 
 ```markdown

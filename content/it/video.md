@@ -5,10 +5,6 @@ description: "Un video in una presentazione: riprodotto dal browser nella pagina
 tags: [video]
 ---
 
-{{< callout type="warning" >}}
-Il video non è ancora in nessuna versione.
-{{< /callout >}}
-
 Un video è un'immagine il cui file termina con `.mp4`, `.m4v` o `.webm`:
 
 ```markdown

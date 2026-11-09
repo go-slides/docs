@@ -5,10 +5,6 @@ description: "A video in a deck: played by the browser in the HTML page, a poste
 tags: [video]
 ---
 
-{{< callout type="warning" >}}
-Video is in no release yet.
-{{< /callout >}}
-
 A video is an image whose file ends in `.mp4`, `.m4v` or `.webm`:
 
 ```markdown
