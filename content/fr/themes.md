@@ -1,16 +1,17 @@
 ---
 title: "Paquets de thème"
 weight: 42
-description: "Un thème en un seul fichier : une archive .slidestheme avec un theme.hcl, son CSS, ses polices, ses ressources et ses kinds, vérifiée comme une entrée non fiable."
+description: "Un thème en un seul fichier : une archive .gsta.xz avec un theme.hcl, son CSS, ses polices, ses ressources et ses kinds, vérifiée comme une entrée non fiable."
 tags: [themes, hcl]
 ---
 
-Un **paquet de thème** est un seul fichier, `<name>.slidestheme` : une archive
-ZIP (deflate) avec `theme.hcl` à sa racine et les fichiers qu'il déclare. Il
-porte le CSS d'un thème, ses polices, ses logos et ses arrière-plans et, si on
-le souhaite, des *kinds* de diapositives, avec un nom, une version et une
-licence, de sorte qu'un thème puisse circuler et être installé. Les paquets de
-thème existent après la v0.17.1.
+Un **paquet de thème** est un seul fichier, `<name>.gsta.xz` (Go-Slides Theme
+Archive) : une archive tar (ustar ou pax) compressée avec xz, avec `theme.hcl`
+à sa racine et les fichiers qu'il déclare. Il porte le CSS d'un thème, ses
+polices, ses logos et ses arrière-plans et, si on le souhaite, des *kinds* de
+diapositives, avec un nom, une version et une licence, de sorte qu'un thème
+puisse circuler et être installé. Les paquets de thème existent après la
+v0.17.1.
 
 ## Le fichier theme.hcl {#the-themehcl-file}
 
@@ -24,7 +25,7 @@ theme {
   license     = "MIT"                   # SPDX expression
   homepage    = "https://go-slides.github.io"
   extends     = "default"               # the base theme, built in or installed
-  min_slides  = "0.17.0"                # oldest go-slides it works with
+  min_slides  = "0.18.0"                # oldest go-slides it works with
 }
 
 css "theme.css" {}                      # in order; sha256 = "…" is optional
@@ -63,7 +64,7 @@ contenir des fichiers `LICENSE`, `NOTICE` et `README` ; tout autre fichier que
 ## Empaqueter, installer et utiliser {#packing-installing-and-using}
 
 ```
-slides theme pack dir       write dir/theme.hcl and its files as <name>.slidestheme
+slides theme pack dir       write dir/theme.hcl and its files as <name>.gsta.xz
 slides theme verify file    run every check on a package
 slides theme install file   check it, then install it for the current user
 slides theme list           the installed packages
@@ -81,13 +82,13 @@ theme: acme
 ```
 
 trouve un paquet installé, après les thèmes intégrés et `--theme-set`.
-`--theme acme.slidestheme` et `--theme-set acme.slidestheme` utilisent
+`--theme acme.gsta.xz` et `--theme-set acme.gsta.xz` utilisent
 directement un fichier, sans l'installer ; voir [Ligne de commande]({{< relref "cli" >}}).
 
-Les *kinds* d'un paquet s'appliquent avec `--theme file.slidestheme`, ou avec
-`--theme name` pour un paquet installé. Une présentation qui nomme seulement le
-thème dans son front matter en obtient l'apparence, pas les *kinds*, et peut les
-nommer avec `--kinds`.
+Les *kinds* d'un paquet s'appliquent avec `--theme file.gsta.xz`, avec
+`--theme name` pour un paquet installé, ou avec `theme: name` dans le front
+matter d'une présentation ; les *kinds* propres à la présentation l'emportent
+sur eux.
 
 ## Un paquet est une entrée non fiable {#a-package-is-untrusted-input}
 
@@ -97,15 +98,19 @@ refuse avec une erreur qui porte un code (`theme.archive`, `theme.limit`,
 `theme.meta`, `theme.css`, `theme.svg`, `theme.font`, `theme.checksum`,
 `theme.version`) :
 
-- **Archive.** Ni `..`, ni chemin absolu, ni lettre de lecteur, ni barre
-  oblique inverse dans un nom ; ni lien symbolique ni fichier spécial ; pas de
-  nom en double (comparé sans tenir compte de la casse) ; pas de chiffrement et
-  pas d'autre méthode que stored et deflate. Les tailles sont celles qui sont
-  lues, pas celles que l'archive déclare.
+- **Archive.** Un seul flux xz, dont le dictionnaire est borné et dont la
+  fenêtre grandit avec les données. Dans le tar : ni `..`, ni chemin absolu, ni
+  lettre de lecteur, ni barre oblique inverse dans un nom ; seulement des
+  fichiers ordinaires et des répertoires (ni lien symbolique ou physique, ni
+  périphérique, ni FIFO) ; pas de nom en double (comparé sans tenir compte de la
+  casse) ; seulement des en-têtes ustar et pax (ni extension GNU, ni fichier
+  creux), un en-tête pax d'au plus 8 Kio. Les tailles sont celles qui sont
+  lues, pas celles qu'un en-tête déclare.
 - **Bornes.** Au plus 16 Mio d'archive, 256 entrées, 8 Mio par entrée, 24 Mio
-  décompressés, un taux de compression de 100 pour 1 pour une entrée de 64 Kio
-  ou plus, `theme.hcl` d'au plus 64 Kio et de 32 niveaux d'imbrication, 1 Mio de
-  CSS par fichier, 4 Mio par police ou par image.
+  décompressés, un dictionnaire xz de 16 Mio, un flux décompressé d'au plus 100
+  fois la taille de l'archive (de 64 Kio ou plus), `theme.hcl` d'au plus 64 Kio
+  et de 32 niveaux d'imbrication, 1 Mio de CSS par fichier, 4 Mio par police ou
+  par image.
 - **CSS.** Pas de `@import`, pas de `@import-theme` (utilisez `extends`), pas
   de `image-set()`, de `src()` ni d'autre fonction qui charge une ressource,
   pas d'échappement par barre oblique inverse hors d'une chaîne, pas de
