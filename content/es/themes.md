@@ -88,6 +88,14 @@ Los kinds de un paquete se aplican con `--theme file.gsta.xz`, con
 matter de una presentación; los kinds propios de la presentación prevalecen
 sobre ellos.
 
+El `extends` de un paquete nombra su tema base, que se busca en este orden:
+integrado (o indicado con `--theme-set`), luego instalado, y después un
+`<base>.gsta.xz` vecino en el mismo directorio que el archivo del paquete, de
+modo que una familia de temas (una base, varios hijos pequeños) pueda probarse
+directamente desde sus archivos. El error nombra los tres lugares buscados. Una
+cadena de paquetes tiene como máximo 8 eslabones, y un ciclo se rechaza
+(`theme.meta`).
+
 ## Un paquete es una entrada no fiable {#a-package-is-untrusted-input}
 
 Un paquete de tema puede venir de cualquier parte, así que cada lector (`pack`,
