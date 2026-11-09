@@ -1,0 +1,368 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.19/ru/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.19/ru/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>Пакеты тем</title><link>https://go-slides.github.io/docs/0.19/ru/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.19/ru/themes/</guid><description>
+&lt;p&gt;&lt;strong&gt;Пакет темы&lt;/strong&gt; — это один файл, &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt; (Go-Slides Theme Archive):
+tar-архив (ustar или pax), сжатый xz, с файлом &lt;code&gt;theme.hcl&lt;/code&gt; в корне и файлами, которые тот объявляет. Он несёт CSS
+темы, шрифты, логотипы и фоны и, если нужно, типы слайдов (kinds), а также имя,
+версию и лицензию, чтобы тему можно было передавать и устанавливать. Пакеты тем
+есть в v0.18.0 и позже.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;The theme.hcl file&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+&lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # semantic version
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Example theme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; authors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;go-slides contributors&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;font&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Roboto Mono&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;400&lt;/span&gt;&lt;span class="c1"&gt; # or &amp;#34;100 900&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;normal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;fonts/RobotoMono-Regular.ttf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;OFL-1.1&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # required for a font
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;asset &amp;#34;logo&amp;#34; { file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;assets/logo.svg&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme-title&amp;#34;&lt;/span&gt; {&lt;span class="c1"&gt; # optional slide kinds
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lead&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; использует родной синтаксис HCL только с литеральными значениями:
+никаких функций, переменных, &lt;code&gt;file()&lt;/code&gt; и &lt;code&gt;env()&lt;/code&gt;. Имя состоит из строчных букв,
+цифр и дефисов и не может быть &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;gaia&lt;/code&gt; или &lt;code&gt;uncover&lt;/code&gt;. &lt;code&gt;extends&lt;/code&gt;
+называет базовую тему; каждый блок &lt;code&gt;css&lt;/code&gt; добавляет таблицу стилей по порядку;
+каждый блок &lt;code&gt;font&lt;/code&gt; и &lt;code&gt;asset&lt;/code&gt; называет файл пакета; каждый блок &lt;code&gt;kind&lt;/code&gt; — это
+&lt;a href="https://go-slides.github.io/docs/0.19/ru/kinds/"&gt;kind&lt;/a&gt;. &lt;code&gt;sha256&lt;/code&gt; в блоке &lt;code&gt;css&lt;/code&gt;, &lt;code&gt;font&lt;/code&gt; или &lt;code&gt;asset&lt;/code&gt;
+проверяется при чтении пакета.&lt;/p&gt;
+&lt;p&gt;CSS ссылается на шрифты и ресурсы по их пути в пакете, относительно файла CSS:
+&lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. При загрузке пакета каждая такая ссылка
+становится URL &lt;code&gt;data:&lt;/code&gt;, чтобы страница была самодостаточной, а блок &lt;code&gt;font&lt;/code&gt;
+становится &lt;code&gt;@font-face&lt;/code&gt;. Пакет может также нести файлы &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt;
+и &lt;code&gt;README&lt;/code&gt;; любой другой файл, который &lt;code&gt;theme.hcl&lt;/code&gt; не объявляет, отклоняется.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packing, installing and using&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+slides theme verify file run every check on a package
+slides theme install file check it, then install it for the current user
+slides theme list the installed packages
+slides theme remove name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Установленные пакеты лежат в &lt;code&gt;go-slides/themes&lt;/code&gt; в каталоге конфигурации
+пользователя (&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
+&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; или &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). В презентации:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;находит установленный пакет, после встроенных тем и &lt;code&gt;--theme-set&lt;/code&gt;.
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; и &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; используют файл
+напрямую, без установки; см. &lt;a href="https://go-slides.github.io/docs/0.19/ru/cli/"&gt;Командная строка&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Kinds пакета применяются с &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, с &lt;code&gt;--theme name&lt;/code&gt;
+для установленного пакета или с &lt;code&gt;theme: name&lt;/code&gt; в front matter презентации;
+собственные kinds презентации имеют над ними приоритет.&lt;/p&gt;
+&lt;p&gt;Поле &lt;code&gt;extends&lt;/code&gt; пакета называет его базовую тему, которая ищется в таком порядке: встроенная (или заданная через &lt;code&gt;--theme-set&lt;/code&gt;), затем установленная, затем соседний &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; в том же каталоге, что и файл пакета, так что семейство тем (одну базу и несколько небольших потомков) можно попробовать прямо из его файлов. Ошибка называет три места поиска. Цепочка пакетов содержит не более 8 звеньев, а цикл отвергается (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;A package is untrusted input&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Пакет темы может прийти откуда угодно, поэтому каждый читатель (&lt;code&gt;pack&lt;/code&gt;,
+&lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, сборка) проверяет его одинаково и отклоняет
+с ошибкой, у которой есть код (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;, &lt;code&gt;theme.meta&lt;/code&gt;,
+&lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;, &lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Архив.&lt;/strong&gt; Один поток xz, словарь которого ограничен, а окно растёт вместе
+с данными. В tar: никаких &lt;code&gt;..&lt;/code&gt;, абсолютного пути, буквы диска или обратной
+косой черты в имени; только обычные файлы и каталоги (никаких символических
+или жёстких ссылок, устройств и FIFO); никаких повторяющихся имён (сравнение
+без учёта регистра); только заголовки ustar и pax (никаких расширений GNU,
+никаких разреженных файлов), заголовок pax не более 8 КиБ. Размеры — те, что
+прочитаны, а не те, что заявляет заголовок.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Границы.&lt;/strong&gt; Не более 16 МиБ архива, 256 записей, 8 МиБ на запись, 24 МиБ
+после распаковки, словарь xz 16 МиБ, распакованный поток не более чем в 100
+раз больше архива (от 64 КиБ), &lt;code&gt;theme.hcl&lt;/code&gt; не более 64 КиБ и 32 уровней
+вложенности скобок, 1 МиБ CSS на файл, 4 МиБ на шрифт или изображение.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Никаких &lt;code&gt;@import&lt;/code&gt;, никаких &lt;code&gt;@import-theme&lt;/code&gt; (используйте &lt;code&gt;extends&lt;/code&gt;),
+никаких &lt;code&gt;image-set()&lt;/code&gt;, &lt;code&gt;src()&lt;/code&gt; и других функций, загружающих ресурс, никаких
+экранирований обратной косой чертой вне строки, никаких &lt;code&gt;&amp;lt;/style&lt;/code&gt;. &lt;code&gt;url()&lt;/code&gt; —
+это &lt;code&gt;#fragment&lt;/code&gt;, изображение или шрифт &lt;code&gt;data:&lt;/code&gt; либо объявленный файл пакета,
+но никогда не тот, что выходит за его пределы.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; Никаких &lt;code&gt;script&lt;/code&gt;, &lt;code&gt;foreignObject&lt;/code&gt;, фреймов, embed, &lt;code&gt;set&lt;/code&gt;, DOCTYPE
+и обработчиков событий; &lt;code&gt;href&lt;/code&gt; — это &lt;code&gt;#fragment&lt;/code&gt;; никаких &lt;code&gt;url()&lt;/code&gt;, выходящих
+за пределы файла.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Шрифты и изображения&lt;/strong&gt; разбираются: шрифт должен быть шрифтом, изображение
+должно соответствовать своему расширению, и у каждого есть предел размера.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Каталог &lt;code&gt;testdata/themes/acme&lt;/code&gt; в репозитории — небольшой пример.&lt;/p&gt;</description></item><item><title>HCL</title><link>https://go-slides.github.io/docs/0.19/ru/hcl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.19/ru/hcl/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;HCL появился в v0.3.0 (&lt;a href="https://github.com/go-slides/slides/pull/13" target="_blank" rel="noopener"&gt;go-slides/slides#13&lt;/a&gt;).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Везде, где &lt;code&gt;slides&lt;/code&gt; читает YAML, он читает и собственный синтаксис
+&lt;a href="https://github.com/hashicorp/hcl/blob/main/hclsyntax/spec.md" target="_blank" rel="noopener"&gt;HCL2&lt;/a&gt; — ради
+его выражений и функций.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Где&lt;/th&gt;
+&lt;th&gt;YAML&lt;/th&gt;
+&lt;th&gt;HCL&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;front matter&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;---&lt;/code&gt; … &lt;code&gt;---&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;---hcl&lt;/code&gt; … &lt;code&gt;---&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;конфигурация&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides.hcl&lt;/code&gt;, ищется первым&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;файлы kinds&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--kinds kinds.yaml&lt;/code&gt;, &lt;code&gt;kinds: kinds.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;любой файл с именем &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;файлы данных&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--data data.yaml&lt;/code&gt; или &lt;code&gt;.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;любой файл с именем &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Комментарии-директивы (&lt;code&gt;&amp;lt;!-- class: invert --&amp;gt;&lt;/code&gt;) остаются в YAML, как в Marp, а
+тело презентации остаётся &lt;a href="https://go-slides.github.io/docs/0.19/ru/templates/"&gt;шаблоном Go&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-front-matter-in-hcl"&gt;Front matter на HCL&lt;span class="hx:absolute hx:-mt-20" id="a-front-matter-in-hcl"&gt;&lt;/span&gt;
+&lt;a href="#a-front-matter-in-hcl" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;---&lt;/span&gt;&lt;span class="k"&gt;hcl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;theme&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;gaia&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Quarterly review&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; quarter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%s — Q%d&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;company&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;quarter&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${upper(data.company)} · ${page()}/${total()}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;formatdate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;D MMMM YYYY&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;now&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;chapter&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;section&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;lead&amp;#34;, &amp;#34;invert&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;---&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;#&lt;/span&gt; {{ &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;title&lt;/span&gt; }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Атрибуты&lt;/strong&gt; — это ключи YAML под теми же именами: директивы Marp
+(&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt;…),
+метаданные (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt;…), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (пути к
+файлам) и &lt;code&gt;data&lt;/code&gt; — объект.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Блоки &lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt; определяют &lt;a href="https://go-slides.github.io/docs/0.19/ru/kinds/"&gt;kinds (типы слайдов)&lt;/a&gt;
+с локальными директивами и &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Значения&lt;/strong&gt; попадают в директивы в тех строковых формах, которые им даёт
+YAML, — &lt;code&gt;true&lt;/code&gt; становится &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, список классов остаётся списком, — так что
+директива ведёт себя одинаково, каким бы синтаксисом она ни была задана.
+&lt;code&gt;null&lt;/code&gt; оставляет директиву незаданной.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt; сохраняет типы: в шаблонах целое число — это &lt;code&gt;int&lt;/code&gt;, остальные
+числа — &lt;code&gt;float64&lt;/code&gt;, а списки и объекты остаются списками и отображениями, так
+что &lt;code&gt;{{ add .quarter 1 }}&lt;/code&gt; работает.&lt;/li&gt;
+&lt;li&gt;Значение HCL окончательное: шаблоны Go не запускаются над ним второй раз.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="variables"&gt;Переменные&lt;span class="hx:absolute hx:-mt-20" id="variables"&gt;&lt;/span&gt;
+&lt;a href="#variables" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt; — это данные шаблона: собственный &lt;code&gt;data&lt;/code&gt; из front matter, поверх
+которого накладываются данные из &lt;code&gt;slides.hcl&lt;/code&gt;, из файлов &lt;code&gt;--data&lt;/code&gt; и из &lt;code&gt;--set&lt;/code&gt;.
+&lt;code&gt;&amp;quot;${data.company}&amp;quot;&lt;/code&gt; работает везде, где работал бы &lt;code&gt;{{ .company }}&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Атрибуты front matter могут ссылаться на &lt;code&gt;data.*&lt;/code&gt;, но &lt;strong&gt;не друг на друга&lt;/strong&gt;:
+&lt;code&gt;footer = title&lt;/code&gt; — ошибка. Точечные директивы (&lt;code&gt;_class&lt;/code&gt;…) не являются
+идентификаторами HCL; пишите их в комментарии.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="functions"&gt;Функции&lt;span class="hx:absolute hx:-mt-20" id="functions"&gt;&lt;/span&gt;
+&lt;a href="#functions" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;page()&lt;/code&gt;, &lt;code&gt;total()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;номер страницы и номер последней страницы, как &lt;code&gt;{{ page }}&lt;/code&gt; и &lt;code&gt;{{ total }}&lt;/code&gt;: колонтитул нумеруется&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;now()&lt;/code&gt;, &lt;code&gt;timestamp()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;время в формате RFC 3339, местное и UTC; &lt;code&gt;formatdate&lt;/code&gt; форматирует его&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;env(name)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;переменная окружения, &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;, если не задана&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;file(path)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;текстовый файл UTF-8 размером не более 1 МиБ, путь отсчитывается от презентации или файла конфигурации&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;числа&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;abs ceil floor log max min parseint pow signum&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;строки&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chomp format formatlist join lower regex regexall regexreplace replace split strlen strrev substr title trim trimprefix trimspace trimsuffix upper&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;коллекции&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chunklist coalesce coalescelist compact concat contains distinct element flatten keys length lookup merge range reverse slice sort values zipmap&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;кодировки&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;csvdecode jsondecode jsonencode&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;даты&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;formatdate timeadd&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Все строки, кроме первых четырёх, — стандартная библиотека
+&lt;a href="https://github.com/zclconf/go-cty" target="_blank" rel="noopener"&gt;go-cty&lt;/a&gt;. Ни одна не обращается к сети.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slideshcl"&gt;slides.hcl&lt;span class="hx:absolute hx:-mt-20" id="slideshcl"&gt;&lt;/span&gt;
+&lt;a href="#slideshcl" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;kinds&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;kinds.hcl&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # or a list of files
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;themes/acme.css&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt; { company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt; }&lt;span class="c1"&gt; # or file paths
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;lang&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;en&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;quote&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;blank&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${data.company}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Неизвестный атрибут — это ошибка, а не молчаливое отсутствие действия. Файл
+kinds содержит блоки &lt;code&gt;kind&lt;/code&gt;; остальные его атрибуты игнорируются, поэтому
+&lt;code&gt;slides.hcl&lt;/code&gt; может служить и таким файлом. Атрибуты файла данных — это ключи
+данных:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# data.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2026&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;motto&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;trimspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;motto.txt&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="errors"&gt;Ошибки&lt;span class="hx:absolute hx:-mt-20" id="errors"&gt;&lt;/span&gt;
+&lt;a href="#errors" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ошибки — это диагностика HCL с указанием места в самом файле презентации:
+&lt;code&gt;footer = data.compnay&lt;/code&gt; в четвёртой строке презентации даёт&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;deck.md:4:14: Unsupported attribute: This object does not have an attribute named &amp;#34;compnay&amp;#34;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="marp-and-slides-expand"&gt;Marp и &lt;code&gt;slides expand&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="marp-and-slides-expand"&gt;&lt;/span&gt;
+&lt;a href="#marp-and-slides-expand" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp тоже читает &lt;code&gt;---hcl&lt;/code&gt; как начало front matter — его правило front matter
+открывается на любой первой строке, начинающейся с трёх дефисов, — и, раз блок
+не является отображением YAML, не применяет из него ничего: презентация всё
+равно отрисовывается в Marp, но без своих директив. Тест сверяет это с
+собственным выводом Marp Core.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slides expand&lt;/code&gt; записывает front matter обратно в YAML, так что развёрнутая
+презентация — это обычный Marp, и отрисовывается она так же, как &lt;code&gt;slides&lt;/code&gt;
+отрисовывает оригинал:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;gaia&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Quarterly review&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;header&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ACME — Q3&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;footer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ACME · 1/2&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;19 October 2026&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Скопировать код"
+aria-label="Скопировать код"
+data-copied-label="Скопировано!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="licences"&gt;Лицензии&lt;span class="hx:absolute hx:-mt-20" id="licences"&gt;&lt;/span&gt;
+&lt;a href="#licences" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Поддержка HCL подключает &lt;a href="https://github.com/hashicorp/hcl" target="_blank" rel="noopener"&gt;hashicorp/hcl&lt;/a&gt;
+(MPL-2.0, используется без изменений как библиотека) и
+&lt;a href="https://github.com/zclconf/go-cty" target="_blank" rel="noopener"&gt;zclconf/go-cty&lt;/a&gt; (MIT).&lt;/p&gt;</description></item></channel></rss>

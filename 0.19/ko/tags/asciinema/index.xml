@@ -1,0 +1,35 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Asciinema</title><link>https://go-slides.github.io/docs/0.19/ko/tags/asciinema/</link><description>Recent content in Asciinema on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.19/ko/tags/asciinema/index.xml" rel="self" type="application/rss+xml"/><item><title>터미널 녹화</title><link>https://go-slides.github.io/docs/0.19/ko/recordings/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.19/ko/recordings/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;터미널 녹화는 v0.18.0 이후 버전에서 제공됩니다.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://docs.asciinema.org/" target="_blank" rel="noopener"&gt;asciinema&lt;/a&gt; 녹화(&lt;a href="https://docs.asciinema.org/manual/asciicast/v2/" target="_blank" rel="noopener"&gt;asciicast v2&lt;/a&gt; 또는 &lt;a href="https://docs.asciinema.org/manual/asciicast/v3/" target="_blank" rel="noopener"&gt;v3&lt;/a&gt;)는 파일이 &lt;code&gt;.cast&lt;/code&gt;로 끝나는 이미지입니다.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;cast&lt;/span&gt;](&lt;span class="na"&gt;demo.cast&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;![&lt;span class="nt"&gt;The failing build&lt;/span&gt;](&lt;span class="na"&gt;demo.cast#t=12.5&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="코드 복사"
+aria-label="코드 복사"
+data-copied-label="복사됨!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="syntax"&gt;구문&lt;span class="hx:absolute hx:-mt-20" id="syntax"&gt;&lt;/span&gt;
+&lt;a href="#syntax" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파일은 프레젠테이션 폴더에서 읽습니다. URL, 절대 경로, 폴더 밖으로 나가는 경로는 거부됩니다. 대체 텍스트는 화면 낭독기를 위해 녹화의 이름을 붙입니다. &lt;code&gt;cast&lt;/code&gt;만 쓰면 녹화 자체의 제목을 뜻합니다. &lt;code&gt;#t=12.5&lt;/code&gt;(분과 초로는 &lt;code&gt;#t=1:23&lt;/code&gt;)는 움직일 수 없는 출력이 보여 줄 순간을 고릅니다. 생략하면 녹화의 끝입니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="outputs"&gt;출력별로 보이는 것&lt;span class="hx:absolute hx:-mt-20" id="outputs"&gt;&lt;/span&gt;
+&lt;a href="#outputs" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HTML&lt;/strong&gt;(페이지와 playground 미리 보기): 녹화는 페이지에 내장된 go-slides의 작은 플레이어에서 재생됩니다. 재생과 일시 정지, 속도 버튼, 위치 막대가 있습니다. 어디서도 스크립트를 불러오지 않으며 네트워크를 쓰지 않습니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF, PowerPoint, OpenDocument&lt;/strong&gt;(&lt;code&gt;--pdf&lt;/code&gt;, &lt;code&gt;--pptx&lt;/code&gt;, &lt;code&gt;--odp&lt;/code&gt;): &lt;code&gt;#t=&lt;/code&gt;가 가리키는 순간의 터미널을 테마의 고정폭 글꼴로 된 벡터 텍스트로 그립니다. 16색, 256색, 직접 색, 굵게, 기울임, 밑줄, 반전 텍스트를 지원합니다. 텍스트는 선택하고 검색할 수 있으며 결코 그림이 아닙니다. 굵게와 기울임은 테마의 고정폭 글꼴에 있을 때 그려집니다(gaia 테마의 Roboto Mono).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="player"&gt;플레이어&lt;span class="hx:absolute hx:-mt-20" id="player"&gt;&lt;/span&gt;
+&lt;a href="#player" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;녹화가 처음 화면에 나타날 때 한 번 재생합니다. 브라우저가 움직임 줄이기를 요청하면(&lt;code&gt;prefers-reduced-motion&lt;/code&gt;) 일시 정지 상태로 시작해 &lt;code&gt;#t=&lt;/code&gt;가 가리키는 순간을 보여 주고, 재생을 누르면 재생합니다. 플레이어의 버튼과 키는 슬라이드를 넘기지 않습니다.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="limits"&gt;제한&lt;span class="hx:absolute hx:-mt-20" id="limits"&gt;&lt;/span&gt;
+&lt;a href="#limits" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;녹화는 신뢰할 수 없는 입력이므로 제한이 있습니다. 파일(16 MiB), 이벤트(500,000개), 길이(3시간), 터미널(400×200 셀), 에뮬레이터가 할 수 있는 작업량입니다. 제한을 넘거나 올바른 asciicast 파일이 아닌 녹화는 거부됩니다. 빌드는 계속되고, 슬라이드에는 그 자리에 안내가 표시되며, 문제는 코드가 붙은 경고가 됩니다: &lt;code&gt;cast.syntax&lt;/code&gt;, &lt;code&gt;cast.limit&lt;/code&gt;, &lt;code&gt;cast.version&lt;/code&gt;, &lt;code&gt;cast.path&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="playground"&gt;playground에서&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
+&lt;a href="#playground" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;파일 패널에서 끌어 놓거나 파일 선택기로 프로젝트에 &lt;code&gt;.cast&lt;/code&gt; 파일을 추가합니다. 파일은 &lt;code&gt;media/&lt;/code&gt;에 들어가고 이미지로 삽입됩니다. 프레젠테이션이 읽는 텍스트이므로 프로젝트의 다른 텍스트 파일과 함께 계산되며, 그 한도는 2 MiB입니다. &lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt;에서 사용해 보세요.&lt;/p&gt;</description></item></channel></rss>

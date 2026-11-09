@@ -1,0 +1,376 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Hcl</title><link>https://go-slides.github.io/docs/0.19/de/tags/hcl/</link><description>Recent content in Hcl on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.19/de/tags/hcl/index.xml" rel="self" type="application/rss+xml"/><item><title>Theme-Pakete</title><link>https://go-slides.github.io/docs/0.19/de/themes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.19/de/themes/</guid><description>
+&lt;p&gt;Ein &lt;strong&gt;Theme-Paket&lt;/strong&gt; ist eine einzige Datei, &lt;code&gt;&amp;lt;name&amp;gt;.gsta.xz&lt;/code&gt; (Go-Slides Theme
+Archive): ein mit xz komprimiertes tar-Archiv (ustar oder pax) mit &lt;code&gt;theme.hcl&lt;/code&gt;
+im Wurzelverzeichnis und den Dateien, die es deklariert. Es enthält das CSS
+eines Themes, Schriften, Logos und Hintergründe und, wenn gewünscht,
+Folien-Kinds, mit einem Namen, einer Version und einer Lizenz, sodass ein Theme
+weitergegeben und installiert werden kann. Theme-Pakete gibt es ab v0.18.0.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="the-themehcl-file"&gt;Die Datei theme.hcl&lt;span class="hx:absolute hx:-mt-20" id="the-themehcl-file"&gt;&lt;/span&gt;
+&lt;a href="#the-themehcl-file" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# theme.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;theme&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # semantic version
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Example theme&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; authors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;go-slides contributors&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # SPDX expression
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; homepage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;https://go-slides.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # the base theme, built in or installed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; min_slides&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;0.18.0&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # oldest go-slides it works with
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;css &amp;#34;theme.css&amp;#34; {} # in order; sha256&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;…&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;optional&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;font&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Roboto Mono&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; weight&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;400&lt;/span&gt;&lt;span class="c1"&gt; # or &amp;#34;100 900&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;normal&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;fonts/RobotoMono-Regular.ttf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; license&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;OFL-1.1&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # required for a font
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;asset &amp;#34;logo&amp;#34; { file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;assets/logo.svg&amp;#34;&lt;/span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;acme-title&amp;#34;&lt;/span&gt; {&lt;span class="c1"&gt; # optional slide kinds
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;lead&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;theme.hcl&lt;/code&gt; verwendet die native Syntax von HCL, nur mit Literalwerten: keine
+Funktion, keine Variable, kein &lt;code&gt;file()&lt;/code&gt; und kein &lt;code&gt;env()&lt;/code&gt;. Ein Name besteht aus
+Kleinbuchstaben, Ziffern und Bindestrichen und ist weder &lt;code&gt;default&lt;/code&gt; noch &lt;code&gt;gaia&lt;/code&gt;
+noch &lt;code&gt;uncover&lt;/code&gt;. &lt;code&gt;extends&lt;/code&gt; nennt das Basis-Theme; jeder &lt;code&gt;css&lt;/code&gt;-Block fügt der
+Reihe nach ein Stylesheet hinzu; jeder &lt;code&gt;font&lt;/code&gt;- und &lt;code&gt;asset&lt;/code&gt;-Block nennt eine
+Datei des Pakets; jeder &lt;code&gt;kind&lt;/code&gt;-Block ist ein &lt;a href="https://go-slides.github.io/docs/0.19/de/kinds/"&gt;Kind&lt;/a&gt;.
+Ein &lt;code&gt;sha256&lt;/code&gt; an einem &lt;code&gt;css&lt;/code&gt;-, &lt;code&gt;font&lt;/code&gt;- oder &lt;code&gt;asset&lt;/code&gt;-Block wird beim Lesen des
+Pakets geprüft.&lt;/p&gt;
+&lt;p&gt;Das CSS verweist auf Schriften und Ressourcen über ihren Pfad im Paket,
+relativ zur CSS-Datei: &lt;code&gt;background: url(assets/logo.svg)&lt;/code&gt;. Beim Laden des
+Pakets wird jeder solche Verweis zu einer &lt;code&gt;data:&lt;/code&gt;-URL, sodass die Seite in sich
+geschlossen ist, und ein &lt;code&gt;font&lt;/code&gt;-Block wird zu einer &lt;code&gt;@font-face&lt;/code&gt;. Ein Paket
+kann außerdem die Dateien &lt;code&gt;LICENSE&lt;/code&gt;, &lt;code&gt;NOTICE&lt;/code&gt; und &lt;code&gt;README&lt;/code&gt; enthalten; jede
+andere Datei, die &lt;code&gt;theme.hcl&lt;/code&gt; nicht deklariert, wird abgelehnt.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="packing-installing-and-using"&gt;Packen, installieren und verwenden&lt;span class="hx:absolute hx:-mt-20" id="packing-installing-and-using"&gt;&lt;/span&gt;
+&lt;a href="#packing-installing-and-using" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;slides theme pack dir write dir/theme.hcl and its files as &amp;lt;name&amp;gt;.gsta.xz
+slides theme verify file run every check on a package
+slides theme install file check it, then install it for the current user
+slides theme list the installed packages
+slides theme remove name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Installierte Pakete liegen in &lt;code&gt;go-slides/themes&lt;/code&gt; im Konfigurationsverzeichnis
+des Benutzers (&lt;code&gt;os.UserConfigDir()&lt;/code&gt;: &lt;code&gt;~/Library/Application Support&lt;/code&gt;,
+&lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt; oder &lt;code&gt;~/.config&lt;/code&gt;, &lt;code&gt;%AppData%&lt;/code&gt;). In einem Foliensatz:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;theme: acme
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;findet ein installiertes Paket, nach den eingebauten Themes und &lt;code&gt;--theme-set&lt;/code&gt;.
+&lt;code&gt;--theme acme.gsta.xz&lt;/code&gt; und &lt;code&gt;--theme-set acme.gsta.xz&lt;/code&gt; verwenden eine
+Datei direkt, ohne sie zu installieren; siehe &lt;a href="https://go-slides.github.io/docs/0.19/de/cli/"&gt;Befehlszeile&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Die Kinds eines Pakets gelten mit &lt;code&gt;--theme file.gsta.xz&lt;/code&gt;, mit &lt;code&gt;--theme name&lt;/code&gt;
+für ein installiertes Paket oder mit &lt;code&gt;theme: name&lt;/code&gt; im Front Matter eines
+Foliensatzes; die eigenen Kinds des Foliensatzes haben Vorrang.&lt;/p&gt;
+&lt;p&gt;Das &lt;code&gt;extends&lt;/code&gt; eines Pakets benennt sein Basis-Theme, das in dieser Reihenfolge
+gesucht wird: eingebaut (oder mit &lt;code&gt;--theme-set&lt;/code&gt; angegeben), dann installiert,
+dann ein danebenliegendes &lt;code&gt;&amp;lt;base&amp;gt;.gsta.xz&lt;/code&gt; im selben Verzeichnis wie die
+Paketdatei, sodass eine Familie von Themes (eine Basis, mehrere kleine Kinder)
+direkt aus ihren Dateien ausprobiert werden kann. Der Fehler nennt die drei
+durchsuchten Orte. Eine Kette von Paketen ist höchstens 8 lang, und ein Zyklus
+wird abgelehnt (&lt;code&gt;theme.meta&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-package-is-untrusted-input"&gt;Ein Paket ist eine nicht vertrauenswürdige Eingabe&lt;span class="hx:absolute hx:-mt-20" id="a-package-is-untrusted-input"&gt;&lt;/span&gt;
+&lt;a href="#a-package-is-untrusted-input" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Ein Theme-Paket kann von überall stammen; deshalb prüft jeder Leser (&lt;code&gt;pack&lt;/code&gt;,
+&lt;code&gt;verify&lt;/code&gt;, &lt;code&gt;install&lt;/code&gt;, &lt;code&gt;--theme&lt;/code&gt;, ein Build) es auf dieselbe Weise und lehnt es
+mit einem Fehler ab, der einen Code trägt (&lt;code&gt;theme.archive&lt;/code&gt;, &lt;code&gt;theme.limit&lt;/code&gt;,
+&lt;code&gt;theme.meta&lt;/code&gt;, &lt;code&gt;theme.css&lt;/code&gt;, &lt;code&gt;theme.svg&lt;/code&gt;, &lt;code&gt;theme.font&lt;/code&gt;, &lt;code&gt;theme.checksum&lt;/code&gt;,
+&lt;code&gt;theme.version&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Archiv.&lt;/strong&gt; Ein xz-Stream, dessen Wörterbuch begrenzt ist und dessen Fenster
+mit den Daten wächst. Im tar: kein &lt;code&gt;..&lt;/code&gt;, kein absoluter Pfad, kein
+Laufwerksbuchstabe und kein Backslash in einem Namen; nur reguläre Dateien und
+Verzeichnisse (kein symbolischer oder harter Link, kein Gerät, keine FIFO);
+kein doppelter Name (ohne Beachtung der Groß- und Kleinschreibung verglichen);
+nur ustar- und pax-Header (keine GNU-Erweiterung, keine Sparse-Datei), ein
+pax-Header von höchstens 8 KiB. Größen sind das, was gelesen wird, nicht das,
+was ein Header angibt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grenzen.&lt;/strong&gt; Höchstens 16 MiB Archiv, 256 Einträge, 8 MiB je Eintrag, 24 MiB
+entpackt, ein xz-Wörterbuch von 16 MiB, ein entpackter Stream von höchstens
+dem 100-Fachen der Archivgröße (ab 64 KiB), &lt;code&gt;theme.hcl&lt;/code&gt; höchstens 64 KiB und
+32 Klammern tief, 1 MiB CSS je Datei, 4 MiB je Schrift oder Bild.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS.&lt;/strong&gt; Kein &lt;code&gt;@import&lt;/code&gt;, kein &lt;code&gt;@import-theme&lt;/code&gt; (verwenden Sie &lt;code&gt;extends&lt;/code&gt;), kein
+&lt;code&gt;image-set()&lt;/code&gt;, &lt;code&gt;src()&lt;/code&gt; oder eine andere Funktion, die eine Ressource lädt,
+keine Backslash-Escape-Sequenz außerhalb eines Strings, kein &lt;code&gt;&amp;lt;/style&lt;/code&gt;. Ein
+&lt;code&gt;url()&lt;/code&gt; ist ein &lt;code&gt;#fragment&lt;/code&gt;, ein Bild oder eine Schrift mit &lt;code&gt;data:&lt;/code&gt; oder
+eine deklarierte Datei des Pakets, nie eine Adresse, die das Paket verlässt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG.&lt;/strong&gt; Kein &lt;code&gt;script&lt;/code&gt;, kein &lt;code&gt;foreignObject&lt;/code&gt;, kein Frame, kein embed, kein
+&lt;code&gt;set&lt;/code&gt;, kein DOCTYPE und kein Event-Handler; ein &lt;code&gt;href&lt;/code&gt; ist ein &lt;code&gt;#fragment&lt;/code&gt;;
+kein &lt;code&gt;url()&lt;/code&gt;, das die Datei verlässt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Schriften und Bilder&lt;/strong&gt; werden geparst: Eine Schrift muss eine Schrift sein,
+ein Bild muss zu seiner Dateiendung passen, und für beide gilt eine
+Größengrenze.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Das Verzeichnis &lt;code&gt;testdata/themes/acme&lt;/code&gt; des Repositorys ist ein kleines Beispiel.&lt;/p&gt;</description></item><item><title>HCL</title><link>https://go-slides.github.io/docs/0.19/de/hcl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.19/de/hcl/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-amber-200 hx:bg-amber-100 hx:text-amber-900 hx:dark:border-amber-200/30 hx:dark:bg-amber-900/30 hx:dark:text-amber-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;HCL gibt es ab v0.3.0 (&lt;a href="https://github.com/go-slides/slides/pull/13" target="_blank" rel="noopener"&gt;go-slides/slides#13&lt;/a&gt;).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Überall, wo &lt;code&gt;slides&lt;/code&gt; YAML liest, liest es auch die native Syntax von
+&lt;a href="https://github.com/hashicorp/hcl/blob/main/hclsyntax/spec.md" target="_blank" rel="noopener"&gt;HCL2&lt;/a&gt; – wegen
+ihrer Ausdrücke und Funktionen.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Wo&lt;/th&gt;
+&lt;th&gt;YAML&lt;/th&gt;
+&lt;th&gt;HCL&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Front-Matter&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;---&lt;/code&gt; … &lt;code&gt;---&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;---hcl&lt;/code&gt; … &lt;code&gt;---&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Konfiguration&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;slides.hcl&lt;/code&gt;, wird zuerst gesucht&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kinds-Dateien&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--kinds kinds.yaml&lt;/code&gt;, &lt;code&gt;kinds: kinds.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;jede Datei namens &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Datendateien&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;--data data.yaml&lt;/code&gt; oder &lt;code&gt;.json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;jede Datei namens &lt;code&gt;*.hcl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Direktivenkommentare (&lt;code&gt;&amp;lt;!-- class: invert --&amp;gt;&lt;/code&gt;) bleiben wie in Marp YAML, und der
+Rumpf des Foliensatzes bleibt eine &lt;a href="https://go-slides.github.io/docs/0.19/de/templates/"&gt;Go-Vorlage&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="a-front-matter-in-hcl"&gt;Ein Front-Matter in HCL&lt;span class="hx:absolute hx:-mt-20" id="a-front-matter-in-hcl"&gt;&lt;/span&gt;
+&lt;a href="#a-front-matter-in-hcl" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;---&lt;/span&gt;&lt;span class="k"&gt;hcl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;theme&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;gaia&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;paginate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Quarterly review&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; quarter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;%s — Q%d&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;company&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;quarter&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${upper(data.company)} · ${page()}/${total()}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;formatdate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;D MMMM YYYY&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;now&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;chapter&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;section&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;lead&amp;#34;, &amp;#34;invert&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;---&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="err"&gt;#&lt;/span&gt; {{ &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;title&lt;/span&gt; }}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Attribute&lt;/strong&gt; sind die YAML-Schlüssel unter denselben Namen: die Direktiven von Marp
+(&lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;footer&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;, &lt;code&gt;backgroundColor&lt;/code&gt; …),
+die Metadaten (&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;author&lt;/code&gt; …), &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;delims&lt;/code&gt;, &lt;code&gt;kinds&lt;/code&gt; (Dateipfade)
+und &lt;code&gt;data&lt;/code&gt;, ein Objekt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;kind &amp;quot;&amp;lt;name&amp;gt;&amp;quot; { … }&lt;/code&gt;&lt;/strong&gt;-Blöcke definieren &lt;a href="https://go-slides.github.io/docs/0.19/de/kinds/"&gt;Kinds (die Art einer Folie)&lt;/a&gt;
+mit den lokalen Direktiven und &lt;code&gt;extends&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Werte&lt;/strong&gt; erreichen die Direktiven in den Zeichenkettenformen, die YAML ihnen gibt –
+&lt;code&gt;true&lt;/code&gt; wird zu &lt;code&gt;&amp;quot;true&amp;quot;&lt;/code&gt;, eine Liste von Klassen bleibt eine Liste –, sodass sich eine Direktive
+gleich verhält, welche Syntax sie auch gesetzt hat. &lt;code&gt;null&lt;/code&gt; lässt eine Direktive ungesetzt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;data&lt;/code&gt;&lt;/strong&gt; behält seine Typen: In Vorlagen ist eine ganze Zahl ein &lt;code&gt;int&lt;/code&gt;,
+andere Zahlen sind &lt;code&gt;float64&lt;/code&gt;, und Listen und Objekte bleiben Listen und Maps, sodass
+&lt;code&gt;{{ add .quarter 1 }}&lt;/code&gt; funktioniert.&lt;/li&gt;
+&lt;li&gt;Ein HCL-Wert ist endgültig: Go-Vorlagen laufen kein zweites Mal darüber.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 data-hextra-search-id="variables"&gt;Variablen&lt;span class="hx:absolute hx:-mt-20" id="variables"&gt;&lt;/span&gt;
+&lt;a href="#variables" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;data&lt;/code&gt; sind die Vorlagendaten: das &lt;code&gt;data&lt;/code&gt; des Front-Matters, überlagert von dem
+aus &lt;code&gt;slides.hcl&lt;/code&gt;, von &lt;code&gt;--data&lt;/code&gt;-Dateien und von &lt;code&gt;--set&lt;/code&gt;. &lt;code&gt;&amp;quot;${data.company}&amp;quot;&lt;/code&gt; funktioniert
+überall dort, wo auch &lt;code&gt;{{ .company }}&lt;/code&gt; funktionieren würde.&lt;/p&gt;
+&lt;p&gt;Attribute des Front-Matters dürfen auf &lt;code&gt;data.*&lt;/code&gt; verweisen, aber &lt;strong&gt;nicht aufeinander&lt;/strong&gt;:
+&lt;code&gt;footer = title&lt;/code&gt; ist ein Fehler. Spot-Direktiven (&lt;code&gt;_class&lt;/code&gt; …) sind keine HCL-
+Bezeichner; schreiben Sie sie in einen Kommentar.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="functions"&gt;Funktionen&lt;span class="hx:absolute hx:-mt-20" id="functions"&gt;&lt;/span&gt;
+&lt;a href="#functions" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;page()&lt;/code&gt;, &lt;code&gt;total()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;die Seitennummer und die Nummer der letzten Seite, wie &lt;code&gt;{{ page }}&lt;/code&gt; und &lt;code&gt;{{ total }}&lt;/code&gt;: eine Fußzeile paginiert&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;now()&lt;/code&gt;, &lt;code&gt;timestamp()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;die Zeit, RFC 3339, lokal und UTC; &lt;code&gt;formatdate&lt;/code&gt; formatiert sie&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;env(name)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;eine Umgebungsvariable, &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; wenn nicht gesetzt&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;file(path)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;eine UTF-8-Textdatei von höchstens 1 MiB, relativ zum Foliensatz oder zur Konfigurationsdatei&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zahlen&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;abs ceil floor log max min parseint pow signum&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zeichenketten&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chomp format formatlist join lower regex regexall regexreplace replace split strlen strrev substr title trim trimprefix trimspace trimsuffix upper&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Collections&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;chunklist coalesce coalescelist compact concat contains distinct element flatten keys length lookup merge range reverse slice sort values zipmap&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kodierungen&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;csvdecode jsondecode jsonencode&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Datumsangaben&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;formatdate timeadd&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Alle Zeilen außer den ersten vier stammen aus der Standardbibliothek von
+&lt;a href="https://github.com/zclconf/go-cty" target="_blank" rel="noopener"&gt;go-cty&lt;/a&gt;. Keine davon greift auf das Netzwerk zu.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="slideshcl"&gt;slides.hcl&lt;span class="hx:absolute hx:-mt-20" id="slideshcl"&gt;&lt;/span&gt;
+&lt;a href="#slideshcl" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;kinds&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;kinds.hcl&amp;#34;&lt;/span&gt;&lt;span class="c1"&gt; # or a list of files
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;themes/acme.css&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt; { company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt; }&lt;span class="c1"&gt; # or file paths
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;lang&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;en&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;kind&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;quote&amp;#34;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; extends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;blank&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt; footer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;${data.company}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Ein unbekanntes Attribut ist ein Fehler, kein stilles Nichts. Eine Kinds-Datei enthält
+&lt;code&gt;kind&lt;/code&gt;-Blöcke; ihre übrigen Attribute werden ignoriert, sodass &lt;code&gt;slides.hcl&lt;/code&gt; als
+solche dienen kann. Die Attribute einer Datendatei sind die Schlüssel der Daten:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-hcl" data-lang="hcl"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# data.hcl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;company&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ACME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2026&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;motto&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;trimspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;motto.txt&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="errors"&gt;Fehler&lt;span class="hx:absolute hx:-mt-20" id="errors"&gt;&lt;/span&gt;
+&lt;a href="#errors" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Fehler sind die Diagnosen von HCL, an der Position in der Foliensatz-Datei selbst:
+&lt;code&gt;footer = data.compnay&lt;/code&gt; in der vierten Zeile des Foliensatzes ergibt&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;deck.md:4:14: Unsupported attribute: This object does not have an attribute named &amp;#34;compnay&amp;#34;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="marp-and-slides-expand"&gt;Marp und &lt;code&gt;slides expand&lt;/code&gt;&lt;span class="hx:absolute hx:-mt-20" id="marp-and-slides-expand"&gt;&lt;/span&gt;
+&lt;a href="#marp-and-slides-expand" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Auch Marp liest &lt;code&gt;---hcl&lt;/code&gt; als Beginn eines Front-Matters – seine Front-Matter-
+Regel greift bei jeder ersten Zeile, die mit drei Strichen beginnt – und wendet davon nichts an,
+da der Block keine YAML-Map ist: Der Foliensatz wird in Marp trotzdem gerendert,
+nur ohne seine Direktiven. Ein Test legt dies gegen die eigene Ausgabe von Marp Core fest.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slides expand&lt;/code&gt; schreibt das Front-Matter als YAML zurück, sodass der expandierte Foliensatz
+reines Marp ist und so gerendert wird, wie &lt;code&gt;slides&lt;/code&gt; das Original rendert:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;gaia&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;paginate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;Quarterly review&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;header&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ACME — Q3&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;footer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;ACME · 1/2&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nt"&gt;date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;19 October 2026&amp;#34;&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Code kopieren"
+aria-label="Code kopieren"
+data-copied-label="Kopiert!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 data-hextra-search-id="licences"&gt;Lizenzen&lt;span class="hx:absolute hx:-mt-20" id="licences"&gt;&lt;/span&gt;
+&lt;a href="#licences" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Die HCL-Unterstützung bindet &lt;a href="https://github.com/hashicorp/hcl" target="_blank" rel="noopener"&gt;hashicorp/hcl&lt;/a&gt;
+(MPL-2.0, unverändert als Bibliothek verwendet) und
+&lt;a href="https://github.com/zclconf/go-cty" target="_blank" rel="noopener"&gt;zclconf/go-cty&lt;/a&gt; (MIT) ein.&lt;/p&gt;</description></item></channel></rss>
