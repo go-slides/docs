@@ -182,6 +182,55 @@ Themes, Kinds, Datendateien und Medien, die Medien im Dokument.&lt;/p&gt;
 &lt;p&gt;Bilder als Dateien (&lt;code&gt;--images&lt;/code&gt; von slides) entstehen nicht im Browser: Verwenden Sie den
 &lt;a href="https://go-slides.github.io/docs/0.20/de/cli/"&gt;Befehl&lt;/a&gt; oder die
 &lt;a href="https://go-slides.github.io/docs/0.20/de/vscode/"&gt;VS-Code-Erweiterung&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Theme-Editor&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Start ▸ Design ▸ Theme-Editor&lt;/strong&gt; öffnet einen Bereich, der eines der Themes
+des Projekts mit Reglern bearbeitet; die Vorschau folgt. Das Theme wird als
+Paketordner gehalten, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; das Stylesheet, das die Vorschau und
+die Exporte lesen, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, wird daraus kompiliert: Was Sie sehen,
+ist, was Sie exportieren. Ein Theme-Paket, das Sie importieren (&lt;strong&gt;Importieren …&lt;/strong&gt;
+im Bereich, &lt;strong&gt;Medien hinzufügen …&lt;/strong&gt; oder per Ablegen), behält dort seine
+Dateien, sodass Sie es bearbeiten können.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Palette&lt;/strong&gt;: die Farben für Hintergrund, Text, Überschriften, Akzent und
+Links. Wählen Sie eine Farbe oder tippen Sie sie ein (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;,
+&lt;code&gt;hsl()&lt;/code&gt; oder einen Namen).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typografie&lt;/strong&gt;: die Schriften für Text, Überschriften und Code mit ihren
+Größen und Stärken. Es gibt die generischen und gängigen Schriften sowie die,
+die Sie hinzufügen (&lt;strong&gt;Schrift hinzufügen …&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; oder
+&lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logo&lt;/strong&gt;: ein Bild (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), wohin es kommt (eine Ecke oder der
+ganze Hintergrund) und seine Größe. &lt;strong&gt;Seitenzahl und Fußzeile&lt;/strong&gt;: wohin die
+Seitenzahl kommt, dazu Größen und Ausrichtung.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Angaben&lt;/strong&gt;: was &lt;code&gt;theme.hcl&lt;/code&gt; sagt: Version, Beschreibung, Autoren, Lizenz,
+Webseite, das Basis-Theme (&lt;code&gt;extends&lt;/code&gt;) und die nötige go-slides-Version.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kontrast (WCAG)&lt;/strong&gt;: für jeden Text auf seinem Hintergrund das Verhältnis
+und seine Stufe, &lt;code&gt;AA&lt;/code&gt; oder &lt;code&gt;AAA&lt;/code&gt;, oder „Nicht bestanden“, live.
+Überschriften zählen als großer Text (3:1 genügt für AA; normaler Text
+braucht 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;CSS bearbeiten&lt;/strong&gt; zeigt das Stylesheet des Themes im Editor. Die Regler
+schreiben nur in einen Block, der von zwei &lt;code&gt;gsta:visual&lt;/code&gt;-Kommentaren
+eingefasst ist, und lesen ihn wieder ein, wenn Sie seine Werte von Hand ändern.
+Was Sie außerhalb des Blocks schreiben, wird nie angefasst. Fügen Sie im Block
+etwas hinzu, das die Regler nicht darstellen können, hören sie auf zu
+schreiben und der Bereich sagt es; &lt;strong&gt;Block wiederherstellen&lt;/strong&gt; schreibt ihn aus
+den enthaltenen Werten neu und sonst nichts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importieren …&lt;/strong&gt; öffnet ein &lt;code&gt;.gsta.xz&lt;/code&gt; oder ein einzelnes &lt;code&gt;.css&lt;/code&gt;. Ein Paket
+wird so geprüft, wie &lt;code&gt;slides theme verify&lt;/code&gt; es prüft, mit denselben Grenzen: Ein
+Paket, das nicht sicher ist (ein Pfad, der es verlässt, ein Link, ein Skript in
+einem SVG, eine entfernte &lt;code&gt;url()&lt;/code&gt;, eine Prüfsumme, die nicht stimmt), wird mit
+seinem &lt;code&gt;theme.*&lt;/code&gt;-Code unter Probleme abgelehnt, und nichts ändert sich. In
+einem einzelnen Stylesheet wird ein &lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; zum Basis-Theme
+(&lt;code&gt;extends&lt;/code&gt;), weil ein Paket dort seine Basis nennt. Eine Schrift, die Sie
+hinzufügen, hat die Lizenz &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;, bis Sie sie unter Angaben
+nennen.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;.gsta.xz exportieren&lt;/strong&gt; baut das Paket in Ihrem Browser und liest es so
+wieder ein, wie es &lt;code&gt;slides theme verify&lt;/code&gt; tut, sodass die Datei es besteht;
+&lt;strong&gt;CSS exportieren&lt;/strong&gt; lädt das kompilierte Stylesheet herunter. Nichts wird
+hochgeladen. Jede Änderung ist ein Schritt von &lt;strong&gt;Rückgängig&lt;/strong&gt; (Änderungen
+desselben Reglers hintereinander sind ein Schritt) und behält, was sie ersetzt,
+als Version; &lt;strong&gt;Version speichern&lt;/strong&gt; hält das Theme und seine Version unter
+seinem Namen im Versionen-Bereich fest.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Rückgängig, Wiederholen und Versionen&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; und &lt;strong&gt;Redo&lt;/strong&gt; (Rückgängig und Wiederholen) stehen im Reiter Home und
 auf Strg+Z, Strg+Umschalt+Z oder Strg+Y (Cmd auf dem Mac). Sie nehmen die

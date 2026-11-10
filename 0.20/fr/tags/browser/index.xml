@@ -182,6 +182,54 @@ ses thèmes, ses &lt;em&gt;kinds&lt;/em&gt;, ses fichiers de données et ses mé
 &lt;p&gt;Les images en tant que fichiers (&lt;code&gt;--images&lt;/code&gt; de slides) ne sont pas produites dans le navigateur : utilisez la
 &lt;a href="https://go-slides.github.io/docs/0.20/fr/cli/"&gt;commande&lt;/a&gt; ou
 l&amp;rsquo;&lt;a href="https://go-slides.github.io/docs/0.20/fr/vscode/"&gt;extension VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Éditeur de thème&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Accueil ▸ Apparence ▸ Éditeur de thème&lt;/strong&gt; ouvre un volet qui modifie l’un des
+thèmes du projet avec des réglages, et l’aperçu suit. Le thème est conservé
+sous forme de dossier de paquet, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt; ; la feuille que lisent
+l’aperçu et les exports, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, en est compilée : ce que vous
+voyez est ce que vous exportez. Un paquet de thème que vous importez
+(&lt;strong&gt;Importer…&lt;/strong&gt; dans le volet, &lt;strong&gt;Ajouter un média…&lt;/strong&gt;, ou un glisser-déposer)
+y garde ses fichiers, vous pouvez donc le modifier.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Palette&lt;/strong&gt; : les couleurs du fond, du texte, des titres, d’accent et des
+liens. Choisissez une couleur ou saisissez-la (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; ou
+un nom).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typographie&lt;/strong&gt; : les polices du texte, des titres et du code, avec leurs
+tailles et leurs graisses. Les polices sont les génériques et les usuelles,
+et celles que vous ajoutez (&lt;strong&gt;Ajouter une police…&lt;/strong&gt; : &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;,
+&lt;code&gt;.ttf&lt;/code&gt; ou &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logo&lt;/strong&gt; : une image (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), son emplacement (un coin, ou tout le
+fond) et sa taille. &lt;strong&gt;Numéro de page et pied de page&lt;/strong&gt; : où va le numéro de
+page, et les tailles et l’alignement.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Détails&lt;/strong&gt; : ce que dit &lt;code&gt;theme.hcl&lt;/code&gt; : version, description, auteurs,
+licence, page d’accueil, le thème de base (&lt;code&gt;extends&lt;/code&gt;) et la version de
+go-slides requise.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contraste (WCAG)&lt;/strong&gt; : pour chaque texte sur son fond, le rapport et son
+niveau, &lt;code&gt;AA&lt;/code&gt; ou &lt;code&gt;AAA&lt;/code&gt;, ou « Échec », en direct. Les titres comptent comme du
+grand texte (3:1 suffit pour AA ; le texte normal demande 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Modifier le CSS&lt;/strong&gt; montre la feuille du thème dans l’éditeur. Les réglages
+n’écrivent que dans un bloc délimité par deux commentaires &lt;code&gt;gsta:visual&lt;/code&gt;, et
+le relisent quand vous modifiez ses valeurs à la main. Ce que vous écrivez en
+dehors du bloc n’est jamais touché. Si vous ajoutez dans le bloc quelque chose
+que les réglages ne peuvent pas montrer, ils cessent d’écrire et le volet le
+dit ; &lt;strong&gt;Rétablir le bloc&lt;/strong&gt; le réécrit à partir des valeurs qu’il contient et
+rien d’autre.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importer…&lt;/strong&gt; ouvre un &lt;code&gt;.gsta.xz&lt;/code&gt; ou une feuille &lt;code&gt;.css&lt;/code&gt; isolée. Un paquet est
+vérifié comme le vérifie &lt;code&gt;slides theme verify&lt;/code&gt;, avec les mêmes limites : un
+paquet qui n’est pas sûr (un chemin qui en sort, un lien, un script dans un
+SVG, une &lt;code&gt;url()&lt;/code&gt; distante, une somme de contrôle qui ne correspond pas) est
+refusé avec son code &lt;code&gt;theme.*&lt;/code&gt;, dans Problèmes, et rien ne change. Dans une
+feuille isolée, un &lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; devient le thème de base (&lt;code&gt;extends&lt;/code&gt;), car
+un paquet y nomme sa base. Une police que vous ajoutez a la licence
+&lt;code&gt;LicenseRef-unspecified&lt;/code&gt; tant que vous ne la dites pas sous Détails.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Exporter .gsta.xz&lt;/strong&gt; construit le paquet dans votre navigateur et le relit
+comme le fait &lt;code&gt;slides theme verify&lt;/code&gt;, si bien que le fichier le passe ;
+&lt;strong&gt;Exporter le CSS&lt;/strong&gt; télécharge la feuille compilée. Rien n’est envoyé. Chaque
+modification est une étape d’&lt;strong&gt;Annuler&lt;/strong&gt; (les modifications d’un même réglage
+à la suite ne font qu’une étape) et garde ce qu’elle remplace comme version ;
+&lt;strong&gt;Enregistrer une version&lt;/strong&gt; conserve le thème et sa version, par son nom, dans
+le volet Versions.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Annuler, rétablir et versions&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; et &lt;strong&gt;Redo&lt;/strong&gt; (annuler et rétablir) se trouvent dans l&amp;rsquo;onglet Home et
 sur Ctrl+Z, Ctrl+Maj+Z ou Ctrl+Y (Cmd sur Mac). Ils annulent la dernière

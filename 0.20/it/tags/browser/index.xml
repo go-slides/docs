@@ -183,6 +183,50 @@ temi, kinds, file di dati e media, con i media dentro il documento.&lt;/p&gt;
 &lt;p&gt;Le immagini come file (slides &lt;code&gt;--images&lt;/code&gt;) non vengono prodotte nel browser: usa il
 &lt;a href="https://go-slides.github.io/docs/0.20/it/cli/"&gt;comando&lt;/a&gt; o l'
 &lt;a href="https://go-slides.github.io/docs/0.20/it/vscode/"&gt;estensione di VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Editor di temi&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ Aspetto ▸ Editor di temi&lt;/strong&gt; apre un pannello che modifica uno dei temi
+del progetto con dei controlli, e l’anteprima segue. Il tema è conservato come
+cartella di pacchetto, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; il foglio che leggono l’anteprima e
+le esportazioni, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, ne è compilato: ciò che vedi è ciò che
+esporti. Un pacchetto di tema che importi (&lt;strong&gt;Importa…&lt;/strong&gt; nel pannello,
+&lt;strong&gt;Aggiungi contenuto multimediale…&lt;/strong&gt; o un trascinamento) vi conserva i suoi
+file, quindi puoi modificarlo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tavolozza&lt;/strong&gt;: i colori di sfondo, testo, titoli, accento e link. Scegli un
+colore o scrivilo (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; o un nome).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tipografia&lt;/strong&gt;: i caratteri del testo, dei titoli e del codice, con
+dimensioni e spessori. I caratteri sono quelli generici e comuni, e quelli che
+aggiungi (&lt;strong&gt;Aggiungi carattere…&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; o &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logo&lt;/strong&gt;: un’immagine (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), dove va (un angolo o tutto lo sfondo)
+e la sua dimensione. &lt;strong&gt;Numero di pagina e piè di pagina&lt;/strong&gt;: dove va il numero
+di pagina, più dimensioni e allineamento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dettagli&lt;/strong&gt;: ciò che dice &lt;code&gt;theme.hcl&lt;/code&gt;: versione, descrizione, autori,
+licenza, pagina web, il tema di base (&lt;code&gt;extends&lt;/code&gt;) e la versione di go-slides
+richiesta.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contrasto (WCAG)&lt;/strong&gt;: per ogni testo sul suo sfondo, il rapporto e il suo
+livello, &lt;code&gt;AA&lt;/code&gt; o &lt;code&gt;AAA&lt;/code&gt;, o «Non conforme», in tempo reale. I titoli contano
+come testo grande (3:1 basta per AA; il testo normale richiede 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Modifica CSS&lt;/strong&gt; mostra il foglio del tema nell’editor. I controlli scrivono
+solo dentro un blocco racchiuso da due commenti &lt;code&gt;gsta:visual&lt;/code&gt;, e lo rileggono
+quando ne modifichi i valori a mano. Ciò che scrivi fuori dal blocco non viene
+mai toccato. Se aggiungi nel blocco qualcosa che i controlli non possono
+mostrare, smettono di scrivere e il pannello lo dice; &lt;strong&gt;Ripristina il blocco&lt;/strong&gt;
+lo riscrive dai valori che contiene e nient’altro.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importa…&lt;/strong&gt; apre un &lt;code&gt;.gsta.xz&lt;/code&gt; o un &lt;code&gt;.css&lt;/code&gt; isolato. Un pacchetto è verificato
+come lo verifica &lt;code&gt;slides theme verify&lt;/code&gt;, con gli stessi limiti: un pacchetto non
+sicuro (un percorso che ne esce, un collegamento, uno script in un SVG, una
+&lt;code&gt;url()&lt;/code&gt; remota, una somma di controllo che non corrisponde) è rifiutato con il
+suo codice &lt;code&gt;theme.*&lt;/code&gt;, in Problemi, e non cambia nulla. In un foglio isolato un
+&lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; diventa il tema di base (&lt;code&gt;extends&lt;/code&gt;), perché un pacchetto vi
+nomina la sua base. Un carattere che aggiungi ha la licenza
+&lt;code&gt;LicenseRef-unspecified&lt;/code&gt; finché non la indichi in Dettagli.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Esporta .gsta.xz&lt;/strong&gt; costruisce il pacchetto nel tuo browser e lo rilegge come
+fa &lt;code&gt;slides theme verify&lt;/code&gt;, così il file lo supera; &lt;strong&gt;Esporta CSS&lt;/strong&gt; scarica il
+foglio compilato. Nulla viene caricato. Ogni modifica è un passo di
+&lt;strong&gt;Annulla&lt;/strong&gt; (le modifiche di uno stesso controllo di seguito sono un passo) e
+conserva ciò che sostituisce come versione; &lt;strong&gt;Salva versione&lt;/strong&gt; conserva il tema
+e la sua versione, con il suo nome, nel pannello Versioni.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Annulla, ripristina e versioni&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; e &lt;strong&gt;Redo&lt;/strong&gt; (annulla e ripeti) si trovano nella scheda Home e su
 Ctrl+Z, Ctrl+Maiusc+Z o Ctrl+Y (Cmd su Mac). Annullano l&amp;rsquo;ultima modifica del

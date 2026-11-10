@@ -186,6 +186,50 @@ kinds, медиа), Share сообщает об этом и предлагает
 &lt;p&gt;Изображения в виде файлов (&lt;code&gt;--images&lt;/code&gt; у slides) в браузере не создаются:
 используйте &lt;a href="https://go-slides.github.io/docs/0.20/ru/cli/"&gt;команду&lt;/a&gt; или
 &lt;a href="https://go-slides.github.io/docs/0.20/ru/vscode/"&gt;расширение VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Редактор тем&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Главная ▸ Стиль ▸ Редактор тем&lt;/strong&gt; открывает панель, которая редактирует одну
+из тем проекта с помощью элементов управления, а предпросмотр следует за
+изменениями. Тема хранится как папка пакета, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; таблица,
+которую читают предпросмотр и экспорт, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, компилируется из
+неё: то, что вы видите, и есть то, что вы экспортируете. Импортированный пакет
+темы (&lt;strong&gt;Импортировать…&lt;/strong&gt; в панели, &lt;strong&gt;Добавить медиа…&lt;/strong&gt; или перетаскивание)
+сохраняет там свои файлы, так что его можно редактировать.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Палитра&lt;/strong&gt;: цвета фона, текста, заголовков, акцента и ссылок. Выберите цвет
+или введите его (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; или название).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Типографика&lt;/strong&gt;: шрифты текста, заголовков и кода с их размерами и
+насыщенностью. Шрифты — общие и распространённые, а также те, что вы добавите
+(&lt;strong&gt;Добавить шрифт…&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; или &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Логотип&lt;/strong&gt;: изображение (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), его место (угол или весь фон) и
+размер. &lt;strong&gt;Номер страницы и колонтитул&lt;/strong&gt;: где стоит номер страницы, а также
+размеры и выравнивание.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Сведения&lt;/strong&gt;: то, что говорит &lt;code&gt;theme.hcl&lt;/code&gt;: версия, описание, авторы,
+лицензия, сайт, базовая тема (&lt;code&gt;extends&lt;/code&gt;) и нужная версия go-slides.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Контраст (WCAG)&lt;/strong&gt;: для каждого текста на его фоне — коэффициент и его
+уровень, &lt;code&gt;AA&lt;/code&gt; или &lt;code&gt;AAA&lt;/code&gt;, либо «Не проходит», в реальном времени. Заголовки
+считаются крупным текстом (для AA достаточно 3:1; обычному тексту нужно 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Править CSS&lt;/strong&gt; показывает таблицу стилей темы в редакторе. Элементы
+управления пишут только внутрь блока, обрамлённого двумя комментариями
+&lt;code&gt;gsta:visual&lt;/code&gt;, и перечитывают его, когда вы правите его значения вручную. То,
+что вы пишете вне блока, не затрагивается никогда. Если вы добавите в блок то,
+что элементы управления показать не могут, они перестанут писать, и панель
+сообщит об этом; &lt;strong&gt;Восстановить блок&lt;/strong&gt; переписывает его из имеющихся в нём
+значений и больше ничего.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Импортировать…&lt;/strong&gt; открывает &lt;code&gt;.gsta.xz&lt;/code&gt; или отдельный &lt;code&gt;.css&lt;/code&gt;. Пакет
+проверяется так, как его проверяет &lt;code&gt;slides theme verify&lt;/code&gt;, с теми же
+ограничениями: небезопасный пакет (путь, выходящий за его пределы, ссылка,
+скрипт в SVG, внешний &lt;code&gt;url()&lt;/code&gt;, несовпавшая контрольная сумма) отклоняется с
+кодом &lt;code&gt;theme.*&lt;/code&gt; в «Проблемах», и ничего не меняется. В отдельной таблице стилей
+&lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; становится базовой темой (&lt;code&gt;extends&lt;/code&gt;), потому что пакет
+указывает свою основу именно там. У добавленного шрифта лицензия
+&lt;code&gt;LicenseRef-unspecified&lt;/code&gt;, пока вы не укажете её в «Сведениях».&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Экспортировать .gsta.xz&lt;/strong&gt; собирает пакет в вашем браузере и перечитывает его
+так, как это делает &lt;code&gt;slides theme verify&lt;/code&gt;, поэтому файл его проходит;
+&lt;strong&gt;Экспортировать CSS&lt;/strong&gt; скачивает скомпилированную таблицу. Ничего не
+отправляется. Каждая правка — это шаг &lt;strong&gt;Отмены&lt;/strong&gt; (подряд идущие правки одного
+элемента — один шаг), и заменённое сохраняется как версия; &lt;strong&gt;Сохранить
+версию&lt;/strong&gt; сохраняет тему и её версию под её именем в панели «Версии».&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Отмена, повтор и версии&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; и &lt;strong&gt;Redo&lt;/strong&gt; (отмена и повтор) находятся на вкладке Home, а также на
 Ctrl+Z, Ctrl+Shift+Z и Ctrl+Y (Cmd на Mac). Они отменяют последнюю правку

@@ -156,6 +156,18 @@ draft&lt;/strong&gt; 可将草稿恢复。&lt;/li&gt;
 &lt;p&gt;以文件形式输出图片（slides &lt;code&gt;--images&lt;/code&gt;）无法在浏览器中完成：请使用
 &lt;a href="https://go-slides.github.io/docs/0.20/zh/cli/"&gt;命令行工具&lt;/a&gt;或
 &lt;a href="https://go-slides.github.io/docs/0.20/zh/vscode/"&gt;VS Code 扩展&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;主题编辑器&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;开始 ▸ 外观 ▸ 主题编辑器&lt;/strong&gt;会打开一个面板，用控件编辑项目中的一个主题，预览随之更新。主题以一个主题包文件夹的形式保存，即 &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;；预览和导出读取的样式表 &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt; 就由它编译而来，所以你看到的就是你导出的。你导入的主题包（面板中的&lt;strong&gt;导入…&lt;/strong&gt;、**添加媒体…**或拖放）会把它的文件保留在那里，因此可以编辑。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;调色板&lt;/strong&gt;：背景、文字、标题、强调色和链接的颜色。选取一种颜色，或直接输入（&lt;code&gt;#1a2b3c&lt;/code&gt;、&lt;code&gt;rgb()&lt;/code&gt;、&lt;code&gt;hsl()&lt;/code&gt; 或颜色名称）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字体排印&lt;/strong&gt;：正文、标题和代码的字体，以及它们的字号和字重。可选字体是通用字体和常见字体，以及你添加的字体（&lt;strong&gt;添加字体…&lt;/strong&gt;：&lt;code&gt;.woff2&lt;/code&gt;、&lt;code&gt;.woff&lt;/code&gt;、&lt;code&gt;.ttf&lt;/code&gt; 或 &lt;code&gt;.otf&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;徽标&lt;/strong&gt;：一张图片（&lt;code&gt;.svg&lt;/code&gt;、&lt;code&gt;.png&lt;/code&gt;）、它的位置（某个角落或整个背景）和大小。&lt;strong&gt;页码和页脚&lt;/strong&gt;：页码放在哪里，以及大小和对齐方式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;详细信息&lt;/strong&gt;：&lt;code&gt;theme.hcl&lt;/code&gt; 所写的内容：版本、说明、作者、许可证、主页、基础主题（&lt;code&gt;extends&lt;/code&gt;）以及所需的 go-slides 版本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对比度（WCAG）&lt;/strong&gt;：对每一种文字与其背景，实时显示对比度及其等级，&lt;code&gt;AA&lt;/code&gt; 或 &lt;code&gt;AAA&lt;/code&gt;，或“不达标”。标题按大号文字计算（3:1 即可达到 AA；普通文字需要 4.5:1）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;编辑 CSS&lt;/strong&gt; 会在编辑器中显示主题的样式表。控件只写入由两条 &lt;code&gt;gsta:visual&lt;/code&gt; 注释围起来的代码块，并在你手动修改其中的值时重新读取。你写在代码块之外的内容永远不会被改动。如果你在代码块内加入了控件无法显示的内容，控件就会停止写入，面板会告诉你；&lt;strong&gt;恢复该代码块&lt;/strong&gt;会仅根据其中所含的值重写它，别无其他。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;导入…&lt;/strong&gt; 可打开 &lt;code&gt;.gsta.xz&lt;/code&gt; 或单独的 &lt;code&gt;.css&lt;/code&gt;。主题包的检查方式与 &lt;code&gt;slides theme verify&lt;/code&gt; 相同，限制也相同：不安全的主题包（指向包外的路径、链接、SVG 中的脚本、远程 &lt;code&gt;url()&lt;/code&gt;、不匹配的校验和）会被拒绝，并在“问题”中显示其 &lt;code&gt;theme.*&lt;/code&gt; 代码，且不会有任何改动。在单独的样式表中，&lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; 会成为基础主题（&lt;code&gt;extends&lt;/code&gt;），因为主题包在那里声明其基础。你添加的字体在你于“详细信息”中填写之前，许可证为 &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;导出 .gsta.xz&lt;/strong&gt; 在你的浏览器中构建主题包，并像 &lt;code&gt;slides theme verify&lt;/code&gt; 那样重新读取它，因此该文件能通过检查；&lt;strong&gt;导出 CSS&lt;/strong&gt; 会下载编译后的样式表。不会上传任何内容。每次编辑都是&lt;strong&gt;撤销&lt;/strong&gt;的一步（同一控件连续的编辑算作一步），并把被替换的内容保留为一个版本；&lt;strong&gt;保存版本…&lt;/strong&gt; 会以主题名称保存该主题及其版本，显示在“版本”面板中。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;撤销、重做与版本&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt;（撤销）和 &lt;strong&gt;Redo&lt;/strong&gt;（重做）位于 Home 选项卡，也可用 Ctrl+Z、Ctrl+Shift+Z 或
 Ctrl+Y（Mac 上为 Cmd）。它们先撤销当前所示文件的最后一次编辑（每个文件有自己的历史），

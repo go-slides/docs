@@ -183,6 +183,49 @@ motywy, kinds, pliki danych i media, z mediami wewnątrz dokumentu.&lt;/p&gt;
 &lt;p&gt;Obrazy jako pliki (slides &lt;code&gt;--images&lt;/code&gt;) nie powstają w przeglądarce: użyj
 &lt;a href="https://go-slides.github.io/docs/0.20/pl/cli/"&gt;polecenia&lt;/a&gt; lub
 &lt;a href="https://go-slides.github.io/docs/0.20/pl/vscode/"&gt;rozszerzenia VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Edytor motywów&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Start ▸ Wygląd ▸ Edytor motywów&lt;/strong&gt; otwiera panel, który edytuje jeden z
+motywów projektu za pomocą kontrolek, a podgląd nadąża. Motyw jest
+przechowywany jako folder pakietu, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; arkusz czytany przez
+podgląd i eksporty, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, jest z niego kompilowany: to, co
+widzisz, jest tym, co eksportujesz. Importowany pakiet motywu (&lt;strong&gt;Importuj…&lt;/strong&gt; w
+panelu, &lt;strong&gt;Dodaj multimedia…&lt;/strong&gt; lub upuszczenie pliku) zachowuje tam swoje pliki,
+więc możesz go edytować.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Paleta&lt;/strong&gt;: kolory tła, tekstu, nagłówków, akcentu i odnośników. Wybierz
+kolor albo wpisz go (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; lub nazwę).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typografia&lt;/strong&gt;: czcionki tekstu, nagłówków i kodu wraz z rozmiarami i
+grubościami. Czcionki to ogólne i popularne oraz te, które dodasz (&lt;strong&gt;Dodaj
+czcionkę…&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; lub &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logo&lt;/strong&gt;: obraz (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), jego miejsce (róg albo całe tło) i rozmiar.
+&lt;strong&gt;Numer strony i stopka&lt;/strong&gt;: gdzie jest numer strony oraz rozmiary i
+wyrównanie.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Szczegóły&lt;/strong&gt;: to, co mówi &lt;code&gt;theme.hcl&lt;/code&gt;: wersja, opis, autorzy, licencja,
+strona domowa, motyw bazowy (&lt;code&gt;extends&lt;/code&gt;) i wymagana wersja go-slides.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kontrast (WCAG)&lt;/strong&gt;: dla każdego tekstu na jego tle współczynnik i jego
+poziom, &lt;code&gt;AA&lt;/code&gt; lub &lt;code&gt;AAA&lt;/code&gt;, albo „Niezgodne”, na żywo. Nagłówki liczą się jako
+duży tekst (3:1 wystarcza dla AA; zwykły tekst wymaga 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Edytuj CSS&lt;/strong&gt; pokazuje arkusz motywu w edytorze. Kontrolki zapisują tylko w
+bloku objętym dwoma komentarzami &lt;code&gt;gsta:visual&lt;/code&gt; i odczytują go ponownie, gdy
+zmieniasz jego wartości ręcznie. Tego, co napiszesz poza blokiem, nigdy się nie
+dotyka. Jeśli dodasz w bloku coś, czego kontrolki nie potrafią pokazać,
+przestają zapisywać, a panel o tym mówi; &lt;strong&gt;Przywróć blok&lt;/strong&gt; zapisuje go na nowo
+z zawartych w nim wartości i nic więcej.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importuj…&lt;/strong&gt; otwiera plik &lt;code&gt;.gsta.xz&lt;/code&gt; albo pojedynczy &lt;code&gt;.css&lt;/code&gt;. Pakiet jest
+sprawdzany tak, jak sprawdza go &lt;code&gt;slides theme verify&lt;/code&gt;, z tymi samymi
+limitami: pakiet, który nie jest bezpieczny (ścieżka wychodząca poza niego,
+dowiązanie, skrypt w SVG, zdalny &lt;code&gt;url()&lt;/code&gt;, niezgodna suma kontrolna), jest
+odrzucany z kodem &lt;code&gt;theme.*&lt;/code&gt; w Problemach i nic się nie zmienia. W pojedynczym
+arkuszu &lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; staje się motywem bazowym (&lt;code&gt;extends&lt;/code&gt;), bo pakiet
+wskazuje tam swoją bazę. Dodana czcionka ma licencję &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;,
+dopóki nie podasz jej w Szczegółach.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Eksportuj .gsta.xz&lt;/strong&gt; buduje pakiet w przeglądarce i odczytuje go tak, jak
+robi to &lt;code&gt;slides theme verify&lt;/code&gt;, więc plik go przechodzi; &lt;strong&gt;Eksportuj CSS&lt;/strong&gt;
+pobiera skompilowany arkusz. Nic nie jest wysyłane. Każda zmiana to krok
+&lt;strong&gt;Cofnij&lt;/strong&gt; (kolejne zmiany jednej kontrolki to jeden krok) i zachowuje to, co
+zastępuje, jako wersję; &lt;strong&gt;Zapisz wersję&lt;/strong&gt; zachowuje motyw i jego wersję pod jego
+nazwą w panelu Wersje.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Cofnij, ponów i wersje&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; i &lt;strong&gt;Redo&lt;/strong&gt; (cofnij i ponów) są na karcie Home oraz pod Ctrl+Z,
 Ctrl+Shift+Z lub Ctrl+Y (Cmd na Macu). Cofają ostatnią edycję pokazanego pliku

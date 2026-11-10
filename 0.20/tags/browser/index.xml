@@ -183,6 +183,47 @@ themes, kinds, data files and media, the media inside the document.&lt;/p&gt;
 &lt;p&gt;Images as files (slides &lt;code&gt;--images&lt;/code&gt;) are not made in the browser: use the
 &lt;a href="https://go-slides.github.io/docs/0.20/cli/"&gt;command&lt;/a&gt; or the
 &lt;a href="https://go-slides.github.io/docs/0.20/vscode/"&gt;VS Code extension&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Theme editor&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ Look ▸ Theme editor&lt;/strong&gt; opens a pane that edits one of the project&amp;rsquo;s
+themes with controls, and the preview follows. The theme is kept as a package
+folder, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; the sheet the preview and the exports read,
+&lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, is compiled from it, so what you see is what you export. A
+theme package you import (&lt;strong&gt;Import…&lt;/strong&gt; in the pane, &lt;strong&gt;Add media…&lt;/strong&gt;, or a drop)
+keeps its files there, so you can edit it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Palette&lt;/strong&gt;: the background, text, heading, accent and link colours. Pick a
+colour or type it (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; or a name).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typography&lt;/strong&gt;: the body, heading and code fonts, with their sizes and
+weights. The fonts are the generic and common ones, and the fonts you add
+(&lt;strong&gt;Add font…&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; or &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logo&lt;/strong&gt;: an image (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), where it goes (a corner, or the whole
+background) and its size. &lt;strong&gt;Page number and footer&lt;/strong&gt;: where the page number
+goes, and the sizes and alignment.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Details&lt;/strong&gt;: what &lt;code&gt;theme.hcl&lt;/code&gt; says: version, description, authors, licence,
+homepage, the base theme (&lt;code&gt;extends&lt;/code&gt;) and the go-slides version it needs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contrast (WCAG)&lt;/strong&gt;: for each text on its background, the ratio and its
+level, &lt;code&gt;AA&lt;/code&gt; or &lt;code&gt;AAA&lt;/code&gt;, or &amp;ldquo;Fail&amp;rdquo;, live. Headings count as large text (3:1
+passes AA; normal text needs 4.5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Edit CSS&lt;/strong&gt; shows the theme&amp;rsquo;s sheet in the editor. The controls write only
+inside a block fenced by two &lt;code&gt;gsta:visual&lt;/code&gt; comments, and read it back when you
+edit its values by hand. What you write outside the block is never touched. If
+you add something inside the block that the controls cannot show, they stop
+writing and the pane says so; &lt;strong&gt;Restore the block&lt;/strong&gt; rewrites it from the values
+it holds and nothing else.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Import…&lt;/strong&gt; opens a &lt;code&gt;.gsta.xz&lt;/code&gt; or a loose &lt;code&gt;.css&lt;/code&gt;. A package is checked as
+&lt;code&gt;slides theme verify&lt;/code&gt; checks it, with the same limits: a package that is not
+safe (a path that leaves it, a link, a script in an SVG, a remote &lt;code&gt;url()&lt;/code&gt;, a
+checksum that does not match) is refused with its &lt;code&gt;theme.*&lt;/code&gt; code, in Problems,
+and nothing changes. In a loose sheet an &lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; becomes the base
+theme (&lt;code&gt;extends&lt;/code&gt;), because a package names its base there. A font you add has
+the licence &lt;code&gt;LicenseRef-unspecified&lt;/code&gt; until you say it under Details.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Export .gsta.xz&lt;/strong&gt; builds the package in your browser and reads it back as
+&lt;code&gt;slides theme verify&lt;/code&gt; does, so the file passes it; &lt;strong&gt;Export CSS&lt;/strong&gt; downloads the
+compiled sheet. Nothing is uploaded. Every edit is a step of &lt;strong&gt;Undo&lt;/strong&gt; (edits of
+one control in a row are one step) and keeps what it replaced as a version;
+&lt;strong&gt;Save version&lt;/strong&gt; keeps the theme and its version, by name, in the Versions
+pane.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Undo, Redo and versions&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; and &lt;strong&gt;Redo&lt;/strong&gt; are on the Home tab and on Ctrl+Z, Ctrl+Shift+Z or
 Ctrl+Y (Cmd on a Mac). They take back the last edit of the file shown (each

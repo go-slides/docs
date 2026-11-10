@@ -193,6 +193,50 @@ del documento.&lt;/p&gt;
 &lt;p&gt;Las imágenes como archivos (&lt;code&gt;--images&lt;/code&gt; de slides) no se generan en el navegador:
 use el &lt;a href="https://go-slides.github.io/docs/0.20/es/cli/"&gt;comando&lt;/a&gt; o la
 &lt;a href="https://go-slides.github.io/docs/0.20/es/vscode/"&gt;extensión de VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Editor de temas&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Inicio ▸ Aspecto ▸ Editor de temas&lt;/strong&gt; abre un panel que edita uno de los
+temas del proyecto con controles, y la vista previa lo sigue. El tema se guarda
+como una carpeta de paquete, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; la hoja que leen la vista
+previa y las exportaciones, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, se compila a partir de ella:
+lo que ve es lo que exporta. Un paquete de tema que importa (&lt;strong&gt;Importar…&lt;/strong&gt; en
+el panel, &lt;strong&gt;Añadir medios…&lt;/strong&gt; o arrastrándolo) conserva allí sus archivos, así
+que puede editarlo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Paleta&lt;/strong&gt;: los colores de fondo, texto, títulos, acento y enlaces. Elija un
+color o escríbalo (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; o un nombre).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tipografía&lt;/strong&gt;: las fuentes del texto, los títulos y el código, con sus
+tamaños y grosores. Las fuentes son las genéricas y las comunes, y las que
+añada (&lt;strong&gt;Añadir fuente…&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; o &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logotipo&lt;/strong&gt;: una imagen (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), dónde va (una esquina o todo el
+fondo) y su tamaño. &lt;strong&gt;Número de página y pie&lt;/strong&gt;: dónde va el número de página,
+y los tamaños y la alineación.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Detalles&lt;/strong&gt;: lo que dice &lt;code&gt;theme.hcl&lt;/code&gt;: versión, descripción, autores,
+licencia, página web, el tema base (&lt;code&gt;extends&lt;/code&gt;) y la versión de go-slides que
+necesita.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contraste (WCAG)&lt;/strong&gt;: para cada texto sobre su fondo, la razón y su nivel,
+&lt;code&gt;AA&lt;/code&gt; o &lt;code&gt;AAA&lt;/code&gt;, o «No cumple», en vivo. Los títulos cuentan como texto grande
+(3:1 basta para AA; el texto normal necesita 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Editar CSS&lt;/strong&gt; muestra la hoja del tema en el editor. Los controles solo
+escriben dentro de un bloque delimitado por dos comentarios &lt;code&gt;gsta:visual&lt;/code&gt;, y lo
+vuelven a leer cuando edita sus valores a mano. Lo que escribe fuera del bloque
+nunca se toca. Si añade dentro del bloque algo que los controles no pueden
+mostrar, dejan de escribir y el panel lo dice; &lt;strong&gt;Restaurar el bloque&lt;/strong&gt; lo
+reescribe a partir de los valores que contiene y nada más.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importar…&lt;/strong&gt; abre un &lt;code&gt;.gsta.xz&lt;/code&gt; o un &lt;code&gt;.css&lt;/code&gt; suelto. Un paquete se comprueba
+como lo comprueba &lt;code&gt;slides theme verify&lt;/code&gt;, con los mismos límites: un paquete que
+no es seguro (una ruta que sale de él, un enlace, un script en un SVG, una
+&lt;code&gt;url()&lt;/code&gt; remota, una suma de comprobación que no coincide) se rechaza con su
+código &lt;code&gt;theme.*&lt;/code&gt;, en Problemas, y no cambia nada. En una hoja suelta, un
+&lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; pasa a ser el tema base (&lt;code&gt;extends&lt;/code&gt;), porque un paquete nombra
+allí su base. Una fuente que añade tiene la licencia &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;
+hasta que la indique en Detalles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Exportar .gsta.xz&lt;/strong&gt; construye el paquete en su navegador y lo vuelve a leer
+como lo hace &lt;code&gt;slides theme verify&lt;/code&gt;, de modo que el archivo lo supera;
+&lt;strong&gt;Exportar CSS&lt;/strong&gt; descarga la hoja compilada. No se sube nada. Cada edición es
+un paso de &lt;strong&gt;Deshacer&lt;/strong&gt; (las ediciones de un mismo control seguidas son un
+paso) y conserva lo que sustituye como versión; &lt;strong&gt;Guardar versión&lt;/strong&gt; guarda el
+tema y su versión, con su nombre, en el panel Versiones.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Deshacer, rehacer y versiones&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
 &lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; y &lt;strong&gt;Redo&lt;/strong&gt; (deshacer y rehacer) están en la pestaña Home y en
 Ctrl+Z, Ctrl+Mayús+Z o Ctrl+Y (Cmd en un Mac). Deshacen la última edición del
