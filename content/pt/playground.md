@@ -242,17 +242,20 @@ um pull request. Preencha:
 
 - **Repositório (dono/nome)**;
 - **Branch (vazio: o padrão)**;
-- **Pasta (vazia: a raiz)**: a pasta deve conter um `deck.md`;
-- **Token**, mascarado;
-- **Lembrar neste dispositivo**.
+- **Pasta (vazia: a raiz)**: a pasta deve conter um `deck.md`.
+
+Acima desses campos o painel mostra o **quadro git**: um pequeno painel em que
+você escolhe a forja, digita o **token** (mascarado), marca **Lembrar neste
+dispositivo** e clica em **Conectar** (ou **Entrar com o GitLab**) ou
+**Desconectar**. O quadro é uma página de outro site,
+`go-slides-usercontent.github.io`, incorporada ao playground: **a página do
+playground nunca vê o seu token**.
 
 O token é um token de acesso pessoal de granularidade fina
 ([criar um](https://github.com/settings/personal-access-tokens/new)), limitado
 aos repositórios escolhidos, com as permissões Contents de leitura e escrita e
 Pull requests de leitura e escrita (Metadata de leitura está implícito). Depois:
 
-- **Conectar** verifica o token e o repositório; **Desconectar** esquece o
-  token.
 - **Carregar** substitui o projeto pela pasta do GitHub. Undo desfaz, e o
   projeto como estava fica guardado como versão «Do GitHub».
 - **Propor mudanças…** pede um título, cria um novo branch
@@ -262,32 +265,44 @@ Pull requests de leitura e escrita (Metadata de leitura está implícito). Depoi
 - **Procurar mudanças** compara a versão mais recente no GitHub com a sua na
   vista Compare. **Ficar com as deles** a carrega.
 
-Nenhum proxy é usado para o GitHub: o playground fala diretamente com ele.
+Nenhum proxy é usado para o GitHub: o quadro fala diretamente com ele.
 
-O token fica apenas na memória da aba e é enviado somente a `api.github.com`: a
-Content Security Policy da página não permite nenhum outro host. Ele nunca é
+O token é digitado no quadro e permanece no site dele. A página do playground
+não consegue lê-lo (o quadro é outra origem, com armazenamento próprio),
+nenhum comando que a página possa enviar o devolve, e a Content Security Policy
+da página não lhe permite nenhuma conexão com o GitHub nem com o GitLab. O
+quadro envia o token somente a `api.github.com` (ou `gitlab.com`). Ele nunca é
 salvo no rascunho, nas versões, nos links de compartilhamento nem nas
 exportações, e nunca chega à pré-visualização dos slides nem ao worker de
-renderização. **Lembrar neste dispositivo** o guarda no localStorage deste
-navegador até **Desconectar** (ou Forget my drafts). Resta um risco: um script
-injetado na própria página do playground poderia lê-lo. Prefira um token
-limitado aos repositórios de que você precisa. Para equipes, o modo servidor
-auto-hospedado (em breve) mantém os tokens no servidor.
+renderização. **Lembrar neste dispositivo** o guarda no localStorage próprio do
+quadro, em `go-slides-usercontent.github.io`, e não no armazenamento do
+playground, até **Desconectar** (ou Forget my drafts).
+
+**Se você usou uma versão anterior:** um token que ela guardava no próprio
+armazenamento da página do playground é removido na primeira vez que você abre
+esta versão, e o painel avisa. Digite-o de novo no quadro (e marque Lembrar se
+quiser que ele seja mantido).
+
+Resta um risco: um script injetado na página do playground ainda poderia enviar
+os comandos do quadro (ler a pasta carregada, propor um branch e um pull
+request) como você, mas não consegue ler o token. Prefira um token limitado aos
+repositórios de que você precisa. Para equipes, o modo servidor auto-hospedado
+(em breve) mantém os tokens no servidor.
 
 ### GitLab.com {#gitlab}
 
 O painel tem uma lista de forjas: **GitHub** e **GitLab.com**. Para o GitLab,
 informe um token de acesso pessoal com o escopo `api`, ou clique em **Entrar com
-o GitLab** (código de autorização OAuth com PKCE, sem segredo). O login leva a
-página ao gitlab.com e a traz de volta, e o endereço é limpo na hora. Seus
-tokens ficam só na memória desta aba (nunca lembrados no dispositivo, mesmo com
-**Lembrar neste dispositivo**), se renovam sozinhos antes de expirar, e
-**Desconectar** os revoga no GitLab. Um login iniciado em outra aba, ou um link
-reutilizado, é recusado. O login fica disponível quando o aplicativo GitLab do
+o GitLab** (código de autorização OAuth com PKCE, sem segredo). O login abre uma
+pequena janela do site do quadro e volta a ele; a página do playground em que
+você trabalha não é abandonada. Seus tokens ficam só na memória do quadro
+(nunca lembrados no dispositivo, mesmo com **Lembrar neste dispositivo**), se
+renovam sozinhos antes de expirar, e **Desconectar** os revoga no GitLab. Um
+login não iniciado pelo quadro, ou um link reutilizado, é recusado. O login fica disponível quando o aplicativo GitLab do
 site estiver registrado; até lá, use um token de acesso pessoal.
 
-As requisições vão só para `api.github.com` e `gitlab.com`: a Content Security
-Policy da página não permite nenhum outro host, e a página não envia referrer.
+As requisições vão só para `api.github.com` e `gitlab.com`, e só a partir do
+quadro: a página do playground não faz nenhuma e não envia referrer.
 
 Por que `api`? A
 [tabela de escopos](https://docs.gitlab.com/security/tokens/access_token_scopes/)

@@ -248,17 +248,20 @@ como una pull request. Rellene:
 
 - **Repositorio (propietario/nombre)**;
 - **Rama (vacía: la predeterminada)**;
-- **Carpeta (vacía: la raíz)**: la carpeta debe contener un `deck.md`;
-- **Token**, enmascarado;
-- **Recordar en este dispositivo**.
+- **Carpeta (vacía: la raíz)**: la carpeta debe contener un `deck.md`.
+
+Encima de estos campos el panel muestra el **marco git**: un pequeño panel en el
+que elige la forja, escribe el **token** (enmascarado), marca **Recordar en este
+dispositivo** y pulsa **Conectar** (o **Iniciar sesión con GitLab**) o
+**Desconectar**. El marco es una página de otro sitio,
+`go-slides-usercontent.github.io`, incrustada en el playground: **la página del
+playground nunca ve su token**.
 
 El token es un token de acceso personal de grano fino
 ([crear uno](https://github.com/settings/personal-access-tokens/new)), limitado
 a los repositorios elegidos, con los permisos Contents de lectura y escritura y
 Pull requests de lectura y escritura (Metadata de lectura va implícito). Después:
 
-- **Conectar** comprueba el token y el repositorio; **Desconectar** olvida el
-  token.
 - **Cargar** sustituye el proyecto por la carpeta de GitHub. Undo lo deshace, y
   el proyecto tal como estaba se conserva como versión «Desde GitHub».
 - **Proponer cambios…** pide un título, crea una rama nueva
@@ -268,34 +271,45 @@ Pull requests de lectura y escritura (Metadata de lectura va implícito). Despu�
 - **Buscar cambios** compara la versión más reciente de GitHub con la suya en
   la vista Compare. **Tomar los suyos** la carga.
 
-No se usa ningún proxy para GitHub: el playground habla directamente con él.
+No se usa ningún proxy para GitHub: el marco habla directamente con él.
 
-El token queda solo en la memoria de la pestaña y se envía únicamente a
-`api.github.com`: la Content Security Policy de la página no permite ningún
-otro host. Nunca se guarda en el borrador, las versiones, los enlaces para
-compartir ni las exportaciones, y nunca llega a la vista previa de las
-diapositivas ni al worker de renderizado. **Recordar en este dispositivo** lo
-guarda en el localStorage de este navegador hasta **Desconectar** (o Forget my
-drafts). Queda un riesgo: un script inyectado en la propia página del
-playground podría leerlo. Prefiera un token limitado a los repositorios que
-necesite. Para equipos, el modo servidor autoalojado (próximamente) mantiene
-los tokens en el servidor.
+El token se escribe en el marco y permanece en su sitio. La página del
+playground no puede leerlo (el marco es otro origen, con almacenamiento
+propio), ningún comando que la página pueda enviar lo devuelve, y la Content
+Security Policy de la página no le permite ninguna conexión a GitHub ni a
+GitLab. El marco envía el token solo a `api.github.com` (o `gitlab.com`). Nunca
+se guarda en el borrador, las versiones, los enlaces para compartir ni las
+exportaciones, y nunca llega a la vista previa de las diapositivas ni al worker
+de renderizado. **Recordar en este dispositivo** lo guarda en el localStorage
+propio del marco, en `go-slides-usercontent.github.io`, no en el almacenamiento
+del playground, hasta **Desconectar** (o Forget my drafts).
+
+**Si usó una versión anterior:** un token que esta guardaba en el propio
+almacenamiento de la página del playground se elimina la primera vez que abre
+esta versión, y el panel se lo indica. Vuelva a escribirlo en el marco (y marque
+Recordar si quiere conservarlo).
+
+Queda un riesgo: un script inyectado en la página del playground aún podría
+enviar los comandos del marco (leer la carpeta cargada, proponer una rama y una
+pull request) como usted, pero no puede leer el token. Prefiera un token
+limitado a los repositorios que necesite. Para equipos, el modo servidor
+autoalojado (próximamente) mantiene los tokens en el servidor.
 
 ### GitLab.com {#gitlab}
 
 El panel tiene una lista de forjas: **GitHub** y **GitLab.com**. Para GitLab,
 indique un token de acceso personal con el alcance `api`, o pulse **Iniciar
 sesión con GitLab** (código de autorización OAuth con PKCE, sin secreto). El
-inicio de sesión lleva la página a gitlab.com y la devuelve, y la dirección se
-limpia de inmediato. Sus tokens quedan solo en la memoria de esta pestaña (nunca
-se recuerdan en el dispositivo, ni siquiera con **Recordar en este
-dispositivo**), se renuevan solos antes de caducar, y **Desconectar** los revoca
-en GitLab. Un inicio de sesión empezado en otra pestaña, o un enlace reutilizado,
-se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
+inicio de sesión abre una pequeña ventana del sitio del marco y vuelve a él; la
+página del playground en la que trabaja no se abandona. Sus tokens quedan solo
+en la memoria del marco (nunca se recuerdan en el dispositivo, ni siquiera con
+**Recordar en este dispositivo**), se renuevan solos antes de caducar, y
+**Desconectar** los revoca en GitLab. Un inicio de sesión no iniciado por el
+marco, o un enlace reutilizado, se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
 del sitio está registrada; mientras tanto, use un token de acceso personal.
 
-Las peticiones van solo a `api.github.com` y `gitlab.com`: la Content Security
-Policy de la página no permite ningún otro host, y la página no envía referrer.
+Las peticiones van solo a `api.github.com` y `gitlab.com`, y solo desde el
+marco: la página del playground no hace ninguna y no envía referrer.
 
 ¿Por qué `api`? La
 [tabla de alcances](https://docs.gitlab.com/security/tokens/access_token_scopes/)

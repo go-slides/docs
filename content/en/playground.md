@@ -232,17 +232,19 @@ GitHub repository and proposes your changes back as a pull request. Fill in:
 
 - **Repository (owner/name)**;
 - **Branch (empty: the default)**;
-- **Folder (empty: the root)**: the folder must hold a `deck.md`;
-- **Token**, masked;
-- **Remember on this device**.
+- **Folder (empty: the root)**: the folder must hold a `deck.md`.
+
+Above these fields the pane shows the **git frame**: a small panel in which you
+choose the forge, type the **token** (masked), tick **Remember on this device**,
+and press **Connect** (or **Sign in with GitLab**) or **Disconnect**. The frame
+is a page of another site, `go-slides-usercontent.github.io`, embedded in the
+playground: **the playground page never sees your token**.
 
 The token is a fine-grained personal access token
 ([create one](https://github.com/settings/personal-access-tokens/new)) limited
 to the repositories you choose, with the permissions Contents read/write and
 Pull requests read/write (Metadata read is implied). Then:
 
-- **Connect** checks the token and the repository; **Disconnect** forgets the
-  token.
 - **Load** replaces the project with the folder from GitHub. Undo takes it
   back, and the project as it was is kept as a version "From GitHub".
 - **Propose changes…** asks for a title, creates a new branch named
@@ -252,31 +254,43 @@ Pull requests read/write (Metadata read is implied). Then:
 - **Check for changes** compares the newer version on GitHub with yours in the
   Compare view. **Take theirs** loads it.
 
-No proxy is used for GitHub: the playground talks to it directly.
+No proxy is used for GitHub: the frame talks to it directly.
 
-The token stays in the tab's memory only and is sent only to `api.github.com`:
-the page's Content Security Policy allows no other host. It is never saved in
-the draft, the versions, the share links or the exports, and it never reaches
-the slides' preview or the render worker. **Remember on this device** stores it
-in this browser's localStorage until you press **Disconnect** (or Forget my
-drafts). One risk remains: a script injected into the playground page itself
-could read it. Prefer a token limited to the repositories you need. For teams,
-the self-hosted server mode (coming) keeps tokens on the server.
+The token is typed in the frame and stays on its site. The playground page
+cannot read it (the frame is another origin, with storage of its own), no
+command the page can send returns it, and the page's Content Security Policy
+allows it no connection to GitHub or GitLab at all. The frame sends the token
+only to `api.github.com` (or `gitlab.com`). It is never saved in the draft, the
+versions, the share links or the exports, and it never reaches the slides'
+preview or the render worker. **Remember on this device** stores it in the
+frame's own localStorage, on `go-slides-usercontent.github.io`, not in the
+playground's storage, until you press **Disconnect** (or Forget my drafts).
+
+**If you used an earlier version:** a token it kept in the playground page's own
+storage is removed the first time you open this version, and the pane tells you.
+Type it again in the frame (and tick Remember if you want it kept).
+
+One risk remains: a script injected into the playground page could still send
+the frame's commands (read the loaded folder, propose a branch and a pull
+request) as you, but it cannot read the token. Prefer a token limited to the
+repositories you need. For teams, the self-hosted server mode (coming) keeps
+tokens on the server.
 
 ### GitLab.com {#gitlab}
 
 The pane has a forge list: **GitHub** and **GitLab.com**. For GitLab, give
 either a personal access token with the scope `api`, or press **Sign in with
-GitLab** (OAuth authorization code with PKCE, no secret). Sign-in takes the
-page to gitlab.com and back, and the address is cleaned at once. Its tokens
-stay in this tab's memory only (never remembered on the device, even with
-**Remember on this device**), refresh themselves before they expire, and
-**Disconnect** revokes them at GitLab. A sign-in started in another tab, or a
-reused link, is refused. Sign-in is available once the site's GitLab
-application is registered; until then, use a personal access token.
+GitLab** (OAuth authorization code with PKCE, no secret). Sign-in opens a small
+window of the frame's site and returns to it; the playground page you are
+working in is not navigated away. Its tokens stay in the frame's memory only
+(never remembered on the device, even with **Remember on this device**), refresh
+themselves before they expire, and **Disconnect** revokes them at GitLab. A
+sign-in not started by the frame, or a reused link, is refused. Sign-in is
+available once the site's GitLab application is registered; until then, use a
+personal access token.
 
-Requests go only to `api.github.com` and `gitlab.com`: the page's Content
-Security Policy allows no other host, and the page sends no referrer.
+Requests go only to `api.github.com` and `gitlab.com`, and only from the frame:
+the playground page makes none, and sends no referrer.
 
 Why `api`? GitLab's
 [scope table](https://docs.gitlab.com/security/tokens/access_token_scopes/)

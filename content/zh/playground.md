@@ -170,14 +170,15 @@ Ctrl+Y（Mac 上为 Cmd）。它们先撤销当前所示文件的最后一次编
 
 - **仓库（所有者/名称）**；
 - **分支（留空：默认分支）**；
-- **文件夹（留空：根目录）**：文件夹中必须有 `deck.md`；
-- **令牌**，已遮蔽；
-- **在此设备上记住**。
+- **文件夹（留空：根目录）**：文件夹中必须有 `deck.md`。
+
+这些字段上方，窗格显示 **git 框架**：一个小面板，你在其中选择 forge，输入 **令牌**（已遮蔽），
+勾选 **在此设备上记住**，然后点击 **连接**（或 **用 GitLab 登录**）或 **断开**。该框架是另一个站点
+`go-slides-usercontent.github.io` 的页面，嵌入在 playground 中：**playground 页面永远看不到你的令牌**。
 
 令牌是细粒度个人访问令牌（[创建一个](https://github.com/settings/personal-access-tokens/new)），
 仅限所选仓库，权限为 Contents 读写和 Pull requests 读写（Metadata 只读为隐含）。然后：
 
-- **连接** 检查令牌和仓库；**断开** 忘记令牌。
 - **载入** 用 GitHub 上的文件夹替换项目。Undo 可以撤回，原来的项目会保存为
   “来自 GitHub” 版本。
 - **提出修改…** 询问标题，创建新分支 `slides/<标题>-<日期时间>` 并打开拉取请求。
@@ -185,26 +186,32 @@ Ctrl+Y（Mac 上为 Cmd）。它们先撤销当前所示文件的最后一次编
 - **检查变化** 在 Compare 视图中比较 GitHub 上较新的版本与你的版本。
   **采用对方的** 会载入它。
 
-GitHub 不使用代理：playground 直接与它通信。
+GitHub 不使用代理：框架直接与它通信。
 
-令牌只留在标签页的内存中，只发送到 `api.github.com`：页面的 Content Security
-Policy 不允许任何其他主机。它从不保存到草稿、版本、分享链接或导出中，也从不
-到达幻灯片预览或渲染 worker。**在此设备上记住** 会把它存入此浏览器的
-localStorage，直到 **断开**（或 Forget my drafts）。仍有一项风险：注入到
-playground 页面本身的脚本可以读取它。请优先使用只限于所需仓库的令牌。对于团队，
-自托管服务器模式（即将推出）把令牌保存在服务器上。
+令牌在框架中输入，并留在框架所在的站点。playground 页面无法读取它（框架是另一个源，有自己的存储），
+页面能发送的任何命令都不会返回它，页面的 Content Security Policy 也完全不允许页面连接 GitHub
+或 GitLab。框架只把令牌发送到 `api.github.com`（或 `gitlab.com`）。它从不保存到草稿、版本、分享链接或
+导出中，也从不到达幻灯片预览或渲染 worker。**在此设备上记住** 会把它存入框架自己的 localStorage
+（位于 `go-slides-usercontent.github.io`，而不是 playground 的存储），直到 **断开**（或 Forget my drafts）。
+
+**如果你用过早期版本：** 早期版本保存在 playground 页面自身存储中的令牌，会在你第一次打开此版本时被删除，
+窗格会告诉你。请在框架中重新输入（如果想保留，请勾选“记住”）。
+
+仍有一项风险：注入到 playground 页面的脚本仍可以以你的身份发送框架的命令（读取已载入的文件夹、提出分支和
+拉取请求），但无法读取令牌。请优先使用只限于所需仓库的令牌。对于团队，自托管服务器模式（即将推出）把令牌
+保存在服务器上。
 
 ### GitLab.com {#gitlab}
 
 窗格中有一个 forge 列表：**GitHub** 和 **GitLab.com**。使用 GitLab 时，可以提供范围为
 `api` 的个人访问令牌，或点击 **用 GitLab 登录**（带 PKCE 的 OAuth 授权码，无需密钥）。
-登录会把页面带到 gitlab.com 再返回，地址会立刻被清理。登录得到的令牌只留在此标签页的
-内存中（即使选了 **在此设备上记住** 也不会记在设备上），会在过期前自动刷新，
-**断开** 会在 GitLab 撤销它们。在另一个标签页发起的登录，或重复使用的链接，都会被拒绝。
+登录会打开该框架所在站点的一个小窗口并返回到它；你正在使用的 playground 页面不会被跳转走。
+登录得到的令牌只留在框架的内存中（即使选了 **在此设备上记住** 也不会记在设备上），会在过期前自动刷新，
+**断开** 会在 GitLab 撤销它们。不是由框架发起的登录，或重复使用的链接，都会被拒绝。
 本站的 GitLab 应用注册后即可使用登录；在此之前请使用个人访问令牌。
 
-请求只发往 `api.github.com` 和 `gitlab.com`：页面的 Content Security Policy 不允许任何
-其他主机，页面也不发送 referrer。
+请求只发往 `api.github.com` 和 `gitlab.com`，并且只来自框架：playground 页面不发出任何请求，
+也不发送 referrer。
 
 为什么需要 `api`？GitLab 的[范围表](https://docs.gitlab.com/security/tokens/access_token_scopes/)
 对 `write_repository` 写的是 “Does not support API authentication”：它只用于基于 HTTP 的
