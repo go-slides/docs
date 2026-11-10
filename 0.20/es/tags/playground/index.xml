@@ -270,17 +270,19 @@ como una pull request. Rellene:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Repositorio (propietario/nombre)&lt;/strong&gt;;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Rama (vacía: la predeterminada)&lt;/strong&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Carpeta (vacía: la raíz)&lt;/strong&gt;: la carpeta debe contener un &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, enmascarado;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Recordar en este dispositivo&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Carpeta (vacía: la raíz)&lt;/strong&gt;: la carpeta debe contener un &lt;code&gt;deck.md&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Encima de estos campos el panel muestra el &lt;strong&gt;marco git&lt;/strong&gt;: un pequeño panel en el
+que elige la forja, escribe el &lt;strong&gt;token&lt;/strong&gt; (enmascarado), marca &lt;strong&gt;Recordar en este
+dispositivo&lt;/strong&gt; y pulsa &lt;strong&gt;Conectar&lt;/strong&gt; (o &lt;strong&gt;Iniciar sesión con GitLab&lt;/strong&gt;) o
+&lt;strong&gt;Desconectar&lt;/strong&gt;. El marco es una página de otro sitio,
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, incrustada en el playground: &lt;strong&gt;la página del
+playground nunca ve su token&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;El token es un token de acceso personal de grano fino
 (&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;crear uno&lt;/a&gt;), limitado
 a los repositorios elegidos, con los permisos Contents de lectura y escritura y
 Pull requests de lectura y escritura (Metadata de lectura va implícito). Después:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Conectar&lt;/strong&gt; comprueba el token y el repositorio; &lt;strong&gt;Desconectar&lt;/strong&gt; olvida el
-token.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Cargar&lt;/strong&gt; sustituye el proyecto por la carpeta de GitHub. Undo lo deshace, y
 el proyecto tal como estaba se conserva como versión «Desde GitHub».&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Proponer cambios…&lt;/strong&gt; pide un título, crea una rama nueva
@@ -290,30 +292,39 @@ lleva a ella.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Buscar cambios&lt;/strong&gt; compara la versión más reciente de GitHub con la suya en
 la vista Compare. &lt;strong&gt;Tomar los suyos&lt;/strong&gt; la carga.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;No se usa ningún proxy para GitHub: el playground habla directamente con él.&lt;/p&gt;
-&lt;p&gt;El token queda solo en la memoria de la pestaña y se envía únicamente a
-&lt;code&gt;api.github.com&lt;/code&gt;: la Content Security Policy de la página no permite ningún
-otro host. Nunca se guarda en el borrador, las versiones, los enlaces para
-compartir ni las exportaciones, y nunca llega a la vista previa de las
-diapositivas ni al worker de renderizado. &lt;strong&gt;Recordar en este dispositivo&lt;/strong&gt; lo
-guarda en el localStorage de este navegador hasta &lt;strong&gt;Desconectar&lt;/strong&gt; (o Forget my
-drafts). Queda un riesgo: un script inyectado en la propia página del
-playground podría leerlo. Prefiera un token limitado a los repositorios que
-necesite. Para equipos, el modo servidor autoalojado (próximamente) mantiene
-los tokens en el servidor.&lt;/p&gt;
+&lt;p&gt;No se usa ningún proxy para GitHub: el marco habla directamente con él.&lt;/p&gt;
+&lt;p&gt;El token se escribe en el marco y permanece en su sitio. La página del
+playground no puede leerlo (el marco es otro origen, con almacenamiento
+propio), ningún comando que la página pueda enviar lo devuelve, y la Content
+Security Policy de la página no le permite ninguna conexión a GitHub ni a
+GitLab. El marco envía el token solo a &lt;code&gt;api.github.com&lt;/code&gt; (o &lt;code&gt;gitlab.com&lt;/code&gt;). Nunca
+se guarda en el borrador, las versiones, los enlaces para compartir ni las
+exportaciones, y nunca llega a la vista previa de las diapositivas ni al worker
+de renderizado. &lt;strong&gt;Recordar en este dispositivo&lt;/strong&gt; lo guarda en el localStorage
+propio del marco, en &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, no en el almacenamiento
+del playground, hasta &lt;strong&gt;Desconectar&lt;/strong&gt; (o Forget my drafts).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Si usó una versión anterior:&lt;/strong&gt; un token que esta guardaba en el propio
+almacenamiento de la página del playground se elimina la primera vez que abre
+esta versión, y el panel se lo indica. Vuelva a escribirlo en el marco (y marque
+Recordar si quiere conservarlo).&lt;/p&gt;
+&lt;p&gt;Queda un riesgo: un script inyectado en la página del playground aún podría
+enviar los comandos del marco (leer la carpeta cargada, proponer una rama y una
+pull request) como usted, pero no puede leer el token. Prefiera un token
+limitado a los repositorios que necesite. Para equipos, el modo servidor
+autoalojado (próximamente) mantiene los tokens en el servidor.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;El panel tiene una lista de forjas: &lt;strong&gt;GitHub&lt;/strong&gt; y &lt;strong&gt;GitLab.com&lt;/strong&gt;. Para GitLab,
 indique un token de acceso personal con el alcance &lt;code&gt;api&lt;/code&gt;, o pulse &lt;strong&gt;Iniciar
 sesión con GitLab&lt;/strong&gt; (código de autorización OAuth con PKCE, sin secreto). El
-inicio de sesión lleva la página a gitlab.com y la devuelve, y la dirección se
-limpia de inmediato. Sus tokens quedan solo en la memoria de esta pestaña (nunca
-se recuerdan en el dispositivo, ni siquiera con &lt;strong&gt;Recordar en este
-dispositivo&lt;/strong&gt;), se renuevan solos antes de caducar, y &lt;strong&gt;Desconectar&lt;/strong&gt; los revoca
-en GitLab. Un inicio de sesión empezado en otra pestaña, o un enlace reutilizado,
-se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
+inicio de sesión abre una pequeña ventana del sitio del marco y vuelve a él; la
+página del playground en la que trabaja no se abandona. Sus tokens quedan solo
+en la memoria del marco (nunca se recuerdan en el dispositivo, ni siquiera con
+&lt;strong&gt;Recordar en este dispositivo&lt;/strong&gt;), se renuevan solos antes de caducar, y
+&lt;strong&gt;Desconectar&lt;/strong&gt; los revoca en GitLab. Un inicio de sesión no iniciado por el
+marco, o un enlace reutilizado, se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
 del sitio está registrada; mientras tanto, use un token de acceso personal.&lt;/p&gt;
-&lt;p&gt;Las peticiones van solo a &lt;code&gt;api.github.com&lt;/code&gt; y &lt;code&gt;gitlab.com&lt;/code&gt;: la Content Security
-Policy de la página no permite ningún otro host, y la página no envía referrer.&lt;/p&gt;
+&lt;p&gt;Las peticiones van solo a &lt;code&gt;api.github.com&lt;/code&gt; y &lt;code&gt;gitlab.com&lt;/code&gt;, y solo desde el
+marco: la página del playground no hace ninguna y no envía referrer.&lt;/p&gt;
 &lt;p&gt;¿Por qué &lt;code&gt;api&lt;/code&gt;? La
 &lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;tabla de alcances&lt;/a&gt;
 de GitLab dice de &lt;code&gt;write_repository&lt;/code&gt; «Does not support API authentication»: sirve

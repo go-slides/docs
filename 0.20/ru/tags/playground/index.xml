@@ -262,17 +262,19 @@ pull request. Заполните:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Репозиторий (владелец/имя)&lt;/strong&gt;;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ветка (пусто: по умолчанию)&lt;/strong&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Папка (пусто: корень)&lt;/strong&gt;: в папке должен быть &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Токен&lt;/strong&gt;, скрыт;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Запомнить на этом устройстве&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Папка (пусто: корень)&lt;/strong&gt;: в папке должен быть &lt;code&gt;deck.md&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Над этими полями панель показывает &lt;strong&gt;git-фрейм&lt;/strong&gt;: небольшую панель, в которой вы
+выбираете forge, вводите &lt;strong&gt;токен&lt;/strong&gt; (скрыт), отмечаете &lt;strong&gt;Запомнить на этом
+устройстве&lt;/strong&gt; и нажимаете &lt;strong&gt;Подключиться&lt;/strong&gt; (или &lt;strong&gt;Войти через GitLab&lt;/strong&gt;) либо
+&lt;strong&gt;Отключиться&lt;/strong&gt;. Фрейм — это страница другого сайта,
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, встроенная в playground: &lt;strong&gt;страница
+playground никогда не видит ваш токен&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Токен — это персональный токен доступа с тонкой настройкой
 (&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;создать&lt;/a&gt;),
 ограниченный выбранными репозиториями, с правами Contents чтение и запись и
 Pull requests чтение и запись (Metadata чтение подразумевается). Затем:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Подключиться&lt;/strong&gt; проверяет токен и репозиторий; &lt;strong&gt;Отключиться&lt;/strong&gt; забывает
-токен.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Загрузить&lt;/strong&gt; заменяет проект папкой из GitHub. Undo возвращает всё назад, а
 проект в прежнем виде сохраняется как версия «С GitHub».&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Предложить изменения…&lt;/strong&gt; запрашивает заголовок, создаёт новую ветку
@@ -282,29 +284,39 @@ Pull requests чтение и запись (Metadata чтение подразу
 &lt;li&gt;&lt;strong&gt;Проверить изменения&lt;/strong&gt; сравнивает более новую версию на GitHub с вашей в
 окне Compare. &lt;strong&gt;Взять их&lt;/strong&gt; загружает её.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Для GitHub прокси не используется: playground обращается к нему напрямую.&lt;/p&gt;
-&lt;p&gt;Токен остаётся только в памяти вкладки и отправляется лишь на &lt;code&gt;api.github.com&lt;/code&gt;:
-Content Security Policy страницы не разрешает никакой другой хост. Его никогда
-не сохраняют в черновике, версиях, ссылках для общего доступа и экспорте, и он
-никогда не попадает в предпросмотр слайдов и в воркер рендеринга. &lt;strong&gt;Запомнить
-на этом устройстве&lt;/strong&gt; хранит его в localStorage этого браузера до
-&lt;strong&gt;Отключиться&lt;/strong&gt; (или Forget my drafts). Остаётся один риск: скрипт, внедрённый
-в саму страницу playground, мог бы его прочитать. Выбирайте токен, ограниченный
-нужными репозиториями. Для команд режим собственного сервера (скоро) хранит
-токены на сервере.&lt;/p&gt;
+&lt;p&gt;Для GitHub прокси не используется: фрейм обращается к нему напрямую.&lt;/p&gt;
+&lt;p&gt;Токен вводится во фрейме и остаётся на его сайте. Страница playground не может
+его прочитать (фрейм — другой origin, со своим хранилищем), никакая команда,
+которую страница может отправить, его не возвращает, а Content Security Policy
+страницы вообще не разрешает ей соединений с GitHub или GitLab. Фрейм отправляет
+токен только на &lt;code&gt;api.github.com&lt;/code&gt; (или &lt;code&gt;gitlab.com&lt;/code&gt;). Его никогда не сохраняют в
+черновике, версиях, ссылках для общего доступа и экспорте, и он никогда не
+попадает в предпросмотр слайдов и в воркер рендеринга. &lt;strong&gt;Запомнить на этом
+устройстве&lt;/strong&gt; хранит его в собственном localStorage фрейма, на
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, а не в хранилище playground, до
+&lt;strong&gt;Отключиться&lt;/strong&gt; (или Forget my drafts).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Если вы пользовались более ранней версией:&lt;/strong&gt; токен, который она хранила в
+собственном хранилище страницы playground, удаляется при первом открытии этой
+версии, и панель сообщает об этом. Введите его во фрейме заново (и отметьте
+«Запомнить», если хотите его сохранить).&lt;/p&gt;
+&lt;p&gt;Остаётся один риск: скрипт, внедрённый в страницу playground, всё ещё мог бы
+отправлять команды фрейма (прочитать загруженную папку, предложить ветку и pull
+request) от вашего имени, но прочитать токен он не может. Выбирайте токен,
+ограниченный нужными репозиториями. Для команд режим собственного сервера
+(скоро) хранит токены на сервере.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Постоянная ссылка на этот раздел"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;В панели есть список forge: &lt;strong&gt;GitHub&lt;/strong&gt; и &lt;strong&gt;GitLab.com&lt;/strong&gt;. Для GitLab укажите
 персональный токен доступа с областью &lt;code&gt;api&lt;/code&gt; или нажмите &lt;strong&gt;Войти через GitLab&lt;/strong&gt;
-(код авторизации OAuth с PKCE, без секрета). Вход переводит страницу на
-gitlab.com и возвращает обратно, а адрес сразу очищается. Его токены остаются
-только в памяти этой вкладки (никогда не запоминаются на устройстве, даже с
-&lt;strong&gt;Запомнить на этом устройстве&lt;/strong&gt;), сами обновляются до истечения срока, а
-&lt;strong&gt;Отключиться&lt;/strong&gt; отзывает их в GitLab. Вход, начатый в другой вкладке, или
-повторно использованная ссылка отклоняется. Вход доступен, когда приложение
+(код авторизации OAuth с PKCE, без секрета). Вход открывает небольшое окно
+сайта фрейма и возвращается к нему; страница playground, в которой вы работаете,
+не покидается. Его токены остаются только в памяти фрейма (никогда не
+запоминаются на устройстве, даже с &lt;strong&gt;Запомнить на этом устройстве&lt;/strong&gt;), сами
+обновляются до истечения срока, а &lt;strong&gt;Отключиться&lt;/strong&gt; отзывает их в GitLab. Вход,
+начатый не фреймом, или повторно использованная ссылка отклоняется. Вход доступен, когда приложение
 GitLab этого сайта зарегистрировано; до тех пор пользуйтесь персональным
 токеном доступа.&lt;/p&gt;
-&lt;p&gt;Запросы идут только на &lt;code&gt;api.github.com&lt;/code&gt; и &lt;code&gt;gitlab.com&lt;/code&gt;: Content Security Policy
-страницы не разрешает никакой другой хост, а страница не отправляет referrer.&lt;/p&gt;
+&lt;p&gt;Запросы идут только на &lt;code&gt;api.github.com&lt;/code&gt; и &lt;code&gt;gitlab.com&lt;/code&gt; и только из фрейма:
+страница playground не делает их и не отправляет referrer.&lt;/p&gt;
 &lt;p&gt;Почему &lt;code&gt;api&lt;/code&gt;? &lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;Таблица областей&lt;/a&gt;
 GitLab говорит о &lt;code&gt;write_repository&lt;/code&gt;: «Does not support API authentication». Она
 нужна только для git по HTTP, который GitLab отдаёт без CORS, поэтому браузер не

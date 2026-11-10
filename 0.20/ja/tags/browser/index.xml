@@ -216,15 +216,16 @@ F7 と Shift+F7 で変更箇所の間を移動できます。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;リポジトリ（所有者/名前）&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;ブランチ（空欄：既定）&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;フォルダー（空欄：ルート）&lt;/strong&gt;：フォルダーに &lt;code&gt;deck.md&lt;/code&gt; が必要です&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;トークン&lt;/strong&gt;（マスク表示）&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;このデバイスに記憶する&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;これらの欄の上に、ペインは &lt;strong&gt;git フレーム&lt;/strong&gt; を表示します。forge を選び、&lt;strong&gt;トークン&lt;/strong&gt;（マスク表示）を
+入力し、&lt;strong&gt;このデバイスに記憶する&lt;/strong&gt; にチェックを入れ、&lt;strong&gt;接続&lt;/strong&gt;（または &lt;strong&gt;GitLab でサインイン&lt;/strong&gt;）か
+&lt;strong&gt;切断&lt;/strong&gt; を押す小さなパネルです。フレームは別のサイト &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt; のページで、
+playground に埋め込まれています。&lt;strong&gt;playground のページがトークンを見ることはありません&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;トークンはきめ細かい個人用アクセストークン
 （&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;作成はこちら&lt;/a&gt;）で、
 選んだリポジトリに限定し、権限は Contents の読み取りと書き込み、Pull requests の
 読み取りと書き込みです（Metadata の読み取りは暗黙に含まれます）。続けて次の操作ができます。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;接続&lt;/strong&gt; はトークンとリポジトリを確認し、&lt;strong&gt;切断&lt;/strong&gt; はトークンを忘れます。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;読み込む&lt;/strong&gt; はプロジェクトを GitHub のフォルダーに置き換えます。Undo で元に戻せ、
 元のプロジェクトは「GitHub から」のバージョンとして残ります。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;変更を提案…&lt;/strong&gt; はタイトルを尋ね、新しいブランチ &lt;code&gt;slides/&amp;lt;タイトル&amp;gt;-&amp;lt;日付-時刻&amp;gt;&lt;/code&gt;
@@ -233,25 +234,32 @@ F7 と Shift+F7 で変更箇所の間を移動できます。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;変更を確認&lt;/strong&gt; は GitHub 上の新しいバージョンを自分のものと Compare ビューで比較します。
 &lt;strong&gt;向こうを採用&lt;/strong&gt; で読み込みます。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;GitHub にはプロキシを使いません。playground が直接通信します。&lt;/p&gt;
-&lt;p&gt;トークンはタブのメモリにだけ置かれ、送信先は &lt;code&gt;api.github.com&lt;/code&gt; だけです。ページの
-Content Security Policy は他のホストを許可しません。下書き、バージョン、共有リンク、
+&lt;p&gt;GitHub にはプロキシを使いません。フレームが直接通信します。&lt;/p&gt;
+&lt;p&gt;トークンはフレームに入力し、そのサイトにとどまります。playground のページはトークンを読めず
+（フレームは別のオリジンで、独自のストレージを持ちます）、ページが送れるどのコマンドもトークンを返さず、
+ページの Content Security Policy は GitHub や GitLab へのいかなる接続も許可しません。フレームは
+トークンを &lt;code&gt;api.github.com&lt;/code&gt;（または &lt;code&gt;gitlab.com&lt;/code&gt;）にだけ送ります。下書き、バージョン、共有リンク、
 エクスポートには保存されず、スライドのプレビューやレンダリング worker にも届きません。
-&lt;strong&gt;このデバイスに記憶する&lt;/strong&gt; を選ぶと、&lt;strong&gt;切断&lt;/strong&gt;（または Forget my drafts）までこのブラウザーの
-localStorage に保存されます。リスクが一つ残ります。playground ページ自体に注入された
-スクリプトがトークンを読める点です。必要なリポジトリに限定したトークンを使ってください。
-チームには、トークンをサーバー側に置くセルフホストのサーバーモード（近日公開）があります。&lt;/p&gt;
+&lt;strong&gt;このデバイスに記憶する&lt;/strong&gt; を選ぶと、&lt;strong&gt;切断&lt;/strong&gt;（または Forget my drafts）まで、playground のストレージではなく
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt; 上のフレーム自身の localStorage に保存されます。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以前のバージョンを使っていた場合：&lt;/strong&gt; 以前のバージョンが playground ページ自身のストレージに
+保存していたトークンは、このバージョンを最初に開いたときに削除され、ペインがそのことを知らせます。
+フレームでもう一度入力してください（保存したい場合は「記憶する」にチェックを入れます）。&lt;/p&gt;
+&lt;p&gt;リスクが一つ残ります。playground ページに注入されたスクリプトは、あなたとしてフレームのコマンド
+（読み込んだフォルダーの読み取り、ブランチとプルリクエストの提案）を送れますが、トークンは読めません。
+必要なリポジトリに限定したトークンを使ってください。チームには、トークンをサーバー側に置く
+セルフホストのサーバーモード（近日公開）があります。&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ペインには forge の一覧があり、&lt;strong&gt;GitHub&lt;/strong&gt; と &lt;strong&gt;GitLab.com&lt;/strong&gt; から選べます。GitLab では、
 スコープ &lt;code&gt;api&lt;/code&gt; の個人アクセストークンを入力するか、&lt;strong&gt;GitLab でサインイン&lt;/strong&gt;
-（PKCE 付き OAuth 認可コード、シークレットなし）を押します。サインインではページが
-gitlab.com へ移動して戻り、アドレスはすぐに消去されます。そのトークンはこのタブの
-メモリーにだけ置かれ（&lt;strong&gt;このデバイスに記憶する&lt;/strong&gt; を選んでも記憶されません）、期限前に
-自動で更新され、&lt;strong&gt;切断&lt;/strong&gt; で GitLab 側で取り消されます。別のタブで始めたサインインや
+（PKCE 付き OAuth 認可コード、シークレットなし）を押します。サインインではフレームのサイトの
+小さなウィンドウが開き、そこへ戻ります。作業中の playground ページから移動することはありません。
+そのトークンはフレームのメモリーにだけ置かれ（&lt;strong&gt;このデバイスに記憶する&lt;/strong&gt; を選んでも記憶されません）、
+期限前に自動で更新され、&lt;strong&gt;切断&lt;/strong&gt; で GitLab 側で取り消されます。フレームが始めていないサインインや
 再利用されたリンクは拒否されます。サインインはサイトの GitLab アプリケーションが
 登録されてから使えます。それまでは個人アクセストークンを使ってください。&lt;/p&gt;
-&lt;p&gt;リクエストの送信先は &lt;code&gt;api.github.com&lt;/code&gt; と &lt;code&gt;gitlab.com&lt;/code&gt; だけです。ページの Content Security
-Policy は他のホストを許可せず、ページは referrer を送りません。&lt;/p&gt;
+&lt;p&gt;リクエストの送信先は &lt;code&gt;api.github.com&lt;/code&gt; と &lt;code&gt;gitlab.com&lt;/code&gt; だけで、送るのはフレームだけです。
+playground のページはリクエストを送らず、referrer も送りません。&lt;/p&gt;
 &lt;p&gt;なぜ &lt;code&gt;api&lt;/code&gt; が必要か。GitLab の&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;スコープ表&lt;/a&gt;は
 &lt;code&gt;write_repository&lt;/code&gt; を “Does not support API authentication” としています。これは HTTP 経由の git
 専用で、GitLab は CORS なしで提供するため、ブラウザーからは使えません。変更の提案は REST API を

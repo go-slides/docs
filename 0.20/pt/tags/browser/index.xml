@@ -264,17 +264,19 @@ um pull request. Preencha:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Repositório (dono/nome)&lt;/strong&gt;;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Branch (vazio: o padrão)&lt;/strong&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Pasta (vazia: a raiz)&lt;/strong&gt;: a pasta deve conter um &lt;code&gt;deck.md&lt;/code&gt;;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;, mascarado;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pasta (vazia: a raiz)&lt;/strong&gt;: a pasta deve conter um &lt;code&gt;deck.md&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Acima desses campos o painel mostra o &lt;strong&gt;quadro git&lt;/strong&gt;: um pequeno painel em que
+você escolhe a forja, digita o &lt;strong&gt;token&lt;/strong&gt; (mascarado), marca &lt;strong&gt;Lembrar neste
+dispositivo&lt;/strong&gt; e clica em &lt;strong&gt;Conectar&lt;/strong&gt; (ou &lt;strong&gt;Entrar com o GitLab&lt;/strong&gt;) ou
+&lt;strong&gt;Desconectar&lt;/strong&gt;. O quadro é uma página de outro site,
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, incorporada ao playground: &lt;strong&gt;a página do
+playground nunca vê o seu token&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;O token é um token de acesso pessoal de granularidade fina
 (&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;criar um&lt;/a&gt;), limitado
 aos repositórios escolhidos, com as permissões Contents de leitura e escrita e
 Pull requests de leitura e escrita (Metadata de leitura está implícito). Depois:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Conectar&lt;/strong&gt; verifica o token e o repositório; &lt;strong&gt;Desconectar&lt;/strong&gt; esquece o
-token.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Carregar&lt;/strong&gt; substitui o projeto pela pasta do GitHub. Undo desfaz, e o
 projeto como estava fica guardado como versão «Do GitHub».&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Propor mudanças…&lt;/strong&gt; pede um título, cria um novo branch
@@ -284,28 +286,38 @@ ele.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Procurar mudanças&lt;/strong&gt; compara a versão mais recente no GitHub com a sua na
 vista Compare. &lt;strong&gt;Ficar com as deles&lt;/strong&gt; a carrega.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Nenhum proxy é usado para o GitHub: o playground fala diretamente com ele.&lt;/p&gt;
-&lt;p&gt;O token fica apenas na memória da aba e é enviado somente a &lt;code&gt;api.github.com&lt;/code&gt;: a
-Content Security Policy da página não permite nenhum outro host. Ele nunca é
+&lt;p&gt;Nenhum proxy é usado para o GitHub: o quadro fala diretamente com ele.&lt;/p&gt;
+&lt;p&gt;O token é digitado no quadro e permanece no site dele. A página do playground
+não consegue lê-lo (o quadro é outra origem, com armazenamento próprio),
+nenhum comando que a página possa enviar o devolve, e a Content Security Policy
+da página não lhe permite nenhuma conexão com o GitHub nem com o GitLab. O
+quadro envia o token somente a &lt;code&gt;api.github.com&lt;/code&gt; (ou &lt;code&gt;gitlab.com&lt;/code&gt;). Ele nunca é
 salvo no rascunho, nas versões, nos links de compartilhamento nem nas
 exportações, e nunca chega à pré-visualização dos slides nem ao worker de
-renderização. &lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt; o guarda no localStorage deste
-navegador até &lt;strong&gt;Desconectar&lt;/strong&gt; (ou Forget my drafts). Resta um risco: um script
-injetado na própria página do playground poderia lê-lo. Prefira um token
-limitado aos repositórios de que você precisa. Para equipes, o modo servidor
-auto-hospedado (em breve) mantém os tokens no servidor.&lt;/p&gt;
+renderização. &lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt; o guarda no localStorage próprio do
+quadro, em &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, e não no armazenamento do
+playground, até &lt;strong&gt;Desconectar&lt;/strong&gt; (ou Forget my drafts).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Se você usou uma versão anterior:&lt;/strong&gt; um token que ela guardava no próprio
+armazenamento da página do playground é removido na primeira vez que você abre
+esta versão, e o painel avisa. Digite-o de novo no quadro (e marque Lembrar se
+quiser que ele seja mantido).&lt;/p&gt;
+&lt;p&gt;Resta um risco: um script injetado na página do playground ainda poderia enviar
+os comandos do quadro (ler a pasta carregada, propor um branch e um pull
+request) como você, mas não consegue ler o token. Prefira um token limitado aos
+repositórios de que você precisa. Para equipes, o modo servidor auto-hospedado
+(em breve) mantém os tokens no servidor.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O painel tem uma lista de forjas: &lt;strong&gt;GitHub&lt;/strong&gt; e &lt;strong&gt;GitLab.com&lt;/strong&gt;. Para o GitLab,
 informe um token de acesso pessoal com o escopo &lt;code&gt;api&lt;/code&gt;, ou clique em &lt;strong&gt;Entrar com
-o GitLab&lt;/strong&gt; (código de autorização OAuth com PKCE, sem segredo). O login leva a
-página ao gitlab.com e a traz de volta, e o endereço é limpo na hora. Seus
-tokens ficam só na memória desta aba (nunca lembrados no dispositivo, mesmo com
-&lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt;), se renovam sozinhos antes de expirar, e
-&lt;strong&gt;Desconectar&lt;/strong&gt; os revoga no GitLab. Um login iniciado em outra aba, ou um link
-reutilizado, é recusado. O login fica disponível quando o aplicativo GitLab do
+o GitLab&lt;/strong&gt; (código de autorização OAuth com PKCE, sem segredo). O login abre uma
+pequena janela do site do quadro e volta a ele; a página do playground em que
+você trabalha não é abandonada. Seus tokens ficam só na memória do quadro
+(nunca lembrados no dispositivo, mesmo com &lt;strong&gt;Lembrar neste dispositivo&lt;/strong&gt;), se
+renovam sozinhos antes de expirar, e &lt;strong&gt;Desconectar&lt;/strong&gt; os revoga no GitLab. Um
+login não iniciado pelo quadro, ou um link reutilizado, é recusado. O login fica disponível quando o aplicativo GitLab do
 site estiver registrado; até lá, use um token de acesso pessoal.&lt;/p&gt;
-&lt;p&gt;As requisições vão só para &lt;code&gt;api.github.com&lt;/code&gt; e &lt;code&gt;gitlab.com&lt;/code&gt;: a Content Security
-Policy da página não permite nenhum outro host, e a página não envia referrer.&lt;/p&gt;
+&lt;p&gt;As requisições vão só para &lt;code&gt;api.github.com&lt;/code&gt; e &lt;code&gt;gitlab.com&lt;/code&gt;, e só a partir do
+quadro: a página do playground não faz nenhuma e não envia referrer.&lt;/p&gt;
 &lt;p&gt;Por que &lt;code&gt;api&lt;/code&gt;? A
 &lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;tabela de escopos&lt;/a&gt;
 do GitLab diz de &lt;code&gt;write_repository&lt;/code&gt; «Does not support API authentication»: serve

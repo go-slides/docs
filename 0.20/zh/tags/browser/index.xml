@@ -192,14 +192,14 @@ F7 和 Shift+F7 在变化之间移动。&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;仓库（所有者/名称）&lt;/strong&gt;；&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;分支（留空：默认分支）&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;文件夹（留空：根目录）&lt;/strong&gt;：文件夹中必须有 &lt;code&gt;deck.md&lt;/code&gt;；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;令牌&lt;/strong&gt;，已遮蔽；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;在此设备上记住&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件夹（留空：根目录）&lt;/strong&gt;：文件夹中必须有 &lt;code&gt;deck.md&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;这些字段上方，窗格显示 &lt;strong&gt;git 框架&lt;/strong&gt;：一个小面板，你在其中选择 forge，输入 &lt;strong&gt;令牌&lt;/strong&gt;（已遮蔽），
+勾选 &lt;strong&gt;在此设备上记住&lt;/strong&gt;，然后点击 &lt;strong&gt;连接&lt;/strong&gt;（或 &lt;strong&gt;用 GitLab 登录&lt;/strong&gt;）或 &lt;strong&gt;断开&lt;/strong&gt;。该框架是另一个站点
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt; 的页面，嵌入在 playground 中：&lt;strong&gt;playground 页面永远看不到你的令牌&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;令牌是细粒度个人访问令牌（&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;创建一个&lt;/a&gt;），
 仅限所选仓库，权限为 Contents 读写和 Pull requests 读写（Metadata 只读为隐含）。然后：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;连接&lt;/strong&gt; 检查令牌和仓库；&lt;strong&gt;断开&lt;/strong&gt; 忘记令牌。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;载入&lt;/strong&gt; 用 GitHub 上的文件夹替换项目。Undo 可以撤回，原来的项目会保存为
 “来自 GitHub” 版本。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;提出修改…&lt;/strong&gt; 询问标题，创建新分支 &lt;code&gt;slides/&amp;lt;标题&amp;gt;-&amp;lt;日期时间&amp;gt;&lt;/code&gt; 并打开拉取请求。
@@ -207,22 +207,26 @@ F7 和 Shift+F7 在变化之间移动。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;检查变化&lt;/strong&gt; 在 Compare 视图中比较 GitHub 上较新的版本与你的版本。
 &lt;strong&gt;采用对方的&lt;/strong&gt; 会载入它。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;GitHub 不使用代理：playground 直接与它通信。&lt;/p&gt;
-&lt;p&gt;令牌只留在标签页的内存中，只发送到 &lt;code&gt;api.github.com&lt;/code&gt;：页面的 Content Security
-Policy 不允许任何其他主机。它从不保存到草稿、版本、分享链接或导出中，也从不
-到达幻灯片预览或渲染 worker。&lt;strong&gt;在此设备上记住&lt;/strong&gt; 会把它存入此浏览器的
-localStorage，直到 &lt;strong&gt;断开&lt;/strong&gt;（或 Forget my drafts）。仍有一项风险：注入到
-playground 页面本身的脚本可以读取它。请优先使用只限于所需仓库的令牌。对于团队，
-自托管服务器模式（即将推出）把令牌保存在服务器上。&lt;/p&gt;
+&lt;p&gt;GitHub 不使用代理：框架直接与它通信。&lt;/p&gt;
+&lt;p&gt;令牌在框架中输入，并留在框架所在的站点。playground 页面无法读取它（框架是另一个源，有自己的存储），
+页面能发送的任何命令都不会返回它，页面的 Content Security Policy 也完全不允许页面连接 GitHub
+或 GitLab。框架只把令牌发送到 &lt;code&gt;api.github.com&lt;/code&gt;（或 &lt;code&gt;gitlab.com&lt;/code&gt;）。它从不保存到草稿、版本、分享链接或
+导出中，也从不到达幻灯片预览或渲染 worker。&lt;strong&gt;在此设备上记住&lt;/strong&gt; 会把它存入框架自己的 localStorage
+（位于 &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;，而不是 playground 的存储），直到 &lt;strong&gt;断开&lt;/strong&gt;（或 Forget my drafts）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果你用过早期版本：&lt;/strong&gt; 早期版本保存在 playground 页面自身存储中的令牌，会在你第一次打开此版本时被删除，
+窗格会告诉你。请在框架中重新输入（如果想保留，请勾选“记住”）。&lt;/p&gt;
+&lt;p&gt;仍有一项风险：注入到 playground 页面的脚本仍可以以你的身份发送框架的命令（读取已载入的文件夹、提出分支和
+拉取请求），但无法读取令牌。请优先使用只限于所需仓库的令牌。对于团队，自托管服务器模式（即将推出）把令牌
+保存在服务器上。&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;窗格中有一个 forge 列表：&lt;strong&gt;GitHub&lt;/strong&gt; 和 &lt;strong&gt;GitLab.com&lt;/strong&gt;。使用 GitLab 时，可以提供范围为
 &lt;code&gt;api&lt;/code&gt; 的个人访问令牌，或点击 &lt;strong&gt;用 GitLab 登录&lt;/strong&gt;（带 PKCE 的 OAuth 授权码，无需密钥）。
-登录会把页面带到 gitlab.com 再返回，地址会立刻被清理。登录得到的令牌只留在此标签页的
-内存中（即使选了 &lt;strong&gt;在此设备上记住&lt;/strong&gt; 也不会记在设备上），会在过期前自动刷新，
-&lt;strong&gt;断开&lt;/strong&gt; 会在 GitLab 撤销它们。在另一个标签页发起的登录，或重复使用的链接，都会被拒绝。
+登录会打开该框架所在站点的一个小窗口并返回到它；你正在使用的 playground 页面不会被跳转走。
+登录得到的令牌只留在框架的内存中（即使选了 &lt;strong&gt;在此设备上记住&lt;/strong&gt; 也不会记在设备上），会在过期前自动刷新，
+&lt;strong&gt;断开&lt;/strong&gt; 会在 GitLab 撤销它们。不是由框架发起的登录，或重复使用的链接，都会被拒绝。
 本站的 GitLab 应用注册后即可使用登录；在此之前请使用个人访问令牌。&lt;/p&gt;
-&lt;p&gt;请求只发往 &lt;code&gt;api.github.com&lt;/code&gt; 和 &lt;code&gt;gitlab.com&lt;/code&gt;：页面的 Content Security Policy 不允许任何
-其他主机，页面也不发送 referrer。&lt;/p&gt;
+&lt;p&gt;请求只发往 &lt;code&gt;api.github.com&lt;/code&gt; 和 &lt;code&gt;gitlab.com&lt;/code&gt;，并且只来自框架：playground 页面不发出任何请求，
+也不发送 referrer。&lt;/p&gt;
 &lt;p&gt;为什么需要 &lt;code&gt;api&lt;/code&gt;？GitLab 的&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;范围表&lt;/a&gt;
 对 &lt;code&gt;write_repository&lt;/code&gt; 写的是 “Does not support API authentication”：它只用于基于 HTTP 的
 git，而 GitLab 提供该服务时不带 CORS，浏览器无法使用。提出修改走 REST API，需要 &lt;code&gt;api&lt;/code&gt;，
