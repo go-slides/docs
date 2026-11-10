@@ -243,9 +243,14 @@ Pull-Request zurückschlägt. Tragen Sie ein:
 
 - **Repository (Besitzer/Name)**;
 - **Branch (leer: der Standard)**;
-- **Ordner (leer: die Wurzel)**: der Ordner muss eine `deck.md` enthalten;
-- **Token**, maskiert;
-- **Auf diesem Gerät merken**.
+- **Ordner (leer: die Wurzel)**: der Ordner muss eine `deck.md` enthalten.
+
+Über diesen Feldern zeigt der Bereich den **Git-Frame**: ein kleines Panel, in
+dem Sie die Forge wählen, den **Token** (maskiert) eintippen, **Auf diesem Gerät
+merken** ankreuzen und **Verbinden** (oder **Mit GitLab anmelden**) bzw.
+**Trennen** drücken. Der Frame ist eine Seite einer anderen Site,
+`go-slides-usercontent.github.io`, eingebettet in den Playground: **Die
+Playground-Seite sieht Ihren Token nie**.
 
 Der Token ist ein feingranularer persönlicher Zugriffstoken
 ([einen erstellen](https://github.com/settings/personal-access-tokens/new)),
@@ -253,7 +258,6 @@ beschränkt auf die gewählten Repositories, mit den Berechtigungen Contents
 Lesen/Schreiben und Pull requests Lesen/Schreiben (Metadata Lesen ist
 inbegriffen). Dann:
 
-- **Verbinden** prüft Token und Repository; **Trennen** vergisst den Token.
 - **Laden** ersetzt das Projekt durch den Ordner von GitHub. Undo nimmt es
   zurück, und das Projekt, wie es war, bleibt als Version „Von GitHub“
   erhalten.
@@ -264,36 +268,46 @@ inbegriffen). Dann:
 - **Nach Änderungen sehen** vergleicht die neuere Version auf GitHub mit Ihrer
   in der Ansicht Compare. **Ihre übernehmen** lädt sie.
 
-Für GitHub wird kein Proxy verwendet: Der Playground spricht direkt mit
-GitHub.
+Für GitHub wird kein Proxy verwendet: Der Frame spricht direkt mit GitHub.
 
-Der Token bleibt nur im Speicher des Tabs und wird nur an `api.github.com`
-gesendet: Die Content Security Policy der Seite erlaubt keinen anderen Host.
-Er wird nie im Entwurf, in den Versionen, in Freigabelinks oder Exporten
-gespeichert und erreicht weder die Vorschau der Folien noch den Render-Worker.
-**Auf diesem Gerät merken** legt ihn im localStorage dieses Browsers ab, bis
-Sie **Trennen** wählen (oder Forget my drafts). Ein Risiko bleibt: Ein in die
-Playground-Seite selbst eingeschleustes Skript könnte ihn lesen. Bevorzugen
-Sie einen Token, der auf die benötigten Repositories beschränkt ist. Für Teams
-hält der selbst gehostete Servermodus (in Vorbereitung) die Token auf dem
-Server.
+Der Token wird im Frame eingetippt und bleibt auf dessen Site. Die
+Playground-Seite kann ihn nicht lesen (der Frame hat einen anderen Origin mit
+eigenem Speicher), kein Befehl, den die Seite senden kann, liefert ihn zurück,
+und die Content Security Policy der Seite erlaubt ihr überhaupt keine
+Verbindung zu GitHub oder GitLab. Der Frame sendet den Token nur an
+`api.github.com` (oder `gitlab.com`). Er wird nie im Entwurf, in den Versionen,
+in Freigabelinks oder Exporten gespeichert und erreicht weder die Vorschau der
+Folien noch den Render-Worker. **Auf diesem Gerät merken** legt ihn im eigenen
+localStorage des Frames ab, auf `go-slides-usercontent.github.io`, nicht im
+Speicher des Playgrounds, bis Sie **Trennen** wählen (oder Forget my drafts).
+
+**Wenn Sie eine frühere Version benutzt haben:** Ein Token, den sie im eigenen
+Speicher der Playground-Seite abgelegt hatte, wird beim ersten Öffnen dieser
+Version entfernt, und der Bereich teilt es Ihnen mit. Tippen Sie ihn im Frame
+erneut ein (und kreuzen Sie Merken an, wenn er gespeichert bleiben soll).
+
+Ein Risiko bleibt: Ein in die Playground-Seite eingeschleustes Skript könnte
+weiterhin die Befehle des Frames senden (den geladenen Ordner lesen, einen
+Branch und einen Pull-Request vorschlagen), und zwar als Sie, aber es kann den
+Token nicht lesen. Bevorzugen Sie einen Token, der auf die benötigten
+Repositories beschränkt ist. Für Teams hält der selbst gehostete Servermodus (in
+Vorbereitung) die Token auf dem Server.
 
 ### GitLab.com {#gitlab}
 
 Der Bereich hat eine Liste der Forges: **GitHub** und **GitLab.com**. Für
 GitLab geben Sie entweder einen persönlichen Zugriffstoken mit dem Scope `api`
 an oder wählen **Mit GitLab anmelden** (OAuth-Autorisierungscode mit PKCE, ohne
-Geheimnis). Die Anmeldung führt die Seite zu gitlab.com und zurück, und die
-Adresse wird sofort bereinigt. Ihre Tokens bleiben nur im Speicher dieses Tabs
-(nie auf dem Gerät gemerkt, auch nicht mit **Auf diesem Gerät merken**),
-erneuern sich vor dem Ablauf selbst, und **Trennen** widerruft sie bei GitLab.
-Eine in einem anderen Tab begonnene Anmeldung oder ein wiederverwendeter Link
-wird abgelehnt. Die Anmeldung steht bereit, sobald die GitLab-Anwendung der
+Geheimnis). Die Anmeldung öffnet ein kleines Fenster der Site des
+Frames und kehrt dorthin zurück; die Playground-Seite, in der Sie arbeiten,
+wird nicht verlassen. Ihre Tokens bleiben nur im Speicher des Frames (nie auf
+dem Gerät gemerkt, auch nicht mit **Auf diesem Gerät merken**), erneuern sich
+vor dem Ablauf selbst, und **Trennen** widerruft sie bei GitLab. Eine nicht vom
+Frame begonnene Anmeldung oder ein wiederverwendeter Link wird abgelehnt. Die Anmeldung steht bereit, sobald die GitLab-Anwendung der
 Seite registriert ist; bis dahin nutzen Sie einen persönlichen Zugriffstoken.
 
-Anfragen gehen nur an `api.github.com` und `gitlab.com`: Die Content Security
-Policy der Seite erlaubt keinen anderen Host, und die Seite sendet keinen
-Referrer.
+Anfragen gehen nur an `api.github.com` und `gitlab.com`, und nur vom Frame: Die
+Playground-Seite stellt keine und sendet keinen Referrer.
 
 Warum `api`? Die
 [Scope-Tabelle](https://docs.gitlab.com/security/tokens/access_token_scopes/)

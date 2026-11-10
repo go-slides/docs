@@ -234,16 +234,19 @@ repozytorium GitHub i odsyła Twoje zmiany jako pull request. Wypełnij:
 
 - **Repozytorium (właściciel/nazwa)**;
 - **Gałąź (puste: domyślna)**;
-- **Folder (puste: katalog główny)**: folder musi zawierać plik `deck.md`;
-- **Token**, zamaskowany;
-- **Zapamiętaj na tym urządzeniu**.
+- **Folder (puste: katalog główny)**: folder musi zawierać plik `deck.md`.
+
+Nad tymi polami panel pokazuje **ramkę git**: mały panel, w którym wybierasz
+forge, wpisujesz **token** (zamaskowany), zaznaczasz **Zapamiętaj na tym
+urządzeniu** i naciskasz **Połącz** (albo **Zaloguj się przez GitLab**) lub
+**Rozłącz**. Ramka to strona innej witryny, `go-slides-usercontent.github.io`,
+osadzona w playgroundzie: **strona playgrounda nigdy nie widzi Twojego tokenu**.
 
 Token to szczegółowy osobisty token dostępu
 ([utwórz go](https://github.com/settings/personal-access-tokens/new)),
 ograniczony do wybranych repozytoriów, z uprawnieniami Contents odczyt i zapis
 oraz Pull requests odczyt i zapis (Metadata odczyt jest domyślne). Dalej:
 
-- **Połącz** sprawdza token i repozytorium; **Rozłącz** zapomina token.
 - **Wczytaj** zastępuje projekt folderem z GitHuba. Cofnij (Undo) to
   przywraca, a projekt sprzed wczytania zostaje jako wersja „Z GitHuba”.
 - **Zaproponuj zmiany…** pyta o tytuł, tworzy nową gałąź
@@ -253,35 +256,44 @@ oraz Pull requests odczyt i zapis (Metadata odczyt jest domyślne). Dalej:
 - **Sprawdź zmiany** porównuje nowszą wersję z GitHuba z Twoją w widoku
   Compare. **Weź ich wersję** ją wczytuje.
 
-Dla GitHuba nie używa się żadnego proxy: playground łączy się z nim
-bezpośrednio.
+Dla GitHuba nie używa się żadnego proxy: ramka łączy się z nim bezpośrednio.
 
-Token pozostaje tylko w pamięci karty i jest wysyłany wyłącznie do
-`api.github.com`: Content Security Policy strony nie dopuszcza żadnego innego
-hosta. Nigdy nie jest zapisywany w wersji roboczej, wersjach, linkach do
-udostępniania ani eksportach i nigdy nie trafia do podglądu slajdów ani do
-workera renderowania. **Zapamiętaj na tym urządzeniu** zapisuje go w
-localStorage tej przeglądarki do czasu **Rozłącz** (lub Forget my drafts).
-Pozostaje jedno ryzyko: skrypt wstrzyknięty do samej strony playgrounda mógłby
-go odczytać. Wybierz token ograniczony do potrzebnych repozytoriów. Dla
-zespołów tryb samodzielnie hostowanego serwera (wkrótce) trzyma tokeny na
-serwerze.
+Token wpisuje się w ramce i zostaje on na jej witrynie. Strona playgrounda nie
+może go odczytać (ramka to inny origin, z własną pamięcią), żadne polecenie,
+które strona może wysłać, go nie zwraca, a Content Security Policy strony nie
+dopuszcza dla niej żadnego połączenia z GitHubem ani GitLabem. Ramka wysyła
+token wyłącznie do `api.github.com` (lub `gitlab.com`). Nigdy nie jest
+zapisywany w wersji roboczej, wersjach, linkach do udostępniania ani eksportach
+i nigdy nie trafia do podglądu slajdów ani do workera renderowania.
+**Zapamiętaj na tym urządzeniu** zapisuje go we własnym localStorage ramki, na
+`go-slides-usercontent.github.io`, a nie w pamięci playgrounda, do czasu
+**Rozłącz** (lub Forget my drafts).
+
+**Jeśli używałeś wcześniejszej wersji:** token, który trzymała w pamięci samej
+strony playgrounda, jest usuwany przy pierwszym otwarciu tej wersji, a panel Ci
+o tym mówi. Wpisz go ponownie w ramce (i zaznacz Zapamiętaj, jeśli ma zostać).
+
+Pozostaje jedno ryzyko: skrypt wstrzyknięty do strony playgrounda nadal mógłby
+wysyłać polecenia ramki (odczytać wczytany folder, zaproponować gałąź i pull
+request) w Twoim imieniu, ale nie może odczytać tokenu. Wybierz token
+ograniczony do potrzebnych repozytoriów. Dla zespołów tryb samodzielnie
+hostowanego serwera (wkrótce) trzyma tokeny na serwerze.
 
 ### GitLab.com {#gitlab}
 
 Panel ma listę forge: **GitHub** i **GitLab.com**. Dla GitLaba podaj osobisty
 token dostępu z zakresem `api` albo naciśnij **Zaloguj się przez GitLab** (kod
-autoryzacji OAuth z PKCE, bez sekretu). Logowanie przenosi stronę do gitlab.com
-i z powrotem, a adres jest od razu czyszczony. Jego tokeny zostają tylko w
-pamięci tej karty (nigdy nie są zapamiętywane na urządzeniu, nawet z opcją
-**Zapamiętaj na tym urządzeniu**), odnawiają się same przed wygaśnięciem, a
-**Rozłącz** unieważnia je w GitLabie. Logowanie rozpoczęte w innej karcie lub
-ponownie użyty link zostaje odrzucone. Logowanie jest dostępne, gdy aplikacja
+autoryzacji OAuth z PKCE, bez sekretu). Logowanie otwiera małe okno witryny ramki
+i do niej wraca; strona playgrounda, w której pracujesz, nie jest opuszczana.
+Jego tokeny zostają tylko w pamięci ramki (nigdy nie są zapamiętywane na
+urządzeniu, nawet z opcją **Zapamiętaj na tym urządzeniu**), odnawiają się same
+przed wygaśnięciem, a **Rozłącz** unieważnia je w GitLabie. Logowanie nierozpoczęte
+przez ramkę lub ponownie użyty link zostaje odrzucone. Logowanie jest dostępne, gdy aplikacja
 GitLab tej strony jest zarejestrowana; do tego czasu użyj osobistego tokenu
 dostępu.
 
-Żądania trafiają tylko do `api.github.com` i `gitlab.com`: Content Security
-Policy strony nie dopuszcza żadnego innego hosta, a strona nie wysyła referrera.
+Żądania trafiają tylko do `api.github.com` i `gitlab.com` i tylko z ramki:
+strona playgrounda nie wysyła żadnych i nie wysyła referrera.
 
 Dlaczego `api`? [Tabela zakresów](https://docs.gitlab.com/security/tokens/access_token_scopes/)
 GitLaba mówi o `write_repository`: „Does not support API authentication”. Służy

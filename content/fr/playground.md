@@ -242,17 +242,20 @@ forme de pull request. Renseignez :
 
 - **Dépôt (propriétaire/nom)** ;
 - **Branche (vide: celle par défaut)** ;
-- **Dossier (vide: la racine)** : le dossier doit contenir un `deck.md` ;
-- **Jeton**, masqué ;
-- **Mémoriser sur cet appareil**.
+- **Dossier (vide: la racine)** : le dossier doit contenir un `deck.md`.
+
+Au-dessus de ces champs, le volet affiche le **cadre git** : un petit panneau
+où vous choisissez la forge, saisissez le **jeton** (masqué), cochez
+**Mémoriser sur cet appareil** et cliquez sur **Se connecter** (ou **Se
+connecter avec GitLab**) ou **Se déconnecter**. Le cadre est une page d'un autre
+site, `go-slides-usercontent.github.io`, intégrée au playground : **la page du
+playground ne voit jamais votre jeton**.
 
 Le jeton est un jeton d'accès personnel à granularité fine
 ([en créer un](https://github.com/settings/personal-access-tokens/new)), limité
 aux dépôts choisis, avec les permissions Contents en lecture/écriture et Pull
 requests en lecture/écriture (Metadata en lecture est implicite). Ensuite :
 
-- **Se connecter** vérifie le jeton et le dépôt ; **Se déconnecter** oublie le
-  jeton.
 - **Charger** remplace le projet par le dossier de GitHub. Undo le reprend, et
   le projet tel qu'il était est conservé comme version « Depuis GitHub ».
 - **Proposer les changements…** demande un titre, crée une nouvelle branche
@@ -262,36 +265,46 @@ requests en lecture/écriture (Metadata en lecture est implicite). Ensuite :
 - **Chercher des changements** compare la version plus récente de GitHub à la
   vôtre dans la vue Compare. **Prendre les leurs** la charge.
 
-Aucun proxy n'est utilisé pour GitHub : le playground s'adresse directement à
-lui.
+Aucun proxy n'est utilisé pour GitHub : le cadre s'adresse directement à lui.
 
-Le jeton reste dans la mémoire de l'onglet seulement et n'est envoyé qu'à
-`api.github.com` : la Content Security Policy de la page n'autorise aucun autre
-hôte. Il n'est jamais enregistré dans le brouillon, les versions, les liens de
-partage ni les exports, et n'atteint jamais l'aperçu des diapositives ni le
-worker de rendu. **Mémoriser sur cet appareil** le garde dans le localStorage de
-ce navigateur jusqu'à **Se déconnecter** (ou Forget my drafts). Un risque
-subsiste : un script injecté dans la page du playground elle-même pourrait le
-lire. Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les
-équipes, le mode serveur auto-hébergé (à venir) garde les jetons sur le
-serveur.
+Le jeton est saisi dans le cadre et reste sur son site. La page du playground
+ne peut pas le lire (le cadre est une autre origine, avec un stockage à lui),
+aucune commande que la page peut envoyer ne le renvoie, et la Content Security
+Policy de la page ne lui permet aucune connexion à GitHub ni à GitLab. Le cadre
+n'envoie le jeton qu'à `api.github.com` (ou `gitlab.com`). Il n'est jamais
+enregistré dans le brouillon, les versions, les liens de partage ni les
+exports, et n'atteint jamais l'aperçu des diapositives ni le worker de rendu.
+**Mémoriser sur cet appareil** le garde dans le localStorage propre au cadre,
+sur `go-slides-usercontent.github.io`, et non dans le stockage du playground,
+jusqu'à **Se déconnecter** (ou Forget my drafts).
+
+**Si vous avez utilisé une version antérieure :** un jeton qu'elle gardait dans
+le stockage propre de la page du playground est supprimé la première fois que
+vous ouvrez cette version, et le volet vous le dit. Saisissez-le de nouveau dans
+le cadre (et cochez Mémoriser si vous voulez qu'il soit gardé).
+
+Un risque subsiste : un script injecté dans la page du playground pourrait
+encore envoyer les commandes du cadre (lire le dossier chargé, proposer une
+branche et une pull request) en votre nom, mais il ne peut pas lire le jeton.
+Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les équipes, le
+mode serveur auto-hébergé (à venir) garde les jetons sur le serveur.
 
 ### GitLab.com {#gitlab}
 
 Le volet a une liste de forges : **GitHub** et **GitLab.com**. Pour GitLab,
 donnez soit un jeton d'accès personnel de portée `api`, soit cliquez sur **Se
 connecter avec GitLab** (code d'autorisation OAuth avec PKCE, sans secret). La
-connexion envoie la page sur gitlab.com puis la ramène, et l'adresse est
-nettoyée aussitôt. Ses jetons restent dans la mémoire de cet onglet seulement
-(jamais mémorisés sur l'appareil, même avec **Mémoriser sur cet appareil**), se
-renouvellent avant d'expirer, et **Se déconnecter** les révoque chez GitLab. Une
-connexion lancée dans un autre onglet, ou un lien réutilisé, est refusée. La
+connexion ouvre une petite fenêtre du site du cadre et y revient ; la page du
+playground dans laquelle vous travaillez n'est pas quittée. Ses jetons restent
+dans la mémoire du cadre seulement (jamais mémorisés sur l'appareil, même avec
+**Mémoriser sur cet appareil**), se renouvellent avant d'expirer, et **Se
+déconnecter** les révoque chez GitLab. Une connexion non lancée par le cadre, ou
+un lien réutilisé, est refusée. La
 connexion est disponible dès que l'application GitLab du site est enregistrée ;
 d'ici là, utilisez un jeton d'accès personnel.
 
-Les requêtes ne vont qu'à `api.github.com` et `gitlab.com` : la Content Security
-Policy de la page n'autorise aucun autre hôte, et la page n'envoie pas de
-referrer.
+Les requêtes ne vont qu'à `api.github.com` et `gitlab.com`, et seulement depuis
+le cadre : la page du playground n'en fait aucune et n'envoie pas de referrer.
 
 Pourquoi `api` ? La
 [table des portées](https://docs.gitlab.com/security/tokens/access_token_scopes/)

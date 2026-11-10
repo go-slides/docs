@@ -237,17 +237,20 @@ request. Compilate:
 
 - **Repository (proprietario/nome)**;
 - **Branch (vuoto: quello predefinito)**;
-- **Cartella (vuota: la radice)**: la cartella deve contenere un `deck.md`;
-- **Token**, mascherato;
-- **Ricorda su questo dispositivo**.
+- **Cartella (vuota: la radice)**: la cartella deve contenere un `deck.md`.
+
+Sopra questi campi il riquadro mostra il **frame git**: un piccolo pannello in
+cui scegliete la forge, digitate il **token** (mascherato), spuntate **Ricorda su
+questo dispositivo** e premete **Connetti** (o **Accedi con GitLab**) oppure
+**Disconnetti**. Il frame è una pagina di un altro sito,
+`go-slides-usercontent.github.io`, incorporata nel playground: **la pagina del
+playground non vede mai il vostro token**.
 
 Il token è un token di accesso personale a granularità fine
 ([crearne uno](https://github.com/settings/personal-access-tokens/new)),
 limitato ai repository scelti, con i permessi Contents in lettura e scrittura e
 Pull requests in lettura e scrittura (Metadata in lettura è implicito). Poi:
 
-- **Connetti** verifica il token e il repository; **Disconnetti** dimentica il
-  token.
 - **Carica** sostituisce il progetto con la cartella di GitHub. Undo lo
   annulla, e il progetto com'era resta come versione «Da GitHub».
 - **Proponi le modifiche…** chiede un titolo, crea un nuovo branch
@@ -257,35 +260,45 @@ Pull requests in lettura e scrittura (Metadata in lettura è implicito). Poi:
 - **Cerca modifiche** confronta la versione più recente su GitHub con la
   vostra nella vista Compare. **Prendi le loro** la carica.
 
-Per GitHub non si usa alcun proxy: il playground gli parla direttamente.
+Per GitHub non si usa alcun proxy: il frame gli parla direttamente.
 
-Il token resta solo nella memoria della scheda e viene inviato solo a
-`api.github.com`: la Content Security Policy della pagina non consente alcun
-altro host. Non viene mai salvato nella bozza, nelle versioni, nei link di
-condivisione o nelle esportazioni, e non raggiunge mai l'anteprima delle slide
-né il worker di rendering. **Ricorda su questo dispositivo** lo conserva nel
-localStorage di questo browser fino a **Disconnetti** (o Forget my drafts).
-Resta un rischio: uno script iniettato nella pagina stessa del playground
-potrebbe leggerlo. Preferite un token limitato ai repository che vi servono.
-Per i team, la modalità server self-hosted (in arrivo) tiene i token sul
-server.
+Il token si digita nel frame e resta sul suo sito. La pagina del playground non
+può leggerlo (il frame è un'altra origine, con una memoria propria), nessun
+comando che la pagina può inviare lo restituisce, e la Content Security Policy
+della pagina non le consente alcuna connessione a GitHub o GitLab. Il frame
+invia il token solo a `api.github.com` (o `gitlab.com`). Non viene mai salvato
+nella bozza, nelle versioni, nei link di condivisione o nelle esportazioni, e
+non raggiunge mai l'anteprima delle slide né il worker di rendering. **Ricorda
+su questo dispositivo** lo conserva nel localStorage proprio del frame, su
+`go-slides-usercontent.github.io`, non nella memoria del playground, fino a
+**Disconnetti** (o Forget my drafts).
+
+**Se avete usato una versione precedente:** un token che essa conservava nella
+memoria propria della pagina del playground viene rimosso la prima volta che
+aprite questa versione, e il riquadro ve lo dice. Digitatelo di nuovo nel frame
+(e spuntate Ricorda se volete che resti salvato).
+
+Resta un rischio: uno script iniettato nella pagina del playground potrebbe
+ancora inviare i comandi del frame (leggere la cartella caricata, proporre un
+branch e una pull request) a vostro nome, ma non può leggere il token.
+Preferite un token limitato ai repository che vi servono. Per i team, la
+modalità server self-hosted (in arrivo) tiene i token sul server.
 
 ### GitLab.com {#gitlab}
 
 Il riquadro ha un elenco di forge: **GitHub** e **GitLab.com**. Per GitLab,
 fornite un token di accesso personale con lo scope `api`, oppure premete
 **Accedi con GitLab** (codice di autorizzazione OAuth con PKCE, senza segreto).
-L'accesso porta la pagina su gitlab.com e la riporta indietro, e l'indirizzo
-viene ripulito subito. I suoi token restano solo nella memoria di questa scheda
-(mai ricordati sul dispositivo, nemmeno con **Ricorda su questo dispositivo**),
-si rinnovano da soli prima di scadere, e **Disconnetti** li revoca presso
-GitLab. Un accesso avviato in un'altra scheda, o un link riutilizzato, viene
-rifiutato. L'accesso è disponibile quando l'applicazione GitLab del sito è
+L'accesso apre una piccola finestra del sito del frame e vi ritorna; la pagina
+del playground in cui lavorate non viene abbandonata. I suoi token restano solo
+nella memoria del frame (mai ricordati sul dispositivo, nemmeno con **Ricorda su
+questo dispositivo**), si rinnovano da soli prima di scadere, e **Disconnetti**
+li revoca presso GitLab. Un accesso non avviato dal frame, o un link
+riutilizzato, viene rifiutato. L'accesso è disponibile quando l'applicazione GitLab del sito è
 registrata; fino ad allora usate un token di accesso personale.
 
-Le richieste vanno solo a `api.github.com` e `gitlab.com`: la Content Security
-Policy della pagina non consente alcun altro host, e la pagina non invia il
-referrer.
+Le richieste vanno solo a `api.github.com` e `gitlab.com`, e solo dal frame: la
+pagina del playground non ne fa alcuna e non invia il referrer.
 
 Perché `api`? La
 [tabella degli scope](https://docs.gitlab.com/security/tokens/access_token_scopes/)
