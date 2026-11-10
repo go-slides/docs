@@ -153,6 +153,54 @@ Le immagini come file (slides `--images`) non vengono prodotte nel browser: usa 
 [comando]({{< relref "cli" >}}) o l'
 [estensione di VS Code]({{< relref "vscode" >}}).
 
+## Editor di temi {#theme-editor}
+
+**Home ▸ Aspetto ▸ Editor di temi** apre un pannello che modifica uno dei temi
+del progetto con dei controlli, e l’anteprima segue. Il tema è conservato come
+cartella di pacchetto, `theme-src/<name>/`; il foglio che leggono l’anteprima e
+le esportazioni, `themes/<name>.css`, ne è compilato: ciò che vedi è ciò che
+esporti. Un pacchetto di tema che importi (**Importa…** nel pannello,
+**Aggiungi contenuto multimediale…** o un trascinamento) vi conserva i suoi
+file, quindi puoi modificarlo.
+
+- **Tavolozza**: i colori di sfondo, testo, titoli, accento e link. Scegli un
+  colore o scrivilo (`#1a2b3c`, `rgb()`, `hsl()` o un nome).
+- **Tipografia**: i caratteri del testo, dei titoli e del codice, con
+  dimensioni e spessori. I caratteri sono quelli generici e comuni, e quelli che
+  aggiungi (**Aggiungi carattere…**: `.woff2`, `.woff`, `.ttf` o `.otf`).
+- **Logo**: un’immagine (`.svg`, `.png`), dove va (un angolo o tutto lo sfondo)
+  e la sua dimensione. **Numero di pagina e piè di pagina**: dove va il numero
+  di pagina, più dimensioni e allineamento.
+- **Dettagli**: ciò che dice `theme.hcl`: versione, descrizione, autori,
+  licenza, pagina web, il tema di base (`extends`) e la versione di go-slides
+  richiesta.
+- **Contrasto (WCAG)**: per ogni testo sul suo sfondo, il rapporto e il suo
+  livello, `AA` o `AAA`, o «Non conforme», in tempo reale. I titoli contano
+  come testo grande (3:1 basta per AA; il testo normale richiede 4,5:1).
+
+**Modifica CSS** mostra il foglio del tema nell’editor. I controlli scrivono
+solo dentro un blocco racchiuso da due commenti `gsta:visual`, e lo rileggono
+quando ne modifichi i valori a mano. Ciò che scrivi fuori dal blocco non viene
+mai toccato. Se aggiungi nel blocco qualcosa che i controlli non possono
+mostrare, smettono di scrivere e il pannello lo dice; **Ripristina il blocco**
+lo riscrive dai valori che contiene e nient’altro.
+
+**Importa…** apre un `.gsta.xz` o un `.css` isolato. Un pacchetto è verificato
+come lo verifica `slides theme verify`, con gli stessi limiti: un pacchetto non
+sicuro (un percorso che ne esce, un collegamento, uno script in un SVG, una
+`url()` remota, una somma di controllo che non corrisponde) è rifiutato con il
+suo codice `theme.*`, in Problemi, e non cambia nulla. In un foglio isolato un
+`@import "gaia";` diventa il tema di base (`extends`), perché un pacchetto vi
+nomina la sua base. Un carattere che aggiungi ha la licenza
+`LicenseRef-unspecified` finché non la indichi in Dettagli.
+
+**Esporta .gsta.xz** costruisce il pacchetto nel tuo browser e lo rilegge come
+fa `slides theme verify`, così il file lo supera; **Esporta CSS** scarica il
+foglio compilato. Nulla viene caricato. Ogni modifica è un passo di
+**Annulla** (le modifiche di uno stesso controllo di seguito sono un passo) e
+conserva ciò che sostituisce come versione; **Salva versione** conserva il tema
+e la sua versione, con il suo nome, nel pannello Versioni.
+
 ## Annulla, ripristina e versioni {#undo-redo-and-versions}
 
 **Undo** e **Redo** (annulla e ripeti) si trovano nella scheda Home e su

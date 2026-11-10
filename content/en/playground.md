@@ -153,6 +153,51 @@ Images as files (slides `--images`) are not made in the browser: use the
 [command]({{< relref "cli" >}}) or the
 [VS Code extension]({{< relref "vscode" >}}).
 
+## Theme editor {#theme-editor}
+
+**Home ▸ Look ▸ Theme editor** opens a pane that edits one of the project's
+themes with controls, and the preview follows. The theme is kept as a package
+folder, `theme-src/<name>/`; the sheet the preview and the exports read,
+`themes/<name>.css`, is compiled from it, so what you see is what you export. A
+theme package you import (**Import…** in the pane, **Add media…**, or a drop)
+keeps its files there, so you can edit it.
+
+- **Palette**: the background, text, heading, accent and link colours. Pick a
+  colour or type it (`#1a2b3c`, `rgb()`, `hsl()` or a name).
+- **Typography**: the body, heading and code fonts, with their sizes and
+  weights. The fonts are the generic and common ones, and the fonts you add
+  (**Add font…**: `.woff2`, `.woff`, `.ttf` or `.otf`).
+- **Logo**: an image (`.svg`, `.png`), where it goes (a corner, or the whole
+  background) and its size. **Page number and footer**: where the page number
+  goes, and the sizes and alignment.
+- **Details**: what `theme.hcl` says: version, description, authors, licence,
+  homepage, the base theme (`extends`) and the go-slides version it needs.
+- **Contrast (WCAG)**: for each text on its background, the ratio and its
+  level, `AA` or `AAA`, or "Fail", live. Headings count as large text (3:1
+  passes AA; normal text needs 4.5:1).
+
+**Edit CSS** shows the theme's sheet in the editor. The controls write only
+inside a block fenced by two `gsta:visual` comments, and read it back when you
+edit its values by hand. What you write outside the block is never touched. If
+you add something inside the block that the controls cannot show, they stop
+writing and the pane says so; **Restore the block** rewrites it from the values
+it holds and nothing else.
+
+**Import…** opens a `.gsta.xz` or a loose `.css`. A package is checked as
+`slides theme verify` checks it, with the same limits: a package that is not
+safe (a path that leaves it, a link, a script in an SVG, a remote `url()`, a
+checksum that does not match) is refused with its `theme.*` code, in Problems,
+and nothing changes. In a loose sheet an `@import "gaia";` becomes the base
+theme (`extends`), because a package names its base there. A font you add has
+the licence `LicenseRef-unspecified` until you say it under Details.
+
+**Export .gsta.xz** builds the package in your browser and reads it back as
+`slides theme verify` does, so the file passes it; **Export CSS** downloads the
+compiled sheet. Nothing is uploaded. Every edit is a step of **Undo** (edits of
+one control in a row are one step) and keeps what it replaced as a version;
+**Save version** keeps the theme and its version, by name, in the Versions
+pane.
+
 ## Undo, Redo and versions
 
 **Undo** and **Redo** are on the Home tab and on Ctrl+Z, Ctrl+Shift+Z or

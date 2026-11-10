@@ -153,6 +153,53 @@ Obrazy jako pliki (slides `--images`) nie powstają w przeglądarce: użyj
 [polecenia]({{< relref "cli" >}}) lub
 [rozszerzenia VS Code]({{< relref "vscode" >}}).
 
+## Edytor motywów {#theme-editor}
+
+**Start ▸ Wygląd ▸ Edytor motywów** otwiera panel, który edytuje jeden z
+motywów projektu za pomocą kontrolek, a podgląd nadąża. Motyw jest
+przechowywany jako folder pakietu, `theme-src/<name>/`; arkusz czytany przez
+podgląd i eksporty, `themes/<name>.css`, jest z niego kompilowany: to, co
+widzisz, jest tym, co eksportujesz. Importowany pakiet motywu (**Importuj…** w
+panelu, **Dodaj multimedia…** lub upuszczenie pliku) zachowuje tam swoje pliki,
+więc możesz go edytować.
+
+- **Paleta**: kolory tła, tekstu, nagłówków, akcentu i odnośników. Wybierz
+  kolor albo wpisz go (`#1a2b3c`, `rgb()`, `hsl()` lub nazwę).
+- **Typografia**: czcionki tekstu, nagłówków i kodu wraz z rozmiarami i
+  grubościami. Czcionki to ogólne i popularne oraz te, które dodasz (**Dodaj
+  czcionkę…**: `.woff2`, `.woff`, `.ttf` lub `.otf`).
+- **Logo**: obraz (`.svg`, `.png`), jego miejsce (róg albo całe tło) i rozmiar.
+  **Numer strony i stopka**: gdzie jest numer strony oraz rozmiary i
+  wyrównanie.
+- **Szczegóły**: to, co mówi `theme.hcl`: wersja, opis, autorzy, licencja,
+  strona domowa, motyw bazowy (`extends`) i wymagana wersja go-slides.
+- **Kontrast (WCAG)**: dla każdego tekstu na jego tle współczynnik i jego
+  poziom, `AA` lub `AAA`, albo „Niezgodne”, na żywo. Nagłówki liczą się jako
+  duży tekst (3:1 wystarcza dla AA; zwykły tekst wymaga 4,5:1).
+
+**Edytuj CSS** pokazuje arkusz motywu w edytorze. Kontrolki zapisują tylko w
+bloku objętym dwoma komentarzami `gsta:visual` i odczytują go ponownie, gdy
+zmieniasz jego wartości ręcznie. Tego, co napiszesz poza blokiem, nigdy się nie
+dotyka. Jeśli dodasz w bloku coś, czego kontrolki nie potrafią pokazać,
+przestają zapisywać, a panel o tym mówi; **Przywróć blok** zapisuje go na nowo
+z zawartych w nim wartości i nic więcej.
+
+**Importuj…** otwiera plik `.gsta.xz` albo pojedynczy `.css`. Pakiet jest
+sprawdzany tak, jak sprawdza go `slides theme verify`, z tymi samymi
+limitami: pakiet, który nie jest bezpieczny (ścieżka wychodząca poza niego,
+dowiązanie, skrypt w SVG, zdalny `url()`, niezgodna suma kontrolna), jest
+odrzucany z kodem `theme.*` w Problemach i nic się nie zmienia. W pojedynczym
+arkuszu `@import "gaia";` staje się motywem bazowym (`extends`), bo pakiet
+wskazuje tam swoją bazę. Dodana czcionka ma licencję `LicenseRef-unspecified`,
+dopóki nie podasz jej w Szczegółach.
+
+**Eksportuj .gsta.xz** buduje pakiet w przeglądarce i odczytuje go tak, jak
+robi to `slides theme verify`, więc plik go przechodzi; **Eksportuj CSS**
+pobiera skompilowany arkusz. Nic nie jest wysyłane. Każda zmiana to krok
+**Cofnij** (kolejne zmiany jednej kontrolki to jeden krok) i zachowuje to, co
+zastępuje, jako wersję; **Zapisz wersję** zachowuje motyw i jego wersję pod jego
+nazwą w panelu Wersje.
+
 ## Cofnij, ponów i wersje {#undo-redo-and-versions}
 
 **Undo** i **Redo** (cofnij i ponów) są na karcie Home oraz pod Ctrl+Z,

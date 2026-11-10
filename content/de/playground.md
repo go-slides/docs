@@ -152,6 +152,59 @@ Bilder als Dateien (`--images` von slides) entstehen nicht im Browser: Verwenden
 [Befehl]({{< relref "cli" >}}) oder die
 [VS-Code-Erweiterung]({{< relref "vscode" >}}).
 
+## Theme-Editor {#theme-editor}
+
+**Start ▸ Design ▸ Theme-Editor** öffnet einen Bereich, der eines der Themes
+des Projekts mit Reglern bearbeitet; die Vorschau folgt. Das Theme wird als
+Paketordner gehalten, `theme-src/<name>/`; das Stylesheet, das die Vorschau und
+die Exporte lesen, `themes/<name>.css`, wird daraus kompiliert: Was Sie sehen,
+ist, was Sie exportieren. Ein Theme-Paket, das Sie importieren (**Importieren …**
+im Bereich, **Medien hinzufügen …** oder per Ablegen), behält dort seine
+Dateien, sodass Sie es bearbeiten können.
+
+- **Palette**: die Farben für Hintergrund, Text, Überschriften, Akzent und
+  Links. Wählen Sie eine Farbe oder tippen Sie sie ein (`#1a2b3c`, `rgb()`,
+  `hsl()` oder einen Namen).
+- **Typografie**: die Schriften für Text, Überschriften und Code mit ihren
+  Größen und Stärken. Es gibt die generischen und gängigen Schriften sowie die,
+  die Sie hinzufügen (**Schrift hinzufügen …**: `.woff2`, `.woff`, `.ttf` oder
+  `.otf`).
+- **Logo**: ein Bild (`.svg`, `.png`), wohin es kommt (eine Ecke oder der
+  ganze Hintergrund) und seine Größe. **Seitenzahl und Fußzeile**: wohin die
+  Seitenzahl kommt, dazu Größen und Ausrichtung.
+- **Angaben**: was `theme.hcl` sagt: Version, Beschreibung, Autoren, Lizenz,
+  Webseite, das Basis-Theme (`extends`) und die nötige go-slides-Version.
+- **Kontrast (WCAG)**: für jeden Text auf seinem Hintergrund das Verhältnis
+  und seine Stufe, `AA` oder `AAA`, oder „Nicht bestanden“, live.
+  Überschriften zählen als großer Text (3:1 genügt für AA; normaler Text
+  braucht 4,5:1).
+
+**CSS bearbeiten** zeigt das Stylesheet des Themes im Editor. Die Regler
+schreiben nur in einen Block, der von zwei `gsta:visual`-Kommentaren
+eingefasst ist, und lesen ihn wieder ein, wenn Sie seine Werte von Hand ändern.
+Was Sie außerhalb des Blocks schreiben, wird nie angefasst. Fügen Sie im Block
+etwas hinzu, das die Regler nicht darstellen können, hören sie auf zu
+schreiben und der Bereich sagt es; **Block wiederherstellen** schreibt ihn aus
+den enthaltenen Werten neu und sonst nichts.
+
+**Importieren …** öffnet ein `.gsta.xz` oder ein einzelnes `.css`. Ein Paket
+wird so geprüft, wie `slides theme verify` es prüft, mit denselben Grenzen: Ein
+Paket, das nicht sicher ist (ein Pfad, der es verlässt, ein Link, ein Skript in
+einem SVG, eine entfernte `url()`, eine Prüfsumme, die nicht stimmt), wird mit
+seinem `theme.*`-Code unter Probleme abgelehnt, und nichts ändert sich. In
+einem einzelnen Stylesheet wird ein `@import "gaia";` zum Basis-Theme
+(`extends`), weil ein Paket dort seine Basis nennt. Eine Schrift, die Sie
+hinzufügen, hat die Lizenz `LicenseRef-unspecified`, bis Sie sie unter Angaben
+nennen.
+
+**.gsta.xz exportieren** baut das Paket in Ihrem Browser und liest es so
+wieder ein, wie es `slides theme verify` tut, sodass die Datei es besteht;
+**CSS exportieren** lädt das kompilierte Stylesheet herunter. Nichts wird
+hochgeladen. Jede Änderung ist ein Schritt von **Rückgängig** (Änderungen
+desselben Reglers hintereinander sind ein Schritt) und behält, was sie ersetzt,
+als Version; **Version speichern** hält das Theme und seine Version unter
+seinem Namen im Versionen-Bereich fest.
+
 ## Rückgängig, Wiederholen und Versionen {#undo-redo-and-versions}
 
 **Undo** und **Redo** (Rückgängig und Wiederholen) stehen im Reiter Home und

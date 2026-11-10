@@ -152,6 +152,58 @@ Les images en tant que fichiers (`--images` de slides) ne sont pas produites dan
 [commande]({{< relref "cli" >}}) ou
 l'[extension VS Code]({{< relref "vscode" >}}).
 
+## Éditeur de thème {#theme-editor}
+
+**Accueil ▸ Apparence ▸ Éditeur de thème** ouvre un volet qui modifie l’un des
+thèmes du projet avec des réglages, et l’aperçu suit. Le thème est conservé
+sous forme de dossier de paquet, `theme-src/<name>/` ; la feuille que lisent
+l’aperçu et les exports, `themes/<name>.css`, en est compilée : ce que vous
+voyez est ce que vous exportez. Un paquet de thème que vous importez
+(**Importer…** dans le volet, **Ajouter un média…**, ou un glisser-déposer)
+y garde ses fichiers, vous pouvez donc le modifier.
+
+- **Palette** : les couleurs du fond, du texte, des titres, d’accent et des
+  liens. Choisissez une couleur ou saisissez-la (`#1a2b3c`, `rgb()`, `hsl()` ou
+  un nom).
+- **Typographie** : les polices du texte, des titres et du code, avec leurs
+  tailles et leurs graisses. Les polices sont les génériques et les usuelles,
+  et celles que vous ajoutez (**Ajouter une police…** : `.woff2`, `.woff`,
+  `.ttf` ou `.otf`).
+- **Logo** : une image (`.svg`, `.png`), son emplacement (un coin, ou tout le
+  fond) et sa taille. **Numéro de page et pied de page** : où va le numéro de
+  page, et les tailles et l’alignement.
+- **Détails** : ce que dit `theme.hcl` : version, description, auteurs,
+  licence, page d’accueil, le thème de base (`extends`) et la version de
+  go-slides requise.
+- **Contraste (WCAG)** : pour chaque texte sur son fond, le rapport et son
+  niveau, `AA` ou `AAA`, ou « Échec », en direct. Les titres comptent comme du
+  grand texte (3:1 suffit pour AA ; le texte normal demande 4,5:1).
+
+**Modifier le CSS** montre la feuille du thème dans l’éditeur. Les réglages
+n’écrivent que dans un bloc délimité par deux commentaires `gsta:visual`, et
+le relisent quand vous modifiez ses valeurs à la main. Ce que vous écrivez en
+dehors du bloc n’est jamais touché. Si vous ajoutez dans le bloc quelque chose
+que les réglages ne peuvent pas montrer, ils cessent d’écrire et le volet le
+dit ; **Rétablir le bloc** le réécrit à partir des valeurs qu’il contient et
+rien d’autre.
+
+**Importer…** ouvre un `.gsta.xz` ou une feuille `.css` isolée. Un paquet est
+vérifié comme le vérifie `slides theme verify`, avec les mêmes limites : un
+paquet qui n’est pas sûr (un chemin qui en sort, un lien, un script dans un
+SVG, une `url()` distante, une somme de contrôle qui ne correspond pas) est
+refusé avec son code `theme.*`, dans Problèmes, et rien ne change. Dans une
+feuille isolée, un `@import "gaia";` devient le thème de base (`extends`), car
+un paquet y nomme sa base. Une police que vous ajoutez a la licence
+`LicenseRef-unspecified` tant que vous ne la dites pas sous Détails.
+
+**Exporter .gsta.xz** construit le paquet dans votre navigateur et le relit
+comme le fait `slides theme verify`, si bien que le fichier le passe ;
+**Exporter le CSS** télécharge la feuille compilée. Rien n’est envoyé. Chaque
+modification est une étape d’**Annuler** (les modifications d’un même réglage
+à la suite ne font qu’une étape) et garde ce qu’elle remplace comme version ;
+**Enregistrer une version** conserve le thème et sa version, par son nom, dans
+le volet Versions.
+
 ## Annuler, rétablir et versions {#undo-redo-and-versions}
 
 **Undo** et **Redo** (annuler et rétablir) se trouvent dans l'onglet Home et
