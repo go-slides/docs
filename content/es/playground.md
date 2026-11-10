@@ -163,6 +163,54 @@ Las imágenes como archivos (`--images` de slides) no se generan en el navegador
 use el [comando]({{< relref "cli" >}}) o la
 [extensión de VS Code]({{< relref "vscode" >}}).
 
+## Editor de temas {#theme-editor}
+
+**Inicio ▸ Aspecto ▸ Editor de temas** abre un panel que edita uno de los
+temas del proyecto con controles, y la vista previa lo sigue. El tema se guarda
+como una carpeta de paquete, `theme-src/<name>/`; la hoja que leen la vista
+previa y las exportaciones, `themes/<name>.css`, se compila a partir de ella:
+lo que ve es lo que exporta. Un paquete de tema que importa (**Importar…** en
+el panel, **Añadir medios…** o arrastrándolo) conserva allí sus archivos, así
+que puede editarlo.
+
+- **Paleta**: los colores de fondo, texto, títulos, acento y enlaces. Elija un
+  color o escríbalo (`#1a2b3c`, `rgb()`, `hsl()` o un nombre).
+- **Tipografía**: las fuentes del texto, los títulos y el código, con sus
+  tamaños y grosores. Las fuentes son las genéricas y las comunes, y las que
+  añada (**Añadir fuente…**: `.woff2`, `.woff`, `.ttf` o `.otf`).
+- **Logotipo**: una imagen (`.svg`, `.png`), dónde va (una esquina o todo el
+  fondo) y su tamaño. **Número de página y pie**: dónde va el número de página,
+  y los tamaños y la alineación.
+- **Detalles**: lo que dice `theme.hcl`: versión, descripción, autores,
+  licencia, página web, el tema base (`extends`) y la versión de go-slides que
+  necesita.
+- **Contraste (WCAG)**: para cada texto sobre su fondo, la razón y su nivel,
+  `AA` o `AAA`, o «No cumple», en vivo. Los títulos cuentan como texto grande
+  (3:1 basta para AA; el texto normal necesita 4,5:1).
+
+**Editar CSS** muestra la hoja del tema en el editor. Los controles solo
+escriben dentro de un bloque delimitado por dos comentarios `gsta:visual`, y lo
+vuelven a leer cuando edita sus valores a mano. Lo que escribe fuera del bloque
+nunca se toca. Si añade dentro del bloque algo que los controles no pueden
+mostrar, dejan de escribir y el panel lo dice; **Restaurar el bloque** lo
+reescribe a partir de los valores que contiene y nada más.
+
+**Importar…** abre un `.gsta.xz` o un `.css` suelto. Un paquete se comprueba
+como lo comprueba `slides theme verify`, con los mismos límites: un paquete que
+no es seguro (una ruta que sale de él, un enlace, un script en un SVG, una
+`url()` remota, una suma de comprobación que no coincide) se rechaza con su
+código `theme.*`, en Problemas, y no cambia nada. En una hoja suelta, un
+`@import "gaia";` pasa a ser el tema base (`extends`), porque un paquete nombra
+allí su base. Una fuente que añade tiene la licencia `LicenseRef-unspecified`
+hasta que la indique en Detalles.
+
+**Exportar .gsta.xz** construye el paquete en su navegador y lo vuelve a leer
+como lo hace `slides theme verify`, de modo que el archivo lo supera;
+**Exportar CSS** descarga la hoja compilada. No se sube nada. Cada edición es
+un paso de **Deshacer** (las ediciones de un mismo control seguidas son un
+paso) y conserva lo que sustituye como versión; **Guardar versión** guarda el
+tema y su versión, con su nombre, en el panel Versiones.
+
 ## Deshacer, rehacer y versiones {#undo-redo-and-versions}
 
 **Undo** y **Redo** (deshacer y rehacer) están en la pestaña Home y en
