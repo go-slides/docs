@@ -301,10 +301,18 @@ playground, até &lt;strong&gt;Desconectar&lt;/strong&gt; (ou Forget my drafts).
 armazenamento da página do playground é removido na primeira vez que você abre
 esta versão, e o painel avisa. Digite-o de novo no quadro (e marque Lembrar se
 quiser que ele seja mantido).&lt;/p&gt;
-&lt;p&gt;Resta um risco: um script injetado na página do playground ainda poderia enviar
-os comandos do quadro (ler a pasta carregada, propor um branch e um pull
-request) como você, mas não consegue ler o token. Prefira um token limitado aos
-repositórios de que você precisa. Para equipes, o modo servidor auto-hospedado
+&lt;p&gt;&lt;strong&gt;Propor mudanças…&lt;/strong&gt; é uma escrita, então o quadro pergunta antes: ele mostra o
+título, o repositório e o número de arquivos, e espera seu clique no próprio
+botão &lt;strong&gt;Permitir&lt;/strong&gt; (no máximo dois minutos, uma proposta por vez). Nada é
+escrito antes do seu clique.&lt;/p&gt;
+&lt;p&gt;Restam dois riscos, porque são inerentes a uma página que incorpora um quadro.
+Um script injetado na página do playground pode ler o nonce do quadro e enviar
+os comandos do quadro: ler a pasta que você carregou ou pedir uma proposta (que
+você ainda precisa permitir no quadro). E pode desenhar um painel falso sobre o
+quadro e pedir o seu token por conta própria: se o quadro parecer errado ou não
+estiver onde deveria, não digite o token. Nenhum dos dois permite ler o token
+que o quadro guarda. Prefira um token limitado aos repositórios de que você
+precisa. Para equipes, o modo servidor auto-hospedado
 (em breve) mantém os tokens no servidor.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Link permanente para esta seção"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;O painel tem uma lista de forjas: &lt;strong&gt;GitHub&lt;/strong&gt; e &lt;strong&gt;GitLab.com&lt;/strong&gt;. Para o GitLab,

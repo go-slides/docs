@@ -288,10 +288,17 @@ playground&amp;rsquo;s storage, until you press &lt;strong&gt;Disconnect&lt;/str
 &lt;p&gt;&lt;strong&gt;If you used an earlier version:&lt;/strong&gt; a token it kept in the playground page&amp;rsquo;s own
 storage is removed the first time you open this version, and the pane tells you.
 Type it again in the frame (and tick Remember if you want it kept).&lt;/p&gt;
-&lt;p&gt;One risk remains: a script injected into the playground page could still send
-the frame&amp;rsquo;s commands (read the loaded folder, propose a branch and a pull
-request) as you, but it cannot read the token. Prefer a token limited to the
-repositories you need. For teams, the self-hosted server mode (coming) keeps
+&lt;p&gt;&lt;strong&gt;Propose changes…&lt;/strong&gt; is a write, so the frame asks you first: it shows the
+title, the repository and the number of files, and waits for your click on its
+own &lt;strong&gt;Allow&lt;/strong&gt; button (for two minutes at most, one proposal at a time). Nothing
+is written before you click.&lt;/p&gt;
+&lt;p&gt;Two risks remain, because they are inherent to a page that embeds a frame. A
+script injected into the playground page can read the frame&amp;rsquo;s nonce and send the
+frame&amp;rsquo;s commands: read the folder you loaded, or ask for a proposal (which you
+must still allow in the frame). And it can draw a fake panel over the frame and
+ask for your token itself: if the frame looks wrong or is not where it should be,
+do not type the token. Neither lets it read the token the frame holds. Prefer a
+token limited to the repositories you need. For teams, the self-hosted server mode (coming) keeps
 tokens on the server.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The pane has a forge list: &lt;strong&gt;GitHub&lt;/strong&gt; and &lt;strong&gt;GitLab.com&lt;/strong&gt;. For GitLab, give

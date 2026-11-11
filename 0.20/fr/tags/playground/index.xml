@@ -301,10 +301,18 @@ jusqu&amp;rsquo;à &lt;strong&gt;Se déconnecter&lt;/strong&gt; (ou Forget my dr
 le stockage propre de la page du playground est supprimé la première fois que
 vous ouvrez cette version, et le volet vous le dit. Saisissez-le de nouveau dans
 le cadre (et cochez Mémoriser si vous voulez qu&amp;rsquo;il soit gardé).&lt;/p&gt;
-&lt;p&gt;Un risque subsiste : un script injecté dans la page du playground pourrait
-encore envoyer les commandes du cadre (lire le dossier chargé, proposer une
-branche et une pull request) en votre nom, mais il ne peut pas lire le jeton.
-Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les équipes, le
+&lt;p&gt;&lt;strong&gt;Proposer les changements…&lt;/strong&gt; est une écriture, donc le cadre vous demande
+d&amp;rsquo;abord : il affiche le titre, le dépôt et le nombre de fichiers, et attend votre
+clic sur son propre bouton &lt;strong&gt;Autoriser&lt;/strong&gt; (deux minutes au plus, une proposition à
+la fois). Rien n&amp;rsquo;est écrit avant votre clic.&lt;/p&gt;
+&lt;p&gt;Deux risques subsistent, parce qu&amp;rsquo;ils tiennent à une page qui intègre un cadre.
+Un script injecté dans la page du playground peut lire le nonce du cadre et
+envoyer les commandes du cadre : lire le dossier que vous avez chargé, ou
+demander une proposition (que vous devez quand même autoriser dans le cadre). Et
+il peut dessiner un faux panneau par-dessus le cadre et vous demander lui-même
+votre jeton : si le cadre a l&amp;rsquo;air anormal ou n&amp;rsquo;est pas où il devrait être, ne
+saisissez pas le jeton. Ni l&amp;rsquo;un ni l&amp;rsquo;autre ne lui permet de lire le jeton que
+détient le cadre. Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les équipes, le
 mode serveur auto-hébergé (à venir) garde les jetons sur le serveur.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Lien permanent vers cette section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Le volet a une liste de forges : &lt;strong&gt;GitHub&lt;/strong&gt; et &lt;strong&gt;GitLab.com&lt;/strong&gt;. Pour GitLab,

@@ -215,8 +215,12 @@ F7 和 Shift+F7 在变化之间移动。&lt;/li&gt;
 （位于 &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;，而不是 playground 的存储），直到 &lt;strong&gt;断开&lt;/strong&gt;（或 Forget my drafts）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;如果你用过早期版本：&lt;/strong&gt; 早期版本保存在 playground 页面自身存储中的令牌，会在你第一次打开此版本时被删除，
 窗格会告诉你。请在框架中重新输入（如果想保留，请勾选“记住”）。&lt;/p&gt;
-&lt;p&gt;仍有一项风险：注入到 playground 页面的脚本仍可以以你的身份发送框架的命令（读取已载入的文件夹、提出分支和
-拉取请求），但无法读取令牌。请优先使用只限于所需仓库的令牌。对于团队，自托管服务器模式（即将推出）把令牌
+&lt;p&gt;&lt;strong&gt;提出修改…&lt;/strong&gt; 属于写入操作，所以框架会先询问你：它显示标题、仓库和文件数量，并等待你点击它自己的
+&lt;strong&gt;允许&lt;/strong&gt; 按钮（最多两分钟，一次只处理一个提案）。在你点击之前不会写入任何内容。&lt;/p&gt;
+&lt;p&gt;仍有两项风险，因为它们是嵌入框架的页面固有的。注入到 playground 页面的脚本可以读取框架的 nonce 并发送框架的
+命令：读取你已载入的文件夹，或请求提出提案（你仍须在框架中允许）。它还可以在框架上方绘制一个假面板，自己向你索要
+令牌：如果框架看起来不对，或不在应在的位置，请不要输入令牌。两种情况都无法让它读取框架所持有的令牌。请优先使用
+只限于所需仓库的令牌。对于团队，自托管服务器模式（即将推出）把令牌
 保存在服务器上。&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;窗格中有一个 forge 列表：&lt;strong&gt;GitHub&lt;/strong&gt; 和 &lt;strong&gt;GitLab.com&lt;/strong&gt;。使用 GitLab 时，可以提供范围为

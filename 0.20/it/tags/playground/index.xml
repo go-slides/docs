@@ -296,10 +296,18 @@ su questo dispositivo&lt;/strong&gt; lo conserva nel localStorage proprio del fr
 memoria propria della pagina del playground viene rimosso la prima volta che
 aprite questa versione, e il riquadro ve lo dice. Digitatelo di nuovo nel frame
 (e spuntate Ricorda se volete che resti salvato).&lt;/p&gt;
-&lt;p&gt;Resta un rischio: uno script iniettato nella pagina del playground potrebbe
-ancora inviare i comandi del frame (leggere la cartella caricata, proporre un
-branch e una pull request) a vostro nome, ma non può leggere il token.
-Preferite un token limitato ai repository che vi servono. Per i team, la
+&lt;p&gt;&lt;strong&gt;Proponi le modifiche…&lt;/strong&gt; è una scrittura, quindi il frame vi chiede prima: mostra
+il titolo, il repository e il numero di file, e attende il vostro clic sul
+proprio pulsante &lt;strong&gt;Consenti&lt;/strong&gt; (al massimo due minuti, una proposta alla volta).
+Nulla viene scritto prima del vostro clic.&lt;/p&gt;
+&lt;p&gt;Restano due rischi, perché sono inerenti a una pagina che incorpora un frame. Uno
+script iniettato nella pagina del playground può leggere il nonce del frame e
+inviare i comandi del frame: leggere la cartella che avete caricato, o chiedere
+una proposta (che dovete comunque consentire nel frame). E può disegnare un
+falso pannello sopra il frame e chiedervi da sé il token: se il frame sembra
+sbagliato o non è dove dovrebbe essere, non digitate il token. Nessuno dei due
+gli permette di leggere il token che il frame conserva. Preferite un token
+limitato ai repository che vi servono. Per i team, la
 modalità server self-hosted (in arrivo) tiene i token sul server.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Link permanente a questa sezione"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Il riquadro ha un elenco di forge: &lt;strong&gt;GitHub&lt;/strong&gt; e &lt;strong&gt;GitLab.com&lt;/strong&gt;. Per GitLab,

@@ -291,10 +291,17 @@ i nigdy nie trafia do podglądu slajdów ani do workera renderowania.
 &lt;p&gt;&lt;strong&gt;Jeśli używałeś wcześniejszej wersji:&lt;/strong&gt; token, który trzymała w pamięci samej
 strony playgrounda, jest usuwany przy pierwszym otwarciu tej wersji, a panel Ci
 o tym mówi. Wpisz go ponownie w ramce (i zaznacz Zapamiętaj, jeśli ma zostać).&lt;/p&gt;
-&lt;p&gt;Pozostaje jedno ryzyko: skrypt wstrzyknięty do strony playgrounda nadal mógłby
-wysyłać polecenia ramki (odczytać wczytany folder, zaproponować gałąź i pull
-request) w Twoim imieniu, ale nie może odczytać tokenu. Wybierz token
-ograniczony do potrzebnych repozytoriów. Dla zespołów tryb samodzielnie
+&lt;p&gt;&lt;strong&gt;Zaproponuj zmiany…&lt;/strong&gt; to zapis, więc ramka najpierw Cię pyta: pokazuje tytuł,
+repozytorium i liczbę plików, i czeka na Twoje kliknięcie własnego przycisku
+&lt;strong&gt;Zezwól&lt;/strong&gt; (najwyżej dwie minuty, jedna propozycja naraz). Nic nie jest
+zapisywane przed Twoim kliknięciem.&lt;/p&gt;
+&lt;p&gt;Pozostają dwa ryzyka, bo są nieodłączne od strony, która osadza ramkę. Skrypt
+wstrzyknięty do strony playgrounda może odczytać nonce ramki i wysyłać polecenia
+ramki: odczytać wczytany folder albo poprosić o propozycję (którą nadal musisz
+zezwolić w ramce). Może też narysować fałszywy panel nad ramką i sam poprosić o
+Twój token: jeśli ramka wygląda nieprawidłowo lub nie jest tam, gdzie powinna,
+nie wpisuj tokenu. Żadne z tych nie pozwala mu odczytać tokenu, który trzyma
+ramka. Wybierz token ograniczony do potrzebnych repozytoriów. Dla zespołów tryb samodzielnie
 hostowanego serwera (wkrótce) trzyma tokeny na serwerze.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Panel ma listę forge: &lt;strong&gt;GitHub&lt;/strong&gt; i &lt;strong&gt;GitLab.com&lt;/strong&gt;. Dla GitLaba podaj osobisty

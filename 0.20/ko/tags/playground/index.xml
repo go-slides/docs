@@ -243,8 +243,14 @@ F7과 Shift+F7로 변경 사항 사이를 이동합니다.&lt;/li&gt;
 &lt;p&gt;&lt;strong&gt;이전 버전을 사용했다면:&lt;/strong&gt; 이전 버전이 playground 페이지 자체의 저장소에 보관하던 토큰은 이 버전을
 처음 열 때 삭제되며, 창이 그 사실을 알려 줍니다. 프레임에서 다시 입력하세요(보관하려면 &amp;lsquo;기억&amp;rsquo;을
 체크하세요).&lt;/p&gt;
-&lt;p&gt;위험이 하나 남습니다. playground 페이지에 주입된 스크립트는 여전히 사용자 권한으로 프레임의 명령
-(불러온 폴더 읽기, 브랜치와 풀 리퀘스트 제안)을 보낼 수 있지만 토큰은 읽을 수 없습니다. 필요한
+&lt;p&gt;**변경 제안…**은 쓰기 작업이므로 프레임이 먼저 묻습니다. 제목, 저장소, 파일 수를 보여 주고
+프레임 자체의 &lt;strong&gt;허용&lt;/strong&gt; 버튼을 클릭하기를 기다립니다(최대 2분, 한 번에 제안 하나). 클릭하기 전에는
+아무것도 기록되지 않습니다.&lt;/p&gt;
+&lt;p&gt;위험이 두 가지 남습니다. 프레임을 포함하는 페이지에는 본질적으로 따르는 위험이기 때문입니다.
+playground 페이지에 주입된 스크립트는 프레임의 nonce를 읽고 프레임의 명령을 보낼 수 있습니다. 불러온
+폴더를 읽거나 제안을 요청하는 것입니다(제안은 프레임에서 여전히 허용해야 합니다). 또한 프레임 위에
+가짜 패널을 그려 직접 토큰을 물을 수도 있습니다. 프레임이 이상해 보이거나 있어야 할 곳에 없으면
+토큰을 입력하지 마세요. 어느 쪽도 프레임이 가진 토큰을 읽게 해 주지는 않습니다. 필요한
 저장소로 제한한 토큰을 쓰세요. 팀에는 토큰을 서버에 두는 자체 호스팅 서버 모드(곧 제공)가 있습니다.&lt;/p&gt;
 &lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
 &lt;a href="#gitlab" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;창에는 forge 목록이 있으며 &lt;strong&gt;GitHub&lt;/strong&gt;와 &lt;strong&gt;GitLab.com&lt;/strong&gt; 중에서 고릅니다. GitLab에서는
