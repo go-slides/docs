@@ -286,10 +286,19 @@ Speicher der Playground-Seite abgelegt hatte, wird beim ersten Öffnen dieser
 Version entfernt, und der Bereich teilt es Ihnen mit. Tippen Sie ihn im Frame
 erneut ein (und kreuzen Sie Merken an, wenn er gespeichert bleiben soll).
 
-Ein Risiko bleibt: Ein in die Playground-Seite eingeschleustes Skript könnte
-weiterhin die Befehle des Frames senden (den geladenen Ordner lesen, einen
-Branch und einen Pull-Request vorschlagen), und zwar als Sie, aber es kann den
-Token nicht lesen. Bevorzugen Sie einen Token, der auf die benötigten
+**Änderungen vorschlagen…** schreibt, deshalb fragt der Frame zuerst nach: Er
+zeigt den Titel, das Repository und die Anzahl der Dateien und wartet auf Ihren
+Klick auf seine eigene Schaltfläche **Erlauben** (höchstens zwei Minuten, ein
+Vorschlag nach dem anderen). Vor Ihrem Klick wird nichts geschrieben.
+
+Zwei Risiken bleiben, denn sie gehören zu jeder Seite, die einen Frame
+einbettet. Ein in die Playground-Seite eingeschleustes Skript kann den Nonce des
+Frames lesen und die Befehle des Frames senden: den geladenen Ordner lesen oder
+einen Vorschlag anfordern (den Sie im Frame trotzdem erlauben müssen). Und es
+kann ein gefälschtes Bedienfeld über den Frame legen und selbst nach Ihrem Token
+fragen: Wenn der Frame falsch aussieht oder nicht dort ist, wo er sein sollte,
+geben Sie den Token nicht ein. Keines von beiden erlaubt es, den Token zu lesen,
+den der Frame hält. Bevorzugen Sie einen Token, der auf die benötigten
 Repositories beschränkt ist. Für Teams hält der selbst gehostete Servermodus (in
 Vorbereitung) die Token auf dem Server.
 

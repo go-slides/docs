@@ -283,10 +283,19 @@ le stockage propre de la page du playground est supprimé la première fois que
 vous ouvrez cette version, et le volet vous le dit. Saisissez-le de nouveau dans
 le cadre (et cochez Mémoriser si vous voulez qu'il soit gardé).
 
-Un risque subsiste : un script injecté dans la page du playground pourrait
-encore envoyer les commandes du cadre (lire le dossier chargé, proposer une
-branche et une pull request) en votre nom, mais il ne peut pas lire le jeton.
-Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les équipes, le
+**Proposer les changements…** est une écriture, donc le cadre vous demande
+d'abord : il affiche le titre, le dépôt et le nombre de fichiers, et attend votre
+clic sur son propre bouton **Autoriser** (deux minutes au plus, une proposition à
+la fois). Rien n'est écrit avant votre clic.
+
+Deux risques subsistent, parce qu'ils tiennent à une page qui intègre un cadre.
+Un script injecté dans la page du playground peut lire le nonce du cadre et
+envoyer les commandes du cadre : lire le dossier que vous avez chargé, ou
+demander une proposition (que vous devez quand même autoriser dans le cadre). Et
+il peut dessiner un faux panneau par-dessus le cadre et vous demander lui-même
+votre jeton : si le cadre a l'air anormal ou n'est pas où il devrait être, ne
+saisissez pas le jeton. Ni l'un ni l'autre ne lui permet de lire le jeton que
+détient le cadre. Préférez un jeton limité aux dépôts dont vous avez besoin. Pour les équipes, le
 mode serveur auto-hébergé (à venir) garde les jetons sur le serveur.
 
 ### GitLab.com {#gitlab}

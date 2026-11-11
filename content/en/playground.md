@@ -270,10 +270,18 @@ playground's storage, until you press **Disconnect** (or Forget my drafts).
 storage is removed the first time you open this version, and the pane tells you.
 Type it again in the frame (and tick Remember if you want it kept).
 
-One risk remains: a script injected into the playground page could still send
-the frame's commands (read the loaded folder, propose a branch and a pull
-request) as you, but it cannot read the token. Prefer a token limited to the
-repositories you need. For teams, the self-hosted server mode (coming) keeps
+**Propose changes…** is a write, so the frame asks you first: it shows the
+title, the repository and the number of files, and waits for your click on its
+own **Allow** button (for two minutes at most, one proposal at a time). Nothing
+is written before you click.
+
+Two risks remain, because they are inherent to a page that embeds a frame. A
+script injected into the playground page can read the frame's nonce and send the
+frame's commands: read the folder you loaded, or ask for a proposal (which you
+must still allow in the frame). And it can draw a fake panel over the frame and
+ask for your token itself: if the frame looks wrong or is not where it should be,
+do not type the token. Neither lets it read the token the frame holds. Prefer a
+token limited to the repositories you need. For teams, the self-hosted server mode (coming) keeps
 tokens on the server.
 
 ### GitLab.com {#gitlab}

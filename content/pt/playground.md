@@ -283,10 +283,19 @@ armazenamento da página do playground é removido na primeira vez que você abr
 esta versão, e o painel avisa. Digite-o de novo no quadro (e marque Lembrar se
 quiser que ele seja mantido).
 
-Resta um risco: um script injetado na página do playground ainda poderia enviar
-os comandos do quadro (ler a pasta carregada, propor um branch e um pull
-request) como você, mas não consegue ler o token. Prefira um token limitado aos
-repositórios de que você precisa. Para equipes, o modo servidor auto-hospedado
+**Propor mudanças…** é uma escrita, então o quadro pergunta antes: ele mostra o
+título, o repositório e o número de arquivos, e espera seu clique no próprio
+botão **Permitir** (no máximo dois minutos, uma proposta por vez). Nada é
+escrito antes do seu clique.
+
+Restam dois riscos, porque são inerentes a uma página que incorpora um quadro.
+Um script injetado na página do playground pode ler o nonce do quadro e enviar
+os comandos do quadro: ler a pasta que você carregou ou pedir uma proposta (que
+você ainda precisa permitir no quadro). E pode desenhar um painel falso sobre o
+quadro e pedir o seu token por conta própria: se o quadro parecer errado ou não
+estiver onde deveria, não digite o token. Nenhum dos dois permite ler o token
+que o quadro guarda. Prefira um token limitado aos repositórios de que você
+precisa. Para equipes, o modo servidor auto-hospedado
 (em breve) mantém os tokens no servidor.
 
 ### GitLab.com {#gitlab}
