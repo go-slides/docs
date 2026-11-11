@@ -18,8 +18,8 @@ den Folien, `![bg]`-Hintergründe, Sprechernotizen, die Themes `default`, `gaia`
   (`title`, `section` …), statt immer wieder zu wiederholen, wie sie aussieht.
 
 {{< callout type="warning" >}}
-**v0.20.0.** Diese Seiten beschreiben
-[go-slides/slides v0.20.0](https://github.com/go-slides/slides/releases/tag/v0.20.0)
+**v0.20.1.** Diese Seiten beschreiben
+[go-slides/slides v0.20.1](https://github.com/go-slides/slides/releases/tag/v0.20.1)
 und sind unter `/docs/0.20/` veröffentlicht.
 {{< /callout >}}
 

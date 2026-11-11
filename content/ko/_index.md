@@ -18,8 +18,8 @@ description: "순수 Go(CGO=0)로 만드는 Marp 호환 프레젠테이션. Go �
   보이는지를 반복하는 대신 자신이 무엇인지(`title`, `section`…)를 밝힙니다.
 
 {{< callout type="warning" >}}
-**v0.20.0.** 이 문서는
-[go-slides/slides v0.20.0](https://github.com/go-slides/slides/releases/tag/v0.20.0)을
+**v0.20.1.** 이 문서는
+[go-slides/slides v0.20.1](https://github.com/go-slides/slides/releases/tag/v0.20.1)을
 설명하며 `/docs/0.20/` 아래에 게시됩니다.
 {{< /callout >}}
 
