@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.20/it/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>it</language><atom:link href="https://go-slides.github.io/docs/0.20/it/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.20/it/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/it/playground/</guid><description>
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/it/playground/" target="_blank" rel="noopener"&gt;Apri il Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Il Playground (l&amp;rsquo;editor di go-slides nel browser) è go-slides stesso, v0.20.0, compilato in WebAssembly ed
+&lt;p&gt;Il Playground (l&amp;rsquo;editor di go-slides nel browser) è go-slides stesso, v0.20.1, compilato in WebAssembly ed
 eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
 destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.&lt;/p&gt;
 &lt;p&gt;L&amp;rsquo;interfaccia del Playground (barra multifunzione, guida, messaggi) parla la

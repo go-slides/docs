@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.20/it/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>it</language><atom:link href="https://go-slides.github.io/docs/0.20/it/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.20/it/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/it/playground/</guid><description>
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/it/playground/" target="_blank" rel="noopener"&gt;Apri il Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Il Playground (l&amp;rsquo;editor di go-slides nel browser) è go-slides stesso, v0.20.0, compilato in WebAssembly ed
+&lt;p&gt;Il Playground (l&amp;rsquo;editor di go-slides nel browser) è go-slides stesso, v0.20.1, compilato in WebAssembly ed
 eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
 destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.&lt;/p&gt;
 &lt;p&gt;L&amp;rsquo;interfaccia del Playground (barra multifunzione, guida, messaggi) parla la
@@ -546,7 +546,7 @@ cartella all&amp;rsquo;intera rete, aggirando il proxy e il suo accesso.&lt;/p&g
 &lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;svg height=1.2em class="hx:inline-block hx:align-middle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;
 &lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
 &lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;code&gt;--allowed-host&lt;/code&gt; è nella v0.14.0 e successive:
-&lt;code&gt;go install github.com/go-slides/slides/cmd/slides@v0.20.0&lt;/code&gt;. Richiede Go 1.27.3 o successivo.&lt;/div&gt;
+&lt;code&gt;go install github.com/go-slides/slides/cmd/slides@v0.20.1&lt;/code&gt;. Richiede Go 1.27.3 o successivo.&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 data-hextra-search-id="sign-in-with-openid-connect"&gt;Accesso con OpenID Connect&lt;span class="hx:absolute hx:-mt-20" id="sign-in-with-openid-connect"&gt;&lt;/span&gt;

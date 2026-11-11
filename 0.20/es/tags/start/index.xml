@@ -15,7 +15,7 @@ data-copied-label="¡Copiado!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;slides&lt;/code&gt; es un único binario estático de Go, sin cgo: no hay nada más que
-instalar, ni Node ni Chrome. Esta página describe v0.20.0.&lt;/p&gt;
+instalar, ni Node ni Chrome. Esta página describe v0.20.1.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-first-deck"&gt;Una primera presentación&lt;span class="hx:absolute hx:-mt-20" id="a-first-deck"&gt;&lt;/span&gt;
 &lt;a href="#a-first-deck" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Cualquier presentación de Marp sirve. Guarde esto como &lt;code&gt;talk.md&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;

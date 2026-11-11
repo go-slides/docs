@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.20/es/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>es</language><atom:link href="https://go-slides.github.io/docs/0.20/es/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.20/es/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/es/playground/</guid><description>
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/es/playground/" target="_blank" rel="noopener"&gt;Abrir el Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;El Playground es el propio go-slides, v0.20.0, compilado a WebAssembly y
+&lt;p&gt;El Playground es el propio go-slides, v0.20.1, compilado a WebAssembly y
 ejecutándose en su navegador. Escriba una presentación a la izquierda; las
 diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
 presentación, ni un enlace para compartir.&lt;/p&gt;
