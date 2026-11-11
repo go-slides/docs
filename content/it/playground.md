@@ -278,10 +278,19 @@ memoria propria della pagina del playground viene rimosso la prima volta che
 aprite questa versione, e il riquadro ve lo dice. Digitatelo di nuovo nel frame
 (e spuntate Ricorda se volete che resti salvato).
 
-Resta un rischio: uno script iniettato nella pagina del playground potrebbe
-ancora inviare i comandi del frame (leggere la cartella caricata, proporre un
-branch e una pull request) a vostro nome, ma non può leggere il token.
-Preferite un token limitato ai repository che vi servono. Per i team, la
+**Proponi le modifiche…** è una scrittura, quindi il frame vi chiede prima: mostra
+il titolo, il repository e il numero di file, e attende il vostro clic sul
+proprio pulsante **Consenti** (al massimo due minuti, una proposta alla volta).
+Nulla viene scritto prima del vostro clic.
+
+Restano due rischi, perché sono inerenti a una pagina che incorpora un frame. Uno
+script iniettato nella pagina del playground può leggere il nonce del frame e
+inviare i comandi del frame: leggere la cartella che avete caricato, o chiedere
+una proposta (che dovete comunque consentire nel frame). E può disegnare un
+falso pannello sopra il frame e chiedervi da sé il token: se il frame sembra
+sbagliato o non è dove dovrebbe essere, non digitate il token. Nessuno dei due
+gli permette di leggere il token che il frame conserva. Preferite un token
+limitato ai repository che vi servono. Per i team, la
 modalità server self-hosted (in arrivo) tiene i token sul server.
 
 ### GitLab.com {#gitlab}

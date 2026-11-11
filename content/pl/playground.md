@@ -273,10 +273,18 @@ i nigdy nie trafia do podglądu slajdów ani do workera renderowania.
 strony playgrounda, jest usuwany przy pierwszym otwarciu tej wersji, a panel Ci
 o tym mówi. Wpisz go ponownie w ramce (i zaznacz Zapamiętaj, jeśli ma zostać).
 
-Pozostaje jedno ryzyko: skrypt wstrzyknięty do strony playgrounda nadal mógłby
-wysyłać polecenia ramki (odczytać wczytany folder, zaproponować gałąź i pull
-request) w Twoim imieniu, ale nie może odczytać tokenu. Wybierz token
-ograniczony do potrzebnych repozytoriów. Dla zespołów tryb samodzielnie
+**Zaproponuj zmiany…** to zapis, więc ramka najpierw Cię pyta: pokazuje tytuł,
+repozytorium i liczbę plików, i czeka na Twoje kliknięcie własnego przycisku
+**Zezwól** (najwyżej dwie minuty, jedna propozycja naraz). Nic nie jest
+zapisywane przed Twoim kliknięciem.
+
+Pozostają dwa ryzyka, bo są nieodłączne od strony, która osadza ramkę. Skrypt
+wstrzyknięty do strony playgrounda może odczytać nonce ramki i wysyłać polecenia
+ramki: odczytać wczytany folder albo poprosić o propozycję (którą nadal musisz
+zezwolić w ramce). Może też narysować fałszywy panel nad ramką i sam poprosić o
+Twój token: jeśli ramka wygląda nieprawidłowo lub nie jest tam, gdzie powinna,
+nie wpisuj tokenu. Żadne z tych nie pozwala mu odczytać tokenu, który trzyma
+ramka. Wybierz token ograniczony do potrzebnych repozytoriów. Dla zespołów tryb samodzielnie
 hostowanego serwera (wkrótce) trzyma tokeny na serwerze.
 
 ### GitLab.com {#gitlab}

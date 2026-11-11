@@ -289,10 +289,19 @@ almacenamiento de la página del playground se elimina la primera vez que abre
 esta versión, y el panel se lo indica. Vuelva a escribirlo en el marco (y marque
 Recordar si quiere conservarlo).
 
-Queda un riesgo: un script inyectado en la página del playground aún podría
-enviar los comandos del marco (leer la carpeta cargada, proponer una rama y una
-pull request) como usted, pero no puede leer el token. Prefiera un token
-limitado a los repositorios que necesite. Para equipos, el modo servidor
+**Proponer cambios…** escribe, así que el marco le pregunta antes: muestra el
+título, el repositorio y el número de archivos, y espera su clic en su propio
+botón **Permitir** (dos minutos como máximo, una propuesta a la vez). No se
+escribe nada antes de que haga clic.
+
+Quedan dos riesgos, porque son inherentes a una página que incrusta un marco.
+Un script inyectado en la página del playground puede leer el nonce del marco y
+enviar los comandos del marco: leer la carpeta que cargó, o pedir una propuesta
+(que usted aún debe permitir en el marco). Y puede dibujar un panel falso sobre
+el marco y pedirle el token por su cuenta: si el marco se ve raro o no está
+donde debería, no escriba el token. Ninguno de los dos le permite leer el token
+que guarda el marco. Prefiera un token limitado a los repositorios que
+necesite. Para equipos, el modo servidor
 autoalojado (próximamente) mantiene los tokens en el servidor.
 
 ### GitLab.com {#gitlab}
