@@ -19,8 +19,8 @@ slajdami, tła `![bg]`, notatki prelegenta, motywy `default`, `gaia` i
   (`title`, `section`…), zamiast powtarzać, jak wygląda.
 
 {{< callout type="warning" >}}
-**v0.20.0.** Te strony opisują
-[go-slides/slides v0.20.0](https://github.com/go-slides/slides/releases/tag/v0.20.0)
+**v0.20.1.** Te strony opisują
+[go-slides/slides v0.20.1](https://github.com/go-slides/slides/releases/tag/v0.20.1)
 i są publikowane pod adresem `/docs/0.20/`.
 {{< /callout >}}
 
