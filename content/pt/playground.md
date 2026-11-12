@@ -89,6 +89,16 @@ japonês e coreano são desenhados com um subconjunto do Noto Sans (de 0,06 a
   Os tamanhos que você define são guardados neste navegador, com o rascunho; os
   tamanhos padrão (190, 168 e 280 px, com o editor e a pré-visualização
   dividindo o restante na proporção de 6 para 5) nunca são armazenados.
+- **Fechar um painel**: cada painel tem um pequeno botão × no cabeçalho, com uma
+  dica. Os outros dividem o seu espaço e o painel volta com a largura que tinha.
+  Para reabri-lo, use o seu interruptor na aba View (cada painel tem um) ou
+  Ctrl+Alt+Shift+1 a 8 (Cmd no Mac), para os painéis da esquerda para a direita.
+  O editor e a pré-visualização podem ser fechados cada um, nunca os dois: o
+  último se recusa, o botão fica esmaecido e a dica diz por quê. Pelo teclado,
+  F6 e depois Tab ou Shift+Tab levam a um botão ×, e Enter ou Espaço fecha o
+  painel; o teclado volta ao editor. Os painéis abertos são guardados neste
+  navegador com os tamanhos (Versions, GitHub e o editor de temas, abertos para
+  uma tarefa, começam fechados).
 - **Formatar**: a aba Format edita o Markdown para você, e cada clique é um
   passo de Undo.
   - **Texto**: Bold, Italic, Strikethrough e Inline code funcionam sobre a

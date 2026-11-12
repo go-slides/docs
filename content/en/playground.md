@@ -84,6 +84,16 @@ those languages only.
   The View tab still switches panes off. The sizes you set are kept in this
   browser, with the draft; the default sizes (190, 168 and 280 px, the editor
   and the preview sharing the rest 6 to 5) are never stored.
+- **Closing a pane**: each pane has a small × button in its header, with a
+  tooltip. The others share its room, and the pane comes back at the width it
+  had. To bring one back, use its toggle on the View tab (every pane has one)
+  or Ctrl+Alt+Shift+1 to 8 (Cmd on a Mac), for the panes from left to right.
+  The editor and the preview can each be closed, never both: the last one
+  refuses, its button is greyed out and its tooltip says why. From the
+  keyboard, press F6, then Tab or Shift+Tab to reach a × button, and Enter or
+  Space to close the pane; the keyboard goes back to the editor. Which panes
+  are open is kept in this browser with the sizes (Versions, GitHub and the
+  Theme editor, opened for a task, start closed).
 - **Format**: the Format tab edits the Markdown for you, and each press is
   one step of Undo.
   - **Text**: Bold, Italic, Strikethrough and Inline code work on the selection

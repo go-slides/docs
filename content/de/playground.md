@@ -85,6 +85,18 @@ herunterlädt.
   Der Reiter View schaltet Bereiche weiterhin ab. Die von Ihnen eingestellten Größen werden in diesem
   Browser mit dem Entwurf gespeichert; die Standardgrößen (190, 168 und 280 px, wobei sich Editor
   und Vorschau den Rest im Verhältnis 6 zu 5 teilen) werden nie gespeichert.
+- **Bereiche schließen**: Jeder Bereich hat in seiner Kopfzeile eine kleine
+  ×-Schaltfläche mit Tooltip. Die anderen Bereiche teilen sich seinen Platz,
+  und der Bereich kehrt mit der Breite zurück, die er hatte. Zum Wiedereinblenden
+  dient sein Schalter im Reiter View (jeder Bereich hat einen) oder
+  Strg+Alt+Umschalt+1 bis 8 (Cmd auf dem Mac) für die Bereiche von links nach
+  rechts. Editor und Vorschau lassen sich jeweils schließen, aber nie beide:
+  Der letzte weigert sich, seine Schaltfläche ist ausgegraut, und der Tooltip
+  sagt, warum. Per Tastatur erreichen Sie mit F6 und dann Tab oder
+  Umschalt+Tab eine ×-Schaltfläche; mit Eingabetaste oder Leertaste schließen
+  Sie den Bereich, und die Tastatur kehrt in den Editor zurück. Welche Bereiche
+  offen sind, wird mit den Größen in diesem Browser gespeichert (Versions,
+  GitHub und der Theme-Editor, für eine Aufgabe geöffnet, starten geschlossen).
 - **Format**: Der Reiter Format bearbeitet das Markdown für Sie, und jeder Druck
   ist ein Schritt für Rückgängig.
   - **Text**: Bold, Italic, Strikethrough und Inline code wirken auf die Auswahl
