@@ -86,8 +86,7 @@ those languages only.
   and the preview sharing the rest 6 to 5) are never stored.
 - **Closing a pane**: each pane has a small × button in its header, with a
   tooltip. The others share its room, and the pane comes back at the width it
-  had. To bring one back, use its toggle on the View tab (every pane has one)
-  or Ctrl+Alt+Shift+1 to 8 (Cmd on a Mac), for the panes from left to right.
+  had. To bring one back, use its toggle on the View tab (every pane has one).
   The editor and the preview can each be closed, never both: the last one
   refuses, its button is greyed out and its tooltip says why. From the
   keyboard, press F6, then Tab or Shift+Tab to reach a × button, and Enter or

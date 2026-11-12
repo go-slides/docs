@@ -87,8 +87,7 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
 - **Zamykanie panelu**: każdy panel ma w nagłówku mały przycisk × z podpowiedzią.
   Pozostałe dzielą jego miejsce, a panel wraca z szerokością, jaką miał. Aby go
   otworzyć ponownie, użyj jego przełącznika na karcie View (każdy panel ma
-  jeden) albo Ctrl+Alt+Shift+1 do 8 (Cmd na Macu) dla paneli od lewej do prawej.
-  Edytor i podgląd można zamknąć każdy z osobna, ale nigdy oba: ostatni
+  jeden). Edytor i podgląd można zamknąć każdy z osobna, ale nigdy oba: ostatni
   odmawia, jego przycisk jest wyszarzony, a podpowiedź mówi dlaczego. Z
   klawiatury F6, a potem Tab lub Shift+Tab prowadzą do przycisku ×, a Enter lub
   spacja zamyka panel; klawiatura wraca do edytora. To, które panele są

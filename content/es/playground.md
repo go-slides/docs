@@ -95,8 +95,7 @@ chino, el japonés y el coreano se dibujan con un subconjunto de Noto Sans (de
 - **Cerrar un panel**: cada panel tiene un pequeño botón × en su encabezado, con
   información emergente. Los demás se reparten su espacio y el panel vuelve con
   el ancho que tenía. Para volver a abrirlo, use su interruptor en la pestaña
-  View (cada panel tiene uno) o Ctrl+Alt+Mayús+1 a 8 (Cmd en Mac), para los
-  paneles de izquierda a derecha. El editor y la vista previa pueden cerrarse
+  View (cada panel tiene uno). El editor y la vista previa pueden cerrarse
   cada uno, pero nunca los dos: el último se niega, su botón aparece atenuado y
   su información emergente explica por qué. Con el teclado, F6 y luego Tab o
   Mayús+Tab llevan a un botón ×, e Intro o Espacio cierra el panel; el teclado

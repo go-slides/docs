@@ -87,8 +87,7 @@ cinese, giapponese e coreano sono disegnati con un sottoinsieme di Noto Sans
 - **Chiudere un riquadro**: ogni riquadro ha un piccolo pulsante × nell'intestazione,
   con un suggerimento. Gli altri si dividono il suo spazio e il riquadro torna
   alla larghezza che aveva. Per riaprirlo usa il suo interruttore nella scheda
-  View (ogni riquadro ne ha uno) oppure Ctrl+Alt+Maiusc+1…8 (Cmd su Mac), per i
-  riquadri da sinistra a destra. L'editor e l'anteprima possono essere chiusi
+  View (ogni riquadro ne ha uno). L'editor e l'anteprima possono essere chiusi
   ciascuno, mai entrambi: l'ultimo rifiuta, il suo pulsante è disattivato e il
   suggerimento ne spiega il motivo. Da tastiera, F6 e poi Tab o Maiusc+Tab
   portano a un pulsante ×, e Invio o Spazio chiude il riquadro; la tastiera

@@ -88,9 +88,7 @@ herunterlädt.
 - **Bereiche schließen**: Jeder Bereich hat in seiner Kopfzeile eine kleine
   ×-Schaltfläche mit Tooltip. Die anderen Bereiche teilen sich seinen Platz,
   und der Bereich kehrt mit der Breite zurück, die er hatte. Zum Wiedereinblenden
-  dient sein Schalter im Reiter View (jeder Bereich hat einen) oder
-  Strg+Alt+Umschalt+1 bis 8 (Cmd auf dem Mac) für die Bereiche von links nach
-  rechts. Editor und Vorschau lassen sich jeweils schließen, aber nie beide:
+  dient sein Schalter im Reiter View (jeder Bereich hat einen). Editor und Vorschau lassen sich jeweils schließen, aber nie beide:
   Der letzte weigert sich, seine Schaltfläche ist ausgegraut, und der Tooltip
   sagt, warum. Per Tastatur erreichen Sie mit F6 und dann Tab oder
   Umschalt+Tab eine ×-Schaltfläche; mit Eingabetaste oder Leertaste schließen

@@ -91,8 +91,7 @@ japonês e coreano são desenhados com um subconjunto do Noto Sans (de 0,06 a
   dividindo o restante na proporção de 6 para 5) nunca são armazenados.
 - **Fechar um painel**: cada painel tem um pequeno botão × no cabeçalho, com uma
   dica. Os outros dividem o seu espaço e o painel volta com a largura que tinha.
-  Para reabri-lo, use o seu interruptor na aba View (cada painel tem um) ou
-  Ctrl+Alt+Shift+1 a 8 (Cmd no Mac), para os painéis da esquerda para a direita.
+  Para reabri-lo, use o seu interruptor na aba View (cada painel tem um).
   O editor e a pré-visualização podem ser fechados cada um, nunca os dois: o
   último se recusa, o botão fica esmaecido e a dica diz por quê. Pelo teclado,
   F6 e depois Tab ou Shift+Tab levam a um botão ×, e Enter ou Espaço fecha o
