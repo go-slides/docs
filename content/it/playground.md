@@ -84,6 +84,16 @@ cinese, giapponese e coreano sono disegnati con un sottoinsieme di Noto Sans
   La scheda View continua a disattivare i riquadri. Le dimensioni impostate sono conservate in questo
   browser, con la bozza; le dimensioni predefinite (190, 168 e 280 px, con l'editor
   e l'anteprima che si dividono il resto 6 a 5) non vengono mai memorizzate.
+- **Chiudere un riquadro**: ogni riquadro ha un piccolo pulsante × nell'intestazione,
+  con un suggerimento. Gli altri si dividono il suo spazio e il riquadro torna
+  alla larghezza che aveva. Per riaprirlo usa il suo interruttore nella scheda
+  View (ogni riquadro ne ha uno). L'editor e l'anteprima possono essere chiusi
+  ciascuno, mai entrambi: l'ultimo rifiuta, il suo pulsante è disattivato e il
+  suggerimento ne spiega il motivo. Da tastiera, F6 e poi Tab o Maiusc+Tab
+  portano a un pulsante ×, e Invio o Spazio chiude il riquadro; la tastiera
+  torna all'editor. I riquadri aperti sono conservati in questo browser insieme
+  alle dimensioni (Versions, GitHub e l'editor dei temi, aperti per un'attività,
+  partono chiusi).
 - **Formato**: la scheda Format modifica il Markdown al posto tuo, e ogni pressione è
   un passo di Annulla.
   - **Testo**: Grassetto, Corsivo, Barrato e Codice in linea agiscono sulla selezione

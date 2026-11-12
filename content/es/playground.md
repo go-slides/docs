@@ -92,6 +92,16 @@ chino, el japonés y el coreano se dibujan con un subconjunto de Noto Sans (de
   conservan en este navegador, con el borrador; los tamaños por defecto (190, 168
   y 280 px, y el editor y la vista previa se reparten el resto en proporción 6 a
   5) nunca se almacenan.
+- **Cerrar un panel**: cada panel tiene un pequeño botón × en su encabezado, con
+  información emergente. Los demás se reparten su espacio y el panel vuelve con
+  el ancho que tenía. Para volver a abrirlo, use su interruptor en la pestaña
+  View (cada panel tiene uno). El editor y la vista previa pueden cerrarse
+  cada uno, pero nunca los dos: el último se niega, su botón aparece atenuado y
+  su información emergente explica por qué. Con el teclado, F6 y luego Tab o
+  Mayús+Tab llevan a un botón ×, e Intro o Espacio cierra el panel; el teclado
+  vuelve al editor. Los paneles abiertos se conservan en este navegador junto
+  con los tamaños (Versions, GitHub y el editor de temas, abiertos para una
+  tarea, empiezan cerrados).
 - **Formato**: la pestaña Format edita el Markdown por usted, y cada pulsación es
   un paso de Deshacer.
   - **Texto**: Bold, Italic, Strikethrough e Inline code actúan sobre la

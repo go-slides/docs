@@ -84,6 +84,15 @@ Sans (de 0,06 à 2,3 Mio) que la page ne télécharge que pour ces langues.
   L'onglet View permet toujours de masquer des volets. Les tailles que vous définissez sont conservées dans ce
   navigateur, avec le brouillon ; les tailles par défaut (190, 168 et 280 px, l'éditeur
   et l'aperçu se partageant le reste à raison de 6 pour 5) ne sont jamais enregistrées.
+- **Fermer un volet** : chaque volet a un petit bouton × dans son en-tête, avec
+  une infobulle. Les autres se partagent sa place, et le volet revient à la
+  largeur qu'il avait. Pour le rouvrir, utilisez son interrupteur dans l'onglet
+  View (chaque volet en a un). L'éditeur et l'aperçu peuvent chacun être fermés,
+  jamais les deux : le dernier refuse, son bouton est grisé et son infobulle
+  dit pourquoi. Au clavier, F6 puis Tab ou Maj+Tab mènent à un bouton ×, et
+  Entrée ou Espace ferme le volet ; le clavier retourne à l'éditeur. Les volets
+  ouverts sont conservés dans ce navigateur avec les tailles (Versions, GitHub
+  et l'éditeur de thème, ouverts pour une tâche, démarrent fermés).
 - **Mise en forme** : l'onglet Format modifie le Markdown à votre place, et chaque clic
   correspond à une étape d'annulation.
   - **Texte** : Bold, Italic, Strikethrough et Inline code agissent sur la sélection

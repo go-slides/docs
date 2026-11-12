@@ -84,6 +84,15 @@ japoński i koreański są rysowane przy użyciu podzbioru Noto Sans (od 0,06 do
   Karta View nadal wyłącza panele. Ustawione rozmiary są zapamiętywane w tej
   przeglądarce razem ze szkicem; rozmiary domyślne (190, 168 i 280 px, edytor
   i podgląd dzielą resztę w stosunku 6 do 5) nigdy nie są zapisywane.
+- **Zamykanie panelu**: każdy panel ma w nagłówku mały przycisk × z podpowiedzią.
+  Pozostałe dzielą jego miejsce, a panel wraca z szerokością, jaką miał. Aby go
+  otworzyć ponownie, użyj jego przełącznika na karcie View (każdy panel ma
+  jeden). Edytor i podgląd można zamknąć każdy z osobna, ale nigdy oba: ostatni
+  odmawia, jego przycisk jest wyszarzony, a podpowiedź mówi dlaczego. Z
+  klawiatury F6, a potem Tab lub Shift+Tab prowadzą do przycisku ×, a Enter lub
+  spacja zamyka panel; klawiatura wraca do edytora. To, które panele są
+  otwarte, jest zapamiętywane w tej przeglądarce razem z rozmiarami (Versions,
+  GitHub i edytor motywów, otwierane do zadania, startują zamknięte).
 - **Format**: karta Format edytuje Markdown za ciebie, a każde naciśnięcie to
   jeden krok cofania.
   - **Tekst**: Bold, Italic, Strikethrough i Inline code działają na zaznaczeniu
