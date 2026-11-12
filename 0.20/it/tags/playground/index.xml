@@ -98,6 +98,18 @@ browser, con la bozza; le dimensioni predefinite (190, 168 e 280 px, con l&amp;r
 e l&amp;rsquo;anteprima che si dividono il resto 6 a 5) non vengono mai memorizzate.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Chiudere un riquadro&lt;/strong&gt;: ogni riquadro ha un piccolo pulsante × nell&amp;rsquo;intestazione,
+con un suggerimento. Gli altri si dividono il suo spazio e il riquadro torna
+alla larghezza che aveva. Per riaprirlo usa il suo interruttore nella scheda
+View (ogni riquadro ne ha uno). L&amp;rsquo;editor e l&amp;rsquo;anteprima possono essere chiusi
+ciascuno, mai entrambi: l&amp;rsquo;ultimo rifiuta, il suo pulsante è disattivato e il
+suggerimento ne spiega il motivo. Da tastiera, F6 e poi Tab o Maiusc+Tab
+portano a un pulsante ×, e Invio o Spazio chiude il riquadro; la tastiera
+torna all&amp;rsquo;editor. I riquadri aperti sono conservati in questo browser insieme
+alle dimensioni (Versions, GitHub e l&amp;rsquo;editor dei temi, aperti per un&amp;rsquo;attività,
+partono chiusi).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Formato&lt;/strong&gt;: la scheda Format modifica il Markdown al posto tuo, e ogni pressione è
 un passo di Annulla.&lt;/p&gt;
 &lt;ul&gt;

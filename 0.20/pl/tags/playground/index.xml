@@ -98,6 +98,17 @@ przeglądarce razem ze szkicem; rozmiary domyślne (190, 168 i 280 px, edytor
 i podgląd dzielą resztę w stosunku 6 do 5) nigdy nie są zapisywane.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zamykanie panelu&lt;/strong&gt;: każdy panel ma w nagłówku mały przycisk × z podpowiedzią.
+Pozostałe dzielą jego miejsce, a panel wraca z szerokością, jaką miał. Aby go
+otworzyć ponownie, użyj jego przełącznika na karcie View (każdy panel ma
+jeden). Edytor i podgląd można zamknąć każdy z osobna, ale nigdy oba: ostatni
+odmawia, jego przycisk jest wyszarzony, a podpowiedź mówi dlaczego. Z
+klawiatury F6, a potem Tab lub Shift+Tab prowadzą do przycisku ×, a Enter lub
+spacja zamyka panel; klawiatura wraca do edytora. To, które panele są
+otwarte, jest zapamiętywane w tej przeglądarce razem z rozmiarami (Versions,
+GitHub i edytor motywów, otwierane do zadania, startują zamknięte).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;: karta Format edytuje Markdown za ciebie, a każde naciśnięcie to
 jeden krok cofania.&lt;/p&gt;
 &lt;ul&gt;

@@ -83,6 +83,15 @@ page&lt;/strong&gt; 会把它们放进页面中。&lt;code&gt;https:&lt;/code&gt
 编辑器与预览按 6 比 5 分配剩余空间）从不保存。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关闭窗格&lt;/strong&gt;：每个窗格的标题栏都有一个带提示的小 × 按钮。其他窗格分享它的空间，
+窗格再打开时恢复原来的宽度。要重新打开，可使用 View 选项卡里它的开关（每个窗格都有一个）。
+编辑器和预览可以各自关闭，
+但不能同时关闭：最后一个会拒绝关闭，它的按钮变灰，提示会说明原因。使用键盘时，先按 F6，
+再按 Tab 或 Shift+Tab 到达 × 按钮，按 Enter 或空格关闭窗格，键盘随后回到编辑器。
+哪些窗格是打开的，会与尺寸一起保存在当前浏览器中（为任务而打开的 Versions、GitHub
+和主题编辑器，启动时是关闭的）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;格式&lt;/strong&gt;：Format 选项卡会替你编辑 Markdown，每按一次就是一步撤销。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;文本&lt;/strong&gt;：Bold、Italic、Strikethrough 和 Inline code 作用于所选内容

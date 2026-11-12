@@ -98,6 +98,17 @@ navigateur, avec le brouillon ; les tailles par défaut (190, 168 et 280 px, l
 et l&amp;rsquo;aperçu se partageant le reste à raison de 6 pour 5) ne sont jamais enregistrées.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fermer un volet&lt;/strong&gt; : chaque volet a un petit bouton × dans son en-tête, avec
+une infobulle. Les autres se partagent sa place, et le volet revient à la
+largeur qu&amp;rsquo;il avait. Pour le rouvrir, utilisez son interrupteur dans l&amp;rsquo;onglet
+View (chaque volet en a un). L&amp;rsquo;éditeur et l&amp;rsquo;aperçu peuvent chacun être fermés,
+jamais les deux : le dernier refuse, son bouton est grisé et son infobulle
+dit pourquoi. Au clavier, F6 puis Tab ou Maj+Tab mènent à un bouton ×, et
+Entrée ou Espace ferme le volet ; le clavier retourne à l&amp;rsquo;éditeur. Les volets
+ouverts sont conservés dans ce navigateur avec les tailles (Versions, GitHub
+et l&amp;rsquo;éditeur de thème, ouverts pour une tâche, démarrent fermés).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Mise en forme&lt;/strong&gt; : l&amp;rsquo;onglet Format modifie le Markdown à votre place, et chaque clic
 correspond à une étape d&amp;rsquo;annulation.&lt;/p&gt;
 &lt;ul&gt;

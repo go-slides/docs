@@ -106,6 +106,18 @@ y 280 px, y el editor y la vista previa se reparten el resto en proporción 6 a
 5) nunca se almacenan.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cerrar un panel&lt;/strong&gt;: cada panel tiene un pequeño botón × en su encabezado, con
+información emergente. Los demás se reparten su espacio y el panel vuelve con
+el ancho que tenía. Para volver a abrirlo, use su interruptor en la pestaña
+View (cada panel tiene uno). El editor y la vista previa pueden cerrarse
+cada uno, pero nunca los dos: el último se niega, su botón aparece atenuado y
+su información emergente explica por qué. Con el teclado, F6 y luego Tab o
+Mayús+Tab llevan a un botón ×, e Intro o Espacio cierra el panel; el teclado
+vuelve al editor. Los paneles abiertos se conservan en este navegador junto
+con los tamaños (Versions, GitHub y el editor de temas, abiertos para una
+tarea, empiezan cerrados).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Formato&lt;/strong&gt;: la pestaña Format edita el Markdown por usted, y cada pulsación es
 un paso de Deshacer.&lt;/p&gt;
 &lt;ul&gt;
