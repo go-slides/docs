@@ -363,3 +363,13 @@ sono il download, e le prime slide compaiono a 2,4 s. Una modifica alla
 presentazione di benchmark da 100 slide raggiunge l'anteprima in circa 30 ms: go-slides
 rende solo le slide cambiate, e solo quelle vengono sostituite
 nell'anteprima.
+
+## Offline e aggiornamenti {#offline}
+
+La prima visita scarica l'editor come sempre. Quando è pronto, la pagina conserva i suoi file nella cache del browser, sotto il deploy che li ha scritti: il modulo WebAssembly, il suo loader, il worker di rendering, le immagini di caricamento e la pagina stessa, poi il motore di esportazione e i font al loro primo utilizzo. La visita successiva parte da quella cache senza chiedere nulla alla rete, e il playground si apre anche offline.
+
+Ogni file è verificato con lo SHA-256 registrato al deploy, quando viene salvato e a ogni lettura. Un file danneggiato o incompleto viene ignorato: risponde la rete e la cache viene riscritta, quindi la cache non può mai impedire il caricamento della pagina.
+
+La pagina interroga un piccolo file di versione (mai in cache) all'avvio, quando torni alla sua scheda e ogni dieci minuti. Quando viene distribuita una versione più recente, un messaggio dice «È disponibile una nuova versione.» con **Ricarica** e **Più tardi**. Nulla si ricarica da solo: Ricarica salva prima il tuo progetto in questo browser e la pagina lo ripristina. I file della versione precedente vengono eliminati quando la nuova è attiva.
+
+La cache copre il percorso del playground e nient'altro. Non conserva il frame git (un'altra origine, il cui archivio del token resta intatto), né nulla sotto `/api/` (le chiamate git della modalità server), né alcuna richiesta con credenziali.

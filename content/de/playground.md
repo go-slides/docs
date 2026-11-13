@@ -372,3 +372,13 @@ für den Download, und die ersten Folien erscheinen nach 2,4 s. Eine Änderung a
 Benchmark-Foliensatz mit 100 Folien erreicht die Vorschau in etwa 30 ms: go-slides
 rendert nur die Folien neu, die sich geändert haben, und nur diese werden in der
 Vorschau ersetzt.
+
+## Offline und Updates {#offline}
+
+Der erste Besuch lädt den Editor wie gewohnt herunter. Sobald er läuft, behält die Seite ihre Dateien im Cache des Browsers, unter dem Deployment, das sie geschrieben hat: das WebAssembly-Modul, seinen Loader, den Render-Worker, die Ladebilder und die Seite selbst, danach die Export-Engine und die Schriften bei ihrer ersten Verwendung. Der nächste Besuch startet aus diesem Cache, ohne das Netz danach zu fragen, und der Playground öffnet sich auch offline.
+
+Jede Datei wird beim Speichern und bei jedem Lesen gegen den beim Deployment festgehaltenen SHA-256 geprüft. Eine beschädigte oder unvollständige Datei wird ignoriert: Stattdessen antwortet das Netz und der Cache wird neu geschrieben, sodass der Cache das Laden der Seite nie verhindern kann.
+
+Die Seite fragt beim Start, wenn Sie zu ihrem Tab zurückkehren und alle zehn Minuten eine kleine Versionsdatei ab (nie im Cache). Ist eine neuere Version deployt, erscheint die Meldung „Eine neue Version ist verfügbar.“ mit **Neu laden** und **Später**. Nichts lädt von selbst neu: Neu laden speichert zuerst Ihr Projekt in diesem Browser, und die Seite stellt es wieder her. Die Dateien der vorherigen Version werden gelöscht, sobald die neue aktiv ist.
+
+Der Cache gilt für den eigenen Pfad des Playgrounds und für nichts sonst. Er speichert weder den Git-Frame (eine andere Origin, deren Token-Speicher unberührt bleibt) noch etwas unter `/api/` (die Git-Aufrufe des Servermodus) noch eine Anfrage mit Anmeldedaten.

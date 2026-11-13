@@ -375,3 +375,13 @@ la página, 1,5 s de los cuales son la descarga, y las primeras diapositivas
 aparecen a los 2,4 s. Un cambio en la presentación de prueba de 100 diapositivas
 llega a la vista previa en unos 30 ms: go-slides renderiza solo las diapositivas
 que cambiaron, y solo esas se sustituyen en la vista previa.
+
+## Sin conexión y actualizaciones {#offline}
+
+La primera visita descarga el editor como siempre. Cuando está listo, la página guarda sus archivos en la caché del navegador, bajo el despliegue que los escribió: el módulo WebAssembly, su cargador, el worker de renderizado, las imágenes de carga y la propia página, y después el motor de exportación y las fuentes la primera vez que se usan. La siguiente visita parte de esa caché sin pedir esos archivos a la red, y el playground se abre sin conexión.
+
+Cada archivo se comprueba con el SHA-256 registrado en el despliegue, al guardarlo y cada vez que se lee. Un archivo dañado o incompleto se ignora: responde la red y la caché se reescribe, de modo que la caché nunca puede impedir que la página cargue.
+
+La página consulta un pequeño archivo de versión (nunca en caché) al arrancar, cuando vuelve a su pestaña y cada diez minutos. Cuando se despliega una versión más reciente, un mensaje dice «Hay una nueva versión disponible.» con **Recargar** y **Más tarde**. Nada se recarga solo: Recargar guarda primero su proyecto en este navegador y la página lo restaura. Los archivos de la versión anterior se eliminan cuando la nueva está activa.
+
+La caché cubre la ruta propia del playground y nada más. No guarda el marco git (otro origen, cuyo almacén de token no se toca), ni nada bajo `/api/` (las llamadas git del modo servidor), ni ninguna petición que lleve credenciales.
