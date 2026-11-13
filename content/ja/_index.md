@@ -16,8 +16,8 @@ description: "純粋な Go（CGO=0）で書かれた Marp 互換のスライド�
   （`title`、`section`…）を宣言します。
 
 {{< callout type="warning" >}}
-**v0.20.1。** このページ群は
-[go-slides/slides v0.20.1](https://github.com/go-slides/slides/releases/tag/v0.20.1)
+**v0.20.2。** このページ群は
+[go-slides/slides v0.20.2](https://github.com/go-slides/slides/releases/tag/v0.20.2)
 について説明しており、`/docs/0.20/` で公開されています。
 {{< /callout >}}
 
