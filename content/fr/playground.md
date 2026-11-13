@@ -368,3 +368,13 @@ de téléchargement, et les premières diapositives apparaissent à 2,4 s. Une m
 la présentation de référence de 100 diapositives atteint l'aperçu en 30 ms environ : go-slides
 ne rend que les diapositives qui ont changé, et seules celles-ci sont remplacées dans
 l'aperçu.
+
+## Hors ligne et mises à jour {#offline}
+
+La première visite télécharge l'éditeur comme toujours. Dès qu'il est prêt, la page garde ses fichiers dans le cache du navigateur, sous le déploiement qui les a écrits : le module WebAssembly, son chargeur, le worker de rendu, les images de chargement et la page elle-même, puis le moteur d'export et les polices à leur première utilisation. La visite suivante part de ce cache sans demander ces fichiers au réseau, et le playground s'ouvre hors ligne.
+
+Chaque fichier est vérifié par rapport au SHA-256 enregistré au déploiement, quand il est stocké et à chaque lecture. Un fichier abîmé ou incomplet est ignoré : le réseau répond à sa place et le cache est réécrit, si bien que le cache ne peut jamais empêcher la page de se charger.
+
+La page interroge un petit fichier de version (jamais mis en cache) au démarrage, quand vous revenez sur son onglet et toutes les dix minutes. Quand une version plus récente est déployée, un message indique « Une nouvelle version est disponible. » avec **Recharger** et **Plus tard**. Rien ne se recharge tout seul : Recharger enregistre d'abord votre projet dans ce navigateur, et la page le restaure. Les fichiers de la version précédente sont supprimés dès que la nouvelle est active.
+
+Le cache couvre le chemin du playground et rien d'autre. Il ne stocke ni le cadre git (une autre origine, dont le stockage du jeton n'est pas touché), ni rien sous `/api/` (les appels git du mode serveur), ni aucune requête qui porte des identifiants.
