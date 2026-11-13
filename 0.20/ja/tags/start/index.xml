@@ -15,7 +15,7 @@ data-copied-label="コピーしました！"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;slides&lt;/code&gt; は cgo を使わない単一の静的 Go バイナリです。ほかにインストールするものはなく、
-Node も Chrome も不要です。このページは v0.20.1 について説明しています。&lt;/p&gt;
+Node も Chrome も不要です。このページは v0.20.2 について説明しています。&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-first-deck"&gt;最初のスライドデッキ&lt;span class="hx:absolute hx:-mt-20" id="a-first-deck"&gt;&lt;/span&gt;
 &lt;a href="#a-first-deck" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp のスライドデッキであれば、そのまま使えます。次の内容を &lt;code&gt;talk.md&lt;/code&gt; として保存してください。&lt;/p&gt;
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;

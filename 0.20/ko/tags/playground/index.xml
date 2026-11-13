@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.20/ko/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ko</language><atom:link href="https://go-slides.github.io/docs/0.20/ko/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.20/ko/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/ko/playground/</guid><description>
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/ko/playground/" target="_blank" rel="noopener"&gt;Playground 열기 →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Playground는 WebAssembly로 컴파일되어 브라우저에서 실행되는 go-slides v0.20.1
+&lt;p&gt;Playground는 WebAssembly로 컴파일되어 브라우저에서 실행되는 go-slides v0.20.2
 그 자체입니다. 왼쪽에 프레젠테이션을 입력하면 오른쪽에 슬라이드가 따라
 나타납니다. 프레젠테이션도, 공유 링크도 서버로 전송되지 않습니다.&lt;/p&gt;
 &lt;p&gt;Playground 자체의 인터페이스(리본, 도움말, 메시지)는 페이지의 언어로 표시됩니다.

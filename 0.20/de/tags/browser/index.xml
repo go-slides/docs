@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.20/de/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.20/de/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.20/de/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/de/playground/</guid><description>
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/de/playground/" target="_blank" rel="noopener"&gt;Playground öffnen →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Der Playground ist go-slides selbst, v0.20.1, nach WebAssembly kompiliert und
+&lt;p&gt;Der Playground ist go-slides selbst, v0.20.2, nach WebAssembly kompiliert und
 in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
 folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.&lt;/p&gt;
 &lt;p&gt;Die Oberfläche des Playgrounds (Menüband, Hilfe, Meldungen) spricht die Sprache

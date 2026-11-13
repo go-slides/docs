@@ -15,7 +15,7 @@ data-copied-label="복사됨!"
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;slides&lt;/code&gt;는 cgo를 쓰지 않는 정적 Go 바이너리 하나입니다. Node도 Chrome도 필요
-없고, 따로 설치할 것이 없습니다. 이 페이지는 v0.20.1을 기준으로 설명합니다.&lt;/p&gt;
+없고, 따로 설치할 것이 없습니다. 이 페이지는 v0.20.2을 기준으로 설명합니다.&lt;/p&gt;
 &lt;h2 data-hextra-search-id="a-first-deck"&gt;첫 프레젠테이션&lt;span class="hx:absolute hx:-mt-20" id="a-first-deck"&gt;&lt;/span&gt;
 &lt;a href="#a-first-deck" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Marp 프레젠테이션이라면 무엇이든 그대로 쓸 수 있습니다. 다음 내용을 &lt;code&gt;talk.md&lt;/code&gt;로
 저장하십시오.&lt;/p&gt;

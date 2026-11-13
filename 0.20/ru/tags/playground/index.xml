@@ -1,6 +1,6 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Playground</title><link>https://go-slides.github.io/docs/0.20/ru/tags/playground/</link><description>Recent content in Playground on go-slides</description><generator>Hugo -- gohugo.io</generator><language>ru</language><atom:link href="https://go-slides.github.io/docs/0.20/ru/tags/playground/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.20/ru/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/ru/playground/</guid><description>
 &lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/ru/playground/" target="_blank" rel="noopener"&gt;Открыть Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Playground (онлайн-редактор go-slides) — это сам go-slides v0.20.1,
+&lt;p&gt;Playground (онлайн-редактор go-slides) — это сам go-slides v0.20.2,
 скомпилированный в WebAssembly и работающий в вашем браузере. Набирайте
 презентацию слева; слайды появляются справа. Ничего не отправляется на сервер:
 ни презентация, ни ссылка для обмена.&lt;/p&gt;
