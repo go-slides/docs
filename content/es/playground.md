@@ -385,3 +385,7 @@ Cada archivo se comprueba con el SHA-256 registrado en el despliegue, al guardar
 La página consulta un pequeño archivo de versión (nunca en caché) al arrancar, cuando vuelve a su pestaña y cada diez minutos. Cuando se despliega una versión más reciente, un mensaje dice «Hay una nueva versión disponible.» con **Recargar** y **Más tarde**. Nada se recarga solo: Recargar guarda primero su proyecto en este navegador y la página lo restaura. Los archivos de la versión anterior se eliminan cuando la nueva está activa.
 
 La caché cubre la ruta propia del playground y nada más. No guarda el marco git (otro origen, cuyo almacén de token no se toca), ni nada bajo `/api/` (las llamadas git del modo servidor), ni ninguna petición que lleve credenciales.
+
+El worker de vídeo, que lee los archivos de vídeo para sus carteles, es un módulo aparte: solo se descarga la primera vez que una presentación usa un vídeo y después se conserva en la caché. Una presentación sin vídeo nunca lo pide.
+
+Tras una nueva versión, si la página que tiene el navegador ya no coincide con lo guardado en caché (la copia ha desaparecido o está dañada y el servidor envía ahora la nueva), aparece brevemente una página «Actualizando…» en lugar de un error. Elimina la caché de este playground y recarga, de modo que la nueva versión se carga desde la red y crea su propia caché. Mientras tanto no se ejecuta nada del servidor.

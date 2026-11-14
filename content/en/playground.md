@@ -362,3 +362,7 @@ Every file is checked against the SHA-256 recorded at the deploy, when it is sto
 The page asks a small version file (never cached) when it starts, when you come back to its tab and every ten minutes. When a newer version is deployed, a message says "A new version is available." with **Reload** and **Later**. Nothing reloads by itself: Reload first saves your project in this browser, and the page restores it. The files of the previous version are deleted once the new one is active.
 
 The cache covers the playground's own path and nothing else. It does not store the git frame (another origin, whose token storage is untouched), nor anything under `/api/` (server mode's git calls), nor any request that carries credentials.
+
+The video worker, which reads video files for their posters, is a module of its own: it is downloaded only the first time a deck uses a video, and kept in the cache from then on. A deck without video never fetches it.
+
+After a new release, if the page the browser holds no longer matches what was cached (the cached copy is gone or damaged and the server now sends the new one), a brief "Updating…" page appears instead of an error. It removes this playground's cache and reloads, so the new version loads from the network and sets up its own cache. Nothing from the server runs while it does.
