@@ -378,3 +378,7 @@ Chaque fichier est vérifié par rapport au SHA-256 enregistré au déploiement,
 La page interroge un petit fichier de version (jamais mis en cache) au démarrage, quand vous revenez sur son onglet et toutes les dix minutes. Quand une version plus récente est déployée, un message indique « Une nouvelle version est disponible. » avec **Recharger** et **Plus tard**. Rien ne se recharge tout seul : Recharger enregistre d'abord votre projet dans ce navigateur, et la page le restaure. Les fichiers de la version précédente sont supprimés dès que la nouvelle est active.
 
 Le cache couvre le chemin du playground et rien d'autre. Il ne stocke ni le cadre git (une autre origine, dont le stockage du jeton n'est pas touché), ni rien sous `/api/` (les appels git du mode serveur), ni aucune requête qui porte des identifiants.
+
+Le worker vidéo, qui lit les fichiers vidéo pour en tirer les affiches, est un module à part : il n'est téléchargé que la première fois qu'un diaporama utilise une vidéo, puis gardé dans le cache. Un diaporama sans vidéo ne le demande jamais.
+
+Après une nouvelle version, si la page que le navigateur détient ne correspond plus à ce qui était en cache (la copie en cache a disparu ou est abîmée et le serveur envoie maintenant la nouvelle), une brève page « Mise à jour… » s'affiche à la place d'une erreur. Elle supprime le cache de ce playground et recharge, de sorte que la nouvelle version se charge depuis le réseau et crée son propre cache. Rien venant du serveur ne s'exécute pendant ce temps.

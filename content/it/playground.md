@@ -373,3 +373,7 @@ Ogni file è verificato con lo SHA-256 registrato al deploy, quando viene salvat
 La pagina interroga un piccolo file di versione (mai in cache) all'avvio, quando torni alla sua scheda e ogni dieci minuti. Quando viene distribuita una versione più recente, un messaggio dice «È disponibile una nuova versione.» con **Ricarica** e **Più tardi**. Nulla si ricarica da solo: Ricarica salva prima il tuo progetto in questo browser e la pagina lo ripristina. I file della versione precedente vengono eliminati quando la nuova è attiva.
 
 La cache copre il percorso del playground e nient'altro. Non conserva il frame git (un'altra origine, il cui archivio del token resta intatto), né nulla sotto `/api/` (le chiamate git della modalità server), né alcuna richiesta con credenziali.
+
+Il worker video, che legge i file video per ricavarne le copertine, è un modulo a parte: viene scaricato solo la prima volta che una presentazione usa un video e poi resta nella cache. Una presentazione senza video non lo richiede mai.
+
+Dopo una nuova versione, se la pagina che il browser ha non corrisponde più a quella in cache (la copia in cache è sparita o danneggiata e il server ora invia la nuova), compare brevemente una pagina «Aggiornamento…» al posto di un errore. Rimuove la cache di questo playground e ricarica, così la nuova versione si carica dalla rete e crea la propria cache. Nel frattempo non viene eseguito nulla proveniente dal server.

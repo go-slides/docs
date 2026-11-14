@@ -365,3 +365,7 @@ Każdy plik jest sprawdzany względem SHA-256 zapisanego przy wdrożeniu, przy z
 Strona pyta o mały plik wersji (nigdy nie buforowany) przy starcie, po powrocie do jej karty i co dziesięć minut. Gdy wdrożono nowszą wersję, komunikat mówi „Dostępna jest nowa wersja.” z przyciskami **Odśwież** i **Później**. Nic nie odświeża się samo: Odśwież najpierw zapisuje projekt w tej przeglądarce, a strona go przywraca. Pliki poprzedniej wersji są usuwane, gdy nowa jest aktywna.
 
 Pamięć obejmuje ścieżkę samego playgrounda i nic więcej. Nie przechowuje ramki git (inny origin, którego magazyn tokenu pozostaje nietknięty), niczego pod `/api/` (wywołań git trybu serwera) ani żadnego żądania z poświadczeniami.
+
+Worker wideo, który czyta pliki wideo, by wyciągnąć z nich plakaty, jest osobnym modułem: pobiera się go dopiero przy pierwszym użyciu wideo w prezentacji, a potem pozostaje w pamięci podręcznej. Prezentacja bez wideo nigdy go nie pobiera.
+
+Po nowym wydaniu, jeśli strona, którą ma przeglądarka, nie zgadza się już z zapisaną w pamięci (kopia w pamięci zniknęła lub jest uszkodzona, a serwer wysyła już nową), zamiast błędu pojawia się na chwilę strona „Aktualizacja…”. Usuwa pamięć podręczną tego playgrounda i odświeża, więc nowa wersja ładuje się z sieci i tworzy własną pamięć. W tym czasie nic z serwera nie jest wykonywane.

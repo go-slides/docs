@@ -382,3 +382,7 @@ Jede Datei wird beim Speichern und bei jedem Lesen gegen den beim Deployment fes
 Die Seite fragt beim Start, wenn Sie zu ihrem Tab zurückkehren und alle zehn Minuten eine kleine Versionsdatei ab (nie im Cache). Ist eine neuere Version deployt, erscheint die Meldung „Eine neue Version ist verfügbar.“ mit **Neu laden** und **Später**. Nichts lädt von selbst neu: Neu laden speichert zuerst Ihr Projekt in diesem Browser, und die Seite stellt es wieder her. Die Dateien der vorherigen Version werden gelöscht, sobald die neue aktiv ist.
 
 Der Cache gilt für den eigenen Pfad des Playgrounds und für nichts sonst. Er speichert weder den Git-Frame (eine andere Origin, deren Token-Speicher unberührt bleibt) noch etwas unter `/api/` (die Git-Aufrufe des Servermodus) noch eine Anfrage mit Anmeldedaten.
+
+Der Video-Worker, der Videodateien für ihre Vorschaubilder liest, ist ein eigenes Modul: Er wird erst heruntergeladen, wenn eine Präsentation zum ersten Mal ein Video verwendet, und bleibt danach im Cache. Eine Präsentation ohne Video lädt ihn nie.
+
+Stimmt nach einer neuen Version die Seite, die der Browser hält, nicht mehr mit dem Zwischengespeicherten überein (die Kopie im Cache fehlt oder ist beschädigt, und der Server liefert nun die neue), erscheint statt eines Fehlers kurz eine Seite „Aktualisierung…“. Sie entfernt den Cache dieses Playgrounds und lädt neu, sodass die neue Version aus dem Netz geladen wird und ihren eigenen Cache anlegt. Währenddessen läuft nichts vom Server.
