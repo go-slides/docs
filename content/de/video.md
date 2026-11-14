@@ -46,3 +46,5 @@ Ein abgelehntes Video wird auf der Folie durch einen Hinweis ersetzt, `[video no
 ## Im Playground {#playground}
 
 Nach der Veröffentlichung lässt sich ein Video wie die anderen Dateien zum Projekt hinzufügen. Seine Bytes bleiben im Browser, als Blob-URLs, und werden nie hochgeladen. Probieren Sie es im [Playground](https://go-slides.github.io/playground/).
+
+Die Videounterstützung wird bei Bedarf geladen. Der Leser, der das Posterbild dekodiert (etwa 3 MiB komprimiert), ist ein eigenes Modul, das beim ersten Mal heruntergeladen wird, wenn eine Präsentation ein Poster braucht. Eine Präsentation ohne Video lädt es nie, und der erste Ladevorgang des Playgrounds fällt entsprechend kleiner aus. Es läuft in einem Web Worker, sodass die Eingabe nie blockiert wird, und liest eine Datei mit denselben Grenzen wie `slides` (64 MiB, Boxen und Bildgröße) und denselben Fehlern `video.limit` und `video.syntax`.

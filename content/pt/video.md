@@ -46,3 +46,5 @@ Um vídeo recusado é substituído no slide por uma nota, `[video not shown: ...
 ## No playground {#playground}
 
 Depois de publicado, um vídeo poderá ser adicionado ao projeto como os outros arquivos. Seus bytes ficam no navegador, como URLs blob, e nunca são enviados. Experimente no [playground](https://go-slides.github.io/playground/).
+
+O suporte a vídeo é carregado sob demanda. O leitor que decodifica o quadro do pôster (cerca de 3 MiB compactados) é um módulo à parte, baixado na primeira vez que uma apresentação precisa de um pôster. Uma apresentação sem vídeo nunca o baixa, e o primeiro carregamento do playground fica mais leve na mesma medida. Ele roda em um Web Worker, então a digitação nunca é bloqueada, e lê um arquivo com os mesmos limites do `slides` (64 MiB, caixas e tamanho do quadro) e os mesmos erros `video.limit` e `video.syntax`.

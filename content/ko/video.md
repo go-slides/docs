@@ -46,3 +46,5 @@ MP4(ISO BMFF)와 WebM(Matroska) 파일을 Go로 읽으며, ffmpeg는 실행하�
 ## playground에서 {#playground}
 
 릴리스되면 다른 파일처럼 프로젝트에 비디오를 추가할 수 있습니다. 비디오의 바이트는 blob URL로 브라우저 안에 머물며 업로드되지 않습니다. [playground](https://go-slides.github.io/playground/)에서 사용해 보세요.
+
+비디오 지원은 필요할 때 로드됩니다. 포스터 프레임을 디코딩하는 리더(압축 시 약 3 MiB)는 별도의 모듈이며, 슬라이드가 처음 포스터를 필요로 할 때 내려받습니다. 비디오가 없는 슬라이드는 이를 전혀 내려받지 않으므로 playground의 첫 로딩이 그만큼 가벼워집니다. Web Worker에서 실행되어 입력이 막히지 않으며, 파일은 `slides`와 같은 제한(64 MiB, 박스와 프레임 크기)과 같은 `video.limit`, `video.syntax` 오류로 읽습니다.

@@ -46,3 +46,5 @@ A refused video is replaced in the slide by a note, `[video not shown: ...]`; th
 ## In the playground {#playground}
 
 Once released, a video can be added to the project like the other files. Its bytes stay in the browser, as blob URLs, and are never uploaded. Try it in the [playground](https://go-slides.github.io/playground/).
+
+Video support loads on demand. The reader that decodes the poster frame (about 3 MiB compressed) is a module of its own, downloaded the first time a deck needs a poster. A deck without video never fetches it, and the playground's first load is that much smaller. It runs in a Web Worker, so typing is never blocked, and it reads a file with the same limits as `slides` (64 MiB, boxes and frame size) and the same `video.limit` and `video.syntax` errors.
