@@ -362,4 +362,9 @@ na żywej stronie, edytor jest gotowy 2,1 s po otwarciu strony, z czego 1,5 s
 to pobieranie, a pierwsze slajdy pojawiają się po 2,4 s. Zmiana w
 100-slajdowej prezentacji testowej dociera do podglądu w około 30 ms: go-slides
 renderuje tylko slajdy, które się zmieniły, i tylko te są wymieniane w
-podglądzie.&lt;/p&gt;</description></item></channel></rss>
+podglądzie.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="offline"&gt;Tryb offline i aktualizacje&lt;span class="hx:absolute hx:-mt-20" id="offline"&gt;&lt;/span&gt;
+&lt;a href="#offline" class="subheading-anchor" aria-label="Stały odnośnik do tej sekcji"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pierwsza wizyta pobiera edytor jak zawsze. Gdy jest gotowy, strona zachowuje swoje pliki w pamięci podręcznej przeglądarki, pod wdrożeniem, które je zapisało: moduł WebAssembly, jego loader, worker renderujący, obrazy ładowania i samą stronę, a potem silnik eksportu i czcionki przy pierwszym użyciu. Następna wizyta startuje z tej pamięci bez pytania sieci o te pliki, a playground otwiera się także offline.&lt;/p&gt;
+&lt;p&gt;Każdy plik jest sprawdzany względem SHA-256 zapisanego przy wdrożeniu, przy zapisie i przy każdym odczycie. Plik uszkodzony lub niepełny jest pomijany: odpowiada sieć, a pamięć podręczna jest zapisywana na nowo, więc nigdy nie może uniemożliwić załadowania strony.&lt;/p&gt;
+&lt;p&gt;Strona pyta o mały plik wersji (nigdy nie buforowany) przy starcie, po powrocie do jej karty i co dziesięć minut. Gdy wdrożono nowszą wersję, komunikat mówi „Dostępna jest nowa wersja.” z przyciskami &lt;strong&gt;Odśwież&lt;/strong&gt; i &lt;strong&gt;Później&lt;/strong&gt;. Nic nie odświeża się samo: Odśwież najpierw zapisuje projekt w tej przeglądarce, a strona go przywraca. Pliki poprzedniej wersji są usuwane, gdy nowa jest aktywna.&lt;/p&gt;
+&lt;p&gt;Pamięć obejmuje ścieżkę samego playgrounda i nic więcej. Nie przechowuje ramki git (inny origin, którego magazyn tokenu pozostaje nietknięty), niczego pod &lt;code&gt;/api/&lt;/code&gt; (wywołań git trybu serwera) ani żadnego żądania z poświadczeniami.&lt;/p&gt;</description></item></channel></rss>
