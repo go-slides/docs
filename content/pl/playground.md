@@ -355,3 +355,13 @@ to pobieranie, a pierwsze slajdy pojawiają się po 2,4 s. Zmiana w
 100-slajdowej prezentacji testowej dociera do podglądu w około 30 ms: go-slides
 renderuje tylko slajdy, które się zmieniły, i tylko te są wymieniane w
 podglądzie.
+
+## Tryb offline i aktualizacje {#offline}
+
+Pierwsza wizyta pobiera edytor jak zawsze. Gdy jest gotowy, strona zachowuje swoje pliki w pamięci podręcznej przeglądarki, pod wdrożeniem, które je zapisało: moduł WebAssembly, jego loader, worker renderujący, obrazy ładowania i samą stronę, a potem silnik eksportu i czcionki przy pierwszym użyciu. Następna wizyta startuje z tej pamięci bez pytania sieci o te pliki, a playground otwiera się także offline.
+
+Każdy plik jest sprawdzany względem SHA-256 zapisanego przy wdrożeniu, przy zapisie i przy każdym odczycie. Plik uszkodzony lub niepełny jest pomijany: odpowiada sieć, a pamięć podręczna jest zapisywana na nowo, więc nigdy nie może uniemożliwić załadowania strony.
+
+Strona pyta o mały plik wersji (nigdy nie buforowany) przy starcie, po powrocie do jej karty i co dziesięć minut. Gdy wdrożono nowszą wersję, komunikat mówi „Dostępna jest nowa wersja.” z przyciskami **Odśwież** i **Później**. Nic nie odświeża się samo: Odśwież najpierw zapisuje projekt w tej przeglądarce, a strona go przywraca. Pliki poprzedniej wersji są usuwane, gdy nowa jest aktywna.
+
+Pamięć obejmuje ścieżkę samego playgrounda i nic więcej. Nie przechowuje ramki git (inny origin, którego magazyn tokenu pozostaje nietknięty), niczego pod `/api/` (wywołań git trybu serwera) ani żadnego żądania z poświadczeniami.

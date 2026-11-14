@@ -352,3 +352,13 @@ of which is the download, and the first slides appear at 2.4 s. A change to
 the 100-slide benchmark deck reaches the preview in about 30 ms: go-slides
 renders only the slides that changed, and only those are replaced in the
 preview.
+
+## Offline and updates {#offline}
+
+The first visit downloads the editor as always. Once it is up, the page keeps its files in the browser's cache, under the deploy that wrote them: the WebAssembly module, its loader, the render worker, the loading pictures and the page itself, then the export engine and the fonts the first time they are used. The next visit starts from that cache without asking the network for any of them, and the playground opens offline.
+
+Every file is checked against the SHA-256 recorded at the deploy, when it is stored and each time it is read. A file that is damaged or incomplete is ignored: the network answers instead and the cache is rewritten, so the cache can never stop the page from loading.
+
+The page asks a small version file (never cached) when it starts, when you come back to its tab and every ten minutes. When a newer version is deployed, a message says "A new version is available." with **Reload** and **Later**. Nothing reloads by itself: Reload first saves your project in this browser, and the page restores it. The files of the previous version are deleted once the new one is active.
+
+The cache covers the playground's own path and nothing else. It does not store the git frame (another origin, whose token storage is untouched), nor anything under `/api/` (server mode's git calls), nor any request that carries credentials.
