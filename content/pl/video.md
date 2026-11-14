@@ -46,3 +46,5 @@ Odrzucone wideo jest na slajdzie zastępowane notatką, `[video not shown: ...]`
 ## W playground {#playground}
 
 Po wydaniu wideo będzie można dodać do projektu jak inne pliki. Jego bajty zostają w przeglądarce, jako adresy blob, i nigdy nie są wysyłane. Wypróbuj w [playground](https://go-slides.github.io/playground/).
+
+Obsługa wideo ładuje się na żądanie. Czytnik, który dekoduje klatkę plakatu (około 3 MiB po kompresji), jest osobnym modułem, pobieranym przy pierwszej potrzebie plakatu w prezentacji. Prezentacja bez wideo nigdy go nie pobiera, więc pierwsze ładowanie playground jest o tyle lżejsze. Działa w Web Workerze, więc pisanie nigdy się nie blokuje, i czyta plik z tymi samymi limitami co `slides` (64 MiB, pudełka i rozmiar klatki) oraz tymi samymi błędami `video.limit` i `video.syntax`.

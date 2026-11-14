@@ -46,3 +46,5 @@ MP4（ISO BMFF）和 WebM（Matroska）文件由 Go 读取，从不运行 ffmpeg
 ## 在 playground 中 {#playground}
 
 发布后，可以像其他文件一样把视频添加到项目中。它的字节留在浏览器中，作为 blob URL，绝不会上传。请在 [playground](https://go-slides.github.io/playground/) 中试用。
+
+视频支持按需加载。解码海报帧的读取器（压缩后约 3 MiB）是一个独立的模块，在幻灯片首次需要海报时下载。没有视频的幻灯片永远不会下载它，playground 的首次加载也因此更小。它运行在 Web Worker 中，所以输入不会被阻塞，并且读取文件时使用与 `slides` 相同的限制（64 MiB、box 和帧尺寸）以及相同的 `video.limit` 和 `video.syntax` 错误。

@@ -46,3 +46,5 @@ Un video rifiutato è sostituito nella diapositiva da una nota, `[video not show
 ## Nel playground {#playground}
 
 Una volta rilasciato, un video potrà essere aggiunto al progetto come gli altri file. I suoi byte restano nel browser, come URL blob, e non vengono mai caricati. Provalo nel [playground](https://go-slides.github.io/playground/).
+
+Il supporto video si carica su richiesta. Il lettore che decodifica il fotogramma del poster (circa 3 MiB compressi) è un modulo a parte, scaricato la prima volta che una presentazione ha bisogno di un poster. Una presentazione senza video non lo scarica mai, e il primo caricamento del playground è più leggero di altrettanto. Gira in un Web Worker, quindi la digitazione non viene mai bloccata, e legge un file con gli stessi limiti di `slides` (64 MiB, box e dimensione del fotogramma) e gli stessi errori `video.limit` e `video.syntax`.

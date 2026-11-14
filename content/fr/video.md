@@ -46,3 +46,5 @@ Une vidéo refusée est remplacée dans la diapositive par une note, `[video not
 ## Dans le bac à sable {#playground}
 
 Une fois publiée, une vidéo pourra être ajoutée au projet comme les autres fichiers. Ses octets restent dans le navigateur, sous forme d'URL blob, et ne sont jamais envoyés. Essayez-la dans le [bac à sable](https://go-slides.github.io/playground/).
+
+La prise en charge de la vidéo se charge à la demande. Le lecteur qui décode l'image d'affiche (environ 3 Mio compressés) est un module à part, téléchargé la première fois qu'un diaporama a besoin d'une affiche. Un diaporama sans vidéo ne le télécharge jamais, et le premier chargement du bac à sable est d'autant plus léger. Il s'exécute dans un Web Worker, donc la saisie n'est jamais bloquée, et il lit un fichier avec les mêmes limites que `slides` (64 Mio, boîtes et taille d'image) et les mêmes erreurs `video.limit` et `video.syntax`.

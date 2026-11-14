@@ -46,3 +46,5 @@ Un vídeo rechazado se sustituye en la diapositiva por una nota, `[video not sho
 ## En el playground {#playground}
 
 Una vez publicada, se podrá añadir un vídeo al proyecto como los demás archivos. Sus bytes se quedan en el navegador, como URL blob, y nunca se suben. Pruébelo en el [playground](https://go-slides.github.io/playground/).
+
+La compatibilidad con vídeo se carga bajo demanda. El lector que decodifica el fotograma del póster (unos 3 MiB comprimidos) es un módulo aparte, que se descarga la primera vez que una presentación necesita un póster. Una presentación sin vídeo nunca lo descarga, y la primera carga del playground es así más ligera. Se ejecuta en un Web Worker, de modo que escribir nunca se bloquea, y lee un archivo con los mismos límites que `slides` (64 MiB, cajas y tamaño de fotograma) y los mismos errores `video.limit` y `video.syntax`.
