@@ -39,4 +39,5 @@ data-copied-label="コピーしました！"
 &lt;li&gt;&lt;code&gt;file.missing&lt;/code&gt;: ファイルが存在しない。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="playground"&gt;playground では&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
-&lt;a href="#playground" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;リリース後は、ほかのファイルと同じようにプロジェクトにビデオを追加できます。そのバイトは blob URL としてブラウザー内にとどまり、アップロードされません。&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; で試してください。&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#playground" class="subheading-anchor" aria-label="このセクションへのパーマリンク"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;リリース後は、ほかのファイルと同じようにプロジェクトにビデオを追加できます。そのバイトは blob URL としてブラウザー内にとどまり、アップロードされません。&lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; で試してください。&lt;/p&gt;
+&lt;p&gt;ビデオのサポートは必要になったときに読み込まれます。ポスターフレームをデコードするリーダー（圧縮で約 3 MiB）は独立したモジュールで、スライドが初めてポスターを必要としたときにダウンロードされます。ビデオのないスライドでは一度も取得されず、playground の最初の読み込みはその分軽くなります。Web Worker で動くので入力が止まることはなく、ファイルは &lt;code&gt;slides&lt;/code&gt; と同じ上限（64 MiB、ボックスとフレームのサイズ）と同じ &lt;code&gt;video.limit&lt;/code&gt;・&lt;code&gt;video.syntax&lt;/code&gt; エラーで読み込まれます。&lt;/p&gt;</description></item></channel></rss>

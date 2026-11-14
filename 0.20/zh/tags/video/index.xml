@@ -39,4 +39,5 @@ data-copied-label="已复制！"
 &lt;li&gt;&lt;code&gt;file.missing&lt;/code&gt;：文件不存在。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="playground"&gt;在 playground 中&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
-&lt;a href="#playground" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;发布后，可以像其他文件一样把视频添加到项目中。它的字节留在浏览器中，作为 blob URL，绝不会上传。请在 &lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; 中试用。&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#playground" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;发布后，可以像其他文件一样把视频添加到项目中。它的字节留在浏览器中，作为 blob URL，绝不会上传。请在 &lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt; 中试用。&lt;/p&gt;
+&lt;p&gt;视频支持按需加载。解码海报帧的读取器（压缩后约 3 MiB）是一个独立的模块，在幻灯片首次需要海报时下载。没有视频的幻灯片永远不会下载它，playground 的首次加载也因此更小。它运行在 Web Worker 中，所以输入不会被阻塞，并且读取文件时使用与 &lt;code&gt;slides&lt;/code&gt; 相同的限制（64 MiB、box 和帧尺寸）以及相同的 &lt;code&gt;video.limit&lt;/code&gt; 和 &lt;code&gt;video.syntax&lt;/code&gt; 错误。&lt;/p&gt;</description></item></channel></rss>

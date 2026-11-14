@@ -39,4 +39,5 @@ data-copied-label="복사됨!"
 &lt;li&gt;&lt;code&gt;file.missing&lt;/code&gt;: 파일이 없음.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 data-hextra-search-id="playground"&gt;playground에서&lt;span class="hx:absolute hx:-mt-20" id="playground"&gt;&lt;/span&gt;
-&lt;a href="#playground" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;릴리스되면 다른 파일처럼 프로젝트에 비디오를 추가할 수 있습니다. 비디오의 바이트는 blob URL로 브라우저 안에 머물며 업로드되지 않습니다. &lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt;에서 사용해 보세요.&lt;/p&gt;</description></item></channel></rss>
+&lt;a href="#playground" class="subheading-anchor" aria-label="이 섹션에 대한 고유 링크"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;릴리스되면 다른 파일처럼 프로젝트에 비디오를 추가할 수 있습니다. 비디오의 바이트는 blob URL로 브라우저 안에 머물며 업로드되지 않습니다. &lt;a href="https://go-slides.github.io/playground/" target="_blank" rel="noopener"&gt;playground&lt;/a&gt;에서 사용해 보세요.&lt;/p&gt;
+&lt;p&gt;비디오 지원은 필요할 때 로드됩니다. 포스터 프레임을 디코딩하는 리더(압축 시 약 3 MiB)는 별도의 모듈이며, 슬라이드가 처음 포스터를 필요로 할 때 내려받습니다. 비디오가 없는 슬라이드는 이를 전혀 내려받지 않으므로 playground의 첫 로딩이 그만큼 가벼워집니다. Web Worker에서 실행되어 입력이 막히지 않으며, 파일은 &lt;code&gt;slides&lt;/code&gt;와 같은 제한(64 MiB, 박스와 프레임 크기)과 같은 &lt;code&gt;video.limit&lt;/code&gt;, &lt;code&gt;video.syntax&lt;/code&gt; 오류로 읽습니다.&lt;/p&gt;</description></item></channel></rss>
