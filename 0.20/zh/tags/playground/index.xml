@@ -271,7 +271,9 @@ brotli），模块大小为 8.8 MiB。它只会下载一次并显示进度条，
 &lt;a href="#offline" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;第一次访问照常下载编辑器。编辑器就绪后，页面会把自己的文件保存在浏览器缓存中，并按写入它们的部署分开存放：WebAssembly 模块、加载器、渲染 worker、加载图片和页面本身；导出引擎和字体则在首次使用时保存。下一次访问直接从该缓存启动，不再向网络请求这些文件，playground 也可以离线打开。&lt;/p&gt;
 &lt;p&gt;每个文件在存入时和每次读取时，都会与部署时记录的 SHA-256 核对。损坏或不完整的文件会被忽略：改由网络响应，并重写缓存，因此缓存永远不会妨碍页面加载。&lt;/p&gt;
 &lt;p&gt;页面在启动时、你回到它的标签页时，以及每十分钟，会请求一个很小的版本文件（从不缓存）。部署了较新版本时，会出现“有新版本可用。”的提示，带有 &lt;strong&gt;重新加载&lt;/strong&gt; 和 &lt;strong&gt;稍后&lt;/strong&gt; 两个按钮。任何内容都不会自行重新加载：重新加载会先把你的项目保存在此浏览器中，页面随后将其恢复。新版本启用后，上一版本的文件会被删除。&lt;/p&gt;
-&lt;p&gt;缓存只覆盖 playground 自己的路径，不涉及其他内容。它不会存储 git 框架（另一个源，其令牌存储不受影响），也不会存储 &lt;code&gt;/api/&lt;/code&gt; 下的任何内容（服务器模式的 git 调用），更不会存储任何带有凭据的请求。&lt;/p&gt;</description></item><item><title>自托管</title><link>https://go-slides.github.io/docs/0.20/zh/self-hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/zh/self-hosting/</guid><description>
+&lt;p&gt;缓存只覆盖 playground 自己的路径，不涉及其他内容。它不会存储 git 框架（另一个源，其令牌存储不受影响），也不会存储 &lt;code&gt;/api/&lt;/code&gt; 下的任何内容（服务器模式的 git 调用），更不会存储任何带有凭据的请求。&lt;/p&gt;
+&lt;p&gt;视频 worker 负责读取视频文件以生成海报图，它是一个独立模块：只在演示文稿第一次使用视频时下载，之后保存在缓存中。没有视频的演示文稿从不请求它。&lt;/p&gt;
+&lt;p&gt;发布新版本后，如果浏览器持有的页面与缓存不再一致（缓存副本已丢失或损坏，而服务器现在发送的是新版本），会短暂显示“正在更新…”页面，而不是报错。它会清除此 playground 的缓存并重新加载，于是新版本从网络加载并建立自己的缓存。在此期间不会执行来自服务器的任何内容。&lt;/p&gt;</description></item><item><title>自托管</title><link>https://go-slides.github.io/docs/0.20/zh/self-hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.20/zh/self-hosting/</guid><description>
 &lt;p&gt;&lt;a href="https://go-slides.github.io/docs/0.20/zh/playground/"&gt;Playground&lt;/a&gt; 是一组静态文件，
 &lt;a href="https://go-slides.github.io/docs/0.20/zh/cli/"&gt;&lt;code&gt;slides --server&lt;/code&gt;&lt;/a&gt; 是运行在回环地址上的单个进程。两者都
 可以运行在你自己的机器上，使用你自己的域名，供用你所在组织的账号登录的人使用。
