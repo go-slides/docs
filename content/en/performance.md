@@ -12,11 +12,15 @@ the previous release, which renders slides concurrently and parses its fonts
 once ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+The 100-slide PDF and PPTX rows of the three tables below no longer hold since v0.18.0: see [Several cores](#several-cores) and [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides and [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 were
 run as subprocesses on the same decks, on an Apple M4 Max (16 CPUs) with a
 1-minute load average under 8, five interleaved rounds after a warm-up.
 Time is the median wall time; memory is the peak of the whole process tree
 (marp-cli drives a Chrome, whose processes count).
+
+*Measured with v0.3.0 on all cores (16 CPUs).*
 
 | Deck | Output | go-slides | marp-cli | go-slides memory | marp-cli memory |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ Time is the median wall time; memory is the peak of the whole process tree
 In v0.4.0 the PDF is drawn as vectors (see
 [Command line]({{< relref "cli#vector-pdf" >}})). Same machine and method,
 2026-10-19:
+
+*Measured with v0.4.0 on all cores (16 CPUs), on 2026-10-19.*
 
 | Deck | go-slides | marp-cli | v0.3.0 | go-slides size | marp-cli size | v0.3.0 size |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ KiB and 158 MiB; marp-cli 1,838 ms, 837 KiB and 1,512 MiB.
 Since v0.5.0 the PPTX is made of text boxes, shapes and pictures (see
 [Command line]({{< relref "cli#editable-pptx-and-odp" >}})). Measured on
 2026-10-19 at 22:51, with a 1-minute load average of 7.1, over three rounds:
+
+*Measured with v0.5.0 on all cores (16 CPUs), on 2026-10-19.*
 
 | Deck | go-slides | marp-cli | go-slides size | marp-cli size | go-slides memory | marp-cli memory |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

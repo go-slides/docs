@@ -11,11 +11,15 @@ tags: [performance]
 フォントの解析を 1 回だけ行います（[go-slides/slides#11](https://github.com/go-slides/slides/pull/11)）。
 {{< /callout >}}
 
+以下の 3 つの表のうち、100 枚の PDF と PPTX の行は v0.18.0 以降は当てはまりません。[複数コア](#several-cores) と [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) を参照してください。
+
 go-slides と [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 を、
 同じスライドデッキに対してサブプロセスとして実行しました。マシンは Apple M4 Max（16 CPU）、
 1 分間のロードアベレージは 8 未満で、ウォームアップの後に交互に 5 ラウンド計測しています。
 時間は実時間の中央値、メモリはプロセスツリー全体のピークです
 （marp-cli は Chrome を操作するため、Chrome のプロセスも含めています）。
+
+*v0.3.0 で全コア（16 CPU）を使って計測。*
 
 | スライドデッキ | 出力 | go-slides | marp-cli | go-slides のメモリ | marp-cli のメモリ |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -31,6 +35,8 @@ go-slides と [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 を、
 v0.4.0 では、PDF はベクターで描画されます（
 [コマンドライン]({{< relref "cli#vector-pdf" >}}) を参照）。同じマシンと方法で、
 2026-10-19 に計測しました。
+
+*v0.4.0 で全コア（16 CPU）を使って、2026-10-19 に計測。*
 
 | スライドデッキ | go-slides | marp-cli | v0.3.0 | go-slides のサイズ | marp-cli のサイズ | v0.3.0 のサイズ |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -50,6 +56,8 @@ KiB、158 MiB、marp-cli は 1,838 ms、837 KiB、1,512 MiB でした。
 v0.5.0 以降、PPTX はテキストボックス、図形、画像で構成されます（
 [コマンドライン]({{< relref "cli#editable-pptx-and-odp" >}}) を参照）。
 2026-10-19 の 22:51 に、1 分間のロードアベレージ 7.1 の状態で 3 ラウンド計測しました。
+
+*v0.5.0 で全コア（16 CPU）を使って、2026-10-19 に計測。*
 
 | スライドデッキ | go-slides | marp-cli | go-slides のサイズ | marp-cli のサイズ | go-slides のメモリ | marp-cli のメモリ |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

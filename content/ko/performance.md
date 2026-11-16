@@ -12,11 +12,15 @@ tags: [performance]
 ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+아래 세 표에서 슬라이드 100장의 PDF와 PPTX 행은 v0.18.0부터 더 이상 맞지 않습니다. [여러 코어](#several-cores)와 [go-slides/slides#117](https://github.com/go-slides/slides/issues/117)를 참고하세요.
+
 go-slides와 [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1을 같은
 프레젠테이션에 대해 하위 프로세스로 실행했습니다. Apple M4 Max(CPU 16개)에서
 1분 평균 부하가 8 미만인 상태로, 예열 후 5회씩 번갈아 측정했습니다. 시간은
 경과 시간(wall time)의 중앙값이고, 메모리는 전체 프로세스 트리의 최대값입니다
 (marp-cli는 Chrome을 구동하므로 그 프로세스도 포함됩니다).
+
+*v0.3.0에서 모든 코어(16 CPU)로 측정.*
 
 | 프레젠테이션 | 출력 | go-slides | marp-cli | go-slides 메모리 | marp-cli 메모리 |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ go-slides와 [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1을 같은
 v0.4.0부터 PDF는 벡터로 그려집니다
 ([명령줄]({{< relref "cli#vector-pdf" >}}) 참고). 같은 컴퓨터와 같은 방법으로
 2026-10-19에 측정했습니다.
+
+*v0.4.0에서 모든 코어(16 CPU)로 2026-10-19에 측정.*
 
 | 프레젠테이션 | go-slides | marp-cli | v0.3.0 | go-slides 크기 | marp-cli 크기 | v0.3.0 크기 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ CPU 시간은 0.9 s 대 2.7 s입니다.
 v0.5.0부터 PPTX는 텍스트 상자, 도형, 그림으로 이루어집니다
 ([명령줄]({{< relref "cli#editable-pptx-and-odp" >}}) 참고). 2026-10-19 22:51에
 1분 평균 부하 7.1에서 3회 측정했습니다.
+
+*v0.5.0에서 모든 코어(16 CPU)로 2026-10-19에 측정.*
 
 | 프레젠테이션 | go-slides | marp-cli | go-slides 크기 | marp-cli 크기 | go-slides 메모리 | marp-cli 메모리 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

@@ -12,11 +12,15 @@ la versione precedente, che rende le slide in modo concorrente e analizza i prop
 una sola volta ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Le righe della PDF e del PPTX da 100 slide delle tre tabelle seguenti non valgono più dalla v0.18.0: vedi [Più core](#several-cores) e [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides e [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 sono stati
 eseguiti come sottoprocessi sulle stesse presentazioni, su un Apple M4 Max (16 CPU) con un
 carico medio a 1 minuto inferiore a 8, cinque round alternati dopo un riscaldamento.
 Il tempo è la mediana del tempo reale; la memoria è il picco dell'intero albero di processi
 (marp-cli pilota un Chrome, i cui processi vengono contati).
+
+*Misurato con la v0.3.0 su tutti i core (16 CPU).*
 
 | Presentazione | Output | go-slides | marp-cli | memoria go-slides | memoria marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ Il tempo è la mediana del tempo reale; la memoria è il picco dell'intero alber
 Nella v0.4.0 il PDF è disegnato in vettoriale (vedi
 [Riga di comando]({{< relref "cli#vector-pdf" >}})). Stessa macchina e stesso metodo,
 19-10-2026:
+
+*Misurato con la v0.4.0 su tutti i core (16 CPU), il 2026-10-19.*
 
 | Presentazione | go-slides | marp-cli | v0.3.0 | dimensione go-slides | dimensione marp-cli | dimensione v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ KiB e 158 MiB; marp-cli 1.838 ms, 837 KiB e 1.512 MiB.
 Dalla v0.5.0 il PPTX è fatto di caselle di testo, forme e immagini (vedi
 [Riga di comando]({{< relref "cli#editable-pptx-and-odp" >}})). Misurato il
 19-10-2026 alle 22:51, con un carico medio a 1 minuto di 7,1, su tre round:
+
+*Misurato con la v0.5.0 su tutti i core (16 CPU), il 2026-10-19.*
 
 | Presentazione | go-slides | marp-cli | dimensione go-slides | dimensione marp-cli | memoria go-slides | memoria marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

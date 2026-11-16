@@ -12,11 +12,15 @@ tags: [performance]
 （[go-slides/slides#11](https://github.com/go-slides/slides/pull/11)）。
 {{< /callout >}}
 
+下面三张表中 100 张幻灯片的 PDF 和 PPTX 行自 v0.18.0 起已不再成立：参见 [多核](#several-cores) 和 [go-slides/slides#117](https://github.com/go-slides/slides/issues/117)。
+
 go-slides 和 [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1
 以子进程方式在相同的演示文稿上运行，机器为 Apple M4 Max（16 个 CPU），
 1 分钟平均负载低于 8，预热后交错进行五轮测试。
 时间为实际耗时（wall time）的中位数；内存为整个进程树的峰值
 （marp-cli 会驱动一个 Chrome，其进程也计算在内）。
+
+*使用 v0.3.0 在全部核心（16 个 CPU）上测得。*
 
 | 演示文稿 | 输出 | go-slides | marp-cli | go-slides 内存 | marp-cli 内存 |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ go-slides 和 [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1
 从 v0.4.0 起，PDF 以矢量方式绘制（参见
 [命令行]({{< relref "cli#vector-pdf" >}})）。机器和方法相同，
 测于 2026-10-19：
+
+*使用 v0.4.0 在全部核心（16 个 CPU）上于 2026-10-19 测得。*
 
 | 演示文稿 | go-slides | marp-cli | v0.3.0 | go-slides 大小 | marp-cli 大小 | v0.3.0 大小 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ KiB、158 MiB；marp-cli 1,838 ms、837 KiB、1,512 MiB。
 自 v0.5.0 起，PPTX 由文本框、形状和图片组成（参见
 [命令行]({{< relref "cli#editable-pptx-and-odp" >}})）。测于
 2026-10-19 22:51，1 分钟平均负载为 7.1，共三轮：
+
+*使用 v0.5.0 在全部核心（16 个 CPU）上于 2026-10-19 测得。*
 
 | 演示文稿 | go-slides | marp-cli | go-slides 大小 | marp-cli 大小 | go-slides 内存 | marp-cli 内存 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

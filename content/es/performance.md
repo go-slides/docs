@@ -12,11 +12,15 @@ diapositivas de forma concurrente y analiza sus fuentes una sola vez
 ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Las filas del PDF y del PPTX de 100 diapositivas de las tres tablas siguientes ya no son válidas desde la v0.18.0: véase [Varios núcleos](#several-cores) y [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides y [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 se ejecutaron
 como subprocesos sobre las mismas presentaciones, en un Apple M4 Max (16 CPU) con
 una carga media de 1 minuto inferior a 8, cinco rondas intercaladas tras un
 calentamiento. El tiempo es la mediana del tiempo real; la memoria es el pico de
 todo el árbol de procesos (marp-cli controla un Chrome, cuyos procesos cuentan).
+
+*Medido con la v0.3.0 en todos los núcleos (16 CPU).*
 
 | Presentación | Salida | go-slides | marp-cli | memoria de go-slides | memoria de marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ todo el árbol de procesos (marp-cli controla un Chrome, cuyos procesos cuentan)
 En v0.4.0 el PDF se dibuja en vectores (véase
 [Línea de comandos]({{< relref "cli#vector-pdf" >}})). Misma máquina y mismo
 método, 2026-10-19:
+
+*Medido con la v0.4.0 en todos los núcleos (16 CPU), el 2026-10-19.*
 
 | Presentación | go-slides | marp-cli | v0.3.0 | tamaño de go-slides | tamaño de marp-cli | tamaño de v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ las 21:29, con una carga media de 1 minuto de 7,7, en tres rondas: go-slides
 Desde v0.5.0 el PPTX se compone de cuadros de texto, formas e imágenes (véase
 [Línea de comandos]({{< relref "cli#editable-pptx-and-odp" >}})). Medido el
 2026-10-19 a las 22:51, con una carga media de 1 minuto de 7,1, en tres rondas:
+
+*Medido con la v0.5.0 en todos los núcleos (16 CPU), el 2026-10-19.*
 
 | Presentación | go-slides | marp-cli | tamaño de go-slides | tamaño de marp-cli | memoria de go-slides | memoria de marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

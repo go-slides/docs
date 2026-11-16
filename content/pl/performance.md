@@ -12,11 +12,15 @@ poprzedniego wydania, które renderuje slajdy współbieżnie i parsuje swoje cz
 raz ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Wiersze PDF i PPTX ze 100 slajdami w trzech tabelach poniżej nie obowiązują od v0.18.0: zob. [Wiele rdzeni](#several-cores) i [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides i [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 zostały
 uruchomione jako podprocesy na tych samych prezentacjach, na Apple M4 Max (16 CPU) ze
 średnim obciążeniem z minuty poniżej 8, w pięciu przeplatanych rundach po rozgrzewce.
 Czas to mediana czasu ściennego; pamięć to szczyt całego drzewa procesów
 (marp-cli steruje Chrome, którego procesy się liczą).
+
+*Zmierzone w v0.3.0 na wszystkich rdzeniach (16 CPU).*
 
 | Prezentacja | Format | go-slides | marp-cli | pamięć go-slides | pamięć marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ Czas to mediana czasu ściennego; pamięć to szczyt całego drzewa procesów
 W v0.4.0 PDF jest rysowany jako wektory (zobacz
 [Wiersz poleceń]({{< relref "cli#vector-pdf" >}})). Ta sama maszyna i metoda,
 2026-10-19:
+
+*Zmierzone w v0.4.0 na wszystkich rdzeniach (16 CPU), 2026-10-19.*
 
 | Prezentacja | go-slides | marp-cli | v0.3.0 | rozmiar go-slides | rozmiar marp-cli | rozmiar v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ KiB i 158 MiB; marp-cli 1 838 ms, 837 KiB i 1 512 MiB.
 Od v0.5.0 PPTX składa się z pól tekstowych, kształtów i obrazów (zobacz
 [Wiersz poleceń]({{< relref "cli#editable-pptx-and-odp" >}})). Zmierzono
 2026-10-19 o 22:51, przy średnim obciążeniu z minuty 7,1, w trzech rundach:
+
+*Zmierzone w v0.5.0 na wszystkich rdzeniach (16 CPU), 2026-10-19.*
 
 | Prezentacja | go-slides | marp-cli | rozmiar go-slides | rozmiar marp-cli | pamięć go-slides | pamięć marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

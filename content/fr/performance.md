@@ -12,11 +12,15 @@ la version précédente, qui fait le rendu des diapositives en parallèle et n'a
 qu'une fois ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Les lignes du PDF et du PPTX de 100 diapositives des trois tableaux ci-dessous ne sont plus valables depuis la v0.18.0 : voir [Plusieurs cœurs](#several-cores) et [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides et [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 ont été
 lancés en sous-processus sur les mêmes présentations, sur un Apple M4 Max (16 CPU) avec une
 charge moyenne sur 1 minute inférieure à 8, en cinq tours entrelacés après un échauffement.
 Le temps est la médiane du temps écoulé ; la mémoire est le pic de toute l'arborescence de processus
 (marp-cli pilote un Chrome, dont les processus sont comptés).
+
+*Mesuré avec la v0.3.0 sur tous les cœurs (16 CPU).*
 
 | Présentation | Sortie | go-slides | marp-cli | mémoire go-slides | mémoire marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ Le temps est la médiane du temps écoulé ; la mémoire est le pic de toute l
 Depuis la v0.4.0, le PDF est dessiné en vectoriel (voir
 [Ligne de commande]({{< relref "cli#vector-pdf" >}})). Même machine et même méthode,
 le 2026-10-19 :
+
+*Mesuré avec la v0.4.0 sur tous les cœurs (16 CPU), le 2026-10-19.*
 
 | Présentation | go-slides | marp-cli | v0.3.0 | taille go-slides | taille marp-cli | taille v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -51,6 +57,8 @@ Kio et 158 Mio ; marp-cli 1 838 ms, 837 Kio et 1 512 Mio.
 Depuis la v0.5.0, le PPTX est composé de zones de texte, de formes et d'images (voir
 [Ligne de commande]({{< relref "cli#editable-pptx-and-odp" >}})). Mesuré le
 2026-10-19 à 22 h 51, avec une charge moyenne sur 1 minute de 7,1, sur trois tours :
+
+*Mesuré avec la v0.5.0 sur tous les cœurs (16 CPU), le 2026-10-19.*
 
 | Présentation | go-slides | marp-cli | taille go-slides | taille marp-cli | mémoire go-slides | mémoire marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
