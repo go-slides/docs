@@ -1,0 +1,14 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="go-docutils">
+  <defs><linearGradient id="docutils" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#312E81"/></linearGradient></defs>
+  <rect width="256" height="256" rx="56" fill="url(#docutils)"/>
+  <!-- reStructuredText in, doctree out: a page becomes a tree of nodes. -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="34" y="56" width="72" height="144" rx="12"/>
+    <path d="M50 88 H90"/><path d="M50 122 H90"/><path d="M50 156 H78"/>
+    <path d="M118 128 H150"/>
+    <path d="M172 128 V88 H196"/>
+    <path d="M172 128 V168 H196"/>
+  </g>
+  <g fill="#FFFFFF"><circle cx="164" cy="128" r="11"/><circle cx="206" cy="88" r="11"/><circle cx="206" cy="168" r="11"/></g>
+</svg>

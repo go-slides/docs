@@ -1,0 +1,394 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.26/es/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>es</language><atom:link href="https://go-slides.github.io/docs/0.26/es/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.26/es/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.26/es/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/es/playground/" target="_blank" rel="noopener"&gt;Abrir el Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;El Playground es el propio go-slides, v0.26.0, compilado a WebAssembly y
+ejecutándose en su navegador. Escriba una presentación a la izquierda; las
+diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
+presentación, ni un enlace para compartir.&lt;/p&gt;
+&lt;p&gt;La interfaz del Playground (cinta, ayuda, mensajes) habla el idioma de la
+página: abra &lt;code&gt;/es/playground/&lt;/code&gt; para el español, y así con los doce idiomas de
+este sitio. El selector de idioma de la página lo cambia y su elección se
+conserva en este navegador; un enlace que nombra un idioma siempre prevalece.
+Las presentaciones de ejemplo siguen en inglés. El ucraniano, el ruso, el
+chino, el japonés y el coreano se dibujan con un subconjunto de Noto Sans (de
+0,06 a 2,3 MiB) que la página descarga solo para esos idiomas.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Qué ofrece&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vista previa en vivo&lt;/strong&gt; de cada diapositiva, renderizada fuera del hilo de la
+página (un Web Worker), de modo que escribir nunca espera por ella. Haga clic en
+una diapositiva para llevar el editor a su línea; mueva el cursor y la vista
+previa se desplaza a su diapositiva.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pase de diapositivas&lt;/strong&gt;: la propia presentación, con el teclado, el
+controlador en pantalla y las transiciones.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vista del presentador&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (o &lt;code&gt;p&lt;/code&gt; en el pase de diapositivas) la
+abre en una segunda ventana: la diapositiva actual, el paso siguiente, las
+notas del orador (los &lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt; de la presentación), un reloj y un
+cronómetro. Las teclas de flecha, Espacio, Inicio y Fin funcionan en cualquiera
+de las dos ventanas, y cada una sigue a la otra, también cuando se edita la
+presentación. Si la ventana no se abre, permita las ventanas emergentes para el
+sitio. La vista general (&lt;code&gt;o&lt;/code&gt;) solo está en la página descargada.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Autocompletado&lt;/strong&gt; mientras escribe: claves de directivas (las de una sola
+diapositiva, con &lt;code&gt;_&lt;/code&gt;, en los comentarios), los valores de &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;,
+&lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt;, y las funciones de plantilla y los campos de datos dentro
+de &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ayuda&lt;/strong&gt; sobre lo que hay bajo el cursor: una directiva, un kind (tipo de
+diapositiva; qué fija), una función de plantilla. El panel de ayuda enlaza
+también con estas páginas. Desde v0.16.0 la ayuda de las directivas sigue el
+idioma de la interfaz, en 11 idiomas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Problemas&lt;/strong&gt; en su línea: los errores de plantilla, de YAML y de HCL se
+resaltan en el editor y se listan debajo, y la vista previa conserva la última
+presentación que se renderizó.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ejemplos&lt;/strong&gt;: una presentación de bienvenida, plantillas que generan
+diapositivas, kinds de diapositiva, un front matter en HCL, temas y directivas
+de una sola diapositiva, y matemáticas, imágenes y fondos (&lt;code&gt;![bg]&lt;/code&gt;, un fondo
+dividido &lt;code&gt;![bg left:40%]&lt;/code&gt;, filtros).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Archivos&lt;/strong&gt;: el panel a la izquierda del editor es el proyecto de la
+presentación, organizado como lo leen el &lt;a href="https://go-slides.github.io/docs/0.26/es/cli/"&gt;comando&lt;/a&gt; y la
+&lt;a href="https://go-slides.github.io/docs/0.26/es/vscode/"&gt;extensión de VS Code&lt;/a&gt;: &lt;code&gt;deck.md&lt;/code&gt;, &lt;code&gt;slides.yaml&lt;/code&gt;,
+&lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Haga clic en un archivo para editarlo. El editor lo colorea según su lenguaje
+(Markdown, YAML, HCL, JSON, CSS) y marca sus problemas.&lt;/li&gt;
+&lt;li&gt;Clic derecho (o Mayús+F10) para New File, New Folder, Rename (F2), Delete
+(pregunta antes) y New theme / New kind. Arrastre un archivo a una carpeta
+para moverlo. El teclado sigue el patrón de árbol de WAI-ARIA, incluida la
+búsqueda al escribir.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; crea &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (o a partir de default,
+uncover): un &lt;code&gt;@import&lt;/code&gt; del tema incorporado y las reglas que usted añada. Se
+incorpora a la lista de temas. &lt;strong&gt;New kind&lt;/strong&gt; y &lt;strong&gt;New data file&lt;/strong&gt; también
+parten de plantillas. Cada uno se lista en &lt;code&gt;slides.yaml&lt;/code&gt;, de modo que
+&lt;code&gt;slides build deck.md&lt;/code&gt; lo encuentra.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; lo guarda todo. Una vez descomprimido,
+&lt;code&gt;slides build deck.md&lt;/code&gt; lo construye. &lt;strong&gt;Open project&lt;/strong&gt; recupera un &lt;code&gt;.zip&lt;/code&gt; o
+una carpeta. Se rechaza un archivo comprimido que salga de su carpeta (&lt;code&gt;..&lt;/code&gt;,
+rutas absolutas), que contenga más de 256 archivos o más de 8 MiB en un
+archivo, o que se descomprima a más de 100 veces su tamaño.&lt;/li&gt;
+&lt;li&gt;Todo se conserva en este navegador junto con el borrador. Un proyecto admite
+hasta 64 MiB, y la línea bajo los archivos indica cuánto se usa.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Medios&lt;/strong&gt;: suelte o pegue una imagen, un vídeo o un sonido en el editor y pasa
+a &lt;code&gt;media/&lt;/code&gt;, y la presentación lo nombra: &lt;code&gt;![](media/photo.png)&lt;/code&gt;. Suelte
+archivos sobre una carpeta del panel para ponerlos allí. La presentación sigue
+siendo pequeña y legible, y no se sube nada. El entorno aislado de la vista
+previa los carga sin abrirse (la página le entrega los bytes). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; los incluye en la página. Las imágenes &lt;code&gt;https:&lt;/code&gt; también funcionan, pero
+el navegador las obtiene de su servidor, que entonces ve su dirección. La vista
+previa no envía referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Paneles redimensionables&lt;/strong&gt;: el panel de archivos, el editor, las miniaturas
+de las diapositivas, la vista previa y la ayuda están separados por barras que
+se pueden arrastrar (el puntero se convierte en un cursor de redimensionado
+sobre una de ellas). El panel junto a la barra se queda con el espacio y los
+demás conservan su tamaño. Haga doble clic en una barra, o pulse Intro sobre
+ella, para cerrar el panel y volver a abrirlo. Con el teclado, F6 pasa de una
+barra a otra, las teclas de flecha mueven una barra 16 px, Inicio y Fin llevan
+el panel anterior a su tamaño mínimo y máximo, y Escape vuelve al editor. La
+pestaña View sigue pudiendo desactivar paneles. Los tamaños que fije se
+conservan en este navegador, con el borrador; los tamaños por defecto (190, 168
+y 280 px, y el editor y la vista previa se reparten el resto en proporción 6 a
+5) nunca se almacenan.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cerrar un panel&lt;/strong&gt;: cada panel tiene un pequeño botón × en su encabezado, con
+información emergente. Los demás se reparten su espacio y el panel vuelve con
+el ancho que tenía. Para volver a abrirlo, use su interruptor en la pestaña
+View (cada panel tiene uno). El editor y la vista previa pueden cerrarse
+cada uno, pero nunca los dos: el último se niega, su botón aparece atenuado y
+su información emergente explica por qué. Con el teclado, F6 y luego Tab o
+Mayús+Tab llevan a un botón ×, e Intro o Espacio cierra el panel; el teclado
+vuelve al editor. Los paneles abiertos se conservan en este navegador junto
+con los tamaños (Versions, GitHub y el editor de temas, abiertos para una
+tarea, empiezan cerrados).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Formato&lt;/strong&gt;: la pestaña Format edita el Markdown por usted, y cada pulsación es
+un paso de Deshacer.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Texto&lt;/strong&gt;: Bold, Italic, Strikethrough e Inline code actúan sobre la
+selección o la palabra bajo el cursor y se alternan (Ctrl+B, Ctrl+I,
+Ctrl+Shift+X y Ctrl+E; Cmd en un Mac). Un botón aparece pulsado cuando el
+cursor está dentro de sus marcas. Markdown no tiene subrayado: Underline
+(Ctrl+U) envuelve el texto en &lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;, una etiqueta que la lista de
+permitidos de HTML por defecto de Marp conserva, así que funciona con el HTML
+sin procesar desactivado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Párrafo&lt;/strong&gt;: Heading 1 a 3 (Ctrl+Alt+1..3), viñetas (Ctrl+Shift+8),
+numeración (Ctrl+Shift+7) y una cita actúan sobre las líneas seleccionadas y
+se alternan. La regla horizontal es la etiqueta &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt; y &lt;code&gt;___&lt;/code&gt;
+iniciarían cada una una nueva diapositiva en Marp.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tabla&lt;/strong&gt;: una cuadrícula elige las columnas y las filas. Con el cursor en una
+tabla se añade o se elimina una fila o una columna y se alinea la columna
+(&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;, &lt;code&gt;--:&lt;/code&gt;); la tabla se reescribe alineada tras cada edición.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slide text&lt;/strong&gt; a la izquierda, al centro o a la derecha escribe un bloque
+&lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; en la diapositiva actual. Marp no tiene sintaxis de
+alineación, y un atributo &lt;code&gt;style&lt;/code&gt; no pasa la lista de permitidos de HTML por
+defecto, pero el bloque con ámbito sí, de modo que funciona con el HTML sin
+procesar desactivado y se ve en la vista previa, la página HTML y el PDF.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Ctrl+K) escribe &lt;code&gt;[text](url)&lt;/code&gt; con la url seleccionada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Resaltado&lt;/strong&gt; de las claves del front matter a cualquier profundidad, en YAML
+(también en mapas &lt;code&gt;{a: 1}&lt;/code&gt;) y en HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Selector de &lt;strong&gt;tema&lt;/strong&gt;: default, gaia, uncover, los temas del proyecto
+(&lt;code&gt;themes/*.css&lt;/code&gt;) y los temas que define la presentación (&lt;code&gt;/* @theme name */&lt;/code&gt; en
+un &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Escribe &lt;code&gt;theme:&lt;/code&gt; en el front matter, YAML o HCL, de modo que un
+enlace compartido lo conserva, y sigue al front matter cuando lo edita.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;La vista previa &lt;strong&gt;mantiene su posición&lt;/strong&gt; mientras escribe: solo se sustituyen
+las diapositivas que cambiaron, y un cambio de tema reabre la vista previa en
+la misma diapositiva.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Enlace para compartir&lt;/strong&gt;: la presentación viaja en el propio enlace (en su
+parte &lt;code&gt;#&lt;/code&gt;, comprimida), así que abrir el enlace abre la presentación. Los
+enlaces admiten hasta 64 KiB comprimidos, y solo la presentación: cuando el
+proyecto contiene más (temas, kinds, medios), Share lo indica y ofrece el
+&lt;code&gt;.zip&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;la página HTML, la misma que escribe &lt;code&gt;slides deck.md&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;un &lt;strong&gt;PDF&lt;/strong&gt; (vectorial, con el texto seleccionable, con índice);&lt;/li&gt;
+&lt;li&gt;una presentación &lt;strong&gt;PowerPoint&lt;/strong&gt; u &lt;strong&gt;OpenDocument&lt;/strong&gt; editable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Se generan en su navegador, con el mismo código que &lt;code&gt;slides --pdf&lt;/code&gt;, &lt;code&gt;--pptx&lt;/code&gt; y
+&lt;code&gt;--odp&lt;/code&gt;: el PDF de la presentación de prueba de 100 diapositivas es idéntico
+byte a byte al del comando. La primera exportación descarga el motor de
+exportación (unos 5 MiB, una sola vez; su navegador lo conserva hasta la
+siguiente actualización), con una línea de progreso, y lo compila a medida que
+llega. Después solo descarga las fuentes que dibujan sus diapositivas. Con un
+enlace de 3 MB/s, el primer PDF de la presentación de bienvenida está listo en
+menos de 3 segundos. La presentación de 100
+diapositivas tarda entonces unos 3 segundos. Una imagen &lt;code&gt;https:&lt;/code&gt; solo se incluye
+si su servidor lo permite (CORS); las imágenes &lt;code&gt;data:&lt;/code&gt; siempre se incluyen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Su borrador se conserva&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La presentación se guarda en este navegador mientras escribe (IndexedDB,
+solo para este sitio) y reaparece al recargar. No se envía nada a ninguna
+parte. Los archivos de texto del proyecto (temas, kinds, datos,
+&lt;code&gt;slides.yaml&lt;/code&gt;) se conservan del mismo modo, incluso si cierra la pestaña justo
+después de escribir; los medios se almacenan en cuanto se sueltan.&lt;/li&gt;
+&lt;li&gt;Un enlace compartido abre su presentación y conserva su borrador: &lt;strong&gt;Draft ▸
+Restore my draft&lt;/strong&gt; lo recupera.&lt;/li&gt;
+&lt;li&gt;Un ejemplo, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (que pregunta antes) y otra
+pestaña tampoco lo borran nunca: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; lo recupera.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; borra todo lo almacenado.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Toda exportación renderiza el proyecto que muestra la vista previa: su
+&lt;code&gt;slides.yaml&lt;/code&gt;, temas, kinds, archivos de datos y medios, con los medios dentro
+del documento.&lt;/p&gt;
+&lt;p&gt;Las imágenes como archivos (&lt;code&gt;--images&lt;/code&gt; de slides) no se generan en el navegador:
+use el &lt;a href="https://go-slides.github.io/docs/0.26/es/cli/"&gt;comando&lt;/a&gt; o la
+&lt;a href="https://go-slides.github.io/docs/0.26/es/vscode/"&gt;extensión de VS Code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Editor de temas&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Inicio ▸ Aspecto ▸ Editor de temas&lt;/strong&gt; abre un panel que edita uno de los
+temas del proyecto con controles, y la vista previa lo sigue. El tema se guarda
+como una carpeta de paquete, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; la hoja que leen la vista
+previa y las exportaciones, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, se compila a partir de ella:
+lo que ve es lo que exporta. Un paquete de tema que importa (&lt;strong&gt;Importar…&lt;/strong&gt; en
+el panel, &lt;strong&gt;Añadir medios…&lt;/strong&gt; o arrastrándolo) conserva allí sus archivos, así
+que puede editarlo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Paleta&lt;/strong&gt;: los colores de fondo, texto, títulos, acento y enlaces. Elija un
+color o escríbalo (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;, &lt;code&gt;hsl()&lt;/code&gt; o un nombre).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tipografía&lt;/strong&gt;: las fuentes del texto, los títulos y el código, con sus
+tamaños y grosores. Las fuentes son las genéricas y las comunes, y las que
+añada (&lt;strong&gt;Añadir fuente…&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; o &lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logotipo&lt;/strong&gt;: una imagen (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), dónde va (una esquina o todo el
+fondo) y su tamaño. &lt;strong&gt;Número de página y pie&lt;/strong&gt;: dónde va el número de página,
+y los tamaños y la alineación.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Detalles&lt;/strong&gt;: lo que dice &lt;code&gt;theme.hcl&lt;/code&gt;: versión, descripción, autores,
+licencia, página web, el tema base (&lt;code&gt;extends&lt;/code&gt;) y la versión de go-slides que
+necesita.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contraste (WCAG)&lt;/strong&gt;: para cada texto sobre su fondo, la razón y su nivel,
+&lt;code&gt;AA&lt;/code&gt; o &lt;code&gt;AAA&lt;/code&gt;, o «No cumple», en vivo. Los títulos cuentan como texto grande
+(3:1 basta para AA; el texto normal necesita 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Editar CSS&lt;/strong&gt; muestra la hoja del tema en el editor. Los controles solo
+escriben dentro de un bloque delimitado por dos comentarios &lt;code&gt;gsta:visual&lt;/code&gt;, y lo
+vuelven a leer cuando edita sus valores a mano. Lo que escribe fuera del bloque
+nunca se toca. Si añade dentro del bloque algo que los controles no pueden
+mostrar, dejan de escribir y el panel lo dice; &lt;strong&gt;Restaurar el bloque&lt;/strong&gt; lo
+reescribe a partir de los valores que contiene y nada más.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importar…&lt;/strong&gt; abre un &lt;code&gt;.gsta.xz&lt;/code&gt; o un &lt;code&gt;.css&lt;/code&gt; suelto. Un paquete se comprueba
+como lo comprueba &lt;code&gt;slides theme verify&lt;/code&gt;, con los mismos límites: un paquete que
+no es seguro (una ruta que sale de él, un enlace, un script en un SVG, una
+&lt;code&gt;url()&lt;/code&gt; remota, una suma de comprobación que no coincide) se rechaza con su
+código &lt;code&gt;theme.*&lt;/code&gt;, en Problemas, y no cambia nada. En una hoja suelta, un
+&lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; pasa a ser el tema base (&lt;code&gt;extends&lt;/code&gt;), porque un paquete nombra
+allí su base. Una fuente que añade tiene la licencia &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;
+hasta que la indique en Detalles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Exportar .gsta.xz&lt;/strong&gt; construye el paquete en su navegador y lo vuelve a leer
+como lo hace &lt;code&gt;slides theme verify&lt;/code&gt;, de modo que el archivo lo supera;
+&lt;strong&gt;Exportar CSS&lt;/strong&gt; descarga la hoja compilada. No se sube nada. Cada edición es
+un paso de &lt;strong&gt;Deshacer&lt;/strong&gt; (las ediciones de un mismo control seguidas son un
+paso) y conserva lo que sustituye como versión; &lt;strong&gt;Guardar versión&lt;/strong&gt; guarda el
+tema y su versión, con su nombre, en el panel Versiones.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Deshacer, rehacer y versiones&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; y &lt;strong&gt;Redo&lt;/strong&gt; (deshacer y rehacer) están en la pestaña Home y en
+Ctrl+Z, Ctrl+Mayús+Z o Ctrl+Y (Cmd en un Mac). Deshacen la última edición del
+archivo mostrado (cada archivo tiene su propio historial) y, después, la última
+operación sobre todo el proyecto: un ejemplo elegido, Reset, un .zip o una
+carpeta abiertos, un borrador restaurado, un archivo o una carpeta eliminados o
+renombrados, una versión restaurada. Redo devuelve todo tal como estaba cuando
+se pulsó Undo.&lt;/p&gt;
+&lt;p&gt;Las &lt;strong&gt;versiones&lt;/strong&gt; guardan todo el proyecto en este navegador, sin enviar nada a
+ninguna parte. Se guarda una poco después de que deje de escribir (como máximo
+cada 2 minutos), antes de cada operación sobre todo el proyecto y en cada
+exportación y enlace para compartir. &lt;strong&gt;Save version…&lt;/strong&gt; guarda una con un nombre.
+&lt;strong&gt;Home ▸ Versions&lt;/strong&gt; abre el panel Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; muestra una versión en la vista previa.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; muestra los cambios de cada archivo línea a línea, en
+línea o en paralelo; F7 y Mayús+F7 pasan de un cambio a otro.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; devuelve una versión; Undo deshace la restauración.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; elimina una versión.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Qué se conserva: las 20 versiones automáticas más recientes, luego una por hora
+durante un día y una por día durante un mes. Las versiones con nombre se quedan
+hasta que las elimine (50 como máximo). Todas las versiones juntas ocupan como
+máximo 96 MiB, y los archivos que no cambiaron se almacenan una sola vez. Cuando
+el almacenamiento del navegador está lleno, las versiones automáticas más
+antiguas se van primero.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; abre un panel que carga la carpeta de una
+presentación desde un repositorio de GitHub y propone sus cambios de vuelta
+como una pull request. Rellene:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repositorio (propietario/nombre)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rama (vacía: la predeterminada)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Carpeta (vacía: la raíz)&lt;/strong&gt;: la carpeta debe contener un &lt;code&gt;deck.md&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Encima de estos campos el panel muestra el &lt;strong&gt;marco git&lt;/strong&gt;: un pequeño panel en el
+que elige la forja, escribe el &lt;strong&gt;token&lt;/strong&gt; (enmascarado), marca &lt;strong&gt;Recordar en este
+dispositivo&lt;/strong&gt; y pulsa &lt;strong&gt;Conectar&lt;/strong&gt; (o &lt;strong&gt;Iniciar sesión con GitLab&lt;/strong&gt;) o
+&lt;strong&gt;Desconectar&lt;/strong&gt;. El marco es una página de otro sitio,
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, incrustada en el playground: &lt;strong&gt;la página del
+playground nunca ve su token&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;El token es un token de acceso personal de grano fino
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;crear uno&lt;/a&gt;), limitado
+a los repositorios elegidos, con los permisos Contents de lectura y escritura y
+Pull requests de lectura y escritura (Metadata de lectura va implícito). Después:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cargar&lt;/strong&gt; sustituye el proyecto por la carpeta de GitHub. Undo lo deshace, y
+el proyecto tal como estaba se conserva como versión «Desde GitHub».&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Proponer cambios…&lt;/strong&gt; pide un título, crea una rama nueva
+&lt;code&gt;slides/&amp;lt;título&amp;gt;-&amp;lt;fecha-hora&amp;gt;&lt;/code&gt; y abre una pull request. Nunca escribe en una
+rama existente ni en la rama predeterminada. &lt;strong&gt;Abrir la pull request&lt;/strong&gt; le
+lleva a ella.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Buscar cambios&lt;/strong&gt; compara la versión más reciente de GitHub con la suya en
+la vista Compare. &lt;strong&gt;Tomar los suyos&lt;/strong&gt; la carga.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No se usa ningún proxy para GitHub: el marco habla directamente con él.&lt;/p&gt;
+&lt;p&gt;El token se escribe en el marco y permanece en su sitio. La página del
+playground no puede leerlo (el marco es otro origen, con almacenamiento
+propio), ningún comando que la página pueda enviar lo devuelve, y la Content
+Security Policy de la página no le permite ninguna conexión a GitHub ni a
+GitLab. El marco envía el token solo a &lt;code&gt;api.github.com&lt;/code&gt; (o &lt;code&gt;gitlab.com&lt;/code&gt;). Nunca
+se guarda en el borrador, las versiones, los enlaces para compartir ni las
+exportaciones, y nunca llega a la vista previa de las diapositivas ni al worker
+de renderizado. &lt;strong&gt;Recordar en este dispositivo&lt;/strong&gt; lo guarda en el localStorage
+propio del marco, en &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, no en el almacenamiento
+del playground, hasta &lt;strong&gt;Desconectar&lt;/strong&gt; (o Forget my drafts).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Si usó una versión anterior:&lt;/strong&gt; un token que esta guardaba en el propio
+almacenamiento de la página del playground se elimina la primera vez que abre
+esta versión, y el panel se lo indica. Vuelva a escribirlo en el marco (y marque
+Recordar si quiere conservarlo).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proponer cambios…&lt;/strong&gt; escribe, así que el marco le pregunta antes: muestra el
+título, el repositorio y el número de archivos, y espera su clic en su propio
+botón &lt;strong&gt;Permitir&lt;/strong&gt; (dos minutos como máximo, una propuesta a la vez). No se
+escribe nada antes de que haga clic.&lt;/p&gt;
+&lt;p&gt;Quedan dos riesgos, porque son inherentes a una página que incrusta un marco.
+Un script inyectado en la página del playground puede leer el nonce del marco y
+enviar los comandos del marco: leer la carpeta que cargó, o pedir una propuesta
+(que usted aún debe permitir en el marco). Y puede dibujar un panel falso sobre
+el marco y pedirle el token por su cuenta: si el marco se ve raro o no está
+donde debería, no escriba el token. Ninguno de los dos le permite leer el token
+que guarda el marco. Prefiera un token limitado a los repositorios que
+necesite. Para equipos, el modo servidor
+autoalojado (próximamente) mantiene los tokens en el servidor.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;El panel tiene una lista de forjas: &lt;strong&gt;GitHub&lt;/strong&gt; y &lt;strong&gt;GitLab.com&lt;/strong&gt;. Para GitLab,
+indique un token de acceso personal con el alcance &lt;code&gt;api&lt;/code&gt;, o pulse &lt;strong&gt;Iniciar
+sesión con GitLab&lt;/strong&gt; (código de autorización OAuth con PKCE, sin secreto). El
+inicio de sesión abre una pequeña ventana del sitio del marco y vuelve a él; la
+página del playground en la que trabaja no se abandona. Sus tokens quedan solo
+en la memoria del marco (nunca se recuerdan en el dispositivo, ni siquiera con
+&lt;strong&gt;Recordar en este dispositivo&lt;/strong&gt;), se renuevan solos antes de caducar, y
+&lt;strong&gt;Desconectar&lt;/strong&gt; los revoca en GitLab. Un inicio de sesión no iniciado por el
+marco, o un enlace reutilizado, se rechaza. El inicio de sesión está disponible cuando la aplicación de GitLab
+del sitio está registrada; mientras tanto, use un token de acceso personal.&lt;/p&gt;
+&lt;p&gt;Las peticiones van solo a &lt;code&gt;api.github.com&lt;/code&gt; y &lt;code&gt;gitlab.com&lt;/code&gt;, y solo desde el
+marco: la página del playground no hace ninguna y no envía referrer.&lt;/p&gt;
+&lt;p&gt;¿Por qué &lt;code&gt;api&lt;/code&gt;? La
+&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;tabla de alcances&lt;/a&gt;
+de GitLab dice de &lt;code&gt;write_repository&lt;/code&gt; «Does not support API authentication»: sirve
+solo para git sobre HTTP, que GitLab ofrece sin CORS, así que un navegador no
+puede usarlo. Las propuestas usan la API REST, que exige &lt;code&gt;api&lt;/code&gt;, «complete read
+and write access to the API». Un token &lt;code&gt;api&lt;/code&gt; robado puede hacer todo lo que su
+usuario puede hacer por la API, en todos los proyectos a los que ese usuario
+llega. Prefiera un token de acceso de proyecto o de grupo limitado a los
+repositorios de las presentaciones, o una cuenta de GitLab dedicada que sea solo
+miembro de los proyectos de las presentaciones.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Seguridad&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La presentación se muestra en un iframe aislado, sin el origen de la página: no
+puede alcanzar ni el Playground ni su almacenamiento, no puede enviar ningún
+formulario y no navega a ninguna parte. Su página lleva una Content Security
+Policy que ejecuta solo sus propios scripts. El HTML sin procesar de la
+presentación sigue la lista de permitidos de Marp, como hace &lt;code&gt;slides&lt;/code&gt; por
+defecto. Un renderizado que dure más de 5 segundos (una plantilla que entra en
+bucle) se detiene.&lt;/p&gt;
+&lt;p&gt;La ventana del presentador mantiene ese aislamiento. La abre el propio
+Playground y muestra la presentación en un iframe aislado de la misma manera. Los
+dos iframes no pueden compartir almacenamiento, así que el Playground retransmite
+el número de diapositiva entre ellos mediante mensajes. Ningún marco que ejecute
+la presentación obtiene el origen del Playground.&lt;/p&gt;
+&lt;p&gt;Los medios del proyecto llegan a los marcos aislados como bytes en un mensaje, y
+cada marco crea con ellos sus propias URL &lt;code&gt;blob:&lt;/code&gt;, en su propio origen. Una URL
+&lt;code&gt;blob:&lt;/code&gt; creada por el Playground no se carga allí, y la política de los marcos
+solo añade &lt;code&gt;blob:&lt;/code&gt; para medios y fuentes.&lt;/p&gt;
+&lt;p&gt;El Playground puede servirse desde su propio equipo, detrás de un inicio de
+sesión: consulte &lt;a href="https://go-slides.github.io/docs/0.26/es/self-hosting/"&gt;Autoalojamiento&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Tamaño y velocidad&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;El módulo pesa 7,8 MiB (8 136 679 bytes) tal como lo sirve GitHub Pages (gzip; Pages no sirve
+brotli). Se descarga una sola vez con una barra de progreso y luego el navegador
+lo conserva en caché hasta el siguiente despliegue. En un Apple M4 Max con Chrome
+155, medido sobre la página en línea con el módulo de la v0.20.2 (8,8 MiB, no el tamaño actual), el editor está listo 2,1 s después de abrir
+la página, 1,5 s de los cuales son la descarga, y las primeras diapositivas
+aparecen a los 2,4 s. Un cambio en la presentación de prueba de 100 diapositivas
+llega a la vista previa en unos 30 ms: go-slides renderiza solo las diapositivas
+que cambiaron, y solo esas se sustituyen en la vista previa.&lt;/p&gt;
+&lt;p&gt;La fuente matemática y las imágenes de los emoji no están en el módulo: la página descarga cada una la primera vez que una presentación la necesita, así que el módulo pesa 8 136 679 bytes en lugar de unos 10,5 MB. La fuente (838 508 bytes) llega con la primera fórmula, las imágenes (1 767 960 bytes) con el primer emoji. Una presentación que no tiene ni una ni otras no descarga ninguna. Hasta que llegan, una fórmula se muestra como su fuente TeX y un emoji como texto escrito; después la diapositiva se vuelve a dibujar.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="offline"&gt;Sin conexión y actualizaciones&lt;span class="hx:absolute hx:-mt-20" id="offline"&gt;&lt;/span&gt;
+&lt;a href="#offline" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;La primera visita descarga el editor como siempre. Cuando está listo, la página guarda sus archivos en la caché del navegador, bajo el despliegue que los escribió: el módulo WebAssembly, su cargador, el worker de renderizado, las imágenes de carga y la propia página, y después el motor de exportación y las fuentes la primera vez que se usan. La siguiente visita parte de esa caché sin pedir esos archivos a la red, y el playground se abre sin conexión.&lt;/p&gt;
+&lt;p&gt;Cada archivo se comprueba con el SHA-256 registrado en el despliegue, al guardarlo y cada vez que se lee. Un archivo dañado o incompleto se ignora: responde la red y la caché se reescribe, de modo que la caché nunca puede impedir que la página cargue.&lt;/p&gt;
+&lt;p&gt;La página consulta un pequeño archivo de versión (nunca en caché) al arrancar, cuando vuelve a su pestaña y cada diez minutos. Cuando se despliega una versión más reciente, un mensaje dice «Hay una nueva versión disponible.» con &lt;strong&gt;Recargar&lt;/strong&gt; y &lt;strong&gt;Más tarde&lt;/strong&gt;. Nada se recarga solo: Recargar guarda primero su proyecto en este navegador y la página lo restaura. Los archivos de la versión anterior se eliminan cuando la nueva está activa.&lt;/p&gt;
+&lt;p&gt;La caché cubre la ruta propia del playground y nada más. No guarda el marco git (otro origen, cuyo almacén de token no se toca), ni nada bajo &lt;code&gt;/api/&lt;/code&gt; (las llamadas git del modo servidor), ni ninguna petición que lleve credenciales.&lt;/p&gt;
+&lt;p&gt;El worker de vídeo, que lee los archivos de vídeo para sus carteles, es un módulo aparte: solo se descarga la primera vez que una presentación usa un vídeo y después se conserva en la caché. Una presentación sin vídeo nunca lo pide.&lt;/p&gt;
+&lt;p&gt;Tras una nueva versión, si la página que tiene el navegador ya no coincide con lo guardado en caché (la copia ha desaparecido o está dañada y el servidor envía ahora la nueva), aparece brevemente una página «Actualizando…» en lugar de un error. Elimina el service worker y la caché de este playground y recarga una sola vez, de modo que la nueva versión se carga desde la red y crea su propia caché. Si la página sigue fallando tras esa recarga, no vuelve a recargar: muestra un mensaje que pide borrar los datos de este sitio en el navegador. Mientras tanto no se ejecuta nada del servidor.&lt;/p&gt;
+&lt;p&gt;Igual que el worker de vídeo, la fuente matemática y las imágenes de los emoji se conservan en la caché sin conexión una vez descargadas. Esto vale solo para la página en inglés: las páginas de los demás idiomas (&lt;code&gt;/fr/playground/&lt;/code&gt; y así sucesivamente) no las guardan en la caché para el uso sin conexión.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,278 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.26/zh/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>zh-Hans</language><atom:link href="https://go-slides.github.io/docs/0.26/zh/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.26/zh/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.26/zh/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/zh/playground/" target="_blank" rel="noopener"&gt;打开 Playground →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Playground 就是 go-slides 本身（v0.26.0），编译为 WebAssembly 后在你的浏览器中运行。
+在左侧输入演示文稿，右侧的幻灯片会随之更新。不会向服务器发送任何内容：演示文稿不会，分享链接也不会。&lt;/p&gt;
+&lt;p&gt;Playground 自身的界面（功能区、帮助、提示信息）使用页面所用的语言：
+打开 &lt;code&gt;/zh/playground/&lt;/code&gt; 即为简体中文，本站的十二种语言同理。页面上的语言选择器可以切换语言，
+你的选择会保存在此浏览器中；链接中指明了语言时，始终以链接为准。示例演示文稿仍为英文。
+乌克兰语、俄语、中文、日语和韩语使用 Noto Sans 的子集（0.06 至 2.3 MiB）绘制，页面只为这些语言下载它。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;功能&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实时预览&lt;/strong&gt; 每张幻灯片，渲染在页面主线程之外进行（Web
+Worker），因此输入时永远不必等待。点击一张幻灯片，编辑器会跳到对应的行；
+移动光标，预览会滚动到对应的幻灯片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;放映&lt;/strong&gt;：即演示本身，支持键盘、屏幕控制器和过渡效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;演讲者视图&lt;/strong&gt;：&lt;strong&gt;Present&lt;/strong&gt;（或在放映中按 &lt;code&gt;p&lt;/code&gt;）会在第二个窗口中打开它：
+当前幻灯片、下一步、演讲者备注（演示文稿中的 &lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt;）、时钟和计时器。
+方向键、Space、Home 和 End 在两个窗口中都可使用，两个窗口相互同步，
+编辑演示文稿时也是如此。如果窗口没有打开，请允许该站点弹出窗口。
+概览视图（&lt;code&gt;o&lt;/code&gt;）仅在下载的页面中提供。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;自动补全&lt;/strong&gt;，边输入边提示：指令键（注释中的单页指令 &lt;code&gt;_&lt;/code&gt;）、
+&lt;code&gt;kind&lt;/code&gt;（幻灯片类型）、&lt;code&gt;theme&lt;/code&gt;、&lt;code&gt;size&lt;/code&gt;、&lt;code&gt;paginate&lt;/code&gt; 的取值，以及 &lt;code&gt;{{ }}&lt;/code&gt; 内的模板函数和数据字段。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;帮助&lt;/strong&gt;，针对光标下的内容：指令、kind（及其设置的内容）、模板函数。
+帮助面板中也有指向本文档各页的链接。自 v0.16.0 起，
+指令帮助会跟随界面语言，支持 11 种语言。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt; 显示在对应的行上：模板、YAML 和 HCL 错误会在编辑器中高亮，
+并在其下方列出，预览则保留最后一次成功渲染的演示文稿。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;示例&lt;/strong&gt;：欢迎演示文稿、生成幻灯片的模板、幻灯片 kind、
+HCL front matter、主题与单页指令，以及数学公式、图片和背景
+（&lt;code&gt;![bg]&lt;/code&gt;、分栏的 &lt;code&gt;![bg left:40%]&lt;/code&gt;、滤镜）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文件&lt;/strong&gt;：编辑器左侧的面板就是演示文稿的项目，其结构与
+&lt;a href="https://go-slides.github.io/docs/0.26/zh/cli/"&gt;命令行工具&lt;/a&gt;和
+&lt;a href="https://go-slides.github.io/docs/0.26/zh/vscode/"&gt;VS Code 扩展&lt;/a&gt;的读取方式一致：&lt;code&gt;deck.md&lt;/code&gt;、
+&lt;code&gt;slides.yaml&lt;/code&gt;、&lt;code&gt;themes/&lt;/code&gt;、&lt;code&gt;kinds/&lt;/code&gt;、&lt;code&gt;media/&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;点击文件即可编辑。编辑器会按文件语言着色
+（Markdown、YAML、HCL、JSON、CSS），并标出其中的问题。&lt;/li&gt;
+&lt;li&gt;右键（或 Shift+F10）可使用 New File、New Folder、Rename（F2）、
+Delete（会先确认）以及 New theme / New kind。把文件拖到文件夹上即可移动。
+键盘操作遵循 WAI-ARIA 树形控件模式，包括输入时自动定位。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; 会创建 &lt;code&gt;themes/my-gaia.css&lt;/code&gt;（也可基于 default、
+uncover）：其中包含对内置主题的 &lt;code&gt;@import&lt;/code&gt; 以及你添加的规则。
+它会加入 Theme 列表。&lt;strong&gt;New kind&lt;/strong&gt; 和 &lt;strong&gt;New data file&lt;/strong&gt; 同样从模板开始。
+每个新文件都会登记在 &lt;code&gt;slides.yaml&lt;/code&gt; 中，因此 &lt;code&gt;slides build deck.md&lt;/code&gt;
+能找到它。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; 会保存全部内容。解压后，
+用 &lt;code&gt;slides build deck.md&lt;/code&gt; 即可构建。&lt;strong&gt;Open project&lt;/strong&gt; 可以重新打开一个 &lt;code&gt;.zip&lt;/code&gt; 或
+文件夹。会跳出其所在文件夹（&lt;code&gt;..&lt;/code&gt;、绝对路径）、包含超过 256 个文件或单个文件超过 8 MiB，
+或解压后膨胀超过 100 倍的压缩包会被拒绝。&lt;/li&gt;
+&lt;li&gt;所有内容都与草稿一起保存在当前浏览器中。一个项目最多可容纳
+64 MiB，文件列表下方的一行会显示已用空间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;媒体&lt;/strong&gt;：将图片、视频或音频拖放或粘贴到编辑器中，它会被放进
+&lt;code&gt;media/&lt;/code&gt;，并在演示文稿中引用：&lt;code&gt;![](media/photo.png)&lt;/code&gt;。把文件拖到面板中的某个文件夹上，
+即可放到该文件夹中。演示文稿保持精简易读，也不会上传任何内容。
+预览的沙盒无需放宽限制即可加载这些媒体（由页面把字节数据交给它）。&lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; 会把它们放进页面中。&lt;code&gt;https:&lt;/code&gt; 图片同样可用，但浏览器会从其服务器获取，
+服务器因此会看到你的地址。预览不发送 referrer。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;可调整大小的窗格&lt;/strong&gt;：文件面板、编辑器、幻灯片缩略图、预览和帮助之间以可拖动的分隔条隔开
+（指针移到分隔条上时会变为调整大小的光标）。分隔条旁边的窗格占用调整出的空间，
+其他窗格保持大小不变。双击分隔条，或在其上按 Enter，可以收起窗格，再次操作则恢复。
+使用键盘时，F6 在分隔条之间切换，方向键每次移动 16 px，Home 和 End 将分隔条前面的窗格
+调到最小和最大，Escape 返回编辑器。View 选项卡仍可关闭窗格。
+你设置的尺寸会与草稿一起保存在当前浏览器中；默认尺寸（190、168 和 280 px，
+编辑器与预览按 6 比 5 分配剩余空间）从不保存。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关闭窗格&lt;/strong&gt;：每个窗格的标题栏都有一个带提示的小 × 按钮。其他窗格分享它的空间，
+窗格再打开时恢复原来的宽度。要重新打开，可使用 View 选项卡里它的开关（每个窗格都有一个）。
+编辑器和预览可以各自关闭，
+但不能同时关闭：最后一个会拒绝关闭，它的按钮变灰，提示会说明原因。使用键盘时，先按 F6，
+再按 Tab 或 Shift+Tab 到达 × 按钮，按 Enter 或空格关闭窗格，键盘随后回到编辑器。
+哪些窗格是打开的，会与尺寸一起保存在当前浏览器中（为任务而打开的 Versions、GitHub
+和主题编辑器，启动时是关闭的）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;格式&lt;/strong&gt;：Format 选项卡会替你编辑 Markdown，每按一次就是一步撤销。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文本&lt;/strong&gt;：Bold、Italic、Strikethrough 和 Inline code 作用于所选内容
+或光标所在的单词，并可切换（Ctrl+B、Ctrl+I、Ctrl+Shift+X 和
+Ctrl+E；Mac 上用 Cmd）。光标位于相应标记内时，按钮显示为按下状态。
+Markdown 没有下划线：Underline（Ctrl+U）会用 &lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt; 包裹文本，
+这个标签在 Marp 默认的 HTML 白名单中，因此关闭原始 HTML 时也能生效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;段落&lt;/strong&gt;：Heading 1 到 3（Ctrl+Alt+1..3）、项目符号（Ctrl+Shift+8）、
+编号（Ctrl+Shift+7）和引用作用于所选的行，并可切换。
+水平线使用 &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; 标签：因为在 Marp 中，&lt;code&gt;---&lt;/code&gt;、&lt;code&gt;***&lt;/code&gt; 和 &lt;code&gt;___&lt;/code&gt; 都会开始一张新幻灯片。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表格&lt;/strong&gt;：通过网格选择列数和行数。光标位于表格中时，可以添加或删除行、列，
+并设置列的对齐方式（&lt;code&gt;:--&lt;/code&gt;、&lt;code&gt;:-:&lt;/code&gt;、
+&lt;code&gt;--:&lt;/code&gt;）；每次编辑后表格都会重新对齐。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;幻灯片文本&lt;/strong&gt; 左对齐、居中或右对齐，会在当前幻灯片中写入一个 &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt; 块。
+Marp 没有对齐语法，&lt;code&gt;style&lt;/code&gt; 属性也无法通过默认的 HTML 白名单，但 scoped 块可以，
+因此关闭原始 HTML 时也能生效，并会显示在预览、HTML 页面和 PDF 中。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链接&lt;/strong&gt;（Ctrl+K）会写出 &lt;code&gt;[text](url)&lt;/code&gt;，并选中其中的 url。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;高亮&lt;/strong&gt; front matter 中任意层级的键，支持 YAML（包括
+&lt;code&gt;{a: 1}&lt;/code&gt; 形式的映射）和 HCL。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;主题&lt;/strong&gt; 选择器：default、gaia、uncover、项目中的主题
+（&lt;code&gt;themes/*.css&lt;/code&gt;），以及演示文稿自己定义的主题（&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; 中的 &lt;code&gt;/* @theme name */&lt;/code&gt;）。
+它会把 &lt;code&gt;theme:&lt;/code&gt; 写入 front
+matter（YAML 或 HCL），因此分享链接会保留主题；编辑 front matter 时，选择器也会随之更新。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;输入时预览会&lt;strong&gt;保持位置&lt;/strong&gt;：只替换发生变化的幻灯片，切换主题后预览会重新定位到同一张幻灯片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;分享链接&lt;/strong&gt;：演示文稿就包含在链接中（压缩后放在其 &lt;code&gt;#&lt;/code&gt; 部分），
+因此打开链接即可打开演示文稿。链接最多可携带压缩后
+64 KiB 的内容，且只包含演示文稿：当项目还有其他内容
+（主题、kind、媒体）时，Share 会给出提示并提供 &lt;code&gt;.zip&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;另存为&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML 页面，与 &lt;code&gt;slides deck.md&lt;/code&gt; 写出的相同；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PDF&lt;/strong&gt;（矢量，文本可选中，带书签大纲）；&lt;/li&gt;
+&lt;li&gt;可编辑的 &lt;strong&gt;PowerPoint&lt;/strong&gt; 或 &lt;strong&gt;OpenDocument&lt;/strong&gt; 演示文稿。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它们都在你的浏览器中生成，所用代码与 &lt;code&gt;slides --pdf&lt;/code&gt;、
+&lt;code&gt;--pptx&lt;/code&gt; 和 &lt;code&gt;--odp&lt;/code&gt; 相同：100 张幻灯片基准演示文稿的 PDF 与命令行生成的
+逐字节相同。第一次导出时会下载导出引擎（约 5 MiB，仅下载一次；浏览器会保留它直到下次更新），
+并显示进度，边下载边编译。之后只下载幻灯片实际用到的字体。在 3 MB/s 的网络上，
+欢迎演示文稿的第一个 PDF 不到 3 秒即可完成。之后导出 100 张幻灯片的演示文稿约需 3 秒。
+&lt;code&gt;https:&lt;/code&gt; 图片只有在其服务器允许时（CORS）才会被包含；&lt;code&gt;data:&lt;/code&gt;
+图片则总会被包含。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;草稿会被保留&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;演示文稿会在输入时保存在当前浏览器中（IndexedDB，仅限本站点），
+重新加载页面后会恢复。不会发送到任何地方。项目中的文本文件
+（主题、kind、数据、&lt;code&gt;slides.yaml&lt;/code&gt;）也以同样方式保存，即使你刚输入完就关闭标签页也不会丢失；
+媒体文件在拖入时即被保存。&lt;/li&gt;
+&lt;li&gt;打开分享链接会打开其中的演示文稿，同时保留你的草稿：&lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; 可将草稿恢复。&lt;/li&gt;
+&lt;li&gt;打开示例、&lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt;（会先确认）或另一个标签页也都不会抹掉草稿：
+&lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; 可将其换回。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; 会删除所有已保存的内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每次导出渲染的都是预览所显示的项目：包括其 &lt;code&gt;slides.yaml&lt;/code&gt;、
+主题、kind、数据文件和媒体，媒体会嵌入文档中。&lt;/p&gt;
+&lt;p&gt;以文件形式输出图片（slides &lt;code&gt;--images&lt;/code&gt;）无法在浏览器中完成：请使用
+&lt;a href="https://go-slides.github.io/docs/0.26/zh/cli/"&gt;命令行工具&lt;/a&gt;或
+&lt;a href="https://go-slides.github.io/docs/0.26/zh/vscode/"&gt;VS Code 扩展&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;主题编辑器&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;开始 ▸ 外观 ▸ 主题编辑器&lt;/strong&gt;会打开一个面板，用控件编辑项目中的一个主题，预览随之更新。主题以一个主题包文件夹的形式保存，即 &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;；预览和导出读取的样式表 &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt; 就由它编译而来，所以你看到的就是你导出的。你导入的主题包（面板中的&lt;strong&gt;导入…&lt;/strong&gt;、**添加媒体…**或拖放）会把它的文件保留在那里，因此可以编辑。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;调色板&lt;/strong&gt;：背景、文字、标题、强调色和链接的颜色。选取一种颜色，或直接输入（&lt;code&gt;#1a2b3c&lt;/code&gt;、&lt;code&gt;rgb()&lt;/code&gt;、&lt;code&gt;hsl()&lt;/code&gt; 或颜色名称）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;字体排印&lt;/strong&gt;：正文、标题和代码的字体，以及它们的字号和字重。可选字体是通用字体和常见字体，以及你添加的字体（&lt;strong&gt;添加字体…&lt;/strong&gt;：&lt;code&gt;.woff2&lt;/code&gt;、&lt;code&gt;.woff&lt;/code&gt;、&lt;code&gt;.ttf&lt;/code&gt; 或 &lt;code&gt;.otf&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;徽标&lt;/strong&gt;：一张图片（&lt;code&gt;.svg&lt;/code&gt;、&lt;code&gt;.png&lt;/code&gt;）、它的位置（某个角落或整个背景）和大小。&lt;strong&gt;页码和页脚&lt;/strong&gt;：页码放在哪里，以及大小和对齐方式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;详细信息&lt;/strong&gt;：&lt;code&gt;theme.hcl&lt;/code&gt; 所写的内容：版本、说明、作者、许可证、主页、基础主题（&lt;code&gt;extends&lt;/code&gt;）以及所需的 go-slides 版本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对比度（WCAG）&lt;/strong&gt;：对每一种文字与其背景，实时显示对比度及其等级，&lt;code&gt;AA&lt;/code&gt; 或 &lt;code&gt;AAA&lt;/code&gt;，或“不达标”。标题按大号文字计算（3:1 即可达到 AA；普通文字需要 4.5:1）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;编辑 CSS&lt;/strong&gt; 会在编辑器中显示主题的样式表。控件只写入由两条 &lt;code&gt;gsta:visual&lt;/code&gt; 注释围起来的代码块，并在你手动修改其中的值时重新读取。你写在代码块之外的内容永远不会被改动。如果你在代码块内加入了控件无法显示的内容，控件就会停止写入，面板会告诉你；&lt;strong&gt;恢复该代码块&lt;/strong&gt;会仅根据其中所含的值重写它，别无其他。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;导入…&lt;/strong&gt; 可打开 &lt;code&gt;.gsta.xz&lt;/code&gt; 或单独的 &lt;code&gt;.css&lt;/code&gt;。主题包的检查方式与 &lt;code&gt;slides theme verify&lt;/code&gt; 相同，限制也相同：不安全的主题包（指向包外的路径、链接、SVG 中的脚本、远程 &lt;code&gt;url()&lt;/code&gt;、不匹配的校验和）会被拒绝，并在“问题”中显示其 &lt;code&gt;theme.*&lt;/code&gt; 代码，且不会有任何改动。在单独的样式表中，&lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; 会成为基础主题（&lt;code&gt;extends&lt;/code&gt;），因为主题包在那里声明其基础。你添加的字体在你于“详细信息”中填写之前，许可证为 &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;导出 .gsta.xz&lt;/strong&gt; 在你的浏览器中构建主题包，并像 &lt;code&gt;slides theme verify&lt;/code&gt; 那样重新读取它，因此该文件能通过检查；&lt;strong&gt;导出 CSS&lt;/strong&gt; 会下载编译后的样式表。不会上传任何内容。每次编辑都是&lt;strong&gt;撤销&lt;/strong&gt;的一步（同一控件连续的编辑算作一步），并把被替换的内容保留为一个版本；&lt;strong&gt;保存版本…&lt;/strong&gt; 会以主题名称保存该主题及其版本，显示在“版本”面板中。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;撤销、重做与版本&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt;（撤销）和 &lt;strong&gt;Redo&lt;/strong&gt;（重做）位于 Home 选项卡，也可用 Ctrl+Z、Ctrl+Shift+Z 或
+Ctrl+Y（Mac 上为 Cmd）。它们先撤销当前所示文件的最后一次编辑（每个文件有自己的历史），
+再撤销对整个项目的最后一次操作：选取的示例、Reset、打开的 .zip 或文件夹、恢复的草稿、
+删除或重命名的文件或文件夹、恢复的版本。Redo 会把一切恢复到按下 Undo 时的样子。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版本&lt;/strong&gt;把整个项目保存在此浏览器中，不会向任何地方发送内容。停止输入后不久会保存一个
+（最多每 2 分钟一次），对整个项目的每次操作之前、每次导出和生成分享链接时也会保存。
+&lt;strong&gt;Save version…&lt;/strong&gt; 会以名称保存一个。&lt;strong&gt;Home ▸ Versions&lt;/strong&gt; 打开 Versions 窗格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; 在预览中显示某个版本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; 逐行显示每个文件的变化，可内联或并排显示；
+F7 和 Shift+F7 在变化之间移动。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; 把某个版本放回去；Undo 可撤销这次恢复。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; 删除某个版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;保留的内容：最新的 20 个自动版本，之后一天内每小时一个，一个月内每天一个。
+命名版本会一直保留，直到你删除（最多 50 个）。所有版本合计最多 96 MiB，
+未变化的文件只存储一次。浏览器存储已满时，最旧的自动版本最先被清除。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; 打开一个窗格，从 GitHub 仓库载入演示文稿的文件夹，
+并把你的修改以拉取请求的形式提回去。请填写：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仓库（所有者/名称）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分支（留空：默认分支）&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件夹（留空：根目录）&lt;/strong&gt;：文件夹中必须有 &lt;code&gt;deck.md&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些字段上方，窗格显示 &lt;strong&gt;git 框架&lt;/strong&gt;：一个小面板，你在其中选择 forge，输入 &lt;strong&gt;令牌&lt;/strong&gt;（已遮蔽），
+勾选 &lt;strong&gt;在此设备上记住&lt;/strong&gt;，然后点击 &lt;strong&gt;连接&lt;/strong&gt;（或 &lt;strong&gt;用 GitLab 登录&lt;/strong&gt;）或 &lt;strong&gt;断开&lt;/strong&gt;。该框架是另一个站点
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt; 的页面，嵌入在 playground 中：&lt;strong&gt;playground 页面永远看不到你的令牌&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;令牌是细粒度个人访问令牌（&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;创建一个&lt;/a&gt;），
+仅限所选仓库，权限为 Contents 读写和 Pull requests 读写（Metadata 只读为隐含）。然后：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;载入&lt;/strong&gt; 用 GitHub 上的文件夹替换项目。Undo 可以撤回，原来的项目会保存为
+“来自 GitHub” 版本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提出修改…&lt;/strong&gt; 询问标题，创建新分支 &lt;code&gt;slides/&amp;lt;标题&amp;gt;-&amp;lt;日期时间&amp;gt;&lt;/code&gt; 并打开拉取请求。
+它从不写入已有分支或默认分支。&lt;strong&gt;打开拉取请求&lt;/strong&gt; 会带你到那里。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检查变化&lt;/strong&gt; 在 Compare 视图中比较 GitHub 上较新的版本与你的版本。
+&lt;strong&gt;采用对方的&lt;/strong&gt; 会载入它。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GitHub 不使用代理：框架直接与它通信。&lt;/p&gt;
+&lt;p&gt;令牌在框架中输入，并留在框架所在的站点。playground 页面无法读取它（框架是另一个源，有自己的存储），
+页面能发送的任何命令都不会返回它，页面的 Content Security Policy 也完全不允许页面连接 GitHub
+或 GitLab。框架只把令牌发送到 &lt;code&gt;api.github.com&lt;/code&gt;（或 &lt;code&gt;gitlab.com&lt;/code&gt;）。它从不保存到草稿、版本、分享链接或
+导出中，也从不到达幻灯片预览或渲染 worker。&lt;strong&gt;在此设备上记住&lt;/strong&gt; 会把它存入框架自己的 localStorage
+（位于 &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;，而不是 playground 的存储），直到 &lt;strong&gt;断开&lt;/strong&gt;（或 Forget my drafts）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果你用过早期版本：&lt;/strong&gt; 早期版本保存在 playground 页面自身存储中的令牌，会在你第一次打开此版本时被删除，
+窗格会告诉你。请在框架中重新输入（如果想保留，请勾选“记住”）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提出修改…&lt;/strong&gt; 属于写入操作，所以框架会先询问你：它显示标题、仓库和文件数量，并等待你点击它自己的
+&lt;strong&gt;允许&lt;/strong&gt; 按钮（最多两分钟，一次只处理一个提案）。在你点击之前不会写入任何内容。&lt;/p&gt;
+&lt;p&gt;仍有两项风险，因为它们是嵌入框架的页面固有的。注入到 playground 页面的脚本可以读取框架的 nonce 并发送框架的
+命令：读取你已载入的文件夹，或请求提出提案（你仍须在框架中允许）。它还可以在框架上方绘制一个假面板，自己向你索要
+令牌：如果框架看起来不对，或不在应在的位置，请不要输入令牌。两种情况都无法让它读取框架所持有的令牌。请优先使用
+只限于所需仓库的令牌。对于团队，自托管服务器模式（即将推出）把令牌
+保存在服务器上。&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;窗格中有一个 forge 列表：&lt;strong&gt;GitHub&lt;/strong&gt; 和 &lt;strong&gt;GitLab.com&lt;/strong&gt;。使用 GitLab 时，可以提供范围为
+&lt;code&gt;api&lt;/code&gt; 的个人访问令牌，或点击 &lt;strong&gt;用 GitLab 登录&lt;/strong&gt;（带 PKCE 的 OAuth 授权码，无需密钥）。
+登录会打开该框架所在站点的一个小窗口并返回到它；你正在使用的 playground 页面不会被跳转走。
+登录得到的令牌只留在框架的内存中（即使选了 &lt;strong&gt;在此设备上记住&lt;/strong&gt; 也不会记在设备上），会在过期前自动刷新，
+&lt;strong&gt;断开&lt;/strong&gt; 会在 GitLab 撤销它们。不是由框架发起的登录，或重复使用的链接，都会被拒绝。
+本站的 GitLab 应用注册后即可使用登录；在此之前请使用个人访问令牌。&lt;/p&gt;
+&lt;p&gt;请求只发往 &lt;code&gt;api.github.com&lt;/code&gt; 和 &lt;code&gt;gitlab.com&lt;/code&gt;，并且只来自框架：playground 页面不发出任何请求，
+也不发送 referrer。&lt;/p&gt;
+&lt;p&gt;为什么需要 &lt;code&gt;api&lt;/code&gt;？GitLab 的&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;范围表&lt;/a&gt;
+对 &lt;code&gt;write_repository&lt;/code&gt; 写的是 “Does not support API authentication”：它只用于基于 HTTP 的
+git，而 GitLab 提供该服务时不带 CORS，浏览器无法使用。提出修改走 REST API，需要 &lt;code&gt;api&lt;/code&gt;，
+即 “complete read and write access to the API”。被盗的 &lt;code&gt;api&lt;/code&gt; 令牌可以做其用户通过 API
+能做的一切，涉及该用户能访问的所有项目。请优先使用只限于演示文稿仓库的项目或群组访问令牌，
+或只作为演示文稿项目成员的专用 GitLab 账号。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;安全&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;演示文稿显示在一个不具有页面来源（origin）的沙盒 iframe 中：它既无法访问 Playground，
+也无法访问其存储，不能提交表单，也不能进行任何导航。其页面带有内容安全策略（Content Security Policy），
+只运行它自己的脚本。演示文稿中的原始 HTML 遵循 Marp 的白名单，与 &lt;code&gt;slides&lt;/code&gt; 的默认行为相同。
+运行超过 5 秒的渲染（例如陷入循环的模板）会被终止。&lt;/p&gt;
+&lt;p&gt;演讲者窗口同样处于该沙盒中。它由 Playground 本身打开，
+并在以同样方式沙盒化的 iframe 中显示演示文稿。两个
+iframe 无法共享存储，因此由 Playground 通过消息在它们之间转发幻灯片序号。
+任何运行演示文稿的框架都不会获得 Playground 的来源。&lt;/p&gt;
+&lt;p&gt;项目中的媒体以消息中的字节数据形式传给沙盒框架，
+每个框架在自己的来源中为其创建各自的 &lt;code&gt;blob:&lt;/code&gt; URL。由 Playground 创建的 &lt;code&gt;blob:&lt;/code&gt;
+URL 在框架中无法加载，而框架的策略仅为媒体和字体额外放开了 &lt;code&gt;blob:&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;Playground 可以从你自己的机器上提供服务，并置于登录之后：参见
+&lt;a href="https://go-slides.github.io/docs/0.26/zh/self-hosting/"&gt;自托管&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;体积与速度&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;按 GitHub Pages 提供的形式（gzip；Pages 不提供
+brotli），模块大小为 7.8 MiB（8,136,679 字节）。它只会下载一次并显示进度条，之后由浏览器缓存，直到下次部署。
+在 Apple M4 Max 和 Chrome 155 上针对线上页面（使用 v0.20.2 的模块，8.8 MiB，并非当前大小）测量，页面打开后 2.1 s 编辑器即可使用，
+其中 1.5 s 用于下载，首批幻灯片在 2.4 s 时出现。修改
+100 张幻灯片的基准演示文稿后，约 30 ms 即可反映到预览中：go-slides
+只渲染发生变化的幻灯片，预览中也只替换这些幻灯片。&lt;/p&gt;
+&lt;p&gt;数学字体和 emoji 图片不在模块里：演示文稿第一次需要时，页面才分别获取它们，因此模块是 8,136,679 字节，而不是约 10.5 MB。字体（838,508 字节）随第一个公式而来，图片（1,767,960 字节）随第一个 emoji 而来。两者都没有的演示文稿，两者都不会下载。在它们到达之前，公式显示为其 TeX 源码，emoji 显示为写下的文本；之后幻灯片会重新绘制。&lt;/p&gt;
+&lt;h2 data-hextra-search-id="offline"&gt;离线与更新&lt;span class="hx:absolute hx:-mt-20" id="offline"&gt;&lt;/span&gt;
+&lt;a href="#offline" class="subheading-anchor" aria-label="此章节的永久链接"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;第一次访问照常下载编辑器。编辑器就绪后，页面会把自己的文件保存在浏览器缓存中，并按写入它们的部署分开存放：WebAssembly 模块、加载器、渲染 worker、加载图片和页面本身；导出引擎和字体则在首次使用时保存。下一次访问直接从该缓存启动，不再向网络请求这些文件，playground 也可以离线打开。&lt;/p&gt;
+&lt;p&gt;每个文件在存入时和每次读取时，都会与部署时记录的 SHA-256 核对。损坏或不完整的文件会被忽略：改由网络响应，并重写缓存，因此缓存永远不会妨碍页面加载。&lt;/p&gt;
+&lt;p&gt;页面在启动时、你回到它的标签页时，以及每十分钟，会请求一个很小的版本文件（从不缓存）。部署了较新版本时，会出现“有新版本可用。”的提示，带有 &lt;strong&gt;重新加载&lt;/strong&gt; 和 &lt;strong&gt;稍后&lt;/strong&gt; 两个按钮。任何内容都不会自行重新加载：重新加载会先把你的项目保存在此浏览器中，页面随后将其恢复。新版本启用后，上一版本的文件会被删除。&lt;/p&gt;
+&lt;p&gt;缓存只覆盖 playground 自己的路径，不涉及其他内容。它不会存储 git 框架（另一个源，其令牌存储不受影响），也不会存储 &lt;code&gt;/api/&lt;/code&gt; 下的任何内容（服务器模式的 git 调用），更不会存储任何带有凭据的请求。&lt;/p&gt;
+&lt;p&gt;视频 worker 负责读取视频文件以生成海报图，它是一个独立模块：只在演示文稿第一次使用视频时下载，之后保存在缓存中。没有视频的演示文稿从不请求它。&lt;/p&gt;
+&lt;p&gt;发布新版本后，如果浏览器持有的页面与缓存不再一致（缓存副本已丢失或损坏，而服务器现在发送的是新版本），会短暂显示“正在更新…”页面，而不是报错。它会清除此 playground 的 service worker 和缓存，并只重新加载一次，于是新版本从网络加载并建立自己的缓存。如果重新加载后页面仍然失败，它不会再次重新加载，而是显示一条消息，请你在浏览器中清除此网站的数据。在此期间不会执行来自服务器的任何内容。&lt;/p&gt;
+&lt;p&gt;与视频 worker 一样，数学字体和 emoji 图片一经获取，就保存在离线缓存中。这只适用于英文页面：其他语言的页面（&lt;code&gt;/fr/playground/&lt;/code&gt; 等）不会为离线使用而缓存它们。&lt;/p&gt;</description></item></channel></rss>
