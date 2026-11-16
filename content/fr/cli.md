@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Cette page décrit la v0.25.0. Sa sortie est inchangée depuis la v0.20.2.
+Cette page décrit la v0.26.0. Sa sortie est inchangée depuis la v0.20.2.
 {{< /callout >}}
 
 ```text
@@ -104,7 +104,7 @@ quelle que soit son extension. Un motif qui ne sélectionne rien est une erreur.
 - **`-P n`** génère `n` présentations simultanément. Le rendu d'une présentation exploite déjà les
   cœurs, donc `n` est plafonné à leur nombre ; avec `-o -`, les présentations sont générées l'une après
   l'autre. Les messages d'une présentation restent groupés, et une présentation en échec n'arrête
-  pas les autres : le code de sortie vaut 1 et le message liste les échecs.
+  pas les autres : le code de sortie vaut 1 et le message liste les échecs. Depuis la v0.26.0, les messages et la liste des présentations en échec sortent dans l'ordre de la ligne de commande, et non dans l'ordre de fin : une première présentation lente retarde les messages des autres, pas leurs fichiers.
 
 ## Transitions et page de présentation {#transitions-and-the-presenting-page}
 

@@ -12,11 +12,15 @@ die vorherige Version, die Folien nebenläufig rendert und ihre Schriften
 nur einmal parst ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Die Zeilen für das PDF und das PPTX mit 100 Folien in den drei Tabellen unten gelten seit v0.18.0 nicht mehr: siehe [Mehrere Kerne](#several-cores) und [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides und [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 wurden
 als Subprozesse mit denselben Foliensätzen ausgeführt, auf einem Apple M4 Max (16 CPUs) mit
 einem Load Average über eine Minute unter 8, fünf abwechselnd ausgeführte Durchläufe nach einem Warm-up.
 Die Zeit ist der Median der Wanduhrzeit; der Speicher ist der Spitzenwert des gesamten Prozessbaums
 (marp-cli steuert einen Chrome, dessen Prozesse mitzählen).
+
+*Gemessen mit v0.3.0 auf allen Kernen (16 CPUs).*
 
 | Foliensatz | Ausgabe | go-slides | marp-cli | Speicher go-slides | Speicher marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ Die Zeit ist der Median der Wanduhrzeit; der Speicher ist der Spitzenwert des ge
 Ab v0.4.0 wird das PDF als Vektoren gezeichnet (siehe
 [Kommandozeile]({{< relref "cli#vector-pdf" >}})). Gleicher Rechner, gleiche Methode,
 2026-10-19:
+
+*Gemessen mit v0.4.0 auf allen Kernen (16 CPUs), am 2026-10-19.*
 
 | Foliensatz | go-slides | marp-cli | v0.3.0 | Größe go-slides | Größe marp-cli | Größe v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -52,6 +58,8 @@ Seit v0.5.0 besteht das PPTX aus Textfeldern, Formen und Bildern (siehe
 [Kommandozeile]({{< relref "cli#editable-pptx-and-odp" >}})). Gemessen am
 2026-10-19 um 22:51, bei einem Load Average über eine Minute von 7,1, in drei Durchläufen:
 
+*Gemessen mit v0.5.0 auf allen Kernen (16 CPUs), am 2026-10-19.*
+
 | Foliensatz | go-slides | marp-cli | Größe go-slides | Größe marp-cli | Speicher go-slides | Speicher marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 100 Folien | 348 ms | 7.795 ms | 760 KiB | 7,2 MiB | 204 MiB | 1.370 MiB |
@@ -60,6 +68,24 @@ Seit v0.5.0 besteht das PPTX aus Textfeldern, Formen und Bildern (siehe
 
 Für den Foliensatz mit 100 Folien brauchte v0.4.0 4,7 s, 4,8 MiB und 540 MiB. Das PPTX
 von marp-cli enthält Bilder. Den größten Teil der Größe eines editierbaren Foliensatzes machen die eingebetteten Schriften aus.
+
+## Mehrere Kerne {#several-cores}
+
+Gemessen mit v0.26.0: Wanduhrzeit in ms mit 1, 2, 4 und 16 Kernen, gegen marp-cli. Die Lastzahl über 1 Minute lag bei 3 bis 4. Die Zeit von marp-cli ändert sich nicht mit der Kernzahl, weil sein `-P` nur getrennte Dateien auf Browser verteilt. `slidesbench -cores` erzeugt diese Tabelle. Die Ausgabedateien sind byteidentisch mit denen von v0.25.0.
+
+| Foliensatz, Modus | 1 Kern | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 Folien, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 Folien, PNG | 745 | 395 | 225 | 222 | 2316 |
+| Mathematik und Code, 20 Folien, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 Folien, PDF | 87 | 65 | 57 | 59 | 1382 |
+| Mathematik und Code, 20 Folien, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 Folien, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| Mathematik und Code, 20 Folien, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 Folien, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 Folien, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Bekannter Fehler.** Das PDF mit 100 Folien ist langsamer als marp-cli, und das PDF und das PPTX mit 100 Folien skalieren nicht mit den Kernen. Das ist seit v0.18.0 so: Die Engine baut die Instanzen der variablen Schrift für jede Seite neu auf, was auf einem Kern das 16-Fache an Speicher und das 3,5- bis 4-Fache an Zeit kostet. Der Fehler wird in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) und [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443) verfolgt und ist in v0.26.0 nicht behoben.
 
 ## Warum es schnell ist {#why-it-is-fast}
 

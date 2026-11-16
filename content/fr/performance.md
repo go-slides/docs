@@ -12,11 +12,15 @@ la version précédente, qui fait le rendu des diapositives en parallèle et n'a
 qu'une fois ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Les lignes du PDF et du PPTX de 100 diapositives des trois tableaux ci-dessous ne sont plus valables depuis la v0.18.0 : voir [Plusieurs cœurs](#several-cores) et [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides et [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 ont été
 lancés en sous-processus sur les mêmes présentations, sur un Apple M4 Max (16 CPU) avec une
 charge moyenne sur 1 minute inférieure à 8, en cinq tours entrelacés après un échauffement.
 Le temps est la médiane du temps écoulé ; la mémoire est le pic de toute l'arborescence de processus
 (marp-cli pilote un Chrome, dont les processus sont comptés).
+
+*Mesuré avec la v0.3.0 sur tous les cœurs (16 CPU).*
 
 | Présentation | Sortie | go-slides | marp-cli | mémoire go-slides | mémoire marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ Le temps est la médiane du temps écoulé ; la mémoire est le pic de toute l
 Depuis la v0.4.0, le PDF est dessiné en vectoriel (voir
 [Ligne de commande]({{< relref "cli#vector-pdf" >}})). Même machine et même méthode,
 le 2026-10-19 :
+
+*Mesuré avec la v0.4.0 sur tous les cœurs (16 CPU), le 2026-10-19.*
 
 | Présentation | go-slides | marp-cli | v0.3.0 | taille go-slides | taille marp-cli | taille v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -52,6 +58,8 @@ Depuis la v0.5.0, le PPTX est composé de zones de texte, de formes et d'images 
 [Ligne de commande]({{< relref "cli#editable-pptx-and-odp" >}})). Mesuré le
 2026-10-19 à 22 h 51, avec une charge moyenne sur 1 minute de 7,1, sur trois tours :
 
+*Mesuré avec la v0.5.0 sur tous les cœurs (16 CPU), le 2026-10-19.*
+
 | Présentation | go-slides | marp-cli | taille go-slides | taille marp-cli | mémoire go-slides | mémoire marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 100 diapositives | 348 ms | 7 795 ms | 760 Kio | 7,2 Mio | 204 Mio | 1 370 Mio |
@@ -60,6 +68,24 @@ Depuis la v0.5.0, le PPTX est composé de zones de texte, de formes et d'images 
 
 Pour la présentation de 100 diapositives, la v0.4.0 demandait 4,7 s, 4,8 Mio et 540 Mio. Le
 PPTX de marp-cli contient des images. L'essentiel de la taille d'une présentation modifiable tient aux polices intégrées.
+
+## Plusieurs cœurs {#several-cores}
+
+Mesuré avec la v0.26.0 : temps réel en ms avec 1, 2, 4 et 16 cœurs, face à marp-cli. La charge moyenne sur 1 minute était de 3 à 4. Le temps de marp-cli ne change pas avec le nombre de cœurs, car son `-P` ne fait que répartir des fichiers distincts entre des navigateurs. `slidesbench -cores` produit ce tableau. Les fichiers produits sont identiques à l'octet près à ceux de la v0.25.0.
+
+| Présentation, mode | 1 cœur | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 diapositives, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 diapositives, PNG | 745 | 395 | 225 | 222 | 2316 |
+| mathématiques et code, 20 diapositives, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 diapositives, PDF | 87 | 65 | 57 | 59 | 1382 |
+| mathématiques et code, 20 diapositives, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 diapositives, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| mathématiques et code, 20 diapositives, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 diapositives, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 diapositives, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Défaut connu.** Le PDF de 100 diapositives est plus lent que marp-cli, et le PDF et le PPTX de 100 diapositives ne gagnent rien avec les cœurs. C'est le cas depuis la v0.18.0 : le moteur reconstruit les instances de police variable pour chaque page, ce qui coûte 16 fois la mémoire et 3,5 à 4 fois le temps sur un cœur. Il est suivi dans [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) et [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), et n'est pas corrigé dans la v0.26.0.
 
 ## Pourquoi c'est rapide {#why-it-is-fast}
 

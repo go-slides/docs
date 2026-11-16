@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Questa pagina descrive la v0.25.0. Il suo output è invariato dalla v0.20.2.
+Questa pagina descrive la v0.26.0. Il suo output è invariato dalla v0.20.2.
 {{< /callout >}}
 
 ```text
@@ -104,7 +104,7 @@ qualunque sia la sua estensione. Un pattern che non individua nulla è un errore
 - **`-P n`** compila `n` presentazioni contemporaneamente. Il rendering di una presentazione usa già i
   core, quindi `n` è limitato al loro numero; con `-o -` le presentazioni sono compilate una dopo
   l'altra. I messaggi di una presentazione restano insieme, e una presentazione che fallisce non
-  ferma le altre: lo stato di uscita è 1 e il messaggio elenca i fallimenti.
+  ferma le altre: lo stato di uscita è 1 e il messaggio elenca i fallimenti. Dalla v0.26.0 i messaggi e l'elenco delle presentazioni fallite escono nell'ordine della riga di comando, non nell'ordine di completamento: una prima presentazione lenta ritarda i messaggi delle altre, non i loro file.
 
 ## Transizioni e pagina di presentazione {#transitions-and-the-presenting-page}
 

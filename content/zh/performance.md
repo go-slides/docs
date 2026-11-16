@@ -12,11 +12,15 @@ tags: [performance]
 （[go-slides/slides#11](https://github.com/go-slides/slides/pull/11)）。
 {{< /callout >}}
 
+下面三张表中 100 张幻灯片的 PDF 和 PPTX 行自 v0.18.0 起已不再成立：参见 [多核](#several-cores) 和 [go-slides/slides#117](https://github.com/go-slides/slides/issues/117)。
+
 go-slides 和 [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1
 以子进程方式在相同的演示文稿上运行，机器为 Apple M4 Max（16 个 CPU），
 1 分钟平均负载低于 8，预热后交错进行五轮测试。
 时间为实际耗时（wall time）的中位数；内存为整个进程树的峰值
 （marp-cli 会驱动一个 Chrome，其进程也计算在内）。
+
+*使用 v0.3.0 在全部核心（16 个 CPU）上测得。*
 
 | 演示文稿 | 输出 | go-slides | marp-cli | go-slides 内存 | marp-cli 内存 |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ go-slides 和 [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1
 从 v0.4.0 起，PDF 以矢量方式绘制（参见
 [命令行]({{< relref "cli#vector-pdf" >}})）。机器和方法相同，
 测于 2026-10-19：
+
+*使用 v0.4.0 在全部核心（16 个 CPU）上于 2026-10-19 测得。*
 
 | 演示文稿 | go-slides | marp-cli | v0.3.0 | go-slides 大小 | marp-cli 大小 | v0.3.0 大小 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -52,6 +58,8 @@ KiB、158 MiB；marp-cli 1,838 ms、837 KiB、1,512 MiB。
 [命令行]({{< relref "cli#editable-pptx-and-odp" >}})）。测于
 2026-10-19 22:51，1 分钟平均负载为 7.1，共三轮：
 
+*使用 v0.5.0 在全部核心（16 个 CPU）上于 2026-10-19 测得。*
+
 | 演示文稿 | go-slides | marp-cli | go-slides 大小 | marp-cli 大小 | go-slides 内存 | marp-cli 内存 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 100 张幻灯片 | 348 ms | 7,795 ms | 760 KiB | 7.2 MiB | 204 MiB | 1,370 MiB |
@@ -60,6 +68,24 @@ KiB、158 MiB；marp-cli 1,838 ms、837 KiB、1,512 MiB。
 
 对于 100 张幻灯片的演示文稿，v0.4.0 耗时 4.7 s，大小 4.8 MiB，内存 540 MiB。marp-cli 的
 PPTX 由图片组成。可编辑演示文稿的体积大部分来自内嵌字体。
+
+## 多核 {#several-cores}
+
+在 v0.26.0 上测得：使用 1、2、4 和 16 个核心时的墙钟时间（ms），与 marp-cli 对比。1 分钟平均负载为 3 到 4。marp-cli 的时间不随核心数变化，因为它的 `-P` 只是把不同的文件分给各个浏览器。此表由 `slidesbench -cores` 生成。输出文件与 v0.25.0 逐字节相同。
+
+| 演示文稿，模式 | 1 核 | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 张幻灯片, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia，20 张幻灯片, PNG | 745 | 395 | 225 | 222 | 2316 |
+| 数学公式与代码，20 张幻灯片, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia，20 张幻灯片, PDF | 87 | 65 | 57 | 59 | 1382 |
+| 数学公式与代码，20 张幻灯片, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia，20 张幻灯片, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| 数学公式与代码，20 张幻灯片, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 张幻灯片, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 张幻灯片, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**已知缺陷。** 100 张幻灯片的 PDF 比 marp-cli 慢，100 张幻灯片的 PDF 和 PPTX 也不随核心数扩展。自 v0.18.0 起就是如此：引擎为每一页重建可变字体的实例，在单核上要多花 16 倍内存和 3.5 到 4 倍时间。该问题在 [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) 和 [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443) 中跟踪，v0.26.0 中尚未修复。
 
 ## 为什么快 {#why-it-is-fast}
 

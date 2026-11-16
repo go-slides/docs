@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-This page describes v0.25.0. Its output is unchanged since v0.20.2.
+This page describes v0.26.0. Its output is unchanged since v0.20.2.
 {{< /callout >}}
 
 ```text
@@ -104,7 +104,7 @@ whatever its extension. A pattern that matches nothing is an error.
 - **`-P n`** builds `n` decks at once. A deck's own rendering already uses the
   cores, so `n` is capped by their number; with `-o -` decks are built one after
   the other. The messages of a deck stay together, and a deck that fails does not
-  stop the others: the exit status is 1 and the message lists the failures.
+  stop the others: the exit status is 1 and the message lists the failures. Since v0.26.0 the messages and the list of failed decks come out in command-line order, not in the order the decks finish: a slow first deck delays the messages of the others, not their files.
 
 ## Transitions and the presenting page
 

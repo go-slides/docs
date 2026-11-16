@@ -12,11 +12,15 @@ diapositivas de forma concurrente y analiza sus fuentes una sola vez
 ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
+Las filas del PDF y del PPTX de 100 diapositivas de las tres tablas siguientes ya no son válidas desde la v0.18.0: véase [Varios núcleos](#several-cores) y [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+
 go-slides y [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 se ejecutaron
 como subprocesos sobre las mismas presentaciones, en un Apple M4 Max (16 CPU) con
 una carga media de 1 minuto inferior a 8, cinco rondas intercaladas tras un
 calentamiento. El tiempo es la mediana del tiempo real; la memoria es el pico de
 todo el árbol de procesos (marp-cli controla un Chrome, cuyos procesos cuentan).
+
+*Medido con la v0.3.0 en todos los núcleos (16 CPU).*
 
 | Presentación | Salida | go-slides | marp-cli | memoria de go-slides | memoria de marp-cli |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -32,6 +36,8 @@ todo el árbol de procesos (marp-cli controla un Chrome, cuyos procesos cuentan)
 En v0.4.0 el PDF se dibuja en vectores (véase
 [Línea de comandos]({{< relref "cli#vector-pdf" >}})). Misma máquina y mismo
 método, 2026-10-19:
+
+*Medido con la v0.4.0 en todos los núcleos (16 CPU), el 2026-10-19.*
 
 | Presentación | go-slides | marp-cli | v0.3.0 | tamaño de go-slides | tamaño de marp-cli | tamaño de v0.3.0 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -52,6 +58,8 @@ Desde v0.5.0 el PPTX se compone de cuadros de texto, formas e imágenes (véase
 [Línea de comandos]({{< relref "cli#editable-pptx-and-odp" >}})). Medido el
 2026-10-19 a las 22:51, con una carga media de 1 minuto de 7,1, en tres rondas:
 
+*Medido con la v0.5.0 en todos los núcleos (16 CPU), el 2026-10-19.*
+
 | Presentación | go-slides | marp-cli | tamaño de go-slides | tamaño de marp-cli | memoria de go-slides | memoria de marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | 100 diapositivas | 348 ms | 7795 ms | 760 KiB | 7,2 MiB | 204 MiB | 1370 MiB |
@@ -61,6 +69,24 @@ Desde v0.5.0 el PPTX se compone de cuadros de texto, formas e imágenes (véase
 Para la presentación de 100 diapositivas, v0.4.0 tardaba 4,7 s y ocupaba 4,8 MiB
 y 540 MiB. El PPTX de marp-cli contiene imágenes. La mayor parte del tamaño de
 una presentación editable son las fuentes incrustadas.
+
+## Varios núcleos {#several-cores}
+
+Medido con la v0.26.0: tiempo real en ms con 1, 2, 4 y 16 núcleos, frente a marp-cli. La carga media de 1 minuto era de 3 a 4. El tiempo de marp-cli no cambia con el número de núcleos, porque su `-P` solo reparte archivos distintos entre navegadores. `slidesbench -cores` produce esta tabla. Los archivos de salida son idénticos byte a byte a los de la v0.25.0.
+
+| Presentación, modo | 1 núcleo | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 diapositivas, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 diapositivas, PNG | 745 | 395 | 225 | 222 | 2316 |
+| matemáticas y código, 20 diapositivas, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 diapositivas, PDF | 87 | 65 | 57 | 59 | 1382 |
+| matemáticas y código, 20 diapositivas, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 diapositivas, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| matemáticas y código, 20 diapositivas, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 diapositivas, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 diapositivas, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Defecto conocido.** El PDF de 100 diapositivas es más lento que marp-cli, y el PDF y el PPTX de 100 diapositivas no escalan con los núcleos. Es así desde la v0.18.0: el motor reconstruye las instancias de la fuente variable para cada página, lo que cuesta 16 veces la memoria y de 3,5 a 4 veces el tiempo en un núcleo. Se sigue en [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) y [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), y no está corregido en la v0.26.0.
 
 ## Por qué es rápido {#why-it-is-fast}
 
