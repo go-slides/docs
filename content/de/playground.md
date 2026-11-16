@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Playground öffnen →](https://go-slides.github.io/de/playground/)**
 
-Der Playground ist go-slides selbst, v0.20.2, nach WebAssembly kompiliert und
+Der Playground ist go-slides selbst, v0.25.0, nach WebAssembly kompiliert und
 in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
 folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.
 
@@ -364,14 +364,16 @@ einer Anmeldung: siehe [Self-Hosting]({{< relref "self-hosting" >}}).
 
 ## Größe und Geschwindigkeit {#size-and-speed}
 
-Das Modul umfasst 8,8 MiB, wie GitHub Pages es ausliefert (gzip; Pages liefert
+Das Modul umfasst 7,8 MiB (8.136.679 Byte), wie GitHub Pages es ausliefert (gzip; Pages liefert
 kein Brotli aus). Es wird einmal mit Fortschrittsbalken heruntergeladen und dann vom
 Browser bis zum nächsten Deploy zwischengespeichert. Auf einem Apple M4 Max mit Chrome 155, gemessen
-an der Live-Seite, ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon 1,5 s
+an der Live-Seite mit dem Modul von v0.20.2 (8,8 MiB, nicht die aktuelle Größe), ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon 1,5 s
 für den Download, und die ersten Folien erscheinen nach 2,4 s. Eine Änderung am
 Benchmark-Foliensatz mit 100 Folien erreicht die Vorschau in etwa 30 ms: go-slides
 rendert nur die Folien neu, die sich geändert haben, und nur diese werden in der
 Vorschau ersetzt.
+
+Die Mathematikschrift und die Emoji-Bilder sind nicht im Modul enthalten: Die Seite lädt jedes davon, sobald eine Präsentation es zum ersten Mal braucht. Deshalb hat das Modul 8.136.679 Byte statt etwa 10,5 MB. Die Schrift (838.508 Byte) kommt mit der ersten Formel, die Bilder (1.767.960 Byte) mit dem ersten Emoji. Eine Präsentation mit keinem von beiden lädt auch keines davon. Bis sie da sind, wird eine Formel als ihr TeX-Quelltext angezeigt und ein Emoji als geschriebener Text; danach wird die Folie neu gezeichnet.
 
 ## Offline und Updates {#offline}
 
@@ -386,3 +388,5 @@ Der Cache gilt für den eigenen Pfad des Playgrounds und für nichts sonst. Er s
 Der Video-Worker, der Videodateien für ihre Vorschaubilder liest, ist ein eigenes Modul: Er wird erst heruntergeladen, wenn eine Präsentation zum ersten Mal ein Video verwendet, und bleibt danach im Cache. Eine Präsentation ohne Video lädt ihn nie.
 
 Stimmt nach einer neuen Version die Seite, die der Browser hält, nicht mehr mit dem Zwischengespeicherten überein (die Kopie im Cache fehlt oder ist beschädigt, und der Server liefert nun die neue), erscheint statt eines Fehlers kurz eine Seite „Aktualisierung…“. Sie entfernt den Service Worker und den Cache dieses Playgrounds und lädt genau einmal neu, sodass die neue Version aus dem Netz geladen wird und ihren eigenen Cache anlegt. Schlägt die Seite danach immer noch fehl, lädt sie nicht erneut, sondern zeigt eine Meldung, die dazu auffordert, die Daten dieser Website im Browser zu löschen. Währenddessen läuft nichts vom Server.
+
+Wie der Video-Worker bleiben die Mathematikschrift und die Emoji-Bilder nach dem Laden im Offline-Cache. Das gilt nur für die englische Seite: Die Seiten in den anderen Sprachen (`/fr/playground/` und so weiter) legen sie nicht für den Offline-Betrieb im Cache ab.

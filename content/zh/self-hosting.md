@@ -142,7 +142,7 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host` 自 v0.14.0 起提供：
-`go install github.com/go-slides/slides/cmd/slides@v0.20.1`。它需要 Go 1.27.3 或更高版本。
+`go install github.com/go-slides/slides/cmd/slides@v0.25.0`。它需要 Go 1.27.3 或更高版本。
 {{< /callout >}}
 
 ## 使用 OpenID Connect 登录 {#sign-in-with-openid-connect}
@@ -359,6 +359,23 @@ oauth2-proxy 之后。slides-gitd 的 `origin` 设置必须等于 Playground 的
 有一项限制：Playground 仍像以前一样，把草稿和最后使用的仓库名保存在浏览器配置文件
 （IndexedDB 和 localStorage）中。在共用的浏览器配置文件上，请使用 **Draft ▸ Forget my drafts**
 或分开的配置文件。在服务器模式下，已记住但用户未获授权的仓库会被丢弃。
+
+## 嵌入 go-slides：provider 与构建标签 {#embedding}
+
+`slides` 命令把一切都内置了。把 go-slides 作为 Go 模块嵌入的程序，或像 playground 那样的 `js/wasm` 构建，可以把较重的部分留在外面，之后由宿主通过它注册的 provider 提供：
+
+| 部分 | Provider | 构建标签（不链接其数据） | 命令使用的 |
+| --- | --- | --- | --- |
+| 数学字体（STIX） | `mathfont.Provider`，自 v0.22.0 | `slides_nomathfont` | `mathfont/embedded` |
+| emoji 图片（Twemoji） | `emoji.Provider`，自 v0.23.0 | `slides_noemoji` | `emoji/embedded` |
+| 视频海报帧与元数据 | `video.Provider`，自 v0.21.0 | `slides_novideo` | `video/avkit` |
+
+- **命令不变。** 它使用上面的进程内 provider，输出（HTML、PDF、PPTX）与 v0.20.2 逐字节相同。
+- **标签能省多少。** 在 `js/wasm` 构建中，`slides_nomathfont` 省下 651 KB（gzip 后），`slides_noemoji` 省下 2.06 MB。`slides_novideo` 完全不链接视频解码代码；有了它，playground 的主模块从 12.0 MiB 降到 10.1 MiB（gzip 后），视频支持则按需加载。
+- **在 provider 注册之前**，公式以 TeX 源码显示在 `span.math-error` 中，其 title 给出原因；emoji 保持为写下的文本（字符本身或其 `:shortcode:`）。emoji 的识别（短代码、序列）仍然是内置的：只有图片来自 provider。
+- **晚些注册也没问题。** 在 `mathfont.Register` 或 `emoji.Register` 之后，`deck.RenderCache`（v0.24.0）只重新渲染那些退回为后备文本的幻灯片。没有公式和 emoji 的幻灯片仍留在缓存中，所以宿主不必清空整个缓存。
+- **限制。** 数学字体超过 8 MiB，或没有 OpenType、TrueType 或字体集合签名，就会被拒绝。自 v0.25.0 起，它还会根据 go-tex/math 读取的表重新构建，如果其声明的数量会让解析器分配过多内存，就会被拒绝（CFF2 同样被拒绝）。emoji 的 SVG 不得超过 256 KiB，且必须以 `<svg` 或 `<?xml` 开头；它作为 `data:` 图片嵌入，其中不会运行脚本。视频 provider 遵守与命令相同的限制和相同的 `video.*` 诊断，请求只能调低限制，不能调高。
+- **信任。** CFF 轮廓（随附的 STIX Two Math 字体就是其一）在 go-opentype/opentype#75 解决之前不在该上限的覆盖范围内。请把 `mathfont.Provider` 当作受信任的输入。
 
 ## 检查 {#check-it}
 

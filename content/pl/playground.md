@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Otwórz Playground →](https://go-slides.github.io/pl/playground/)**
 
-Playground to sam go-slides, v0.20.2, skompilowany do WebAssembly i
+Playground to sam go-slides, v0.25.0, skompilowany do WebAssembly i
 działający w twojej przeglądarce. Pisz prezentację po lewej; slajdy podążają
 po prawej. Nic nie jest wysyłane na serwer: ani prezentacja, ani odnośnik do udostępnienia.
 
@@ -347,14 +347,16 @@ zobacz [Self-hosting]({{< relref "self-hosting" >}}).
 
 ## Rozmiar i szybkość {#size-and-speed}
 
-Moduł ma 8,8 MiB w postaci, w jakiej serwuje go GitHub Pages (gzip; Pages nie
+Moduł ma 7,8 MiB (8 136 679 bajtów) w postaci, w jakiej serwuje go GitHub Pages (gzip; Pages nie
 serwuje brotli). Jest pobierany raz z paskiem postępu, potem trzymany w pamięci podręcznej
 przeglądarki do następnego wdrożenia. Na Apple M4 Max z Chrome 155, mierzone
-na żywej stronie, edytor jest gotowy 2,1 s po otwarciu strony, z czego 1,5 s
+na żywej stronie z modułem z v0.20.2 (8,8 MiB, nie obecny rozmiar), edytor jest gotowy 2,1 s po otwarciu strony, z czego 1,5 s
 to pobieranie, a pierwsze slajdy pojawiają się po 2,4 s. Zmiana w
 100-slajdowej prezentacji testowej dociera do podglądu w około 30 ms: go-slides
 renderuje tylko slajdy, które się zmieniły, i tylko te są wymieniane w
 podglądzie.
+
+Czcionki matematycznej i obrazów emoji nie ma w module: strona pobiera każdą z nich przy pierwszym użyciu w prezentacji, dlatego moduł ma 8 136 679 bajtów zamiast około 10,5 MB. Czcionka (838 508 bajtów) przychodzi z pierwszym wzorem, obrazy (1 767 960 bajtów) z pierwszym emoji. Prezentacja bez jednego i drugiego nie pobiera żadnego z nich. Dopóki nie dotrą, wzór jest pokazany jako swój zapis TeX, a emoji jako zapisany tekst; potem slajd jest rysowany ponownie.
 
 ## Tryb offline i aktualizacje {#offline}
 
@@ -369,3 +371,5 @@ Pamięć obejmuje ścieżkę samego playgrounda i nic więcej. Nie przechowuje r
 Worker wideo, który czyta pliki wideo, by wyciągnąć z nich plakaty, jest osobnym modułem: pobiera się go dopiero przy pierwszym użyciu wideo w prezentacji, a potem pozostaje w pamięci podręcznej. Prezentacja bez wideo nigdy go nie pobiera.
 
 Po nowym wydaniu, jeśli strona, którą ma przeglądarka, nie zgadza się już z zapisaną w pamięci (kopia w pamięci zniknęła lub jest uszkodzona, a serwer wysyła już nową), zamiast błędu pojawia się na chwilę strona „Aktualizacja…”. Usuwa service worker i pamięć podręczną tego playgrounda i odświeża tylko raz, więc nowa wersja ładuje się z sieci i tworzy własną pamięć. Jeśli po tym odświeżeniu strona nadal zawodzi, nie odświeża się ponownie: pokazuje komunikat z prośbą o wyczyszczenie danych tej witryny w przeglądarce. W tym czasie nic z serwera nie jest wykonywane.
+
+Podobnie jak worker wideo, czcionka matematyczna i obrazy emoji po pobraniu zostają w pamięci podręcznej trybu offline. Dotyczy to tylko strony angielskiej: strony w pozostałych językach (`/fr/playground/` i tak dalej) nie zapisują ich w pamięci podręcznej do pracy offline.

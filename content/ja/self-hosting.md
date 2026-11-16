@@ -141,7 +141,7 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host` は v0.14.0 以降にあります。
-`go install github.com/go-slides/slides/cmd/slides@v0.20.1`
+`go install github.com/go-slides/slides/cmd/slides@v0.25.0`
 Go 1.27.3 以降が必要です。
 {{< /callout >}}
 
@@ -371,6 +371,23 @@ Content-Security-Policy は `connect-src 'self'` で、サイトは公開のま�
 （IndexedDB と localStorage）に保持します。共有のブラウザープロファイルでは、**Draft ▸ Forget my drafts**
 を使うか、プロファイルを分けてください。サーバーモードでは、記憶されているリポジトリのうち
 ユーザーに許可されていないものは破棄されます。
+
+## go-slides を組み込む: プロバイダーとビルドタグ {#embedding}
+
+`slides` コマンドはすべてを内蔵しています。go-slides を Go モジュールとして組み込むプログラムや、Playground のような `js/wasm` ビルドは、重い部分を外しておき、ホストが登録するプロバイダーを通じて後から供給させることができます。
+
+| 部分 | プロバイダー | ビルドタグ（そのデータをリンクしない） | コマンドが使うもの |
+| --- | --- | --- | --- |
+| 数式フォント（STIX） | `mathfont.Provider`（v0.22.0 以降） | `slides_nomathfont` | `mathfont/embedded` |
+| 絵文字の画像（Twemoji） | `emoji.Provider`（v0.23.0 以降） | `slides_noemoji` | `emoji/embedded` |
+| 動画のポスターフレームとメタデータ | `video.Provider`（v0.21.0 以降） | `slides_novideo` | `video/avkit` |
+
+- **コマンドは変わりません。** 上のプロセス内プロバイダーを使い、出力（HTML、PDF、PPTX）は v0.20.2 とバイト単位で同一です。
+- **タグで減る量。** `js/wasm` ビルドでは、`slides_nomathfont` で gzip 後 651 KB、`slides_noemoji` で 2.06 MB 減ります。`slides_novideo` は動画デコードのコードをまったくリンクしません。これにより Playground のメインモジュールは gzip 後 12.0 MiB から 10.1 MiB になり、動画のサポートは必要になったときに読み込まれます。
+- **プロバイダーが登録されるまで**、数式は `span.math-error` の中に TeX のソースとして表示され（title に理由が入ります）、絵文字は書かれたテキスト（文字そのもの、または `:shortcode:`）のままです。絵文字の認識（ショートコード、シーケンス）は内蔵のままで、プロバイダーから来るのは画像だけです。
+- **後から登録しても問題ありません。** `mathfont.Register` または `emoji.Register` の後、`deck.RenderCache`（v0.24.0）は代替表示になっていたスライドだけを再レンダリングします。数式も絵文字もないスライドはキャッシュに残るので、ホストがキャッシュ全体を消す必要はありません。
+- **制限。** 数式フォントは、8 MiB を超える場合、または OpenType、TrueType、コレクションのいずれのシグネチャもない場合に拒否されます。v0.25.0 からは、go-tex/math が読むテーブルから組み直され、宣言された件数のせいでパーサーが確保するメモリが多すぎると判断されると拒否されます（CFF2 も拒否されます）。絵文字の SVG は 256 KiB 以下で、`<svg` または `<?xml` で始まる必要があります。`data:` 画像として埋め込まれ、スクリプトは実行されません。動画プロバイダーもコマンドと同じ制限と同じ `video.*` 診断に従い、リクエストは制限を下げることしかできず、上げることはできません。
+- **信頼。** CFF アウトライン（同梱の STIX Two Math フォントはその一つです）は、go-opentype/opentype#75 が解決するまでこの上限の対象外です。`mathfont.Provider` は信頼できる入力として扱ってください。
 
 ## 確認する {#check-it}
 

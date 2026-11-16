@@ -141,7 +141,7 @@ decks.example.org {
 
 {{< callout type="info" >}}
 `--allowed-host`는 v0.14.0부터 들어 있습니다.
-`go install github.com/go-slides/slides/cmd/slides@v0.20.1`. Go 1.27.3 이상이 필요합니다.
+`go install github.com/go-slides/slides/cmd/slides@v0.25.0`. Go 1.27.3 이상이 필요합니다.
 {{< /callout >}}
 
 ## OpenID Connect로 로그인 {#sign-in-with-openid-connect}
@@ -362,6 +362,23 @@ Content-Security-Policy는 `connect-src 'self'`이고, 사이트는 공개 상�
 한 가지 제한이 있습니다. Playground는 이전처럼 초안과 마지막 저장소 이름을 브라우저 프로필
 (IndexedDB와 localStorage)에 보관합니다. 공유 브라우저 프로필에서는 **Draft ▸ Forget my drafts**를
 쓰거나 프로필을 분리하세요. 서버 모드에서는 기억된 저장소 중 사용자에게 허용되지 않은 것은 버려집니다.
+
+## go-slides 내장하기: 프로바이더와 빌드 태그 {#embedding}
+
+`slides` 명령은 모든 것을 내장하고 있습니다. go-slides를 Go 모듈로 내장하는 프로그램이나 Playground 같은 `js/wasm` 빌드는 무거운 부분을 빼 두고, 호스트가 등록하는 프로바이더를 통해 나중에 공급받을 수 있습니다.
+
+| 부분 | 프로바이더 | 빌드 태그(해당 데이터를 링크하지 않음) | 명령이 사용하는 것 |
+| --- | --- | --- | --- |
+| 수식 글꼴(STIX) | `mathfont.Provider` (v0.22.0부터) | `slides_nomathfont` | `mathfont/embedded` |
+| 이모지 그림(Twemoji) | `emoji.Provider` (v0.23.0부터) | `slides_noemoji` | `emoji/embedded` |
+| 동영상 포스터 프레임과 메타데이터 | `video.Provider` (v0.21.0부터) | `slides_novideo` | `video/avkit` |
+
+- **명령은 바뀌지 않습니다.** 위의 인프로세스 프로바이더를 사용하며, 출력(HTML, PDF, PPTX)은 v0.20.2와 바이트 단위로 같습니다.
+- **태그로 줄어드는 양.** `js/wasm` 빌드에서 `slides_nomathfont`는 gzip 기준 651 KB, `slides_noemoji`는 2.06 MB를 줄입니다. `slides_novideo`는 동영상 디코딩 코드를 전혀 링크하지 않습니다. 이로써 Playground의 메인 모듈은 gzip 기준 12.0 MiB에서 10.1 MiB로 줄었고, 동영상 지원은 필요할 때 로드됩니다.
+- **프로바이더가 등록되기 전에는** 수식이 `span.math-error` 안에 TeX 소스로 표시되고(title에 이유가 적힙니다), 이모지는 적힌 텍스트(문자 또는 `:shortcode:`) 그대로 남습니다. 이모지 인식(쇼트코드, 시퀀스)은 내장된 채로 있으며, 프로바이더에서 오는 것은 그림뿐입니다.
+- **나중에 등록해도 됩니다.** `mathfont.Register` 또는 `emoji.Register` 뒤에 `deck.RenderCache`(v0.24.0)는 대체 표시로 떨어졌던 슬라이드만 다시 렌더링합니다. 수식도 이모지도 없는 슬라이드는 캐시에 남으므로 호스트가 캐시 전체를 비울 필요가 없습니다.
+- **제한.** 수식 글꼴은 8 MiB를 넘거나 OpenType, TrueType, 컬렉션 서명이 없으면 거부됩니다. v0.25.0부터는 go-tex/math가 읽는 테이블로 다시 구성되며, 선언된 개수 때문에 파서가 너무 많은 메모리를 할당하게 되면 거부됩니다(CFF2도 거부됩니다). 이모지의 SVG는 256 KiB 이하여야 하고 `<svg` 또는 `<?xml`로 시작해야 합니다. `data:` 이미지로 삽입되며, 여기서는 스크립트가 실행되지 않습니다. 동영상 프로바이더도 명령과 같은 제한과 같은 `video.*` 진단을 따르며, 요청은 제한을 낮출 수만 있고 높일 수는 없습니다.
+- **신뢰.** CFF 윤곽(함께 제공되는 STIX Two Math 글꼴이 그 하나입니다)은 go-opentype/opentype#75가 해결될 때까지 이 상한의 대상이 아닙니다. `mathfont.Provider`는 신뢰할 수 있는 입력으로 다루세요.
 
 ## 확인하기 {#check-it}
 

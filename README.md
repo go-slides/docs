@@ -24,7 +24,8 @@ A version of the documentation is **the minor version of
 | the newest release (else `main`) | also `https://go-slides.github.io/docs/latest/` |
 
 `https://go-slides.github.io/docs/` redirects to `latest/`. The pages describe
-v0.20.2 (`params.slides.version`) and are published under `0.20/`. At the next
+v0.25.0 (`params.slides.version`) and are published under `0.25/`; `0.20/`
+stays published as the archive of the previous minor. At the next
 minor release: set `params.slides.version` to its tag and check every page
 against that release (flags from its `slides -h`).
 

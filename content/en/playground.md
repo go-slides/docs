@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Open the playground →](https://go-slides.github.io/playground/)**
 
-The playground is go-slides itself, v0.20.2, compiled to WebAssembly and
+The playground is go-slides itself, v0.25.0, compiled to WebAssembly and
 running in your browser. Type a deck on the left; the slides follow on the
 right. Nothing is sent to a server: not the deck, not a share link.
 
@@ -344,14 +344,16 @@ see [Self-hosting]({{< relref "self-hosting" >}}).
 
 ## Size and speed
 
-The module is 8.8 MiB as GitHub Pages serves it (gzip; Pages does not
+The module is 7.8 MiB (8,136,679 bytes) as GitHub Pages serves it (gzip; Pages does not
 serve brotli). It is downloaded once with a progress bar, then cached by the
 browser until the next deploy. On an Apple M4 Max with Chrome 155, measured
-against the live page, the editor is ready 2.1 s after the page opens, 1.5 s
+against the live page with the v0.20.2 module (8.8 MiB, not the current size), the editor is ready 2.1 s after the page opens, 1.5 s
 of which is the download, and the first slides appear at 2.4 s. A change to
 the 100-slide benchmark deck reaches the preview in about 30 ms: go-slides
 renders only the slides that changed, and only those are replaced in the
 preview.
+
+The math font and the emoji pictures are not in the module: the page fetches each one the first time a deck needs it, so the module is 8,136,679 bytes instead of about 10.5 MB. The font (838,508 bytes) comes with the first formula, the pictures (1,767,960 bytes) with the first emoji. A deck with neither downloads neither. Until they arrive, a formula is shown as its TeX source and an emoji as written text; the slide is then drawn again.
 
 ## Offline and updates {#offline}
 
@@ -366,3 +368,5 @@ The cache covers the playground's own path and nothing else. It does not store t
 The video worker, which reads video files for their posters, is a module of its own: it is downloaded only the first time a deck uses a video, and kept in the cache from then on. A deck without video never fetches it.
 
 After a new release, if the page the browser holds no longer matches what was cached (the cached copy is gone or damaged and the server now sends the new one), a brief "Updating…" page appears instead of an error. It removes this playground's service worker and cache and reloads once, so the new version loads from the network and sets up its own cache. If the page still fails after that reload, it does not reload again: it shows a message asking you to clear this site's data in your browser. Nothing from the server runs while it does.
+
+Like the video worker, the math font and the emoji pictures are kept in the offline cache once they have been fetched. This holds for the English page only: the pages in the other languages (`/fr/playground/` and so on) do not cache them offline.

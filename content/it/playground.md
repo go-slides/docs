@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Apri il Playground →](https://go-slides.github.io/it/playground/)**
 
-Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.20.2, compilato in WebAssembly ed
+Il Playground (l'editor di go-slides nel browser) è go-slides stesso, v0.25.0, compilato in WebAssembly ed
 eseguito nel tuo browser. Scrivi una presentazione a sinistra; le slide seguono a
 destra. Nulla viene inviato a un server: né la presentazione, né un link di condivisione.
 
@@ -355,14 +355,16 @@ vedi [Self-hosting]({{< relref "self-hosting" >}}).
 
 ## Dimensione e velocità {#size-and-speed}
 
-Il modulo è di 8,8 MiB come lo serve GitHub Pages (gzip; Pages non
+Il modulo è di 7,8 MiB (8.136.679 byte) come lo serve GitHub Pages (gzip; Pages non
 serve brotli). Viene scaricato una volta con una barra di avanzamento, poi messo in cache dal
 browser fino al prossimo deploy. Su un Apple M4 Max con Chrome 155, misurato
-sulla pagina pubblicata, l'editor è pronto 2,1 s dopo l'apertura della pagina, di cui 1,5 s
+sulla pagina pubblicata con il modulo della v0.20.2 (8,8 MiB, non la dimensione attuale), l'editor è pronto 2,1 s dopo l'apertura della pagina, di cui 1,5 s
 sono il download, e le prime slide compaiono a 2,4 s. Una modifica alla
 presentazione di benchmark da 100 slide raggiunge l'anteprima in circa 30 ms: go-slides
 rende solo le slide cambiate, e solo quelle vengono sostituite
 nell'anteprima.
+
+Il font matematico e le immagini degli emoji non sono nel modulo: la pagina scarica ciascuno la prima volta che una presentazione ne ha bisogno, per cui il modulo è di 8.136.679 byte invece di circa 10,5 MB. Il font (838.508 byte) arriva con la prima formula, le immagini (1.767.960 byte) con il primo emoji. Una presentazione che non ha né l'una né l'altro non scarica nulla. Finché non arrivano, una formula appare come il suo sorgente TeX e un emoji come testo scritto; poi la diapositiva viene ridisegnata.
 
 ## Offline e aggiornamenti {#offline}
 
@@ -377,3 +379,5 @@ La cache copre il percorso del playground e nient'altro. Non conserva il frame g
 Il worker video, che legge i file video per ricavarne le copertine, è un modulo a parte: viene scaricato solo la prima volta che una presentazione usa un video e poi resta nella cache. Una presentazione senza video non lo richiede mai.
 
 Dopo una nuova versione, se la pagina che il browser ha non corrisponde più a quella in cache (la copia in cache è sparita o danneggiata e il server ora invia la nuova), compare brevemente una pagina «Aggiornamento…» al posto di un errore. Rimuove il service worker e la cache di questo playground e ricarica una sola volta, così la nuova versione si carica dalla rete e crea la propria cache. Se la pagina fallisce ancora dopo quel ricaricamento, non ricarica di nuovo: mostra un messaggio che chiede di cancellare i dati di questo sito nel browser. Nel frattempo non viene eseguito nulla proveniente dal server.
+
+Come il worker video, il font matematico e le immagini degli emoji restano nella cache offline una volta scaricati. Vale solo per la pagina in inglese: le pagine delle altre lingue (`/fr/playground/` e così via) non li mettono in cache per l'uso offline.

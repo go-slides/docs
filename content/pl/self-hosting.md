@@ -148,7 +148,7 @@ katalog całej sieci, z pominięciem proxy i jego logowania.
 
 {{< callout type="info" >}}
 `--allowed-host` jest w v0.14.0 i nowszych:
-`go install github.com/go-slides/slides/cmd/slides@v0.20.1`. Wymaga Go 1.27.3
+`go install github.com/go-slides/slides/cmd/slides@v0.25.0`. Wymaga Go 1.27.3
 lub nowszego.
 {{< /callout >}}
 
@@ -388,6 +388,23 @@ repozytorium w profilu przeglądarki (IndexedDB i localStorage). We wspólnym
 profilu przeglądarki użyj **Draft ▸ Forget my drafts** albo osobnych profili. W
 trybie serwerowym zapamiętane repozytorium, do którego użytkownik nie ma
 dostępu, jest pomijane.
+
+## Osadzanie go-slides: providery i tagi kompilacji {#embedding}
+
+Polecenie `slides` ma wszystko wbudowane. Program osadzający go-slides jako moduł Go albo kompilacja `js/wasm`, taka jak Playground, może pominąć ciężkie części i pozwolić hostowi dostarczyć je później przez provider, który rejestruje:
+
+| Część | Provider | Tag kompilacji (nie dołącza danych) | Z czego korzysta polecenie |
+| --- | --- | --- | --- |
+| Czcionka matematyczna (STIX) | `mathfont.Provider`, od v0.22.0 | `slides_nomathfont` | `mathfont/embedded` |
+| Obrazy emoji (Twemoji) | `emoji.Provider`, od v0.23.0 | `slides_noemoji` | `emoji/embedded` |
+| Plakaty i metadane wideo | `video.Provider`, od v0.21.0 | `slides_novideo` | `video/avkit` |
+
+- **Polecenie się nie zmienia.** Używa providerów działających w procesie, wymienionych wyżej, a jego wyniki (HTML, PDF, PPTX) są bajt w bajt takie same jak w v0.20.2.
+- **Co oszczędza tag.** W kompilacji `js/wasm` `slides_nomathfont` oszczędza 651 KB po kompresji (gzip), a `slides_noemoji` 2,06 MB. `slides_novideo` nie dołącza żadnego kodu dekodowania wideo; dzięki niemu główny moduł Playgrounda zmniejszył się z 12,0 do 10,1 MiB po kompresji, a obsługa wideo ładuje się na żądanie.
+- **Dopóki provider nie jest zarejestrowany**, wzór jest pokazany jako swój zapis TeX w `span.math-error`, którego tytuł podaje przyczynę, a emoji pozostaje zapisanym tekstem (znakiem albo swoim `:shortcode:`). Rozpoznawanie emoji (shortcody, sekwencje) pozostaje wbudowane: z providera pochodzą tylko obrazy.
+- **Późna rejestracja jest w porządku.** Po `mathfont.Register` lub `emoji.Register` `deck.RenderCache` (v0.24.0) renderuje ponownie tylko te slajdy, które wróciły do tekstu zastępczego. Slajdy bez wzorów i bez emoji zostają w pamięci podręcznej, więc host nie musi czyścić jej całej.
+- **Limity.** Czcionka matematyczna jest odrzucana, gdy ma ponad 8 MiB albo nie ma sygnatury OpenType, TrueType lub kolekcji. Od v0.25.0 jest też odbudowywana z tablic, które czyta go-tex/math, i odrzucana, gdy zadeklarowane w niej liczby kazałyby parserowi przydzielić zbyt dużo pamięci (CFF2 też jest odrzucany). SVG emoji może mieć najwyżej 256 KiB i musi zaczynać się od `<svg` lub `<?xml`; jest osadzany jako obraz `data:`, w którym skrypty się nie wykonują. Provider wideo podlega tym samym limitom i tym samym diagnostykom `video.*` co polecenie, a żądanie może limit tylko obniżyć, nigdy podnieść.
+- **Zaufanie.** Kontury CFF (dostarczana czcionka STIX Two Math jest jednym z nich) nie są objęte tym ograniczeniem, dopóki nie zostanie załatwione go-opentype/opentype#75. Traktuj `mathfont.Provider` jako zaufane dane wejściowe.
 
 ## Sprawdź to {#check-it}
 
