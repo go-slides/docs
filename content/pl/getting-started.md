@@ -14,7 +14,7 @@ go install github.com/go-slides/slides/cmd/slides@latest
 ```
 
 `slides` to jeden statyczny plik wykonywalny Go bez cgo: nie trzeba instalować
-niczego więcej, ani Node, ani Chrome. Ta strona opisuje v0.20.2.
+niczego więcej, ani Node, ani Chrome. Ta strona opisuje v0.25.0.
 
 ## Pierwsza prezentacja {#a-first-deck}
 

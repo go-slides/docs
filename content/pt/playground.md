@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Abrir o Playground →](https://go-slides.github.io/pt/playground/)**
 
-O Playground é o próprio go-slides, v0.20.2, compilado para WebAssembly e
+O Playground é o próprio go-slides, v0.25.0, compilado para WebAssembly e
 executado no seu navegador. Digite uma apresentação à esquerda; os slides
 acompanham à direita. Nada é enviado a um servidor: nem a apresentação, nem um
 link de compartilhamento.
@@ -359,7 +359,7 @@ login: veja [Auto-hospedagem]({{< relref "self-hosting" >}}).
 
 ## Tamanho e velocidade {#size-and-speed}
 
-O módulo tem 8,8 MiB como o GitHub Pages o serve (gzip; o Pages não serve
+O módulo tem 7,8 MiB (8.136.679 bytes) como o GitHub Pages o serve (gzip; o Pages não serve
 brotli). Ele é baixado uma vez com uma barra de progresso e depois fica em cache
 no navegador até o próximo deploy. Em um Apple M4 Max com Chrome 155, medido
 contra a página no ar, o editor fica pronto 2,1 s depois de a página abrir, dos
@@ -367,6 +367,8 @@ quais 1,5 s são o download, e os primeiros slides aparecem aos 2,4 s. Uma
 alteração na apresentação de referência de 100 slides chega à pré-visualização
 em cerca de 30 ms: o go-slides renderiza somente os slides que mudaram, e
 somente esses são substituídos na pré-visualização.
+
+A fonte matemática e as imagens dos emojis não estão no módulo: a página baixa cada uma na primeira vez em que uma apresentação precisa dela, então o módulo tem 8.136.679 bytes em vez de cerca de 10,5 MB. A fonte (838.508 bytes) vem com a primeira fórmula, as imagens (1.767.960 bytes) com o primeiro emoji. Uma apresentação sem nenhum dos dois não baixa nenhum. Até que cheguem, uma fórmula aparece como seu código-fonte TeX e um emoji como texto escrito; depois o slide é redesenhado.
 
 ## Offline e atualizações {#offline}
 
@@ -381,3 +383,5 @@ O cache cobre o caminho do próprio playground e nada mais. Não guarda o frame 
 O worker de vídeo, que lê os arquivos de vídeo para obter os pôsteres, é um módulo à parte: só é baixado na primeira vez em que uma apresentação usa um vídeo e depois fica no cache. Uma apresentação sem vídeo nunca o pede.
 
 Depois de uma nova versão, se a página que o navegador tem já não corresponde ao que estava em cache (a cópia em cache sumiu ou está danificada e o servidor agora envia a nova), aparece brevemente uma página «Atualizando…» em vez de um erro. Ela remove o service worker e o cache deste playground e recarrega uma única vez, de modo que a nova versão carrega pela rede e cria o seu próprio cache. Se a página ainda falhar depois desse recarregamento, não recarrega de novo: mostra uma mensagem que pede para limpar os dados deste site no navegador. Nada vindo do servidor é executado enquanto isso.
+
+Como o worker de vídeo, a fonte matemática e as imagens dos emojis ficam no cache offline depois de baixadas. Isso vale só para a página em inglês: as páginas dos outros idiomas (`/fr/playground/` e assim por diante) não as guardam no cache para uso offline.

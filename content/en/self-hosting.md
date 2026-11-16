@@ -148,7 +148,7 @@ directory to the whole network, around the proxy and its sign-in.
 
 {{< callout type="info" >}}
 `--allowed-host` is in v0.14.0 and later:
-`go install github.com/go-slides/slides/cmd/slides@v0.20.1`. It needs Go 1.27.3
+`go install github.com/go-slides/slides/cmd/slides@v0.25.0`. It needs Go 1.27.3
 or later.
 {{< /callout >}}
 
@@ -387,6 +387,23 @@ One limit: the playground keeps drafts and the last repository name in the
 browser profile (IndexedDB and localStorage), as before. On a shared browser
 profile, use **Draft ▸ Forget my drafts** or separate profiles. In server mode,
 a remembered repository the user is not granted is dropped.
+
+## Embedding go-slides: providers and build tags {#embedding}
+
+The `slides` command has everything built in. A program that embeds go-slides as a Go module, or a `js/wasm` build such as the playground, can leave the heavy parts out and let the host supply them later, through a provider it registers:
+
+| Part | Provider | Build tag (links no data for it) | What the command uses |
+| --- | --- | --- | --- |
+| Math font (STIX) | `mathfont.Provider`, from v0.22.0 | `slides_nomathfont` | `mathfont/embedded` |
+| Emoji pictures (Twemoji) | `emoji.Provider`, from v0.23.0 | `slides_noemoji` | `emoji/embedded` |
+| Video poster frames and metadata | `video.Provider`, from v0.21.0 | `slides_novideo` | `video/avkit` |
+
+- **The command does not change.** It uses the in-process providers above, and its output (HTML, PDF, PPTX) is byte-identical to v0.20.2.
+- **What a tag saves.** In a `js/wasm` build, `slides_nomathfont` saves 651 KB gzipped and `slides_noemoji` 2.06 MB. `slides_novideo` links no video decoding code at all; the playground's main module went from 12.0 to 10.1 MiB gzipped with it, and video support loads on demand.
+- **Before a provider is registered**, a formula is shown as its TeX source in a `span.math-error` whose title gives the reason, and an emoji stays as written text (the character or its `:shortcode:`). Recognition of emoji (shortcodes, sequences) stays built in: only the pictures come from the provider.
+- **Registering late is fine.** After `mathfont.Register` or `emoji.Register`, `deck.RenderCache` (v0.24.0) re-renders only the slides that fell back. Slides with no formula and no emoji stay cached, so a host need not clear the whole cache.
+- **Limits.** A math font is refused above 8 MiB or without an OpenType, TrueType or collection signature. Since v0.25.0 it is also rebuilt from the tables go-tex/math reads and refused when its declared counts would make the parser allocate too much (CFF2 is refused too). An emoji's SVG must be at most 256 KiB and start with `<svg` or `<?xml`; it is embedded as a `data:` image, where scripts do not run. A video provider obeys the same limits and the same `video.*` diagnostics as the command, and a request can only lower a limit, never raise it.
+- **Trust.** CFF outlines (the shipped STIX Two Math font is one) are not covered by that bound until go-opentype/opentype#75 lands. Treat a `mathfont.Provider` as trusted input.
 
 ## Check it
 

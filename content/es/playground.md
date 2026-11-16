@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Abrir el Playground →](https://go-slides.github.io/es/playground/)**
 
-El Playground es el propio go-slides, v0.20.2, compilado a WebAssembly y
+El Playground es el propio go-slides, v0.25.0, compilado a WebAssembly y
 ejecutándose en su navegador. Escriba una presentación a la izquierda; las
 diapositivas la siguen a la derecha. No se envía nada a ningún servidor: ni la
 presentación, ni un enlace para compartir.
@@ -367,7 +367,7 @@ sesión: consulte [Autoalojamiento]({{< relref "self-hosting" >}}).
 
 ## Tamaño y velocidad {#size-and-speed}
 
-El módulo pesa 8,8 MiB tal como lo sirve GitHub Pages (gzip; Pages no sirve
+El módulo pesa 7,8 MiB (8 136 679 bytes) tal como lo sirve GitHub Pages (gzip; Pages no sirve
 brotli). Se descarga una sola vez con una barra de progreso y luego el navegador
 lo conserva en caché hasta el siguiente despliegue. En un Apple M4 Max con Chrome
 155, medido sobre la página en línea, el editor está listo 2,1 s después de abrir
@@ -375,6 +375,8 @@ la página, 1,5 s de los cuales son la descarga, y las primeras diapositivas
 aparecen a los 2,4 s. Un cambio en la presentación de prueba de 100 diapositivas
 llega a la vista previa en unos 30 ms: go-slides renderiza solo las diapositivas
 que cambiaron, y solo esas se sustituyen en la vista previa.
+
+La fuente matemática y las imágenes de los emoji no están en el módulo: la página descarga cada una la primera vez que una presentación la necesita, así que el módulo pesa 8 136 679 bytes en lugar de unos 10,5 MB. La fuente (838 508 bytes) llega con la primera fórmula, las imágenes (1 767 960 bytes) con el primer emoji. Una presentación que no tiene ni una ni otras no descarga ninguna. Hasta que llegan, una fórmula se muestra como su fuente TeX y un emoji como texto escrito; después la diapositiva se vuelve a dibujar.
 
 ## Sin conexión y actualizaciones {#offline}
 
@@ -389,3 +391,5 @@ La caché cubre la ruta propia del playground y nada más. No guarda el marco gi
 El worker de vídeo, que lee los archivos de vídeo para sus carteles, es un módulo aparte: solo se descarga la primera vez que una presentación usa un vídeo y después se conserva en la caché. Una presentación sin vídeo nunca lo pide.
 
 Tras una nueva versión, si la página que tiene el navegador ya no coincide con lo guardado en caché (la copia ha desaparecido o está dañada y el servidor envía ahora la nueva), aparece brevemente una página «Actualizando…» en lugar de un error. Elimina el service worker y la caché de este playground y recarga una sola vez, de modo que la nueva versión se carga desde la red y crea su propia caché. Si la página sigue fallando tras esa recarga, no vuelve a recargar: muestra un mensaje que pide borrar los datos de este sitio en el navegador. Mientras tanto no se ejecuta nada del servidor.
+
+Igual que el worker de vídeo, la fuente matemática y las imágenes de los emoji se conservan en la caché sin conexión una vez descargadas. Esto vale solo para la página en inglés: las páginas de los demás idiomas (`/fr/playground/` y así sucesivamente) no las guardan en la caché para el uso sin conexión.

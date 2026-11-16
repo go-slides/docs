@@ -7,7 +7,7 @@ tags: [playground, browser]
 
 **[Ouvrir le Playground →](https://go-slides.github.io/fr/playground/)**
 
-Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.20.2, compilé en WebAssembly et
+Le Playground (bac à sable en ligne), c'est go-slides lui-même, en v0.25.0, compilé en WebAssembly et
 exécuté dans votre navigateur. Tapez une présentation à gauche ; les diapositives suivent à
 droite. Rien n'est envoyé à un serveur : ni la présentation, ni un lien de partage.
 
@@ -360,7 +360,7 @@ authentification : voir [Auto-hébergement]({{< relref "self-hosting" >}}).
 
 ## Taille et vitesse {#size-and-speed}
 
-Le module pèse 8,8 Mio tel que GitHub Pages le sert (gzip ; Pages ne
+Le module pèse 7,8 Mio (8 136 679 octets) tel que GitHub Pages le sert (gzip ; Pages ne
 sert pas de brotli). Il est téléchargé une fois avec une barre de progression, puis mis en cache par le
 navigateur jusqu'au prochain déploiement. Sur un Apple M4 Max avec Chrome 155, mesuré
 sur la page en ligne, l'éditeur est prêt 2,1 s après l'ouverture de la page, dont 1,5 s
@@ -368,6 +368,8 @@ de téléchargement, et les premières diapositives apparaissent à 2,4 s. Une m
 la présentation de référence de 100 diapositives atteint l'aperçu en 30 ms environ : go-slides
 ne rend que les diapositives qui ont changé, et seules celles-ci sont remplacées dans
 l'aperçu.
+
+La police mathématique et les images des emoji ne sont pas dans le module : la page télécharge chacune la première fois qu'un diaporama en a besoin, si bien que le module pèse 8 136 679 octets au lieu d'environ 10,5 Mo. La police (838 508 octets) arrive avec la première formule, les images (1 767 960 octets) avec le premier emoji. Un diaporama qui n'a ni l'un ni l'autre ne télécharge rien. Tant qu'elles ne sont pas arrivées, une formule s'affiche sous la forme de son source TeX et un emoji sous la forme de texte écrit ; la diapositive est ensuite redessinée.
 
 ## Hors ligne et mises à jour {#offline}
 
@@ -382,3 +384,5 @@ Le cache couvre le chemin du playground et rien d'autre. Il ne stocke ni le cadr
 Le worker vidéo, qui lit les fichiers vidéo pour en tirer les affiches, est un module à part : il n'est téléchargé que la première fois qu'un diaporama utilise une vidéo, puis gardé dans le cache. Un diaporama sans vidéo ne le demande jamais.
 
 Après une nouvelle version, si la page que le navigateur détient ne correspond plus à ce qui était en cache (la copie en cache a disparu ou est abîmée et le serveur envoie maintenant la nouvelle), une brève page « Mise à jour… » s'affiche à la place d'une erreur. Elle supprime le service worker et le cache de ce playground et recharge une seule fois, de sorte que la nouvelle version se charge depuis le réseau et crée son propre cache. Si la page échoue encore après ce rechargement, elle ne recharge pas de nouveau : elle affiche un message qui demande d'effacer les données de ce site dans le navigateur. Rien venant du serveur ne s'exécute pendant ce temps.
+
+Comme le worker vidéo, la police mathématique et les images des emoji sont gardées dans le cache hors ligne une fois téléchargées. Cela vaut pour la page anglaise seulement : les pages des autres langues (`/de/playground/` et les suivantes) ne les mettent pas en cache pour le mode hors ligne.

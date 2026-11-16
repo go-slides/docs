@@ -18,8 +18,8 @@ les diapositives, les arrière-plans `![bg]`, les notes de l'orateur, les thème
   (`title`, `section`…) au lieu de répéter à quoi elle ressemble.
 
 {{< callout type="warning" >}}
-**v0.20.2.** Ces pages décrivent
-[go-slides/slides v0.20.2](https://github.com/go-slides/slides/releases/tag/v0.20.2)
+**v0.25.0.** Ces pages décrivent
+[go-slides/slides v0.25.0](https://github.com/go-slides/slides/releases/tag/v0.25.0)
 et sont publiées sous `/docs/0.20/`.
 {{< /callout >}}
 
