@@ -347,7 +347,7 @@ see [Self-hosting]({{< relref "self-hosting" >}}).
 The module is 7.8 MiB (8,136,679 bytes) as GitHub Pages serves it (gzip; Pages does not
 serve brotli). It is downloaded once with a progress bar, then cached by the
 browser until the next deploy. On an Apple M4 Max with Chrome 155, measured
-against the live page, the editor is ready 2.1 s after the page opens, 1.5 s
+against the live page with the v0.20.2 module (8.8 MiB, not the current size), the editor is ready 2.1 s after the page opens, 1.5 s
 of which is the download, and the first slides appear at 2.4 s. A change to
 the 100-slide benchmark deck reaches the preview in about 30 ms: go-slides
 renders only the slides that changed, and only those are replaced in the

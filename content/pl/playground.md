@@ -350,7 +350,7 @@ zobacz [Self-hosting]({{< relref "self-hosting" >}}).
 Moduł ma 7,8 MiB (8 136 679 bajtów) w postaci, w jakiej serwuje go GitHub Pages (gzip; Pages nie
 serwuje brotli). Jest pobierany raz z paskiem postępu, potem trzymany w pamięci podręcznej
 przeglądarki do następnego wdrożenia. Na Apple M4 Max z Chrome 155, mierzone
-na żywej stronie, edytor jest gotowy 2,1 s po otwarciu strony, z czego 1,5 s
+na żywej stronie z modułem z v0.20.2 (8,8 MiB, nie obecny rozmiar), edytor jest gotowy 2,1 s po otwarciu strony, z czego 1,5 s
 to pobieranie, a pierwsze slajdy pojawiają się po 2,4 s. Zmiana w
 100-slajdowej prezentacji testowej dociera do podglądu w około 30 ms: go-slides
 renderuje tylko slajdy, które się zmieniły, i tylko te są wymieniane w

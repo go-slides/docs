@@ -363,7 +363,7 @@ authentification : voir [Auto-hébergement]({{< relref "self-hosting" >}}).
 Le module pèse 7,8 Mio (8 136 679 octets) tel que GitHub Pages le sert (gzip ; Pages ne
 sert pas de brotli). Il est téléchargé une fois avec une barre de progression, puis mis en cache par le
 navigateur jusqu'au prochain déploiement. Sur un Apple M4 Max avec Chrome 155, mesuré
-sur la page en ligne, l'éditeur est prêt 2,1 s après l'ouverture de la page, dont 1,5 s
+sur la page en ligne avec le module de la v0.20.2 (8,8 Mio, et non la taille actuelle), l'éditeur est prêt 2,1 s après l'ouverture de la page, dont 1,5 s
 de téléchargement, et les premières diapositives apparaissent à 2,4 s. Une modification de
 la présentation de référence de 100 diapositives atteint l'aperçu en 30 ms environ : go-slides
 ne rend que les diapositives qui ont changé, et seules celles-ci sont remplacées dans

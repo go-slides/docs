@@ -367,7 +367,7 @@ einer Anmeldung: siehe [Self-Hosting]({{< relref "self-hosting" >}}).
 Das Modul umfasst 7,8 MiB (8.136.679 Byte), wie GitHub Pages es ausliefert (gzip; Pages liefert
 kein Brotli aus). Es wird einmal mit Fortschrittsbalken heruntergeladen und dann vom
 Browser bis zum nächsten Deploy zwischengespeichert. Auf einem Apple M4 Max mit Chrome 155, gemessen
-an der Live-Seite, ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon 1,5 s
+an der Live-Seite mit dem Modul von v0.20.2 (8,8 MiB, nicht die aktuelle Größe), ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon 1,5 s
 für den Download, und die ersten Folien erscheinen nach 2,4 s. Eine Änderung am
 Benchmark-Foliensatz mit 100 Folien erreicht die Vorschau in etwa 30 ms: go-slides
 rendert nur die Folien neu, die sich geändert haben, und nur diese werden in der

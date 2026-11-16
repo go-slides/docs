@@ -370,7 +370,7 @@ sesión: consulte [Autoalojamiento]({{< relref "self-hosting" >}}).
 El módulo pesa 7,8 MiB (8 136 679 bytes) tal como lo sirve GitHub Pages (gzip; Pages no sirve
 brotli). Se descarga una sola vez con una barra de progreso y luego el navegador
 lo conserva en caché hasta el siguiente despliegue. En un Apple M4 Max con Chrome
-155, medido sobre la página en línea, el editor está listo 2,1 s después de abrir
+155, medido sobre la página en línea con el módulo de la v0.20.2 (8,8 MiB, no el tamaño actual), el editor está listo 2,1 s después de abrir
 la página, 1,5 s de los cuales son la descarga, y las primeras diapositivas
 aparecen a los 2,4 s. Un cambio en la presentación de prueba de 100 diapositivas
 llega a la vista previa en unos 30 ms: go-slides renderiza solo las diapositivas

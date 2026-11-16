@@ -358,7 +358,7 @@ vedi [Self-hosting]({{< relref "self-hosting" >}}).
 Il modulo è di 7,8 MiB (8.136.679 byte) come lo serve GitHub Pages (gzip; Pages non
 serve brotli). Viene scaricato una volta con una barra di avanzamento, poi messo in cache dal
 browser fino al prossimo deploy. Su un Apple M4 Max con Chrome 155, misurato
-sulla pagina pubblicata, l'editor è pronto 2,1 s dopo l'apertura della pagina, di cui 1,5 s
+sulla pagina pubblicata con il modulo della v0.20.2 (8,8 MiB, non la dimensione attuale), l'editor è pronto 2,1 s dopo l'apertura della pagina, di cui 1,5 s
 sono il download, e le prime slide compaiono a 2,4 s. Una modifica alla
 presentazione di benchmark da 100 slide raggiunge l'anteprima in circa 30 ms: go-slides
 rende solo le slide cambiate, e solo quelle vengono sostituite
