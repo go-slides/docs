@@ -1,0 +1,391 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>go-slides – Browser</title><link>https://go-slides.github.io/docs/0.25/de/tags/browser/</link><description>Recent content in Browser on go-slides</description><generator>Hugo -- gohugo.io</generator><language>de</language><atom:link href="https://go-slides.github.io/docs/0.25/de/tags/browser/index.xml" rel="self" type="application/rss+xml"/><item><title>Playground</title><link>https://go-slides.github.io/docs/0.25/de/playground/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://go-slides.github.io/docs/0.25/de/playground/</guid><description>
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://go-slides.github.io/de/playground/" target="_blank" rel="noopener"&gt;Playground öffnen →&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Der Playground ist go-slides selbst, v0.25.0, nach WebAssembly kompiliert und
+in Ihrem Browser ausgeführt. Tippen Sie links einen Foliensatz; rechts
+folgen die Folien. Nichts wird an einen Server gesendet: weder der Foliensatz noch ein Link zum Teilen.&lt;/p&gt;
+&lt;p&gt;Die Oberfläche des Playgrounds (Menüband, Hilfe, Meldungen) spricht die Sprache
+der Seite: Öffne &lt;code&gt;/de/playground/&lt;/code&gt; für Deutsch, und ebenso für die zwölf
+Sprachen dieser Website. Die Sprachauswahl der Seite ändert sie, und deine Wahl
+bleibt in diesem Browser gespeichert; ein Link, der eine Sprache nennt,
+gewinnt immer. Die Beispielpräsentationen bleiben englisch. Ukrainisch,
+Russisch, Chinesisch, Japanisch und Koreanisch werden mit einer Teilmenge von
+Noto Sans (0,06 bis 2,3 MiB) dargestellt, die die Seite nur für diese Sprachen
+herunterlädt.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="what-it-has"&gt;Was er bietet&lt;span class="hx:absolute hx:-mt-20" id="what-it-has"&gt;&lt;/span&gt;
+&lt;a href="#what-it-has" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Live-Vorschau&lt;/strong&gt; jeder Folie, außerhalb des Threads der Seite gerendert (ein Web
+Worker), sodass das Tippen nie darauf wartet. Klicken Sie auf eine Folie, um den Editor
+zu ihrer Zeile springen zu lassen; bewegen Sie den Cursor, und die Vorschau scrollt zu ihrer Folie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Bildschirmpräsentation&lt;/strong&gt;: die Präsentation selbst, mit Tastatur,
+Bedienelementen auf dem Bildschirm und den Übergängen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Referentenansicht&lt;/strong&gt;: &lt;strong&gt;Present&lt;/strong&gt; (oder &lt;code&gt;p&lt;/code&gt; in der Bildschirmpräsentation) öffnet sie in einem
+zweiten Fenster: die aktuelle Folie, der nächste Schritt, die Sprechernotizen (die
+&lt;code&gt;&amp;lt;!-- comments --&amp;gt;&lt;/code&gt; des Foliensatzes), eine Uhr und ein Timer. Die Pfeiltasten, die Leertaste,
+Pos1 und Ende funktionieren in beiden Fenstern, und jedes folgt dem anderen, auch
+wenn Sie den Foliensatz bearbeiten. Öffnet sich das Fenster nicht, erlauben Sie Pop-ups für
+die Website. Die Übersichtsansicht (&lt;code&gt;o&lt;/code&gt;) gibt es nur auf der heruntergeladenen Seite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vervollständigung&lt;/strong&gt; beim Tippen: Direktivenschlüssel (Spot-Direktiven mit &lt;code&gt;_&lt;/code&gt; in Kommentaren),
+die Werte von &lt;code&gt;kind&lt;/code&gt;, &lt;code&gt;theme&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;paginate&lt;/code&gt; sowie Vorlagenfunktionen
+und Datenfelder innerhalb von &lt;code&gt;{{ }}&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hilfe&lt;/strong&gt; zu dem, was unter dem Cursor steht: eine Direktive, ein Kind (die Art einer Folie; was es setzt),
+eine Vorlagenfunktion. Der Hilfebereich verlinkt auch auf diese Seiten. Seit v0.16.0
+folgt die Hilfe zu den Direktiven der Sprache der Oberfläche, in 11 Sprachen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Probleme&lt;/strong&gt; in ihrer Zeile: Fehler in Vorlagen, YAML und HCL werden im Editor hervorgehoben
+und darunter aufgelistet, und die Vorschau behält den letzten Foliensatz,
+der sich rendern ließ.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Beispiele&lt;/strong&gt;: ein Willkommens-Foliensatz, Vorlagen, die Folien erzeugen, Kinds,
+ein HCL-Front-Matter, Themes und Spot-Direktiven sowie Mathematik, Bilder und
+Hintergründe (&lt;code&gt;![bg]&lt;/code&gt;, ein geteiltes &lt;code&gt;![bg left:40%]&lt;/code&gt;, Filter).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dateien&lt;/strong&gt;: Der Bereich links vom Editor ist das Projekt des Foliensatzes, so angeordnet,
+wie der &lt;a href="https://go-slides.github.io/docs/0.25/de/cli/"&gt;Befehl&lt;/a&gt; und die
+&lt;a href="https://go-slides.github.io/docs/0.25/de/vscode/"&gt;VS-Code-Erweiterung&lt;/a&gt; es lesen: &lt;code&gt;deck.md&lt;/code&gt;,
+&lt;code&gt;slides.yaml&lt;/code&gt;, &lt;code&gt;themes/&lt;/code&gt;, &lt;code&gt;kinds/&lt;/code&gt;, &lt;code&gt;media/&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Klicken Sie auf eine Datei, um sie zu bearbeiten. Der Editor färbt sie nach ihrer Sprache ein
+(Markdown, YAML, HCL, JSON, CSS) und markiert ihre Probleme.&lt;/li&gt;
+&lt;li&gt;Rechtsklick (oder Umschalt+F10) für Neue Datei, Neuer Ordner, Umbenennen (F2),
+Löschen (fragt vorher nach) und Neues Theme / Neues Kind. Ziehen Sie eine Datei auf einen Ordner,
+um sie zu verschieben. Die Tastaturbedienung folgt dem WAI-ARIA-Tree-Muster, einschließlich
+Type-ahead.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ New theme&lt;/strong&gt; erzeugt &lt;code&gt;themes/my-gaia.css&lt;/code&gt; (oder auf Basis von default,
+uncover): ein &lt;code&gt;@import&lt;/code&gt; des eingebauten Themes und die Regeln, die Sie ergänzen. Es
+erscheint in der Theme-Liste. &lt;strong&gt;New kind&lt;/strong&gt; und &lt;strong&gt;New data file&lt;/strong&gt; beginnen ebenfalls mit
+Vorlagen. Jedes wird in &lt;code&gt;slides.yaml&lt;/code&gt; aufgeführt, sodass &lt;code&gt;slides build deck.md&lt;/code&gt;
+es findet.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project ▸ Download project (.zip)&lt;/strong&gt; sichert alles. Entpackt, baut
+&lt;code&gt;slides build deck.md&lt;/code&gt; es. &lt;strong&gt;Open project&lt;/strong&gt; nimmt eine &lt;code&gt;.zip&lt;/code&gt;-Datei oder einen
+Ordner wieder entgegen. Ein Archiv, das seinen Ordner verlässt (&lt;code&gt;..&lt;/code&gt;, absolute Pfade),
+mehr als 256 Dateien oder 8 MiB in einer Datei enthält oder sich auf mehr als das 100-Fache
+entpackt, wird abgelehnt.&lt;/li&gt;
+&lt;li&gt;Alles wird zusammen mit dem Entwurf in diesem Browser gespeichert. Ein Projekt fasst
+bis zu 64 MiB, und die Zeile unter den Dateien zeigt, wie viel belegt ist.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Medien&lt;/strong&gt;: Ziehen Sie ein Bild, ein Video oder einen Ton auf den Editor oder fügen Sie es ein, und es
+landet in &lt;code&gt;media/&lt;/code&gt;, und der Foliensatz benennt es: &lt;code&gt;![](media/photo.png)&lt;/code&gt;. Ziehen Sie
+Dateien auf einen Ordner des Bereichs, um sie dort abzulegen. Der Foliensatz bleibt klein und
+lesbar, und nichts wird hochgeladen. Die Sandbox der Vorschau lädt sie,
+ohne geöffnet zu werden (die Seite reicht ihr die Bytes). &lt;strong&gt;Save as ▸ HTML
+page&lt;/strong&gt; legt sie in die Seite. Auch &lt;code&gt;https:&lt;/code&gt;-Bilder funktionieren, aber der Browser
+holt sie von ihrem Server, der dann Ihre Adresse sieht. Die
+Vorschau sendet keinen Referrer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Größenveränderbare Bereiche&lt;/strong&gt;: Der Dateibereich, der Editor, die Folienminiaturen, die
+Vorschau und die Hilfe sind durch Leisten getrennt, die Sie ziehen können (der Mauszeiger
+wird darüber zum Größenänderungs-Cursor). Der Bereich neben der Leiste erhält den Platz,
+die anderen behalten ihre Größe. Doppelklicken Sie auf eine Leiste oder drücken Sie die Eingabetaste darauf, um den Bereich
+zu schließen und wieder zu öffnen. Per Tastatur wechselt F6 zwischen
+den Leisten, die Pfeiltasten verschieben eine um 16 px, Pos1 und Ende bringen den davorliegenden Bereich
+auf seine kleinste und größte Größe, und Escape führt zurück in den Editor.
+Der Reiter View schaltet Bereiche weiterhin ab. Die von Ihnen eingestellten Größen werden in diesem
+Browser mit dem Entwurf gespeichert; die Standardgrößen (190, 168 und 280 px, wobei sich Editor
+und Vorschau den Rest im Verhältnis 6 zu 5 teilen) werden nie gespeichert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Bereiche schließen&lt;/strong&gt;: Jeder Bereich hat in seiner Kopfzeile eine kleine
+×-Schaltfläche mit Tooltip. Die anderen Bereiche teilen sich seinen Platz,
+und der Bereich kehrt mit der Breite zurück, die er hatte. Zum Wiedereinblenden
+dient sein Schalter im Reiter View (jeder Bereich hat einen). Editor und Vorschau lassen sich jeweils schließen, aber nie beide:
+Der letzte weigert sich, seine Schaltfläche ist ausgegraut, und der Tooltip
+sagt, warum. Per Tastatur erreichen Sie mit F6 und dann Tab oder
+Umschalt+Tab eine ×-Schaltfläche; mit Eingabetaste oder Leertaste schließen
+Sie den Bereich, und die Tastatur kehrt in den Editor zurück. Welche Bereiche
+offen sind, wird mit den Größen in diesem Browser gespeichert (Versions,
+GitHub und der Theme-Editor, für eine Aufgabe geöffnet, starten geschlossen).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Format&lt;/strong&gt;: Der Reiter Format bearbeitet das Markdown für Sie, und jeder Druck
+ist ein Schritt für Rückgängig.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Text&lt;/strong&gt;: Bold, Italic, Strikethrough und Inline code wirken auf die Auswahl
+oder das Wort am Cursor und schalten um (Strg+B, Strg+I, Strg+Umschalt+X und
+Strg+E; Cmd auf dem Mac). Eine Schaltfläche erscheint gedrückt, wenn der Cursor innerhalb
+ihrer Auszeichnung steht. Markdown kennt kein Unterstreichen: Underline (Strg+U) umschließt den Text mit
+&lt;code&gt;&amp;lt;u&amp;gt;…&amp;lt;/u&amp;gt;&lt;/code&gt;, einem Tag, das die Standard-HTML-Allowlist von Marp beibehält, sodass es auch bei ausgeschaltetem
+rohem HTML funktioniert.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paragraph&lt;/strong&gt;: Heading 1 bis 3 (Strg+Alt+1..3), Aufzählung (Strg+Umschalt+8),
+Nummerierung (Strg+Umschalt+7) und ein Zitat wirken auf die ausgewählten Zeilen und schalten um.
+Die horizontale Linie ist das Tag &lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;: &lt;code&gt;---&lt;/code&gt;, &lt;code&gt;***&lt;/code&gt; und &lt;code&gt;___&lt;/code&gt; würden in Marp jeweils
+eine neue Folie beginnen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Table&lt;/strong&gt;: Ein Raster wählt Spalten und Zeilen. Am Cursor in einer Tabelle
+fügen Sie eine Zeile oder Spalte hinzu oder entfernen sie und richten die Spalte aus (&lt;code&gt;:--&lt;/code&gt;, &lt;code&gt;:-:&lt;/code&gt;,
+&lt;code&gt;--:&lt;/code&gt;); die Tabelle wird nach jeder Änderung ausgerichtet neu geschrieben.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slide text&lt;/strong&gt; links, zentriert oder rechts schreibt einen &lt;code&gt;&amp;lt;style scoped&amp;gt;&lt;/code&gt;-Block in
+die aktuelle Folie. Marp kennt keine Ausrichtungssyntax, und ein &lt;code&gt;style&lt;/code&gt;-Attribut
+passiert die Standard-HTML-Allowlist nicht, der Scoped-Block aber schon, sodass er bei ausgeschaltetem
+rohem HTML funktioniert und in der Vorschau, auf der HTML-Seite und im PDF erscheint.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Link&lt;/strong&gt; (Strg+K) schreibt &lt;code&gt;[text](url)&lt;/code&gt; mit markierter URL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hervorhebung&lt;/strong&gt; der Schlüssel des Front-Matters in beliebiger Tiefe, in YAML (auch
+in &lt;code&gt;{a: 1}&lt;/code&gt;-Maps) und in HCL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Theme&lt;/strong&gt;-Auswahl: default, gaia, uncover, die Themes des Projekts
+(&lt;code&gt;themes/*.css&lt;/code&gt;) und die Themes, die der Foliensatz definiert (&lt;code&gt;/* @theme name */&lt;/code&gt; in einem
+&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;). Sie schreibt &lt;code&gt;theme:&lt;/code&gt; in das Front-Matter, YAML oder HCL, sodass ein geteilter Link es beibehält,
+und folgt dem Front-Matter, wenn Sie es bearbeiten.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Die Vorschau &lt;strong&gt;behält ihre Position&lt;/strong&gt; beim Tippen: Nur die Folien, die sich
+geändert haben, werden ersetzt, und ein Themenwechsel öffnet die Vorschau
+wieder an derselben Folie.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Link zum Teilen&lt;/strong&gt;: Der Foliensatz reist im Link selbst (in dessen &lt;code&gt;#&lt;/code&gt;-Teil,
+komprimiert), sodass das Öffnen des Links den Foliensatz öffnet. Links fassen bis zu
+64 KiB komprimiert, und nur den Foliensatz: Enthält das Projekt mehr
+(Themes, Kinds, Medien), weist Share darauf hin und bietet die &lt;code&gt;.zip&lt;/code&gt;-Datei an.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Save as&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;die HTML-Seite, dieselbe wie von &lt;code&gt;slides deck.md&lt;/code&gt; geschrieben;&lt;/li&gt;
+&lt;li&gt;ein &lt;strong&gt;PDF&lt;/strong&gt; (Vektor, Text auswählbar, mit Gliederung);&lt;/li&gt;
+&lt;li&gt;ein editierbarer &lt;strong&gt;PowerPoint&lt;/strong&gt;- oder &lt;strong&gt;OpenDocument&lt;/strong&gt;-Foliensatz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sie entstehen in Ihrem Browser, mit demselben Code wie &lt;code&gt;slides --pdf&lt;/code&gt;,
+&lt;code&gt;--pptx&lt;/code&gt; und &lt;code&gt;--odp&lt;/code&gt;: Das PDF des Benchmark-Foliensatzes mit 100 Folien ist
+byteidentisch mit dem des Befehls. Der erste Export lädt die Export-Engine herunter
+(etwa 5 MiB, einmalig; Ihr Browser behält sie bis zum nächsten Update),
+mit einer Fortschrittszeile, und kompiliert sie, während sie eintrifft. Danach lädt er nur die
+Schriften, die Ihre Folien zeichnen. Bei 3 MB/s ist das erste PDF des Willkommens-Foliensatzes
+in unter 3 Sekunden fertig. Der Foliensatz mit 100 Folien braucht dann etwa 3 Sekunden. Ein
+&lt;code&gt;https:&lt;/code&gt;-Bild wird nur eingebunden, wenn sein Server es erlaubt (CORS); &lt;code&gt;data:&lt;/code&gt;-Bilder
+immer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ihr Entwurf bleibt erhalten&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Der Foliensatz wird beim Tippen in diesem Browser gespeichert (IndexedDB, nur für diese
+Website) und kommt beim Neuladen zurück. Nichts wird irgendwohin gesendet. Die
+Textdateien des Projekts (Themes, Kinds, Daten, &lt;code&gt;slides.yaml&lt;/code&gt;) werden auf dieselbe Weise
+gespeichert, auch wenn Sie den Tab direkt nach dem Tippen schließen; Medien werden
+gespeichert, sobald sie abgelegt werden.&lt;/li&gt;
+&lt;li&gt;Ein geteilter Link öffnet seinen Foliensatz und behält Ihren Entwurf: &lt;strong&gt;Draft ▸ Restore my
+draft&lt;/strong&gt; holt ihn zurück.&lt;/li&gt;
+&lt;li&gt;Ein Beispiel, &lt;strong&gt;Draft ▸ Reset to the example&lt;/strong&gt; (fragt vorher nach) und
+ein anderer Tab löschen ihn ebenfalls nie: &lt;strong&gt;Draft ▸ Restore replaced&lt;/strong&gt; holt ihn
+zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; löscht alles Gespeicherte.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jeder Export rendert das Projekt, das die Vorschau zeigt: seine &lt;code&gt;slides.yaml&lt;/code&gt;,
+Themes, Kinds, Datendateien und Medien, die Medien im Dokument.&lt;/p&gt;
+&lt;p&gt;Bilder als Dateien (&lt;code&gt;--images&lt;/code&gt; von slides) entstehen nicht im Browser: Verwenden Sie den
+&lt;a href="https://go-slides.github.io/docs/0.25/de/cli/"&gt;Befehl&lt;/a&gt; oder die
+&lt;a href="https://go-slides.github.io/docs/0.25/de/vscode/"&gt;VS-Code-Erweiterung&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="theme-editor"&gt;Theme-Editor&lt;span class="hx:absolute hx:-mt-20" id="theme-editor"&gt;&lt;/span&gt;
+&lt;a href="#theme-editor" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Start ▸ Design ▸ Theme-Editor&lt;/strong&gt; öffnet einen Bereich, der eines der Themes
+des Projekts mit Reglern bearbeitet; die Vorschau folgt. Das Theme wird als
+Paketordner gehalten, &lt;code&gt;theme-src/&amp;lt;name&amp;gt;/&lt;/code&gt;; das Stylesheet, das die Vorschau und
+die Exporte lesen, &lt;code&gt;themes/&amp;lt;name&amp;gt;.css&lt;/code&gt;, wird daraus kompiliert: Was Sie sehen,
+ist, was Sie exportieren. Ein Theme-Paket, das Sie importieren (&lt;strong&gt;Importieren …&lt;/strong&gt;
+im Bereich, &lt;strong&gt;Medien hinzufügen …&lt;/strong&gt; oder per Ablegen), behält dort seine
+Dateien, sodass Sie es bearbeiten können.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Palette&lt;/strong&gt;: die Farben für Hintergrund, Text, Überschriften, Akzent und
+Links. Wählen Sie eine Farbe oder tippen Sie sie ein (&lt;code&gt;#1a2b3c&lt;/code&gt;, &lt;code&gt;rgb()&lt;/code&gt;,
+&lt;code&gt;hsl()&lt;/code&gt; oder einen Namen).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Typografie&lt;/strong&gt;: die Schriften für Text, Überschriften und Code mit ihren
+Größen und Stärken. Es gibt die generischen und gängigen Schriften sowie die,
+die Sie hinzufügen (&lt;strong&gt;Schrift hinzufügen …&lt;/strong&gt;: &lt;code&gt;.woff2&lt;/code&gt;, &lt;code&gt;.woff&lt;/code&gt;, &lt;code&gt;.ttf&lt;/code&gt; oder
+&lt;code&gt;.otf&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logo&lt;/strong&gt;: ein Bild (&lt;code&gt;.svg&lt;/code&gt;, &lt;code&gt;.png&lt;/code&gt;), wohin es kommt (eine Ecke oder der
+ganze Hintergrund) und seine Größe. &lt;strong&gt;Seitenzahl und Fußzeile&lt;/strong&gt;: wohin die
+Seitenzahl kommt, dazu Größen und Ausrichtung.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Angaben&lt;/strong&gt;: was &lt;code&gt;theme.hcl&lt;/code&gt; sagt: Version, Beschreibung, Autoren, Lizenz,
+Webseite, das Basis-Theme (&lt;code&gt;extends&lt;/code&gt;) und die nötige go-slides-Version.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kontrast (WCAG)&lt;/strong&gt;: für jeden Text auf seinem Hintergrund das Verhältnis
+und seine Stufe, &lt;code&gt;AA&lt;/code&gt; oder &lt;code&gt;AAA&lt;/code&gt;, oder „Nicht bestanden“, live.
+Überschriften zählen als großer Text (3:1 genügt für AA; normaler Text
+braucht 4,5:1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;CSS bearbeiten&lt;/strong&gt; zeigt das Stylesheet des Themes im Editor. Die Regler
+schreiben nur in einen Block, der von zwei &lt;code&gt;gsta:visual&lt;/code&gt;-Kommentaren
+eingefasst ist, und lesen ihn wieder ein, wenn Sie seine Werte von Hand ändern.
+Was Sie außerhalb des Blocks schreiben, wird nie angefasst. Fügen Sie im Block
+etwas hinzu, das die Regler nicht darstellen können, hören sie auf zu
+schreiben und der Bereich sagt es; &lt;strong&gt;Block wiederherstellen&lt;/strong&gt; schreibt ihn aus
+den enthaltenen Werten neu und sonst nichts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Importieren …&lt;/strong&gt; öffnet ein &lt;code&gt;.gsta.xz&lt;/code&gt; oder ein einzelnes &lt;code&gt;.css&lt;/code&gt;. Ein Paket
+wird so geprüft, wie &lt;code&gt;slides theme verify&lt;/code&gt; es prüft, mit denselben Grenzen: Ein
+Paket, das nicht sicher ist (ein Pfad, der es verlässt, ein Link, ein Skript in
+einem SVG, eine entfernte &lt;code&gt;url()&lt;/code&gt;, eine Prüfsumme, die nicht stimmt), wird mit
+seinem &lt;code&gt;theme.*&lt;/code&gt;-Code unter Probleme abgelehnt, und nichts ändert sich. In
+einem einzelnen Stylesheet wird ein &lt;code&gt;@import &amp;quot;gaia&amp;quot;;&lt;/code&gt; zum Basis-Theme
+(&lt;code&gt;extends&lt;/code&gt;), weil ein Paket dort seine Basis nennt. Eine Schrift, die Sie
+hinzufügen, hat die Lizenz &lt;code&gt;LicenseRef-unspecified&lt;/code&gt;, bis Sie sie unter Angaben
+nennen.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;.gsta.xz exportieren&lt;/strong&gt; baut das Paket in Ihrem Browser und liest es so
+wieder ein, wie es &lt;code&gt;slides theme verify&lt;/code&gt; tut, sodass die Datei es besteht;
+&lt;strong&gt;CSS exportieren&lt;/strong&gt; lädt das kompilierte Stylesheet herunter. Nichts wird
+hochgeladen. Jede Änderung ist ein Schritt von &lt;strong&gt;Rückgängig&lt;/strong&gt; (Änderungen
+desselben Reglers hintereinander sind ein Schritt) und behält, was sie ersetzt,
+als Version; &lt;strong&gt;Version speichern&lt;/strong&gt; hält das Theme und seine Version unter
+seinem Namen im Versionen-Bereich fest.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="undo-redo-and-versions"&gt;Rückgängig, Wiederholen und Versionen&lt;span class="hx:absolute hx:-mt-20" id="undo-redo-and-versions"&gt;&lt;/span&gt;
+&lt;a href="#undo-redo-and-versions" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Undo&lt;/strong&gt; und &lt;strong&gt;Redo&lt;/strong&gt; (Rückgängig und Wiederholen) stehen im Reiter Home und
+auf Strg+Z, Strg+Umschalt+Z oder Strg+Y (Cmd auf dem Mac). Sie nehmen die
+letzte Änderung der angezeigten Datei zurück (jede Datei hat ihren eigenen
+Verlauf) und danach die letzte Operation am ganzen Projekt: ein gewähltes
+Beispiel, Reset, ein geöffnetes .zip oder ein geöffneter Ordner, ein
+wiederhergestellter Entwurf, eine gelöschte oder umbenannte Datei oder ein
+solcher Ordner, eine wiederhergestellte Version. Redo bringt alles so zurück,
+wie es war, als Undo gedrückt wurde.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Versionen&lt;/strong&gt; halten das ganze Projekt in diesem Browser fest, ohne dass etwas
+irgendwohin gesendet wird. Eine Version entsteht kurz nachdem Sie aufhören zu
+tippen (höchstens alle 2 Minuten), vor jeder Operation am ganzen Projekt und bei
+jedem Export und Teilen-Link. &lt;strong&gt;Save version…&lt;/strong&gt; hält eine unter einem Namen
+fest. &lt;strong&gt;Home ▸ Versions&lt;/strong&gt; öffnet den Bereich Versions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview&lt;/strong&gt; zeigt eine Version in der Vorschau.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compare with now&lt;/strong&gt; zeigt die Änderungen jeder Datei Zeile für Zeile, inline
+oder nebeneinander; F7 und Umschalt+F7 springen zwischen den Änderungen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Restore&lt;/strong&gt; stellt eine Version wieder her; Undo nimmt die Wiederherstellung
+zurück.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; entfernt eine Version.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Was behalten wird: die 20 neuesten automatischen Versionen, dann eine pro Stunde
+für einen Tag und eine pro Tag für einen Monat. Benannte Versionen bleiben, bis
+Sie sie löschen (höchstens 50). Alle Versionen zusammen belegen höchstens
+96 MiB, und unveränderte Dateien werden nur einmal gespeichert. Ist der
+Speicher des Browsers voll, gehen die ältesten automatischen Versionen zuerst.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="github"&gt;GitHub&lt;span class="hx:absolute hx:-mt-20" id="github"&gt;&lt;/span&gt;
+&lt;a href="#github" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Home ▸ History ▸ GitHub&lt;/strong&gt; öffnet einen Bereich, der den Ordner einer
+Präsentation aus einem GitHub-Repository lädt und Ihre Änderungen als
+Pull-Request zurückschlägt. Tragen Sie ein:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repository (Besitzer/Name)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch (leer: der Standard)&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ordner (leer: die Wurzel)&lt;/strong&gt;: der Ordner muss eine &lt;code&gt;deck.md&lt;/code&gt; enthalten.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Über diesen Feldern zeigt der Bereich den &lt;strong&gt;Git-Frame&lt;/strong&gt;: ein kleines Panel, in
+dem Sie die Forge wählen, den &lt;strong&gt;Token&lt;/strong&gt; (maskiert) eintippen, &lt;strong&gt;Auf diesem Gerät
+merken&lt;/strong&gt; ankreuzen und &lt;strong&gt;Verbinden&lt;/strong&gt; (oder &lt;strong&gt;Mit GitLab anmelden&lt;/strong&gt;) bzw.
+&lt;strong&gt;Trennen&lt;/strong&gt; drücken. Der Frame ist eine Seite einer anderen Site,
+&lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, eingebettet in den Playground: &lt;strong&gt;Die
+Playground-Seite sieht Ihren Token nie&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Der Token ist ein feingranularer persönlicher Zugriffstoken
+(&lt;a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener"&gt;einen erstellen&lt;/a&gt;),
+beschränkt auf die gewählten Repositories, mit den Berechtigungen Contents
+Lesen/Schreiben und Pull requests Lesen/Schreiben (Metadata Lesen ist
+inbegriffen). Dann:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Laden&lt;/strong&gt; ersetzt das Projekt durch den Ordner von GitHub. Undo nimmt es
+zurück, und das Projekt, wie es war, bleibt als Version „Von GitHub“
+erhalten.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Änderungen vorschlagen…&lt;/strong&gt; fragt nach einem Titel, legt einen neuen Branch
+&lt;code&gt;slides/&amp;lt;Titel&amp;gt;-&amp;lt;Datum-Uhrzeit&amp;gt;&lt;/code&gt; an und öffnet einen Pull-Request. Es
+schreibt nie in einen bestehenden Branch oder in den Standard-Branch.
+&lt;strong&gt;Pull-Request öffnen&lt;/strong&gt; führt Sie dorthin.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nach Änderungen sehen&lt;/strong&gt; vergleicht die neuere Version auf GitHub mit Ihrer
+in der Ansicht Compare. &lt;strong&gt;Ihre übernehmen&lt;/strong&gt; lädt sie.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Für GitHub wird kein Proxy verwendet: Der Frame spricht direkt mit GitHub.&lt;/p&gt;
+&lt;p&gt;Der Token wird im Frame eingetippt und bleibt auf dessen Site. Die
+Playground-Seite kann ihn nicht lesen (der Frame hat einen anderen Origin mit
+eigenem Speicher), kein Befehl, den die Seite senden kann, liefert ihn zurück,
+und die Content Security Policy der Seite erlaubt ihr überhaupt keine
+Verbindung zu GitHub oder GitLab. Der Frame sendet den Token nur an
+&lt;code&gt;api.github.com&lt;/code&gt; (oder &lt;code&gt;gitlab.com&lt;/code&gt;). Er wird nie im Entwurf, in den Versionen,
+in Freigabelinks oder Exporten gespeichert und erreicht weder die Vorschau der
+Folien noch den Render-Worker. &lt;strong&gt;Auf diesem Gerät merken&lt;/strong&gt; legt ihn im eigenen
+localStorage des Frames ab, auf &lt;code&gt;go-slides-usercontent.github.io&lt;/code&gt;, nicht im
+Speicher des Playgrounds, bis Sie &lt;strong&gt;Trennen&lt;/strong&gt; wählen (oder Forget my drafts).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Wenn Sie eine frühere Version benutzt haben:&lt;/strong&gt; Ein Token, den sie im eigenen
+Speicher der Playground-Seite abgelegt hatte, wird beim ersten Öffnen dieser
+Version entfernt, und der Bereich teilt es Ihnen mit. Tippen Sie ihn im Frame
+erneut ein (und kreuzen Sie Merken an, wenn er gespeichert bleiben soll).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Änderungen vorschlagen…&lt;/strong&gt; schreibt, deshalb fragt der Frame zuerst nach: Er
+zeigt den Titel, das Repository und die Anzahl der Dateien und wartet auf Ihren
+Klick auf seine eigene Schaltfläche &lt;strong&gt;Erlauben&lt;/strong&gt; (höchstens zwei Minuten, ein
+Vorschlag nach dem anderen). Vor Ihrem Klick wird nichts geschrieben.&lt;/p&gt;
+&lt;p&gt;Zwei Risiken bleiben, denn sie gehören zu jeder Seite, die einen Frame
+einbettet. Ein in die Playground-Seite eingeschleustes Skript kann den Nonce des
+Frames lesen und die Befehle des Frames senden: den geladenen Ordner lesen oder
+einen Vorschlag anfordern (den Sie im Frame trotzdem erlauben müssen). Und es
+kann ein gefälschtes Bedienfeld über den Frame legen und selbst nach Ihrem Token
+fragen: Wenn der Frame falsch aussieht oder nicht dort ist, wo er sein sollte,
+geben Sie den Token nicht ein. Keines von beiden erlaubt es, den Token zu lesen,
+den der Frame hält. Bevorzugen Sie einen Token, der auf die benötigten
+Repositories beschränkt ist. Für Teams hält der selbst gehostete Servermodus (in
+Vorbereitung) die Token auf dem Server.&lt;/p&gt;
+&lt;h3 data-hextra-search-id="gitlab"&gt;GitLab.com&lt;span class="hx:absolute hx:-mt-20" id="gitlab"&gt;&lt;/span&gt;
+&lt;a href="#gitlab" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Der Bereich hat eine Liste der Forges: &lt;strong&gt;GitHub&lt;/strong&gt; und &lt;strong&gt;GitLab.com&lt;/strong&gt;. Für
+GitLab geben Sie entweder einen persönlichen Zugriffstoken mit dem Scope &lt;code&gt;api&lt;/code&gt;
+an oder wählen &lt;strong&gt;Mit GitLab anmelden&lt;/strong&gt; (OAuth-Autorisierungscode mit PKCE, ohne
+Geheimnis). Die Anmeldung öffnet ein kleines Fenster der Site des
+Frames und kehrt dorthin zurück; die Playground-Seite, in der Sie arbeiten,
+wird nicht verlassen. Ihre Tokens bleiben nur im Speicher des Frames (nie auf
+dem Gerät gemerkt, auch nicht mit &lt;strong&gt;Auf diesem Gerät merken&lt;/strong&gt;), erneuern sich
+vor dem Ablauf selbst, und &lt;strong&gt;Trennen&lt;/strong&gt; widerruft sie bei GitLab. Eine nicht vom
+Frame begonnene Anmeldung oder ein wiederverwendeter Link wird abgelehnt. Die Anmeldung steht bereit, sobald die GitLab-Anwendung der
+Seite registriert ist; bis dahin nutzen Sie einen persönlichen Zugriffstoken.&lt;/p&gt;
+&lt;p&gt;Anfragen gehen nur an &lt;code&gt;api.github.com&lt;/code&gt; und &lt;code&gt;gitlab.com&lt;/code&gt;, und nur vom Frame: Die
+Playground-Seite stellt keine und sendet keinen Referrer.&lt;/p&gt;
+&lt;p&gt;Warum &lt;code&gt;api&lt;/code&gt;? Die
+&lt;a href="https://docs.gitlab.com/security/tokens/access_token_scopes/" target="_blank" rel="noopener"&gt;Scope-Tabelle&lt;/a&gt;
+von GitLab sagt zu &lt;code&gt;write_repository&lt;/code&gt; „Does not support API authentication“:
+Er gilt nur für Git über HTTP, das GitLab ohne CORS ausliefert, ein Browser kann
+ihn also nicht nutzen. Vorschläge laufen über die REST-API, die &lt;code&gt;api&lt;/code&gt; verlangt,
+„complete read and write access to the API“. Ein gestohlener &lt;code&gt;api&lt;/code&gt;-Token kann
+alles, was sein Benutzer über die API tun kann, in jedem Projekt, das dieser
+Benutzer erreicht. Bevorzugen Sie einen Projekt- oder Gruppen-Zugriffstoken, der
+auf die Präsentations-Repositories beschränkt ist, oder ein eigenes GitLab-Konto,
+das nur Mitglied der Präsentationsprojekte ist.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="security"&gt;Sicherheit&lt;span class="hx:absolute hx:-mt-20" id="security"&gt;&lt;/span&gt;
+&lt;a href="#security" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der Foliensatz wird in einem iframe gezeigt, das ohne den Ursprung der Seite in einer Sandbox läuft: Er kann
+weder den Playground noch dessen Speicher erreichen, kein Formular absenden und
+nirgendwohin navigieren. Seine Seite trägt eine Content Security Policy, die nur ihre eigenen
+Skripte ausführt. Rohes HTML im Foliensatz folgt der Allowlist von Marp, wie es &lt;code&gt;slides&lt;/code&gt;
+standardmäßig tut. Ein Rendern, das länger als 5 Sekunden läuft (eine Vorlage mit Endlosschleife),
+wird abgebrochen.&lt;/p&gt;
+&lt;p&gt;Das Referentenfenster behält diese Sandbox. Es wird vom Playground
+selbst geöffnet und zeigt den Foliensatz in einem ebenso abgeschotteten iframe. Die beiden
+iframes können keinen Speicher teilen, deshalb reicht der Playground die Foliennummer
+in Nachrichten zwischen ihnen weiter. Kein Frame, der den Foliensatz ausführt, erhält den
+Ursprung des Playgrounds.&lt;/p&gt;
+&lt;p&gt;Die Medien des Projekts erreichen die Sandbox-Frames als Bytes in einer Nachricht, und
+jeder Frame erzeugt daraus seine eigenen &lt;code&gt;blob:&lt;/code&gt;-URLs, in seinem eigenen Ursprung. Eine &lt;code&gt;blob:&lt;/code&gt;-URL, die vom Playground
+erzeugt wurde, lädt dort nicht, und die Richtlinie der Frames
+erhält lediglich &lt;code&gt;blob:&lt;/code&gt; für Medien und Schriften hinzu.&lt;/p&gt;
+&lt;p&gt;Der Playground kann von Ihrem eigenen Rechner aus bereitgestellt werden, hinter
+einer Anmeldung: siehe &lt;a href="https://go-slides.github.io/docs/0.25/de/self-hosting/"&gt;Self-Hosting&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="size-and-speed"&gt;Größe und Geschwindigkeit&lt;span class="hx:absolute hx:-mt-20" id="size-and-speed"&gt;&lt;/span&gt;
+&lt;a href="#size-and-speed" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Das Modul umfasst 7,8 MiB (8.136.679 Byte), wie GitHub Pages es ausliefert (gzip; Pages liefert
+kein Brotli aus). Es wird einmal mit Fortschrittsbalken heruntergeladen und dann vom
+Browser bis zum nächsten Deploy zwischengespeichert. Auf einem Apple M4 Max mit Chrome 155, gemessen
+an der Live-Seite mit dem Modul von v0.20.2 (8,8 MiB, nicht die aktuelle Größe), ist der Editor 2,1 s nach dem Öffnen der Seite bereit, davon 1,5 s
+für den Download, und die ersten Folien erscheinen nach 2,4 s. Eine Änderung am
+Benchmark-Foliensatz mit 100 Folien erreicht die Vorschau in etwa 30 ms: go-slides
+rendert nur die Folien neu, die sich geändert haben, und nur diese werden in der
+Vorschau ersetzt.&lt;/p&gt;
+&lt;p&gt;Die Mathematikschrift und die Emoji-Bilder sind nicht im Modul enthalten: Die Seite lädt jedes davon, sobald eine Präsentation es zum ersten Mal braucht. Deshalb hat das Modul 8.136.679 Byte statt etwa 10,5 MB. Die Schrift (838.508 Byte) kommt mit der ersten Formel, die Bilder (1.767.960 Byte) mit dem ersten Emoji. Eine Präsentation mit keinem von beiden lädt auch keines davon. Bis sie da sind, wird eine Formel als ihr TeX-Quelltext angezeigt und ein Emoji als geschriebener Text; danach wird die Folie neu gezeichnet.&lt;/p&gt;
+&lt;h2 data-hextra-search-id="offline"&gt;Offline und Updates&lt;span class="hx:absolute hx:-mt-20" id="offline"&gt;&lt;/span&gt;
+&lt;a href="#offline" class="subheading-anchor" aria-label="Permalink für diesen Abschnitt"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Der erste Besuch lädt den Editor wie gewohnt herunter. Sobald er läuft, behält die Seite ihre Dateien im Cache des Browsers, unter dem Deployment, das sie geschrieben hat: das WebAssembly-Modul, seinen Loader, den Render-Worker, die Ladebilder und die Seite selbst, danach die Export-Engine und die Schriften bei ihrer ersten Verwendung. Der nächste Besuch startet aus diesem Cache, ohne das Netz danach zu fragen, und der Playground öffnet sich auch offline.&lt;/p&gt;
+&lt;p&gt;Jede Datei wird beim Speichern und bei jedem Lesen gegen den beim Deployment festgehaltenen SHA-256 geprüft. Eine beschädigte oder unvollständige Datei wird ignoriert: Stattdessen antwortet das Netz und der Cache wird neu geschrieben, sodass der Cache das Laden der Seite nie verhindern kann.&lt;/p&gt;
+&lt;p&gt;Die Seite fragt beim Start, wenn Sie zu ihrem Tab zurückkehren und alle zehn Minuten eine kleine Versionsdatei ab (nie im Cache). Ist eine neuere Version deployt, erscheint die Meldung „Eine neue Version ist verfügbar.“ mit &lt;strong&gt;Neu laden&lt;/strong&gt; und &lt;strong&gt;Später&lt;/strong&gt;. Nichts lädt von selbst neu: Neu laden speichert zuerst Ihr Projekt in diesem Browser, und die Seite stellt es wieder her. Die Dateien der vorherigen Version werden gelöscht, sobald die neue aktiv ist.&lt;/p&gt;
+&lt;p&gt;Der Cache gilt für den eigenen Pfad des Playgrounds und für nichts sonst. Er speichert weder den Git-Frame (eine andere Origin, deren Token-Speicher unberührt bleibt) noch etwas unter &lt;code&gt;/api/&lt;/code&gt; (die Git-Aufrufe des Servermodus) noch eine Anfrage mit Anmeldedaten.&lt;/p&gt;
+&lt;p&gt;Der Video-Worker, der Videodateien für ihre Vorschaubilder liest, ist ein eigenes Modul: Er wird erst heruntergeladen, wenn eine Präsentation zum ersten Mal ein Video verwendet, und bleibt danach im Cache. Eine Präsentation ohne Video lädt ihn nie.&lt;/p&gt;
+&lt;p&gt;Stimmt nach einer neuen Version die Seite, die der Browser hält, nicht mehr mit dem Zwischengespeicherten überein (die Kopie im Cache fehlt oder ist beschädigt, und der Server liefert nun die neue), erscheint statt eines Fehlers kurz eine Seite „Aktualisierung…“. Sie entfernt den Service Worker und den Cache dieses Playgrounds und lädt genau einmal neu, sodass die neue Version aus dem Netz geladen wird und ihren eigenen Cache anlegt. Schlägt die Seite danach immer noch fehl, lädt sie nicht erneut, sondern zeigt eine Meldung, die dazu auffordert, die Daten dieser Website im Browser zu löschen. Währenddessen läuft nichts vom Server.&lt;/p&gt;
+&lt;p&gt;Wie der Video-Worker bleiben die Mathematikschrift und die Emoji-Bilder nach dem Laden im Offline-Cache. Das gilt nur für die englische Seite: Die Seiten in den anderen Sprachen (&lt;code&gt;/fr/playground/&lt;/code&gt; und so weiter) legen sie nicht für den Offline-Betrieb im Cache ab.&lt;/p&gt;</description></item></channel></rss>
