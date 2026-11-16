@@ -61,6 +61,24 @@ Depuis la v0.5.0, le PPTX est composé de zones de texte, de formes et d'images 
 Pour la présentation de 100 diapositives, la v0.4.0 demandait 4,7 s, 4,8 Mio et 540 Mio. Le
 PPTX de marp-cli contient des images. L'essentiel de la taille d'une présentation modifiable tient aux polices intégrées.
 
+## Plusieurs cœurs {#several-cores}
+
+Mesuré avec la v0.26.0 : temps réel en ms avec 1, 2, 4 et 16 cœurs, face à marp-cli. La charge moyenne sur 1 minute était de 3 à 4. Le temps de marp-cli ne change pas avec le nombre de cœurs, car son `-P` ne fait que répartir des fichiers distincts entre des navigateurs. `slidesbench -cores` produit ce tableau. Les fichiers produits sont identiques à l'octet près à ceux de la v0.25.0.
+
+| Présentation, mode | 1 cœur | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 diapositives, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 diapositives, PNG | 745 | 395 | 225 | 222 | 2316 |
+| mathématiques et code, 20 diapositives, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 diapositives, PDF | 87 | 65 | 57 | 59 | 1382 |
+| mathématiques et code, 20 diapositives, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 diapositives, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| mathématiques et code, 20 diapositives, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 diapositives, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 diapositives, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Défaut connu.** Le PDF de 100 diapositives est plus lent que marp-cli, et le PDF et le PPTX de 100 diapositives ne gagnent rien avec les cœurs. C'est le cas depuis la v0.18.0 : le moteur reconstruit les instances de police variable pour chaque page, ce qui coûte 16 fois la mémoire et 3,5 à 4 fois le temps sur un cœur. Il est suivi dans [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) et [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), et n'est pas corrigé dans la v0.26.0.
+
 ## Pourquoi c'est rapide {#why-it-is-fast}
 
 - **Aucun navigateur à démarrer.** marp-cli lance Chrome pour chaque export PDF, image et

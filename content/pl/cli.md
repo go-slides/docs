@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Ta strona opisuje v0.25.0. Jego wyniki nie zmieniły się od v0.20.2.
+Ta strona opisuje v0.26.0. Jego wyniki nie zmieniły się od v0.20.2.
 {{< /callout >}}
 
 ```text
@@ -104,7 +104,7 @@ jakiekolwiek ma rozszerzenie. Wzorzec, który niczego nie dopasuje, jest błęde
 - **`-P n`** buduje `n` prezentacji naraz. Renderowanie jednej prezentacji używa już
   rdzeni, więc `n` jest ograniczone ich liczbą; z `-o -` prezentacje są budowane jedna
   po drugiej. Komunikaty prezentacji pozostają razem, a prezentacja, która zawiedzie, nie
-  zatrzymuje pozostałych: kod wyjścia to 1, a komunikat wymienia niepowodzenia.
+  zatrzymuje pozostałych: kod wyjścia to 1, a komunikat wymienia niepowodzenia. Od v0.26.0 komunikaty i lista prezentacji, które zawiodły, wychodzą w kolejności z wiersza poleceń, a nie w kolejności ukończenia: wolna pierwsza prezentacja opóźnia komunikaty pozostałych, nie ich pliki.
 
 ## Przejścia i strona prezentacji {#transitions-and-the-presenting-page}
 

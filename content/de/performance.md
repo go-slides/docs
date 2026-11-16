@@ -61,6 +61,24 @@ Seit v0.5.0 besteht das PPTX aus Textfeldern, Formen und Bildern (siehe
 Für den Foliensatz mit 100 Folien brauchte v0.4.0 4,7 s, 4,8 MiB und 540 MiB. Das PPTX
 von marp-cli enthält Bilder. Den größten Teil der Größe eines editierbaren Foliensatzes machen die eingebetteten Schriften aus.
 
+## Mehrere Kerne {#several-cores}
+
+Gemessen mit v0.26.0: Wanduhrzeit in ms mit 1, 2, 4 und 16 Kernen, gegen marp-cli. Die Lastzahl über 1 Minute lag bei 3 bis 4. Die Zeit von marp-cli ändert sich nicht mit der Kernzahl, weil sein `-P` nur getrennte Dateien auf Browser verteilt. `slidesbench -cores` erzeugt diese Tabelle. Die Ausgabedateien sind byteidentisch mit denen von v0.25.0.
+
+| Foliensatz, Modus | 1 Kern | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 Folien, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 Folien, PNG | 745 | 395 | 225 | 222 | 2316 |
+| Mathematik und Code, 20 Folien, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 Folien, PDF | 87 | 65 | 57 | 59 | 1382 |
+| Mathematik und Code, 20 Folien, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 Folien, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| Mathematik und Code, 20 Folien, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 Folien, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 Folien, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Bekannter Fehler.** Das PDF mit 100 Folien ist langsamer als marp-cli, und das PDF und das PPTX mit 100 Folien skalieren nicht mit den Kernen. Das ist seit v0.18.0 so: Die Engine baut die Instanzen der variablen Schrift für jede Seite neu auf, was auf einem Kern das 16-Fache an Speicher und das 3,5- bis 4-Fache an Zeit kostet. Der Fehler wird in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) und [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443) verfolgt und ist in v0.26.0 nicht behoben.
+
 ## Warum es schnell ist {#why-it-is-fast}
 
 - **Kein Browser, der gestartet werden muss.** marp-cli startet für jeden Export nach PDF, Bild und

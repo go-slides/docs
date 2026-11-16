@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Diese Seite beschreibt v0.25.0. Ihre Ausgabe ist seit v0.20.2 unverändert.
+Diese Seite beschreibt v0.26.0. Ihre Ausgabe ist seit v0.20.2 unverändert.
 {{< /callout >}}
 
 ```text
@@ -104,7 +104,7 @@ gleich welche Endung es hat. Ein Muster ohne Treffer ist ein Fehler.
 - **`-P n`** baut `n` Foliensätze gleichzeitig. Das Rendern eines einzelnen Foliensatzes nutzt schon die
   Kerne, deshalb ist `n` durch deren Anzahl begrenzt; mit `-o -` werden Foliensätze nacheinander
   gebaut. Die Meldungen eines Foliensatzes bleiben beisammen, und ein Foliensatz, der scheitert, hält die
-  anderen nicht auf: Der Exit-Status ist 1, und die Meldung listet die Fehlschläge auf.
+  anderen nicht auf: Der Exit-Status ist 1, und die Meldung listet die Fehlschläge auf. Seit v0.26.0 erscheinen die Meldungen und die Liste der fehlgeschlagenen Foliensätze in der Reihenfolge der Befehlszeile, nicht in der Reihenfolge, in der die Foliensätze fertig werden: Ein langsamer erster Foliensatz verzögert die Meldungen der anderen, nicht ihre Dateien.
 
 ## Übergänge und die Präsentationsseite {#transitions-and-the-presenting-page}
 

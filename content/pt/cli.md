@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Esta página descreve a v0.25.0. Sua saída não mudou desde a v0.20.2.
+Esta página descreve a v0.26.0. Sua saída não mudou desde a v0.20.2.
 {{< /callout >}}
 
 ```text
@@ -108,7 +108,7 @@ casa é convertido, qualquer que seja a extensão. Um padrão que não casa com 
   apresentação já usa os núcleos, então `n` é limitado pelo número deles; com
   `-o -`, as apresentações são construídas uma após a outra. As mensagens de uma
   apresentação ficam juntas, e uma apresentação que falha não interrompe as
-  outras: o status de saída é 1 e a mensagem lista as falhas.
+  outras: o status de saída é 1 e a mensagem lista as falhas. Desde a v0.26.0, as mensagens e a lista de apresentações que falharam saem na ordem da linha de comando, não na ordem em que terminam: uma primeira apresentação lenta atrasa as mensagens das outras, não os arquivos delas.
 
 ## Transições e a página de apresentação {#transitions-and-the-presenting-page}
 

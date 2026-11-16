@@ -61,6 +61,24 @@ Od v0.5.0 PPTX składa się z pól tekstowych, kształtów i obrazów (zobacz
 Dla prezentacji ze 100 slajdów v0.4.0 potrzebowała 4,7 s, 4,8 MiB i 540 MiB. PPTX
 z marp-cli zawiera obrazy. Większość rozmiaru edytowalnej prezentacji to osadzone czcionki.
 
+## Wiele rdzeni {#several-cores}
+
+Zmierzone w v0.26.0: czas zegarowy w ms przy 1, 2, 4 i 16 rdzeniach, wobec marp-cli. Średnie obciążenie z 1 minuty wynosiło od 3 do 4. Czas marp-cli nie zmienia się wraz z liczbą rdzeni, ponieważ jego `-P` tylko rozdziela osobne pliki między przeglądarki. `slidesbench -cores` tworzy tę tabelę. Pliki wyjściowe są bajt w bajt takie same jak w v0.25.0.
+
+| Prezentacja, tryb | 1 rdzeń | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 slajdów, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 slajdów, PNG | 745 | 395 | 225 | 222 | 2316 |
+| matematyka i kod, 20 slajdów, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 slajdów, PDF | 87 | 65 | 57 | 59 | 1382 |
+| matematyka i kod, 20 slajdów, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 slajdów, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| matematyka i kod, 20 slajdów, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 slajdów, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 slajdów, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Znany defekt.** PDF ze 100 slajdami jest wolniejszy niż marp-cli, a PDF i PPTX ze 100 slajdami nie skalują się z rdzeniami. Tak jest od v0.18.0: silnik odbudowuje instancje czcionki zmiennej dla każdej strony, co na jednym rdzeniu kosztuje 16 razy więcej pamięci i 3,5 do 4 razy więcej czasu. Jest śledzony w [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) i [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443) i nie jest naprawiony w v0.26.0.
+
 ## Dlaczego jest szybki {#why-it-is-fast}
 
 - **Brak przeglądarki do uruchomienia.** marp-cli uruchamia Chrome przy każdym eksporcie

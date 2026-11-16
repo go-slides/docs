@@ -6,7 +6,7 @@ tags: [cli]
 ---
 
 {{< callout type="warning" >}}
-Esta página describe v0.25.0. Su salida no ha cambiado desde la v0.20.2.
+Esta página describe v0.26.0. Su salida no ha cambiado desde la v0.20.2.
 {{< /callout >}}
 
 ```text
@@ -109,7 +109,7 @@ sea su extensión. Un patrón que no encuentra nada es un error.
   presentación ya usa los núcleos, así que `n` está limitado por su número; con
   `-o -` las presentaciones se construyen una tras otra. Los mensajes de cada
   presentación se mantienen juntos, y una presentación que falla no detiene a las
-  demás: el estado de salida es 1 y el mensaje lista los fallos.
+  demás: el estado de salida es 1 y el mensaje lista los fallos. Desde la v0.26.0, los mensajes y la lista de presentaciones fallidas salen en el orden de la línea de comandos, no en el orden en que terminan: una primera presentación lenta retrasa los mensajes de las demás, no sus archivos.
 
 ## Transiciones y la página de presentación {#transitions-and-the-presenting-page}
 

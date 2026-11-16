@@ -20,8 +20,8 @@ tiene:
   que es (`title`, `section`…) en lugar de repetir cómo se ve.
 
 {{< callout type="warning" >}}
-**v0.25.0.** Estas páginas describen
-[go-slides/slides v0.25.0](https://github.com/go-slides/slides/releases/tag/v0.25.0)
+**v0.26.0.** Estas páginas describen
+[go-slides/slides v0.26.0](https://github.com/go-slides/slides/releases/tag/v0.26.0)
 y se publican en `/docs/0.20/`.
 {{< /callout >}}
 

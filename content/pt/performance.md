@@ -63,6 +63,24 @@ Para a apresentação de 100 slides, a v0.4.0 levou 4,7 s, 4,8 MiB e 540 MiB. O
 PPTX do marp-cli contém imagens. A maior parte do tamanho de uma apresentação
 editável são as fontes incorporadas.
 
+## Vários núcleos {#several-cores}
+
+Medido com a v0.26.0: tempo real em ms com 1, 2, 4 e 16 núcleos, contra o marp-cli. A carga média de 1 minuto era de 3 a 4. O tempo do marp-cli não muda com o número de núcleos, porque o seu `-P` só distribui arquivos separados entre navegadores. O `slidesbench -cores` produz esta tabela. Os arquivos de saída são idênticos, byte a byte, aos da v0.25.0.
+
+| Apresentação, modo | 1 núcleo | 2 | 4 | 16 | marp-cli |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 100 slides, PNG | 2629 | 1387 | 906 | 765 | 5181 |
+| gaia, 20 slides, PNG | 745 | 395 | 225 | 222 | 2316 |
+| matemática e código, 20 slides, PNG | 590 | 331 | 200 | 192 | 2122 |
+| gaia, 20 slides, PDF | 87 | 65 | 57 | 59 | 1382 |
+| matemática e código, 20 slides, PDF | 801 | 588 | 576 | 582 | 1447 |
+| gaia, 20 slides, PPTX | 98 | 77 | 70 | 70 | 3036 |
+| matemática e código, 20 slides, PPTX | 911 | 625 | 593 | 605 | 2502 |
+| 100 slides, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
+| 100 slides, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+
+**Defeito conhecido.** O PDF de 100 slides é mais lento que o marp-cli, e o PDF e o PPTX de 100 slides não escalam com os núcleos. É assim desde a v0.18.0: o motor reconstrói as instâncias da fonte variável para cada página, o que custa 16 vezes a memória e de 3,5 a 4 vezes o tempo em um núcleo. Ele é acompanhado em [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) e [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), e não está corrigido na v0.26.0.
+
 ## Por que é rápido {#why-it-is-fast}
 
 - **Nenhum navegador para iniciar.** O marp-cli inicia um Chrome para cada
