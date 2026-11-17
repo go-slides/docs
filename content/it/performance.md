@@ -12,7 +12,7 @@ la versione precedente, che rende le slide in modo concorrente e analizza i prop
 una sola volta ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
-Le righe della PDF e del PPTX da 100 slide delle tre tabelle seguenti non valgono più dalla v0.18.0: vedi [Più core](#several-cores) e [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+Le righe della PDF e del PPTX da 100 slide delle tre tabelle seguenti sono state misurate prima della v0.18.0. Sono state misurate di nuovo con la v0.26.1, una volta corretta la regressione tracciata in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117): vedi [Più core](#several-cores).
 
 go-slides e [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 sono stati
 eseguiti come sottoprocessi sulle stesse presentazioni, su un Apple M4 Max (16 CPU) con un
@@ -71,21 +71,21 @@ di marp-cli contiene immagini. Gran parte della dimensione di una presentazione 
 
 ## Più core {#several-cores}
 
-Misurato con la v0.26.0: tempo reale in ms con 1, 2, 4 e 16 core, contro marp-cli. Il carico medio a 1 minuto era tra 3 e 4. Il tempo di marp-cli non cambia con il numero di core, perché il suo `-P` si limita a distribuire file separati tra i browser. `slidesbench -cores` produce questa tabella. I file di output sono identici byte per byte a quelli della v0.25.0.
+Misurato con la v0.26.1 (go-webengine/engine v0.48.0): tempo reale in ms con 1, 2, 4 e 16 core, contro marp-cli. Il carico medio a 1 minuto era 5,7 all'inizio. Il tempo di marp-cli non cambia con il numero di core, perché il suo `-P` si limita a distribuire file separati tra i browser. `slidesbench -cores` produce questa tabella. go-slides è più veloce di marp-cli in ogni riga, con ogni numero di core.
 
 | Presentazione, modalità | 1 core | 2 | 4 | 16 | marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 100 slide, PNG | 2629 | 1387 | 906 | 765 | 5181 |
-| gaia, 20 slide, PNG | 745 | 395 | 225 | 222 | 2316 |
-| matematica e codice, 20 slide, PNG | 590 | 331 | 200 | 192 | 2122 |
-| gaia, 20 slide, PDF | 87 | 65 | 57 | 59 | 1382 |
-| matematica e codice, 20 slide, PDF | 801 | 588 | 576 | 582 | 1447 |
-| gaia, 20 slide, PPTX | 98 | 77 | 70 | 70 | 3036 |
-| matematica e codice, 20 slide, PPTX | 911 | 625 | 593 | 605 | 2502 |
-| 100 slide, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
-| 100 slide, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+| 100 slide, PNG | 2628 | 1397 | 899 | 766 | 5197 |
+| gaia, 20 slide, PNG | 731 | 394 | 227 | 222 | 2331 |
+| matematica e codice, 20 slide, PNG | 600 | 333 | 199 | 192 | 2140 |
+| gaia, 20 slide, PDF | 85 | 64 | 57 | 58 | 1411 |
+| matematica e codice, 20 slide, PDF | 278 | 183 | 139 | 135 | 1457 |
+| gaia, 20 slide, PPTX | 99 | 77 | 69 | 70 | 3110 |
+| matematica e codice, 20 slide, PPTX | 395 | 268 | 189 | 179 | 2527 |
+| 100 slide, PDF | 544 | 331 | 247 | 256 | 1534 |
+| 100 slide, PPTX | 692 | 435 | 317 | 276 | 7248 |
 
-**Difetto noto.** La PDF da 100 slide è più lenta di marp-cli, e la PDF e il PPTX da 100 slide non scalano con i core. È così dalla v0.18.0: il motore ricostruisce le istanze del font variabile per ogni pagina, il che costa 16 volte la memoria e da 3,5 a 4 volte il tempo su un core. È tracciato in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) e [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), e non è corretto nella v0.26.0.
+**Corretto nella v0.26.1.** Dalla v0.18.0 alla v0.26.0 la PDF da 100 slide era più lenta di marp-cli, e la PDF e il PPTX da 100 slide non scalavano con i core: il motore ricostruiva le istanze del font variabile per ogni pagina. go-webengine/engine v0.48.0 le condivide tra le pagine ([go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443)) e la v0.26.1 lo include: la PDF da 100 slide richiede 544 ms su un core invece di 3166 ms, con un picco di 169 MiB invece di 2182 MiB, e pesa 792,4 KiB invece di 1005,5 KiB, perché il font è incorporato 3 volte invece di 102. Le pagine sono identiche al pixel. La segnalazione è [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) (chiusa).
 
 ## Perché è veloce {#why-it-is-fast}
 

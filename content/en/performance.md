@@ -12,7 +12,7 @@ the previous release, which renders slides concurrently and parses its fonts
 once ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
-The 100-slide PDF and PPTX rows of the three tables below no longer hold since v0.18.0: see [Several cores](#several-cores) and [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+The 100-slide PDF and PPTX rows of the three tables below were measured before v0.18.0. They were re-measured with v0.26.1 once the regression tracked in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) was fixed: see [Several cores](#several-cores).
 
 go-slides and [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 were
 run as subprocesses on the same decks, on an Apple M4 Max (16 CPUs) with a
@@ -71,21 +71,21 @@ PPTX holds pictures. Most of an editable deck's size is the embedded fonts.
 
 ## Several cores {#several-cores}
 
-Measured with v0.26.0: wall time in ms with 1, 2, 4 and 16 cores, against marp-cli. The 1-minute load average was 3 to 4. marp-cli's time does not change with the number of cores, because its `-P` only spreads separate files across browsers. `slidesbench -cores` produces this table. The output files are byte-identical to those of v0.25.0.
+Measured with v0.26.1 (go-webengine/engine v0.48.0): wall time in ms with 1, 2, 4 and 16 cores, against marp-cli. The 1-minute load average was 5.7 at the start. marp-cli's time does not change with the number of cores, because its `-P` only spreads separate files across browsers. `slidesbench -cores` produces this table. go-slides is faster than marp-cli on every row, at every core count.
 
 | Deck, mode | 1 core | 2 | 4 | 16 | marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 100 slides, PNG | 2629 | 1387 | 906 | 765 | 5181 |
-| gaia, 20 slides, PNG | 745 | 395 | 225 | 222 | 2316 |
-| math and code, 20 slides, PNG | 590 | 331 | 200 | 192 | 2122 |
-| gaia, 20 slides, PDF | 87 | 65 | 57 | 59 | 1382 |
-| math and code, 20 slides, PDF | 801 | 588 | 576 | 582 | 1447 |
-| gaia, 20 slides, PPTX | 98 | 77 | 70 | 70 | 3036 |
-| math and code, 20 slides, PPTX | 911 | 625 | 593 | 605 | 2502 |
-| 100 slides, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
-| 100 slides, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+| 100 slides, PNG | 2628 | 1397 | 899 | 766 | 5197 |
+| gaia, 20 slides, PNG | 731 | 394 | 227 | 222 | 2331 |
+| math and code, 20 slides, PNG | 600 | 333 | 199 | 192 | 2140 |
+| gaia, 20 slides, PDF | 85 | 64 | 57 | 58 | 1411 |
+| math and code, 20 slides, PDF | 278 | 183 | 139 | 135 | 1457 |
+| gaia, 20 slides, PPTX | 99 | 77 | 69 | 70 | 3110 |
+| math and code, 20 slides, PPTX | 395 | 268 | 189 | 179 | 2527 |
+| 100 slides, PDF | 544 | 331 | 247 | 256 | 1534 |
+| 100 slides, PPTX | 692 | 435 | 317 | 276 | 7248 |
 
-**Known defect.** The 100-slide PDF is slower than marp-cli, and the 100-slide PDF and PPTX do not scale with cores. This has been so since v0.18.0: the engine rebuilds the variable-font instances for every page, which costs 16× the memory and 3.5 to 4× the time on one core. It is tracked in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) and [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), and is not fixed in v0.26.0.
+**Fixed in v0.26.1.** From v0.18.0 to v0.26.0 the 100-slide PDF was slower than marp-cli, and the 100-slide PDF and PPTX did not scale with cores: the engine rebuilt the variable-font instances for every page. go-webengine/engine v0.48.0 shares them across pages ([go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443)), and v0.26.1 picks it up: the 100-slide PDF takes 544 ms on one core instead of 3166 ms, with a peak of 169 MiB instead of 2182 MiB, and is 792.4 KiB instead of 1005.5 KiB, because the font is embedded 3 times instead of 102. The pages are pixel-identical. It was reported in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) (closed).
 
 ## Why it is fast
 
