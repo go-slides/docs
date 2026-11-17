@@ -12,7 +12,7 @@ concorrentemente e analisa as suas fontes uma única vez
 ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
-As linhas do PDF e do PPTX de 100 slides das três tabelas a seguir não valem mais desde a v0.18.0: veja [Vários núcleos](#several-cores) e [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+As linhas do PDF e do PPTX de 100 slides das três tabelas a seguir foram medidas antes da v0.18.0. Foram medidas de novo com a v0.26.1, depois de corrigida a regressão acompanhada em [go-slides/slides#117](https://github.com/go-slides/slides/issues/117): veja [Vários núcleos](#several-cores).
 
 O go-slides e o [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 foram
 executados como subprocessos nas mesmas apresentações, em um Apple M4 Max (16
@@ -73,21 +73,21 @@ editável são as fontes incorporadas.
 
 ## Vários núcleos {#several-cores}
 
-Medido com a v0.26.0: tempo real em ms com 1, 2, 4 e 16 núcleos, contra o marp-cli. A carga média de 1 minuto era de 3 a 4. O tempo do marp-cli não muda com o número de núcleos, porque o seu `-P` só distribui arquivos separados entre navegadores. O `slidesbench -cores` produz esta tabela. Os arquivos de saída são idênticos, byte a byte, aos da v0.25.0.
+Medido com a v0.26.1 (go-webengine/engine v0.48.0): tempo real em ms com 1, 2, 4 e 16 núcleos, contra o marp-cli. A carga média de 1 minuto era de 5,7 no início. O tempo do marp-cli não muda com o número de núcleos, porque o seu `-P` só distribui arquivos separados entre navegadores. O `slidesbench -cores` produz esta tabela. O go-slides é mais rápido que o marp-cli em cada linha, com qualquer número de núcleos.
 
 | Apresentação, modo | 1 núcleo | 2 | 4 | 16 | marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 100 slides, PNG | 2629 | 1387 | 906 | 765 | 5181 |
-| gaia, 20 slides, PNG | 745 | 395 | 225 | 222 | 2316 |
-| matemática e código, 20 slides, PNG | 590 | 331 | 200 | 192 | 2122 |
-| gaia, 20 slides, PDF | 87 | 65 | 57 | 59 | 1382 |
-| matemática e código, 20 slides, PDF | 801 | 588 | 576 | 582 | 1447 |
-| gaia, 20 slides, PPTX | 98 | 77 | 70 | 70 | 3036 |
-| matemática e código, 20 slides, PPTX | 911 | 625 | 593 | 605 | 2502 |
-| 100 slides, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
-| 100 slides, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+| 100 slides, PNG | 2628 | 1397 | 899 | 766 | 5197 |
+| gaia, 20 slides, PNG | 731 | 394 | 227 | 222 | 2331 |
+| matemática e código, 20 slides, PNG | 600 | 333 | 199 | 192 | 2140 |
+| gaia, 20 slides, PDF | 85 | 64 | 57 | 58 | 1411 |
+| matemática e código, 20 slides, PDF | 278 | 183 | 139 | 135 | 1457 |
+| gaia, 20 slides, PPTX | 99 | 77 | 69 | 70 | 3110 |
+| matemática e código, 20 slides, PPTX | 395 | 268 | 189 | 179 | 2527 |
+| 100 slides, PDF | 544 | 331 | 247 | 256 | 1534 |
+| 100 slides, PPTX | 692 | 435 | 317 | 276 | 7248 |
 
-**Defeito conhecido.** O PDF de 100 slides é mais lento que o marp-cli, e o PDF e o PPTX de 100 slides não escalam com os núcleos. É assim desde a v0.18.0: o motor reconstrói as instâncias da fonte variável para cada página, o que custa 16 vezes a memória e de 3,5 a 4 vezes o tempo em um núcleo. Ele é acompanhado em [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) e [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), e não está corrigido na v0.26.0.
+**Corrigido na v0.26.1.** Da v0.18.0 à v0.26.0, o PDF de 100 slides era mais lento que o marp-cli, e o PDF e o PPTX de 100 slides não escalavam com os núcleos: o motor reconstruía as instâncias da fonte variável para cada página. O go-webengine/engine v0.48.0 as compartilha entre as páginas ([go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443)), e a v0.26.1 o incorpora: o PDF de 100 slides leva 544 ms em um núcleo em vez de 3166 ms, com um pico de 169 MiB em vez de 2182 MiB, e tem 792,4 KiB em vez de 1005,5 KiB, porque a fonte é incorporada 3 vezes em vez de 102. As páginas são idênticas pixel a pixel. O relato é [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) (fechado).
 
 ## Por que é rápido {#why-it-is-fast}
 

@@ -12,7 +12,7 @@ diapositivas de forma concurrente y analiza sus fuentes una sola vez
 ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
-Las filas del PDF y del PPTX de 100 diapositivas de las tres tablas siguientes ya no son válidas desde la v0.18.0: véase [Varios núcleos](#several-cores) y [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+Las filas del PDF y del PPTX de 100 diapositivas de las tres tablas siguientes se midieron antes de la v0.18.0. Se volvieron a medir con la v0.26.1, una vez corregida la regresión que se seguía en [go-slides/slides#117](https://github.com/go-slides/slides/issues/117): véase [Varios núcleos](#several-cores).
 
 go-slides y [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 se ejecutaron
 como subprocesos sobre las mismas presentaciones, en un Apple M4 Max (16 CPU) con
@@ -72,21 +72,21 @@ una presentación editable son las fuentes incrustadas.
 
 ## Varios núcleos {#several-cores}
 
-Medido con la v0.26.0: tiempo real en ms con 1, 2, 4 y 16 núcleos, frente a marp-cli. La carga media de 1 minuto era de 3 a 4. El tiempo de marp-cli no cambia con el número de núcleos, porque su `-P` solo reparte archivos distintos entre navegadores. `slidesbench -cores` produce esta tabla. Los archivos de salida son idénticos byte a byte a los de la v0.25.0.
+Medido con la v0.26.1 (go-webengine/engine v0.48.0): tiempo real en ms con 1, 2, 4 y 16 núcleos, frente a marp-cli. La carga media de 1 minuto era de 5,7 al empezar. El tiempo de marp-cli no cambia con el número de núcleos, porque su `-P` solo reparte archivos distintos entre navegadores. `slidesbench -cores` produce esta tabla. go-slides es más rápido que marp-cli en cada fila, con cada número de núcleos.
 
 | Presentación, modo | 1 núcleo | 2 | 4 | 16 | marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 100 diapositivas, PNG | 2629 | 1387 | 906 | 765 | 5181 |
-| gaia, 20 diapositivas, PNG | 745 | 395 | 225 | 222 | 2316 |
-| matemáticas y código, 20 diapositivas, PNG | 590 | 331 | 200 | 192 | 2122 |
-| gaia, 20 diapositivas, PDF | 87 | 65 | 57 | 59 | 1382 |
-| matemáticas y código, 20 diapositivas, PDF | 801 | 588 | 576 | 582 | 1447 |
-| gaia, 20 diapositivas, PPTX | 98 | 77 | 70 | 70 | 3036 |
-| matemáticas y código, 20 diapositivas, PPTX | 911 | 625 | 593 | 605 | 2502 |
-| 100 diapositivas, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
-| 100 diapositivas, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+| 100 diapositivas, PNG | 2628 | 1397 | 899 | 766 | 5197 |
+| gaia, 20 diapositivas, PNG | 731 | 394 | 227 | 222 | 2331 |
+| matemáticas y código, 20 diapositivas, PNG | 600 | 333 | 199 | 192 | 2140 |
+| gaia, 20 diapositivas, PDF | 85 | 64 | 57 | 58 | 1411 |
+| matemáticas y código, 20 diapositivas, PDF | 278 | 183 | 139 | 135 | 1457 |
+| gaia, 20 diapositivas, PPTX | 99 | 77 | 69 | 70 | 3110 |
+| matemáticas y código, 20 diapositivas, PPTX | 395 | 268 | 189 | 179 | 2527 |
+| 100 diapositivas, PDF | 544 | 331 | 247 | 256 | 1534 |
+| 100 diapositivas, PPTX | 692 | 435 | 317 | 276 | 7248 |
 
-**Defecto conocido.** El PDF de 100 diapositivas es más lento que marp-cli, y el PDF y el PPTX de 100 diapositivas no escalan con los núcleos. Es así desde la v0.18.0: el motor reconstruye las instancias de la fuente variable para cada página, lo que cuesta 16 veces la memoria y de 3,5 a 4 veces el tiempo en un núcleo. Se sigue en [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) y [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), y no está corregido en la v0.26.0.
+**Corregido en la v0.26.1.** De la v0.18.0 a la v0.26.0, el PDF de 100 diapositivas era más lento que marp-cli, y el PDF y el PPTX de 100 diapositivas no escalaban con los núcleos: el motor reconstruía las instancias de la fuente variable para cada página. go-webengine/engine v0.48.0 las comparte entre páginas ([go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443)) y la v0.26.1 lo incorpora: el PDF de 100 diapositivas tarda 544 ms en un núcleo en vez de 3166 ms, con un pico de 169 MiB en vez de 2182 MiB, y pesa 792,4 KiB en vez de 1005,5 KiB, porque la fuente se incrusta 3 veces en vez de 102. Las páginas son idénticas píxel a píxel. El informe es [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) (cerrado).
 
 ## Por qué es rápido {#why-it-is-fast}
 

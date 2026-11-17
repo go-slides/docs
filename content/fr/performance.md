@@ -12,7 +12,7 @@ la version précédente, qui fait le rendu des diapositives en parallèle et n'a
 qu'une fois ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
-Les lignes du PDF et du PPTX de 100 diapositives des trois tableaux ci-dessous ne sont plus valables depuis la v0.18.0 : voir [Plusieurs cœurs](#several-cores) et [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+Les lignes du PDF et du PPTX de 100 diapositives des trois tableaux ci-dessous ont été mesurées avant la v0.18.0. Elles ont été remesurées avec la v0.26.1 une fois corrigée la régression suivie dans [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) : voir [Plusieurs cœurs](#several-cores).
 
 go-slides et [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 ont été
 lancés en sous-processus sur les mêmes présentations, sur un Apple M4 Max (16 CPU) avec une
@@ -71,21 +71,21 @@ PPTX de marp-cli contient des images. L'essentiel de la taille d'une présentati
 
 ## Plusieurs cœurs {#several-cores}
 
-Mesuré avec la v0.26.0 : temps réel en ms avec 1, 2, 4 et 16 cœurs, face à marp-cli. La charge moyenne sur 1 minute était de 3 à 4. Le temps de marp-cli ne change pas avec le nombre de cœurs, car son `-P` ne fait que répartir des fichiers distincts entre des navigateurs. `slidesbench -cores` produit ce tableau. Les fichiers produits sont identiques à l'octet près à ceux de la v0.25.0.
+Mesuré avec la v0.26.1 (go-webengine/engine v0.48.0) : temps réel en ms avec 1, 2, 4 et 16 cœurs, face à marp-cli. La charge moyenne sur 1 minute était de 5,7 au départ. Le temps de marp-cli ne change pas avec le nombre de cœurs, car son `-P` ne fait que répartir des fichiers distincts entre des navigateurs. `slidesbench -cores` produit ce tableau. go-slides est plus rapide que marp-cli sur chaque ligne, à chaque nombre de cœurs.
 
 | Présentation, mode | 1 cœur | 2 | 4 | 16 | marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 100 diapositives, PNG | 2629 | 1387 | 906 | 765 | 5181 |
-| gaia, 20 diapositives, PNG | 745 | 395 | 225 | 222 | 2316 |
-| mathématiques et code, 20 diapositives, PNG | 590 | 331 | 200 | 192 | 2122 |
-| gaia, 20 diapositives, PDF | 87 | 65 | 57 | 59 | 1382 |
-| mathématiques et code, 20 diapositives, PDF | 801 | 588 | 576 | 582 | 1447 |
-| gaia, 20 diapositives, PPTX | 98 | 77 | 70 | 70 | 3036 |
-| mathématiques et code, 20 diapositives, PPTX | 911 | 625 | 593 | 605 | 2502 |
-| 100 diapositives, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
-| 100 diapositives, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+| 100 diapositives, PNG | 2628 | 1397 | 899 | 766 | 5197 |
+| gaia, 20 diapositives, PNG | 731 | 394 | 227 | 222 | 2331 |
+| mathématiques et code, 20 diapositives, PNG | 600 | 333 | 199 | 192 | 2140 |
+| gaia, 20 diapositives, PDF | 85 | 64 | 57 | 58 | 1411 |
+| mathématiques et code, 20 diapositives, PDF | 278 | 183 | 139 | 135 | 1457 |
+| gaia, 20 diapositives, PPTX | 99 | 77 | 69 | 70 | 3110 |
+| mathématiques et code, 20 diapositives, PPTX | 395 | 268 | 189 | 179 | 2527 |
+| 100 diapositives, PDF | 544 | 331 | 247 | 256 | 1534 |
+| 100 diapositives, PPTX | 692 | 435 | 317 | 276 | 7248 |
 
-**Défaut connu.** Le PDF de 100 diapositives est plus lent que marp-cli, et le PDF et le PPTX de 100 diapositives ne gagnent rien avec les cœurs. C'est le cas depuis la v0.18.0 : le moteur reconstruit les instances de police variable pour chaque page, ce qui coûte 16 fois la mémoire et 3,5 à 4 fois le temps sur un cœur. Il est suivi dans [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) et [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443), et n'est pas corrigé dans la v0.26.0.
+**Corrigé dans la v0.26.1.** De la v0.18.0 à la v0.26.0, le PDF de 100 diapositives était plus lent que marp-cli, et le PDF et le PPTX de 100 diapositives ne gagnaient rien avec les cœurs : le moteur reconstruisait les instances de police variable pour chaque page. go-webengine/engine v0.48.0 les partage entre les pages ([go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443)), et la v0.26.1 l'embarque : le PDF de 100 diapositives prend 544 ms sur un cœur au lieu de 3166 ms, avec un pic de 169 MiB au lieu de 2182 MiB, et pèse 792,4 KiB au lieu de 1005,5 KiB, car la police est incorporée 3 fois au lieu de 102. Les pages sont identiques au pixel près. Le signalement est [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) (fermé).
 
 ## Pourquoi c'est rapide {#why-it-is-fast}
 

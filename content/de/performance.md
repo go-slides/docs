@@ -12,7 +12,7 @@ die vorherige Version, die Folien nebenläufig rendert und ihre Schriften
 nur einmal parst ([go-slides/slides#11](https://github.com/go-slides/slides/pull/11)).
 {{< /callout >}}
 
-Die Zeilen für das PDF und das PPTX mit 100 Folien in den drei Tabellen unten gelten seit v0.18.0 nicht mehr: siehe [Mehrere Kerne](#several-cores) und [go-slides/slides#117](https://github.com/go-slides/slides/issues/117).
+Die Zeilen für das PDF und das PPTX mit 100 Folien in den drei Tabellen unten wurden vor v0.18.0 gemessen. Sie wurden mit v0.26.1 neu gemessen, nachdem die in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) verfolgte Regression behoben war: siehe [Mehrere Kerne](#several-cores).
 
 go-slides und [marp-cli](https://github.com/marp-team/marp-cli) 4.5.1 wurden
 als Subprozesse mit denselben Foliensätzen ausgeführt, auf einem Apple M4 Max (16 CPUs) mit
@@ -71,21 +71,21 @@ von marp-cli enthält Bilder. Den größten Teil der Größe eines editierbaren 
 
 ## Mehrere Kerne {#several-cores}
 
-Gemessen mit v0.26.0: Wanduhrzeit in ms mit 1, 2, 4 und 16 Kernen, gegen marp-cli. Die Lastzahl über 1 Minute lag bei 3 bis 4. Die Zeit von marp-cli ändert sich nicht mit der Kernzahl, weil sein `-P` nur getrennte Dateien auf Browser verteilt. `slidesbench -cores` erzeugt diese Tabelle. Die Ausgabedateien sind byteidentisch mit denen von v0.25.0.
+Gemessen mit v0.26.1 (go-webengine/engine v0.48.0): Wanduhrzeit in ms mit 1, 2, 4 und 16 Kernen, gegen marp-cli. Die Lastzahl über 1 Minute lag zu Beginn bei 5,7. Die Zeit von marp-cli ändert sich nicht mit der Kernzahl, weil sein `-P` nur getrennte Dateien auf Browser verteilt. `slidesbench -cores` erzeugt diese Tabelle. go-slides ist in jeder Zeile und bei jeder Kernzahl schneller als marp-cli.
 
 | Foliensatz, Modus | 1 Kern | 2 | 4 | 16 | marp-cli |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 100 Folien, PNG | 2629 | 1387 | 906 | 765 | 5181 |
-| gaia, 20 Folien, PNG | 745 | 395 | 225 | 222 | 2316 |
-| Mathematik und Code, 20 Folien, PNG | 590 | 331 | 200 | 192 | 2122 |
-| gaia, 20 Folien, PDF | 87 | 65 | 57 | 59 | 1382 |
-| Mathematik und Code, 20 Folien, PDF | 801 | 588 | 576 | 582 | 1447 |
-| gaia, 20 Folien, PPTX | 98 | 77 | 70 | 70 | 3036 |
-| Mathematik und Code, 20 Folien, PPTX | 911 | 625 | 593 | 605 | 2502 |
-| 100 Folien, PDF | 3166 | 2573 | 2545 | 2568 | 1513 |
-| 100 Folien, PPTX | 3299 | 2560 | 2547 | 2586 | 7238 |
+| 100 Folien, PNG | 2628 | 1397 | 899 | 766 | 5197 |
+| gaia, 20 Folien, PNG | 731 | 394 | 227 | 222 | 2331 |
+| Mathematik und Code, 20 Folien, PNG | 600 | 333 | 199 | 192 | 2140 |
+| gaia, 20 Folien, PDF | 85 | 64 | 57 | 58 | 1411 |
+| Mathematik und Code, 20 Folien, PDF | 278 | 183 | 139 | 135 | 1457 |
+| gaia, 20 Folien, PPTX | 99 | 77 | 69 | 70 | 3110 |
+| Mathematik und Code, 20 Folien, PPTX | 395 | 268 | 189 | 179 | 2527 |
+| 100 Folien, PDF | 544 | 331 | 247 | 256 | 1534 |
+| 100 Folien, PPTX | 692 | 435 | 317 | 276 | 7248 |
 
-**Bekannter Fehler.** Das PDF mit 100 Folien ist langsamer als marp-cli, und das PDF und das PPTX mit 100 Folien skalieren nicht mit den Kernen. Das ist seit v0.18.0 so: Die Engine baut die Instanzen der variablen Schrift für jede Seite neu auf, was auf einem Kern das 16-Fache an Speicher und das 3,5- bis 4-Fache an Zeit kostet. Der Fehler wird in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) und [go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443) verfolgt und ist in v0.26.0 nicht behoben.
+**In v0.26.1 behoben.** Von v0.18.0 bis v0.26.0 war das PDF mit 100 Folien langsamer als marp-cli, und das PDF und das PPTX mit 100 Folien skalierten nicht mit den Kernen: Die Engine baute die Instanzen der variablen Schrift für jede Seite neu auf. go-webengine/engine v0.48.0 teilt sie zwischen den Seiten ([go-webengine/engine#443](https://github.com/go-webengine/engine/issues/443)), und v0.26.1 übernimmt das: Das PDF mit 100 Folien braucht auf einem Kern 544 ms statt 3166 ms, mit einer Spitze von 169 MiB statt 2182 MiB, und ist 792,4 KiB statt 1005,5 KiB groß, weil die Schrift 3-mal statt 102-mal eingebettet wird. Die Seiten sind pixelgleich. Gemeldet war das in [go-slides/slides#117](https://github.com/go-slides/slides/issues/117) (geschlossen).
 
 ## Warum es schnell ist {#why-it-is-fast}
 
