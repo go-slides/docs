@@ -375,6 +375,19 @@ sign-in has ended" with a **Sign in** button
 (oauth2-proxy's `/oauth2/sign_in?rd=<this page>`). It never falls back to a
 token typed in the browser.
 
+The `__Host-gitd` cookie is `SameSite=Strict`, so the first page load after the
+sign-in comes back from the identity provider (another site) can arrive without
+it: Firefox and Safari's engine leave it out even when the provider redirects
+straight back, and all browsers leave it out when the provider's login form
+posts back. Nobody sees this, because the page itself is public and the pane's
+first request, `GET /api/git/session`, is same-site and carries the cookie in
+every browser tested. Keep it that way: only `/api/git/*` should depend on the
+cookie, never the HTML page. If a deployment must protect the page itself,
+point oauth2-proxy's return address at a small same-site page that navigates on
+(`location.replace("/")`); the page it reaches receives the cookie. The test is
+`playground/browsertest/cookie.cjs` of go-slides/go-slides.github.io, run in
+WebKit, Firefox and Chromium.
+
 To serve it, use `selfhost/Caddyfile.gitd` of go-slides/go-slides.github.io.
 Its Content-Security-Policy is `connect-src 'self'`; the site stays public and
 only `/api/git/*` sits behind oauth2-proxy. slides-gitd's `origin` setting must

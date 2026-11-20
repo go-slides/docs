@@ -375,6 +375,20 @@ dobiegło końca” z przyciskiem **Zaloguj się**
 (`/oauth2/sign_in?rd=<this page>` z oauth2-proxy). Nigdy nie wraca do tokenu
 wpisanego w przeglądarce.
 
+Ciasteczko `__Host-gitd` ma `SameSite=Strict`, więc pierwsze wczytanie strony po
+powrocie logowania od dostawcy tożsamości (innej witryny) może dotrzeć bez
+niego: Firefox i silnik Safari pomijają je nawet wtedy, gdy dostawca przekierowuje
+prosto z powrotem, a wszystkie przeglądarki pomijają je, gdy formularz logowania
+dostawcy odsyła żądanie metodą POST. Nikt tego nie widzi, bo sama strona jest
+publiczna, a pierwsze żądanie panelu, `GET /api/git/session`, pochodzi z tej samej
+witryny i niesie ciasteczko we wszystkich przetestowanych przeglądarkach. Niech
+tak zostanie: od ciasteczka powinno zależeć tylko `/api/git/*`, nigdy strona
+HTML. Jeśli wdrożenie musi chronić samą stronę, skieruj adres powrotu
+oauth2-proxy na małą stronę z tej samej witryny, która przechodzi dalej
+(`location.replace("/")`); strona, do której dotrze, otrzymuje ciasteczko. Test
+to `playground/browsertest/cookie.cjs` z go-slides/go-slides.github.io,
+uruchamiany w WebKit, Firefox i Chromium.
+
 Aby go serwować, użyj `selfhost/Caddyfile.gitd` z go-slides/go-slides.github.io.
 Jego Content-Security-Policy to `connect-src 'self'`; witryna pozostaje
 publiczna, a za oauth2-proxy jest tylko `/api/git/*`. Ustawienie `origin`

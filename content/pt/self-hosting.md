@@ -376,6 +376,20 @@ Quando o login expirou ou não existe (HTTP `401`), o painel mostra "Seu login
 terminou" com um botão **Entrar** (`/oauth2/sign_in?rd=<this page>` do
 oauth2-proxy). Ele nunca recorre a um token digitado no navegador.
 
+O cookie `__Host-gitd` é `SameSite=Strict`, então o primeiro carregamento de
+página depois que o login volta do provedor de identidade (outro site) pode
+chegar sem ele: o Firefox e o motor do Safari o omitem mesmo quando o provedor
+redireciona direto de volta, e todos os navegadores o omitem quando o formulário
+de login do provedor responde com POST. Ninguém percebe isso, porque a página em
+si é pública e a primeira requisição do painel, `GET /api/git/session`, é do
+mesmo site e leva o cookie em todos os navegadores testados. Mantenha assim:
+apenas `/api/git/*` deve depender do cookie, nunca a página HTML. Se uma
+implantação precisar proteger a própria página, aponte o endereço de retorno do
+oauth2-proxy para uma pequena página do mesmo site que siga navegando
+(`location.replace("/")`); a página que ela alcança recebe o cookie. O teste é
+`playground/browsertest/cookie.cjs` de go-slides/go-slides.github.io, executado
+no WebKit, no Firefox e no Chromium.
+
 Para servi-lo, use `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
 A sua Content-Security-Policy é `connect-src 'self'`; o site continua público e
 só `/api/git/*` fica atrás do oauth2-proxy. A configuração `origin` do

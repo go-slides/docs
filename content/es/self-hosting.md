@@ -377,6 +377,20 @@ Cuando el inicio de sesión ha caducado o falta (HTTP `401`), el panel muestra
 (`/oauth2/sign_in?rd=<this page>` de oauth2-proxy). Nunca recurre a un token
 escrito en el navegador.
 
+La cookie `__Host-gitd` es `SameSite=Strict`, así que la primera carga de página
+tras volver el inicio de sesión del proveedor de identidad (otro sitio) puede
+llegar sin ella: Firefox y el motor de Safari la omiten incluso cuando el
+proveedor redirige directamente de vuelta, y todos los navegadores la omiten
+cuando el formulario de inicio de sesión del proveedor envía la respuesta por
+POST. Nadie lo nota, porque la página en sí es pública y la primera petición del
+panel, `GET /api/git/session`, es del mismo sitio y lleva la cookie en todos los
+navegadores probados. Manténgalo así: solo `/api/git/*` debe depender de la
+cookie, nunca la página HTML. Si un despliegue debe proteger la propia página,
+apunte la dirección de retorno de oauth2-proxy a una página pequeña del mismo
+sitio que siga navegando (`location.replace("/")`); la página a la que llega
+recibe la cookie. La prueba es `playground/browsertest/cookie.cjs` de
+go-slides/go-slides.github.io, ejecutada en WebKit, Firefox y Chromium.
+
 Para servirlo, use `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
 Su Content-Security-Policy es `connect-src 'self'`; el sitio sigue siendo
 público y solo `/api/git/*` queda detrás de oauth2-proxy. El ajuste `origin` de

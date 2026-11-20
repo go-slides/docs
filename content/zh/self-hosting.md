@@ -350,6 +350,15 @@ slides-gitd 为每次调用的那一个仓库签发安装令牌，有效期一�
 登录已过期或缺失时（HTTP `401`），窗格显示“您的登录已结束”和一个 **登录** 按钮
 （oauth2-proxy 的 `/oauth2/sign_in?rd=<this page>`）。它绝不会回退到在浏览器中输入的令牌。
 
+`__Host-gitd` cookie 的属性是 `SameSite=Strict`，因此从身份提供商（另一个站点）完成登录
+返回后的第一次页面加载，可能不带该 cookie：即使提供商直接重定向回来，Firefox 和 Safari 的引擎
+也不会带上它；当提供商的登录表单以 POST 方式返回时，所有浏览器都不会带上它。没有人会察觉，
+因为页面本身是公开的，而窗格的第一个请求 `GET /api/git/session` 属于同站请求，在所有测试过的
+浏览器中都会带上 cookie。请保持这一点：只有 `/api/git/*` 应依赖该 cookie，页面本身绝不应依赖。
+如果某个部署必须保护页面本身，请把 oauth2-proxy 的返回地址指向一个继续跳转的同站小页面
+（`location.replace("/")`）；它所到达的页面会收到该 cookie。测试是 go-slides/go-slides.github.io 的
+`playground/browsertest/cookie.cjs`，在 WebKit、Firefox 和 Chromium 中运行。
+
 要提供服务，请使用 go-slides/go-slides.github.io 中的 `selfhost/Caddyfile.gitd`。其
 Content-Security-Policy 为 `connect-src 'self'`；站点保持公开，只有 `/api/git/*` 位于
 oauth2-proxy 之后。slides-gitd 的 `origin` 设置必须等于 Playground 的源。`auth` 为
