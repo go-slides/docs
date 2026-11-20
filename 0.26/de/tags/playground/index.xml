@@ -853,10 +853,22 @@ go-slides/go-slides.github.io, ausgeführt in WebKit, Firefox und Chromium.&lt;/
 go-slides/go-slides.github.io. Dessen Content-Security-Policy ist
 &lt;code&gt;connect-src 'self'&lt;/code&gt;; die Site bleibt öffentlich, nur &lt;code&gt;/api/git/*&lt;/code&gt; liegt hinter
 oauth2-proxy. Die Einstellung &lt;code&gt;origin&lt;/code&gt; von slides-gitd muss dem Origin des
-Playgrounds entsprechen. Eine Forge mit &lt;code&gt;auth&lt;/code&gt; &lt;code&gt;user-token&lt;/code&gt; (zum Beispiel
-GitLab) braucht den eigenen Token jedes Benutzers, auf dem Server abgelegt über
-&lt;code&gt;POST /api/git/credential&lt;/code&gt;. Der Bereich bietet dafür kein Feld an; das tun die
-Administratorin oder der Benutzer außerhalb der Seite.&lt;/p&gt;
+Playgrounds entsprechen.&lt;/p&gt;
+&lt;p&gt;Eine Forge mit &lt;code&gt;auth&lt;/code&gt; &lt;code&gt;user-token&lt;/code&gt; (zum Beispiel GitLab) braucht das eigene
+Token jeder Person, einmal auf dem Server abgelegt. Fehlt es, sagt der Bereich
+das und bietet &lt;strong&gt;Auf dem Server speichern&lt;/strong&gt; an; das öffnet in einem neuen Tab
+eine Seite von slides-gitd (&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0 oder
+neuer): Geben Sie dort das Token ein und drücken Sie dann im Bereich
+&lt;strong&gt;Gespeichert, erneut versuchen&lt;/strong&gt;. &lt;strong&gt;Mein Token auf dem Server vergessen&lt;/strong&gt;
+entfernt es. Die Playground-Seite sieht das Token nie: Die Credential-Seite ist
+durch ihre eigenen Header von ihr isoliert. Deshalb darf der Front-Server
+&lt;code&gt;/api/git/credential/page&lt;/code&gt; keine eigene Richtlinie hinzufügen
+(&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; lässt sie bereits in Ruhe), und der Playground darf
+nie mit &lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt; ausgeliefert werden, was diese
+Isolation aufheben würde. Eines kann kein Header verhindern: Ein Skript in der
+Playground-Seite könnte ein gefälschtes Token-Feld zeichnen. Geben Sie ein Token
+nur in dem separaten Tab ein, dessen Adresse auf &lt;code&gt;/api/git/credential/page&lt;/code&gt;
+endet.&lt;/p&gt;
 &lt;p&gt;Eine Einschränkung: Der Playground behält Entwürfe und den letzten
 Repository-Namen wie bisher im Browserprofil (IndexedDB und localStorage). Auf
 einem gemeinsam genutzten Browserprofil nutzen Sie &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;

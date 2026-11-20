@@ -459,10 +459,21 @@ no WebKit, no Firefox e no Chromium.&lt;/p&gt;
 &lt;p&gt;Para servi-lo, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
 A sua Content-Security-Policy é &lt;code&gt;connect-src 'self'&lt;/code&gt;; o site continua público e
 só &lt;code&gt;/api/git/*&lt;/code&gt; fica atrás do oauth2-proxy. A configuração &lt;code&gt;origin&lt;/code&gt; do
-slides-gitd deve ser igual à origem do Playground. Uma forja cujo &lt;code&gt;auth&lt;/code&gt; é
-&lt;code&gt;user-token&lt;/code&gt; (GitLab, por exemplo) precisa do token próprio de cada usuário,
-guardado no servidor por &lt;code&gt;POST /api/git/credential&lt;/code&gt;. O painel não oferece um
-campo para isso, então o administrador ou o usuário o faz fora da página.&lt;/p&gt;
+slides-gitd deve ser igual à origem do Playground.&lt;/p&gt;
+&lt;p&gt;Uma forja cujo &lt;code&gt;auth&lt;/code&gt; é &lt;code&gt;user-token&lt;/code&gt; (GitLab, por exemplo) precisa do token
+próprio de cada pessoa, guardado uma vez no servidor. Quando ele falta, o painel
+avisa e oferece &lt;strong&gt;Guardar no servidor&lt;/strong&gt;, que abre num novo separador uma página
+do slides-gitd (&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0 ou posterior):
+escreva lá o token e depois prima &lt;strong&gt;Já guardei, tentar de novo&lt;/strong&gt; no painel.
+&lt;strong&gt;Esquecer o meu token no servidor&lt;/strong&gt; remove-o. A página do Playground nunca vê o
+token: a página de credenciais está isolada dela pelos seus próprios cabeçalhos,
+por isso o front não deve acrescentar a sua própria política a
+&lt;code&gt;/api/git/credential/page&lt;/code&gt; (&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; já a deixa em paz), e o
+Playground nunca deve ser servido com &lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt;,
+o que desfaria esse isolamento. Uma coisa que nenhum cabeçalho pode impedir: um
+script na página do Playground poderia desenhar uma falsa caixa de token.
+Escreva um token apenas no separador à parte cujo endereço termina em
+&lt;code&gt;/api/git/credential/page&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Um limite: o Playground guarda os rascunhos e o último nome de repositório no
 perfil do navegador (IndexedDB e localStorage), como antes. Em um perfil de
 navegador compartilhado, use &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; ou perfis separados.

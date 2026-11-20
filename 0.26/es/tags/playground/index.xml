@@ -853,11 +853,21 @@ go-slides/go-slides.github.io, ejecutada en WebKit, Firefox y Chromium.&lt;/p&gt
 &lt;p&gt;Para servirlo, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
 Su Content-Security-Policy es &lt;code&gt;connect-src 'self'&lt;/code&gt;; el sitio sigue siendo
 público y solo &lt;code&gt;/api/git/*&lt;/code&gt; queda detrás de oauth2-proxy. El ajuste &lt;code&gt;origin&lt;/code&gt; de
-slides-gitd debe ser igual al origen del Playground. Una forja cuyo &lt;code&gt;auth&lt;/code&gt; es
-&lt;code&gt;user-token&lt;/code&gt; (GitLab, por ejemplo) necesita el token propio de cada usuario
-guardado en el servidor mediante &lt;code&gt;POST /api/git/credential&lt;/code&gt;. El panel no ofrece
-un campo para ello, así que lo hace el administrador o el usuario fuera de la
-página.&lt;/p&gt;
+slides-gitd debe ser igual al origen del Playground.&lt;/p&gt;
+&lt;p&gt;Una forja cuyo &lt;code&gt;auth&lt;/code&gt; es &lt;code&gt;user-token&lt;/code&gt; (GitLab, por ejemplo) necesita el token
+propio de cada persona, guardado una vez en el servidor. Cuando falta, el panel
+lo indica y ofrece &lt;strong&gt;Guardar en el servidor&lt;/strong&gt;, que abre en una pestaña nueva una
+página de slides-gitd (&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0 o
+posterior): escriba allí el token y luego pulse &lt;strong&gt;Ya lo guardé, reintentar&lt;/strong&gt; en
+el panel. &lt;strong&gt;Olvidar mi token en el servidor&lt;/strong&gt; lo elimina. La página del
+Playground nunca ve el token: la página de credenciales está aislada de ella por
+sus propias cabeceras, de modo que el frontal no debe añadir su propia política
+a &lt;code&gt;/api/git/credential/page&lt;/code&gt; (&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; ya la deja intacta), y
+el Playground nunca debe servirse con &lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt;,
+lo que anularía ese aislamiento. Algo que ninguna cabecera puede impedir: un
+script de la página del Playground podría dibujar un falso cuadro de token.
+Escriba un token solo en la pestaña separada cuya dirección termina en
+&lt;code&gt;/api/git/credential/page&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Un límite: el Playground guarda los borradores y el último nombre de repositorio
 en el perfil del navegador (IndexedDB y localStorage), como antes. En un perfil
 de navegador compartido, use &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; o perfiles separados.

@@ -457,10 +457,20 @@ WebKit, Firefox and Chromium.&lt;/p&gt;
 &lt;p&gt;To serve it, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; of go-slides/go-slides.github.io.
 Its Content-Security-Policy is &lt;code&gt;connect-src 'self'&lt;/code&gt;; the site stays public and
 only &lt;code&gt;/api/git/*&lt;/code&gt; sits behind oauth2-proxy. slides-gitd&amp;rsquo;s &lt;code&gt;origin&lt;/code&gt; setting must
-equal the playground&amp;rsquo;s origin. A forge whose &lt;code&gt;auth&lt;/code&gt; is &lt;code&gt;user-token&lt;/code&gt; (GitLab,
-for example) needs each user&amp;rsquo;s own token stored on the server through
-&lt;code&gt;POST /api/git/credential&lt;/code&gt;. The pane offers no field for it, so the
-administrator or the user does it outside the page.&lt;/p&gt;
+equal the playground&amp;rsquo;s origin.&lt;/p&gt;
+&lt;p&gt;A forge whose &lt;code&gt;auth&lt;/code&gt; is &lt;code&gt;user-token&lt;/code&gt; (GitLab, for example) needs each person&amp;rsquo;s
+own token, stored on the server once. When it is missing, the pane says so and
+offers &lt;strong&gt;Store on the server&lt;/strong&gt;, which opens a page of slides-gitd
+(&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0 or later) in a new tab: type the
+token there, then press &lt;strong&gt;I stored it, retry&lt;/strong&gt; in the pane. &lt;strong&gt;Forget my token on
+the server&lt;/strong&gt; removes it. The playground page never sees the token: the
+credential page is isolated from it by its own headers, so the front must not
+add its own policy to &lt;code&gt;/api/git/credential/page&lt;/code&gt; (&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt;
+already leaves it alone), and the playground must never be served with
+&lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt;, which would undo that isolation. One
+thing no header can prevent: a script in the playground page could draw a fake
+token box. Type a token only into the separate tab whose address ends in
+&lt;code&gt;/api/git/credential/page&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;One limit: the playground keeps drafts and the last repository name in the
 browser profile (IndexedDB and localStorage), as before. On a shared browser
 profile, use &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; or separate profiles. In server mode,

@@ -427,9 +427,16 @@ slides-gitd 为每次调用的那一个仓库签发安装令牌，有效期一�
 &lt;code&gt;playground/browsertest/cookie.cjs&lt;/code&gt;，在 WebKit、Firefox 和 Chromium 中运行。&lt;/p&gt;
 &lt;p&gt;要提供服务，请使用 go-slides/go-slides.github.io 中的 &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt;。其
 Content-Security-Policy 为 &lt;code&gt;connect-src 'self'&lt;/code&gt;；站点保持公开，只有 &lt;code&gt;/api/git/*&lt;/code&gt; 位于
-oauth2-proxy 之后。slides-gitd 的 &lt;code&gt;origin&lt;/code&gt; 设置必须等于 Playground 的源。&lt;code&gt;auth&lt;/code&gt; 为
-&lt;code&gt;user-token&lt;/code&gt; 的 forge（例如 GitLab）需要把每个用户自己的令牌通过
-&lt;code&gt;POST /api/git/credential&lt;/code&gt; 存放在服务器上。窗格不提供对应的字段，所以由管理员或用户在页面之外完成。&lt;/p&gt;
+oauth2-proxy 之后。slides-gitd 的 &lt;code&gt;origin&lt;/code&gt; 设置必须等于 Playground 的源。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;auth&lt;/code&gt; 为 &lt;code&gt;user-token&lt;/code&gt; 的 forge（例如 GitLab）需要每个人自己的令牌，并且在服务器上存放一次。
+令牌缺失时，窗格会提示，并提供 &lt;strong&gt;存放到服务器&lt;/strong&gt;，它会在新标签页中打开 slides-gitd 的一个页面
+（&lt;code&gt;/api/git/credential/page&lt;/code&gt;，需要 slides-gitd v0.3.0 或更高版本）：在那里输入令牌，然后在窗格中点击
+&lt;strong&gt;已存放，重试&lt;/strong&gt;。&lt;strong&gt;让服务器忘记我的令牌&lt;/strong&gt; 会将其删除。Playground 页面永远看不到令牌：凭据页面由它自己的
+标头与 Playground 页面隔离，因此前端不得为 &lt;code&gt;/api/git/credential/page&lt;/code&gt; 添加自己的策略
+（&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; 已经不去改动它），Playground 也绝不能以
+&lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt; 提供服务，否则会破坏这种隔离。有一件事任何标头都无法阻止：
+Playground 页面中的脚本可能画出一个假的令牌输入框。只在地址以 &lt;code&gt;/api/git/credential/page&lt;/code&gt;
+结尾的那个单独标签页中输入令牌。&lt;/p&gt;
 &lt;p&gt;有一项限制：Playground 仍像以前一样，把草稿和最后使用的仓库名保存在浏览器配置文件
 （IndexedDB 和 localStorage）中。在共用的浏览器配置文件上，请使用 &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;
 或分开的配置文件。在服务器模式下，已记住但用户未获授权的仓库会被丢弃。&lt;/p&gt;

@@ -464,11 +464,22 @@ go-slides/go-slides.github.io, exécuté dans WebKit, Firefox et Chromium.&lt;/p
 &lt;p&gt;Pour le servir, utilisez &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
 Sa Content-Security-Policy est &lt;code&gt;connect-src 'self'&lt;/code&gt; ; le site reste public et
 seul &lt;code&gt;/api/git/*&lt;/code&gt; se trouve derrière oauth2-proxy. Le réglage &lt;code&gt;origin&lt;/code&gt; de
-slides-gitd doit être égal à l&amp;rsquo;origine du Playground. Une forge dont l&amp;rsquo;&lt;code&gt;auth&lt;/code&gt;
-est &lt;code&gt;user-token&lt;/code&gt; (GitLab, par exemple) exige le jeton propre de chaque
-utilisateur, enregistré sur le serveur par &lt;code&gt;POST /api/git/credential&lt;/code&gt;. Le
-panneau n&amp;rsquo;offre aucun champ pour cela : l&amp;rsquo;administrateur ou l&amp;rsquo;utilisateur le fait
-en dehors de la page.&lt;/p&gt;
+slides-gitd doit être égal à l&amp;rsquo;origine du Playground.&lt;/p&gt;
+&lt;p&gt;Une forge dont l&amp;rsquo;&lt;code&gt;auth&lt;/code&gt; est &lt;code&gt;user-token&lt;/code&gt; (GitLab, par exemple) exige le jeton
+propre à chaque personne, stocké une fois sur le serveur. Quand il manque, le
+panneau le dit et propose &lt;strong&gt;Stocker sur le serveur&lt;/strong&gt;, qui ouvre dans un nouvel
+onglet une page de slides-gitd (&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0
+ou plus récent) : saisissez-y le jeton, puis appuyez sur &lt;strong&gt;C’est stocké,
+réessayer&lt;/strong&gt; dans le panneau. &lt;strong&gt;Oublier mon jeton sur le serveur&lt;/strong&gt; le supprime. La
+page du Playground ne voit jamais le jeton : la page des identifiants en est
+isolée par ses propres en-têtes, si bien que le frontal ne doit pas ajouter sa
+propre politique à &lt;code&gt;/api/git/credential/page&lt;/code&gt; (&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; la
+laisse déjà tranquille), et le Playground ne doit jamais être servi avec
+&lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt;, ce qui annulerait cette isolation. Une
+chose qu&amp;rsquo;aucun en-tête ne peut empêcher : un script de la page du Playground
+pourrait dessiner une fausse zone de saisie du jeton. Ne saisissez un jeton que
+dans l&amp;rsquo;onglet séparé dont l&amp;rsquo;adresse se termine par
+&lt;code&gt;/api/git/credential/page&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Une limite : le Playground garde les brouillons et le dernier nom de dépôt dans
 le profil du navigateur (IndexedDB et localStorage), comme auparavant. Sur un
 profil de navigateur partagé, utilisez &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; ou des

@@ -441,10 +441,18 @@ oauth2-proxy の戻り先を、そのまま遷移する小さな同一サイト�
 WebKit、Firefox、Chromium で実行します。&lt;/p&gt;
 &lt;p&gt;配信には go-slides/go-slides.github.io の &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; を使います。その
 Content-Security-Policy は &lt;code&gt;connect-src 'self'&lt;/code&gt; で、サイトは公開のままにし、oauth2-proxy の背後に置くのは
-&lt;code&gt;/api/git/*&lt;/code&gt; だけです。slides-gitd の &lt;code&gt;origin&lt;/code&gt; 設定は Playground のオリジンと一致させる必要があります。
-&lt;code&gt;auth&lt;/code&gt; が &lt;code&gt;user-token&lt;/code&gt; の forge（たとえば GitLab）では、各ユーザー自身のトークンを
-&lt;code&gt;POST /api/git/credential&lt;/code&gt; でサーバーに保存する必要があります。ペインにはそのためのフィールドがないので、
-管理者またはユーザーがページの外で行います。&lt;/p&gt;
+&lt;code&gt;/api/git/*&lt;/code&gt; だけです。slides-gitd の &lt;code&gt;origin&lt;/code&gt; 設定は Playground のオリジンと一致させる必要があります。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;auth&lt;/code&gt; が &lt;code&gt;user-token&lt;/code&gt; の forge（たとえば GitLab）では、各人が自分のトークンを一度サーバーに保存する
+必要があります。それがないとき、ペインはそう表示し、&lt;strong&gt;サーバーに保存&lt;/strong&gt; を出します。これを押すと
+slides-gitd のページ（&lt;code&gt;/api/git/credential/page&lt;/code&gt;、slides-gitd v0.3.0 以降）が新しいタブで開くので、
+そこでトークンを入力し、ペインに戻って &lt;strong&gt;保存した、再試行&lt;/strong&gt; を押してください。
+&lt;strong&gt;サーバー上の自分のトークンを忘れる&lt;/strong&gt; でトークンは削除されます。Playground のページがトークンを見ること
+はありません。認証情報のページは、それ自身のヘッダーによって Playground のページから隔離されているため、
+フロントは &lt;code&gt;/api/git/credential/page&lt;/code&gt; に独自のポリシーを加えてはならず（&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; は
+すでに手を加えません）、Playground を &lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt; で配信してもいけません。
+それではこの隔離が無効になります。どのヘッダーでも防げないことが 1 つあります。Playground のページ内の
+スクリプトが、偽のトークン入力欄を描画できることです。トークンは、アドレスが
+&lt;code&gt;/api/git/credential/page&lt;/code&gt; で終わる別のタブにだけ入力してください。&lt;/p&gt;
 &lt;p&gt;制限が 1 つあります。Playground は、これまでどおり下書きと最後のリポジトリ名をブラウザープロファイル
 （IndexedDB と localStorage）に保持します。共有のブラウザープロファイルでは、&lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt;
 を使うか、プロファイルを分けてください。サーバーモードでは、記憶されているリポジトリのうち

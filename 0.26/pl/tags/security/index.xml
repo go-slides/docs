@@ -458,10 +458,20 @@ uruchamiany w WebKit, Firefox i Chromium.&lt;/p&gt;
 &lt;p&gt;Aby go serwować, użyj &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; z go-slides/go-slides.github.io.
 Jego Content-Security-Policy to &lt;code&gt;connect-src 'self'&lt;/code&gt;; witryna pozostaje
 publiczna, a za oauth2-proxy jest tylko &lt;code&gt;/api/git/*&lt;/code&gt;. Ustawienie &lt;code&gt;origin&lt;/code&gt;
-slides-gitd musi być równe origin Playgrounda. Forge, której &lt;code&gt;auth&lt;/code&gt; to
-&lt;code&gt;user-token&lt;/code&gt; (na przykład GitLab), wymaga własnego tokenu każdego użytkownika,
-zapisanego na serwerze przez &lt;code&gt;POST /api/git/credential&lt;/code&gt;. Panel nie oferuje na to
-pola, więc robi to administrator lub użytkownik poza stroną.&lt;/p&gt;
+slides-gitd musi być równe origin Playgrounda.&lt;/p&gt;
+&lt;p&gt;Forge, której &lt;code&gt;auth&lt;/code&gt; to &lt;code&gt;user-token&lt;/code&gt; (na przykład GitLab), wymaga własnego
+tokenu każdej osoby, zapisanego na serwerze jednorazowo. Gdy go brakuje, panel
+to mówi i oferuje &lt;strong&gt;Zapisz na serwerze&lt;/strong&gt;, co otwiera w nowej karcie stronę
+slides-gitd (&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0 lub nowszy): wpisz
+tam token, po czym naciśnij w panelu &lt;strong&gt;Zapisałem, spróbuj ponownie&lt;/strong&gt;. &lt;strong&gt;Zapomnij
+mój token na serwerze&lt;/strong&gt; go usuwa. Strona Playgrounda nigdy nie widzi tokenu:
+strona poświadczeń jest od niej odizolowana własnymi nagłówkami, więc front nie
+może dodawać własnej polityki do &lt;code&gt;/api/git/credential/page&lt;/code&gt;
+(&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; już jej nie rusza), a Playground nie może nigdy być
+serwowany z &lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt;, co zniweczyłoby tę
+izolację. Jednego nie zapobiegnie żaden nagłówek: skrypt na stronie Playgrounda
+mógłby narysować fałszywe pole na token. Wpisuj token tylko w osobnej karcie,
+której adres kończy się na &lt;code&gt;/api/git/credential/page&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Jedno ograniczenie: Playground, jak dotąd, trzyma szkice i ostatnią nazwę
 repozytorium w profilu przeglądarki (IndexedDB i localStorage). We wspólnym
 profilu przeglądarki użyj &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; albo osobnych profili. W

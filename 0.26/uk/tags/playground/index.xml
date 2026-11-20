@@ -833,11 +833,20 @@ oauth2-proxy на невелику сторінку того самого сай
 запускається у WebKit, Firefox і Chromium.&lt;/p&gt;
 &lt;p&gt;Щоб віддавати його, використайте &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; з
 go-slides/go-slides.github.io. Його Content-Security-Policy — &lt;code&gt;connect-src 'self'&lt;/code&gt;; сайт лишається публічним, і лише &lt;code&gt;/api/git/*&lt;/code&gt; стоїть за oauth2-proxy.
-Параметр &lt;code&gt;origin&lt;/code&gt; у slides-gitd має збігатися з origin Playground. Forge, у якого
-&lt;code&gt;auth&lt;/code&gt; дорівнює &lt;code&gt;user-token&lt;/code&gt; (наприклад, GitLab), вимагає власний токен кожного
-користувача, збережений на сервері через &lt;code&gt;POST /api/git/credential&lt;/code&gt;. Поля для
-цього на панелі немає, тож адміністратор або користувач робить це поза
-сторінкою.&lt;/p&gt;
+Параметр &lt;code&gt;origin&lt;/code&gt; у slides-gitd має збігатися з origin Playground.&lt;/p&gt;
+&lt;p&gt;Forge, у якого &lt;code&gt;auth&lt;/code&gt; дорівнює &lt;code&gt;user-token&lt;/code&gt; (наприклад, GitLab), вимагає власний
+токен кожної людини, один раз збережений на сервері. Коли його немає, панель
+повідомляє про це й пропонує &lt;strong&gt;Зберегти на сервері&lt;/strong&gt;: це відкриває в новій
+вкладці сторінку slides-gitd (&lt;code&gt;/api/git/credential/page&lt;/code&gt;, slides-gitd v0.3.0 або
+новіший). Введіть токен там, потім натисніть на панелі &lt;strong&gt;Зберіг, повторити&lt;/strong&gt;.
+&lt;strong&gt;Забути мій токен на сервері&lt;/strong&gt; видаляє його. Сторінка Playground ніколи не бачить
+токен: сторінка облікових даних ізольована від неї власними заголовками, тому
+фронт не повинен додавати свою політику до &lt;code&gt;/api/git/credential/page&lt;/code&gt;
+(&lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; її вже не чіпає), а Playground ні в якому разі не можна
+віддавати з &lt;code&gt;Cross-Origin-Opener-Policy: same-origin&lt;/code&gt;, що зруйнувало б цю
+ізоляцію. Одному заголовки завадити не можуть: скрипт на сторінці Playground міг
+би намалювати підроблене поле для токена. Вводьте токен лише в окремій вкладці,
+адреса якої закінчується на &lt;code&gt;/api/git/credential/page&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Одне обмеження: Playground, як і раніше, зберігає чернетки й останню назву
 репозиторію в профілі браузера (IndexedDB і localStorage). У спільному профілі
 браузера користуйтеся &lt;strong&gt;Draft ▸ Forget my drafts&lt;/strong&gt; або окремими профілями. У
