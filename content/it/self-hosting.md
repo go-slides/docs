@@ -377,6 +377,20 @@ sessione è terminata» con un pulsante **Accedi**
 (`/oauth2/sign_in?rd=<this page>` di oauth2-proxy). Non ripiega mai su un token
 digitato nel browser.
 
+Il cookie `__Host-gitd` è `SameSite=Strict`, quindi il primo caricamento di
+pagina dopo il ritorno dell'accesso dal provider di identità (un altro sito)
+può arrivare senza di esso: Firefox e il motore di Safari lo omettono anche
+quando il provider reindirizza direttamente indietro, e tutti i browser lo
+omettono quando il modulo di accesso del provider rinvia la richiesta con POST.
+Nessuno se ne accorge, perché la pagina stessa è pubblica e la prima richiesta
+del pannello, `GET /api/git/session`, è dello stesso sito e porta il cookie in
+tutti i browser provati. Mantienilo così: solo `/api/git/*` deve dipendere dal
+cookie, mai la pagina HTML. Se un deployment deve proteggere la pagina stessa,
+punta l'indirizzo di ritorno di oauth2-proxy a una piccola pagina dello stesso
+sito che prosegue la navigazione (`location.replace("/")`); la pagina che
+raggiunge riceve il cookie. Il test è `playground/browsertest/cookie.cjs` di
+go-slides/go-slides.github.io, eseguito in WebKit, Firefox e Chromium.
+
 Per servirlo, usa `selfhost/Caddyfile.gitd` di go-slides/go-slides.github.io. La
 sua Content-Security-Policy è `connect-src 'self'`; il sito resta pubblico e solo
 `/api/git/*` sta dietro oauth2-proxy. L'impostazione `origin` di slides-gitd deve

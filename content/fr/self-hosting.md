@@ -381,6 +381,20 @@ Quand la connexion a expiré ou manque (HTTP `401`), le panneau affiche
 (`/oauth2/sign_in?rd=<this page>` d'oauth2-proxy). Il ne se rabat jamais sur un
 jeton saisi dans le navigateur.
 
+Le cookie `__Host-gitd` est `SameSite=Strict` : le premier chargement de page
+après le retour de la connexion depuis le fournisseur d'identité (un autre site)
+peut donc arriver sans lui. Firefox et le moteur de Safari l'omettent même
+quand le fournisseur redirige directement vers le site, et tous les navigateurs
+l'omettent quand le formulaire de connexion du fournisseur renvoie la requête en
+POST. Personne ne le voit, car la page elle-même est publique et la première
+requête du panneau, `GET /api/git/session`, est du même site et porte le cookie
+dans tous les navigateurs testés. Gardez-le ainsi : seul `/api/git/*` doit
+dépendre du cookie, jamais la page HTML. Si un déploiement doit protéger la page
+elle-même, faites pointer l'adresse de retour d'oauth2-proxy vers une petite
+page du même site qui poursuit la navigation (`location.replace("/")`) ; la page
+atteinte reçoit le cookie. Le test est `playground/browsertest/cookie.cjs` de
+go-slides/go-slides.github.io, exécuté dans WebKit, Firefox et Chromium.
+
 Pour le servir, utilisez `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
 Sa Content-Security-Policy est `connect-src 'self'` ; le site reste public et
 seul `/api/git/*` se trouve derrière oauth2-proxy. Le réglage `origin` de

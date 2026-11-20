@@ -360,6 +360,19 @@ Playground を slides-gitd の背後で独自のオリジンから配信する�
 **サインイン** ボタン（oauth2-proxy の `/oauth2/sign_in?rd=<this page>`）を表示します。
 ブラウザーに入力したトークンにフォールバックすることは決してありません。
 
+`__Host-gitd` cookie は `SameSite=Strict` なので、ID プロバイダー（別のサイト）から
+サインインが戻ってきた後の最初のページ読み込みは、cookie なしで届くことがあります。
+Firefox と Safari のエンジンは、プロバイダーが直接リダイレクトで戻した場合でも cookie を送らず、
+すべてのブラウザーは、プロバイダーのログインフォームから POST で戻された場合に cookie を送りません。
+これに気づく人はいません。ページ自体は公開されていて、ペインの最初のリクエスト
+`GET /api/git/session` は同一サイトのリクエストであり、テストしたすべてのブラウザーで
+cookie を伴うからです。この状態を保ってください。cookie に依存してよいのは `/api/git/*` だけで、
+HTML ページが依存してはなりません。デプロイでページ自体を保護する必要がある場合は、
+oauth2-proxy の戻り先を、そのまま遷移する小さな同一サイトのページ
+（`location.replace("/")`）に向けてください。そこから到達したページは cookie を受け取ります。
+テストは go-slides/go-slides.github.io の `playground/browsertest/cookie.cjs` で、
+WebKit、Firefox、Chromium で実行します。
+
 配信には go-slides/go-slides.github.io の `selfhost/Caddyfile.gitd` を使います。その
 Content-Security-Policy は `connect-src 'self'` で、サイトは公開のままにし、oauth2-proxy の背後に置くのは
 `/api/git/*` だけです。slides-gitd の `origin` 設定は Playground のオリジンと一致させる必要があります。

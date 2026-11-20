@@ -379,6 +379,20 @@ Ist die Anmeldung abgelaufen oder fehlt sie (HTTP `401`), zeigt der Bereich
 (`/oauth2/sign_in?rd=<this page>` von oauth2-proxy). Er fällt nie auf einen im
 Browser getippten Token zurück.
 
+Das Cookie `__Host-gitd` ist `SameSite=Strict`; deshalb kann der erste
+Seitenaufruf nach der Rückkehr der Anmeldung vom Identitätsanbieter (einer
+anderen Site) ohne das Cookie ankommen: Firefox und die Engine von Safari lassen
+es weg, selbst wenn der Anbieter direkt zurückleitet, und alle Browser lassen es
+weg, wenn das Anmeldeformular des Anbieters zurückpostet. Niemand bemerkt das,
+denn die Seite selbst ist öffentlich, und die erste Anfrage des Bereichs,
+`GET /api/git/session`, ist Same-Site und trägt das Cookie in jedem getesteten
+Browser. Das soll so bleiben: Nur `/api/git/*` darf vom Cookie abhängen, nie die
+HTML-Seite. Muss ein Deployment die Seite selbst schützen, richten Sie die
+Rücksprungadresse von oauth2-proxy auf eine kleine Same-Site-Seite, die
+weiternavigiert (`location.replace("/")`); die Seite, die sie erreicht, erhält
+das Cookie. Der Test ist `playground/browsertest/cookie.cjs` von
+go-slides/go-slides.github.io, ausgeführt in WebKit, Firefox und Chromium.
+
 Ausgeliefert wird er mit `selfhost/Caddyfile.gitd` aus
 go-slides/go-slides.github.io. Dessen Content-Security-Policy ist
 `connect-src 'self'`; die Site bleibt öffentlich, nur `/api/git/*` liegt hinter

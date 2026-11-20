@@ -353,6 +353,17 @@ Playground를 slides-gitd 뒤에서 자체 오리진으로 제공하면, Playgro
 (oauth2-proxy의 `/oauth2/sign_in?rd=<this page>`)이 표시됩니다. 브라우저에 입력한 토큰으로
 대체하는 일은 절대 없습니다.
 
+`__Host-gitd` 쿠키는 `SameSite=Strict`이므로, ID 공급자(다른 사이트)에서 로그인이
+돌아온 뒤 처음 하는 페이지 로드는 쿠키 없이 도착할 수 있습니다. Firefox와 Safari의 엔진은
+공급자가 곧바로 리디렉션해 돌려보내는 경우에도 쿠키를 빼고, 모든 브라우저는 공급자의
+로그인 양식이 POST로 돌려보내는 경우에 쿠키를 뺍니다. 아무도 이를 알아채지 못하는데,
+페이지 자체는 공개이고 창의 첫 요청인 `GET /api/git/session`은 같은 사이트 요청이어서
+테스트한 모든 브라우저에서 쿠키를 싣기 때문입니다. 그대로 유지하세요. 쿠키에 의존해야 하는 것은
+`/api/git/*`뿐이며, HTML 페이지가 의존해서는 안 됩니다. 배포에서 페이지 자체를 보호해야 한다면
+oauth2-proxy의 반환 주소를 계속 이동시키는 작은 같은 사이트 페이지(`location.replace("/")`)로
+지정하세요. 그 페이지가 도달한 페이지는 쿠키를 받습니다. 테스트는 go-slides/go-slides.github.io의
+`playground/browsertest/cookie.cjs`이며 WebKit, Firefox, Chromium에서 실행합니다.
+
 제공하려면 go-slides/go-slides.github.io의 `selfhost/Caddyfile.gitd`를 쓰세요. 그
 Content-Security-Policy는 `connect-src 'self'`이고, 사이트는 공개 상태로 두며 oauth2-proxy 뒤에
 두는 것은 `/api/git/*`뿐입니다. slides-gitd의 `origin` 설정은 Playground의 오리진과 같아야 합니다.
