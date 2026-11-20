@@ -189,7 +189,13 @@ jobs:
       # --skip: this site's own pages exist only once this workflow has
       # deployed them (the offline check above proves every link inside the
       # site), and this repository's own files, on a pull request that adds
-      # them, are not on main yet.
+      # them, are not on main yet. And api.github.com: the self-hosting page
+      # names it as a configuration VALUE (`"api": "https://api.github.com"`
+      # in the slides-gitd JSON example, every language), not as a page to
+      # open, and the API root answers an unauthenticated HTML GET with 403,
+      # which linkcheck reports FLAKY and fails the job on (docs#138, four
+      # attempts, 74 other URLs ok; docs#137 needed a re-run for 403s too).
+      # A GitHub REST URL is never a link a reader follows.
       #
       # THE ONE DELIBERATE EXCEPTION to "no secret on a command line or in the
       # environment": the job's ephemeral, read-only github.token (permissions:
@@ -207,6 +213,7 @@ jobs:
             --token-file "${token}" \
             --skip go-slides.github.io/docs \
             --skip github.com/go-slides/docs/ \
+            --skip ://api.github.com \
             content/ README.md
 
   deploy:
