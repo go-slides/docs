@@ -394,11 +394,22 @@ go-slides/go-slides.github.io, ejecutada en WebKit, Firefox y Chromium.
 Para servirlo, use `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
 Su Content-Security-Policy es `connect-src 'self'`; el sitio sigue siendo
 público y solo `/api/git/*` queda detrás de oauth2-proxy. El ajuste `origin` de
-slides-gitd debe ser igual al origen del Playground. Una forja cuyo `auth` es
-`user-token` (GitLab, por ejemplo) necesita el token propio de cada usuario
-guardado en el servidor mediante `POST /api/git/credential`. El panel no ofrece
-un campo para ello, así que lo hace el administrador o el usuario fuera de la
-página.
+slides-gitd debe ser igual al origen del Playground.
+
+Una forja cuyo `auth` es `user-token` (GitLab, por ejemplo) necesita el token
+propio de cada persona, guardado una vez en el servidor. Cuando falta, el panel
+lo indica y ofrece **Guardar en el servidor**, que abre en una pestaña nueva una
+página de slides-gitd (`/api/git/credential/page`, slides-gitd v0.3.0 o
+posterior): escriba allí el token y luego pulse **Ya lo guardé, reintentar** en
+el panel. **Olvidar mi token en el servidor** lo elimina. La página del
+Playground nunca ve el token: la página de credenciales está aislada de ella por
+sus propias cabeceras, de modo que el frontal no debe añadir su propia política
+a `/api/git/credential/page` (`selfhost/Caddyfile.gitd` ya la deja intacta), y
+el Playground nunca debe servirse con `Cross-Origin-Opener-Policy: same-origin`,
+lo que anularía ese aislamiento. Algo que ninguna cabecera puede impedir: un
+script de la página del Playground podría dibujar un falso cuadro de token.
+Escriba un token solo en la pestaña separada cuya dirección termina en
+`/api/git/credential/page`.
 
 Un límite: el Playground guarda los borradores y el último nombre de repositorio
 en el perfil del navegador (IndexedDB y localStorage), como antes. En un perfil

@@ -376,9 +376,18 @@ WebKit、Firefox、Chromium で実行します。
 配信には go-slides/go-slides.github.io の `selfhost/Caddyfile.gitd` を使います。その
 Content-Security-Policy は `connect-src 'self'` で、サイトは公開のままにし、oauth2-proxy の背後に置くのは
 `/api/git/*` だけです。slides-gitd の `origin` 設定は Playground のオリジンと一致させる必要があります。
-`auth` が `user-token` の forge（たとえば GitLab）では、各ユーザー自身のトークンを
-`POST /api/git/credential` でサーバーに保存する必要があります。ペインにはそのためのフィールドがないので、
-管理者またはユーザーがページの外で行います。
+
+`auth` が `user-token` の forge（たとえば GitLab）では、各人が自分のトークンを一度サーバーに保存する
+必要があります。それがないとき、ペインはそう表示し、**サーバーに保存** を出します。これを押すと
+slides-gitd のページ（`/api/git/credential/page`、slides-gitd v0.3.0 以降）が新しいタブで開くので、
+そこでトークンを入力し、ペインに戻って **保存した、再試行** を押してください。
+**サーバー上の自分のトークンを忘れる** でトークンは削除されます。Playground のページがトークンを見ること
+はありません。認証情報のページは、それ自身のヘッダーによって Playground のページから隔離されているため、
+フロントは `/api/git/credential/page` に独自のポリシーを加えてはならず（`selfhost/Caddyfile.gitd` は
+すでに手を加えません）、Playground を `Cross-Origin-Opener-Policy: same-origin` で配信してもいけません。
+それではこの隔離が無効になります。どのヘッダーでも防げないことが 1 つあります。Playground のページ内の
+スクリプトが、偽のトークン入力欄を描画できることです。トークンは、アドレスが
+`/api/git/credential/page` で終わる別のタブにだけ入力してください。
 
 制限が 1 つあります。Playground は、これまでどおり下書きと最後のリポジトリ名をブラウザープロファイル
 （IndexedDB と localStorage）に保持します。共有のブラウザープロファイルでは、**Draft ▸ Forget my drafts**

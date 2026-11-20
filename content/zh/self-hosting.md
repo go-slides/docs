@@ -361,9 +361,17 @@ slides-gitd 为每次调用的那一个仓库签发安装令牌，有效期一�
 
 要提供服务，请使用 go-slides/go-slides.github.io 中的 `selfhost/Caddyfile.gitd`。其
 Content-Security-Policy 为 `connect-src 'self'`；站点保持公开，只有 `/api/git/*` 位于
-oauth2-proxy 之后。slides-gitd 的 `origin` 设置必须等于 Playground 的源。`auth` 为
-`user-token` 的 forge（例如 GitLab）需要把每个用户自己的令牌通过
-`POST /api/git/credential` 存放在服务器上。窗格不提供对应的字段，所以由管理员或用户在页面之外完成。
+oauth2-proxy 之后。slides-gitd 的 `origin` 设置必须等于 Playground 的源。
+
+`auth` 为 `user-token` 的 forge（例如 GitLab）需要每个人自己的令牌，并且在服务器上存放一次。
+令牌缺失时，窗格会提示，并提供 **存放到服务器**，它会在新标签页中打开 slides-gitd 的一个页面
+（`/api/git/credential/page`，需要 slides-gitd v0.3.0 或更高版本）：在那里输入令牌，然后在窗格中点击
+**已存放，重试**。**让服务器忘记我的令牌** 会将其删除。Playground 页面永远看不到令牌：凭据页面由它自己的
+标头与 Playground 页面隔离，因此前端不得为 `/api/git/credential/page` 添加自己的策略
+（`selfhost/Caddyfile.gitd` 已经不去改动它），Playground 也绝不能以
+`Cross-Origin-Opener-Policy: same-origin` 提供服务，否则会破坏这种隔离。有一件事任何标头都无法阻止：
+Playground 页面中的脚本可能画出一个假的令牌输入框。只在地址以 `/api/git/credential/page`
+结尾的那个单独标签页中输入令牌。
 
 有一项限制：Playground 仍像以前一样，把草稿和最后使用的仓库名保存在浏览器配置文件
 （IndexedDB 和 localStorage）中。在共用的浏览器配置文件上，请使用 **Draft ▸ Forget my drafts**

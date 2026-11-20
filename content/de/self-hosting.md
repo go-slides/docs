@@ -397,10 +397,23 @@ Ausgeliefert wird er mit `selfhost/Caddyfile.gitd` aus
 go-slides/go-slides.github.io. Dessen Content-Security-Policy ist
 `connect-src 'self'`; die Site bleibt öffentlich, nur `/api/git/*` liegt hinter
 oauth2-proxy. Die Einstellung `origin` von slides-gitd muss dem Origin des
-Playgrounds entsprechen. Eine Forge mit `auth` `user-token` (zum Beispiel
-GitLab) braucht den eigenen Token jedes Benutzers, auf dem Server abgelegt über
-`POST /api/git/credential`. Der Bereich bietet dafür kein Feld an; das tun die
-Administratorin oder der Benutzer außerhalb der Seite.
+Playgrounds entsprechen.
+
+Eine Forge mit `auth` `user-token` (zum Beispiel GitLab) braucht das eigene
+Token jeder Person, einmal auf dem Server abgelegt. Fehlt es, sagt der Bereich
+das und bietet **Auf dem Server speichern** an; das öffnet in einem neuen Tab
+eine Seite von slides-gitd (`/api/git/credential/page`, slides-gitd v0.3.0 oder
+neuer): Geben Sie dort das Token ein und drücken Sie dann im Bereich
+**Gespeichert, erneut versuchen**. **Mein Token auf dem Server vergessen**
+entfernt es. Die Playground-Seite sieht das Token nie: Die Credential-Seite ist
+durch ihre eigenen Header von ihr isoliert. Deshalb darf der Front-Server
+`/api/git/credential/page` keine eigene Richtlinie hinzufügen
+(`selfhost/Caddyfile.gitd` lässt sie bereits in Ruhe), und der Playground darf
+nie mit `Cross-Origin-Opener-Policy: same-origin` ausgeliefert werden, was diese
+Isolation aufheben würde. Eines kann kein Header verhindern: Ein Skript in der
+Playground-Seite könnte ein gefälschtes Token-Feld zeichnen. Geben Sie ein Token
+nur in dem separaten Tab ein, dessen Adresse auf `/api/git/credential/page`
+endet.
 
 Eine Einschränkung: Der Playground behält Entwürfe und den letzten
 Repository-Namen wie bisher im Browserprofil (IndexedDB und localStorage). Auf
