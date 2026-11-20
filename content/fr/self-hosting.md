@@ -398,11 +398,23 @@ go-slides/go-slides.github.io, exécuté dans WebKit, Firefox et Chromium.
 Pour le servir, utilisez `selfhost/Caddyfile.gitd` de go-slides/go-slides.github.io.
 Sa Content-Security-Policy est `connect-src 'self'` ; le site reste public et
 seul `/api/git/*` se trouve derrière oauth2-proxy. Le réglage `origin` de
-slides-gitd doit être égal à l'origine du Playground. Une forge dont l'`auth`
-est `user-token` (GitLab, par exemple) exige le jeton propre de chaque
-utilisateur, enregistré sur le serveur par `POST /api/git/credential`. Le
-panneau n'offre aucun champ pour cela : l'administrateur ou l'utilisateur le fait
-en dehors de la page.
+slides-gitd doit être égal à l'origine du Playground.
+
+Une forge dont l'`auth` est `user-token` (GitLab, par exemple) exige le jeton
+propre à chaque personne, stocké une fois sur le serveur. Quand il manque, le
+panneau le dit et propose **Stocker sur le serveur**, qui ouvre dans un nouvel
+onglet une page de slides-gitd (`/api/git/credential/page`, slides-gitd v0.3.0
+ou plus récent) : saisissez-y le jeton, puis appuyez sur **C’est stocké,
+réessayer** dans le panneau. **Oublier mon jeton sur le serveur** le supprime. La
+page du Playground ne voit jamais le jeton : la page des identifiants en est
+isolée par ses propres en-têtes, si bien que le frontal ne doit pas ajouter sa
+propre politique à `/api/git/credential/page` (`selfhost/Caddyfile.gitd` la
+laisse déjà tranquille), et le Playground ne doit jamais être servi avec
+`Cross-Origin-Opener-Policy: same-origin`, ce qui annulerait cette isolation. Une
+chose qu'aucun en-tête ne peut empêcher : un script de la page du Playground
+pourrait dessiner une fausse zone de saisie du jeton. Ne saisissez un jeton que
+dans l'onglet séparé dont l'adresse se termine par
+`/api/git/credential/page`.
 
 Une limite : le Playground garde les brouillons et le dernier nom de dépôt dans
 le profil du navigateur (IndexedDB et localStorage), comme auparavant. Sur un

@@ -392,10 +392,21 @@ uruchamiany w WebKit, Firefox i Chromium.
 Aby go serwować, użyj `selfhost/Caddyfile.gitd` z go-slides/go-slides.github.io.
 Jego Content-Security-Policy to `connect-src 'self'`; witryna pozostaje
 publiczna, a za oauth2-proxy jest tylko `/api/git/*`. Ustawienie `origin`
-slides-gitd musi być równe origin Playgrounda. Forge, której `auth` to
-`user-token` (na przykład GitLab), wymaga własnego tokenu każdego użytkownika,
-zapisanego na serwerze przez `POST /api/git/credential`. Panel nie oferuje na to
-pola, więc robi to administrator lub użytkownik poza stroną.
+slides-gitd musi być równe origin Playgrounda.
+
+Forge, której `auth` to `user-token` (na przykład GitLab), wymaga własnego
+tokenu każdej osoby, zapisanego na serwerze jednorazowo. Gdy go brakuje, panel
+to mówi i oferuje **Zapisz na serwerze**, co otwiera w nowej karcie stronę
+slides-gitd (`/api/git/credential/page`, slides-gitd v0.3.0 lub nowszy): wpisz
+tam token, po czym naciśnij w panelu **Zapisałem, spróbuj ponownie**. **Zapomnij
+mój token na serwerze** go usuwa. Strona Playgrounda nigdy nie widzi tokenu:
+strona poświadczeń jest od niej odizolowana własnymi nagłówkami, więc front nie
+może dodawać własnej polityki do `/api/git/credential/page`
+(`selfhost/Caddyfile.gitd` już jej nie rusza), a Playground nie może nigdy być
+serwowany z `Cross-Origin-Opener-Policy: same-origin`, co zniweczyłoby tę
+izolację. Jednego nie zapobiegnie żaden nagłówek: skrypt na stronie Playgrounda
+mógłby narysować fałszywe pole na token. Wpisuj token tylko w osobnej karcie,
+której adres kończy się na `/api/git/credential/page`.
 
 Jedno ograniczenie: Playground, jak dotąd, trzyma szkice i ostatnią nazwę
 repozytorium w profilu przeglądarki (IndexedDB i localStorage). We wspólnym

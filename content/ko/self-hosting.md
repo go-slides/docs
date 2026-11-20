@@ -367,8 +367,17 @@ oauth2-proxy의 반환 주소를 계속 이동시키는 작은 같은 사이트 
 제공하려면 go-slides/go-slides.github.io의 `selfhost/Caddyfile.gitd`를 쓰세요. 그
 Content-Security-Policy는 `connect-src 'self'`이고, 사이트는 공개 상태로 두며 oauth2-proxy 뒤에
 두는 것은 `/api/git/*`뿐입니다. slides-gitd의 `origin` 설정은 Playground의 오리진과 같아야 합니다.
-`auth`가 `user-token`인 forge(예: GitLab)는 각 사용자의 자체 토큰을 `POST /api/git/credential`로
-서버에 저장해야 합니다. 창에는 이를 위한 입력란이 없으므로 관리자나 사용자가 페이지 밖에서 처리합니다.
+
+`auth`가 `user-token`인 forge(예: GitLab)는 각 사람의 자체 토큰이 서버에 한 번 저장되어 있어야 합니다.
+토큰이 없으면 창이 그렇게 알리고 **서버에 저장**을 제공합니다. 이를 누르면 slides-gitd의 페이지
+(`/api/git/credential/page`, slides-gitd v0.3.0 이상)가 새 탭에서 열립니다. 거기에 토큰을 입력한 뒤
+창에서 **저장했습니다, 다시 시도**를 누르세요. **서버의 내 토큰 잊기**는 토큰을 삭제합니다.
+Playground 페이지는 토큰을 절대 보지 못합니다. 자격 증명 페이지는 자체 헤더로 Playground 페이지와
+격리되어 있으므로, 프런트는 `/api/git/credential/page`에 자체 정책을 추가해서는 안 되고
+(`selfhost/Caddyfile.gitd`는 이미 건드리지 않습니다), Playground를 `Cross-Origin-Opener-Policy: same-origin`으로
+제공해서도 안 됩니다. 그러면 이 격리가 무효가 됩니다. 어떤 헤더로도 막을 수 없는 것이 하나 있습니다.
+Playground 페이지의 스크립트가 가짜 토큰 입력란을 그릴 수 있다는 점입니다. 토큰은 주소가
+`/api/git/credential/page`로 끝나는 별도의 탭에만 입력하세요.
 
 한 가지 제한이 있습니다. Playground는 이전처럼 초안과 마지막 저장소 이름을 브라우저 프로필
 (IndexedDB와 localStorage)에 보관합니다. 공유 브라우저 프로필에서는 **Draft ▸ Forget my drafts**를

@@ -391,10 +391,21 @@ WebKit, Firefox and Chromium.
 To serve it, use `selfhost/Caddyfile.gitd` of go-slides/go-slides.github.io.
 Its Content-Security-Policy is `connect-src 'self'`; the site stays public and
 only `/api/git/*` sits behind oauth2-proxy. slides-gitd's `origin` setting must
-equal the playground's origin. A forge whose `auth` is `user-token` (GitLab,
-for example) needs each user's own token stored on the server through
-`POST /api/git/credential`. The pane offers no field for it, so the
-administrator or the user does it outside the page.
+equal the playground's origin.
+
+A forge whose `auth` is `user-token` (GitLab, for example) needs each person's
+own token, stored on the server once. When it is missing, the pane says so and
+offers **Store on the server**, which opens a page of slides-gitd
+(`/api/git/credential/page`, slides-gitd v0.3.0 or later) in a new tab: type the
+token there, then press **I stored it, retry** in the pane. **Forget my token on
+the server** removes it. The playground page never sees the token: the
+credential page is isolated from it by its own headers, so the front must not
+add its own policy to `/api/git/credential/page` (`selfhost/Caddyfile.gitd`
+already leaves it alone), and the playground must never be served with
+`Cross-Origin-Opener-Policy: same-origin`, which would undo that isolation. One
+thing no header can prevent: a script in the playground page could draw a fake
+token box. Type a token only into the separate tab whose address ends in
+`/api/git/credential/page`.
 
 One limit: the playground keeps drafts and the last repository name in the
 browser profile (IndexedDB and localStorage), as before. On a shared browser
