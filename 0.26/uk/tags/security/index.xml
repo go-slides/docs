@@ -439,6 +439,19 @@ origin. Браузер не звертається до жодного хост�
 &lt;p&gt;Якщо вхід минув або його немає (HTTP &lt;code&gt;401&lt;/code&gt;), панель показує «Ваш вхід
 завершено» з кнопкою &lt;strong&gt;Увійти&lt;/strong&gt; (&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; з
 oauth2-proxy). Вона ніколи не повертається до токена, введеного в браузері.&lt;/p&gt;
+&lt;p&gt;Cookie &lt;code&gt;__Host-gitd&lt;/code&gt; має &lt;code&gt;SameSite=Strict&lt;/code&gt;, тож перше завантаження сторінки
+після повернення входу від провайдера ідентифікації (іншого сайту) може прийти
+без нього: Firefox і рушій Safari його не надсилають, навіть коли провайдер
+перенаправляє одразу назад, а всі браузери не надсилають його, коли форма входу
+провайдера повертає користувача через POST. Ніхто цього не помічає, бо сама
+сторінка публічна, а перший запит панелі, &lt;code&gt;GET /api/git/session&lt;/code&gt;, іде в межах
+того самого сайту й несе cookie в усіх перевірених браузерах. Хай так і
+лишається: від cookie має залежати лише &lt;code&gt;/api/git/*&lt;/code&gt;, але не HTML-сторінка.
+Якщо розгортання мусить захищати саму сторінку, вкажіть адресу повернення
+oauth2-proxy на невелику сторінку того самого сайту, що переходить далі
+(&lt;code&gt;location.replace(&amp;quot;/&amp;quot;)&lt;/code&gt;); сторінка, на яку вона приводить, отримує cookie.
+Тест — &lt;code&gt;playground/browsertest/cookie.cjs&lt;/code&gt; з go-slides/go-slides.github.io,
+запускається у WebKit, Firefox і Chromium.&lt;/p&gt;
 &lt;p&gt;Щоб віддавати його, використайте &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; з
 go-slides/go-slides.github.io. Його Content-Security-Policy — &lt;code&gt;connect-src 'self'&lt;/code&gt;; сайт лишається публічним, і лише &lt;code&gt;/api/git/*&lt;/code&gt; стоїть за oauth2-proxy.
 Параметр &lt;code&gt;origin&lt;/code&gt; у slides-gitd має збігатися з origin Playground. Forge, у якого

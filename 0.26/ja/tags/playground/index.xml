@@ -746,6 +746,18 @@ Contents の読み取りと書き込み、Pull requests の読み取りと書き
 &lt;p&gt;サインインの期限が切れている、またはない場合（HTTP &lt;code&gt;401&lt;/code&gt;）、ペインは「サインインが終了しました」と
 &lt;strong&gt;サインイン&lt;/strong&gt; ボタン（oauth2-proxy の &lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt;）を表示します。
 ブラウザーに入力したトークンにフォールバックすることは決してありません。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;__Host-gitd&lt;/code&gt; cookie は &lt;code&gt;SameSite=Strict&lt;/code&gt; なので、ID プロバイダー（別のサイト）から
+サインインが戻ってきた後の最初のページ読み込みは、cookie なしで届くことがあります。
+Firefox と Safari のエンジンは、プロバイダーが直接リダイレクトで戻した場合でも cookie を送らず、
+すべてのブラウザーは、プロバイダーのログインフォームから POST で戻された場合に cookie を送りません。
+これに気づく人はいません。ページ自体は公開されていて、ペインの最初のリクエスト
+&lt;code&gt;GET /api/git/session&lt;/code&gt; は同一サイトのリクエストであり、テストしたすべてのブラウザーで
+cookie を伴うからです。この状態を保ってください。cookie に依存してよいのは &lt;code&gt;/api/git/*&lt;/code&gt; だけで、
+HTML ページが依存してはなりません。デプロイでページ自体を保護する必要がある場合は、
+oauth2-proxy の戻り先を、そのまま遷移する小さな同一サイトのページ
+（&lt;code&gt;location.replace(&amp;quot;/&amp;quot;)&lt;/code&gt;）に向けてください。そこから到達したページは cookie を受け取ります。
+テストは go-slides/go-slides.github.io の &lt;code&gt;playground/browsertest/cookie.cjs&lt;/code&gt; で、
+WebKit、Firefox、Chromium で実行します。&lt;/p&gt;
 &lt;p&gt;配信には go-slides/go-slides.github.io の &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; を使います。その
 Content-Security-Policy は &lt;code&gt;connect-src 'self'&lt;/code&gt; で、サイトは公開のままにし、oauth2-proxy の背後に置くのは
 &lt;code&gt;/api/git/*&lt;/code&gt; だけです。slides-gitd の &lt;code&gt;origin&lt;/code&gt; 設定は Playground のオリジンと一致させる必要があります。

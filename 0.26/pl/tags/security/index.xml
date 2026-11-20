@@ -442,6 +442,19 @@ JSON i &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
 dobiegło końca” z przyciskiem &lt;strong&gt;Zaloguj się&lt;/strong&gt;
 (&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; z oauth2-proxy). Nigdy nie wraca do tokenu
 wpisanego w przeglądarce.&lt;/p&gt;
+&lt;p&gt;Ciasteczko &lt;code&gt;__Host-gitd&lt;/code&gt; ma &lt;code&gt;SameSite=Strict&lt;/code&gt;, więc pierwsze wczytanie strony po
+powrocie logowania od dostawcy tożsamości (innej witryny) może dotrzeć bez
+niego: Firefox i silnik Safari pomijają je nawet wtedy, gdy dostawca przekierowuje
+prosto z powrotem, a wszystkie przeglądarki pomijają je, gdy formularz logowania
+dostawcy odsyła żądanie metodą POST. Nikt tego nie widzi, bo sama strona jest
+publiczna, a pierwsze żądanie panelu, &lt;code&gt;GET /api/git/session&lt;/code&gt;, pochodzi z tej samej
+witryny i niesie ciasteczko we wszystkich przetestowanych przeglądarkach. Niech
+tak zostanie: od ciasteczka powinno zależeć tylko &lt;code&gt;/api/git/*&lt;/code&gt;, nigdy strona
+HTML. Jeśli wdrożenie musi chronić samą stronę, skieruj adres powrotu
+oauth2-proxy na małą stronę z tej samej witryny, która przechodzi dalej
+(&lt;code&gt;location.replace(&amp;quot;/&amp;quot;)&lt;/code&gt;); strona, do której dotrze, otrzymuje ciasteczko. Test
+to &lt;code&gt;playground/browsertest/cookie.cjs&lt;/code&gt; z go-slides/go-slides.github.io,
+uruchamiany w WebKit, Firefox i Chromium.&lt;/p&gt;
 &lt;p&gt;Aby go serwować, użyj &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; z go-slides/go-slides.github.io.
 Jego Content-Security-Policy to &lt;code&gt;connect-src 'self'&lt;/code&gt;; witryna pozostaje
 publiczna, a za oauth2-proxy jest tylko &lt;code&gt;/api/git/*&lt;/code&gt;. Ustawienie &lt;code&gt;origin&lt;/code&gt;

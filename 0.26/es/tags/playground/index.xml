@@ -837,6 +837,19 @@ cuerpo JSON y &lt;code&gt;X-CSRF-Token&lt;/code&gt;.&lt;/li&gt;
 «Su sesión ha terminado» con un botón &lt;strong&gt;Iniciar sesión&lt;/strong&gt;
 (&lt;code&gt;/oauth2/sign_in?rd=&amp;lt;this page&amp;gt;&lt;/code&gt; de oauth2-proxy). Nunca recurre a un token
 escrito en el navegador.&lt;/p&gt;
+&lt;p&gt;La cookie &lt;code&gt;__Host-gitd&lt;/code&gt; es &lt;code&gt;SameSite=Strict&lt;/code&gt;, así que la primera carga de página
+tras volver el inicio de sesión del proveedor de identidad (otro sitio) puede
+llegar sin ella: Firefox y el motor de Safari la omiten incluso cuando el
+proveedor redirige directamente de vuelta, y todos los navegadores la omiten
+cuando el formulario de inicio de sesión del proveedor envía la respuesta por
+POST. Nadie lo nota, porque la página en sí es pública y la primera petición del
+panel, &lt;code&gt;GET /api/git/session&lt;/code&gt;, es del mismo sitio y lleva la cookie en todos los
+navegadores probados. Manténgalo así: solo &lt;code&gt;/api/git/*&lt;/code&gt; debe depender de la
+cookie, nunca la página HTML. Si un despliegue debe proteger la propia página,
+apunte la dirección de retorno de oauth2-proxy a una página pequeña del mismo
+sitio que siga navegando (&lt;code&gt;location.replace(&amp;quot;/&amp;quot;)&lt;/code&gt;); la página a la que llega
+recibe la cookie. La prueba es &lt;code&gt;playground/browsertest/cookie.cjs&lt;/code&gt; de
+go-slides/go-slides.github.io, ejecutada en WebKit, Firefox y Chromium.&lt;/p&gt;
 &lt;p&gt;Para servirlo, use &lt;code&gt;selfhost/Caddyfile.gitd&lt;/code&gt; de go-slides/go-slides.github.io.
 Su Content-Security-Policy es &lt;code&gt;connect-src 'self'&lt;/code&gt;; el sitio sigue siendo
 público y solo &lt;code&gt;/api/git/*&lt;/code&gt; queda detrás de oauth2-proxy. El ajuste &lt;code&gt;origin&lt;/code&gt; de
