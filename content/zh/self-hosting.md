@@ -391,8 +391,8 @@ Playground 页面中的脚本可能画出一个假的令牌输入框。只在地
 - **标签能省多少。** 在 `js/wasm` 构建中，`slides_nomathfont` 省下 651 KB（gzip 后），`slides_noemoji` 省下 2.06 MB。`slides_novideo` 完全不链接视频解码代码；有了它，playground 的主模块从 12.0 MiB 降到 10.1 MiB（gzip 后），视频支持则按需加载。
 - **在 provider 注册之前**，公式以 TeX 源码显示在 `span.math-error` 中，其 title 给出原因；emoji 保持为写下的文本（字符本身或其 `:shortcode:`）。emoji 的识别（短代码、序列）仍然是内置的：只有图片来自 provider。
 - **晚些注册也没问题。** 在 `mathfont.Register` 或 `emoji.Register` 之后，`deck.RenderCache`（v0.24.0）只重新渲染那些退回为后备文本的幻灯片。没有公式和 emoji 的幻灯片仍留在缓存中，所以宿主不必清空整个缓存。
-- **限制。** 数学字体超过 8 MiB，或没有 OpenType、TrueType 或字体集合签名，就会被拒绝。自 v0.25.0 起，它还会根据 go-tex/math 读取的表重新构建，如果其声明的数量会让解析器分配过多内存，就会被拒绝（CFF2 同样被拒绝）。emoji 的 SVG 不得超过 256 KiB，且必须以 `<svg` 或 `<?xml` 开头；它作为 `data:` 图片嵌入，其中不会运行脚本。视频 provider 遵守与命令相同的限制和相同的 `video.*` 诊断，请求只能调低限制，不能调高。
-- **信任。** CFF 轮廓（随附的 STIX Two Math 字体就是其一）在 go-opentype/opentype#75 解决之前不在该上限的覆盖范围内。请把 `mathfont.Provider` 当作受信任的输入。
+- **限制。** 数学字体超过 8 MiB，或没有 OpenType、TrueType 或字体集合签名，就会被拒绝。自 v0.25.0 起，它还会根据 go-tex/math 读取的表重新构建，如果其声明的数量会让解析器分配过多内存，就会被拒绝。emoji 的 SVG 不得超过 256 KiB，且必须以 `<svg` 或 `<?xml` 开头；它作为 `data:` 图片嵌入，其中不会运行脚本。视频 provider 遵守与命令相同的限制和相同的 `video.*` 诊断，请求只能调低限制，不能调高。
+- **信任。** 数学字体是不可信输入，并且有上限。go-opentype v0.23.0 在解析时检查字体声明的每一个数量，并限制每个字形（复合字形最多 65,535 个点；CFF、CFF2 或 Type 1 的 charstring 最多 131,072 个操作符和 65,536 个点），CFF2 字体不再被拒绝。它无法限制所有字形的总和，所以由 go-slides 来限制：TrueType 字体的轮廓超过 128 MiB 就会被拒绝，CFF 字体（随附的 STIX Two Math 就是其一）的路径文本超过 64 MiB 就会被拒绝，检查方式是在加载时把每个字形扫描一遍。这次扫描有 5 秒的实际时间上限，因此慢的机器可能拒绝快的机器能接受的字体；这个上限是临时的，等 go-opentype/opentype#81 给出对字体总工作量的确定性上限后再调整。拒绝恶意字体最多花这么多时间，每次加载一次。
 
 ## 检查 {#check-it}
 
